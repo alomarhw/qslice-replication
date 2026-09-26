@@ -1,0 +1,10 @@
+scope,n_circuits,n_pairs,method,invalid_slice_rate,target_state_fidelity,slice_size_fraction_of_ops,forward_influence_completeness,forward_complete_rate
+MQT Bench,40,284,QPDG (Sec. III method),0.0,0.999999999999982,0.5297135335769185,1.0,1.0
+MQT Bench,40,284,Naive classical PDG (def-use port),0.4154929577464789,0.8025848639023123,0.4870869228927126,1.0,1.0
+MQT Bench,40,284,Causal classical PDG (data+control light cone),0.0,0.999999999999982,0.630920763007181,1.0,1.0
+QASMBench,38,202,QPDG (Sec. III method),0.0,0.9999999999999978,0.48233764530652257,1.0,1.0
+QASMBench,38,202,Naive classical PDG (def-use port),0.3712871287128713,0.8171199342966265,0.3924662238168791,0.976897689768977,0.9504950495049505
+QASMBench,38,202,Causal classical PDG (data+control light cone),0.0,0.9999999999999974,0.6442401970941554,1.0,1.0
+VeriQBench,80,298,QPDG (Sec. III method),0.0,0.9999999999935592,0.5894700255335443,1.0,1.0
+VeriQBench,80,298,Naive classical PDG (def-use port),0.07718120805369127,0.9559747514388068,0.6165947037371884,0.9846196868008947,0.9765100671140939
+VeriQBench,80,298,Causal classical PDG (data+control light cone),0.0,0.9999999999999992,0.8133515436168979,1.0,1.0

@@ -1,0 +1,26 @@
+[
+  {
+    "corpus": "QASMBench",
+    "circuit": "vqe_uccsd_n4",
+    "path": "qasmbench/small/vqe_uccsd_n4.qasm",
+    "reason": "load: QASM2ParseError: \"vqe_uccsd_n4.qasm:225,8: 'q' is not defined in this scope\""
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "grover_n10",
+    "path": "mqtbench/grover_n10.qasm",
+    "reason": "load: prepared circuit has 33670 instructions (> 220) after decomposing gates wider than 8 qubits"
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "grover_n14",
+    "path": "mqtbench/grover_n14.qasm",
+    "reason": "load: prepared circuit has 366658 instructions (> 220) after decomposing gates wider than 8 qubits"
+  },
+  {
+    "corpus": "VeriQBench-dynamic",
+    "circuit": "dqc_qft_14",
+    "path": "veriqbench/dynamic/qft/dqc_qft_14.qasm",
+    "reason": "oracle: more than 4096 measurement branches"
+  }
+]

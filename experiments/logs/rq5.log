@@ -1,0 +1,27 @@
+commit 7cd658c876758d5f5be6b3dfb28cf3ac8dc214e2 start Fri Sep 25 19:23:39 EDT 2026
+structural selection: 1124 circuits; identical to the submitted Table VII rows: True
+  part S: 50/1124 circuits
+  part S: 100/1124 circuits
+  part S: 150/1124 circuits
+  part S: 250/1124 circuits
+  part S: 350/1124 circuits
+  part S: 400/1124 circuits
+  part S: 450/1124 circuits
+  part S: 500/1124 circuits
+  part S: 550/1124 circuits
+  part S: 650/1124 circuits
+  part S: 700/1124 circuits
+  part S: 750/1124 circuits
+  part S: 800/1124 circuits
+  part S: 850/1124 circuits
+  part S: 900/1124 circuits
+  part S: 950/1124 circuits
+  part S: 1000/1124 circuits
+  part S: 1050/1124 circuits
+  part S: 1100/1124 circuits
+part S done in 2482s
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  part E: 50/158 circuits
+  part E: 100/158 circuits
+part E done in 141s
+rq5 rc=0 Fri Sep 25 20:14:38 EDT 2026

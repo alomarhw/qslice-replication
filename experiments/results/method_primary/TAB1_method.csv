@@ -1,0 +1,4 @@
+scope,n_circuits,n_pairs,method,invalid_slice_rate,target_state_fidelity,slice_size_fraction_of_ops,forward_influence_completeness,forward_complete_rate
+ALL,158,784,QPDG (Sec. III method),0.0,0.9999999999975447,0.5402205554805596,1.0,1.0
+ALL,158,784,Naive classical PDG (def-use port),0.2755102040816326,0.8646336785777293,0.5119337819212016,0.9882015306122449,0.9783163265306123
+ALL,158,784,Causal classical PDG (data+control light cone),0.0,0.9999999999999925,0.7036948679909367,1.0,1.0
