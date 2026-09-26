@@ -1,0 +1,27 @@
+{
+  "RQ1_qpdg_vs_naive_invalid": {
+    "test": "exact McNemar",
+    "a_only": 0,
+    "b_only": 214,
+    "p_value": 7.596454196607839e-65
+  },
+  "RQ2_size_causal_minus_qpdg_sound_pairs": {
+    "test": "Wilcoxon signed-rank",
+    "n": 782,
+    "statistic": 0.0,
+    "p_value": 7.104254743534756e-80,
+    "mean_difference": 0.16389240538124777,
+    "ci95_mean_difference": [
+      0.15108709332164016,
+      0.1769250746968394
+    ],
+    "rank_biserial": 1.0
+  },
+  "RQ2_qpdg_smaller_than_causal_pairs": 477,
+  "RQ3_qpdg_vs_naive_complete": {
+    "test": "exact McNemar",
+    "a_only": 0,
+    "b_only": 14,
+    "p_value": 0.0001220703125
+  }
+}

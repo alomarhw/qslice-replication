@@ -1,0 +1,2353 @@
+corpus,circuit,path,target,method,truth_size,covered_true,completeness,complete
+QASMBench,deutsch_n2,qasmbench/small/deutsch_n2.qasm,0,qpdg,1,1,1.0,1
+QASMBench,deutsch_n2,qasmbench/small/deutsch_n2.qasm,0,naive,1,1,1.0,1
+QASMBench,deutsch_n2,qasmbench/small/deutsch_n2.qasm,0,causal,1,1,1.0,1
+QASMBench,deutsch_n2,qasmbench/small/deutsch_n2.qasm,1,qpdg,2,2,1.0,1
+QASMBench,deutsch_n2,qasmbench/small/deutsch_n2.qasm,1,naive,2,2,1.0,1
+QASMBench,deutsch_n2,qasmbench/small/deutsch_n2.qasm,1,causal,2,2,1.0,1
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,0,qpdg,1,1,1.0,1
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,0,naive,1,1,1.0,1
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,0,causal,1,1,1.0,1
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,1,qpdg,2,2,1.0,1
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,1,naive,2,2,1.0,1
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,1,causal,2,2,1.0,1
+QASMBench,iswap_n2,qasmbench/small/iswap_n2.qasm,0,qpdg,1,1,1.0,1
+QASMBench,iswap_n2,qasmbench/small/iswap_n2.qasm,0,naive,1,1,1.0,1
+QASMBench,iswap_n2,qasmbench/small/iswap_n2.qasm,0,causal,1,1,1.0,1
+QASMBench,iswap_n2,qasmbench/small/iswap_n2.qasm,1,qpdg,1,1,1.0,1
+QASMBench,iswap_n2,qasmbench/small/iswap_n2.qasm,1,naive,1,1,1.0,1
+QASMBench,iswap_n2,qasmbench/small/iswap_n2.qasm,1,causal,1,1,1.0,1
+QASMBench,quantumwalks_n2,qasmbench/small/quantumwalks_n2.qasm,0,qpdg,2,2,1.0,1
+QASMBench,quantumwalks_n2,qasmbench/small/quantumwalks_n2.qasm,0,naive,2,2,1.0,1
+QASMBench,quantumwalks_n2,qasmbench/small/quantumwalks_n2.qasm,0,causal,2,2,1.0,1
+QASMBench,quantumwalks_n2,qasmbench/small/quantumwalks_n2.qasm,1,qpdg,2,2,1.0,1
+QASMBench,quantumwalks_n2,qasmbench/small/quantumwalks_n2.qasm,1,naive,2,2,1.0,1
+QASMBench,quantumwalks_n2,qasmbench/small/quantumwalks_n2.qasm,1,causal,2,2,1.0,1
+QASMBench,grover_n2,qasmbench/small/grover_n2.qasm,0,qpdg,1,1,1.0,1
+QASMBench,grover_n2,qasmbench/small/grover_n2.qasm,0,naive,1,1,1.0,1
+QASMBench,grover_n2,qasmbench/small/grover_n2.qasm,0,causal,1,1,1.0,1
+QASMBench,grover_n2,qasmbench/small/grover_n2.qasm,1,qpdg,1,1,1.0,1
+QASMBench,grover_n2,qasmbench/small/grover_n2.qasm,1,naive,1,1,1.0,1
+QASMBench,grover_n2,qasmbench/small/grover_n2.qasm,1,causal,1,1,1.0,1
+QASMBench,wstate_n3,qasmbench/small/wstate_n3.qasm,0,qpdg,3,3,1.0,1
+QASMBench,wstate_n3,qasmbench/small/wstate_n3.qasm,0,naive,3,3,1.0,1
+QASMBench,wstate_n3,qasmbench/small/wstate_n3.qasm,0,causal,3,3,1.0,1
+QASMBench,wstate_n3,qasmbench/small/wstate_n3.qasm,1,qpdg,2,2,1.0,1
+QASMBench,wstate_n3,qasmbench/small/wstate_n3.qasm,1,naive,2,2,1.0,1
+QASMBench,wstate_n3,qasmbench/small/wstate_n3.qasm,1,causal,2,2,1.0,1
+QASMBench,wstate_n3,qasmbench/small/wstate_n3.qasm,2,qpdg,1,1,1.0,1
+QASMBench,wstate_n3,qasmbench/small/wstate_n3.qasm,2,naive,1,1,1.0,1
+QASMBench,wstate_n3,qasmbench/small/wstate_n3.qasm,2,causal,1,1,1.0,1
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,0,qpdg,1,1,1.0,1
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,0,naive,1,1,1.0,1
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,0,causal,1,1,1.0,1
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,1,qpdg,0,0,1.0,1
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,1,naive,0,0,1.0,1
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,1,causal,0,0,1.0,1
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,2,qpdg,0,0,1.0,1
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,2,naive,0,0,1.0,1
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,2,causal,0,0,1.0,1
+QASMBench,qaoa_n3,qasmbench/small/qaoa_n3.qasm,0,qpdg,1,1,1.0,1
+QASMBench,qaoa_n3,qasmbench/small/qaoa_n3.qasm,0,naive,1,1,1.0,1
+QASMBench,qaoa_n3,qasmbench/small/qaoa_n3.qasm,0,causal,1,1,1.0,1
+QASMBench,qaoa_n3,qasmbench/small/qaoa_n3.qasm,1,qpdg,1,1,1.0,1
+QASMBench,qaoa_n3,qasmbench/small/qaoa_n3.qasm,1,naive,1,1,1.0,1
+QASMBench,qaoa_n3,qasmbench/small/qaoa_n3.qasm,1,causal,1,1,1.0,1
+QASMBench,qaoa_n3,qasmbench/small/qaoa_n3.qasm,2,qpdg,1,1,1.0,1
+QASMBench,qaoa_n3,qasmbench/small/qaoa_n3.qasm,2,naive,1,1,1.0,1
+QASMBench,qaoa_n3,qasmbench/small/qaoa_n3.qasm,2,causal,1,1,1.0,1
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,0,qpdg,2,2,1.0,1
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,0,naive,2,2,1.0,1
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,0,causal,2,2,1.0,1
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,1,qpdg,2,2,1.0,1
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,1,naive,2,2,1.0,1
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,1,causal,2,2,1.0,1
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,2,qpdg,1,1,1.0,1
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,2,naive,1,1,1.0,1
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,2,causal,1,1,1.0,1
+QASMBench,fredkin_n3,qasmbench/small/fredkin_n3.qasm,0,qpdg,3,3,1.0,1
+QASMBench,fredkin_n3,qasmbench/small/fredkin_n3.qasm,0,naive,3,3,1.0,1
+QASMBench,fredkin_n3,qasmbench/small/fredkin_n3.qasm,0,causal,3,3,1.0,1
+QASMBench,fredkin_n3,qasmbench/small/fredkin_n3.qasm,1,qpdg,1,1,1.0,1
+QASMBench,fredkin_n3,qasmbench/small/fredkin_n3.qasm,1,naive,1,1,1.0,1
+QASMBench,fredkin_n3,qasmbench/small/fredkin_n3.qasm,1,causal,1,1,1.0,1
+QASMBench,fredkin_n3,qasmbench/small/fredkin_n3.qasm,2,qpdg,1,1,1.0,1
+QASMBench,fredkin_n3,qasmbench/small/fredkin_n3.qasm,2,naive,1,1,1.0,1
+QASMBench,fredkin_n3,qasmbench/small/fredkin_n3.qasm,2,causal,1,1,1.0,1
+QASMBench,linearsolver_n3,qasmbench/small/linearsolver_n3.qasm,0,qpdg,1,1,1.0,1
+QASMBench,linearsolver_n3,qasmbench/small/linearsolver_n3.qasm,0,naive,1,1,1.0,1
+QASMBench,linearsolver_n3,qasmbench/small/linearsolver_n3.qasm,0,causal,1,1,1.0,1
+QASMBench,linearsolver_n3,qasmbench/small/linearsolver_n3.qasm,1,qpdg,1,1,1.0,1
+QASMBench,linearsolver_n3,qasmbench/small/linearsolver_n3.qasm,1,naive,1,1,1.0,1
+QASMBench,linearsolver_n3,qasmbench/small/linearsolver_n3.qasm,1,causal,1,1,1.0,1
+QASMBench,linearsolver_n3,qasmbench/small/linearsolver_n3.qasm,2,qpdg,1,1,1.0,1
+QASMBench,linearsolver_n3,qasmbench/small/linearsolver_n3.qasm,2,naive,1,1,1.0,1
+QASMBench,linearsolver_n3,qasmbench/small/linearsolver_n3.qasm,2,causal,1,1,1.0,1
+QASMBench,basis_change_n3,qasmbench/small/basis_change_n3.qasm,0,qpdg,3,3,1.0,1
+QASMBench,basis_change_n3,qasmbench/small/basis_change_n3.qasm,0,naive,3,3,1.0,1
+QASMBench,basis_change_n3,qasmbench/small/basis_change_n3.qasm,0,causal,3,3,1.0,1
+QASMBench,basis_change_n3,qasmbench/small/basis_change_n3.qasm,1,qpdg,3,3,1.0,1
+QASMBench,basis_change_n3,qasmbench/small/basis_change_n3.qasm,1,naive,3,3,1.0,1
+QASMBench,basis_change_n3,qasmbench/small/basis_change_n3.qasm,1,causal,3,3,1.0,1
+QASMBench,basis_change_n3,qasmbench/small/basis_change_n3.qasm,2,qpdg,3,3,1.0,1
+QASMBench,basis_change_n3,qasmbench/small/basis_change_n3.qasm,2,naive,3,2,0.6666666666666666,0
+QASMBench,basis_change_n3,qasmbench/small/basis_change_n3.qasm,2,causal,3,3,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,0,qpdg,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,0,naive,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,0,causal,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,1,qpdg,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,1,naive,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,1,causal,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,2,qpdg,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,2,naive,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,2,causal,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,3,qpdg,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,3,naive,0,0,1.0,1
+QASMBench,cat_state_n4,qasmbench/small/cat_state_n4.qasm,3,causal,0,0,1.0,1
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,0,qpdg,4,1,0.25,0
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,0,naive,4,1,0.25,0
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,0,causal,4,1,0.25,0
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,1,qpdg,3,1,0.3333333333333333,0
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,1,naive,3,1,0.3333333333333333,0
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,1,causal,3,1,0.3333333333333333,0
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,2,qpdg,2,1,0.5,0
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,2,naive,2,1,0.5,0
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,2,causal,2,1,0.5,0
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,3,qpdg,1,1,1.0,1
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,3,naive,1,1,1.0,1
+QASMBench,inverseqft_n4,qasmbench/small/inverseqft_n4.qasm,3,causal,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,0,qpdg,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,0,naive,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,0,causal,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,1,qpdg,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,1,naive,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,1,causal,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,2,qpdg,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,2,naive,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,2,causal,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,3,qpdg,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,3,naive,1,1,1.0,1
+QASMBench,qrng_n4,qasmbench/small/qrng_n4.qasm,3,causal,1,1,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,0,qpdg,1,1,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,0,naive,1,1,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,0,causal,1,1,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,1,qpdg,2,2,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,1,naive,2,2,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,1,causal,2,2,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,2,qpdg,3,3,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,2,naive,3,3,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,2,causal,3,3,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,3,qpdg,4,4,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,3,naive,4,4,1.0,1
+QASMBench,qft_n4,qasmbench/small/qft_n4.qasm,3,causal,4,4,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,0,qpdg,4,4,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,0,naive,4,4,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,0,causal,4,4,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,1,qpdg,3,3,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,1,naive,3,3,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,1,causal,3,3,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,2,qpdg,1,1,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,2,naive,1,1,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,2,causal,1,1,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,3,qpdg,1,1,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,3,naive,1,1,1.0,1
+QASMBench,adder_n4,qasmbench/small/adder_n4.qasm,3,causal,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,0,qpdg,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,0,naive,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,0,causal,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,1,qpdg,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,1,naive,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,1,causal,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,2,qpdg,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,2,naive,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,2,causal,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,3,qpdg,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,3,naive,1,1,1.0,1
+QASMBench,hs4_n4,qasmbench/small/hs4_n4.qasm,3,causal,1,1,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,0,qpdg,0,0,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,0,naive,0,0,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,0,causal,0,0,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,1,qpdg,1,1,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,1,naive,1,1,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,1,causal,1,1,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,2,qpdg,0,0,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,2,naive,0,0,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,2,causal,0,0,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,3,qpdg,1,1,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,3,naive,1,1,1.0,1
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,3,causal,1,1,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,0,qpdg,3,3,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,0,naive,3,3,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,0,causal,3,3,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,1,qpdg,4,4,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,1,naive,4,4,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,1,causal,4,4,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,2,qpdg,4,4,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,2,naive,4,4,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,2,causal,4,4,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,3,qpdg,3,3,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,3,naive,3,3,1.0,1
+QASMBench,variational_n4,qasmbench/small/variational_n4.qasm,3,causal,3,3,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,0,qpdg,4,4,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,0,naive,4,4,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,0,causal,4,4,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,1,qpdg,4,4,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,1,naive,4,4,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,1,causal,4,4,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,2,qpdg,4,4,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,2,naive,4,3,0.75,0
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,2,causal,4,4,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,3,qpdg,4,4,1.0,1
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,3,naive,4,2,0.5,0
+QASMBench,vqe_n4,qasmbench/small/vqe_n4.qasm,3,causal,4,4,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,0,qpdg,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,0,naive,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,0,causal,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,1,qpdg,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,1,naive,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,1,causal,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,2,qpdg,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,2,naive,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,2,causal,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,3,qpdg,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,3,naive,2,2,1.0,1
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,3,causal,2,2,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,0,qpdg,1,1,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,0,naive,1,1,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,0,causal,1,1,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,1,qpdg,5,5,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,1,naive,5,5,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,1,causal,5,5,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,2,qpdg,4,4,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,2,naive,4,4,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,2,causal,4,4,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,3,qpdg,2,2,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,3,naive,2,2,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,3,causal,2,2,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,4,qpdg,3,3,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,4,naive,3,3,1.0,1
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,4,causal,3,3,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,0,qpdg,4,4,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,0,naive,4,4,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,0,causal,4,4,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,1,qpdg,3,3,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,1,naive,3,3,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,1,causal,3,3,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,2,qpdg,2,2,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,2,naive,2,2,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,2,causal,2,2,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,3,qpdg,1,1,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,3,naive,1,1,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,3,causal,1,1,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,4,qpdg,4,4,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,4,naive,4,4,1.0,1
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,4,causal,4,4,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,0,qpdg,0,0,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,0,naive,0,0,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,0,causal,0,0,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,1,qpdg,1,1,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,1,naive,1,1,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,1,causal,1,1,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,2,qpdg,0,0,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,2,naive,0,0,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,2,causal,0,0,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,3,qpdg,0,0,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,3,naive,0,0,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,3,causal,0,0,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,4,qpdg,1,1,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,4,naive,1,1,1.0,1
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,4,causal,1,1,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,0,qpdg,1,1,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,0,naive,1,1,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,0,causal,1,1,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,1,qpdg,3,3,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,1,naive,3,3,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,1,causal,3,3,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,2,qpdg,1,1,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,2,naive,1,1,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,2,causal,1,1,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,3,qpdg,3,3,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,3,naive,3,3,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,3,causal,3,3,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,4,qpdg,0,0,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,4,naive,0,0,1.0,1
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,4,causal,0,0,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,0,qpdg,2,2,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,0,naive,2,2,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,0,causal,2,2,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,1,qpdg,3,3,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,1,naive,3,3,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,1,causal,3,3,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,2,qpdg,3,3,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,2,naive,3,3,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,2,causal,3,3,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,3,qpdg,3,3,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,3,naive,3,3,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,3,causal,3,3,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,4,qpdg,2,2,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,4,naive,2,2,1.0,1
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,4,causal,2,2,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,0,qpdg,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,0,naive,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,0,causal,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,1,qpdg,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,1,naive,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,1,causal,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,2,qpdg,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,2,naive,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,2,causal,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,3,qpdg,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,3,naive,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,3,causal,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,4,qpdg,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,4,naive,0,0,1.0,1
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,4,causal,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,0,qpdg,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,0,naive,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,0,causal,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,1,qpdg,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,1,naive,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,1,causal,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,2,qpdg,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,2,naive,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,2,causal,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,3,qpdg,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,3,naive,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,3,causal,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,4,qpdg,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,4,naive,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,4,causal,0,0,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,5,qpdg,1,1,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,5,naive,1,1,1.0,1
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,5,causal,1,1,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,0,qpdg,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,0,naive,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,0,causal,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,1,qpdg,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,1,naive,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,1,causal,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,2,qpdg,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,2,naive,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,2,causal,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,3,qpdg,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,3,naive,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,3,causal,3,3,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,4,qpdg,2,2,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,4,naive,2,2,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,4,causal,2,2,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,5,qpdg,2,2,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,5,naive,2,2,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,5,causal,2,2,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,6,qpdg,4,4,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,6,naive,4,4,1.0,1
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,6,causal,4,4,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,0,qpdg,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,0,naive,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,0,causal,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,1,qpdg,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,1,naive,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,1,causal,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,2,qpdg,0,0,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,2,naive,0,0,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,2,causal,0,0,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,3,qpdg,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,3,naive,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,3,causal,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,4,qpdg,0,0,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,4,naive,0,0,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,4,causal,0,0,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,5,qpdg,0,0,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,5,naive,0,0,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,5,causal,0,0,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,6,qpdg,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,6,naive,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,6,causal,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,7,qpdg,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,7,naive,1,1,1.0,1
+QASMBench,bb84_n8,qasmbench/small/bb84_n8.qasm,7,causal,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,0,qpdg,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,0,naive,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,0,causal,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,1,qpdg,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,1,naive,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,1,causal,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,2,qpdg,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,2,naive,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,2,causal,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,3,qpdg,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,3,naive,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,3,causal,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,4,qpdg,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,4,naive,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,4,causal,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,5,qpdg,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,5,naive,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,5,causal,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,6,qpdg,2,2,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,6,naive,2,2,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,6,causal,2,2,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,7,qpdg,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,7,naive,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,7,causal,1,1,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,8,qpdg,2,2,1.0,1
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,8,naive,2,1,0.5,0
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,8,causal,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,0,qpdg,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,0,naive,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,0,causal,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,1,qpdg,6,6,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,1,naive,6,6,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,1,causal,6,6,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,2,qpdg,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,2,naive,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,2,causal,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,3,qpdg,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,3,naive,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,3,causal,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,4,qpdg,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,4,naive,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,4,causal,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,5,qpdg,5,5,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,5,naive,5,5,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,5,causal,5,5,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,6,qpdg,4,4,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,6,naive,4,4,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,6,causal,4,4,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,7,qpdg,3,3,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,7,naive,3,3,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,7,causal,3,3,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,8,qpdg,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,8,naive,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,8,causal,2,2,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,9,qpdg,1,1,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,9,naive,1,1,1.0,1
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,9,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,0,qpdg,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,0,naive,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,0,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,1,qpdg,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,1,naive,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,1,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,2,qpdg,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,2,naive,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,2,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,3,qpdg,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,3,naive,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,3,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,4,qpdg,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,4,naive,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,4,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,5,qpdg,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,5,naive,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,5,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,6,qpdg,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,6,naive,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,6,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,7,qpdg,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,7,naive,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,7,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,8,qpdg,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,8,naive,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,8,causal,1,1,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,9,qpdg,3,3,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,9,naive,3,3,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,9,causal,3,3,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,10,qpdg,5,5,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,10,naive,5,5,1.0,1
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,10,causal,5,5,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,0,qpdg,3,3,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,0,naive,3,1,0.3333333333333333,0
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,0,causal,3,3,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,1,qpdg,4,4,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,1,naive,4,4,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,1,causal,4,4,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,2,qpdg,3,3,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,2,naive,3,3,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,2,causal,3,3,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,3,qpdg,5,5,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,3,naive,5,5,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,3,causal,5,5,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,4,qpdg,4,4,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,4,naive,4,4,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,4,causal,4,4,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,5,qpdg,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,5,naive,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,5,causal,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,6,qpdg,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,6,naive,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,6,causal,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,7,qpdg,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,7,naive,6,4,0.6666666666666666,0
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,7,causal,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,8,qpdg,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,8,naive,6,5,0.8333333333333334,0
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,8,causal,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,9,qpdg,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,9,naive,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,9,causal,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,10,qpdg,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,10,naive,6,6,1.0,1
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,10,causal,6,6,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,0,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,0,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,0,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,1,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,1,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,1,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,2,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,2,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,2,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,3,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,3,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,3,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,4,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,4,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,4,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,5,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,5,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,5,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,6,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,6,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,6,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,7,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,7,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,7,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,8,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,8,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,8,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,9,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,9,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,9,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,10,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,10,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,10,causal,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,11,qpdg,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,11,naive,0,0,1.0,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,11,causal,0,0,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,0,qpdg,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,0,naive,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,0,causal,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,1,qpdg,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,1,naive,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,1,causal,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,2,qpdg,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,2,naive,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,2,causal,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,3,qpdg,5,5,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,3,naive,5,5,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,3,causal,5,5,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,4,qpdg,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,4,naive,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,4,causal,4,4,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,5,qpdg,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,5,naive,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,5,causal,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,6,qpdg,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,6,naive,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,6,causal,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,7,qpdg,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,7,naive,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,7,causal,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,8,qpdg,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,8,naive,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,8,causal,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,9,qpdg,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,9,naive,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,9,causal,2,2,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,10,qpdg,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,10,naive,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,10,causal,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,11,qpdg,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,11,naive,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,11,causal,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,12,qpdg,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,12,naive,1,1,1.0,1
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,12,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,0,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,0,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,0,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,1,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,1,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,1,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,2,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,2,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,2,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,3,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,3,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,3,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,4,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,4,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,4,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,5,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,5,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,5,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,6,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,6,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,6,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,7,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,7,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,7,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,8,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,8,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,8,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,9,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,9,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,9,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,10,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,10,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,10,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,11,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,11,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,11,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,12,qpdg,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,12,naive,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,12,causal,1,1,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,qpdg,14,14,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,naive,14,14,1.0,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,causal,14,14,1.0,1
+MQT Bench,ghz_n3,mqtbench/ghz_n3.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,ghz_n3,mqtbench/ghz_n3.qasm,0,naive,0,0,1.0,1
+MQT Bench,ghz_n3,mqtbench/ghz_n3.qasm,0,causal,0,0,1.0,1
+MQT Bench,ghz_n3,mqtbench/ghz_n3.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,ghz_n3,mqtbench/ghz_n3.qasm,1,naive,0,0,1.0,1
+MQT Bench,ghz_n3,mqtbench/ghz_n3.qasm,1,causal,0,0,1.0,1
+MQT Bench,ghz_n3,mqtbench/ghz_n3.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,ghz_n3,mqtbench/ghz_n3.qasm,2,naive,0,0,1.0,1
+MQT Bench,ghz_n3,mqtbench/ghz_n3.qasm,2,causal,0,0,1.0,1
+MQT Bench,grover_n3,mqtbench/grover_n3.qasm,0,qpdg,1,1,1.0,1
+MQT Bench,grover_n3,mqtbench/grover_n3.qasm,0,naive,1,1,1.0,1
+MQT Bench,grover_n3,mqtbench/grover_n3.qasm,0,causal,1,1,1.0,1
+MQT Bench,grover_n3,mqtbench/grover_n3.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,grover_n3,mqtbench/grover_n3.qasm,1,naive,1,1,1.0,1
+MQT Bench,grover_n3,mqtbench/grover_n3.qasm,1,causal,1,1,1.0,1
+MQT Bench,grover_n3,mqtbench/grover_n3.qasm,2,qpdg,3,3,1.0,1
+MQT Bench,grover_n3,mqtbench/grover_n3.qasm,2,naive,3,3,1.0,1
+MQT Bench,grover_n3,mqtbench/grover_n3.qasm,2,causal,3,3,1.0,1
+MQT Bench,qftentangled_n3,mqtbench/qftentangled_n3.qasm,0,qpdg,3,3,1.0,1
+MQT Bench,qftentangled_n3,mqtbench/qftentangled_n3.qasm,0,naive,3,3,1.0,1
+MQT Bench,qftentangled_n3,mqtbench/qftentangled_n3.qasm,0,causal,3,3,1.0,1
+MQT Bench,qftentangled_n3,mqtbench/qftentangled_n3.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n3,mqtbench/qftentangled_n3.qasm,1,naive,1,1,1.0,1
+MQT Bench,qftentangled_n3,mqtbench/qftentangled_n3.qasm,1,causal,1,1,1.0,1
+MQT Bench,qftentangled_n3,mqtbench/qftentangled_n3.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n3,mqtbench/qftentangled_n3.qasm,2,naive,1,1,1.0,1
+MQT Bench,qftentangled_n3,mqtbench/qftentangled_n3.qasm,2,causal,1,1,1.0,1
+MQT Bench,bv_n3,mqtbench/bv_n3.qasm,0,qpdg,2,2,1.0,1
+MQT Bench,bv_n3,mqtbench/bv_n3.qasm,0,naive,2,2,1.0,1
+MQT Bench,bv_n3,mqtbench/bv_n3.qasm,0,causal,2,2,1.0,1
+MQT Bench,bv_n3,mqtbench/bv_n3.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,bv_n3,mqtbench/bv_n3.qasm,1,naive,1,1,1.0,1
+MQT Bench,bv_n3,mqtbench/bv_n3.qasm,1,causal,1,1,1.0,1
+MQT Bench,bv_n3,mqtbench/bv_n3.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,bv_n3,mqtbench/bv_n3.qasm,2,naive,1,1,1.0,1
+MQT Bench,bv_n3,mqtbench/bv_n3.qasm,2,causal,1,1,1.0,1
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,0,qpdg,1,1,1.0,1
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,0,naive,1,1,1.0,1
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,0,causal,1,1,1.0,1
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,1,naive,1,1,1.0,1
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,1,causal,1,1,1.0,1
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,2,qpdg,3,3,1.0,1
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,2,naive,3,3,1.0,1
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,2,causal,3,3,1.0,1
+MQT Bench,graphstate_n3,mqtbench/graphstate_n3.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n3,mqtbench/graphstate_n3.qasm,0,naive,0,0,1.0,1
+MQT Bench,graphstate_n3,mqtbench/graphstate_n3.qasm,0,causal,0,0,1.0,1
+MQT Bench,graphstate_n3,mqtbench/graphstate_n3.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n3,mqtbench/graphstate_n3.qasm,1,naive,0,0,1.0,1
+MQT Bench,graphstate_n3,mqtbench/graphstate_n3.qasm,1,causal,0,0,1.0,1
+MQT Bench,graphstate_n3,mqtbench/graphstate_n3.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n3,mqtbench/graphstate_n3.qasm,2,naive,0,0,1.0,1
+MQT Bench,graphstate_n3,mqtbench/graphstate_n3.qasm,2,causal,0,0,1.0,1
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,0,qpdg,2,2,1.0,1
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,0,naive,2,2,1.0,1
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,0,causal,2,2,1.0,1
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,1,qpdg,3,3,1.0,1
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,1,naive,3,3,1.0,1
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,1,causal,3,3,1.0,1
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,2,qpdg,3,3,1.0,1
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,2,naive,3,3,1.0,1
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,2,causal,3,3,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,0,naive,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,0,causal,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,1,naive,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,1,causal,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,2,naive,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,2,causal,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,3,naive,0,0,1.0,1
+MQT Bench,ghz_n4,mqtbench/ghz_n4.qasm,3,causal,0,0,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,0,qpdg,3,3,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,0,naive,3,3,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,0,causal,3,3,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,1,qpdg,3,3,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,1,naive,3,3,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,1,causal,3,3,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,2,qpdg,3,3,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,2,naive,3,3,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,2,causal,3,3,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,3,qpdg,4,4,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,3,naive,4,4,1.0,1
+MQT Bench,grover_n4,mqtbench/grover_n4.qasm,3,causal,4,4,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,0,qpdg,4,4,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,0,naive,4,4,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,0,causal,4,4,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,1,qpdg,3,3,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,1,naive,3,3,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,1,causal,3,3,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,2,naive,1,1,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,2,causal,1,1,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,3,naive,1,1,1.0,1
+MQT Bench,qftentangled_n4,mqtbench/qftentangled_n4.qasm,3,causal,1,1,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,0,qpdg,2,2,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,0,naive,2,2,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,0,causal,2,2,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,1,naive,1,1,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,1,causal,1,1,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,2,naive,1,1,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,2,causal,1,1,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,3,naive,1,1,1.0,1
+MQT Bench,bv_n4,mqtbench/bv_n4.qasm,3,causal,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,0,qpdg,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,0,naive,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,0,causal,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,1,naive,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,1,causal,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,2,naive,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,2,causal,1,1,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,3,qpdg,4,4,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,3,naive,4,4,1.0,1
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,3,causal,4,4,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,0,naive,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,0,causal,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,1,naive,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,1,causal,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,2,naive,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,2,causal,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,3,naive,0,0,1.0,1
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,3,causal,0,0,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,0,qpdg,2,2,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,0,naive,2,2,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,0,causal,2,2,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,1,naive,1,1,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,1,causal,1,1,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,2,qpdg,4,4,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,2,naive,4,4,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,2,causal,4,4,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,3,qpdg,4,4,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,3,naive,4,4,1.0,1
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,3,causal,4,4,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,0,naive,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,0,causal,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,1,naive,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,1,causal,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,2,naive,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,2,causal,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,3,naive,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,3,causal,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,4,qpdg,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,4,naive,0,0,1.0,1
+MQT Bench,ghz_n5,mqtbench/ghz_n5.qasm,4,causal,0,0,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,0,qpdg,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,0,naive,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,0,causal,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,1,qpdg,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,1,naive,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,1,causal,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,2,qpdg,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,2,naive,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,2,causal,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,3,qpdg,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,3,naive,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,3,causal,4,4,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,4,qpdg,5,5,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,4,naive,5,5,1.0,1
+MQT Bench,grover_n5,mqtbench/grover_n5.qasm,4,causal,5,5,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,0,qpdg,5,5,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,0,naive,5,5,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,0,causal,5,5,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,1,qpdg,4,4,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,1,naive,4,4,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,1,causal,4,4,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,2,qpdg,3,3,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,2,naive,3,3,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,2,causal,3,3,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,3,naive,1,1,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,3,causal,1,1,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,4,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,4,naive,1,1,1.0,1
+MQT Bench,qftentangled_n5,mqtbench/qftentangled_n5.qasm,4,causal,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,0,qpdg,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,0,naive,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,0,causal,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,1,naive,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,1,causal,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,2,naive,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,2,causal,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,3,naive,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,3,causal,1,1,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,4,qpdg,5,5,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,4,naive,5,5,1.0,1
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,4,causal,5,5,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,0,naive,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,0,causal,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,1,naive,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,1,causal,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,2,naive,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,2,causal,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,3,naive,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,3,causal,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,4,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,4,naive,0,0,1.0,1
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,4,causal,0,0,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,0,qpdg,3,3,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,0,naive,3,3,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,0,causal,3,3,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,1,naive,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,1,causal,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,2,naive,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,2,causal,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,3,naive,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,3,causal,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,4,qpdg,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,4,naive,1,1,1.0,1
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,4,causal,1,1,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,0,qpdg,2,2,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,0,naive,2,2,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,0,causal,2,2,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,1,qpdg,3,3,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,1,naive,3,3,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,1,causal,3,3,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,2,qpdg,4,4,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,2,naive,4,4,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,2,causal,4,4,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,3,qpdg,5,5,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,3,naive,5,5,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,3,causal,5,5,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,4,qpdg,5,5,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,4,naive,5,5,1.0,1
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,4,causal,5,5,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,0,naive,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,0,causal,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,1,naive,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,1,causal,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,2,naive,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,2,causal,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,3,naive,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,3,causal,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,4,qpdg,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,4,naive,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,4,causal,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,5,qpdg,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,5,naive,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,5,causal,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,6,qpdg,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,6,naive,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,6,causal,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,7,qpdg,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,7,naive,0,0,1.0,1
+MQT Bench,ghz_n8,mqtbench/ghz_n8.qasm,7,causal,0,0,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,0,qpdg,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,0,naive,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,0,causal,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,1,qpdg,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,1,naive,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,1,causal,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,2,qpdg,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,2,naive,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,2,causal,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,3,qpdg,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,3,naive,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,3,causal,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,4,qpdg,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,4,naive,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,4,causal,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,5,qpdg,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,5,naive,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,5,causal,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,6,qpdg,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,6,naive,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,6,causal,7,7,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,7,qpdg,8,8,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,7,naive,8,8,1.0,1
+MQT Bench,grover_n8,mqtbench/grover_n8.qasm,7,causal,8,8,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,0,qpdg,8,8,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,0,naive,8,8,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,0,causal,8,8,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,1,qpdg,7,7,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,1,naive,7,7,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,1,causal,7,7,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,2,qpdg,6,6,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,2,naive,6,6,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,2,causal,6,6,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,3,qpdg,5,5,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,3,naive,5,5,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,3,causal,5,5,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,4,qpdg,4,4,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,4,naive,4,4,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,4,causal,4,4,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,5,qpdg,3,3,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,5,naive,3,3,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,5,causal,3,3,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,6,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,6,naive,1,1,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,6,causal,1,1,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,7,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,7,naive,1,1,1.0,1
+MQT Bench,qftentangled_n8,mqtbench/qftentangled_n8.qasm,7,causal,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,0,qpdg,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,0,naive,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,0,causal,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,1,naive,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,1,causal,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,2,naive,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,2,causal,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,3,naive,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,3,causal,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,4,qpdg,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,4,naive,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,4,causal,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,5,qpdg,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,5,naive,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,5,causal,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,6,qpdg,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,6,naive,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,6,causal,1,1,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,7,qpdg,8,8,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,7,naive,8,8,1.0,1
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,7,causal,8,8,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,0,naive,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,0,causal,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,1,naive,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,1,causal,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,2,naive,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,2,causal,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,3,naive,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,3,causal,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,4,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,4,naive,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,4,causal,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,5,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,5,naive,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,5,causal,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,6,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,6,naive,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,6,causal,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,7,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,7,naive,0,0,1.0,1
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,7,causal,0,0,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,0,qpdg,4,4,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,0,naive,4,4,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,0,causal,4,4,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,1,naive,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,1,causal,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,2,naive,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,2,causal,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,3,naive,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,3,causal,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,4,qpdg,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,4,naive,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,4,causal,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,5,qpdg,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,5,naive,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,5,causal,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,6,qpdg,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,6,naive,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,6,causal,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,7,qpdg,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,7,naive,1,1,1.0,1
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,7,causal,1,1,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,0,qpdg,2,2,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,0,naive,2,2,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,0,causal,2,2,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,1,qpdg,3,3,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,1,naive,3,3,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,1,causal,3,3,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,2,qpdg,4,4,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,2,naive,4,4,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,2,causal,4,4,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,3,naive,1,1,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,3,causal,1,1,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,4,qpdg,6,6,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,4,naive,6,6,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,4,causal,6,6,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,5,qpdg,7,7,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,5,naive,7,7,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,5,causal,7,7,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,6,qpdg,8,8,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,6,naive,8,8,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,6,causal,8,8,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,7,qpdg,8,8,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,7,naive,8,8,1.0,1
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,7,causal,8,8,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,0,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,0,causal,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,1,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,1,causal,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,2,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,2,causal,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,3,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,3,causal,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,4,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,4,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,4,causal,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,5,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,5,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,5,causal,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,6,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,6,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,6,causal,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,7,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,7,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,7,causal,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,8,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,8,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,8,causal,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,9,qpdg,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,9,naive,0,0,1.0,1
+MQT Bench,ghz_n10,mqtbench/ghz_n10.qasm,9,causal,0,0,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,0,qpdg,10,10,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,0,naive,10,10,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,0,causal,10,10,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,1,qpdg,9,9,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,1,naive,9,9,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,1,causal,9,9,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,2,qpdg,8,8,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,2,naive,8,8,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,2,causal,8,8,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,3,qpdg,7,7,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,3,naive,7,7,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,3,causal,7,7,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,4,qpdg,6,6,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,4,naive,6,6,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,4,causal,6,6,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,5,qpdg,5,5,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,5,naive,5,5,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,5,causal,5,5,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,6,qpdg,4,4,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,6,naive,4,4,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,6,causal,4,4,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,7,qpdg,3,3,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,7,naive,3,3,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,7,causal,3,3,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,8,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,8,naive,1,1,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,8,causal,1,1,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,9,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,9,naive,1,1,1.0,1
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,9,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,0,qpdg,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,0,naive,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,0,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,1,naive,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,1,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,2,naive,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,2,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,3,naive,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,3,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,4,qpdg,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,4,naive,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,4,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,5,qpdg,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,5,naive,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,5,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,6,qpdg,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,6,naive,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,6,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,7,qpdg,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,7,naive,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,7,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,8,qpdg,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,8,naive,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,8,causal,1,1,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,9,qpdg,10,10,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,9,naive,10,10,1.0,1
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,9,causal,10,10,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,0,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,0,causal,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,1,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,1,causal,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,2,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,2,causal,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,3,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,3,causal,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,4,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,4,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,4,causal,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,5,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,5,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,5,causal,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,6,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,6,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,6,causal,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,7,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,7,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,7,causal,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,8,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,8,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,8,causal,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,9,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,9,naive,0,0,1.0,1
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,9,causal,0,0,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,0,qpdg,5,5,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,0,naive,5,5,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,0,causal,5,5,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,1,naive,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,1,causal,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,2,naive,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,2,causal,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,3,naive,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,3,causal,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,4,qpdg,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,4,naive,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,4,causal,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,5,qpdg,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,5,naive,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,5,causal,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,6,qpdg,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,6,naive,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,6,causal,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,7,qpdg,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,7,naive,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,7,causal,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,8,qpdg,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,8,naive,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,8,causal,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,9,qpdg,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,9,naive,1,1,1.0,1
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,9,causal,1,1,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,0,qpdg,2,2,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,0,naive,2,2,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,0,causal,2,2,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,1,qpdg,3,3,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,1,naive,3,3,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,1,causal,3,3,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,2,qpdg,4,4,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,2,naive,4,4,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,2,causal,4,4,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,3,qpdg,5,5,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,3,naive,5,5,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,3,causal,5,5,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,4,qpdg,1,1,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,4,naive,1,1,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,4,causal,1,1,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,5,qpdg,7,7,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,5,naive,7,7,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,5,causal,7,7,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,6,qpdg,8,8,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,6,naive,8,8,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,6,causal,8,8,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,7,qpdg,9,9,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,7,naive,9,9,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,7,causal,9,9,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,8,qpdg,10,10,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,8,naive,10,10,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,8,causal,10,10,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,9,qpdg,10,10,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,9,naive,10,10,1.0,1
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,9,causal,10,10,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,0,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,0,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,1,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,1,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,2,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,2,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,3,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,3,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,4,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,4,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,4,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,5,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,5,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,5,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,6,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,6,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,6,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,7,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,7,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,7,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,8,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,8,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,8,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,9,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,9,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,9,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,10,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,10,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,10,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,11,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,11,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,11,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,12,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,12,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,12,causal,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,13,qpdg,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,13,naive,0,0,1.0,1
+MQT Bench,ghz_n14,mqtbench/ghz_n14.qasm,13,causal,0,0,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,0,qpdg,14,14,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,0,naive,14,14,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,0,causal,14,14,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,1,qpdg,13,13,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,1,naive,13,13,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,1,causal,13,13,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,2,qpdg,12,12,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,2,naive,12,12,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,2,causal,12,12,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,3,qpdg,11,11,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,3,naive,11,11,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,3,causal,11,11,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,4,qpdg,10,10,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,4,naive,10,10,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,4,causal,10,10,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,5,qpdg,9,9,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,5,naive,9,9,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,5,causal,9,9,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,6,qpdg,8,8,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,6,naive,8,8,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,6,causal,8,8,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,7,qpdg,7,7,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,7,naive,7,7,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,7,causal,7,7,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,8,qpdg,6,6,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,8,naive,6,6,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,8,causal,6,6,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,9,qpdg,5,5,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,9,naive,5,5,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,9,causal,5,5,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,10,qpdg,4,4,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,10,naive,4,4,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,10,causal,4,4,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,11,qpdg,3,3,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,11,naive,3,3,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,11,causal,3,3,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,12,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,12,naive,1,1,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,12,causal,1,1,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,13,qpdg,1,1,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,13,naive,1,1,1.0,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,13,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,0,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,0,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,0,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,1,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,1,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,2,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,2,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,3,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,3,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,4,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,4,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,4,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,5,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,5,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,5,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,6,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,6,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,6,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,7,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,7,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,7,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,8,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,8,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,8,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,9,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,9,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,9,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,10,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,10,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,10,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,11,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,11,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,11,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,12,qpdg,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,12,naive,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,12,causal,1,1,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,qpdg,14,14,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,naive,14,14,1.0,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,causal,14,14,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,0,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,0,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,0,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,1,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,1,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,1,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,2,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,2,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,2,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,3,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,3,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,3,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,4,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,4,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,4,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,5,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,5,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,5,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,6,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,6,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,6,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,7,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,7,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,7,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,8,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,8,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,8,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,9,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,9,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,9,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,10,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,10,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,10,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,11,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,11,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,11,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,12,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,12,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,12,causal,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,13,qpdg,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,13,naive,0,0,1.0,1
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,13,causal,0,0,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,0,qpdg,7,7,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,0,naive,7,7,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,0,causal,7,7,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,1,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,1,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,1,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,2,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,2,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,2,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,3,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,3,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,3,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,4,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,4,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,4,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,5,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,5,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,5,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,6,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,6,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,6,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,7,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,7,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,7,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,8,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,8,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,8,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,9,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,9,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,9,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,10,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,10,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,10,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,11,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,11,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,11,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,12,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,12,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,12,causal,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,13,qpdg,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,13,naive,1,1,1.0,1
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,13,causal,1,1,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,0,qpdg,2,2,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,0,naive,2,2,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,0,causal,2,2,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,1,qpdg,3,3,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,1,naive,3,3,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,1,causal,3,3,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,2,qpdg,4,4,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,2,naive,4,4,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,2,causal,4,4,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,3,qpdg,5,5,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,3,naive,5,5,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,3,causal,5,5,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,4,qpdg,6,6,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,4,naive,6,6,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,4,causal,6,6,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,5,qpdg,7,7,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,5,naive,7,7,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,5,causal,7,7,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,6,qpdg,1,1,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,6,naive,1,1,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,6,causal,1,1,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,7,qpdg,9,9,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,7,naive,9,9,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,7,causal,9,9,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,8,qpdg,10,10,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,8,naive,10,10,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,8,causal,10,10,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,9,qpdg,11,11,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,9,naive,11,11,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,9,causal,11,11,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,10,qpdg,12,12,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,10,naive,12,12,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,10,causal,12,12,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,11,qpdg,13,13,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,11,naive,13,13,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,11,causal,13,13,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,12,qpdg,14,14,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,12,naive,14,14,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,12,causal,14,14,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,13,qpdg,14,14,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,13,naive,14,14,1.0,1
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,13,causal,14,14,1.0,1
+VeriQBench,rand_cliff_1_AG,veriqbench/combinational/rand_cliff/rand_cliff_1_AG.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,rand_cliff_1_AG,veriqbench/combinational/rand_cliff/rand_cliff_1_AG.qasm,0,naive,1,1,1.0,1
+VeriQBench,rand_cliff_1_AG,veriqbench/combinational/rand_cliff/rand_cliff_1_AG.qasm,0,causal,1,1,1.0,1
+VeriQBench,rand_cliff_1_GD,veriqbench/combinational/rand_cliff/rand_cliff_1_GD.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,rand_cliff_1_GD,veriqbench/combinational/rand_cliff/rand_cliff_1_GD.qasm,0,naive,1,1,1.0,1
+VeriQBench,rand_cliff_1_GD,veriqbench/combinational/rand_cliff/rand_cliff_1_GD.qasm,0,causal,1,1,1.0,1
+VeriQBench,dqc_qft_2,veriqbench/dynamic/qft/dqc_qft_2.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_2,veriqbench/dynamic/qft/dqc_qft_2.qasm,0,naive,0,0,1.0,1
+VeriQBench,dqc_qft_2,veriqbench/dynamic/qft/dqc_qft_2.qasm,0,causal,0,0,1.0,1
+VeriQBench,dqc_qft_2,veriqbench/dynamic/qft/dqc_qft_2.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,dqc_qft_2,veriqbench/dynamic/qft/dqc_qft_2.qasm,1,naive,1,1,1.0,1
+VeriQBench,dqc_qft_2,veriqbench/dynamic/qft/dqc_qft_2.qasm,1,causal,1,1,1.0,1
+VeriQBench,qft_2,veriqbench/combinational/qft/qft_2.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,qft_2,veriqbench/combinational/qft/qft_2.qasm,0,naive,1,1,1.0,1
+VeriQBench,qft_2,veriqbench/combinational/qft/qft_2.qasm,0,causal,1,1,1.0,1
+VeriQBench,qft_2,veriqbench/combinational/qft/qft_2.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,qft_2,veriqbench/combinational/qft/qft_2.qasm,1,naive,2,2,1.0,1
+VeriQBench,qft_2,veriqbench/combinational/qft/qft_2.qasm,1,causal,2,2,1.0,1
+VeriQBench,dqc_state_injection_S,veriqbench/dynamic/dqc_state_injection_S.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,dqc_state_injection_S,veriqbench/dynamic/dqc_state_injection_S.qasm,0,naive,2,2,1.0,1
+VeriQBench,dqc_state_injection_S,veriqbench/dynamic/dqc_state_injection_S.qasm,0,causal,2,2,1.0,1
+VeriQBench,dqc_state_injection_S,veriqbench/dynamic/dqc_state_injection_S.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,dqc_state_injection_S,veriqbench/dynamic/dqc_state_injection_S.qasm,1,naive,1,1,1.0,1
+VeriQBench,dqc_state_injection_S,veriqbench/dynamic/dqc_state_injection_S.qasm,1,causal,1,1,1.0,1
+VeriQBench,dqc_state_injection_T,veriqbench/dynamic/dqc_state_injection_T.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,dqc_state_injection_T,veriqbench/dynamic/dqc_state_injection_T.qasm,0,naive,2,2,1.0,1
+VeriQBench,dqc_state_injection_T,veriqbench/dynamic/dqc_state_injection_T.qasm,0,causal,2,2,1.0,1
+VeriQBench,dqc_state_injection_T,veriqbench/dynamic/dqc_state_injection_T.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,dqc_state_injection_T,veriqbench/dynamic/dqc_state_injection_T.qasm,1,naive,1,1,1.0,1
+VeriQBench,dqc_state_injection_T,veriqbench/dynamic/dqc_state_injection_T.qasm,1,causal,1,1,1.0,1
+VeriQBench,bv_2,veriqbench/combinational/bv/bv_2.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,bv_2,veriqbench/combinational/bv/bv_2.qasm,0,naive,1,1,1.0,1
+VeriQBench,bv_2,veriqbench/combinational/bv/bv_2.qasm,0,causal,1,1,1.0,1
+VeriQBench,bv_2,veriqbench/combinational/bv/bv_2.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,bv_2,veriqbench/combinational/bv/bv_2.qasm,1,naive,2,2,1.0,1
+VeriQBench,bv_2,veriqbench/combinational/bv/bv_2.qasm,1,causal,2,2,1.0,1
+VeriQBench,rand_cliff_2_GD,veriqbench/combinational/rand_cliff/rand_cliff_2_GD.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_2_GD,veriqbench/combinational/rand_cliff/rand_cliff_2_GD.qasm,0,naive,0,0,1.0,1
+VeriQBench,rand_cliff_2_GD,veriqbench/combinational/rand_cliff/rand_cliff_2_GD.qasm,0,causal,0,0,1.0,1
+VeriQBench,rand_cliff_2_GD,veriqbench/combinational/rand_cliff/rand_cliff_2_GD.qasm,1,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_2_GD,veriqbench/combinational/rand_cliff/rand_cliff_2_GD.qasm,1,naive,0,0,1.0,1
+VeriQBench,rand_cliff_2_GD,veriqbench/combinational/rand_cliff/rand_cliff_2_GD.qasm,1,causal,0,0,1.0,1
+VeriQBench,rand_cliff_2_AG,veriqbench/combinational/rand_cliff/rand_cliff_2_AG.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_2_AG,veriqbench/combinational/rand_cliff/rand_cliff_2_AG.qasm,0,naive,0,0,1.0,1
+VeriQBench,rand_cliff_2_AG,veriqbench/combinational/rand_cliff/rand_cliff_2_AG.qasm,0,causal,0,0,1.0,1
+VeriQBench,rand_cliff_2_AG,veriqbench/combinational/rand_cliff/rand_cliff_2_AG.qasm,1,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_2_AG,veriqbench/combinational/rand_cliff/rand_cliff_2_AG.qasm,1,naive,0,0,1.0,1
+VeriQBench,rand_cliff_2_AG,veriqbench/combinational/rand_cliff/rand_cliff_2_AG.qasm,1,causal,0,0,1.0,1
+VeriQBench,quantum_volume_n2_d5_i0,veriqbench/combinational/qv/quantum_volume_n2_d5_i0.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,quantum_volume_n2_d5_i0,veriqbench/combinational/qv/quantum_volume_n2_d5_i0.qasm,0,naive,2,2,1.0,1
+VeriQBench,quantum_volume_n2_d5_i0,veriqbench/combinational/qv/quantum_volume_n2_d5_i0.qasm,0,causal,2,2,1.0,1
+VeriQBench,quantum_volume_n2_d5_i0,veriqbench/combinational/qv/quantum_volume_n2_d5_i0.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,quantum_volume_n2_d5_i0,veriqbench/combinational/qv/quantum_volume_n2_d5_i0.qasm,1,naive,2,2,1.0,1
+VeriQBench,quantum_volume_n2_d5_i0,veriqbench/combinational/qv/quantum_volume_n2_d5_i0.qasm,1,causal,2,2,1.0,1
+VeriQBench,dqc_qft_3,veriqbench/dynamic/qft/dqc_qft_3.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_3,veriqbench/dynamic/qft/dqc_qft_3.qasm,0,naive,0,0,1.0,1
+VeriQBench,dqc_qft_3,veriqbench/dynamic/qft/dqc_qft_3.qasm,0,causal,0,0,1.0,1
+VeriQBench,dqc_qft_3,veriqbench/dynamic/qft/dqc_qft_3.qasm,1,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_3,veriqbench/dynamic/qft/dqc_qft_3.qasm,1,naive,0,0,1.0,1
+VeriQBench,dqc_qft_3,veriqbench/dynamic/qft/dqc_qft_3.qasm,1,causal,0,0,1.0,1
+VeriQBench,dqc_qft_3,veriqbench/dynamic/qft/dqc_qft_3.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,dqc_qft_3,veriqbench/dynamic/qft/dqc_qft_3.qasm,2,naive,1,1,1.0,1
+VeriQBench,dqc_qft_3,veriqbench/dynamic/qft/dqc_qft_3.qasm,2,causal,1,1,1.0,1
+VeriQBench,qft_3,veriqbench/combinational/qft/qft_3.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,qft_3,veriqbench/combinational/qft/qft_3.qasm,0,naive,1,1,1.0,1
+VeriQBench,qft_3,veriqbench/combinational/qft/qft_3.qasm,0,causal,1,1,1.0,1
+VeriQBench,qft_3,veriqbench/combinational/qft/qft_3.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,qft_3,veriqbench/combinational/qft/qft_3.qasm,1,naive,2,2,1.0,1
+VeriQBench,qft_3,veriqbench/combinational/qft/qft_3.qasm,1,causal,2,2,1.0,1
+VeriQBench,qft_3,veriqbench/combinational/qft/qft_3.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,qft_3,veriqbench/combinational/qft/qft_3.qasm,2,naive,3,3,1.0,1
+VeriQBench,qft_3,veriqbench/combinational/qft/qft_3.qasm,2,causal,3,3,1.0,1
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,0,naive,2,1,0.5,0
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,0,causal,2,1,0.5,0
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,1,naive,1,1,1.0,1
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,1,causal,1,1,1.0,1
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,2,naive,3,3,1.0,1
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,2,causal,3,3,1.0,1
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,0,naive,1,0,0.0,0
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,0,causal,1,0,0.0,0
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,1,naive,1,1,1.0,1
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,1,causal,1,1,1.0,1
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,2,qpdg,0,0,1.0,1
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,2,naive,0,0,1.0,1
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,2,causal,0,0,1.0,1
+VeriQBench,nth_prime3_inc,veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,nth_prime3_inc,veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm,0,naive,1,1,1.0,1
+VeriQBench,nth_prime3_inc,veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm,0,causal,1,1,1.0,1
+VeriQBench,nth_prime3_inc,veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,nth_prime3_inc,veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm,1,naive,2,2,1.0,1
+VeriQBench,nth_prime3_inc,veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm,1,causal,2,2,1.0,1
+VeriQBench,nth_prime3_inc,veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,nth_prime3_inc,veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm,2,naive,3,3,1.0,1
+VeriQBench,nth_prime3_inc,veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm,2,causal,3,3,1.0,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,0,naive,2,2,1.0,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,0,causal,2,2,1.0,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,1,naive,1,1,1.0,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,1,causal,1,1,1.0,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,2,naive,3,3,1.0,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,2,causal,3,3,1.0,1
+VeriQBench,ham3tc,veriqbench/combinational/rev_circuit/ham3tc.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,ham3tc,veriqbench/combinational/rev_circuit/ham3tc.qasm,0,naive,3,3,1.0,1
+VeriQBench,ham3tc,veriqbench/combinational/rev_circuit/ham3tc.qasm,0,causal,3,3,1.0,1
+VeriQBench,ham3tc,veriqbench/combinational/rev_circuit/ham3tc.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,ham3tc,veriqbench/combinational/rev_circuit/ham3tc.qasm,1,naive,1,1,1.0,1
+VeriQBench,ham3tc,veriqbench/combinational/rev_circuit/ham3tc.qasm,1,causal,1,1,1.0,1
+VeriQBench,ham3tc,veriqbench/combinational/rev_circuit/ham3tc.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,ham3tc,veriqbench/combinational/rev_circuit/ham3tc.qasm,2,naive,1,1,1.0,1
+VeriQBench,ham3tc,veriqbench/combinational/rev_circuit/ham3tc.qasm,2,causal,1,1,1.0,1
+VeriQBench,3_17tc,veriqbench/combinational/rev_circuit/3_17tc.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,3_17tc,veriqbench/combinational/rev_circuit/3_17tc.qasm,0,naive,2,2,1.0,1
+VeriQBench,3_17tc,veriqbench/combinational/rev_circuit/3_17tc.qasm,0,causal,2,2,1.0,1
+VeriQBench,3_17tc,veriqbench/combinational/rev_circuit/3_17tc.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,3_17tc,veriqbench/combinational/rev_circuit/3_17tc.qasm,1,naive,2,2,1.0,1
+VeriQBench,3_17tc,veriqbench/combinational/rev_circuit/3_17tc.qasm,1,causal,2,2,1.0,1
+VeriQBench,3_17tc,veriqbench/combinational/rev_circuit/3_17tc.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,3_17tc,veriqbench/combinational/rev_circuit/3_17tc.qasm,2,naive,3,3,1.0,1
+VeriQBench,3_17tc,veriqbench/combinational/rev_circuit/3_17tc.qasm,2,causal,3,3,1.0,1
+VeriQBench,ham3_fc,veriqbench/combinational/rev_circuit/ham3_fc.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,ham3_fc,veriqbench/combinational/rev_circuit/ham3_fc.qasm,0,naive,3,3,1.0,1
+VeriQBench,ham3_fc,veriqbench/combinational/rev_circuit/ham3_fc.qasm,0,causal,3,3,1.0,1
+VeriQBench,ham3_fc,veriqbench/combinational/rev_circuit/ham3_fc.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,ham3_fc,veriqbench/combinational/rev_circuit/ham3_fc.qasm,1,naive,1,1,1.0,1
+VeriQBench,ham3_fc,veriqbench/combinational/rev_circuit/ham3_fc.qasm,1,causal,1,1,1.0,1
+VeriQBench,ham3_fc,veriqbench/combinational/rev_circuit/ham3_fc.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,ham3_fc,veriqbench/combinational/rev_circuit/ham3_fc.qasm,2,naive,1,1,1.0,1
+VeriQBench,ham3_fc,veriqbench/combinational/rev_circuit/ham3_fc.qasm,2,causal,1,1,1.0,1
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,0,naive,1,1,1.0,1
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,0,causal,1,1,1.0,1
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,1,naive,1,1,1.0,1
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,1,causal,1,1,1.0,1
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,2,naive,3,3,1.0,1
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,2,causal,3,3,1.0,1
+VeriQBench,rand_cliff_3_GD,veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_3_GD,veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm,0,naive,0,0,1.0,1
+VeriQBench,rand_cliff_3_GD,veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm,0,causal,0,0,1.0,1
+VeriQBench,rand_cliff_3_GD,veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm,1,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_3_GD,veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm,1,naive,0,0,1.0,1
+VeriQBench,rand_cliff_3_GD,veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm,1,causal,0,0,1.0,1
+VeriQBench,rand_cliff_3_GD,veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm,2,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_3_GD,veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm,2,naive,0,0,1.0,1
+VeriQBench,rand_cliff_3_GD,veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm,2,causal,0,0,1.0,1
+VeriQBench,grover_3,veriqbench/combinational/grover/grover_3.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,grover_3,veriqbench/combinational/grover/grover_3.qasm,0,naive,1,1,1.0,1
+VeriQBench,grover_3,veriqbench/combinational/grover/grover_3.qasm,0,causal,1,1,1.0,1
+VeriQBench,grover_3,veriqbench/combinational/grover/grover_3.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,grover_3,veriqbench/combinational/grover/grover_3.qasm,1,naive,1,1,1.0,1
+VeriQBench,grover_3,veriqbench/combinational/grover/grover_3.qasm,1,causal,1,1,1.0,1
+VeriQBench,grover_3,veriqbench/combinational/grover/grover_3.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,grover_3,veriqbench/combinational/grover/grover_3.qasm,2,naive,3,3,1.0,1
+VeriQBench,grover_3,veriqbench/combinational/grover/grover_3.qasm,2,causal,3,3,1.0,1
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,0,naive,0,0,1.0,1
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,0,causal,0,0,1.0,1
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,1,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,1,naive,0,0,1.0,1
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,1,causal,0,0,1.0,1
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,2,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,2,naive,0,0,1.0,1
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,2,causal,0,0,1.0,1
+VeriQBench,quantum_volume_n3_d5_i0,veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,quantum_volume_n3_d5_i0,veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm,0,naive,3,3,1.0,1
+VeriQBench,quantum_volume_n3_d5_i0,veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm,0,causal,3,3,1.0,1
+VeriQBench,quantum_volume_n3_d5_i0,veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,quantum_volume_n3_d5_i0,veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm,1,naive,3,3,1.0,1
+VeriQBench,quantum_volume_n3_d5_i0,veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm,1,causal,3,3,1.0,1
+VeriQBench,quantum_volume_n3_d5_i0,veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,quantum_volume_n3_d5_i0,veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm,2,naive,3,3,1.0,1
+VeriQBench,quantum_volume_n3_d5_i0,veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm,2,causal,3,3,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,0,naive,2,2,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,0,causal,2,2,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,1,naive,2,2,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,1,causal,2,2,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,2,naive,1,1,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,2,causal,1,1,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,3,naive,1,1,1.0,1
+VeriQBench,adder_n4,veriqbench/combinational/adder/adder_n4.qasm,3,causal,1,1,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,0,naive,0,0,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,0,causal,0,0,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,1,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,1,naive,0,0,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,1,causal,0,0,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,2,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,2,naive,0,0,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,2,causal,0,0,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,dqc_qft_4,veriqbench/dynamic/qft/dqc_qft_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,0,naive,1,1,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,0,causal,1,1,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,1,naive,2,2,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,1,causal,2,2,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,2,naive,3,3,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,2,causal,3,3,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,3,naive,4,4,1.0,1
+VeriQBench,qft_4,veriqbench/combinational/qft/qft_4.qasm,3,causal,4,4,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,0,naive,3,3,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,0,causal,3,3,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,1,naive,2,2,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,1,causal,2,2,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,2,naive,1,1,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,2,causal,1,1,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,3,naive,1,1,1.0,1
+VeriQBench,rd32,veriqbench/combinational/rev_circuit/rd32.qasm,3,causal,1,1,1.0,1
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,0,naive,3,1,0.3333333333333333,0
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,0,causal,3,1,0.3333333333333333,0
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,1,naive,2,1,0.5,0
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,1,causal,2,1,0.5,0
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,2,naive,1,1,1.0,1
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,2,causal,1,1,1.0,1
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,3,naive,4,4,1.0,1
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,3,causal,4,4,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,0,naive,3,3,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,0,causal,3,3,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,1,naive,2,2,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,1,causal,2,2,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,2,naive,1,1,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,2,causal,1,1,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,3,naive,4,4,1.0,1
+VeriQBench,pe_3,veriqbench/combinational/pe/pe_3.qasm,3,causal,4,4,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,1,naive,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,1,causal,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,2,naive,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,2,causal,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_11,veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm,3,causal,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,0,naive,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,0,causal,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,1,naive,2,2,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,1,causal,2,2,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,2,naive,3,3,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,2,causal,3,3,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,3,naive,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d2,veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm,3,causal,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,0,naive,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,0,causal,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,1,naive,2,2,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,1,causal,2,2,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,2,naive,3,3,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,2,causal,3,3,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,3,naive,1,1,1.0,1
+VeriQBench,nth_prime4_inc_d1,veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm,3,causal,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,0,naive,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,0,causal,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,1,naive,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,1,causal,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,2,naive,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,2,causal,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,3,naive,1,1,1.0,1
+VeriQBench,hwb4-11-21,veriqbench/combinational/rev_circuit/hwb4-11-21.qasm,3,causal,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,0,naive,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,0,causal,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,1,naive,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,1,causal,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,2,naive,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,2,causal,1,1,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,3,naive,4,4,1.0,1
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,3,causal,4,4,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,0,naive,3,3,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,0,causal,3,3,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,1,naive,2,2,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,1,causal,2,2,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,2,naive,2,2,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,2,causal,2,2,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,3,naive,4,4,1.0,1
+VeriQBench,mspk_4_49_12,veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm,3,causal,4,4,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,1,naive,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,1,causal,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,2,naive,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,2,causal,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_hwb4_12,veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm,3,causal,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,1,naive,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,1,causal,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,2,naive,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,2,causal,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_12,veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm,3,causal,1,1,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,0,naive,1,1,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,0,causal,1,1,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,1,naive,1,1,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,1,causal,1,1,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,2,naive,3,3,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,2,causal,3,3,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,3,naive,1,1,1.0,1
+VeriQBench,4b15g_2,veriqbench/combinational/rev_circuit/4b15g_2.qasm,3,causal,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,0,naive,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,0,causal,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,1,naive,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,1,causal,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,2,naive,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,2,causal,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,3,naive,1,1,1.0,1
+VeriQBench,4b15g_3,veriqbench/combinational/rev_circuit/4b15g_3.qasm,3,causal,1,1,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,0,naive,3,3,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,0,causal,3,3,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,1,naive,2,2,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,1,causal,2,2,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,2,naive,2,2,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,2,causal,2,2,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,3,naive,4,4,1.0,1
+VeriQBench,mspk_4_49_13,veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm,3,causal,4,4,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,1,naive,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,1,causal,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,2,naive,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,2,causal,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_hwb4_13,veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm,3,causal,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,1,naive,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,1,causal,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,2,naive,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,2,causal,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_13,veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm,3,causal,1,1,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,0,naive,1,1,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,0,causal,1,1,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,1,naive,2,2,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,1,causal,2,2,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,2,naive,3,3,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,2,causal,3,3,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,3,naive,1,1,1.0,1
+VeriQBench,nth_prime4_inc_15_51,veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm,3,causal,1,1,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,0,naive,3,3,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,0,causal,3,3,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,1,naive,2,2,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,1,causal,2,2,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,2,naive,2,2,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,2,causal,2,2,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,3,naive,4,4,1.0,1
+VeriQBench,4_49tc1,veriqbench/combinational/rev_circuit/4_49tc1.qasm,3,causal,4,4,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,0,naive,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,0,causal,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,1,naive,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,1,causal,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,2,naive,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,2,causal,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,3,naive,1,1,1.0,1
+VeriQBench,4b15g_1,veriqbench/combinational/rev_circuit/4b15g_1.qasm,3,causal,1,1,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,0,naive,1,1,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,0,causal,1,1,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,1,naive,1,1,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,1,causal,1,1,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,2,naive,3,3,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,2,causal,3,3,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,4b15g_4,veriqbench/combinational/rev_circuit/4b15g_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,0,naive,3,3,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,0,causal,3,3,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,1,naive,2,2,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,1,causal,2,2,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,2,naive,2,2,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,2,causal,2,2,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,3,naive,4,4,1.0,1
+VeriQBench,mspk_4_49_14,veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm,3,causal,4,4,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,1,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,1,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,2,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,2,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_1,veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm,3,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,1,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,1,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,2,naive,3,3,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,2,causal,3,3,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_4,veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,1,naive,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,1,causal,2,2,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,2,naive,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,2,causal,3,3,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_nth_primes4_14,veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm,3,causal,1,1,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,0,naive,2,2,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,0,causal,2,2,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,1,naive,1,1,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,1,causal,1,1,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,2,naive,3,3,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,2,causal,3,3,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,3,naive,1,1,1.0,1
+VeriQBench,4b15g_5,veriqbench/combinational/rev_circuit/4b15g_5.qasm,3,causal,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,0,naive,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,0,causal,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,1,naive,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,1,causal,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,2,naive,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,2,causal,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,3,naive,1,1,1.0,1
+VeriQBench,hwb4tc,veriqbench/combinational/rev_circuit/hwb4tc.qasm,3,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,1,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,1,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,2,naive,3,3,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,2,causal,3,3,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_2,veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm,3,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,0,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,0,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,1,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,1,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,2,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,2,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_3,veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm,3,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,0,naive,2,2,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,0,causal,2,2,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,1,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,1,causal,1,1,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,2,naive,3,3,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,2,causal,3,3,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,3,naive,1,1,1.0,1
+VeriQBench,mspk_4b15g_5,veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm,3,causal,1,1,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,0,naive,3,3,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,0,causal,3,3,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,1,naive,2,2,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,1,causal,2,2,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,2,naive,2,2,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,2,causal,2,2,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,3,naive,4,4,1.0,1
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,3,causal,4,4,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,0,naive,4,4,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,0,causal,4,4,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,1,naive,3,3,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,1,causal,3,3,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,2,naive,2,2,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,2,causal,2,2,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,eff_1_4,veriqbench/variational/EfficientSU2/eff_1_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,0,naive,4,4,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,0,causal,4,4,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,1,naive,3,3,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,1,causal,3,3,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,2,naive,2,2,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,2,causal,2,2,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,eff_2_4,veriqbench/variational/EfficientSU2/eff_2_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,0,naive,4,4,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,0,causal,4,4,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,1,naive,3,3,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,1,causal,3,3,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,2,naive,2,2,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,2,causal,2,2,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,eff_3_4,veriqbench/variational/EfficientSU2/eff_3_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,0,naive,4,4,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,0,causal,4,4,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,1,naive,3,3,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,1,causal,3,3,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,2,naive,2,2,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,2,causal,2,2,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,eff_4_4,veriqbench/variational/EfficientSU2/eff_4_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,0,naive,4,4,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,0,causal,4,4,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,1,naive,3,3,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,1,causal,3,3,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,2,naive,2,2,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,2,causal,2,2,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,eff_5_4,veriqbench/variational/EfficientSU2/eff_5_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,0,naive,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,0,causal,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,1,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,1,naive,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,1,causal,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,2,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,2,naive,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,2,causal,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,3,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,3,naive,0,0,1.0,1
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,3,causal,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,0,naive,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,0,causal,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,1,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,1,naive,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,1,causal,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,2,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,2,naive,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,2,causal,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,3,qpdg,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,3,naive,0,0,1.0,1
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,3,causal,0,0,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,0,naive,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,0,causal,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,1,qpdg,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,1,naive,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,1,causal,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,2,qpdg,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,2,naive,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,2,causal,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,3,naive,4,4,1.0,1
+VeriQBench,qcnn_4,veriqbench/variational/QCNN/qcnn_4.qasm,3,causal,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,0,naive,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,0,causal,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,1,qpdg,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,1,naive,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,1,causal,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,2,qpdg,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,2,naive,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,2,causal,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,3,naive,4,4,1.0,1
+VeriQBench,quantum_volume_n4_d5_i0,veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm,3,causal,4,4,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,0,naive,1,1,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,0,causal,1,1,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,1,naive,3,3,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,1,causal,3,3,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,2,naive,1,1,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,2,causal,1,1,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,3,qpdg,2,2,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,3,naive,2,2,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,3,causal,2,2,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,4,qpdg,1,1,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,4,naive,1,1,1.0,1
+VeriQBench,5QBT_4CYC_4GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm,4,causal,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,0,naive,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,0,causal,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,1,naive,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,1,causal,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,2,naive,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,2,causal,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,3,naive,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,3,causal,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,4,qpdg,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,4,naive,1,1,1.0,1
+VeriQBench,mod_4mod5-n5-gc4-qc13,veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm,4,causal,1,1,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,0,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,0,naive,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,0,causal,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,1,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,1,naive,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,1,causal,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,2,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,2,naive,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,2,causal,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,3,qpdg,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,3,naive,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,3,causal,0,0,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,4,qpdg,1,1,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,4,naive,1,1,1.0,1
+VeriQBench,dqc_qft_5,veriqbench/dynamic/qft/dqc_qft_5.qasm,4,causal,1,1,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,0,naive,4,4,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,0,causal,4,4,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,1,naive,3,3,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,1,causal,3,3,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,2,naive,3,3,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,2,causal,3,3,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,3,qpdg,2,2,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,3,naive,2,2,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,3,causal,2,2,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,4,qpdg,1,1,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,4,naive,1,1,1.0,1
+VeriQBench,mod5d4,veriqbench/combinational/rev_circuit/mod5d4.qasm,4,causal,1,1,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,0,naive,1,1,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,0,causal,1,1,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,1,naive,2,2,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,1,causal,2,2,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,2,naive,3,3,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,2,causal,3,3,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,3,qpdg,4,4,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,3,naive,4,4,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,3,causal,4,4,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,4,qpdg,5,5,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,4,naive,5,5,1.0,1
+VeriQBench,qft_5,veriqbench/combinational/qft/qft_5.qasm,4,causal,5,5,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,0,naive,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,0,causal,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,1,naive,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,1,causal,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,2,naive,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,2,causal,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,3,qpdg,2,2,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,3,naive,2,2,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,3,causal,2,2,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,4,qpdg,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,4,naive,1,1,1.0,1
+VeriQBench,5QBT_8CYC_8GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm,4,causal,1,1,1.0,1
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,0,naive,4,1,0.25,0
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,0,causal,4,1,0.25,0
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,1,naive,3,1,0.3333333333333333,0
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,1,causal,3,1,0.3333333333333333,0
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,2,naive,2,1,0.5,0
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,2,causal,2,1,0.5,0
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,4,qpdg,5,5,1.0,1
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,4,naive,5,5,1.0,1
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,4,causal,5,5,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,0,qpdg,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,0,naive,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,0,causal,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,1,naive,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,1,causal,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,2,naive,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,2,causal,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,3,qpdg,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,3,naive,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,3,causal,2,2,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,4,qpdg,1,1,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,4,naive,1,1,1.0,1
+VeriQBench,mod5d1,veriqbench/combinational/rev_circuit/mod5d1.qasm,4,causal,1,1,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,0,qpdg,4,4,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,0,naive,4,4,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,0,causal,4,4,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,1,naive,3,3,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,1,causal,3,3,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,2,qpdg,2,2,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,2,naive,2,2,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,2,causal,2,2,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,3,naive,1,1,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,3,causal,1,1,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,4,qpdg,5,5,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,4,naive,5,5,1.0,1
+VeriQBench,pe_4,veriqbench/combinational/pe/pe_4.qasm,4,causal,5,5,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,0,qpdg,3,3,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,0,naive,3,3,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,0,causal,3,3,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,1,qpdg,3,3,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,1,naive,3,3,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,1,causal,3,3,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,2,naive,3,3,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,2,causal,3,3,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,3,qpdg,2,2,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,3,naive,2,2,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,3,causal,2,2,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,4,qpdg,1,1,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,4,naive,1,1,1.0,1
+VeriQBench,mod5d2,veriqbench/combinational/rev_circuit/mod5d2.qasm,4,causal,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,0,naive,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,0,causal,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,1,naive,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,1,causal,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,2,naive,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,2,causal,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,3,naive,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,3,causal,1,1,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,4,qpdg,5,5,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,4,naive,5,5,1.0,1
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,4,causal,5,5,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,0,naive,1,1,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,0,causal,1,1,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,1,naive,2,2,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,1,causal,2,2,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,2,naive,3,3,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,2,causal,3,3,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,3,naive,1,1,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,3,causal,1,1,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,4,qpdg,2,2,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,4,naive,2,2,1.0,1
+VeriQBench,5QBT_16CYC_16GN_1.0P2_0,veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm,4,causal,2,2,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,0,naive,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,0,causal,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,1,qpdg,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,1,naive,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,1,causal,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,2,qpdg,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,2,naive,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,2,causal,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,3,qpdg,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,3,naive,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,3,causal,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,4,qpdg,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,4,naive,1,1,1.0,1
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,4,causal,1,1,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,0,qpdg,1,1,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,0,naive,1,1,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,0,causal,1,1,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,1,qpdg,2,2,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,1,naive,2,2,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,1,causal,2,2,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,2,qpdg,3,3,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,2,naive,3,3,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,2,causal,3,3,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,3,qpdg,3,3,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,3,naive,3,3,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,3,causal,3,3,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,4,qpdg,2,2,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,4,naive,2,2,1.0,1
+VeriQBench,nth_prime5_inc_25_103,veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm,4,causal,2,2,1.0,1

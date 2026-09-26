@@ -1,0 +1,106 @@
+{
+  "A": {
+    "QDG-no-ED": {
+      "test": "exact McNemar",
+      "a_only": 431,
+      "b_only": 0,
+      "p_value": 3.606632272572553e-130
+    },
+    "QDG-no-MD": {
+      "test": "exact McNemar",
+      "a_only": 20,
+      "b_only": 1,
+      "p_value": 2.09808349609375e-05
+    },
+    "QDG-no-UED": {
+      "test": "exact McNemar",
+      "a_only": 79,
+      "b_only": 0,
+      "p_value": 3.308722450212111e-24
+    },
+    "QDG-no-CD": {
+      "test": "exact McNemar",
+      "a_only": 6,
+      "b_only": 0,
+      "p_value": 0.03125
+    }
+  },
+  "B": {
+    "QDG-no-ED": {
+      "test": "exact McNemar",
+      "a_only": 84,
+      "b_only": 0,
+      "p_value": 1.0339757656912846e-25
+    },
+    "QDG-no-MD": {
+      "test": "exact McNemar",
+      "a_only": 105,
+      "b_only": 0,
+      "p_value": 4.930380657631324e-32
+    },
+    "QDG-no-UED": {
+      "test": "exact McNemar",
+      "a_only": 44,
+      "b_only": 0,
+      "p_value": 1.1368683772161603e-13
+    },
+    "QDG-no-CD": {
+      "test": "exact McNemar",
+      "a_only": 35,
+      "b_only": 0,
+      "p_value": 5.820766091346741e-11
+    }
+  },
+  "A+B": {
+    "QDG-no-ED": {
+      "test": "exact McNemar",
+      "a_only": 515,
+      "b_only": 0,
+      "p_value": 1.8645851828000517e-155
+    },
+    "QDG-no-MD": {
+      "test": "exact McNemar",
+      "a_only": 125,
+      "b_only": 1,
+      "p_value": 2.9857556510886103e-36
+    },
+    "QDG-no-UED": {
+      "test": "exact McNemar",
+      "a_only": 123,
+      "b_only": 0,
+      "p_value": 1.88079096131566e-37
+    },
+    "QDG-no-CD": {
+      "test": "exact McNemar",
+      "a_only": 41,
+      "b_only": 0,
+      "p_value": 9.094947017729282e-13
+    }
+  },
+  "dynamic circuits in A+B": {
+    "QDG-no-ED": {
+      "test": "exact McNemar",
+      "a_only": 103,
+      "b_only": 0,
+      "p_value": 1.9721522630525295e-31
+    },
+    "QDG-no-MD": {
+      "test": "exact McNemar",
+      "a_only": 125,
+      "b_only": 1,
+      "p_value": 2.9857556510886103e-36
+    },
+    "QDG-no-UED": {
+      "test": "exact McNemar",
+      "a_only": 56,
+      "b_only": 0,
+      "p_value": 2.7755575615628914e-17
+    },
+    "QDG-no-CD": {
+      "test": "exact McNemar",
+      "a_only": 41,
+      "b_only": 0,
+      "p_value": 9.094947017729282e-13
+    }
+  }
+}

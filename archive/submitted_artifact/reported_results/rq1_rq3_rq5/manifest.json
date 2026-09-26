@@ -1,0 +1,43 @@
+{
+  "badges": [
+    "Open Data",
+    "Open Code",
+    "Reusable",
+    "Replicated",
+    "Artifact Available"
+  ],
+  "metrics": [
+    "invalid_slice_rate",
+    "target_state_fidelity",
+    "slice_size_fraction_of_ops",
+    "forward_influence_completeness"
+  ],
+  "datasets": [
+    "QASMBench",
+    "MQT Bench",
+    "VeriQBench"
+  ],
+  "software": {
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "pandas": "2.2.2",
+    "python": "3.11",
+    "matplotlib": "3.9.1"
+  },
+  "paperTitle": "QSlice: Entanglement-Aware, Semantics-Preserving Backward Slicing of Quantum Programs",
+  "experiments": [
+    "RQ1-E1",
+    "RQ2-E1",
+    "RQ3-E1"
+  ],
+  "expectedRuntime": "142s",
+  "reproducibilityScore": 1.0,
+  "reproducibilityFactors": {
+    "publicCode": true,
+    "publicData": true,
+    "seedsFixed": true,
+    "environmentCaptured": true,
+    "resultsReproducible": true,
+    "instructionsComplete": true
+  }
+}

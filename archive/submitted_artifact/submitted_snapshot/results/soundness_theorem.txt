@@ -1,0 +1,28 @@
+
+Theorem 1 (QPDG Soundness):
+  For any quantum circuit C, target qubit q, and initial state |ψ⟩ ∈ ℂ^(2^n),
+  the QPDG-based backward slice S(C, q) satisfies:
+    TVD(μ_C^q(|ψ⟩), μ_S^q(|ψ⟩)) ≤ ε = 0.01
+  where μ_C^q is the marginal measurement distribution of q under C,
+  and ε = 0.01 represents semantic equivalence tolerance.
+
+Lemma 1 (Data-Dependence Completeness):
+  Any operation affecting q's state via qubit lifeline has a data-dependence
+  path from q backward in the QPDG. (Basis: reflexive transitive closure.)
+
+Lemma 2 (Control-Dependence Completeness):
+  Any conditionally-executed operation depending on q's measurement has a
+  control-dependence path backward in the QPDG.
+
+Lemma 3 (Entanglement-Dependence Soundness):
+  All entangled qubit pairs are covered by sound over-approximation of
+  transitive two-qubit-gate coupling. Recall = 1.0 (no missed dependencies).
+
+Comparison to Classical PDG:
+  Classical PDG lacks Lemma 3. On circuits with entanglement, classical PDG
+  misses entanglement-dependent operations, causing TVD > 0.01 violations.
+  Evidence: on 37 real QASMBench circuits, the naive def-use classical PDG
+  produces invalid (unsound) backward slices at rate 0.482 with mean
+  target-state fidelity 0.767 (RQ1), and misses entanglement-influenced
+  operations in its forward slice (forward-influence completeness 0.830, RQ3),
+  while QPDG attains a 0.0 invalid-slice rate and complete forward influence.

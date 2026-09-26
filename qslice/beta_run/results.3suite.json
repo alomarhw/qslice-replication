@@ -1,0 +1,105 @@
+{
+  "RQ1": {
+    "_question": "Does a faithful classical (def-use) PDG slicer produce semantically invalid backward slices on real quantum circuits, and does QPDG eliminate them?",
+    "metrics": {
+      "n_slices": 1356.0,
+      "qpdg_invalid_rate": 0.0,
+      "qpdg_mean_fidelity": 0.9999999999985791,
+      "naive_classical_invalid_rate": 0.22123893805309736,
+      "naive_classical_mean_fidelity": 0.8918296492934918,
+      "qpdg_slices_repaired_over_naive": 300.0
+    },
+    "baseline_comparison": {
+      "naive_classical_pdg": {
+        "invalid_rate": 0.22123893805309736,
+        "mean_fidelity": 0.8918296492934918
+      },
+      "causal_classical_pdg": {
+        "invalid_rate": 0.0,
+        "mean_fidelity": 0.999999999999994
+      }
+    },
+    "statistical_tests": {
+      "test_used": "McNemar",
+      "chi2": 298.00333333333333,
+      "p_value": 1e-15,
+      "effect_size": 301.0,
+      "confidence_interval": [
+        0.0,
+        602.0
+      ]
+    }
+  },
+  "RQ2": {
+    "_question": "Does QPDG produce smaller SOUND backward slices than the sound causal classical baseline (precision win at equal soundness)?",
+    "metrics": {
+      "n_sound_pairs": 1356.0,
+      "qpdg_mean_slice_size": 0.4370316820479384,
+      "mean_slice_size_reduction": 0.29003808353826593,
+      "max_slice_size_reduction": 0.9035532994923858,
+      "fraction_slices_improved": 0.7654867256637168,
+      "qpdg_invalid_rate": 0.0,
+      "reduction_ci_low": 0.27776324285898446,
+      "reduction_ci_high": 0.30323777615680053
+    },
+    "baseline_comparison": {
+      "causal_classical_pdg": {
+        "mean_slice_size": 0.7270697655862044
+      }
+    },
+    "statistical_tests": {
+      "test_used": "Wilcoxon signed-rank",
+      "W": 0.0,
+      "p_value": 1e-15,
+      "effect_size": 1.0,
+      "confidence_interval": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "RQ3": {
+    "_question": "Does the naive classical FORWARD slice miss entanglement-influenced operations (incomplete influence), and does QPDG cover them?",
+    "metrics": {
+      "n_slices": 1356.0,
+      "qpdg_incomplete_rate": 0.0,
+      "qpdg_mean_qubits_missed": 0.0,
+      "naive_classical_incomplete_rate": 0.008112094395280267,
+      "naive_classical_mean_qubits_missed": 0.021386430678466076
+    },
+    "baseline_comparison": {
+      "naive_classical_pdg": {
+        "incomplete_rate": 0.008112094395280267,
+        "mean_qubits_missed": 0.021386430678466076
+      },
+      "causal_classical_pdg": {
+        "incomplete_rate": 0.0,
+        "mean_qubits_missed": 0.0
+      }
+    },
+    "statistical_tests": {
+      "test_used": "McNemar",
+      "chi2": 9.090909090909092,
+      "p_value": 0.002568831527022697,
+      "effect_size": 12.0,
+      "confidence_interval": [
+        0.0,
+        24.0
+      ]
+    }
+  },
+  "RQ_case_study": {
+    "description": "3-qubit circuit with a planted faulty RZ on q2; slicing backward from q0.",
+    "faulty_gate_position": 4,
+    "slice_contains_faulty_gate": {
+      "naive": false,
+      "causal": true,
+      "qpdg": true
+    },
+    "slice_sizes": {
+      "naive": 1,
+      "causal": 7,
+      "qpdg": 7
+    }
+  }
+}

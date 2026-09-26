@@ -1,0 +1,9 @@
+# Reproducibility package
+venv/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Files omitted (exceed GitHub's 100 MB limit) — regenerate via fetch scripts
+data/QASMBench-master.zip

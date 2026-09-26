@@ -1,0 +1,311 @@
+{
+  "RQ1": {
+    "metrics": {
+      "invalid_slice_rate": 0.0,
+      "target_state_fidelity": 0.9999999999863167,
+      "slice_size_fraction_of_ops": 0.4325189915545706,
+      "forward_influence_completeness": 1.0
+    },
+    "_question": "Does a faithful classical (def-use) PDG slicer produce semantically invalid backward slices on real quantum circuits, and does QPDG (entanglement-aware) eliminate them?",
+    "per_corpus": {
+      "MQT Bench": {
+        "metrics": {
+          "invalid_slice_rate": 0.0,
+          "target_state_fidelity": 1.0,
+          "slice_size_fraction_of_ops": 0.39083675171788435,
+          "forward_influence_completeness": 1.0
+        },
+        "n_circuits": 42,
+        "baseline_comparison": {
+          "Naive classical PDG (def-use port)": {
+            "invalid_slice_rate": 0.5876623376623377,
+            "target_state_fidelity": 0.7180504019789734,
+            "slice_size_fraction_of_ops": 0.1904959130425752,
+            "forward_influence_completeness": 0.8742835717673381
+          },
+          "Causal classical PDG (data+control light cone)": {
+            "invalid_slice_rate": 0.0,
+            "target_state_fidelity": 1.0,
+            "slice_size_fraction_of_ops": 0.6464519152972005,
+            "forward_influence_completeness": 1.0
+          }
+        }
+      },
+      "QASMBench": {
+        "metrics": {
+          "invalid_slice_rate": 0.0,
+          "target_state_fidelity": 0.9999999999757638,
+          "slice_size_fraction_of_ops": 0.3607150001232113,
+          "forward_influence_completeness": 1.0
+        },
+        "n_circuits": 39,
+        "baseline_comparison": {
+          "Naive classical PDG (def-use port)": {
+            "invalid_slice_rate": 0.4077669902912621,
+            "target_state_fidelity": 0.7949691834326813,
+            "slice_size_fraction_of_ops": 0.25192850912491105,
+            "forward_influence_completeness": 0.7312528895053167
+          },
+          "Causal classical PDG (data+control light cone)": {
+            "invalid_slice_rate": 0.0,
+            "target_state_fidelity": 1.0,
+            "slice_size_fraction_of_ops": 0.7772138864371874,
+            "forward_influence_completeness": 1.0
+          }
+        }
+      },
+      "VeriQBench": {
+        "metrics": {
+          "invalid_slice_rate": 0.0,
+          "target_state_fidelity": 0.9999999999794689,
+          "slice_size_fraction_of_ops": 0.525236280496045,
+          "forward_influence_completeness": 1.0
+        },
+        "n_circuits": 80,
+        "baseline_comparison": {
+          "Naive classical PDG (def-use port)": {
+            "invalid_slice_rate": 0.2785234899328859,
+            "target_state_fidelity": 0.7842759417433768,
+            "slice_size_fraction_of_ops": 0.46582355114464563,
+            "forward_influence_completeness": 0.5026286353467562
+          },
+          "Causal classical PDG (data+control light cone)": {
+            "invalid_slice_rate": 0.0,
+            "target_state_fidelity": 1.0,
+            "slice_size_fraction_of_ops": 0.8590604026845637,
+            "forward_influence_completeness": 1.0
+          }
+        }
+      }
+    },
+    "statistical_tests": {
+      "p_value": 3.488120700934677e-105,
+      "test_used": "exact McNemar test on paired invalid-slice indicators",
+      "effect_size": 1.0,
+      "confidence_interval": [
+        -0.460621921182266,
+        -0.39285714285714285
+      ]
+    },
+    "baseline_comparison": {
+      "Naive classical PDG (def-use port)": {
+        "invalid_slice_rate": 0.42857142857142855,
+        "target_state_fidelity": 0.7618687268918503,
+        "slice_size_fraction_of_ops": 0.3071249166723513,
+        "forward_influence_completeness": 0.7016019318667103
+      },
+      "Causal classical PDG (data+control light cone)": {
+        "invalid_slice_rate": 0.0,
+        "target_state_fidelity": 1.0,
+        "slice_size_fraction_of_ops": 0.7576517863517221,
+        "forward_influence_completeness": 1.0
+      }
+    }
+  },
+  "RQ2": {
+    "metrics": {
+      "invalid_slice_rate": 0.0,
+      "target_state_fidelity": 0.9999999999863167,
+      "slice_size_fraction_of_ops": 0.4325189915545706,
+      "forward_influence_completeness": 1.0
+    },
+    "_question": "Does QPDG produce smaller SOUND backward slices than the sound causal classical PDG (precision at equal soundness)?",
+    "per_corpus": {
+      "MQT Bench": {
+        "metrics": {
+          "invalid_slice_rate": 0.0,
+          "target_state_fidelity": 1.0,
+          "slice_size_fraction_of_ops": 0.39083675171788435,
+          "forward_influence_completeness": 1.0
+        },
+        "n_circuits": 42,
+        "baseline_comparison": {
+          "Naive classical PDG (def-use port)": {
+            "invalid_slice_rate": 0.5876623376623377,
+            "target_state_fidelity": 0.7180504019789734,
+            "slice_size_fraction_of_ops": 0.1904959130425752,
+            "forward_influence_completeness": 0.8742835717673381
+          },
+          "Causal classical PDG (data+control light cone)": {
+            "invalid_slice_rate": 0.0,
+            "target_state_fidelity": 1.0,
+            "slice_size_fraction_of_ops": 0.6464519152972005,
+            "forward_influence_completeness": 1.0
+          }
+        }
+      },
+      "QASMBench": {
+        "metrics": {
+          "invalid_slice_rate": 0.0,
+          "target_state_fidelity": 0.9999999999757638,
+          "slice_size_fraction_of_ops": 0.3607150001232113,
+          "forward_influence_completeness": 1.0
+        },
+        "n_circuits": 39,
+        "baseline_comparison": {
+          "Naive classical PDG (def-use port)": {
+            "invalid_slice_rate": 0.4077669902912621,
+            "target_state_fidelity": 0.7949691834326813,
+            "slice_size_fraction_of_ops": 0.25192850912491105,
+            "forward_influence_completeness": 0.7312528895053167
+          },
+          "Causal classical PDG (data+control light cone)": {
+            "invalid_slice_rate": 0.0,
+            "target_state_fidelity": 1.0,
+            "slice_size_fraction_of_ops": 0.7772138864371874,
+            "forward_influence_completeness": 1.0
+          }
+        }
+      },
+      "VeriQBench": {
+        "metrics": {
+          "invalid_slice_rate": 0.0,
+          "target_state_fidelity": 0.9999999999794689,
+          "slice_size_fraction_of_ops": 0.525236280496045,
+          "forward_influence_completeness": 1.0
+        },
+        "n_circuits": 80,
+        "baseline_comparison": {
+          "Naive classical PDG (def-use port)": {
+            "invalid_slice_rate": 0.2785234899328859,
+            "target_state_fidelity": 0.7842759417433768,
+            "slice_size_fraction_of_ops": 0.46582355114464563,
+            "forward_influence_completeness": 0.5026286353467562
+          },
+          "Causal classical PDG (data+control light cone)": {
+            "invalid_slice_rate": 0.0,
+            "target_state_fidelity": 1.0,
+            "slice_size_fraction_of_ops": 0.8590604026845637,
+            "forward_influence_completeness": 1.0
+          }
+        }
+      }
+    },
+    "statistical_tests": {
+      "p_value": 7.897355506543966e-90,
+      "test_used": "Wilcoxon signed-rank test with normal approximation",
+      "effect_size": -1.0,
+      "confidence_interval": [
+        -0.5097541787117429,
+        -0.47171512866307524
+      ]
+    },
+    "baseline_comparison": {
+      "Naive classical PDG (def-use port)": {
+        "invalid_slice_rate": 0.42857142857142855,
+        "target_state_fidelity": 0.7618687268918503,
+        "slice_size_fraction_of_ops": 0.3071249166723513,
+        "forward_influence_completeness": 0.7016019318667103
+      },
+      "Causal classical PDG (data+control light cone)": {
+        "invalid_slice_rate": 0.0,
+        "target_state_fidelity": 1.0,
+        "slice_size_fraction_of_ops": 0.7576517863517221,
+        "forward_influence_completeness": 1.0
+      }
+    }
+  },
+  "RQ3": {
+    "metrics": {
+      "invalid_slice_rate": 0.0,
+      "target_state_fidelity": 0.9999999999863167,
+      "slice_size_fraction_of_ops": 0.4325189915545706,
+      "forward_influence_completeness": 1.0
+    },
+    "_question": "Does the naive classical FORWARD slice miss entanglement-influenced operations, and does QPDG cover them?",
+    "per_corpus": {
+      "MQT Bench": {
+        "metrics": {
+          "invalid_slice_rate": 0.0,
+          "target_state_fidelity": 1.0,
+          "slice_size_fraction_of_ops": 0.39083675171788435,
+          "forward_influence_completeness": 1.0
+        },
+        "n_circuits": 42,
+        "baseline_comparison": {
+          "Naive classical PDG (def-use port)": {
+            "invalid_slice_rate": 0.5876623376623377,
+            "target_state_fidelity": 0.7180504019789734,
+            "slice_size_fraction_of_ops": 0.1904959130425752,
+            "forward_influence_completeness": 0.8742835717673381
+          },
+          "Causal classical PDG (data+control light cone)": {
+            "invalid_slice_rate": 0.0,
+            "target_state_fidelity": 1.0,
+            "slice_size_fraction_of_ops": 0.6464519152972005,
+            "forward_influence_completeness": 1.0
+          }
+        }
+      },
+      "QASMBench": {
+        "metrics": {
+          "invalid_slice_rate": 0.0,
+          "target_state_fidelity": 0.9999999999757638,
+          "slice_size_fraction_of_ops": 0.3607150001232113,
+          "forward_influence_completeness": 1.0
+        },
+        "n_circuits": 39,
+        "baseline_comparison": {
+          "Naive classical PDG (def-use port)": {
+            "invalid_slice_rate": 0.4077669902912621,
+            "target_state_fidelity": 0.7949691834326813,
+            "slice_size_fraction_of_ops": 0.25192850912491105,
+            "forward_influence_completeness": 0.7312528895053167
+          },
+          "Causal classical PDG (data+control light cone)": {
+            "invalid_slice_rate": 0.0,
+            "target_state_fidelity": 1.0,
+            "slice_size_fraction_of_ops": 0.7772138864371874,
+            "forward_influence_completeness": 1.0
+          }
+        }
+      },
+      "VeriQBench": {
+        "metrics": {
+          "invalid_slice_rate": 0.0,
+          "target_state_fidelity": 0.9999999999794689,
+          "slice_size_fraction_of_ops": 0.525236280496045,
+          "forward_influence_completeness": 1.0
+        },
+        "n_circuits": 80,
+        "baseline_comparison": {
+          "Naive classical PDG (def-use port)": {
+            "invalid_slice_rate": 0.2785234899328859,
+            "target_state_fidelity": 0.7842759417433768,
+            "slice_size_fraction_of_ops": 0.46582355114464563,
+            "forward_influence_completeness": 0.5026286353467562
+          },
+          "Causal classical PDG (data+control light cone)": {
+            "invalid_slice_rate": 0.0,
+            "target_state_fidelity": 1.0,
+            "slice_size_fraction_of_ops": 0.8590604026845637,
+            "forward_influence_completeness": 1.0
+          }
+        }
+      }
+    },
+    "statistical_tests": {
+      "p_value": 9.588073174409622e-94,
+      "test_used": "exact McNemar test on paired forward-incompleteness indicators (QPDG vs naive classical)",
+      "effect_size": 1.0,
+      "confidence_interval": [
+        -0.41502463054187194,
+        -0.3485221674876847
+      ]
+    },
+    "baseline_comparison": {
+      "Naive classical PDG (def-use port)": {
+        "invalid_slice_rate": 0.42857142857142855,
+        "target_state_fidelity": 0.7618687268918503,
+        "slice_size_fraction_of_ops": 0.3071249166723513,
+        "forward_influence_completeness": 0.7016019318667103
+      },
+      "Causal classical PDG (data+control light cone)": {
+        "invalid_slice_rate": 0.0,
+        "target_state_fidelity": 1.0,
+        "slice_size_fraction_of_ops": 0.7576517863517221,
+        "forward_influence_completeness": 1.0
+      }
+    }
+  }
+}

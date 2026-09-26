@@ -1,0 +1,20 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  10/158 circuits, 2s
+  20/158 circuits, 2s
+  30/158 circuits, 4s
+  40/158 circuits, 6s
+  50/158 circuits, 6s
+  60/158 circuits, 6s
+  70/158 circuits, 316s
+  80/158 circuits, 316s
+  90/158 circuits, 316s
+  100/158 circuits, 316s
+  110/158 circuits, 316s
+  120/158 circuits, 316s
+  130/158 circuits, 316s
+  140/158 circuits, 316s
+  150/158 circuits, 316s
+  QPDG (Sec. III method)                           invalid 0.000  fid 1.000000  size 0.540  fwd 1.000
+  Naive classical PDG (def-use port)               invalid 0.276  fid 0.864634  size 0.512  fwd 0.988
+  Causal classical PDG (data+control light cone)   invalid 0.000  fid 1.000000  size 0.704  fwd 1.000
+excluded circuits: 3; wrote results/method_primary

@@ -1,0 +1,15 @@
+# CI recipe for this replication package. It lives here (not under .github/workflows/)
+# so the package can be pushed without GitHub's `workflow` token scope. To run it as a
+# GitHub Action, move this file to .github/workflows/ci.yml.
+name: reproduce
+on: [push, workflow_dispatch]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python main.py

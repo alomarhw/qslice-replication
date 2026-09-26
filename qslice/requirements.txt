@@ -1,0 +1,11 @@
+# Requirements for Quantum Dependency Graph Slicing Study
+# Pin versions matching the verified environment
+qiskit==2.3.0
+qiskit-aer==0.17.2
+numpy==1.26.4
+matplotlib==3.9.1
+pandas==2.2.2
+networkx==3.4.2
+scipy>=1.11.0
+pydot>=2.0
+pylatexenc>=2.10

@@ -1,0 +1,10 @@
+{
+  "total": 161,
+  "by_corpus": {
+    "QASMBench": 39,
+    "MQT Bench": 42,
+    "VeriQBench": 80
+  },
+  "max_qubits": 14,
+  "max_ops": 220
+}

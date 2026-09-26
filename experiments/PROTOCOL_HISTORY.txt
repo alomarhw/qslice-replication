@@ -1,0 +1,98 @@
+Commit history of the experiments' own repository (pre-registration evidence).
+Each full run started after the commit that froze its protocol; see runs.log and results_rq5.log.
+
+commit afc000b726e619abb4b80fe6876151fded78a340
+Author: Anonymous Authors <anonymous@example.org>
+Date:   2026-09-25 21:53:29 -0400
+
+    Post-run: regenerate.py skips RQ5 (no code or result changes)
+
+
+ regenerate.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+commit d24cc551cd5926cc064efe1a49ea1b8249ab5967
+Author: Anonymous Authors <anonymous@example.org>
+Date:   2026-09-25 21:53:12 -0400
+
+    Post-run: document experiment 3 in README (no code or result changes)
+
+
+ README.md | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+commit fd5484e668bbaf205a255b421de562a4ee073cb8
+Author: Anonymous Authors <anonymous@example.org>
+Date:   2026-09-25 20:16:50 -0400
+
+    Post-run: RQ5 run log (no code or result changes)
+
+
+ results_rq5.log | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+commit 7cd658c876758d5f5be6b3dfb28cf3ac8dc214e2
+Author: Anonymous Authors <anonymous@example.org>
+Date:   2026-09-25 19:23:39 -0400
+
+    Freeze pre-registered RQ5 protocol and driver before the run
+
+
+ PROTOCOL_RQ5.md             |  57 +++++++++++
+ rq5_scalability/__init__.py |   0
+ rq5_scalability/run.py      | 224 ++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 281 insertions(+)
+commit ebffa0e956bf9f383a771f891b9dde315974ba49
+Author: Anonymous Authors <anonymous@example.org>
+Date:   2026-09-25 15:36:11 -0400
+
+    Post-run: README, corrected Fig. 2, regenerate.py, protocol history (no code or result changes)
+
+
+ PROTOCOL_HISTORY.txt            |  52 ++++++++++++++++++++++++
+ README.md                       |  87 ++++++++++++++++++++++++++++++++++++++++
+ figures/fig2_ablation_rerun.png | Bin 0 -> 68921 bytes
+ figures/fig2_ablation_rerun.py  |  56 ++++++++++++++++++++++++++
+ regenerate.py                   |  46 +++++++++++++++++++++
+ 5 files changed, 241 insertions(+)
+commit 157c6ae5b766f6c1b80e141487eee07206be8178
+Author: Anonymous Authors <anonymous@example.org>
+Date:   2026-09-25 14:19:50 -0400
+
+    Add run_all.sh (scheduling only: 4 workers)
+
+
+ run_all.sh | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+commit 229bbcfb55458fd404e5a913c5b7a62e1b7a4392
+Author: Anonymous Authors <anonymous@example.org>
+Date:   2026-09-25 14:19:29 -0400
+
+    Deviation 1: apply the 220-instruction post-preparation cap to corpus A (before any result)
+
+
+ DEVIATIONS.md    | 24 ++++++++++++++++++++++++
+ common/corpus.py |  8 +++++++-
+ results_m1.log   |  4 ++++
+ results_m2.log   |  4 ++++
+ results_rq4.log  |  7 +++++++
+ runs.log         |  1 +
+ 6 files changed, 47 insertions(+), 1 deletion(-)
+commit 90b29911e31d4fc5e510b34f30578fc0e312f54a
+Author: Anonymous Authors <anonymous@example.org>
+Date:   2026-09-25 12:34:04 -0400
+
+    Freeze pre-registered protocol and code before full runs
+
+
+ .gitignore                     |   2 +
+ PROTOCOL.md                    | 143 ++++++++++++++++++++++++++++++
+ common/__init__.py             |   0
+ common/corpus.py               |  92 ++++++++++++++++++++
+ common/evaluate.py             |  58 +++++++++++++
+ common/oracle.py               | 192 +++++++++++++++++++++++++++++++++++++++++
+ method_eval/__init__.py        |   0
+ method_eval/control_fix.py     |  36 ++++++++
+ method_eval/run.py             | 187 +++++++++++++++++++++++++++++++++++++++
+ requirements.lock              |  21 +++++
+ rq4_ablation_rerun/__init__.py |   0
+ rq4_ablation_rerun/run.py      | 142 ++++++++++++++++++++++++++++++
+ tests/test_oracle.py           |  81 +++++++++++++++++
+ 13 files changed, 954 insertions(+)

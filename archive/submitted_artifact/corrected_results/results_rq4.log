@@ -1,0 +1,26 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  10/178 circuits, 2s
+  20/178 circuits, 2s
+  30/178 circuits, 2s
+  40/178 circuits, 3s
+  50/178 circuits, 3s
+  60/178 circuits, 3s
+  70/178 circuits, 9s
+  80/178 circuits, 9s
+  90/178 circuits, 9s
+  100/178 circuits, 9s
+  110/178 circuits, 9s
+  120/178 circuits, 9s
+  130/178 circuits, 9s
+  140/178 circuits, 9s
+  150/178 circuits, 9s
+  160/178 circuits, 9s
+  170/178 circuits, 46s
+  QSlice-full     SVR 0.0052  dSVR   (n=962 pairs)
+  QDG-no-ED       SVR 0.5405  dSVR 0.5353  (n=962 pairs)
+  QDG-no-MD       SVR 0.1341  dSVR 0.1289  (n=962 pairs)
+  QDG-no-UED      SVR 0.1331  dSVR 0.1279  (n=962 pairs)
+  QDG-no-CD       SVR 0.0478  dSVR 0.0426  (n=962 pairs)
+  Classical PDG   SVR 0.5353  dSVR   (n=962 pairs)
+  Causal-cone     SVR 0.1227  dSVR   (n=962 pairs)
+excluded circuits: 4; wrote results/rq4_ablation

@@ -1,0 +1,10 @@
+corpus,n_circuits,method,invalid_slice_rate,target_state_fidelity,slice_size_fraction_of_ops,forward_influence_completeness
+MQT Bench,42,QPDG,0.0,1.0,0.39083675171788435,1.0
+MQT Bench,42,Naive classical PDG (def-use port),0.5876623376623377,0.7180504019789734,0.1904959130425752,0.8742835717673381
+MQT Bench,42,Causal classical PDG (data+control light cone),0.0,1.0,0.6464519152972005,1.0
+QASMBench,39,QPDG,0.0,0.9999999999757638,0.3607150001232113,1.0
+QASMBench,39,Naive classical PDG (def-use port),0.4077669902912621,0.7949691834326813,0.25192850912491105,0.7312528895053167
+QASMBench,39,Causal classical PDG (data+control light cone),0.0,1.0,0.7772138864371874,1.0
+VeriQBench,80,QPDG,0.0,0.9999999999794689,0.525236280496045,1.0
+VeriQBench,80,Naive classical PDG (def-use port),0.2785234899328859,0.7842759417433768,0.46582355114464563,0.5026286353467562
+VeriQBench,80,Causal classical PDG (data+control light cone),0.0,1.0,0.8590604026845637,1.0

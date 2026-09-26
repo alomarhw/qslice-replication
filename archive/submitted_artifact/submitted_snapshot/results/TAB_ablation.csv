@@ -1,0 +1,6 @@
+edge_type_removed,svr,delta_svr,n_circuits
+QSlice-full (all 4 edges),0.0,0.0,34
+ED (entanglement),0.5882,0.5882,34
+MD (measurement-collapse),0.3824,0.3824,34
+UED (unitary-evolution),0.2941,0.2941,34
+CD (classical-feedback),0.0,0.0,34
