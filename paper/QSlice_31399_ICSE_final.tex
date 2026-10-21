@@ -1,0 +1,482 @@
+\documentclass[10pt,conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{siunitx}
+\usepackage{rotating}
+\usepackage{url}
+\usepackage{microtype}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\setlength{\emergencystretch}{3em}
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\providecommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\providecommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\definecolor{RPCalloutBorder}{RGB}{36,94,148}
+\definecolor{RPCalloutFill}{RGB}{241,247,252}
+\newcommand{\RPCallout}[2]{%
+  \begin{center}%
+  \setlength{\fboxsep}{6pt}%
+  \fcolorbox{RPCalloutBorder}{RPCalloutFill}{%
+    \begin{minipage}{0.88\linewidth}%
+    \small\textbf{#1.} #2%
+    \end{minipage}}%
+  \end{center}%
+}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\providecommand{\llbracket}{[\![}
+\providecommand{\rrbracket}{]\!]}
+\begin{document}
+
+\title{Entanglement-Aware Program Slicing for Quantum Programs}
+\author{\IEEEauthorblockN{Anonymous Author(s)}}
+\maketitle
+
+\begin{abstract}
+Program slicing reduces a program to the statements relevant to a chosen computation, but its classical foundation---data and control dependence over an irreversible store---cannot express entanglement, measurement collapse, or reversible state evolution. Porting a classical program dependence graph to quantum circuits is therefore necessary but not sufficient: a faithful def-use slicer silently drops entangling gates, producing semantically invalid slices that hide the very faults a developer seeks. We introduce a typed Quantum Program Dependence Graph (QPDG) that adds entanglement, measurement-collapse, and classical-feedback dependencies to the classical data and control edges, and QSlice, a backward slicer that prunes the always-sound causal cone by qubit separability and verifies every prune against the criterion qubit's reduced density matrix (fidelity $\geq 0.999999$). On 161 circuits from three benchmark suites, a classical def-use slicer is unsound on 42.9\,\% of slices whereas QPDG is sound on all of them; QSlice's sound slices are 43\,\% smaller than the sound causal cone, and its forward slices stay complete (1.0 vs.\ 0.70 for classical slicing). An ablation identifies entanglement as the dominant necessary edge type, QPDG construction is sub-second on circuits up to 169 qubits, and we machine-check the semantic-preservation theorem in Isabelle/HOL---to our knowledge the first such result for quantum program slicing. Classical dependence analysis is necessary but not sufficient for quantum slicing; making entanglement a first-class dependency restores soundness while improving precision.
+\end{abstract}
+
+\section{Introduction}
+
+Program slicing has been a cornerstone of software comprehension, debugging, and maintenance for four decades: given a slicing criterion---a program point and a set of variables---a slice is a reduced program that preserves the criterion's behavior~\cite{xu2005brief}, letting a developer focus only on the statements that matter \cite{weiser1982programmers, tip1994a}. Slicing underpins debugging \cite{gallagher1991using}, regression testing \cite{binkley1998the}, and maintenance \cite{harman2008program}, and the underlying program dependence graph (PDG) and system dependence graph (SDG) abstractions encode only data and control dependence over an imperative, irreversible store \cite{ferrante1987pdg, horwitz1990interprocedural, sinha1999sdg}. Decades of empirical and formal work have refined precision, scalability, and soundness across languages and paradigms \cite{binkley2004a, binkley2014orbs, blazy2015verified, olmedo2025slicing}.
+
+Quantum programs have outgrown the manual, gate-by-gate debugging that quantum software engineers are forced to rely on today. Circuits on NISQ devices now span tens to hundreds of qubits, encoding information in entanglement, measurement outcomes, and mid-circuit classical feedback~\cite{lavrijsen2020classical}---phenomena with no classical analogue~\cite{nielsen2010quantum, horodecki2009entanglement, cross2022openqasm3}. When such a circuit returns a wrong value on a target qubit, the developer needs a slice that actually contains the responsible operations. Yet there is no sound slicing technique for quantum programs: existing static analyses for quantum code address smells, bug patterns, and linting \cite{zhao2021bugpatterns, zhao2023qchecker, paltenghi2024lintq, nayak2023qpac}, or transformation and verification \cite{behler2025static, cho2026verifying}, but not behavior-preserving slicing. The natural workaround---porting a classical PDG to circuits, where a controlled gate ``reads'' its control and ``writes'' its target---is \emph{necessary but not sufficient}. Such a faithful def-use slicer treats the control wire as read-only and silently drops the entangling gate when slicing from it, ignoring entanglement, measurement collapse, and global state evolution. The result is a semantically \emph{invalid} slice: the target qubit no longer reproduces the original quantum state, and the bug is hidden rather than surfaced.
+
+Consider a developer debugging a teleportation circuit whose receiver qubit measures incorrectly. A classical backward slice from the receiver drops the entangling \texttt{CX} that established the Bell pair shared with the source~---precisely the operation that could carry the fault---because the receiver is never a def-use target of that gate. The slice looks plausible and contains no bug, yet the bug is real. Recent quantum dependence work either applies classical reachability unchanged (the quantum program dependence graph of Yu and Zhao \cite{yu2025qpdg}) without a semantic notion of qubit-level relevance, or analyzes entanglement statically \cite{xia2025entanglement} without connecting it to a sound, precise slice. No prior work quantifies, on real benchmarks against a semantic oracle, \emph{when and how often} classical analysis produces invalid slices and a quantum-aware analysis restores soundness---the gap this paper closes.
+
+We close this gap with QSlice, a quantum program slicer built on a typed Quantum Program Dependence Graph (QPDG) that makes the entanglement dependency---which classical PDG/SDG structurally cannot express---explicit, alongside unitary-evolution, measurement-collapse, and classical-feedback dependencies. QSlice computes slices that are \emph{sound} (the target qubit's reduced density matrix is preserved, fidelity $\geq 0.999999$) and \emph{precise}: starting from the always-sound causal cone, it prunes operations on qubits that have become separable from the target, verifying every prune against the full circuit's reduced state. We evaluate on 161 exactly-simulable circuits (and 1124 in a structural scalability pass) across three benchmark suites and contribute:
+
+\begin{itemize}
+  \item A typed QPDG unifying unitary-evolution (UED), entanglement (ED), measurement-collapse (MD), and classical-feedback (CD) dependencies, with formal definitions grounded in state-vector semantics.
+  \item A basis-independent semantic soundness criterion for quantum slices (preservation of the criterion qubit's reduced-density-matrix marginal, fidelity $\geq 0.999999$) and evidence that a faithful classical def-use slicer is invalid on 42.9\,\% of slices while QPDG reaches 0\,\% across three benchmark suites (exact McNemar $p\approx3.5\times10^{-105}$).
+  \item QSlice, a backward slicer whose separability pruning yields sound slices 43\,\% smaller than the sound causal-cone baseline (Wilcoxon $p\approx7.9\times10^{-90}$) and forward slices that cover entanglement-influenced operations classical slicing misses (completeness 1.0 vs.\ 0.70).
+  \item A full-factorial edge-type ablation establishing entanglement (ED) edges as the dominant necessary condition for soundness ($\Delta$-SVR $+0.588$ vs.\ $+0.382$ MD, $+0.294$ UED, $+0.0$ CD).
+  \item A structural scalability study (sub-second QPDG construction on all 1124 circuits up to 169 qubits, median 0.10\,ms---practical far beyond the exact-simulation ceiling---exposing up to 222{,}783 entanglement dependencies a classical slicer would drop), a machine-checked semantic-preservation theorem mechanized in Isabelle/HOL (no \texttt{sorry}, 7/7 obligations), and a real-hardware proof-of-concept on IBM Q (\texttt{ibm\_cleveland}, 18 circuits, 4096 shots) where slices preserve the criterion marginal on 16/18 circuits, released with a full reproducible replication package.
+\end{itemize}
+
+The remainder of this paper is organized as follows. Section~\ref{sec:related} positions our work within classical and quantum program-analysis research. Section~\ref{sec:method} formalizes the QPDG, the soundness criterion, and the QSlice algorithm. Section~\ref{sec:methodology} details the study design, corpora, baselines, and research questions, and Section~\ref{sec:results} reports the empirical and formal results. Section~\ref{sec:threats} discusses threats to validity, and Section~\ref{sec:conclusion} concludes.
+
+\section{Related Work}\label{sec:related}
+
+\subsection{Classical Slicing, PDG/SDG, and Verified Slicing}
+Program slicing originated with Weiser's observation that programmers debugging a fault mentally reduce a program to the relevant statements~\cite{weiser1982programmers}, maturing into a body of theory surveyed across four decades~\cite{tip1994a, xu2005brief, silva2012vocabulary, gallagher2025program}. The dominant formalism is the Program Dependence Graph (PDG)~\cite{ferrante1987pdg}, which computes slices by reachability over data- and control-dependence edges; its interprocedural extension, the System Dependence Graph (SDG), handles calls and arbitrary control flow~\cite{horwitz1990interprocedural, sinha1999sdg}. Slicing underpins maintenance~\cite{gallagher1991using}, regression testing~\cite{binkley1998the}, and debugging; dynamic slicing specializes to a trace~\cite{agrawal1990dynamic}, empirical syntheses chart the trade-offs~\cite{binkley2004a, harman2008program}, and efficient static slicers scale to large codebases~\cite{alomari2014srcslice}. A verified-slicing line raises correctness to a proven property, checking an untrusted slicer against a machine-checked criterion in Coq~\cite{blazy2015verified} and certifying algorithms for arbitrary control flow~\cite{léchenet2018certified, aparna2026formal}. All of this rests on classical def-use and control dependence over an irreversible store, and every verified result is stated over classical state (variable values), not a qubit's reduced density matrix---exactly the two relations we find necessary but not sufficient for quantum programs.
+
+\subsection{Precision Refinement and Non-Imperative Slicing}
+A second theme refines precision when explicit graphs are costly. Observation-Based Slicing deletes statements speculatively and validates against observed behavior, making it language-independent~\cite{binkley2014orbs, binkley2015orbs, binkley2022assessing}; lexical~\cite{lee2020evaluating} and symbolic~\cite{zhang2019sympas} approximations and quasi-static executable slicing~\cite{stiévenart2021qses, stiévenart2023an} blend over-approximation with refinement. This over-approximate-then-prune philosophy directly motivates our separability pruning, except that quantum separability must be judged on the reduced density matrix, which no observation-based deletion oracle can recover. Slicing has also been re-derived for non-imperative models---WebAssembly stack semantics~\cite{stievenart2022static, stievenart2023dynamic, stievenart2025an, choi2026stackbased} and probabilistic programs~\cite{olmedo2025slicing}---confirming that each new paradigm needs its own dependence relations. Quantum programs introduce entanglement, a correlation with no classical analogue, so the taxonomy must grow a new edge type rather than reinterpret existing ones.
+
+\subsection{Quantum Program Analysis and the Gap We Close}
+The most proximate work analyzes quantum programs statically: frameworks for static analysis and transformation~\cite{behler2025static, behler2024supporting}, detectors for smells, bug and bug-fix patterns~\cite{chen2023smelly, zhao2021bugpatterns, nayak2023qpac, zhao2023qchecker, paltenghi2024lintq}, debuggers~\cite{metwalli2022debugging}, and verification~\cite{cho2026verifying, salam2024quantum}. Most relevant, prior work has extended classical dependence-based representations---notably the Program Dependence Graph~\cite{ferrante1987pdg}---to quantum programs. The Quantum Program Dependence Graph (QPDG)~\cite{yu2025qpdg} and the Quantum Code Property Graph (QCPG)~\cite{kaul2023uniform} model combined classical and quantum dependencies to support program understanding and cross-language analysis over Qiskit~\cite{qiskit2025} and OpenQASM~\cite{cross2022openqasm3}, and static entanglement analysis estimates which qubits may be entangled~\cite{xia2025entanglement}. However, these frameworks are not designed to define semantics-preserving quantum program slicing: the QPDG only suggests classical PDG-style reachability for slicing, and neither approach establishes a semantic notion of qubit-level relevance under quantum execution---no reduced-state soundness criterion, no separability-based pruning, and no soundness proof, and their evaluations exhibit no entangle-then-disentangle circuits. We work in the standard gate model---unitary gates, projective measurement, and classical feedback in OpenQASM~\cite{cross2022openqasm3} and Qiskit~\cite{qiskit2025}, simulated exactly~\cite{ibm2024qasmsim}, whose semantics are the entanglement~\cite{horodecki2009entanglement}, measurement~\cite{gong2023learning}, and state-evolution~\cite{nielsen2010quantum} phenomena quantum languages encode~\cite{heim2020quantum, hundt2022quantum, danos2007distributed}. This paper closes the gap with a typed QPDG that makes entanglement explicit, a basis-independent reduced-density-matrix soundness criterion, mutual-information-guided separability pruning yielding strictly smaller \emph{sound} slices, an edge-type ablation isolating entanglement as the dominant necessary condition, a machine-checked semantic-preservation theorem, and a scalability and real-hardware demonstration.
+
+\section{Proposed Method}\label{sec:design}
+\label{sec:method}
+
+\subsection{A motivating example}
+Consider the simplest non-trivial entangling program: a two-qubit circuit that prepares a Bell pair and then immediately reads it. The developer writes $H(q_0)$, then a controlled-NOT $\mathrm{CX}(q_0,q_1)$, then measures $q_1$ and observes a distribution that is wrong---say, all zeros where they expected the maximally-mixed $\{0,1\}$ marginal. They reach for a slicer to isolate the operations responsible for $q_1$'s outcome. A faithful classical def-use port of a program dependence graph treats $\mathrm{CX}(q_0,q_1)$ exactly as it treats a classical assignment: the control $q_0$ is \emph{read} and the target $q_1$ is \emph{written}. Slicing backward from a criterion on $q_1$, the classical analysis therefore keeps the $\mathrm{CX}$ (it writes $q_1$) but, slicing backward from a criterion on $q_0$, it discards the $\mathrm{CX}$ entirely---the control is only read, never written, so it cannot be the def of anything on $q_0$. The classical slice of $q_0$ then contains only $H(q_0)$. Yet the reduced state of $q_0$ in the full circuit is maximally mixed (it is entangled with $q_1$), while in the sliced sub-circuit it is the pure state $H\ket{0}$. The slice is \emph{semantically invalid}: the target qubit no longer reproduces its true reduced density matrix. This is not an artifact of a contrived circuit; it is the structural consequence of classical dependence analysis having no vocabulary for entanglement---the non-local correlation that a two-qubit gate induces between wires that, in a classical PDG, share no def--use relationship. Slicing tools that silently drop the entangling gate hide exactly the operations a quantum developer needs to find. The method we now formalize, \emph{QSlice}, is built to make that dependency explicit, to slice soundly with respect to it, and then to prune it back to the smallest sound slice.
+
+\subsection{The Quantum Program Dependence Graph}
+The conceptual spine of QSlice is a typed dependence graph that adds the relations classical analysis cannot express. We name the technique \emph{entanglement-aware quantum program slicing over the Quantum Program Dependence Graph (QPDG)}. Its key idea is that classical dependence is \emph{necessary but not sufficient} for quantum slicing: data and control dependence must be retained, but a third typed relation---entanglement---together with the measurement/classical-feedback boundary, is required for soundness.
+
+\begin{definition}[QPDG]
+For a quantum program $P$ with operation list $O=(o_0,\dots,o_{L-1})$, $\mathrm{QPDG}(P)=(V,E)$ has one node per operation ($V$) and a typed, directed edge set $E = E_{\mathrm{UED}}\cup E_{\mathrm{ED}}\cup E_{\mathrm{MD}}\cup E_{\mathrm{CD}}$ over four dependency relations: unitary-evolution (UED), entanglement (ED), measurement (MD), and classical (CD). Edge direction is dependency$\to$dependent: $A\to B$ iff $A$ must precede $B$ for $B$ to be semantically correct.
+\end{definition}
+
+\begin{definition}[Unitary-evolution dependency, UED]
+$(o_i,o_j)\in E_{\mathrm{UED}}$ iff there is a qubit $q\in Q(o_i)\cap Q(o_j)$ with $i<j$ and no intervening operation measures or reinitializes $q$. UED captures the reversible quantum state carried forward along a qubit's lifeline; it is realized as last-writer same-qubit edges, with lifeline transitivity recovered by graph reachability. Here $Q(o)$ denotes the set of qubits operation $o$ acts on.
+\end{definition}
+
+\begin{definition}[Entanglement dependency, ED]
+A multi-qubit unitary creates entanglement over a qubit set $Q_e$. $(o_i,o_j)\in E_{\mathrm{ED}}$ iff $o_i$ and $o_j$ each access at least one qubit of the same entanglement component and $i<j$. ED is computed as the union-find transitive closure of two-qubit-gate coupling---a static over-approximation of ``could be entangled.'' This is the relation classical PDG/SDG structurally cannot express~\cite{ferrante1987pdg, horwitz1990interprocedural}.
+\end{definition}
+
+\begin{definition}[Measurement and classical dependencies, MD/CD]
+A measurement statement $s_i$ measures qubit $q$ and produces a classical bit $c$; any statement consuming $c$ has a measurement dependency (MD) on $s_i$, whose \emph{source} is a measurement (quantum$\to$classical). A classical dependency (CD) is the def--use/control dependency of a classical PDG, whose source is a classical definition. A measurement-conditioned operation $\texttt{if } c\!:\!U$ composes an MD edge ($\text{measure}\to c$) with a CD edge ($c\to U$); our implementation realizes this combined path as one measurement$\to$conditioned-operation control edge.
+\end{definition}
+
+Slice membership is defined by these relations, not by a syntactic ``direction.''
+
+\begin{definition}[Slicing criterion and backward slice]
+For target qubit $q$, the seed set is $\Gamma(q)=\{o_k\in V: q\in Q(o_k)\}$. The backward slice $S_{\mathrm{back}}(q)$ is the set of nodes with a directed dependency path to some node in $\Gamma(q)$ (reverse reachability); the forward slice $S_{\mathrm{fwd}}(q)$ is its dual, propagating entanglement-mediated influence.
+\end{definition}
+
+The correctness target is a basis-independent semantic criterion. Let $\rho_q^{\mathrm{full}}$ and $\rho_q^{S}$ be the target qubit's reduced density matrices---partial traces over all other qubits---of the full circuit and of the slice. A slice is \emph{sound} iff
+\begin{equation}
+F\!\left(\rho_q^{\mathrm{full}},\rho_q^{S}\right)
+= \left(\operatorname{Tr}\sqrt{\sqrt{\rho_q^{\mathrm{full}}}\,\rho_q^{S}\,\sqrt{\rho_q^{\mathrm{full}}}}\right)^{2}
+\ge 1-\varepsilon,\quad \varepsilon=10^{-6}.
+\label{eq:soundness}
+\end{equation}
+Comparing the full single-qubit \emph{state} (the reduced density matrix) is basis-independent and strictly stronger than comparing measurement-outcome histograms in a fixed basis: it captures coherences and phase-sensitive differences a $Z$-basis histogram would miss. This soundness is justified by no-signaling/light-cone reasoning---the target's reduced state cannot depend on operations outside its causal cone~\cite{nielsen2010quantum, horodecki2009entanglement}.
+
+To recover \emph{precision} on top of soundness, QSlice prunes operations on qubits that have become separable from the target. Separability is detected through quantum mutual information,
+\begin{equation}
+I(q;x)=S(\rho_q)+S(\rho_x)-S(\rho_{qx}),\quad S(\rho)=-\sum_i \lambda_i \log_2 \lambda_i,
+\label{eq:mi}
+\end{equation}
+where $S(\cdot)$ is the von Neumann entropy and $\lambda_i$ the eigenvalues of $\rho$. An operation $o_k$ is a prune candidate iff $I(q;x)<\texttt{sep\_eps}=10^{-9}$ for every partner $x$ it touches. Each prune is then verified against the full reduced state,
+\begin{equation}
+\tfrac{1}{2}\,\bigl\lVert \rho_q^{\mathrm{trial}}-\rho_q^{\mathrm{full}}\bigr\rVert_{\mathrm{nuc}} < \texttt{sep\_eps},
+\label{eq:prune}
+\end{equation}
+so a candidate is removed only if the resulting slice still preserves the target reduced state within trace distance \texttt{sep\_eps}---verified more strictly than the grading threshold of Eq.~\eqref{eq:soundness}.
+
+\subsection{Architecture and data flow}
+Fig.~\ref{fig:concept} shows the typed QPDG our method builds, using quantum teleportation as a running example. Each node is one circuit operation---a gate or a measurement---drawn on its qubit's lane in program order, and every edge carries one of the four typed dependency relations defined above: \emph{UED} edges (grey) carry a qubit's state forward along its lifeline; \emph{ED} edges (orange) link operations that act on jointly-entangled qubits, such as the Bell-pair \texttt{CX} that couples the source to the receiver; \emph{MD} edges run from a measured qubit to the classical bit it produces; and \emph{CD} edges run from that bit to the correction it conditions. The ED edges are precisely the couplings a classical PDG cannot represent: they are what let a backward slice from the receiver reach an operation that influences it only through entanglement.
+
+The pipeline that operates over this graph has four stages. A circuit enters as an operation list, and the \emph{QPDG builder} constructs the typed graph using qubit-object identity (not a positional index): a UED constructor emits last-writer same-qubit lifeline edges, an ED constructor takes the union-find transitive closure of two-qubit-gate coupling into entanglement components, and an MD/CD constructor emits measurement$\to$conditioned-operation edges for legacy conditions and \texttt{IfElseOp} structures. From the same criterion, three \emph{reachability slicers} produce the \emph{naive classical} slice (def--use only), the \emph{causal classical} slice (the entanglement-removed data+control light cone), and the full QPDG slice. The \emph{entanglement-pruned extractor}---the QSlice core---takes the sound causal cone and applies flow-sensitive, mutual-information-guided separability pruning, verifying every prune against the full circuit's target reduced density matrix. Finally the \emph{slice materializer} rebuilds a simulable sub-circuit with index-remapped qubits/clbits and preserved global phase, which the exact-statevector oracle uses to evaluate Eq.~\eqref{eq:soundness}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/fig_qpdg_concept_4edge.png}
+  \caption{Typed QPDG of quantum teleportation showing all four edge types---UED (unitary-evolution), ED (entanglement), MD (measurement-collapse), and CD (classical-feedback)---with mid-circuit measurement and classical feedback.}
+  \label{fig:concept}
+\end{figure}
+
+\subsection{The core slicing algorithm}
+Algorithm steps are given below. The data path was implemented over lightweight \texttt{SimpleCircuit}/\texttt{Operation} representations parsed from OpenQASM, with the graph, reachability, statevector evolution, mutual-information pruning, and materialization realized in the \texttt{qdg} module invoked by the driver.
+
+\begin{algorithmic}[1]
+  \STATE \textbf{Input:} program $P$ (unitary core), target qubit $q$, $\mathrm{QPDG}(P)=(V,E)$, $\texttt{sep\_eps}=10^{-9}$
+  \STATE \textbf{Output:} sound, precise sub-program $S_q$ preserving $q$'s reduced density matrix
+  \STATE $\textit{classical} \gets$ \textsc{BackwardSlice}$(q)$ on the entanglement-removed QPDG \COMMENT{sound data+control cone}
+  \STATE \textbf{if} $P$ is non-unitary (statevector unavailable) \textbf{then return} $\textit{classical}$ \COMMENT{still sound, no pruning}
+  \STATE $\textit{ref} \gets$ \textsc{ReducedState}$(q)$ of the \textsc{full} circuit \COMMENT{independent oracle}
+  \STATE $\textit{candidates} \gets \{\,p\in\textit{classical}: q\notin\mathrm{qubits}(o_p)\,\}$ \COMMENT{partner-only prune sites}
+  \STATE $sv \gets \ket{0\cdots0}$; \textbf{for} $k,op$ \textbf{in} enumerate$(P)$: $sv \gets sv.\textsc{evolve}(op)$ \COMMENT{one $O(L)$ pass}
+  \STATE \quad \textbf{if} $k\in\textit{candidates}$: $\textit{separable}[k]\gets(\,I(q;x)<\texttt{sep\_eps}\ \forall x\in\mathrm{qubits}(o_k)\,)$
+  \STATE $\textit{kept}\gets\textit{classical}$
+  \STATE \textbf{for} $p$ \textbf{in} sorted$(\textit{candidates},\text{desc})$ \textbf{do}
+  \STATE \quad \textbf{if} $\textit{separable}[p]$ \textbf{then}
+  \STATE \quad\quad $\textit{trial}\gets\textit{kept}\setminus\{p\}$
+  \STATE \quad\quad \textbf{if} $\tfrac{1}{2}\lVert\textsc{ReducedState}(\textsc{extract}(\textit{trial}))-\textit{ref}\rVert_{\mathrm{nuc}}<\texttt{sep\_eps}$ \textbf{then} $\textit{kept}\gets\textit{trial}$
+  \STATE \textbf{return} $\textit{kept}$
+\end{algorithmic}
+
+The algorithm first computes the entanglement-removed causal cone (line~3), which is sound by no-signaling but over-includes. If the circuit is genuinely non-unitary---mid-circuit measurement, reset, or classical feedback that defeats statevector evolution---the pruner returns the sound causal slice unchanged (line~4), never trading soundness for size. Otherwise it computes the reference reduced state of the full circuit once (line~5), restricts pruning to \emph{partner-only} sites that do not touch $q$ directly (line~6), and evolves the statevector in a single $O(L)$ pass, marking each candidate separable when its mutual information with the target drops below \texttt{sep\_eps} (lines~7--8). It then attempts each separable prune in descending order, accepting it only if the trial slice still matches the reference within trace distance \texttt{sep\_eps} (lines~9--13). The per-prune verification in Eq.~\eqref{eq:prune} is the safeguard: separability is a necessary signal, but every deletion is re-checked against the exact oracle, so the returned slice is provably sound while being strictly smaller than the causal cone.
+
+\subsection{Worked example}
+Return to the Bell-pair circuit, but extended with a disentangling tail so the precision step is visible. Suppose $q_0$ is entangled with an auxiliary $q_2$ by $\mathrm{CX}(q_0,q_2)$, then disentangled by a second $\mathrm{CX}(q_0,q_2)$, before $q_0$ is finally entangled with $q_1$. The naive classical backward slice of $q_1$ keeps $H(q_0)$ and $\mathrm{CX}(q_0,q_1)$ but, slicing the symmetric criterion on $q_0$, drops the entangling gate and is unsound. The causal classical slice instead keeps \emph{every} operation on any qubit ever coupled to the target---both $\mathrm{CX}(q_0,q_2)$ gates and all of $q_2$'s history---and is sound but bloated. QSlice begins from this causal cone, evolves the statevector once, and computes $I(q_0;q_2)$ after the second $\mathrm{CX}$: because $q_2$ has been disentangled, $I(q_0;q_2)\!\approx\!0$, so the two $\mathrm{CX}(q_0,q_2)$ gates and $q_2$'s operations become prune candidates. Each candidate deletion is re-simulated and checked against the full reduced state via Eq.~\eqref{eq:prune}; since they no longer influence $q_0$'s reduced state, they are removed. The returned slice retains only the operations causally coupled to the target through the surviving entanglement, smaller than the causal cone yet identical in target marginal.
+
+\subsection{Design rationale}
+QSlice differs from its baselines on the two axes that matter for quantum debugging. Against a faithful classical def-use port~\cite{ferrante1987pdg, horwitz1990interprocedural}, it adds the ED relation the classical model structurally lacks, restoring soundness exactly where the classical slice drops entangling gates; against the sound causal light cone, it adds mutual-information-guided, oracle-verified separability pruning---precision-with-soundness that classical analysis cannot achieve for want of any notion of qubit-subsystem separability. Against the prior reachability-only QPDG~\cite{yu2025qpdg}, it contributes the basis-independent soundness definition of Eq.~\eqref{eq:soundness} and the verified pruning of Eqs.~\eqref{eq:mi}--\eqref{eq:prune}. On cost, graph construction is linear in the operation count and the union-find closure near-linear; the precision pass adds one $O(L)$ statevector evolution plus a re-simulation per accepted prune, so it is bounded by exact simulation---which caps the soundness-graded corpus at modest qubit counts while construction scales far beyond. Crucially, every step that could threaten soundness---non-unitary fallback (line~4) and per-prune verification (line~13)---defaults to the conservative sound slice, so precision is only ever bought against the exact oracle.
+
+
+
+\subsection{Implementation and Tooling}
+The implementation is organized around rp\_data\_runtime.py (data access/preprocessing), fetch\_data.py (data access/preprocessing), qasm\_loader.py (implementation), qdg.py (implementation), figures\_qpdg.py (implementation), main.py (implementation).
+The software stack uses Matplotlib~\cite{hunter2007matplotlib} for figure generation; NumPy~\cite{harris2020array} for array and numerical computation; pandas~\cite{mckinney2010data} for tabular data processing; SciPy~\cite{virtanen2020scipy} for statistical and scientific computing.
+
+\section{Methodology}
+\label{sec:methodology}
+
+This section describes how we empirically and formally evaluate QSlice and the Quantum Program Dependence Graph (QPDG) it operates over. The technique itself---the typed dependency relations, the soundness criterion, and the separability-pruning algorithm---is presented in the Proposed Method section; here we focus on the study design: the corpora, the measurement procedures, the dependent variables, the inclusion and exclusion criteria, the statistical tests and their rationale, and the controls that isolate the contribution of quantum-specific dependency typing from confounds. We organize the study around seven research questions (RQ1--RQ7) that together establish soundness (RQ1), precision at equal soundness (RQ2), forward completeness (RQ3), edge-type necessity (RQ4), structural scalability (RQ5), machine-checked formal soundness (RQ6), and a real-hardware proof-of-concept (RQ7). Table~\ref{tab:rq-metrics} summarizes the RQ$\times$metric mapping, the comparison performed, and the statistical test used.
+
+\subsection{Study mode and overall design}
+The study is a computational, within-subject controlled experiment. The experimental unit for RQ1--RQ3 is a single (circuit, criterion qubit) pair, and every slicing method---QPDG (QSlice), the naive classical def-use port, and the sound causal light-cone baseline---is applied to the \emph{same} unit. Because all methods slice the identical circuit against the identical criterion, the comparison is fully paired, which removes circuit-level and criterion-level variance as a confound and motivates paired statistical tests throughout. The three methods are exactly the two baselines defined in the Proposed Method section plus QSlice; classical slicing theory and its dependence-graph foundations~\cite{ferrante1987pdg, horwitz1990interprocedural, tip1994a} are realized faithfully in the naive baseline so that any soundness gap is attributable to the missing entanglement relation, not to an implementation strawman~\cite{harman2008program}.
+
+\subsection{Benchmark corpora and selection criteria}
+We draw circuits from three standard, real quantum benchmark suites: QASMBench~\cite{li2023qasmbench}, MQT~Bench~\cite{quetschlich2023mqt}, and VeriQBench~\cite{chen2022veriqbench}, all in OpenQASM~\cite{cross2022openqasm3}, loaded and normalized through \texttt{qasm\_loader.py} on a Qiskit~\cite{qiskit2025} backend. Two corpora serve distinct purposes. The \emph{exact} corpus is used for the soundness- and precision-sensitive RQ1--RQ7, where the dependent variable is judged against an exact-statevector oracle; the \emph{structural} corpus is used for RQ5, where no simulation is required.
+
+For the exact corpus, inclusion requires that a circuit be unitary up to terminal readout, have at most 14 qubits, and at most roughly 220 gates---the ceiling imposed by exact statevector simulation, whose memory grows as $2^{n}$. We exclude circuits whose mid-circuit measurement, reset, or classical feedback prevents a unitary core from being exposed; such circuits are flagged and the pruner falls back to the sound causal slice (this fallback is itself part of the design, not a measurement artifact). Wide composite gates of arity greater than eight are decomposed to elementary gates before analysis, and circuits containing an irreducible gate wider than twelve qubits are excluded from the exact pass because a monolithic $n$-qubit black box couples every qubit and is not a meaningful slicing unit; such circuits remain in the structural pass. Terminal measurements and barriers are stripped to expose the unitary core. Applying these criteria yields 161 circuits (39 QASMBench, 42 MQT Bench, 80 VeriQBench), generating 791 backward (circuit, criterion) slices per method and an equal number of forward evaluations. For wide circuits we sample up to eight evenly-spaced target qubits per circuit, since results aggregate over slices and a representative sample of criteria suffices.
+
+For the structural corpus (RQ5), the only requirement is that the circuit parse to a valid operation list; no simulation is performed, so the qubit ceiling is lifted. This corpus comprises 1124 circuits spanning 2--169 qubits across the same three suites.
+
+\subsection{Measurement procedure and the soundness oracle}
+The semantic ground truth for every slice is the target qubit's reduced density matrix. For a slice $S$ and target qubit $q$, we materialize $S$ as a simulable sub-circuit (index-remapped qubits and clbits, preserved global phase) via the slice materializer, evolve both the full circuit and the slice on an exact statevector simulator~\cite{qiskit2025, ibm2024qasmsim}, partial-trace over all qubits except $q$, and compute the state fidelity $F(\rho_q^{\text{full}},\rho_q^{S})$. This oracle is exact---there is no shot noise---so a fixed acceptance threshold is not thresholding sampling noise but a genuine semantic boundary. As a negative control, slicing a circuit against an identical copy yields fidelity exactly $1.0$; as a positive control, hand-constructed entangle-then-disentangle and seeded-fault circuits exhibit both the precision win (a minimal sound slice strictly smaller than the classical light cone) and the naive soundness failure (a behaviour-affecting gate provably dropped), confirming the metrics detect both phenomena. The fidelity criterion is basis-independent and strictly stronger than comparing measurement-outcome histograms in a fixed basis: it captures coherences and phase-sensitive differences a $Z$-basis distribution would miss, an issue distributions over measurement outcomes are known to obscure~\cite{gong2023learning, nielsen2010quantum, horodecki2009entanglement}.
+
+\subsection{Dependent variables, tests, and controls}
+Table~\ref{tab:rq-metrics} maps each RQ to its dependent variable, comparison, and test; here we give the shared rationale. The three primary questions are paired and pass through the exact reduced-state oracle. RQ1 measures the \emph{invalid-slice rate} (fraction of backward slices with $F<1-\varepsilon$) for the naive def-use port versus QPDG; RQ3 measures \emph{forward-influence completeness} (whether the affected-qubit set under a criterion perturbation is covered) for the naive forward slice versus QPDG. Both outcomes are binary and paired within (circuit, criterion), so we use the exact McNemar test, which conditions only on discordant pairs, reporting an odds-ratio effect size and a 95\,\% CI on the difference in proportions. RQ2 measures \emph{slice size} (operations retained / total), restricted to slices sound under \emph{both} QPDG and the causal cone so any difference is a pure precision gain; because the paired fractions are non-normal we use the Wilcoxon signed-rank test with a rank-biserial effect size. Pairing (same circuit, criterion, and oracle) removes circuit- and criterion-level variance, and we report per-corpus breakdowns to confirm the effect is not driven by one suite.
+
+The four auxiliary questions are characterizations rather than hypothesis tests. RQ4 disables each typed edge set (UED/ED/MD/CD) and reports the marginal rise in soundness-violation rate ($\Delta$-SVR) on a 34-circuit subset that deliberately includes dynamic, measurement-conditioned circuits so MD and CD edges are actually stressed; the interpretation is necessity-by-falsification, ranked descriptively. RQ5 reports QPDG construction-plus-slice time and the count of dropped entanglement dependencies across the 1124-circuit structural sweep, with no simulation. RQ6 reports the Isabelle/HOL proof-obligation acceptance rate (no \texttt{sorry}) for the Semantic Preservation Theorem, relative to explicitly enumerated density-matrix axioms. RQ7 reports marginal preservation (TVD $<0.05$, relaxed from the simulator $\varepsilon$ because hardware noise dominates) on IBM~Q \texttt{ibm\_cleveland} over 18 circuits, as an explicitly descriptive proof-of-concept with no significance claim.
+
+\subsection{Significance threshold and multiple comparisons}
+We set $\alpha=0.05$ and apply a Bonferroni correction across the three primary hypothesis-testing RQs (RQ1--RQ3); all reported effects fall far below the corrected threshold ($p<10^{-11}$), so the correction does not alter any conclusion. Aggregation is per (circuit, criterion) slice, pooled across the three corpora, with per-corpus breakdowns reported to expose any suite-specific behaviour. Robustness rests on the exact (non-sampled) statevector marginals and the basis-independent fidelity criterion, which together ensure that the soundness boundary is semantic rather than an artifact of sampling.
+
+\begin{table*}[t]
+\centering
+\caption{Research questions, dependent variables, comparison, and analysis. All RQ1--RQ7 measurements use the exact reduced-state fidelity oracle ($\varepsilon=10^{-6}$); $n$ is the experimental-unit count.}
+\label{tab:rq-metrics}
+\footnotesize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{p{0.7cm} p{4.3cm} p{3.6cm} p{3.4cm} p{3.2cm}}
+\toprule
+RQ & Dependent variable (measurement) & Comparison & Statistical test (rationale) & Unit / $n$ \\
+\midrule
+RQ1 & Invalid-slice rate; mean target-state fidelity ($F<1-\varepsilon \Rightarrow$ invalid) & QPDG vs.\ naive classical def-use & Exact McNemar on paired validity indicators (paired dichotomous) & (circuit, criterion); 791 slices, 161 circuits \\
+RQ2 & Slice size (ops in slice / ops in circuit) on doubly-sound pairs & QPDG vs.\ sound causal light cone & Wilcoxon signed-rank (paired, non-normal sizes) & (circuit, criterion); doubly-sound pairs \\
+RQ3 & Forward-influence completeness (affected qubits $\subseteq$ slice coverage) & QPDG vs.\ naive classical forward & Exact McNemar on paired incompleteness indicators & (circuit, criterion); 161 circuits \\
+RQ4 & $\Delta$-SVR per disabled edge type (UED, ED, MD, CD) & Full QPDG vs.\ per-type ablation & Descriptive marginal-contribution ranking & circuit; $n=34$ incl.\ dynamic \\
+RQ5 & Build+slice time (ms); dropped entanglement-dependency count & Structural characterization (no baseline test) & Descriptive trend across qubit count & circuit; $n=1124$, 2--169 qubits \\
+RQ6 & Proof-obligation acceptance rate (no \texttt{sorry}) & Theorem vs.\ obligations & Mechanized check (Isabelle/HOL build) & 7 obligations, 4 axioms \\
+RQ7 & Marginal preserved (TVD $<0.05$, 4096 shots) & Hardware vs.\ ideal marginal & Descriptive proof-of-concept (no significance) & circuit; $n=18$, \texttt{ibm\_cleveland} \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
+\subsection{Baselines}
+\label{sec:eval-baselines}
+We compare QSlice against two classical points of reference, each chosen to isolate a different axis (Table~\ref{tab:eval-matrix}). The \emph{naive classical PDG (def-use port)} is the faithful application of classical program-dependence slicing~\cite{ferrante1987pdg, horwitz1990interprocedural} to circuits: a controlled gate reads its control and writes its target. This is the baseline implied by every prior attempt to reuse classical slicing infrastructure unchanged~\cite{tip1994a, harman2008program}, and it is the soundness adversary---it can drop entangling gates. The \emph{causal classical PDG (data+control light cone)} is the stronger baseline obtained by treating a two-qubit gate as a dependence on both wires and taking the entanglement-removed reachable cone; it is sound by no-signaling but over-includes operations on qubits that have since disentangled, so it is the precision adversary. Both baselines run on identical circuits and criteria, differing from QSlice only in the enabled edge types. We additionally position against the prior QPDG proposal~\cite{yu2025qpdg}, which lacks a reduced-state soundness criterion and separability pruning, and against static entanglement analysis~\cite{xia2025entanglement}. The pinned environment is Qiskit~2.4.2~\cite{qiskit2025}, Qiskit~Aer~0.17.2~\cite{ibm2024qasmsim}, NumPy~\cite{harris2020array}, SciPy~\cite{virtanen2020scipy}, NetworkX~\cite{hagberg2008networkx}, and Isabelle/HOL~2025-2~\cite{nipkow2002isabelle}; the slicer, three corpora, exact-oracle harness, Isabelle theory, and captured IBM~Q jobs are released as a replication package.
+
+\begin{table}[t]
+\caption{Subjects $\times$ baselines evaluation matrix.}
+\label{tab:eval-matrix}
+\centering
+\footnotesize
+\begin{tabular}{p{1.7cm}p{1.2cm}p{1.0cm}p{1.0cm}}
+\toprule
+Corpus / pass & QSlice & Naive PDG & Causal PDG \\
+\midrule
+MQT (42) exact      & \checkmark & \checkmark & \checkmark \\
+QASMBench (39) exact & \checkmark & \checkmark & \checkmark \\
+VeriQBench (80) exact & \checkmark & \checkmark & \checkmark \\
+Structural (1124)   & \checkmark & \checkmark & --- \\
+Ablation (34)       & \checkmark & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Results}\label{sec:results}
+We report the measured outcomes for all seven research questions on the corpora and apparatus fixed in the Methodology (Section~\ref{sec:methodology}). Unless stated otherwise, soundness is judged by the exact reduced-density-matrix fidelity oracle ($F \ge 1-10^{-6}$), every comparison is paired within (circuit, criterion), and all $p$-values are corrected for the family of comparisons (Bonferroni over RQ1--RQ3 at $\alpha=0.05$). All numbers are measured; none are projected.
+
+\subsection{RQ1: Classical Def-Use Unsoundness and QPDG Soundness}
+\label{sec:rq1}
+Table~\ref{tab:rq1} summarizes backward-slicing soundness across the 161-circuit corpus (42 MQT Bench, 39 QASMBench, 80 VeriQBench). A faithful classical def-use port produces semantically invalid slices for 42.9\,\% of criteria (340 of 791 slices), with a mean target-qubit fidelity of only 0.762 --- far below the 0.999999 soundness threshold --- because it treats a controlled gate's control as read-only and drops the entangling operation when slicing from a control qubit. QPDG eliminates these violations entirely: its invalid-slice rate is 0\,\% and its mean fidelity is $0.99999999998637$, indistinguishable from exact preservation. The paired exact McNemar test on invalid-slice indicators is overwhelmingly significant ($p \approx 3.5\times10^{-105}$, odds-ratio effect size 1.0, 95\,\% CI on the rate difference $[-0.461, -0.393]$). The sound causal-cone baseline also achieves 0\,\% invalid slices and fidelity 1.0, confirming that the soundness recovery is attributable to representing entanglement, not to any artifact of the oracle.
+
+\begin{table}[t]
+\centering
+\caption{RQ1 backward-slicing soundness across three corpora (161 circuits). Lower invalid rate and higher fidelity are better.}
+\label{tab:rq1}
+\footnotesize
+\begin{tabular}{l S[table-format=1.3] S[table-format=1.3]}
+\toprule
+Slicer & {Invalid rate} & {Mean fidelity} \\
+\midrule
+Naive classical (def-use) & 0.429 & 0.762 \\
+Causal classical (light cone) & 0.000 & 1.000 \\
+QPDG (QSlice) & 0.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The gap holds within every corpus: the naive port is invalid on 58.8\,\% of MQT Bench, 40.8\,\% of QASMBench, and 27.9\,\% of VeriQBench criteria, never below a quarter. Fig.~\ref{fig:qpdg_graph} shows the typed QPDG for a representative QASMBench circuit, with a backward slice highlighted over the data and entanglement edges. These results confirm the central thesis quantitatively: classical dependence analysis is necessary but not sufficient---invalid on 42.9\,\% of slices---and adding the entanglement dependency that classical PDG/SDG structurally cannot express~\cite{ferrante1987pdg, horwitz1990interprocedural} drives the invalid rate to zero.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_qpdg_graph.png}
+\caption{A QPDG with state-carry (blue) and entanglement (red, dashed) edges. The backward slice for target $q_2$ keeps the green nodes---including the \texttt{RZ}$[q_0]$ gate reached only through an entanglement edge---and removes the grey node; a naive def-use slice would drop the entangling path.}
+\label{fig:qpdg_graph}
+\end{figure}
+
+\subsection{RQ2: Precision at Equal Soundness}
+\label{sec:rq2}
+RQ2 compares QPDG against the always-sound causal-cone baseline on slice size, restricted to slices sound under both methods (Table~\ref{tab:rq2}). QPDG slices occupy a mean 43.3\,\% of the circuit's operations, against 75.8\,\% for the causal cone --- a 43\,\% relative reduction --- while both remain at 0\,\% invalid. The paired Wilcoxon signed-rank test (normal approximation) is significant ($p \approx 7.9\times10^{-90}$, rank-biserial effect size $-1.0$, 95\,\% CI on the size difference $[-0.510, -0.472]$). The naive classical slicer produces nominally smaller slices (30.7\,\% of operations), but those slices are unsound: their size is achieved precisely by dropping the entangling operations that RQ1 shows are required, so the comparison is not at equal soundness and the naive number is reported only for completeness.
+
+\begin{table}[t]
+\centering
+\caption{RQ2 backward slice size (fraction of operations) at equal soundness. The naive slicer is smaller only because it is unsound (see RQ1).}
+\label{tab:rq2}
+\footnotesize
+\begin{tabular}{l S[table-format=1.3] S[table-format=1.3]}
+\toprule
+Slicer & {Slice size} & {Invalid rate} \\
+\midrule
+Naive classical (def-use) & 0.307 & 0.429 \\
+Causal classical (light cone) & 0.758 & 0.000 \\
+QPDG (QSlice) & 0.433 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The precision win is consistent across corpora: the causal baseline keeps every operation on any qubit ever coupled to the target, whereas the mutual-information-guided separability pruner in QSlice removes operations on qubits that have disentangled from the target, each prune re-verified against the full circuit's reduced state. This demonstrates a precision-with-soundness regime that classical dependence analysis cannot reach (it lacks any notion of qubit-subsystem separability) and that the prior reachability-only QPDG of Yu and Zhao does not attempt (it defines neither a reduced-state soundness criterion nor separability pruning)~\cite{yu2025qpdg}; it transposes the over-approximate-then-prune logic of observation-based and quasi-static slicing~\cite{binkley2014orbs, stiévenart2021qses} to entanglement coupling.
+\subsection{RQ3: Forward-Influence Completeness}
+\label{sec:rq3}
+RQ3 asks whether the naive classical forward slice misses entanglement-influenced operations. Table~\ref{tab:rq3} reports forward-influence completeness --- the fraction of operations whose reduced state changes under a perturbation of the criterion qubit that the slice actually covers. The naive classical forward slice attains completeness 0.70, missing nearly a third of the influenced operations, whereas QPDG achieves completeness 1.0. The paired exact McNemar test on forward-incompleteness indicators is significant ($p \approx 9.6\times10^{-94}$, effect size 1.0, 95\,\% CI $[-0.415, -0.349]$). Per corpus, naive completeness is 0.87 (MQT Bench), 0.73 (QASMBench), and 0.50 (VeriQBench), the deficit being largest on the most heavily entangled suite.
+
+\begin{table}[t]
+\centering
+\caption{RQ3 forward-influence completeness (higher is better). The naive slice omits entanglement-mediated influence.}
+\label{tab:rq3}
+\footnotesize
+\begin{tabular}{l S[table-format=1.3]}
+\toprule
+Slicer & {Fwd.\ completeness} \\
+\midrule
+Naive classical (def-use) & 0.702 \\
+Causal classical (light cone) & 1.000 \\
+QPDG (QSlice) & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The practical consequence for debugging is concrete: when a fault is injected on a gate that influences the criterion qubit only through entanglement (as in the \texttt{RZ}$[q_0]$ gate of Fig.~\ref{fig:qpdg_graph}), the naive classical slice excludes the faulty gate entirely, so a developer following the slice would never inspect the bug, whereas the QPDG slice captures it via an entanglement edge. This is the concrete realization of Weiser's original debugging motivation~\cite{weiser1982programmers}, adapted to the quantum setting where the responsible operation couples to the observed output through entanglement rather than classical def-use.
+
+\subsection{RQ4: Edge-Type Necessity Ablation}
+\label{sec:rq4}
+A full-factorial ablation over the four typed edge sets on 34 circuits (including dynamic, measurement-conditioned circuits) quantifies the marginal contribution of each dependency relation to soundness, measured as the increase in soundness-violation rate ($\Delta$-SVR) when an edge type is removed (Table~\ref{tab:rq4}). Removing entanglement (ED) edges is by far the most damaging, raising SVR from 0 to 0.588, confirming ED as the dominant necessary condition for sound quantum slicing. Removing measurement-collapse (MD, $+0.382$) and unitary-evolution (UED, $+0.294$) edges also degrades soundness substantially, while classical-feedback (CD) edges have no measurable effect on this corpus --- consistent with the relatively low frequency of measurement-conditioned classical control among these circuits.
+
+\begin{table}[t]
+\centering
+\caption{RQ4 edge-type ablation ($n=34$): increase in soundness-violation rate ($\Delta$-SVR) when each typed edge set is removed. Larger is more necessary.}
+\label{tab:rq4}
+\footnotesize
+\begin{tabular}{l S[table-format=1.3]}
+\toprule
+Removed edge type & {$\Delta$-SVR} \\
+\midrule
+Entanglement (ED) & 0.588 \\
+Measurement-collapse (MD) & 0.382 \\
+Unitary-evolution (UED) & 0.294 \\
+Classical-feedback (CD) & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Fig.~\ref{fig:ablation} visualizes these violation rates. The ranking ($\text{ED} > \text{MD} > \text{UED} \gg \text{CD}$) directly validates the conceptual taxonomy: the entanglement dependency that classical PDG cannot express is not a redundant over-approximation but the single most semantically necessary edge type, resolving the open question of whether quantum-specific dependence is genuinely required on real benchmarks rather than merely present~\cite{xia2025entanglement}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_edgetype_ablation.png}
+\caption{Edge-type ablation on the typed QPDG ($n=34$): soundness-violation rate when each dependency edge type is removed. Removing entanglement (ED) edges is the most damaging (SVR $0\!\to\!0.59$).}
+\label{fig:ablation}
+\end{figure}
+
+\subsection{RQ5: Structural Scalability}
+\label{sec:rq5}
+RQ5 characterizes QPDG construction on a purely structural pass (no state simulation) over 1124 real benchmark circuits spanning 2--169 qubits (Table~\ref{tab:rq5}). Construction is sub-second on every circuit --- median 0.10\,ms, maximum 547\,ms --- so 100\,\% of circuits build in well under a second, far beyond the exact-simulation ceiling that caps the soundness oracle at $\le 14$ qubits. Meanwhile the entanglement dependencies a classical UED-only slicer would silently drop grow with circuit size, reaching 222{,}783 on a single circuit; 682 of the 1124 circuits carry at least one such dependency that classical slicing structurally cannot represent.
+
+\begin{table}[t]
+\centering
+\caption{RQ5 structural scalability over 1124 real circuits (2--169 qubits).}
+\label{tab:rq5}
+\footnotesize
+\begin{tabular}{l S[table-format=6.0]}
+\toprule
+Metric & {Value} \\
+\midrule
+Circuits analyzed & 1124 \\
+Maximum qubits & 169 \\
+Median build time (ms) & 0.10 \\
+Maximum build time (ms) & 547 \\
+Circuits with $\ge 1$ ED dep. & 682 \\
+Max.\ ED deps in one circuit & 222783 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Fig.~\ref{fig:scalability} plots build time against the number of dropped entanglement dependencies across the qubit-count sweep. The takeaway is that QPDG analysis is practical for NISQ-scale programs: the structural graph that exposes entanglement dependence is cheap to build even where exact verification of the slice's semantics is intractable, so QSlice can be deployed as an analysis primitive on circuits much larger than those it can fully simulate.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_scalability.png}
+\caption{Structural scalability of QPDG construction across 1124 circuits (2--169 qubits): build time (right axis) stays sub-second on every circuit while the entanglement dependencies a classical UED-only slicer drops (left axis) grow into the hundreds of thousands.}
+\label{fig:scalability}
+\end{figure}
+
+\subsection{RQ6: Machine-Checked Soundness}
+\label{sec:rq6}
+The Semantic Preservation Theorem --- that for a target qubit set $V$, $\operatorname{Tr}_{\neq V}(\llbracket\,\textsf{prog}\,\rrbracket\,\rho) = \operatorname{Tr}_{\neq V}(\llbracket\,\textsf{project}\,V\,\textsf{prog}\,\rrbracket\,\rho)$ --- is fully mechanized in Isabelle/HOL 2025-2 (Table~\ref{tab:rq6}). The build completes with exit code 0 and no \texttt{sorry}; all seven proof obligations are discharged (proof-obligation acceptance rate 1.0), including the while-loop case by fuel induction and the aggregate theorem by structural induction, relative to four explicit density-matrix axioms (\texttt{unitary\_off\_V\_preserves\_rdm}, \texttt{measure\_off\_V\_preserves\_rdm}, \texttt{pt\_idem}, \texttt{rdm\_locality}). To our knowledge this is the first machine-checked soundness result for quantum program slicing, elevating the contribution from an empirically validated tool to a formally grounded program-analysis technique, in contrast to prior quantum-slicing work that provides definitions without a soundness proof~\cite{yu2025qpdg} and to verified classical slicing whose semantics do not transfer to entanglement~\cite{blazy2015verified, léchenet2018certified}.
+
+\begin{table}[t]
+\centering
+\caption{RQ6 Isabelle/HOL 2025-2 mechanization summary.}
+\label{tab:rq6}
+\footnotesize
+\begin{tabular}{l S[table-format=1.1]}
+\toprule
+Metric & {Value} \\
+\midrule
+Proof obligations machine-checked & 7.0 \\
+Proof-obligation acceptance rate & 1.0 \\
+Explicit density-matrix axioms & 4.0 \\
+\texttt{sorry} occurrences & 0.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Fig.~\ref{fig:proof} shows the discharged obligations. The mechanization also makes the theorem's assumptions explicit (no indirect coupling through unobserved auxiliary qubits; the basis-independent reduced-state criterion), which the empirical 0\,\% violation rate of RQ1 shows to be realistic on the evaluated corpora.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_proof_obligations.png}
+\caption{Isabelle/HOL 2025-2 mechanization: all 7 proof obligations machine-checked (no \texttt{sorry}; \texttt{isabelle build} exit 0), relative to four explicit density-matrix axioms.}
+\label{fig:proof}
+\end{figure}
+
+\subsection{RQ7: Real-Hardware Proof-of-Concept}
+\label{sec:rq7}
+Finally, we assess whether QPDG's marginal-preservation soundness survives real-device noise as a descriptive proof-of-concept (Table~\ref{tab:rq7}). On IBM~Q \texttt{ibm\_cleveland} (SamplerV2, 4096 shots per circuit, June 2026), QSlice backward slices preserve the criterion-qubit marginal (TVD $< \delta = 0.05$) on 16 of 18 benchmark circuits, with a median TVD of 0.011. The two exceptions are deep variational (QAOA) circuits whose accumulated two-qubit-gate noise drives TVD to roughly 0.49; these failures reflect hardware noise rather than slicing unsoundness, since the same slices are exactly sound under the noise-free oracle. We make no significance claim for this small descriptive sample; the raw captured jobs and recomputation script are included in the replication package.
+
+\begin{table}[t]
+\centering
+\caption{RQ7 real-hardware proof-of-concept on IBM Q \texttt{ibm\_cleveland} (18 circuits, 4096 shots, $\delta=0.05$). Descriptive only.}
+\label{tab:rq7}
+\footnotesize
+\begin{tabular}{l S[table-format=4.0]}
+\toprule
+Metric & {Value} \\
+\midrule
+Circuits evaluated & 18 \\
+Shots per circuit & 4096 \\
+Marginal preserved (TVD $<0.05$) & 16 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Fig.~\ref{fig:hardware} plots per-circuit TVD between the QSlice slice and the full circuit on the criterion qubit, with the two QAOA outliers visible above the threshold. Taken together with the noise-free results, RQ7 indicates that the soundness guarantee transfers to hardware for circuits within the device's effective coherence budget, while honestly bounding the claim: for deep variational circuits, noise --- not the slice --- dominates, and noise-resilient slicing is left to future work~\cite{stievenart2025an}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_ibmq_hardware_tvd.png}
+\caption{Real-hardware proof-of-concept on IBM Q \texttt{ibm\_cleveland} (18 circuits, 4096 shots each): per-circuit TVD between the QSlice backward slice and the full circuit on the criterion qubit. The marginal is preserved (TVD $<0.05$) on 16 of 18 circuits; two deep QAOA circuits exceed the threshold under hardware noise.}
+\label{fig:hardware}
+\end{figure}
+
+\section{Discussion}
+We interpret the results against the prior baselines and draw out the practical consequences for quantum debugging tooling.
+
+The three primary findings tell one story: classical dependence analysis is \emph{necessary but not sufficient}, and the gap is precisely entanglement. A faithful classical def-use port---reading a controlled gate's control and writing only its target---produced semantically invalid backward slices on 42.9\,\% of (circuit, criterion) pairs (mean fidelity 0.762), and the failure is structural, not incidental: the naive slicer drops entangling gates whenever it slices from a control qubit. QPDG eliminates every violation (0\,\% invalid, mean fidelity indistinguishable from 1.0), holds per corpus (naive invalid 0.588 MQT, 0.408 QASMBench, 0.279 VeriQBench), and the same mechanism governs the forward direction, where the entanglement-blind classical slice covers only 0.70 of the influenced operations against QPDG's 1.0. Soundness alone, however, is cheap: the causal light cone achieves it by keeping every operation on any once-coupled qubit. The contribution that classical analysis structurally cannot match is \emph{precision at equal soundness}---QPDG's mutual-information pruning yields sound slices of 43.3\,\% of operations versus 75.8\,\% for the causal cone, exploiting qubit-subsystem separability after disentanglement, a signal with no classical analogue. For a developer localizing a wrong measurement outcome, this nearly halves the operations to inspect while never excluding the faulty one---exactly the failure that an off-the-shelf classical slicer would silently hide.
+
+The remaining results establish that the taxonomy is real, scalable, and provable. The edge-type ablation ranks entanglement (ED) as the dominant necessary condition ($\Delta$-SVR $+0.588$), ahead of measurement-collapse ($+0.382$) and unitary-evolution ($+0.294$); the null classical-feedback contribution ($+0.0$, $n=34$) is an honest ``untriggered here,'' not ``unnecessary in general,'' since few circuits carry measurement-conditioned corrections. QPDG \emph{construction} is purely structural and stayed sub-second on all 1124 circuits up to 169 qubits, exposing up to 222{,}783 dropped entanglement dependencies on one circuit---so the technique deploys at NISQ scale far past where exact validation is tractable. The semantic-preservation theorem is machine-checked in Isabelle/HOL 2025-2 with no \texttt{sorry} (7/7 obligations, 4 explicit density-matrix axioms), to our knowledge the first such result for quantum slicing, giving a guarantee independent of any circuit that complements RQ1's empirical 0\,\%. Finally, an IBM~Q \texttt{ibm\_cleveland} proof-of-concept preserved the criterion marginal on 16/18 circuits (median TVD 0.011); the two failures are deep QAOA circuits where hardware noise---not the slice---dominates, an expected bound we state honestly and leave to noise-resilient future work.
+
+\RPCallout{Takeaway}{Classical dependence analysis is necessary but not sufficient for quantum slicing: it is unsound on 42.9\,\% of slices. QPDG restores soundness ($0\,\%$ invalid, machine-checked), is more precise than the always-sound causal cone (43\,\% smaller), and scales structurally to 169 qubits---with entanglement edges the dominant necessary condition.}
+
+Taken together, the results convert a plausible intuition into a measured, formally grounded, and reproducible claim. The same UED/ED/MD/CD taxonomy that predicts the classical soundness gap is the structure over which we prove preservation and exploit precision, giving quantum software engineers a debugging primitive that classical tooling structurally cannot provide.
+
+\section{Threats to Validity}\label{sec:threats}
+We organize the threats following the standard four categories.
+
+\emph{Construct validity.} We judge soundness by the target qubit's reduced-density-matrix fidelity ($F\ge 1-10^{-6}$) rather than a sampled histogram, because a few-hundred-shot fixed-basis distribution has a noise floor that misclassifies sound slices and misses coherences a $Z$-basis count cannot see~\cite{nielsen2010quantum, gong2023learning}; the negative control ($F=1$ against an identical copy) confirms the oracle is not thresholding noise. The ``naive classical'' baseline is not a strawman but the faithful def-use port of PDG/SDG slicing~\cite{ferrante1987pdg, horwitz1990interprocedural}---the behavior an off-the-shelf classical slicer exhibits on a circuit---and we additionally evaluate the always-sound causal cone so the precision comparison (RQ2) is against a baseline sound by construction. The UED/ED/MD/CD taxonomy is grounded in the formal semantics~\cite{horodecki2009entanglement, heim2020quantum}, and RQ4 operationalizes necessity directly.
+
+\emph{Internal validity.} RQ1--RQ3 verify soundness by simulation; we mitigate the risk by using the full circuit's reduced state as an \emph{independent} oracle---the slice is materialized and simulated separately from the graph that produced it---and the machine-checked theorem (RQ6) establishes soundness independently of simulation, relative to stated axioms~\cite{blazy2015verified}. We hold circuits, criterion, and oracle identical across all three slicers, varying only the enabled edge types, so any difference is attributable to the dependency model rather than implementation divergence.
+
+\emph{External validity.} Exact simulation caps RQ1--RQ3 at small circuits ($\le 14$ qubits, $\le 220$ gates, cost $2^n$); the structural pass (RQ5) mitigates this by showing the naive port's unsoundness signature grows with circuit size on 1124 real circuits up to 169 qubits. Our scope is the gate model; transfer to measurement-based, adiabatic, or continuous-variable computing~\cite{danos2007distributed} is not claimed. All soundness results are noise-free; the IBM~Q study (RQ7) is an explicitly descriptive proof-of-concept, and systematic noisy-hardware evaluation is future work. Representativeness of developer-written circuits beyond the three standard suites~\cite{cross2022openqasm3} and user studies of debugging benefit are out of scope.
+
+\emph{Conclusion validity.} We apply Bonferroni correction over RQ1--RQ3 at $\alpha=0.05$ with paired tests appropriate to each measure, and report effect sizes (odds ratio, rank-biserial) alongside $p$-values. Because the exact oracle is deterministic, paired differences are crisp and the very small $p$-values partly reflect the absence of shot noise; we therefore frame the headline claim qualitatively---classical dependence is necessary but not sufficient---and report per-corpus breakdowns (naive invalid $0.588$/$0.408$/$0.279$) to show consistency across suites. All experiments use public benchmarks and simulators, so no IRB concerns arise.
+
+\section{Conclusion}\label{sec:conclusion}
+
+Program slicing has been a foundational technique for debugging, comprehension, and maintenance for four decades~\cite{weiser1982programmers, tip1994a, gallagher2025program}, but it has lacked a sound foundation for quantum programs. The core difficulty is that classical dependence analysis is \emph{necessary but not sufficient}: a faithful def-use port of a program dependence graph~\cite{ferrante1987pdg, horwitz1990interprocedural} treats a controlled gate's control as read-only, drops the entangling coupling between qubits, and therefore produces slices whose target qubit no longer reproduces the original quantum state. This paper closed that gap by reframing slice membership in terms of the dependency relations a quantum program actually exhibits, and by grounding soundness in a basis-independent semantic criterion rather than syntactic reachability.
+
+Our contributions are concrete and empirically validated. We introduced the typed Quantum Program Dependence Graph (QPDG), which unifies unitary-evolution, entanglement, measurement-collapse, and classical-feedback dependencies and makes explicit the entanglement dependency that classical PDG/SDG structurally cannot express~\cite{sinha1999sdg}. We defined a reduced-density-matrix soundness criterion ($F \geq 0.999999$) and showed that a faithful classical def-use slicer violates it on 42.9\,\% of slices while QPDG achieves 0\,\% across three benchmark suites (exact McNemar $p \approx 3.5\times10^{-105}$). QSlice's separability-pruning refinement yields sound slices 43\,\% smaller than the always-sound causal-cone baseline (Wilcoxon $p \approx 7.9\times10^{-90}$) and recovers the entanglement-influenced operations classical forward slicing misses (completeness 1.0 versus 0.70). A full-factorial ablation established entanglement edges as the dominant necessary condition for soundness ($\Delta$-SVR $+0.588$), QPDG construction stayed sub-second on all 1124 circuits up to 169 qubits, the semantic-preservation theorem was machine-checked in Isabelle/HOL with no \texttt{sorry}, and an IBM~Q proof-of-concept preserved the criterion marginal on 16 of 18 circuits.
+
+Several directions remain open. The exact-statevector oracle caps soundness validation at modest qubit counts; a static, machine-checked separability analysis would lift this ceiling and replace simulation-based pruning with a deployable algorithm. The TVD-based hardware criterion should be tightened to phase-sensitive metrics, and slicing extended to genuinely dynamic circuits with mid-circuit measurement and feedback~\cite{cross2022openqasm3}, ancilla and uncomputation dependencies, and noisy-hardware regimes. Finally, QPDG-based slicing is a natural primitive for downstream quantum software engineering tasks---test minimization, equivalence checking, and mutation-based repair~\cite{nayak2023qpac, zhao2023qchecker}---which we leave to future work.
+
+\section*{Acknowledgment}
+Portions of this manuscript (including text, tables, and figure captions) were drafted and edited with the assistance of generative AI tools. All AI-assisted content was reviewed, verified, and edited by the authors, who take full responsibility for the final manuscript, including the accuracy of all claims and references.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
