@@ -637,3 +637,36 @@ run, and no ICPC result existed.
    stratified by operator, plus every Bugs4Q unit. Every other RQ3 metric covers all units.
    - Both decisions were taken from cost estimates alone, before any RQ3 code had run on corpus A.
 
+### Deviation I-3 (2026-10-21, before any LLM call): settings the current Claude API does not accept
+These were found while implementing §6, from the API documentation. No LLM call had been made.
+
+1. **Sampling (§6.1).**
+   - `claude-opus-5-5`, `claude-sonnet-5-5` and `claude-haiku-5-5` reject non-default sampling
+     parameters (`temperature`, `top_p`, `top_k`) with HTTP 400. For the Claude arms, *temperature 0*
+     and *temperature 0.8* cannot be set.
+   - Claude arms: default sampling, with effort fixed at **`medium`** for all three models via
+     `output_config.effort`. That is the default for Opus 5.5 and Haiku 5.5; Sonnet 5.5 defaults to
+     `high` and is set to `medium` for comparability.
+   - Primary run: 1 call per item. Consistency analysis: 3 calls per item on the 50-item subset, at
+     the same settings.
+   - Open-weight arms (vLLM): unchanged, temperature 0 primary and 0.8 × 3 for consistency.
+2. **Reasoning tokens (§6.1).** All three Claude models think adaptively. Opus 5.5 cannot disable
+   thinking, and thinking tokens count against `max_tokens`. A 2,048-token cap would truncate
+   answers, so `max_tokens` is **16,000** for the Claude arms. The open arms keep 2,048.
+   - Thinking text is not requested (`display` left at its default, "omitted") and is not scored.
+3. **Refusals.** The server-side refusal fallback is **not** enabled. It would let a different model
+   answer, which breaks the per-model comparison. `stop_reason == "refusal"` is recorded as a refusal
+   and scored as unparsable. Refusal counts are reported per model.
+4. **Answer parsing (§6.3, §6.4), fixed now.**
+   - First, the whole text response, stripped, is parsed with `json.loads`.
+   - If that fails, the **last** JSON array of integers in the text (regex `\[[0-9,\s]*\]`) is
+     parsed.
+   - Anything else is unparsable.
+   - Indices that are not instruction positions of the shown circuit are dropped and counted.
+5. **Circuit text (§6.2).** If the number of instruction lines in `qasm2.dumps` differs from the
+   number of instructions (so the `// [k]` labels cannot be placed exactly), the item is excluded and
+   listed.
+6. **Prices for the budget cap** (USD per 10^6 input / output tokens, Anthropic list price,
+   2026-10-06): Opus 5.5 4 / 20; Sonnet 5.5 2 / 10; Haiku 5.5 0.10 / 0.50. Cost is computed from
+   each response's `usage`.
+
