@@ -624,3 +624,16 @@ run, and no ICPC result existed.
      which touches the criterion, but Sec. III's algorithm prunes only operations that do not touch
      the criterion qubit. With the X q2 preparation, K8 exercises the algorithm as specified. The
      paper's worked example is rewritten to match.
+
+### Deviation I-2 (2026-10-21, before any RQ3 result): cost limits found while implementing RQ3
+1. **§4.1, equivalent-mutant filtering.** `Operator.equiv` is used only when both circuits are
+   unitary and have at most 10 qubits. A 14-qubit operator is a 2^14 × 2^14 complex matrix (about
+   4 GB).
+   - Larger unitary circuits use the rule already specified for dynamic circuits: equal ρ_q for
+     every qubit, on |0…0⟩ and on 20 Haar product inputs.
+   - The rule used is recorded per mutant.
+2. **§4.3, MBFL.** It needs, per fault unit, (instructions × MBFL mutants × 21 test inputs) exact
+   simulations, so it runs on the same stratified sample as T2: up to 300 units, seed 20261026,
+   stratified by operator, plus every Bugs4Q unit. Every other RQ3 metric covers all units.
+   - Both decisions were taken from cost estimates alone, before any RQ3 code had run on corpus A.
+
