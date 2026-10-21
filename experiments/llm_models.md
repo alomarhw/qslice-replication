@@ -5,8 +5,8 @@ Fixed on 2026-10-21, before any LLM run, from GPU memory alone (the protocol's r
 | Arm | Model | Serving | Revision |
 |---|---|---|---|
 | Claude | `claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5` | Anthropic API | The model id returned by the API is logged per call |
-| O-mid | `Qwen/Qwen2.5-Coder-32B-Instruct` | vLLM 0.31.0, `--quantization fp8` (8-bit), on the author's GPU machine | Recorded from the HF cache after download |
-| O-small | `Qwen/Qwen2.5-Coder-1.5B-Instruct` | vLLM 0.31.0, bf16 | Recorded from the HF cache after download |
+| O-mid | `Qwen/Qwen2.5-Coder-32B-Instruct` | vLLM 0.31.0, `--quantization fp8` (8-bit), on the author's GPU machine | `381fc969f78efac66bc87ff7ddeadb7e73c218a7` (14 safetensors shards, 62 GB; downloaded 2026-10-21) |
+| O-small | `Qwen/Qwen2.5-Coder-1.5B-Instruct` | vLLM 0.31.0, bf16 | `2e1fd397ee46e1388853d2af2c993145b0f1098a` (downloaded 2026-10-21) |
 
 **GPU:** NVIDIA RTX 6000 Ada Generation, 49,140 MiB (`nvidia-smi`, 2026-10-21), reached over VPN
 (the author's GPU machine).
