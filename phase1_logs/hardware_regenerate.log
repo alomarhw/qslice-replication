@@ -1,0 +1,4 @@
+/private/var/folders/rl/nmft9d5n3bx5mhbt7srwys8s2fpjv9/T/tmpu3g86kdn/scripts/recompute_hardware_tvd.py:11: DeprecationWarning: The `qiskit_ibm_runtime.utils.json` package has been moved to `qiskit_ibm_runtime.json` as of qiskit_ibm_runtime v0.48.0, and it will be its only location in a future release, 3 months or more after v0.48.0. Please adjust your imports accordingly, and note that the only public items are `RuntimeDecoder` and `RuntimeEncoder`, which are available as top-level imports.
+  from qiskit_ibm_runtime.utils.json import RuntimeDecoder
+ibm_cleveland: 16/18 circuits marginal-preserved (TVD < 0.05); wrote /private/var/folders/rl/nmft9d5n3bx5mhbt7srwys8s2fpjv9/T/tmpu3g86kdn/scripts/../results/TAB_hardware_ibmq.csv + figure
+IDENTICAL (content; line endings differ)  TAB_hardware_ibmq.csv

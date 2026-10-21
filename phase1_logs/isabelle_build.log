@@ -1,0 +1,26 @@
+Started at Tue Oct 20 23:21:40 GMT-4 2026 (polyml-5.9.2_x86_64_32-darwin on iMacPro)
+ISABELLE_TOOL_JAVA_OPTIONS="-Djava.awt.headless=true -Xms512m -Xmx4g -Xss16m"
+ISABELLE_BUILD_OPTIONS=""
+
+ML_PLATFORM="x86_64_32-darwin"
+ML_HOME="/Applications/Isabelle2025-2.app/contrib/polyml-5.9.2-2/x86_64_32-darwin"
+ML_SYSTEM="polyml-5.9.2"
+ML_OPTIONS="--minheap 500"
+
+Session Pure/Pure
+Session Misc/Tools
+Session HOL/HOL (main)
+Session HOL/HOL-Library (main timing)
+Session Unsorted/QSliceSoundness
+Running QSliceSoundness ...
+QSliceSoundness: theory HOL-Library.Sublist
+QSliceSoundness: theory QSliceSoundness.QSliceSoundness
+QSliceSoundness: theory HOL-Library.Sublist 100% (9.676s cumulated time)
+QSliceSoundness: theory QSliceSoundness.QSliceSoundness 100% (0.854s cumulated time)
+Timing QSliceSoundness (8 threads, 3.687s elapsed time, 11.516s cpu time, 0.685s GC time, factor 3.12)
+Finished QSliceSoundness (0:00:07 elapsed time, 0:00:13 cpu time, factor 1.83)
+
+Finished at Tue Oct 20 23:21:55 GMT-4 2026
+0:00:15 elapsed time, 0:00:13 cpu time, factor 0.88
+isabelle build -v -d . QSliceSoundness  40.38s user 6.39s system 215% cpu 21.730 total
+isabelle build exit=0
