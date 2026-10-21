@@ -432,6 +432,41 @@ def parse_answer(text: str):
     return None
 
 
+def _top_level_lists(t: str):
+    out, depth, start = [], 0, None
+    for i, ch in enumerate(t):
+        if ch == "[":
+            if depth == 0:
+                start = i
+            depth += 1
+        elif ch == "]" and depth:
+            depth -= 1
+            if depth == 0:
+                out.append(t[start:i + 1])
+    return out
+
+
+def parse_answer_lenient(text: str):
+    """Deviation I-4 (post hoc, sensitivity only): json.loads of the stripped text, else the last
+    top-level list whose elements are all indices written as 7, "7", [7] or "[7]" (never a list nested
+    inside another one, unlike parse_answer's fallback)."""
+    t = (text or "").strip()
+    try:
+        v = json.loads(t)
+        if isinstance(v, list) and all(isinstance(x, int) and not isinstance(x, bool) for x in v):
+            return v
+    except ValueError:
+        pass
+    elem = re.compile(r'\s*"?\[?\s*(\d+)\s*\]?"?\s*')
+    for cand in reversed(_top_level_lists(t)):
+        inner = cand[1:-1]
+        parts = [] if not inner.strip() else inner.split(",")
+        ms = [elem.fullmatch(x) for x in parts]
+        if all(ms):
+            return [int(m.group(1)) for m in ms]
+    return None
+
+
 def cmd_score(a) -> int:
     items = {it["id"]: it for it in map(json.loads, open(OUT / f"{a.task}_items.jsonl"))}
     rows = []
@@ -442,7 +477,8 @@ def cmd_score(a) -> int:
                 latest[(r["item"], r["input"], r["context"], r["run"])] = r
         for r in latest.values():
             it = items[r["item"]]
-            ans = parse_answer(r["text"]) if not r.get("refusal") else None
+            parser = parse_answer_lenient if a.lenient else parse_answer
+            ans = parser(r["text"]) if not r.get("refusal") else None
             row = {"task": a.task, "arm": r["arm"], "model_returned": r["model_returned"], "item": r["item"],
                    "split": it["split"], "source": it["source"], "corpus": it["corpus"], "input": r["input"],
                    "context": r["context"], "run": r["run"], "consistency": it["consistency"],
@@ -475,7 +511,7 @@ def cmd_score(a) -> int:
                         "fault_in_input": int(bool(fault & valid))}
             rows.append(row)
     rows.sort(key=lambda r: (r["arm"], r["item"], r["input"], r["context"], r["run"]))
-    path = OUT / f"{a.task}_scores.csv"
+    path = OUT / f"{a.task}_scores{'_lenient' if a.lenient else ''}.csv"
     with open(path, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(dict.fromkeys(k for r in rows for k in r)))
         w.writeheader()
@@ -504,6 +540,7 @@ def main() -> int:
     p.add_argument("--limit", type=int, default=None)
     p = sub.add_parser("score")
     p.add_argument("--task", choices=["t1", "t2"], required=True)
+    p.add_argument("--lenient", action="store_true", help="Deviation I-4 sensitivity parser (post hoc)")
     a = ap.parse_args()
     return {"items": cmd_items, "run": cmd_run, "score": cmd_score}[a.cmd](a)
 

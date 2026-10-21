@@ -1,0 +1,15 @@
+5 calls to make; spent so far $0.09
+  5/5 {'ok': 5} $0.09 1s
+done {'ok': 5, 'skipped': 0}; spent $0.09
+221 calls to make; spent so far $0.09
+  50/221 {'ok': 50} $0.09 4s
+  100/221 {'ok': 100} $0.09 7s
+  150/221 {'ok': 150} $0.09 10s
+  200/221 {'ok': 200} $0.09 11s
+  221/221 {'ok': 221} $0.09 14s
+done {'ok': 221, 'skipped': 0}; spent $0.09
+150 calls to make; spent so far $0.09
+  50/150 {'ok': 50} $0.09 5s
+  100/150 {'ok': 100} $0.09 6s
+  150/150 {'ok': 150} $0.09 10s
+done {'ok': 150, 'skipped': 0}; spent $0.09

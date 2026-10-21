@@ -693,3 +693,21 @@ These were found while implementing §6, from the API documentation. No LLM call
      cap therefore covers a random subset of items on every arm.
    - **Scope of the cap.** The cap covers all Claude spend logged for the task, including the
      development check.
+
+### Deviation I-4 (2026-10-21, AFTER the O-small T1 scored run): a sensitivity parser, added post hoc
+- **What happened.** O-small writes its index lists as strings, e.g. `["0", "1"]` or `["[17]", "[18]"]`.
+  Its 5 development items showed this. They were run in the same command chain as the scored runs,
+  and the output was not read before the scored and consistency runs started. This was a procedural
+  slip: §6.5 intends the format check to be inspected first.
+- **Primary stays frozen.** The Deviation I-3 item 4 rule is unchanged and remains primary
+  (`t1_scores.csv`). Under it, 23% of O-small's answers parse.
+  - The fallback of that rule reads `["[17]", "[18]"]` as `[18]`, the last inner integer list. Such
+    answers count as parsed, with a truncated answer.
+- **Sensitivity score (post hoc).** `score --lenient` writes `<task>_scores_lenient.csv` and is
+  applied identically to every arm. It uses `json.loads` first; otherwise it takes the last
+  top-level list whose elements are all indices, written as `7`, `"7"`, `[7]` or `"[7]"`.
+  - It is reported as sensitivity only, and labelled post hoc.
+  - O-mid and the Claude development answers are unaffected, since their answers are integer lists.
+- **The author decides** how O-small is reported: format failure as primary, with the sensitivity
+  score in the text.
+- **The prompt is not changed.**

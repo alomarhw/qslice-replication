@@ -73,3 +73,11 @@ Not part of Phase 1.
 
 **RQ2 robustness and RQ3 full runs** were started at `440d12d` (8 workers each). The classifier fix
 does not touch either of them.
+
+**LLM T1, open arms** (items frozen at `6c03f7c`; prompts unchanged).
+- O-mid: 221 primary and 150 consistency calls; all parse.
+- O-small: same call counts. Its answers are string lists, which led to **Deviation I-4**. My slip:
+  the development output was chained into the scored run without being read.
+- **GPU serving:** vLLM needed `VLLM_USE_FLASHINFER_SAMPLER=0`, since no CUDA toolkit is available
+  for FlashInfer's JIT (`llm_models.md`).
+- **Lesson:** `pkill -f "vllm serve"` over ssh kills the ssh shell itself; use the `[b]in/vllm` pattern.
