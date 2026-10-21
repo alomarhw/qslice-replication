@@ -1,0 +1,19 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  10/158 circuits, 158s
+  20/158 circuits, 195s
+  30/158 circuits, 195s
+  40/158 circuits, 875s
+  50/158 circuits, 875s
+  60/158 circuits, 875s
+  70/158 circuits, 875s
+  80/158 circuits, 875s
+  90/158 circuits, 875s
+  100/158 circuits, 875s
+  110/158 circuits, 875s
+  120/158 circuits, 875s
+  130/158 circuits, 875s
+  140/158 circuits, 875s
+  150/158 circuits, 875s
+  158/158 circuits, 875s
+pairs: 784; excluded circuits: 3; wrote results/icpc/rq1
+~/venvs/qslice-icpc/bin/python icpc/rq1_run.py --data-root ../data --eval-cod  2814.78s user 840.98s system 285% cpu 21:20.03 total
