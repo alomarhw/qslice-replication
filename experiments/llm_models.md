@@ -15,3 +15,11 @@ Fixed on 2026-10-21, before any LLM run, from GPU memory alone (the protocol's r
 - 32B in bf16 is about 64 GB, which does not fit.
 - 32B in 8-bit is about 33 GB, which fits with headroom for prompts of at most about 8k tokens.
 - So O-mid is the 32B model at FP8.
+
+**Serving (2026-10-21).** `serve.sh` on the GPU machine runs
+`vllm serve <repo> --revision <rev> --host 127.0.0.1 --port 8000 --served-model-name <repo>`.
+- O-mid adds `--quantization fp8 --max-model-len 16384 --gpu-memory-utilization 0.92`; the
+  KV cache holds 37,712 tokens.
+- `VLLM_USE_FLASHINFER_SAMPLER=0`: the FlashInfer sampling kernel must be JIT-compiled, and no
+  matching CUDA toolkit is installed. vLLM's own sampler is used instead. Greedy decoding at
+  temperature 0 is the same algorithm either way.
