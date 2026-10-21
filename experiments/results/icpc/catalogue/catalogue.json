@@ -1,0 +1,2676 @@
+{
+  "rows": [
+    {
+      "id": "K1",
+      "kind": "data, same wire",
+      "criterion": 0,
+      "n_ops": 2,
+      "dynamic": false,
+      "influence": [
+        0,
+        1
+      ],
+      "contribution_any_input": [
+        0,
+        1
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K2",
+      "kind": "control -> target",
+      "criterion": 1,
+      "n_ops": 2,
+      "dynamic": false,
+      "influence": [
+        0,
+        1
+      ],
+      "contribution_any_input": [
+        0,
+        1
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K3",
+      "kind": "phase kickback",
+      "criterion": 0,
+      "n_ops": 4,
+      "dynamic": false,
+      "influence": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            2
+          ],
+          "sound": false,
+          "fidelity": 0.0,
+          "missed_influence": [
+            0,
+            1,
+            3
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            2
+          ],
+          "sound": false,
+          "fidelity": 0.0,
+          "missed_influence": [
+            0,
+            1,
+            3
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K4",
+      "kind": "symmetric controlled phase",
+      "criterion": 0,
+      "n_ops": 4,
+      "dynamic": false,
+      "influence": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        3
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.49999999999999967,
+          "missed_influence": [
+            1,
+            2,
+            3
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [
+            2
+          ],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.49999999999999967,
+          "missed_influence": [
+            1,
+            2,
+            3
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [
+            2
+          ],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K5",
+      "kind": "partner history via entanglement (kickback category)",
+      "criterion": 0,
+      "n_ops": 3,
+      "dynamic": false,
+      "influence": [
+        0,
+        1,
+        2
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        2
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.8221088436188452,
+          "missed_influence": [
+            1,
+            2
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.8221088436188452,
+          "missed_influence": [
+            1,
+            2
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K6",
+      "kind": "no-signalling: partner after last interaction",
+      "criterion": 0,
+      "n_ops": 4,
+      "dynamic": false,
+      "influence": [
+        0,
+        1
+      ],
+      "contribution_any_input": [
+        0,
+        1
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.49999999999999983,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.49999999999999983,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K6b",
+      "kind": "no-signalling, later op on criterion",
+      "criterion": 0,
+      "n_ops": 5,
+      "dynamic": false,
+      "influence": [
+        0,
+        1,
+        4
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        4
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            4
+          ],
+          "sound": false,
+          "fidelity": 0.49999999999999967,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": [
+            2,
+            3
+          ]
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999993,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K7",
+      "kind": "SWAP moves state",
+      "criterion": 0,
+      "n_ops": 2,
+      "dynamic": false,
+      "influence": [
+        0,
+        1
+      ],
+      "contribution_any_input": [
+        0,
+        1
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K8",
+      "kind": "entangle, disentangle, re-entangle",
+      "criterion": 0,
+      "n_ops": 5,
+      "dynamic": false,
+      "influence": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "contribution_any_input": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999998,
+          "missed_influence": [
+            2,
+            3,
+            4
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": [
+            1
+          ]
+        },
+        "lcq": {
+          "slice": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999998,
+          "missed_influence": [
+            2,
+            3,
+            4
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": [
+            1
+          ]
+        },
+        "q": {
+          "slice": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": [
+            1
+          ]
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": [
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "K9",
+      "kind": "indirect (chained) entanglement",
+      "criterion": 0,
+      "n_ops": 4,
+      "dynamic": false,
+      "influence": [
+        0,
+        1,
+        2
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        2
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K10",
+      "kind": "uncomputation U ... U^dagger",
+      "criterion": 0,
+      "n_ops": 6,
+      "dynamic": false,
+      "influence": [
+        2,
+        3
+      ],
+      "contribution_any_input": [
+        2,
+        3
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0,
+            1
+          ]
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0,
+            1
+          ]
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0,
+            1
+          ]
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0,
+            1
+          ]
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0,
+            1
+          ]
+        },
+        "q": {
+          "slice": [
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0,
+            1
+          ]
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999997,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "K11",
+      "kind": "partner mid-circuit measurement, no feedback",
+      "criterion": 0,
+      "n_ops": 4,
+      "dynamic": true,
+      "influence": [
+        0,
+        1
+      ],
+      "contribution_any_input": [
+        0,
+        1
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999998,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999998,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K11b",
+      "kind": "partner measurement, later op on criterion",
+      "criterion": 0,
+      "n_ops": 5,
+      "dynamic": true,
+      "influence": [
+        0,
+        1,
+        4
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        4
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            4
+          ],
+          "sound": false,
+          "fidelity": 0.49999999999999956,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": [
+            2,
+            3
+          ]
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K12",
+      "kind": "measurement + classical feedback",
+      "criterion": 0,
+      "n_ops": 3,
+      "dynamic": true,
+      "influence": [
+        0,
+        1,
+        2
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        2
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            2
+          ],
+          "sound": false,
+          "fidelity": 0.5,
+          "missed_influence": [
+            0,
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "not_applicable": "LightCone(X): ValueError: The circuit contains measurements and an observable has been given: remove the observable or the measurements."
+        },
+        "lcq_z": {
+          "not_applicable": "LightCone(Z): ValueError: The circuit contains measurements and an observable has been given: remove the observable or the measurements."
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K13",
+      "kind": "teleportation",
+      "criterion": 2,
+      "n_ops": 10,
+      "dynamic": true,
+      "influence": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            2,
+            3,
+            8,
+            9
+          ],
+          "sound": false,
+          "fidelity": 0.49999999999999983,
+          "missed_influence": [
+            0,
+            1,
+            4,
+            5,
+            6,
+            7
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "not_applicable": "LightCone(X): ValueError: The circuit contains measurements and an observable has been given: remove the observable or the measurements."
+        },
+        "lcq_z": {
+          "not_applicable": "LightCone(Z): ValueError: The circuit contains measurements and an observable has been given: remove the observable or the measurements."
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K14",
+      "kind": "overwritten classical bit",
+      "criterion": 0,
+      "n_ops": 5,
+      "dynamic": true,
+      "influence": [
+        1,
+        3,
+        4
+      ],
+      "contribution_any_input": [
+        1,
+        3,
+        4
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            4
+          ],
+          "sound": false,
+          "fidelity": 0.5,
+          "missed_influence": [
+            1,
+            3
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            1,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "not_applicable": "LightCone(X): ValueError: The circuit contains measurements and an observable has been given: remove the observable or the measurements."
+        },
+        "lcq_z": {
+          "not_applicable": "LightCone(Z): ValueError: The circuit contains measurements and an observable has been given: remove the observable or the measurements."
+        },
+        "yz": {
+          "slice": [
+            1,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            1,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0,
+            2
+          ]
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "K15",
+      "kind": "reset of a partner after the interaction",
+      "criterion": 0,
+      "n_ops": 3,
+      "dynamic": true,
+      "influence": [
+        0,
+        1
+      ],
+      "contribution_any_input": [
+        0,
+        1
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999999,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999999,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999998,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K16",
+      "kind": "register condition (multi-bit)",
+      "criterion": 0,
+      "n_ops": 5,
+      "dynamic": true,
+      "influence": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            4
+          ],
+          "sound": false,
+          "fidelity": 0.7499999999999999,
+          "missed_influence": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999999,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "not_applicable": "LightCone(X): ValueError: The circuit contains measurements and an observable has been given: remove the observable or the measurements."
+        },
+        "lcq_z": {
+          "not_applicable": "LightCone(Z): ValueError: The circuit contains measurements and an observable has been given: remove the observable or the measurements."
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999999,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999999,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999999,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999999,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K17",
+      "kind": "GHZ partial uncompute (criterion q0)",
+      "criterion": 0,
+      "n_ops": 6,
+      "dynamic": false,
+      "influence": [
+        0,
+        1
+      ],
+      "contribution_any_input": [
+        0,
+        1
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999998,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999998,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K17",
+      "kind": "GHZ partial uncompute (criterion q1)",
+      "criterion": 1,
+      "n_ops": 6,
+      "dynamic": false,
+      "influence": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K18",
+      "kind": "Deutsch: kickback without entanglement",
+      "criterion": 0,
+      "n_ops": 5,
+      "dynamic": false,
+      "influence": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "contribution_any_input": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            1,
+            4
+          ],
+          "sound": false,
+          "fidelity": 1.029522000554799e-34,
+          "missed_influence": [
+            0,
+            2,
+            3
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999991,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K19",
+      "kind": "Bell pair (criterion q1)",
+      "criterion": 1,
+      "n_ops": 2,
+      "dynamic": false,
+      "influence": [
+        0,
+        1
+      ],
+      "contribution_any_input": [
+        0,
+        1
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K19",
+      "kind": "Bell pair (criterion q0)",
+      "criterion": 0,
+      "n_ops": 2,
+      "dynamic": false,
+      "influence": [
+        0,
+        1
+      ],
+      "contribution_any_input": [
+        0,
+        1
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999998,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "lc": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "lcq_z": {
+          "slice": [
+            0
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999998,
+          "missed_influence": [
+            1
+          ],
+          "non_influencing_included": []
+        },
+        "yz": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "q": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": true,
+          "fidelity": 0.9999999999999996,
+          "missed_influence": [],
+          "non_influencing_included": []
+        }
+      }
+    },
+    {
+      "id": "K20",
+      "kind": "measured-then-corrected criterion",
+      "criterion": 0,
+      "n_ops": 3,
+      "dynamic": true,
+      "influence": [
+        1,
+        2
+      ],
+      "contribution_any_input": [
+        1,
+        2
+      ],
+      "slicers": {
+        "du": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0
+          ]
+        },
+        "lc": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0
+          ]
+        },
+        "lcq": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0
+          ]
+        },
+        "lcq_z": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0
+          ]
+        },
+        "yz": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0
+          ]
+        },
+        "q": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0
+          ]
+        },
+        "4e_unfixed": {
+          "slice": [
+            0,
+            1
+          ],
+          "sound": false,
+          "fidelity": 0.4999999999999999,
+          "missed_influence": [
+            2
+          ],
+          "non_influencing_included": [
+            0
+          ]
+        },
+        "4e_fixed": {
+          "slice": [
+            0,
+            1,
+            2
+          ],
+          "sound": true,
+          "fidelity": 1.0,
+          "missed_influence": [],
+          "non_influencing_included": [
+            0
+          ]
+        }
+      }
+    }
+  ],
+  "disagreements": [
+    "K6b q0 4e_unfixed: expected [0, 1, 2, 3, 4], got [0, 1, 4]",
+    "K6b q0 4e_fixed: expected [0, 1, 2, 3, 4], got [0, 1, 4]",
+    "K11b q0 4e_unfixed: expected [0, 1, 2, 3, 4], got [0, 1, 4]",
+    "K11b q0 4e_fixed: expected [0, 1, 2, 3, 4], got [0, 1, 4]"
+  ]
+}
