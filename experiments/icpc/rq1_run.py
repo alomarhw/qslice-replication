@@ -24,6 +24,8 @@ from collections import deque
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
+from qiskit import ClassicalRegister
+
 HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 
@@ -63,7 +65,8 @@ def classify_miss(qc, k: int, q: int) -> str:
                 op = data[j].operation
                 if op.name == "if_else":
                     tgt = op.condition[0]
-                    bits = [tgt] if not hasattr(tgt, "__iter__") else list(tgt)
+                    # a QASM 2 `if(creg==v)` condition is a register; it has no __iter__ attribute
+                    bits = list(tgt) if isinstance(tgt, ClassicalRegister) else [tgt]
                     if bit in bits:
                         ctrl_succ[i].add(j)
                 if op.name == "measure" and bit in data[j].clbits:

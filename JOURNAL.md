@@ -52,3 +52,24 @@ Not part of Phase 1.
     Jun 29–30 run.
   - The plan forbids that workspace anyway (fake user-study code).
   - D2 stays "not reproducible", as PROVENANCE says.
+
+## 2026-10-21: Phase 3
+
+**RQ1 full run** (commit `5e5232e`, 21 min, `logs/icpc/rq1.log`).
+- 784 pairs.
+- 3 circuits excluded at load (`excluded.json`): one QASM parse error and two Grover circuits that
+  exceed 220 instructions after decomposition.
+
+**Miss-classifier bug, found after the run and fixed.**
+- **Bug:** `classify_miss` did not expand a QASM 2 `if(creg==v)` condition. The condition is a
+  `ClassicalRegister`, which has no `__iter__` attribute. So measurement→condition (CONTROL) edges
+  were missed.
+- **Effect:** 134 S-du misses on dynamic circuits (dqc_*, inverseqft_n4, qec_sm_n5) were labelled
+  "unreachable", a label the code itself says contradicts no-signalling.
+- **Fix:** `icpc/rq1_reclassify.py` recomputes only the category column; the old value is kept as
+  `category_before_fix`. All 134 are now "feedback", and none remain "unreachable"; the other 6,229
+  rows are unchanged.
+- **Unaffected:** the classifier is not used for any slice, soundness, influence or recall number.
+
+**RQ2 robustness and RQ3 full runs** were started at `440d12d` (8 workers each). The classifier fix
+does not touch either of them.
