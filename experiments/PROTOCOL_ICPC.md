@@ -670,3 +670,26 @@ These were found while implementing §6, from the API documentation. No LLM call
    2026-10-06): Opus 5.5 4 / 20; Sonnet 5.5 2 / 10; Haiku 5.5 0.10 / 0.50. Cost is computed from
    each response's `usage`.
 
+7. **Details §6 leaves open, fixed in `icpc/llm_tasks.py` before any call (2026-10-21).**
+   - **Qubit name.** The qubit is named as in the QASM text (register and index, e.g. `q[3]`).
+   - **Prompt wording.** The `// [k]` in the T1 prompt is sent with its backticks, as written in
+     §6.3.
+   - **Single-bit conditions.** Catalogue K12, K14 and K20 use single-bit conditions, which
+     OpenQASM 2 cannot write. They are shown with every classical bit in its own one-bit register.
+     The instructions and indices are the same; only the notation changes.
+   - **T1 sample.** The 200 pairs are allocated in proportion to each corpus's pairs, using largest
+     remainders. The two corpus-A development pairs are drawn from the remaining pairs with seed
+     20261025.
+   - **T2 sample.** Primary units only, since the prompt says the *measured* distribution is wrong.
+     30 per operator (all of them when there are fewer), seed 20261026.
+   - **Context string.** The words are those of d'Aloisio et al.'s context-aware prompt: "The name of
+     the algorithm is: <file stem>. The code includes <n> qubits."
+   - **Inserted-measurement register.** The extra register of an inserted measurement (M-mins) is
+     shown as `c_extra`, not `mut`.
+   - **Consistency subset.** 50 scored items per task, runs 1–3. T1 uses its single input. T2 uses
+     inputs (i) and (iii) with context.
+   - **Open-model seeds.** Open-arm runs 1–3 use seed = run number.
+   - **Call order.** Claude calls are ordered item-major in a seeded item order. A run stopped by the
+     cap therefore covers a random subset of items on every arm.
+   - **Scope of the cap.** The cap covers all Claude spend logged for the task, including the
+     development check.
