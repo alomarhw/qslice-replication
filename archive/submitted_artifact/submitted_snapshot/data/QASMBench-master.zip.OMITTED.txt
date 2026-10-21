@@ -1,0 +1,3 @@
+'QASMBench-master.zip' (163 MB) was omitted from this replication package because it exceeds GitHub's 100 MB per-file limit.
+
+Regenerate it by running the included fetch/reproduce scripts (e.g. `python fetch_data.py` or `bash reproduce.sh`), which download the dataset from its original source.

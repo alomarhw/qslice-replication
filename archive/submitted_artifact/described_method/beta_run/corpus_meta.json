@@ -1,0 +1,15 @@
+{
+  "exact_total": 242,
+  "exact_by_src": {
+    "QASMBench": 31,
+    "MQT": 46,
+    "VeriQ": 165
+  },
+  "dropped_ops": 24,
+  "dropped_arity": 1,
+  "exact_max_qubits": 14,
+  "veriq_by_family": {
+    "combinational": 150,
+    "variational": 15
+  }
+}

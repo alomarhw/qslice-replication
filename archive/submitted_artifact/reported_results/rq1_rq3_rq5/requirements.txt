@@ -1,0 +1,9 @@
+cirq
+matplotlib==3.9.1
+numpy==1.26.4
+pandas==2.2.2
+pennylane
+qiskit
+qiskit-aer
+scipy==1.13.1
+qiskit-ibm-runtime>=0.40  # to read captured ibm_cleveland SamplerV2 job results (RQ5 hardware)

@@ -20,6 +20,8 @@ isabelle/      soundness of causal-cone slicing, no sorry, no axioms            
 hardware/      captured IBM Quantum jobs and the TVD recomputation              (RQ7)
 figures/       Figs. 1-5 with the scripts that generate them
 data/          benchmark circuits (MQT Bench, VeriQBench, QASMBench in-cap subset); fetch_data.py
+archive/       the originally submitted artifact, the code behind each submitted number, and its
+               provenance notes (self-contained; see archive/README.md)
 ```
 
 ## Results at a glance

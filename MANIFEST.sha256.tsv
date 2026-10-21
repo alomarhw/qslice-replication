@@ -8,7 +8,7 @@ Sec. III method prototype (Jun 28, 2026)	qslice/requirements.txt	232854a2b5439fb
 beta-manuscript run (archived)	qslice/beta_run/results.3suite.json	fbaf14c779a219ef15d952793a594e6e9bee820e7421a3497126a8d34ff18ca5	byte-identical
 beta-manuscript run (archived)	qslice/beta_run/run_3suite_exact.log	b0f2e0dd16783396331dde41f46c7c09b90b50242f5bdd8ea23ca5cc359e28db	byte-identical
 beta-manuscript run (archived)	qslice/beta_run/corpus_meta.json	4d8e926885683e55e54f2c831146ba1608b75f8163e4b40603db9cb00734b706	byte-identical
-written for this repository	qslice/beta_run/README.md	9f127af8cf0503a02f7eb0584149c7f5a12f27e5fed2883c3d299cfdd7da0a38	new
+written for this repository	qslice/beta_run/README.md	08b448d4e020d4aed8ebde62c899fffe779040b5c55a7fffb5ff2526155cf9fe	new
 written for this repository	qslice/beta_run/regenerate.py	bf5a1bc7ba3ba25b80b1344881590ee3f542d039d9ac8823d51d2defe2f30cd9	new
 four-edge implementation	fouredge/src/ablation.py	02d6cce53497ad1cbe673ec54f593753562bb50e2ea205650bf9f4450d90cd80	byte-identical
 four-edge implementation	fouredge/src/circuit_loader.py	d5c9d66433712f4083b87492d81a3280c4898c0d13ac94d1fd1cfdb2d270d85c	byte-identical
@@ -1202,8 +1202,10 @@ benchmark corpus (see data/README.md)	data/qasmbench/small/vqe_uccsd_n4.qasm	be5
 benchmark corpus (see data/README.md)	data/qasmbench/small/wstate_n3.qasm	9077432a88fea0f3da2c3b24558333c1a329261b20836ba82b253418d8c7b0dd	byte-identical
 written for the provenance package	data/qasmbench_layout.tsv	160e5be191daefc8f9211431153018f16ec04b77c791ec1beb8ea2f66bb22193	layout map
 written for this repository	data/README.md	44d76eefb2576d08d14dc6caa9b5eb100d3cc08ad3a0e40b7a1df1dc7737f60d	new
-written for this repository	README.md	04fa886b0a1d3c36260f0bbc8bf70f873fb4d14bc8d2ea53bc30a6ea789783aa	new
-written for this repository	PROVENANCE.md	61a8b9cac33b431da443a96e083cd7541b5b451618d34e753c280705b31a22c5	new
+written for this repository	README.md	00e950642c0cbac3f3a24b5f0eb318ef27bd476c6517ae525775295048717ee2	new
+written for this repository	PROVENANCE.md	2edd1b5bdfb78b34913b1a9d2d6714376a05e04ddd6e0854f62282ce33033079	new
 written for this repository	reproduce.sh	cc3e17f5cb889a07e64b65cae32f80fe5927db0ff84b2892681e136d1e1fff6a	new
 written for this repository	fetch_data.py	e70982f66667a564619322cb158503b682c3f13d023caa43afd760b1fa163f83	new
 written for this repository	.gitignore	ae51d58d672ad99a42c0fa6000863eae9b0724bacec6041dab0b713f20443b1d	new
+written for this repository	archive/README.md	bccc28af8b7a1820cf253ad195792ae4db35c23e3ec9ec6eef0e2708e4f3a93b	new
+provenance package (self-contained)	archive/submitted_artifact/	see archive/submitted_artifact/MANIFEST.sha256.tsv	byte-identical copy

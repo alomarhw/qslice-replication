@@ -1,0 +1,12 @@
+{
+  "mode": "Paper-grade run mode",
+  "rows_or_items": 80,
+  "repeats": 1,
+  "datasets": [
+    "QASMBench",
+    "OpenQASM3"
+  ],
+  "paper_grade": true,
+  "smoke_mode": false,
+  "random_seed": 42
+}

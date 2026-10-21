@@ -22,13 +22,13 @@ They are **not** the results of the submitted paper, which came from a simplifie
 | When (EDT) | Evidence |
 |---|---|
 | 2026-06-20 00:38 | previous archived build; these files are not yet present |
-| 2026-06-21 04:38 | the pipeline's architect brief already cites "242 simulable circuits / 1,356 exact slices" |
+| 2026-06-21 04:38 | an internal design document dated then already cites "242 simulable circuits / 1,356 exact slices" |
 | 2026-06-24 01:53 | beta manuscript PDF created with these numbers |
 | 2026-06-28 16:20 | the prototype code in `../` exported |
 | 2026-06-28 16:35 | files first archived; the build log stored the same 19 metrics |
 
 The run itself therefore happened between June 20 00:38 and June 21 04:38. It was not recorded as a
-pipeline job, and no per-slice records were saved.
+separate build, and no per-slice records were saved.
 
 ## Regeneration
 ```bash

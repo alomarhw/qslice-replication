@@ -1,0 +1,53 @@
+{
+  "usedSynthetic": false,
+  "datasets": [
+    {
+      "name": "MQT Bench",
+      "source": "real",
+      "path": "data/mqtbench",
+      "rows": 42,
+      "version": "",
+      "license": "",
+      "citation": "MQT Bench (Munich Quantum Toolkit) benchmark corpus",
+      "checksum": "",
+      "recordCount": 42,
+      "schema": [
+        "OpenQASM .qasm corpus",
+        "qreg declarations",
+        "unitary gate operations"
+      ]
+    },
+    {
+      "name": "QASMBench",
+      "source": "real",
+      "path": "data/qasmbench",
+      "rows": 39,
+      "version": "",
+      "license": "",
+      "citation": "QASMBench OpenQASM benchmark corpus",
+      "checksum": "",
+      "recordCount": 39,
+      "schema": [
+        "OpenQASM .qasm corpus",
+        "qreg declarations",
+        "unitary gate operations"
+      ]
+    },
+    {
+      "name": "VeriQBench",
+      "source": "real",
+      "path": "data/veriqbench",
+      "rows": 80,
+      "version": "",
+      "license": "",
+      "citation": "VeriQBench quantum circuit benchmark corpus",
+      "checksum": "",
+      "recordCount": 80,
+      "schema": [
+        "OpenQASM .qasm corpus",
+        "qreg declarations",
+        "unitary gate operations"
+      ]
+    }
+  ]
+}

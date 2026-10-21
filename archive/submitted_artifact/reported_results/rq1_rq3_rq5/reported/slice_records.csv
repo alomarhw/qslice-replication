@@ -1,0 +1,2437 @@
+circuit,target,slicer,fidelity,invalid,slice_size_fraction,selected_ops,total_ops,corpus
+deutsch_n2,0,qpdg,1.0,0,1.0,5,5,QASMBench
+deutsch_n2,0,naive,0.5,1,0.6,3,5,QASMBench
+deutsch_n2,0,causal,1.0,0,1.0,5,5,QASMBench
+deutsch_n2,1,qpdg,1.0,0,0.6,3,5,QASMBench
+deutsch_n2,1,naive,1.0,0,0.6,3,5,QASMBench
+deutsch_n2,1,causal,1.0,0,1.0,5,5,QASMBench
+ipea_n2,0,qpdg,1.0,0,1.0,8,8,QASMBench
+ipea_n2,0,naive,1.0,0,1.0,8,8,QASMBench
+ipea_n2,0,causal,1.0,0,1.0,8,8,QASMBench
+ipea_n2,1,qpdg,1.0,0,0.0,0,8,QASMBench
+ipea_n2,1,naive,1.0,0,0.0,0,8,QASMBench
+ipea_n2,1,causal,1.0,0,0.0,0,8,QASMBench
+iswap_n2,0,qpdg,1.0,0,0.8888888888888888,8,9,QASMBench
+iswap_n2,0,naive,0.5,1,0.7777777777777778,7,9,QASMBench
+iswap_n2,0,causal,1.0,0,1.0,9,9,QASMBench
+iswap_n2,1,qpdg,1.0,0,0.7777777777777778,7,9,QASMBench
+iswap_n2,1,naive,0.5,1,0.4444444444444444,4,9,QASMBench
+iswap_n2,1,causal,1.0,0,1.0,9,9,QASMBench
+quantumwalks_n2,0,qpdg,1.0,0,0.9090909090909091,10,11,QASMBench
+quantumwalks_n2,0,naive,0.5500554098583703,1,0.6363636363636364,7,11,QASMBench
+quantumwalks_n2,0,causal,1.0,0,1.0,11,11,QASMBench
+quantumwalks_n2,1,qpdg,0.9999999999722763,0,0.8181818181818182,9,11,QASMBench
+quantumwalks_n2,1,naive,0.9968459128393795,1,0.6363636363636364,7,11,QASMBench
+quantumwalks_n2,1,causal,1.0,0,1.0,11,11,QASMBench
+grover_n2,0,qpdg,1.0,0,0.8125,13,16,QASMBench
+grover_n2,0,naive,0.5,1,0.4375,7,16,QASMBench
+grover_n2,0,causal,1.0,0,1.0,16,16,QASMBench
+grover_n2,1,qpdg,1.0,0,0.875,14,16,QASMBench
+grover_n2,1,naive,0.5,1,0.6875,11,16,QASMBench
+grover_n2,1,causal,1.0,0,1.0,16,16,QASMBench
+wstate_n3,0,qpdg,1.0,0,0.8333333333333334,5,6,QASMBench
+wstate_n3,0,naive,1.0,0,0.8333333333333334,5,6,QASMBench
+wstate_n3,0,causal,1.0,0,1.0,6,6,QASMBench
+wstate_n3,1,qpdg,1.0,0,1.0,6,6,QASMBench
+wstate_n3,1,naive,0.3333325705416881,1,0.6666666666666666,4,6,QASMBench
+wstate_n3,1,causal,1.0,0,1.0,6,6,QASMBench
+wstate_n3,2,qpdg,1.0,0,0.5,3,6,QASMBench
+wstate_n3,2,naive,0.6666674294583119,1,0.16666666666666666,1,6,QASMBench
+wstate_n3,2,causal,1.0,0,1.0,6,6,QASMBench
+teleportation_n3,0,qpdg,1.0,0,0.75,6,8,QASMBench
+teleportation_n3,0,naive,1.0,0,0.75,6,8,QASMBench
+teleportation_n3,0,causal,1.0,0,1.0,8,8,QASMBench
+teleportation_n3,1,qpdg,1.0,0,0.375,3,8,QASMBench
+teleportation_n3,1,naive,0.5,1,0.25,2,8,QASMBench
+teleportation_n3,1,causal,1.0,0,1.0,8,8,QASMBench
+teleportation_n3,2,qpdg,1.0,0,0.25,2,8,QASMBench
+teleportation_n3,2,naive,1.0,0,0.25,2,8,QASMBench
+teleportation_n3,2,causal,1.0,0,1.0,8,8,QASMBench
+qaoa_n3,0,qpdg,1.0,0,0.8,12,15,QASMBench
+qaoa_n3,0,naive,0.6246337805978426,1,0.4,6,15,QASMBench
+qaoa_n3,0,causal,1.0,0,1.0,15,15,QASMBench
+qaoa_n3,1,qpdg,1.0,0,0.6,9,15,QASMBench
+qaoa_n3,1,naive,0.654105084309625,1,0.4666666666666667,7,15,QASMBench
+qaoa_n3,1,causal,1.0,0,1.0,15,15,QASMBench
+qaoa_n3,2,qpdg,1.0,0,0.6666666666666666,10,15,QASMBench
+qaoa_n3,2,naive,0.6008009191268651,1,0.5333333333333333,8,15,QASMBench
+qaoa_n3,2,causal,1.0,0,1.0,15,15,QASMBench
+toffoli_n3,0,qpdg,1.0,0,0.3333333333333333,6,18,QASMBench
+toffoli_n3,0,naive,1.0,0,0.3333333333333333,6,18,QASMBench
+toffoli_n3,0,causal,1.0,0,1.0,18,18,QASMBench
+toffoli_n3,1,qpdg,1.0,0,0.4444444444444444,8,18,QASMBench
+toffoli_n3,1,naive,1.0,0,0.4444444444444444,8,18,QASMBench
+toffoli_n3,1,causal,1.0,0,1.0,18,18,QASMBench
+toffoli_n3,2,qpdg,1.0,0,0.6666666666666666,12,18,QASMBench
+toffoli_n3,2,naive,3.0059189751699814e-32,1,0.5555555555555556,10,18,QASMBench
+toffoli_n3,2,causal,1.0,0,1.0,18,18,QASMBench
+fredkin_n3,0,qpdg,1.0,0,0.3157894736842105,6,19,QASMBench
+fredkin_n3,0,naive,1.0,0,0.3157894736842105,6,19,QASMBench
+fredkin_n3,0,causal,1.0,0,1.0,19,19,QASMBench
+fredkin_n3,1,qpdg,1.0,0,0.9473684210526315,18,19,QASMBench
+fredkin_n3,1,naive,2.5152371334923147e-32,1,0.5789473684210527,11,19,QASMBench
+fredkin_n3,1,causal,1.0,0,1.0,19,19,QASMBench
+fredkin_n3,2,qpdg,1.0,0,0.8421052631578947,16,19,QASMBench
+fredkin_n3,2,naive,3.274874190456451e-32,1,0.5263157894736842,10,19,QASMBench
+fredkin_n3,2,causal,1.0,0,1.0,19,19,QASMBench
+linearsolver_n3,0,qpdg,1.0,0,0.7894736842105263,15,19,QASMBench
+linearsolver_n3,0,naive,0.9182313249575936,1,0.3157894736842105,6,19,QASMBench
+linearsolver_n3,0,causal,1.0,0,1.0,19,19,QASMBench
+linearsolver_n3,1,qpdg,1.0,0,0.5263157894736842,10,19,QASMBench
+linearsolver_n3,1,naive,1.0,0,0.42105263157894735,8,19,QASMBench
+linearsolver_n3,1,causal,1.0,0,1.0,19,19,QASMBench
+linearsolver_n3,2,qpdg,0.9999999999999999,0,0.5789473684210527,11,19,QASMBench
+linearsolver_n3,2,naive,0.9999999999999999,0,0.47368421052631576,9,19,QASMBench
+linearsolver_n3,2,causal,0.9999999999999999,0,1.0,19,19,QASMBench
+basis_change_n3,0,qpdg,1.0,0,0.7272727272727273,24,33,QASMBench
+basis_change_n3,0,naive,0.9990068806969831,1,0.2727272727272727,9,33,QASMBench
+basis_change_n3,0,causal,1.0,0,1.0,33,33,QASMBench
+basis_change_n3,1,qpdg,1.0,0,0.8787878787878788,29,33,QASMBench
+basis_change_n3,1,naive,0.9587381537198356,1,0.6363636363636364,21,33,QASMBench
+basis_change_n3,1,causal,1.0,0,1.0,33,33,QASMBench
+basis_change_n3,2,qpdg,1.0,0,0.9090909090909091,30,33,QASMBench
+basis_change_n3,2,naive,0.6532560036057456,1,0.3939393939393939,13,33,QASMBench
+basis_change_n3,2,causal,1.0,0,1.0,33,33,QASMBench
+cat_state_n4,0,qpdg,1.0,0,0.5,2,4,QASMBench
+cat_state_n4,0,naive,1.0,0,0.5,2,4,QASMBench
+cat_state_n4,0,causal,1.0,0,1.0,4,4,QASMBench
+cat_state_n4,1,qpdg,1.0,0,0.75,3,4,QASMBench
+cat_state_n4,1,naive,0.5,1,0.5,2,4,QASMBench
+cat_state_n4,1,causal,1.0,0,1.0,4,4,QASMBench
+cat_state_n4,2,qpdg,1.0,0,1.0,4,4,QASMBench
+cat_state_n4,2,naive,0.5,1,0.5,2,4,QASMBench
+cat_state_n4,2,causal,1.0,0,1.0,4,4,QASMBench
+cat_state_n4,3,qpdg,1.0,0,1.0,4,4,QASMBench
+cat_state_n4,3,naive,0.5,1,0.25,1,4,QASMBench
+cat_state_n4,3,causal,1.0,0,1.0,4,4,QASMBench
+inverseqft_n4,0,qpdg,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,0,naive,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,0,causal,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,1,qpdg,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,1,naive,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,1,causal,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,2,qpdg,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,2,naive,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,2,causal,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,3,qpdg,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,3,naive,1.0,0,0.25,1,4,QASMBench
+inverseqft_n4,3,causal,1.0,0,0.25,1,4,QASMBench
+qrng_n4,0,qpdg,1.0,0,0.25,1,4,QASMBench
+qrng_n4,0,naive,1.0,0,0.25,1,4,QASMBench
+qrng_n4,0,causal,1.0,0,0.25,1,4,QASMBench
+qrng_n4,1,qpdg,1.0,0,0.25,1,4,QASMBench
+qrng_n4,1,naive,1.0,0,0.25,1,4,QASMBench
+qrng_n4,1,causal,1.0,0,0.25,1,4,QASMBench
+qrng_n4,2,qpdg,1.0,0,0.25,1,4,QASMBench
+qrng_n4,2,naive,1.0,0,0.25,1,4,QASMBench
+qrng_n4,2,causal,1.0,0,0.25,1,4,QASMBench
+qrng_n4,3,qpdg,1.0,0,0.25,1,4,QASMBench
+qrng_n4,3,naive,1.0,0,0.25,1,4,QASMBench
+qrng_n4,3,causal,1.0,0,0.25,1,4,QASMBench
+qft_n4,0,qpdg,1.0,0,0.3333333333333333,2,6,QASMBench
+qft_n4,0,naive,1.0,0,0.3333333333333333,2,6,QASMBench
+qft_n4,0,causal,1.0,0,0.3333333333333333,2,6,QASMBench
+qft_n4,1,qpdg,1.0,0,0.16666666666666666,1,6,QASMBench
+qft_n4,1,naive,1.0,0,0.16666666666666666,1,6,QASMBench
+qft_n4,1,causal,1.0,0,0.16666666666666666,1,6,QASMBench
+qft_n4,2,qpdg,1.0,0,0.3333333333333333,2,6,QASMBench
+qft_n4,2,naive,1.0,0,0.3333333333333333,2,6,QASMBench
+qft_n4,2,causal,1.0,0,0.3333333333333333,2,6,QASMBench
+qft_n4,3,qpdg,1.0,0,0.16666666666666666,1,6,QASMBench
+qft_n4,3,naive,1.0,0,0.16666666666666666,1,6,QASMBench
+qft_n4,3,causal,1.0,0,0.16666666666666666,1,6,QASMBench
+adder_n4,0,qpdg,1.0,0,0.34782608695652173,8,23,QASMBench
+adder_n4,0,naive,1.0,0,0.34782608695652173,8,23,QASMBench
+adder_n4,0,causal,1.0,0,1.0,23,23,QASMBench
+adder_n4,1,qpdg,1.0,0,0.34782608695652173,8,23,QASMBench
+adder_n4,1,naive,0.0,1,0.30434782608695654,7,23,QASMBench
+adder_n4,1,causal,1.0,0,1.0,23,23,QASMBench
+adder_n4,2,qpdg,1.0,0,0.43478260869565216,10,23,QASMBench
+adder_n4,2,naive,1.0,0,0.30434782608695654,7,23,QASMBench
+adder_n4,2,causal,1.0,0,1.0,23,23,QASMBench
+adder_n4,3,qpdg,1.0,0,0.782608695652174,18,23,QASMBench
+adder_n4,3,naive,0.5,1,0.4782608695652174,11,23,QASMBench
+adder_n4,3,causal,1.0,0,1.0,23,23,QASMBench
+hs4_n4,0,qpdg,1.0,0,0.42857142857142855,12,28,QASMBench
+hs4_n4,0,naive,0.5,1,0.25,7,28,QASMBench
+hs4_n4,0,causal,1.0,0,0.5,14,28,QASMBench
+hs4_n4,1,qpdg,1.0,0,0.39285714285714285,11,28,QASMBench
+hs4_n4,1,naive,0.5,1,0.32142857142857145,9,28,QASMBench
+hs4_n4,1,causal,1.0,0,0.5,14,28,QASMBench
+hs4_n4,2,qpdg,1.0,0,0.42857142857142855,12,28,QASMBench
+hs4_n4,2,naive,0.5,1,0.25,7,28,QASMBench
+hs4_n4,2,causal,1.0,0,0.5,14,28,QASMBench
+hs4_n4,3,qpdg,1.0,0,0.39285714285714285,11,28,QASMBench
+hs4_n4,3,naive,0.5,1,0.32142857142857145,9,28,QASMBench
+hs4_n4,3,causal,1.0,0,0.5,14,28,QASMBench
+bell_n4,0,qpdg,1.0,0,0.3939393939393939,13,33,QASMBench
+bell_n4,0,naive,1.0,0,0.3939393939393939,13,33,QASMBench
+bell_n4,0,causal,0.9999999999999998,0,1.0,33,33,QASMBench
+bell_n4,1,qpdg,1.0,0,0.36363636363636365,12,33,QASMBench
+bell_n4,1,naive,0.9267766952966368,1,0.24242424242424243,8,33,QASMBench
+bell_n4,1,causal,0.9999999999999998,0,1.0,33,33,QASMBench
+bell_n4,2,qpdg,1.0,0,0.3333333333333333,11,33,QASMBench
+bell_n4,2,naive,1.0,0,0.3333333333333333,11,33,QASMBench
+bell_n4,2,causal,1.0,0,1.0,33,33,QASMBench
+bell_n4,3,qpdg,1.0,0,0.3333333333333333,11,33,QASMBench
+bell_n4,3,naive,0.9267766952966366,1,0.24242424242424243,8,33,QASMBench
+bell_n4,3,causal,0.9999999999999998,0,1.0,33,33,QASMBench
+variational_n4,0,qpdg,0.9999999991641353,0,0.3333333333333333,18,54,QASMBench
+variational_n4,0,naive,0.9999999991641352,0,0.2037037037037037,11,54,QASMBench
+variational_n4,0,causal,1.0,0,1.0,54,54,QASMBench
+variational_n4,1,qpdg,0.9999999999748684,0,0.6111111111111112,33,54,QASMBench
+variational_n4,1,naive,0.4962126397498889,1,0.5185185185185185,28,54,QASMBench
+variational_n4,1,causal,1.0,0,1.0,54,54,QASMBench
+variational_n4,2,qpdg,0.9999999967070077,0,0.5740740740740741,31,54,QASMBench
+variational_n4,2,naive,0.4962124222262437,1,0.4444444444444444,24,54,QASMBench
+variational_n4,2,causal,1.0,0,1.0,54,54,QASMBench
+variational_n4,3,qpdg,0.9999999991890836,0,0.24074074074074073,13,54,QASMBench
+variational_n4,3,naive,0.503787577773547,1,0.12962962962962962,7,54,QASMBench
+variational_n4,3,causal,1.0,0,1.0,54,54,QASMBench
+vqe_n4,0,qpdg,1.0,0,0.2631578947368421,15,57,QASMBench
+vqe_n4,0,naive,1.0,0,0.2631578947368421,15,57,QASMBench
+vqe_n4,0,causal,1.0,0,1.0,57,57,QASMBench
+vqe_n4,1,qpdg,1.0,0,0.3157894736842105,18,57,QASMBench
+vqe_n4,1,naive,1.0,0,0.3157894736842105,18,57,QASMBench
+vqe_n4,1,causal,1.0,0,1.0,57,57,QASMBench
+vqe_n4,2,qpdg,1.0,0,0.3157894736842105,18,57,QASMBench
+vqe_n4,2,naive,1.0,0,0.3157894736842105,18,57,QASMBench
+vqe_n4,2,causal,1.0,0,1.0,57,57,QASMBench
+vqe_n4,3,qpdg,1.0,0,0.2631578947368421,15,57,QASMBench
+vqe_n4,3,naive,1.0,0,0.2631578947368421,15,57,QASMBench
+vqe_n4,3,causal,1.0,0,1.0,57,57,QASMBench
+basis_test_n4,0,qpdg,1.0,0,0.3673469387755102,36,98,QASMBench
+basis_test_n4,0,naive,1.0,0,0.24489795918367346,24,98,QASMBench
+basis_test_n4,0,causal,1.0,0,1.0,98,98,QASMBench
+basis_test_n4,1,qpdg,1.0,0,0.5714285714285714,56,98,QASMBench
+basis_test_n4,1,naive,1.0,0,0.4897959183673469,48,98,QASMBench
+basis_test_n4,1,causal,1.0,0,1.0,98,98,QASMBench
+basis_test_n4,2,qpdg,1.0,0,0.5714285714285714,56,98,QASMBench
+basis_test_n4,2,naive,1.0,0,0.4489795918367347,44,98,QASMBench
+basis_test_n4,2,causal,1.0,0,1.0,98,98,QASMBench
+basis_test_n4,3,qpdg,1.0,0,0.24489795918367346,24,98,QASMBench
+basis_test_n4,3,naive,1.0,0,0.16326530612244897,16,98,QASMBench
+basis_test_n4,3,causal,1.0,0,1.0,98,98,QASMBench
+vqe_uccsd_n4,0,qpdg,1.0,0,0.7954545454545454,175,220,QASMBench
+vqe_uccsd_n4,0,naive,0.5897364145150945,1,0.39090909090909093,86,220,QASMBench
+vqe_uccsd_n4,0,causal,1.0,0,1.0,220,220,QASMBench
+vqe_uccsd_n4,1,qpdg,1.0,0,0.8818181818181818,194,220,QASMBench
+vqe_uccsd_n4,1,naive,0.42924165153606436,1,0.34545454545454546,76,220,QASMBench
+vqe_uccsd_n4,1,causal,1.0,0,1.0,220,220,QASMBench
+vqe_uccsd_n4,2,qpdg,1.0,0,0.9363636363636364,206,220,QASMBench
+vqe_uccsd_n4,2,naive,0.38691661030522395,1,0.4090909090909091,90,220,QASMBench
+vqe_uccsd_n4,2,causal,0.9999999999999999,0,1.0,220,220,QASMBench
+vqe_uccsd_n4,3,qpdg,1.0,0,0.9181818181818182,202,220,QASMBench
+vqe_uccsd_n4,3,naive,0.38810404918353125,1,0.2545454545454545,56,220,QASMBench
+vqe_uccsd_n4,3,causal,1.0,0,1.0,220,220,QASMBench
+qec_sm_n5,0,qpdg,1.0,0,1.0,1,1,QASMBench
+qec_sm_n5,0,naive,1.0,0,1.0,1,1,QASMBench
+qec_sm_n5,0,causal,1.0,0,1.0,1,1,QASMBench
+qec_sm_n5,1,qpdg,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,1,naive,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,1,causal,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,2,qpdg,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,2,naive,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,2,causal,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,3,qpdg,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,3,naive,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,3,causal,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,4,qpdg,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,4,naive,1.0,0,0.0,0,1,QASMBench
+qec_sm_n5,4,causal,1.0,0,0.0,0,1,QASMBench
+pea_n5,0,qpdg,1.0,0,0.25,2,8,QASMBench
+pea_n5,0,naive,1.0,0,0.25,2,8,QASMBench
+pea_n5,0,causal,1.0,0,0.25,2,8,QASMBench
+pea_n5,1,qpdg,1.0,0,0.25,2,8,QASMBench
+pea_n5,1,naive,1.0,0,0.25,2,8,QASMBench
+pea_n5,1,causal,1.0,0,0.25,2,8,QASMBench
+pea_n5,2,qpdg,1.0,0,0.25,2,8,QASMBench
+pea_n5,2,naive,1.0,0,0.25,2,8,QASMBench
+pea_n5,2,causal,1.0,0,0.25,2,8,QASMBench
+pea_n5,3,qpdg,1.0,0,0.25,2,8,QASMBench
+pea_n5,3,naive,1.0,0,0.25,2,8,QASMBench
+pea_n5,3,causal,1.0,0,0.25,2,8,QASMBench
+pea_n5,4,qpdg,1.0,0,0.0,0,8,QASMBench
+pea_n5,4,naive,1.0,0,0.0,0,8,QASMBench
+pea_n5,4,causal,1.0,0,0.0,0,8,QASMBench
+lpn_n5,0,qpdg,1.0,0,0.2727272727272727,3,11,QASMBench
+lpn_n5,0,naive,1.0,0,0.2727272727272727,3,11,QASMBench
+lpn_n5,0,causal,1.0,0,0.6363636363636364,7,11,QASMBench
+lpn_n5,1,qpdg,1.0,0,0.18181818181818182,2,11,QASMBench
+lpn_n5,1,naive,1.0,0,0.18181818181818182,2,11,QASMBench
+lpn_n5,1,causal,1.0,0,0.18181818181818182,2,11,QASMBench
+lpn_n5,2,qpdg,1.0,0,0.36363636363636365,4,11,QASMBench
+lpn_n5,2,naive,0.5,1,0.2727272727272727,3,11,QASMBench
+lpn_n5,2,causal,1.0,0,0.6363636363636364,7,11,QASMBench
+lpn_n5,3,qpdg,1.0,0,0.2727272727272727,3,11,QASMBench
+lpn_n5,3,naive,1.0,0,0.2727272727272727,3,11,QASMBench
+lpn_n5,3,causal,1.0,0,0.6363636363636364,7,11,QASMBench
+lpn_n5,4,qpdg,1.0,0,0.18181818181818182,2,11,QASMBench
+lpn_n5,4,naive,1.0,0,0.18181818181818182,2,11,QASMBench
+lpn_n5,4,causal,1.0,0,0.18181818181818182,2,11,QASMBench
+shor_n5,0,qpdg,1.0,0,0.38461538461538464,5,13,QASMBench
+shor_n5,0,naive,1.0,0,0.23076923076923078,3,13,QASMBench
+shor_n5,0,causal,1.0,0,1.0,13,13,QASMBench
+shor_n5,1,qpdg,1.0,0,0.3076923076923077,4,13,QASMBench
+shor_n5,1,naive,0.5,1,0.07692307692307693,1,13,QASMBench
+shor_n5,1,causal,1.0,0,1.0,13,13,QASMBench
+shor_n5,2,qpdg,1.0,0,0.3076923076923077,4,13,QASMBench
+shor_n5,2,naive,1.0,0,0.15384615384615385,2,13,QASMBench
+shor_n5,2,causal,1.0,0,1.0,13,13,QASMBench
+shor_n5,3,qpdg,1.0,0,0.3076923076923077,4,13,QASMBench
+shor_n5,3,naive,0.5,1,0.07692307692307693,1,13,QASMBench
+shor_n5,3,causal,1.0,0,1.0,13,13,QASMBench
+shor_n5,4,qpdg,1.0,0,0.9230769230769231,12,13,QASMBench
+shor_n5,4,naive,1.0,0,0.9230769230769231,12,13,QASMBench
+shor_n5,4,causal,1.0,0,1.0,13,13,QASMBench
+qec_en_n5,0,qpdg,1.0,0,0.32,8,25,QASMBench
+qec_en_n5,0,naive,0.8535533905932737,1,0.16,4,25,QASMBench
+qec_en_n5,0,causal,1.0,0,1.0,25,25,QASMBench
+qec_en_n5,1,qpdg,1.0,0,0.36,9,25,QASMBench
+qec_en_n5,1,naive,0.8535533905932737,1,0.2,5,25,QASMBench
+qec_en_n5,1,causal,1.0,0,1.0,25,25,QASMBench
+qec_en_n5,2,qpdg,1.0,0,0.92,23,25,QASMBench
+qec_en_n5,2,naive,0.8535533905932737,1,0.68,17,25,QASMBench
+qec_en_n5,2,causal,1.0,0,1.0,25,25,QASMBench
+qec_en_n5,3,qpdg,1.0,0,0.36,9,25,QASMBench
+qec_en_n5,3,naive,0.8535533905932737,1,0.2,5,25,QASMBench
+qec_en_n5,3,causal,1.0,0,1.0,25,25,QASMBench
+qec_en_n5,4,qpdg,1.0,0,0.72,18,25,QASMBench
+qec_en_n5,4,naive,0.5,1,0.16,4,25,QASMBench
+qec_en_n5,4,causal,1.0,0,1.0,25,25,QASMBench
+error_correctiond3_n5,0,qpdg,1.0,0,0.22807017543859648,26,114,QASMBench
+error_correctiond3_n5,0,naive,1.0,0,0.13157894736842105,15,114,QASMBench
+error_correctiond3_n5,0,causal,1.0,0,1.0,114,114,QASMBench
+error_correctiond3_n5,1,qpdg,1.0,0,0.2807017543859649,32,114,QASMBench
+error_correctiond3_n5,1,naive,1.0,0,0.24561403508771928,28,114,QASMBench
+error_correctiond3_n5,1,causal,1.0,0,1.0,114,114,QASMBench
+error_correctiond3_n5,2,qpdg,1.0,0,0.6842105263157895,78,114,QASMBench
+error_correctiond3_n5,2,naive,0.5,1,0.6754385964912281,77,114,QASMBench
+error_correctiond3_n5,2,causal,1.0,0,1.0,114,114,QASMBench
+error_correctiond3_n5,3,qpdg,1.0,0,0.17543859649122806,20,114,QASMBench
+error_correctiond3_n5,3,naive,1.0,0,0.14035087719298245,16,114,QASMBench
+error_correctiond3_n5,3,causal,1.0,0,1.0,114,114,QASMBench
+error_correctiond3_n5,4,qpdg,1.0,0,0.2543859649122807,29,114,QASMBench
+error_correctiond3_n5,4,naive,1.0,0,0.23684210526315788,27,114,QASMBench
+error_correctiond3_n5,4,causal,1.0,0,1.0,114,114,QASMBench
+simon_n6,0,qpdg,1.0,0,0.4375,7,16,QASMBench
+simon_n6,0,naive,0.5,1,0.375,6,16,QASMBench
+simon_n6,0,causal,1.0,0,1.0,16,16,QASMBench
+simon_n6,1,qpdg,1.0,0,0.4375,7,16,QASMBench
+simon_n6,1,naive,0.5,1,0.375,6,16,QASMBench
+simon_n6,1,causal,1.0,0,1.0,16,16,QASMBench
+simon_n6,2,qpdg,1.0,0,0.25,4,16,QASMBench
+simon_n6,2,naive,1.0,0,0.25,4,16,QASMBench
+simon_n6,2,causal,1.0,0,1.0,16,16,QASMBench
+simon_n6,3,qpdg,1.0,0,0.375,6,16,QASMBench
+simon_n6,3,naive,0.5,1,0.3125,5,16,QASMBench
+simon_n6,3,causal,1.0,0,1.0,16,16,QASMBench
+simon_n6,4,qpdg,1.0,0,0.125,2,16,QASMBench
+simon_n6,4,naive,0.5,1,0.0625,1,16,QASMBench
+simon_n6,4,causal,1.0,0,1.0,16,16,QASMBench
+simon_n6,5,qpdg,1.0,0,0.0,0,16,QASMBench
+simon_n6,5,naive,1.0,0,0.0,0,16,QASMBench
+simon_n6,5,causal,1.0,0,0.0,0,16,QASMBench
+sat_n7,0,qpdg,0.9999999999999999,0,0.775,31,40,QASMBench
+sat_n7,0,naive,0.75,1,0.175,7,40,QASMBench
+sat_n7,0,causal,0.9999999999999999,0,1.0,40,40,QASMBench
+sat_n7,1,qpdg,0.9999999999999999,0,0.8,32,40,QASMBench
+sat_n7,1,naive,0.75,1,0.4,16,40,QASMBench
+sat_n7,1,causal,0.9999999999999999,0,1.0,40,40,QASMBench
+sat_n7,2,qpdg,0.9999999999999999,0,0.8,32,40,QASMBench
+sat_n7,2,naive,0.75,1,0.5,20,40,QASMBench
+sat_n7,2,causal,0.9999999999999999,0,1.0,40,40,QASMBench
+sat_n7,3,qpdg,1.0,0,0.325,13,40,QASMBench
+sat_n7,3,naive,1.0,0,0.125,5,40,QASMBench
+sat_n7,3,causal,1.0,0,1.0,40,40,QASMBench
+sat_n7,4,qpdg,1.0,0,0.275,11,40,QASMBench
+sat_n7,4,naive,1.0,0,0.125,5,40,QASMBench
+sat_n7,4,causal,1.0,0,1.0,40,40,QASMBench
+sat_n7,5,qpdg,1.0,0,0.15,6,40,QASMBench
+sat_n7,5,naive,1.0,0,0.1,4,40,QASMBench
+sat_n7,5,causal,1.0,0,1.0,40,40,QASMBench
+sat_n7,6,qpdg,1.0,0,0.075,3,40,QASMBench
+sat_n7,6,naive,1.0,0,0.075,3,40,QASMBench
+sat_n7,6,causal,1.0,0,1.0,40,40,QASMBench
+bb84_n8,0,qpdg,1.0,0,0.07407407407407407,2,27,QASMBench
+bb84_n8,0,naive,1.0,0,0.07407407407407407,2,27,QASMBench
+bb84_n8,0,causal,1.0,0,0.07407407407407407,2,27,QASMBench
+bb84_n8,1,qpdg,1.0,0,0.14814814814814814,4,27,QASMBench
+bb84_n8,1,naive,1.0,0,0.14814814814814814,4,27,QASMBench
+bb84_n8,1,causal,1.0,0,0.14814814814814814,4,27,QASMBench
+bb84_n8,2,qpdg,0.9999999999999998,0,0.18518518518518517,5,27,QASMBench
+bb84_n8,2,naive,0.9999999999999998,0,0.18518518518518517,5,27,QASMBench
+bb84_n8,2,causal,0.9999999999999998,0,0.18518518518518517,5,27,QASMBench
+bb84_n8,3,qpdg,1.0,0,0.1111111111111111,3,27,QASMBench
+bb84_n8,3,naive,1.0,0,0.1111111111111111,3,27,QASMBench
+bb84_n8,3,causal,1.0,0,0.1111111111111111,3,27,QASMBench
+bb84_n8,4,qpdg,0.9999999999999998,0,0.18518518518518517,5,27,QASMBench
+bb84_n8,4,naive,0.9999999999999998,0,0.18518518518518517,5,27,QASMBench
+bb84_n8,4,causal,0.9999999999999998,0,0.18518518518518517,5,27,QASMBench
+bb84_n8,5,qpdg,1.0,0,0.1111111111111111,3,27,QASMBench
+bb84_n8,5,naive,1.0,0,0.1111111111111111,3,27,QASMBench
+bb84_n8,5,causal,1.0,0,0.1111111111111111,3,27,QASMBench
+bb84_n8,6,qpdg,1.0,0,0.037037037037037035,1,27,QASMBench
+bb84_n8,6,naive,1.0,0,0.037037037037037035,1,27,QASMBench
+bb84_n8,6,causal,1.0,0,0.037037037037037035,1,27,QASMBench
+bb84_n8,7,qpdg,1.0,0,0.14814814814814814,4,27,QASMBench
+bb84_n8,7,naive,1.0,0,0.14814814814814814,4,27,QASMBench
+bb84_n8,7,causal,1.0,0,0.14814814814814814,4,27,QASMBench
+qpe_n9,0,qpdg,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,0,naive,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,0,causal,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,1,qpdg,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,1,naive,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,1,causal,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,2,qpdg,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,2,naive,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,2,causal,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,3,qpdg,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,3,naive,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,3,causal,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,4,qpdg,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,4,naive,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,4,causal,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,5,qpdg,1.0,0,0.3888888888888889,7,18,QASMBench
+qpe_n9,5,naive,1.6644139992843666e-33,1,0.2222222222222222,4,18,QASMBench
+qpe_n9,5,causal,1.0,0,0.4444444444444444,8,18,QASMBench
+qpe_n9,6,qpdg,1.0,0,0.16666666666666666,3,18,QASMBench
+qpe_n9,6,naive,1.0,0,0.16666666666666666,3,18,QASMBench
+qpe_n9,6,causal,1.0,0,0.4444444444444444,8,18,QASMBench
+qpe_n9,7,qpdg,1.0,0,0.2222222222222222,4,18,QASMBench
+qpe_n9,7,naive,1.0,0,0.2222222222222222,4,18,QASMBench
+qpe_n9,7,causal,1.0,0,0.4444444444444444,8,18,QASMBench
+qpe_n9,8,qpdg,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,8,naive,1.0,0,0.1111111111111111,2,18,QASMBench
+qpe_n9,8,causal,1.0,0,0.4444444444444444,8,18,QASMBench
+adder_n10,0,qpdg,1.0,0,0.0,0,2,QASMBench
+adder_n10,0,naive,1.0,0,0.0,0,2,QASMBench
+adder_n10,0,causal,1.0,0,0.0,0,2,QASMBench
+adder_n10,1,qpdg,1.0,0,0.5,1,2,QASMBench
+adder_n10,1,naive,1.0,0,0.5,1,2,QASMBench
+adder_n10,1,causal,1.0,0,0.5,1,2,QASMBench
+adder_n10,2,qpdg,1.0,0,0.0,0,2,QASMBench
+adder_n10,2,naive,1.0,0,0.0,0,2,QASMBench
+adder_n10,2,causal,1.0,0,0.0,0,2,QASMBench
+adder_n10,3,qpdg,1.0,0,0.0,0,2,QASMBench
+adder_n10,3,naive,1.0,0,0.0,0,2,QASMBench
+adder_n10,3,causal,1.0,0,0.0,0,2,QASMBench
+adder_n10,4,qpdg,1.0,0,0.5,1,2,QASMBench
+adder_n10,4,naive,1.0,0,0.5,1,2,QASMBench
+adder_n10,4,causal,1.0,0,0.5,1,2,QASMBench
+adder_n10,5,qpdg,1.0,0,0.0,0,2,QASMBench
+adder_n10,5,naive,1.0,0,0.0,0,2,QASMBench
+adder_n10,5,causal,1.0,0,0.0,0,2,QASMBench
+adder_n10,6,qpdg,1.0,0,0.0,0,2,QASMBench
+adder_n10,6,naive,1.0,0,0.0,0,2,QASMBench
+adder_n10,6,causal,1.0,0,0.0,0,2,QASMBench
+adder_n10,7,qpdg,1.0,0,0.0,0,2,QASMBench
+adder_n10,7,naive,1.0,0,0.0,0,2,QASMBench
+adder_n10,7,causal,1.0,0,0.0,0,2,QASMBench
+adder_n10,8,qpdg,1.0,0,0.0,0,2,QASMBench
+adder_n10,8,naive,1.0,0,0.0,0,2,QASMBench
+adder_n10,8,causal,1.0,0,0.0,0,2,QASMBench
+adder_n10,9,qpdg,1.0,0,0.5,1,2,QASMBench
+adder_n10,9,naive,1.0,0,0.5,1,2,QASMBench
+adder_n10,9,causal,1.0,0,0.5,1,2,QASMBench
+seca_n11,0,qpdg,1.0,0,0.24285714285714285,17,70,QASMBench
+seca_n11,0,naive,0.5,1,0.21428571428571427,15,70,QASMBench
+seca_n11,0,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,1,qpdg,1.0,0,0.12857142857142856,9,70,QASMBench
+seca_n11,1,naive,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,1,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,2,qpdg,1.0,0,0.12857142857142856,9,70,QASMBench
+seca_n11,2,naive,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,2,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,3,qpdg,1.0,0,0.5428571428571428,38,70,QASMBench
+seca_n11,3,naive,3.0336438592325288e-33,1,0.3142857142857143,22,70,QASMBench
+seca_n11,3,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,4,qpdg,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,4,naive,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,4,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,5,qpdg,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,5,naive,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,5,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,6,qpdg,1.0,0,0.5428571428571428,38,70,QASMBench
+seca_n11,6,naive,3.04390979180055e-33,1,0.3142857142857143,22,70,QASMBench
+seca_n11,6,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,7,qpdg,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,7,naive,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,7,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,8,qpdg,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,8,naive,1.0,0,0.08571428571428572,6,70,QASMBench
+seca_n11,8,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,9,qpdg,1.0,0,0.05714285714285714,4,70,QASMBench
+seca_n11,9,naive,1.0,0,0.05714285714285714,4,70,QASMBench
+seca_n11,9,causal,1.0,0,1.0,70,70,QASMBench
+seca_n11,10,qpdg,1.0,0,0.8714285714285714,61,70,QASMBench
+seca_n11,10,naive,0.5,1,0.32857142857142857,23,70,QASMBench
+seca_n11,10,causal,1.0,0,1.0,70,70,QASMBench
+sat_n11,0,qpdg,0.9999999999999999,0,0.8681318681318682,79,91,QASMBench
+sat_n11,0,naive,0.375,1,0.07692307692307693,7,91,QASMBench
+sat_n11,0,causal,1.0,0,1.0,91,91,QASMBench
+sat_n11,1,qpdg,1.0,0,0.5934065934065934,54,91,QASMBench
+sat_n11,1,naive,0.875,1,0.25274725274725274,23,91,QASMBench
+sat_n11,1,causal,0.9999999999999999,0,1.0,91,91,QASMBench
+sat_n11,2,qpdg,1.0,0,0.8791208791208791,80,91,QASMBench
+sat_n11,2,naive,0.75,1,0.31868131868131866,29,91,QASMBench
+sat_n11,2,causal,1.0,0,1.0,91,91,QASMBench
+sat_n11,3,qpdg,1.0,0,0.8241758241758241,75,91,QASMBench
+sat_n11,3,naive,0.625,1,0.27472527472527475,25,91,QASMBench
+sat_n11,3,causal,1.0,0,1.0,91,91,QASMBench
+sat_n11,4,qpdg,1.0,0,0.4725274725274725,43,91,QASMBench
+sat_n11,4,naive,0.8749999999999999,1,0.17582417582417584,16,91,QASMBench
+sat_n11,4,causal,1.0,0,1.0,91,91,QASMBench
+sat_n11,5,qpdg,1.0,0,0.4945054945054945,45,91,QASMBench
+sat_n11,5,naive,1.0,0,0.054945054945054944,5,91,QASMBench
+sat_n11,5,causal,1.0,0,1.0,91,91,QASMBench
+sat_n11,6,qpdg,1.0,0,0.34065934065934067,31,91,QASMBench
+sat_n11,6,naive,1.0,0,0.054945054945054944,5,91,QASMBench
+sat_n11,6,causal,1.0,0,1.0,91,91,QASMBench
+sat_n11,7,qpdg,1.0,0,0.2087912087912088,19,91,QASMBench
+sat_n11,7,naive,1.0,0,0.054945054945054944,5,91,QASMBench
+sat_n11,7,causal,1.0,0,1.0,91,91,QASMBench
+sat_n11,8,qpdg,1.0,0,0.08791208791208792,8,91,QASMBench
+sat_n11,8,naive,1.0,0,0.04395604395604396,4,91,QASMBench
+sat_n11,8,causal,1.0,0,1.0,91,91,QASMBench
+sat_n11,9,qpdg,1.0,0,0.3516483516483517,32,91,QASMBench
+sat_n11,9,naive,1.0,0,0.3516483516483517,32,91,QASMBench
+sat_n11,9,causal,1.0,0,1.0,91,91,QASMBench
+sat_n11,10,qpdg,1.0,0,0.26373626373626374,24,91,QASMBench
+sat_n11,10,naive,1.0,0,0.26373626373626374,24,91,QASMBench
+sat_n11,10,causal,1.0,0,1.0,91,91,QASMBench
+cc_n12,0,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,0,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,0,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,1,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,1,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,1,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,2,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,2,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,2,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,3,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,3,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,3,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,4,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,4,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,4,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,5,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,5,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,5,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,6,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,6,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,6,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,7,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,7,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,7,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,8,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,8,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,8,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,9,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,9,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,9,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,10,qpdg,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,10,naive,1.0,0,0.09090909090909091,2,22,QASMBench
+cc_n12,10,causal,1.0,0,1.0,22,22,QASMBench
+cc_n12,11,qpdg,1.0,0,0.5454545454545454,12,22,QASMBench
+cc_n12,11,naive,0.5,1,0.5,11,22,QASMBench
+cc_n12,11,causal,1.0,0,1.0,22,22,QASMBench
+multiply_n13,0,qpdg,1.0,0,0.2857142857142857,4,14,QASMBench
+multiply_n13,0,naive,1.0,0,0.2857142857142857,4,14,QASMBench
+multiply_n13,0,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,1,qpdg,1.0,0,0.2857142857142857,4,14,QASMBench
+multiply_n13,1,naive,1.0,0,0.2857142857142857,4,14,QASMBench
+multiply_n13,1,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,2,qpdg,1.0,0,0.21428571428571427,3,14,QASMBench
+multiply_n13,2,naive,1.0,0,0.21428571428571427,3,14,QASMBench
+multiply_n13,2,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,3,qpdg,1.0,0,0.14285714285714285,2,14,QASMBench
+multiply_n13,3,naive,1.0,0,0.14285714285714285,2,14,QASMBench
+multiply_n13,3,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,4,qpdg,1.0,0,0.21428571428571427,3,14,QASMBench
+multiply_n13,4,naive,1.0,0,0.21428571428571427,3,14,QASMBench
+multiply_n13,4,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,5,qpdg,1.0,0,0.21428571428571427,3,14,QASMBench
+multiply_n13,5,naive,0.0,1,0.07142857142857142,1,14,QASMBench
+multiply_n13,5,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,6,qpdg,1.0,0,0.2857142857142857,4,14,QASMBench
+multiply_n13,6,naive,0.0,1,0.14285714285714285,2,14,QASMBench
+multiply_n13,6,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,7,qpdg,1.0,0,0.14285714285714285,2,14,QASMBench
+multiply_n13,7,naive,1.0,0,0.14285714285714285,2,14,QASMBench
+multiply_n13,7,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,8,qpdg,1.0,0,0.14285714285714285,2,14,QASMBench
+multiply_n13,8,naive,1.0,0,0.14285714285714285,2,14,QASMBench
+multiply_n13,8,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,9,qpdg,1.0,0,0.2857142857142857,4,14,QASMBench
+multiply_n13,9,naive,0.0,1,0.14285714285714285,2,14,QASMBench
+multiply_n13,9,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,10,qpdg,1.0,0,0.21428571428571427,3,14,QASMBench
+multiply_n13,10,naive,0.0,1,0.07142857142857142,1,14,QASMBench
+multiply_n13,10,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,11,qpdg,1.0,0,0.35714285714285715,5,14,QASMBench
+multiply_n13,11,naive,0.0,1,0.14285714285714285,2,14,QASMBench
+multiply_n13,11,causal,1.0,0,1.0,14,14,QASMBench
+multiply_n13,12,qpdg,1.0,0,0.35714285714285715,5,14,QASMBench
+multiply_n13,12,naive,0.0,1,0.14285714285714285,2,14,QASMBench
+multiply_n13,12,causal,1.0,0,1.0,14,14,QASMBench
+bv_n14,0,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,0,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,0,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,1,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,1,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,1,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,2,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,2,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,2,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,3,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,3,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,3,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,4,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,4,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,4,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,5,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,5,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,5,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,6,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,6,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,6,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,7,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,7,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,7,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,8,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,8,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,8,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,9,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,9,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,9,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,10,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,10,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,10,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,11,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,11,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,11,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,12,qpdg,1.0,0,0.12195121951219512,5,41,QASMBench
+bv_n14,12,naive,0.5,1,0.07317073170731707,3,41,QASMBench
+bv_n14,12,causal,1.0,0,1.0,41,41,QASMBench
+bv_n14,13,qpdg,1.0,0,0.36585365853658536,15,41,QASMBench
+bv_n14,13,naive,1.0,0,0.36585365853658536,15,41,QASMBench
+bv_n14,13,causal,1.0,0,1.0,41,41,QASMBench
+ghz_n3,0,qpdg,1.0,0,1.0,3,3,MQT Bench
+ghz_n3,0,naive,0.5,1,0.3333333333333333,1,3,MQT Bench
+ghz_n3,0,causal,1.0,0,1.0,3,3,MQT Bench
+ghz_n3,1,qpdg,1.0,0,1.0,3,3,MQT Bench
+ghz_n3,1,naive,0.5,1,0.6666666666666666,2,3,MQT Bench
+ghz_n3,1,causal,1.0,0,1.0,3,3,MQT Bench
+ghz_n3,2,qpdg,1.0,0,0.6666666666666666,2,3,MQT Bench
+ghz_n3,2,naive,1.0,0,0.6666666666666666,2,3,MQT Bench
+ghz_n3,2,causal,1.0,0,1.0,3,3,MQT Bench
+grover_n3,0,qpdg,1.0,0,0.3333333333333333,1,3,MQT Bench
+grover_n3,0,naive,1.0,0,0.3333333333333333,1,3,MQT Bench
+grover_n3,0,causal,1.0,0,0.3333333333333333,1,3,MQT Bench
+grover_n3,1,qpdg,1.0,0,0.3333333333333333,1,3,MQT Bench
+grover_n3,1,naive,1.0,0,0.3333333333333333,1,3,MQT Bench
+grover_n3,1,causal,1.0,0,0.3333333333333333,1,3,MQT Bench
+grover_n3,2,qpdg,1.0,0,0.3333333333333333,1,3,MQT Bench
+grover_n3,2,naive,1.0,0,0.3333333333333333,1,3,MQT Bench
+grover_n3,2,causal,1.0,0,0.3333333333333333,1,3,MQT Bench
+qftentangled_n3,0,qpdg,1.0,0,1.0,3,3,MQT Bench
+qftentangled_n3,0,naive,0.5,1,0.3333333333333333,1,3,MQT Bench
+qftentangled_n3,0,causal,1.0,0,1.0,3,3,MQT Bench
+qftentangled_n3,1,qpdg,1.0,0,1.0,3,3,MQT Bench
+qftentangled_n3,1,naive,0.5,1,0.6666666666666666,2,3,MQT Bench
+qftentangled_n3,1,causal,1.0,0,1.0,3,3,MQT Bench
+qftentangled_n3,2,qpdg,1.0,0,0.6666666666666666,2,3,MQT Bench
+qftentangled_n3,2,naive,1.0,0,0.6666666666666666,2,3,MQT Bench
+qftentangled_n3,2,causal,1.0,0,1.0,3,3,MQT Bench
+bv_n3,0,qpdg,1.0,0,0.3333333333333333,2,6,MQT Bench
+bv_n3,0,naive,1.0,0,0.3333333333333333,2,6,MQT Bench
+bv_n3,0,causal,1.0,0,0.6666666666666666,4,6,MQT Bench
+bv_n3,1,qpdg,1.0,0,0.3333333333333333,2,6,MQT Bench
+bv_n3,1,naive,1.0,0,0.3333333333333333,2,6,MQT Bench
+bv_n3,1,causal,1.0,0,0.3333333333333333,2,6,MQT Bench
+bv_n3,2,qpdg,1.0,0,0.6666666666666666,4,6,MQT Bench
+bv_n3,2,naive,4.730109381834791e-34,1,0.5,3,6,MQT Bench
+bv_n3,2,causal,1.0,0,0.6666666666666666,4,6,MQT Bench
+dj_n3,0,qpdg,1.0,0,0.3333333333333333,2,6,MQT Bench
+dj_n3,0,naive,1.0,0,0.3333333333333333,2,6,MQT Bench
+dj_n3,0,causal,1.0,0,0.3333333333333333,2,6,MQT Bench
+dj_n3,1,qpdg,1.0,0,0.3333333333333333,2,6,MQT Bench
+dj_n3,1,naive,1.0,0,0.3333333333333333,2,6,MQT Bench
+dj_n3,1,causal,1.0,0,0.3333333333333333,2,6,MQT Bench
+dj_n3,2,qpdg,1.0,0,0.3333333333333333,2,6,MQT Bench
+dj_n3,2,naive,1.0,0,0.3333333333333333,2,6,MQT Bench
+dj_n3,2,causal,1.0,0,0.3333333333333333,2,6,MQT Bench
+graphstate_n3,0,qpdg,1.0,0,0.6666666666666666,4,6,MQT Bench
+graphstate_n3,0,naive,0.5,1,0.5,3,6,MQT Bench
+graphstate_n3,0,causal,1.0,0,1.0,6,6,MQT Bench
+graphstate_n3,1,qpdg,1.0,0,0.6666666666666666,4,6,MQT Bench
+graphstate_n3,1,naive,0.5,1,0.5,3,6,MQT Bench
+graphstate_n3,1,causal,1.0,0,1.0,6,6,MQT Bench
+graphstate_n3,2,qpdg,1.0,0,0.6666666666666666,4,6,MQT Bench
+graphstate_n3,2,naive,0.5,1,0.5,3,6,MQT Bench
+graphstate_n3,2,causal,1.0,0,1.0,6,6,MQT Bench
+wstate_n3,0,qpdg,1.0,0,1.0,9,9,MQT Bench
+wstate_n3,0,naive,0.6666666666666666,1,0.4444444444444444,4,9,MQT Bench
+wstate_n3,0,causal,1.0,0,1.0,9,9,MQT Bench
+wstate_n3,1,qpdg,1.0,0,1.0,9,9,MQT Bench
+wstate_n3,1,naive,0.6666666666666666,1,0.6666666666666666,6,9,MQT Bench
+wstate_n3,1,causal,1.0,0,1.0,9,9,MQT Bench
+wstate_n3,2,qpdg,1.0,0,0.5555555555555556,5,9,MQT Bench
+wstate_n3,2,naive,0.3333333333333333,1,0.3333333333333333,3,9,MQT Bench
+wstate_n3,2,causal,1.0,0,1.0,9,9,MQT Bench
+ghz_n4,0,qpdg,1.0,0,1.0,4,4,MQT Bench
+ghz_n4,0,naive,0.5,1,0.25,1,4,MQT Bench
+ghz_n4,0,causal,1.0,0,1.0,4,4,MQT Bench
+ghz_n4,1,qpdg,1.0,0,1.0,4,4,MQT Bench
+ghz_n4,1,naive,0.5,1,0.5,2,4,MQT Bench
+ghz_n4,1,causal,1.0,0,1.0,4,4,MQT Bench
+ghz_n4,2,qpdg,1.0,0,0.75,3,4,MQT Bench
+ghz_n4,2,naive,0.5,1,0.5,2,4,MQT Bench
+ghz_n4,2,causal,1.0,0,1.0,4,4,MQT Bench
+ghz_n4,3,qpdg,1.0,0,0.5,2,4,MQT Bench
+ghz_n4,3,naive,1.0,0,0.5,2,4,MQT Bench
+ghz_n4,3,causal,1.0,0,1.0,4,4,MQT Bench
+grover_n4,0,qpdg,1.0,0,0.25,1,4,MQT Bench
+grover_n4,0,naive,1.0,0,0.25,1,4,MQT Bench
+grover_n4,0,causal,1.0,0,0.25,1,4,MQT Bench
+grover_n4,1,qpdg,1.0,0,0.25,1,4,MQT Bench
+grover_n4,1,naive,1.0,0,0.25,1,4,MQT Bench
+grover_n4,1,causal,1.0,0,0.25,1,4,MQT Bench
+grover_n4,2,qpdg,1.0,0,0.25,1,4,MQT Bench
+grover_n4,2,naive,1.0,0,0.25,1,4,MQT Bench
+grover_n4,2,causal,1.0,0,0.25,1,4,MQT Bench
+grover_n4,3,qpdg,1.0,0,0.25,1,4,MQT Bench
+grover_n4,3,naive,1.0,0,0.25,1,4,MQT Bench
+grover_n4,3,causal,1.0,0,0.25,1,4,MQT Bench
+qftentangled_n4,0,qpdg,1.0,0,1.0,4,4,MQT Bench
+qftentangled_n4,0,naive,0.5,1,0.25,1,4,MQT Bench
+qftentangled_n4,0,causal,1.0,0,1.0,4,4,MQT Bench
+qftentangled_n4,1,qpdg,1.0,0,1.0,4,4,MQT Bench
+qftentangled_n4,1,naive,0.5,1,0.5,2,4,MQT Bench
+qftentangled_n4,1,causal,1.0,0,1.0,4,4,MQT Bench
+qftentangled_n4,2,qpdg,1.0,0,0.75,3,4,MQT Bench
+qftentangled_n4,2,naive,0.5,1,0.5,2,4,MQT Bench
+qftentangled_n4,2,causal,1.0,0,1.0,4,4,MQT Bench
+qftentangled_n4,3,qpdg,1.0,0,0.5,2,4,MQT Bench
+qftentangled_n4,3,naive,1.0,0,0.5,2,4,MQT Bench
+qftentangled_n4,3,causal,1.0,0,1.0,4,4,MQT Bench
+bv_n4,0,qpdg,1.0,0,0.25,2,8,MQT Bench
+bv_n4,0,naive,1.0,0,0.25,2,8,MQT Bench
+bv_n4,0,causal,1.0,0,0.5,4,8,MQT Bench
+bv_n4,1,qpdg,1.0,0,0.25,2,8,MQT Bench
+bv_n4,1,naive,1.0,0,0.25,2,8,MQT Bench
+bv_n4,1,causal,1.0,0,0.25,2,8,MQT Bench
+bv_n4,2,qpdg,1.0,0,0.5,4,8,MQT Bench
+bv_n4,2,naive,1.650437477678966e-34,1,0.375,3,8,MQT Bench
+bv_n4,2,causal,1.0,0,0.5,4,8,MQT Bench
+bv_n4,3,qpdg,1.0,0,0.25,2,8,MQT Bench
+bv_n4,3,naive,1.0,0,0.25,2,8,MQT Bench
+bv_n4,3,causal,1.0,0,0.25,2,8,MQT Bench
+dj_n4,0,qpdg,1.0,0,0.25,2,8,MQT Bench
+dj_n4,0,naive,1.0,0,0.25,2,8,MQT Bench
+dj_n4,0,causal,1.0,0,0.25,2,8,MQT Bench
+dj_n4,1,qpdg,1.0,0,0.25,2,8,MQT Bench
+dj_n4,1,naive,1.0,0,0.25,2,8,MQT Bench
+dj_n4,1,causal,1.0,0,0.25,2,8,MQT Bench
+dj_n4,2,qpdg,1.0,0,0.25,2,8,MQT Bench
+dj_n4,2,naive,1.0,0,0.25,2,8,MQT Bench
+dj_n4,2,causal,1.0,0,0.25,2,8,MQT Bench
+dj_n4,3,qpdg,1.0,0,0.25,2,8,MQT Bench
+dj_n4,3,naive,1.0,0,0.25,2,8,MQT Bench
+dj_n4,3,causal,1.0,0,0.25,2,8,MQT Bench
+graphstate_n4,0,qpdg,1.0,0,0.5,4,8,MQT Bench
+graphstate_n4,0,naive,0.5,1,0.375,3,8,MQT Bench
+graphstate_n4,0,causal,1.0,0,1.0,8,8,MQT Bench
+graphstate_n4,1,qpdg,1.0,0,0.5,4,8,MQT Bench
+graphstate_n4,1,naive,0.5,1,0.375,3,8,MQT Bench
+graphstate_n4,1,causal,1.0,0,1.0,8,8,MQT Bench
+graphstate_n4,2,qpdg,1.0,0,0.5,4,8,MQT Bench
+graphstate_n4,2,naive,0.5,1,0.375,3,8,MQT Bench
+graphstate_n4,2,causal,1.0,0,1.0,8,8,MQT Bench
+graphstate_n4,3,qpdg,1.0,0,0.5,4,8,MQT Bench
+graphstate_n4,3,naive,0.5,1,0.375,3,8,MQT Bench
+graphstate_n4,3,causal,1.0,0,1.0,8,8,MQT Bench
+wstate_n4,0,qpdg,0.9999999999999998,0,1.0,13,13,MQT Bench
+wstate_n4,0,naive,0.75,1,0.3076923076923077,4,13,MQT Bench
+wstate_n4,0,causal,0.9999999999999998,0,1.0,13,13,MQT Bench
+wstate_n4,1,qpdg,0.9999999999999998,0,1.0,13,13,MQT Bench
+wstate_n4,1,naive,0.75,1,0.46153846153846156,6,13,MQT Bench
+wstate_n4,1,causal,0.9999999999999998,0,1.0,13,13,MQT Bench
+wstate_n4,2,qpdg,0.9999999999999999,0,0.6923076923076923,9,13,MQT Bench
+wstate_n4,2,naive,0.7499999999999999,1,0.46153846153846156,6,13,MQT Bench
+wstate_n4,2,causal,0.9999999999999999,0,1.0,13,13,MQT Bench
+wstate_n4,3,qpdg,0.9999999999999999,0,0.38461538461538464,5,13,MQT Bench
+wstate_n4,3,naive,0.2500000000000001,1,0.23076923076923078,3,13,MQT Bench
+wstate_n4,3,causal,0.9999999999999998,0,1.0,13,13,MQT Bench
+ghz_n5,0,qpdg,1.0,0,1.0,5,5,MQT Bench
+ghz_n5,0,naive,0.5,1,0.2,1,5,MQT Bench
+ghz_n5,0,causal,1.0,0,1.0,5,5,MQT Bench
+ghz_n5,1,qpdg,1.0,0,1.0,5,5,MQT Bench
+ghz_n5,1,naive,0.5,1,0.4,2,5,MQT Bench
+ghz_n5,1,causal,1.0,0,1.0,5,5,MQT Bench
+ghz_n5,2,qpdg,1.0,0,0.8,4,5,MQT Bench
+ghz_n5,2,naive,0.5,1,0.4,2,5,MQT Bench
+ghz_n5,2,causal,1.0,0,1.0,5,5,MQT Bench
+ghz_n5,3,qpdg,1.0,0,0.6,3,5,MQT Bench
+ghz_n5,3,naive,0.5,1,0.4,2,5,MQT Bench
+ghz_n5,3,causal,1.0,0,1.0,5,5,MQT Bench
+ghz_n5,4,qpdg,1.0,0,0.4,2,5,MQT Bench
+ghz_n5,4,naive,1.0,0,0.4,2,5,MQT Bench
+ghz_n5,4,causal,1.0,0,1.0,5,5,MQT Bench
+grover_n5,0,qpdg,1.0,0,0.2,1,5,MQT Bench
+grover_n5,0,naive,1.0,0,0.2,1,5,MQT Bench
+grover_n5,0,causal,1.0,0,0.2,1,5,MQT Bench
+grover_n5,1,qpdg,1.0,0,0.2,1,5,MQT Bench
+grover_n5,1,naive,1.0,0,0.2,1,5,MQT Bench
+grover_n5,1,causal,1.0,0,0.2,1,5,MQT Bench
+grover_n5,2,qpdg,1.0,0,0.2,1,5,MQT Bench
+grover_n5,2,naive,1.0,0,0.2,1,5,MQT Bench
+grover_n5,2,causal,1.0,0,0.2,1,5,MQT Bench
+grover_n5,3,qpdg,1.0,0,0.2,1,5,MQT Bench
+grover_n5,3,naive,1.0,0,0.2,1,5,MQT Bench
+grover_n5,3,causal,1.0,0,0.2,1,5,MQT Bench
+grover_n5,4,qpdg,1.0,0,0.2,1,5,MQT Bench
+grover_n5,4,naive,1.0,0,0.2,1,5,MQT Bench
+grover_n5,4,causal,1.0,0,0.2,1,5,MQT Bench
+qftentangled_n5,0,qpdg,1.0,0,1.0,5,5,MQT Bench
+qftentangled_n5,0,naive,0.5,1,0.2,1,5,MQT Bench
+qftentangled_n5,0,causal,1.0,0,1.0,5,5,MQT Bench
+qftentangled_n5,1,qpdg,1.0,0,1.0,5,5,MQT Bench
+qftentangled_n5,1,naive,0.5,1,0.4,2,5,MQT Bench
+qftentangled_n5,1,causal,1.0,0,1.0,5,5,MQT Bench
+qftentangled_n5,2,qpdg,1.0,0,0.8,4,5,MQT Bench
+qftentangled_n5,2,naive,0.5,1,0.4,2,5,MQT Bench
+qftentangled_n5,2,causal,1.0,0,1.0,5,5,MQT Bench
+qftentangled_n5,3,qpdg,1.0,0,0.6,3,5,MQT Bench
+qftentangled_n5,3,naive,0.5,1,0.4,2,5,MQT Bench
+qftentangled_n5,3,causal,1.0,0,1.0,5,5,MQT Bench
+qftentangled_n5,4,qpdg,1.0,0,0.4,2,5,MQT Bench
+qftentangled_n5,4,naive,1.0,0,0.4,2,5,MQT Bench
+qftentangled_n5,4,causal,1.0,0,1.0,5,5,MQT Bench
+dj_n5,0,qpdg,1.0,0,0.2,2,10,MQT Bench
+dj_n5,0,naive,1.0,0,0.2,2,10,MQT Bench
+dj_n5,0,causal,1.0,0,0.2,2,10,MQT Bench
+dj_n5,1,qpdg,1.0,0,0.2,2,10,MQT Bench
+dj_n5,1,naive,1.0,0,0.2,2,10,MQT Bench
+dj_n5,1,causal,1.0,0,0.2,2,10,MQT Bench
+dj_n5,2,qpdg,1.0,0,0.2,2,10,MQT Bench
+dj_n5,2,naive,1.0,0,0.2,2,10,MQT Bench
+dj_n5,2,causal,1.0,0,0.2,2,10,MQT Bench
+dj_n5,3,qpdg,1.0,0,0.2,2,10,MQT Bench
+dj_n5,3,naive,1.0,0,0.2,2,10,MQT Bench
+dj_n5,3,causal,1.0,0,0.2,2,10,MQT Bench
+dj_n5,4,qpdg,1.0,0,0.2,2,10,MQT Bench
+dj_n5,4,naive,1.0,0,0.2,2,10,MQT Bench
+dj_n5,4,causal,1.0,0,0.2,2,10,MQT Bench
+graphstate_n5,0,qpdg,1.0,0,0.4,4,10,MQT Bench
+graphstate_n5,0,naive,0.5,1,0.3,3,10,MQT Bench
+graphstate_n5,0,causal,1.0,0,1.0,10,10,MQT Bench
+graphstate_n5,1,qpdg,1.0,0,0.4,4,10,MQT Bench
+graphstate_n5,1,naive,0.5,1,0.3,3,10,MQT Bench
+graphstate_n5,1,causal,1.0,0,1.0,10,10,MQT Bench
+graphstate_n5,2,qpdg,1.0,0,0.4,4,10,MQT Bench
+graphstate_n5,2,naive,0.5,1,0.3,3,10,MQT Bench
+graphstate_n5,2,causal,1.0,0,1.0,10,10,MQT Bench
+graphstate_n5,3,qpdg,1.0,0,0.4,4,10,MQT Bench
+graphstate_n5,3,naive,0.5,1,0.3,3,10,MQT Bench
+graphstate_n5,3,causal,1.0,0,1.0,10,10,MQT Bench
+graphstate_n5,4,qpdg,1.0,0,0.4,4,10,MQT Bench
+graphstate_n5,4,naive,0.5,1,0.3,3,10,MQT Bench
+graphstate_n5,4,causal,1.0,0,1.0,10,10,MQT Bench
+bv_n5,0,qpdg,1.0,0,0.2727272727272727,3,11,MQT Bench
+bv_n5,0,naive,1.0,0,0.2727272727272727,3,11,MQT Bench
+bv_n5,0,causal,1.0,0,0.6363636363636364,7,11,MQT Bench
+bv_n5,1,qpdg,1.0,0,0.18181818181818182,2,11,MQT Bench
+bv_n5,1,naive,1.0,0,0.18181818181818182,2,11,MQT Bench
+bv_n5,1,causal,1.0,0,0.18181818181818182,2,11,MQT Bench
+bv_n5,2,qpdg,1.0,0,0.36363636363636365,4,11,MQT Bench
+bv_n5,2,naive,1.5491712078290164e-36,1,0.2727272727272727,3,11,MQT Bench
+bv_n5,2,causal,1.0,0,0.6363636363636364,7,11,MQT Bench
+bv_n5,3,qpdg,1.0,0,0.18181818181818182,2,11,MQT Bench
+bv_n5,3,naive,1.0,0,0.18181818181818182,2,11,MQT Bench
+bv_n5,3,causal,1.0,0,0.18181818181818182,2,11,MQT Bench
+bv_n5,4,qpdg,1.0,0,0.36363636363636365,4,11,MQT Bench
+bv_n5,4,naive,9.78001934032588e-34,1,0.2727272727272727,3,11,MQT Bench
+bv_n5,4,causal,1.0,0,0.6363636363636364,7,11,MQT Bench
+wstate_n5,0,qpdg,1.0,0,1.0,17,17,MQT Bench
+wstate_n5,0,naive,0.8,1,0.23529411764705882,4,17,MQT Bench
+wstate_n5,0,causal,1.0,0,1.0,17,17,MQT Bench
+wstate_n5,1,qpdg,0.9999999999999999,0,1.0,17,17,MQT Bench
+wstate_n5,1,naive,0.8,1,0.35294117647058826,6,17,MQT Bench
+wstate_n5,1,causal,0.9999999999999999,0,1.0,17,17,MQT Bench
+wstate_n5,2,qpdg,0.9999999999999998,0,0.7647058823529411,13,17,MQT Bench
+wstate_n5,2,naive,0.7999999999999999,1,0.35294117647058826,6,17,MQT Bench
+wstate_n5,2,causal,0.9999999999999997,0,1.0,17,17,MQT Bench
+wstate_n5,3,qpdg,1.0,0,0.5294117647058824,9,17,MQT Bench
+wstate_n5,3,naive,0.7999999999999999,1,0.35294117647058826,6,17,MQT Bench
+wstate_n5,3,causal,1.0,0,1.0,17,17,MQT Bench
+wstate_n5,4,qpdg,0.9999999999999998,0,0.29411764705882354,5,17,MQT Bench
+wstate_n5,4,naive,0.20000000000000004,1,0.17647058823529413,3,17,MQT Bench
+wstate_n5,4,causal,0.9999999999999997,0,1.0,17,17,MQT Bench
+ghz_n8,0,qpdg,1.0,0,1.0,8,8,MQT Bench
+ghz_n8,0,naive,0.5,1,0.125,1,8,MQT Bench
+ghz_n8,0,causal,1.0,0,1.0,8,8,MQT Bench
+ghz_n8,1,qpdg,1.0,0,1.0,8,8,MQT Bench
+ghz_n8,1,naive,0.5,1,0.25,2,8,MQT Bench
+ghz_n8,1,causal,1.0,0,1.0,8,8,MQT Bench
+ghz_n8,2,qpdg,1.0,0,0.875,7,8,MQT Bench
+ghz_n8,2,naive,0.5,1,0.25,2,8,MQT Bench
+ghz_n8,2,causal,1.0,0,1.0,8,8,MQT Bench
+ghz_n8,3,qpdg,1.0,0,0.75,6,8,MQT Bench
+ghz_n8,3,naive,0.5,1,0.25,2,8,MQT Bench
+ghz_n8,3,causal,1.0,0,1.0,8,8,MQT Bench
+ghz_n8,4,qpdg,1.0,0,0.625,5,8,MQT Bench
+ghz_n8,4,naive,0.5,1,0.25,2,8,MQT Bench
+ghz_n8,4,causal,1.0,0,1.0,8,8,MQT Bench
+ghz_n8,5,qpdg,1.0,0,0.5,4,8,MQT Bench
+ghz_n8,5,naive,0.5,1,0.25,2,8,MQT Bench
+ghz_n8,5,causal,1.0,0,1.0,8,8,MQT Bench
+ghz_n8,6,qpdg,1.0,0,0.375,3,8,MQT Bench
+ghz_n8,6,naive,0.5,1,0.25,2,8,MQT Bench
+ghz_n8,6,causal,1.0,0,1.0,8,8,MQT Bench
+ghz_n8,7,qpdg,1.0,0,0.25,2,8,MQT Bench
+ghz_n8,7,naive,1.0,0,0.25,2,8,MQT Bench
+ghz_n8,7,causal,1.0,0,1.0,8,8,MQT Bench
+grover_n8,0,qpdg,1.0,0,0.125,1,8,MQT Bench
+grover_n8,0,naive,1.0,0,0.125,1,8,MQT Bench
+grover_n8,0,causal,1.0,0,0.125,1,8,MQT Bench
+grover_n8,1,qpdg,1.0,0,0.125,1,8,MQT Bench
+grover_n8,1,naive,1.0,0,0.125,1,8,MQT Bench
+grover_n8,1,causal,1.0,0,0.125,1,8,MQT Bench
+grover_n8,2,qpdg,1.0,0,0.125,1,8,MQT Bench
+grover_n8,2,naive,1.0,0,0.125,1,8,MQT Bench
+grover_n8,2,causal,1.0,0,0.125,1,8,MQT Bench
+grover_n8,3,qpdg,1.0,0,0.125,1,8,MQT Bench
+grover_n8,3,naive,1.0,0,0.125,1,8,MQT Bench
+grover_n8,3,causal,1.0,0,0.125,1,8,MQT Bench
+grover_n8,4,qpdg,1.0,0,0.125,1,8,MQT Bench
+grover_n8,4,naive,1.0,0,0.125,1,8,MQT Bench
+grover_n8,4,causal,1.0,0,0.125,1,8,MQT Bench
+grover_n8,5,qpdg,1.0,0,0.125,1,8,MQT Bench
+grover_n8,5,naive,1.0,0,0.125,1,8,MQT Bench
+grover_n8,5,causal,1.0,0,0.125,1,8,MQT Bench
+grover_n8,6,qpdg,1.0,0,0.125,1,8,MQT Bench
+grover_n8,6,naive,1.0,0,0.125,1,8,MQT Bench
+grover_n8,6,causal,1.0,0,0.125,1,8,MQT Bench
+grover_n8,7,qpdg,1.0,0,0.125,1,8,MQT Bench
+grover_n8,7,naive,1.0,0,0.125,1,8,MQT Bench
+grover_n8,7,causal,1.0,0,0.125,1,8,MQT Bench
+qftentangled_n8,0,qpdg,1.0,0,1.0,8,8,MQT Bench
+qftentangled_n8,0,naive,0.5,1,0.125,1,8,MQT Bench
+qftentangled_n8,0,causal,1.0,0,1.0,8,8,MQT Bench
+qftentangled_n8,1,qpdg,1.0,0,1.0,8,8,MQT Bench
+qftentangled_n8,1,naive,0.5,1,0.25,2,8,MQT Bench
+qftentangled_n8,1,causal,1.0,0,1.0,8,8,MQT Bench
+qftentangled_n8,2,qpdg,1.0,0,0.875,7,8,MQT Bench
+qftentangled_n8,2,naive,0.5,1,0.25,2,8,MQT Bench
+qftentangled_n8,2,causal,1.0,0,1.0,8,8,MQT Bench
+qftentangled_n8,3,qpdg,1.0,0,0.75,6,8,MQT Bench
+qftentangled_n8,3,naive,0.5,1,0.25,2,8,MQT Bench
+qftentangled_n8,3,causal,1.0,0,1.0,8,8,MQT Bench
+qftentangled_n8,4,qpdg,1.0,0,0.625,5,8,MQT Bench
+qftentangled_n8,4,naive,0.5,1,0.25,2,8,MQT Bench
+qftentangled_n8,4,causal,1.0,0,1.0,8,8,MQT Bench
+qftentangled_n8,5,qpdg,1.0,0,0.5,4,8,MQT Bench
+qftentangled_n8,5,naive,0.5,1,0.25,2,8,MQT Bench
+qftentangled_n8,5,causal,1.0,0,1.0,8,8,MQT Bench
+qftentangled_n8,6,qpdg,1.0,0,0.375,3,8,MQT Bench
+qftentangled_n8,6,naive,0.5,1,0.25,2,8,MQT Bench
+qftentangled_n8,6,causal,1.0,0,1.0,8,8,MQT Bench
+qftentangled_n8,7,qpdg,1.0,0,0.25,2,8,MQT Bench
+qftentangled_n8,7,naive,1.0,0,0.25,2,8,MQT Bench
+qftentangled_n8,7,causal,1.0,0,1.0,8,8,MQT Bench
+dj_n8,0,qpdg,1.0,0,0.125,2,16,MQT Bench
+dj_n8,0,naive,1.0,0,0.125,2,16,MQT Bench
+dj_n8,0,causal,1.0,0,0.125,2,16,MQT Bench
+dj_n8,1,qpdg,1.0,0,0.125,2,16,MQT Bench
+dj_n8,1,naive,1.0,0,0.125,2,16,MQT Bench
+dj_n8,1,causal,1.0,0,0.125,2,16,MQT Bench
+dj_n8,2,qpdg,1.0,0,0.125,2,16,MQT Bench
+dj_n8,2,naive,1.0,0,0.125,2,16,MQT Bench
+dj_n8,2,causal,1.0,0,0.125,2,16,MQT Bench
+dj_n8,3,qpdg,1.0,0,0.125,2,16,MQT Bench
+dj_n8,3,naive,1.0,0,0.125,2,16,MQT Bench
+dj_n8,3,causal,1.0,0,0.125,2,16,MQT Bench
+dj_n8,4,qpdg,1.0,0,0.125,2,16,MQT Bench
+dj_n8,4,naive,1.0,0,0.125,2,16,MQT Bench
+dj_n8,4,causal,1.0,0,0.125,2,16,MQT Bench
+dj_n8,5,qpdg,1.0,0,0.125,2,16,MQT Bench
+dj_n8,5,naive,1.0,0,0.125,2,16,MQT Bench
+dj_n8,5,causal,1.0,0,0.125,2,16,MQT Bench
+dj_n8,6,qpdg,1.0,0,0.125,2,16,MQT Bench
+dj_n8,6,naive,1.0,0,0.125,2,16,MQT Bench
+dj_n8,6,causal,1.0,0,0.125,2,16,MQT Bench
+dj_n8,7,qpdg,1.0,0,0.125,2,16,MQT Bench
+dj_n8,7,naive,1.0,0,0.125,2,16,MQT Bench
+dj_n8,7,causal,1.0,0,0.125,2,16,MQT Bench
+graphstate_n8,0,qpdg,1.0,0,0.25,4,16,MQT Bench
+graphstate_n8,0,naive,0.5,1,0.1875,3,16,MQT Bench
+graphstate_n8,0,causal,1.0,0,1.0,16,16,MQT Bench
+graphstate_n8,1,qpdg,1.0,0,0.25,4,16,MQT Bench
+graphstate_n8,1,naive,0.5,1,0.1875,3,16,MQT Bench
+graphstate_n8,1,causal,1.0,0,1.0,16,16,MQT Bench
+graphstate_n8,2,qpdg,1.0,0,0.25,4,16,MQT Bench
+graphstate_n8,2,naive,0.5,1,0.1875,3,16,MQT Bench
+graphstate_n8,2,causal,1.0,0,1.0,16,16,MQT Bench
+graphstate_n8,3,qpdg,1.0,0,0.25,4,16,MQT Bench
+graphstate_n8,3,naive,0.5,1,0.1875,3,16,MQT Bench
+graphstate_n8,3,causal,1.0,0,1.0,16,16,MQT Bench
+graphstate_n8,4,qpdg,1.0,0,0.25,4,16,MQT Bench
+graphstate_n8,4,naive,0.5,1,0.1875,3,16,MQT Bench
+graphstate_n8,4,causal,1.0,0,1.0,16,16,MQT Bench
+graphstate_n8,5,qpdg,1.0,0,0.25,4,16,MQT Bench
+graphstate_n8,5,naive,0.5,1,0.1875,3,16,MQT Bench
+graphstate_n8,5,causal,1.0,0,1.0,16,16,MQT Bench
+graphstate_n8,6,qpdg,1.0,0,0.25,4,16,MQT Bench
+graphstate_n8,6,naive,0.5,1,0.1875,3,16,MQT Bench
+graphstate_n8,6,causal,1.0,0,1.0,16,16,MQT Bench
+graphstate_n8,7,qpdg,1.0,0,0.25,4,16,MQT Bench
+graphstate_n8,7,naive,0.5,1,0.1875,3,16,MQT Bench
+graphstate_n8,7,causal,1.0,0,1.0,16,16,MQT Bench
+bv_n8,0,qpdg,1.0,0,0.2222222222222222,4,18,MQT Bench
+bv_n8,0,naive,1.0,0,0.2222222222222222,4,18,MQT Bench
+bv_n8,0,causal,1.0,0,0.5555555555555556,10,18,MQT Bench
+bv_n8,1,qpdg,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,1,naive,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,1,causal,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,2,qpdg,1.0,0,0.2222222222222222,4,18,MQT Bench
+bv_n8,2,naive,1.1040518171935708e-35,1,0.16666666666666666,3,18,MQT Bench
+bv_n8,2,causal,1.0,0,0.5555555555555556,10,18,MQT Bench
+bv_n8,3,qpdg,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,3,naive,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,3,causal,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,4,qpdg,1.0,0,0.2222222222222222,4,18,MQT Bench
+bv_n8,4,naive,6.925423415391731e-34,1,0.16666666666666666,3,18,MQT Bench
+bv_n8,4,causal,1.0,0,0.5555555555555556,10,18,MQT Bench
+bv_n8,5,qpdg,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,5,naive,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,5,causal,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,6,qpdg,1.0,0,0.2222222222222222,4,18,MQT Bench
+bv_n8,6,naive,3.8458357978642687e-35,1,0.16666666666666666,3,18,MQT Bench
+bv_n8,6,causal,1.0,0,0.5555555555555556,10,18,MQT Bench
+bv_n8,7,qpdg,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,7,naive,1.0,0,0.1111111111111111,2,18,MQT Bench
+bv_n8,7,causal,1.0,0,0.1111111111111111,2,18,MQT Bench
+wstate_n8,0,qpdg,1.0,0,1.0,29,29,MQT Bench
+wstate_n8,0,naive,0.8750000000000001,1,0.13793103448275862,4,29,MQT Bench
+wstate_n8,0,causal,1.0,0,1.0,29,29,MQT Bench
+wstate_n8,1,qpdg,1.0,0,1.0,29,29,MQT Bench
+wstate_n8,1,naive,0.8750000000000001,1,0.20689655172413793,6,29,MQT Bench
+wstate_n8,1,causal,1.0,0,1.0,29,29,MQT Bench
+wstate_n8,2,qpdg,1.0,0,0.8620689655172413,25,29,MQT Bench
+wstate_n8,2,naive,0.875,1,0.20689655172413793,6,29,MQT Bench
+wstate_n8,2,causal,0.9999999999999999,0,1.0,29,29,MQT Bench
+wstate_n8,3,qpdg,1.0,0,0.7241379310344828,21,29,MQT Bench
+wstate_n8,3,naive,0.875,1,0.20689655172413793,6,29,MQT Bench
+wstate_n8,3,causal,1.0,0,1.0,29,29,MQT Bench
+wstate_n8,4,qpdg,1.0,0,0.5862068965517241,17,29,MQT Bench
+wstate_n8,4,naive,0.875,1,0.20689655172413793,6,29,MQT Bench
+wstate_n8,4,causal,1.0,0,1.0,29,29,MQT Bench
+wstate_n8,5,qpdg,1.0,0,0.4482758620689655,13,29,MQT Bench
+wstate_n8,5,naive,0.875,1,0.20689655172413793,6,29,MQT Bench
+wstate_n8,5,causal,1.0,0,1.0,29,29,MQT Bench
+wstate_n8,6,qpdg,1.0,0,0.3103448275862069,9,29,MQT Bench
+wstate_n8,6,naive,0.875,1,0.20689655172413793,6,29,MQT Bench
+wstate_n8,6,causal,1.0,0,1.0,29,29,MQT Bench
+wstate_n8,7,qpdg,1.0,0,0.1724137931034483,5,29,MQT Bench
+wstate_n8,7,naive,0.12500000000000022,1,0.10344827586206896,3,29,MQT Bench
+wstate_n8,7,causal,1.0,0,1.0,29,29,MQT Bench
+ghz_n10,0,qpdg,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,0,naive,0.5,1,0.1,1,10,MQT Bench
+ghz_n10,0,causal,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,1,qpdg,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,1,naive,0.5,1,0.2,2,10,MQT Bench
+ghz_n10,1,causal,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,2,qpdg,1.0,0,0.9,9,10,MQT Bench
+ghz_n10,2,naive,0.5,1,0.2,2,10,MQT Bench
+ghz_n10,2,causal,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,3,qpdg,1.0,0,0.8,8,10,MQT Bench
+ghz_n10,3,naive,0.5,1,0.2,2,10,MQT Bench
+ghz_n10,3,causal,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,4,qpdg,1.0,0,0.7,7,10,MQT Bench
+ghz_n10,4,naive,0.5,1,0.2,2,10,MQT Bench
+ghz_n10,4,causal,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,5,qpdg,1.0,0,0.6,6,10,MQT Bench
+ghz_n10,5,naive,0.5,1,0.2,2,10,MQT Bench
+ghz_n10,5,causal,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,6,qpdg,1.0,0,0.5,5,10,MQT Bench
+ghz_n10,6,naive,0.5,1,0.2,2,10,MQT Bench
+ghz_n10,6,causal,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,7,qpdg,1.0,0,0.4,4,10,MQT Bench
+ghz_n10,7,naive,0.5,1,0.2,2,10,MQT Bench
+ghz_n10,7,causal,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,8,qpdg,1.0,0,0.3,3,10,MQT Bench
+ghz_n10,8,naive,0.5,1,0.2,2,10,MQT Bench
+ghz_n10,8,causal,1.0,0,1.0,10,10,MQT Bench
+ghz_n10,9,qpdg,1.0,0,0.2,2,10,MQT Bench
+ghz_n10,9,naive,1.0,0,0.2,2,10,MQT Bench
+ghz_n10,9,causal,1.0,0,1.0,10,10,MQT Bench
+grover_n10,0,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,0,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,0,causal,1.0,0,0.1,1,10,MQT Bench
+grover_n10,1,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,1,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,1,causal,1.0,0,0.1,1,10,MQT Bench
+grover_n10,2,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,2,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,2,causal,1.0,0,0.1,1,10,MQT Bench
+grover_n10,3,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,3,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,3,causal,1.0,0,0.1,1,10,MQT Bench
+grover_n10,4,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,4,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,4,causal,1.0,0,0.1,1,10,MQT Bench
+grover_n10,5,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,5,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,5,causal,1.0,0,0.1,1,10,MQT Bench
+grover_n10,6,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,6,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,6,causal,1.0,0,0.1,1,10,MQT Bench
+grover_n10,7,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,7,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,7,causal,1.0,0,0.1,1,10,MQT Bench
+grover_n10,8,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,8,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,8,causal,1.0,0,0.1,1,10,MQT Bench
+grover_n10,9,qpdg,1.0,0,0.1,1,10,MQT Bench
+grover_n10,9,naive,1.0,0,0.1,1,10,MQT Bench
+grover_n10,9,causal,1.0,0,0.1,1,10,MQT Bench
+qftentangled_n10,0,qpdg,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,0,naive,0.5,1,0.1,1,10,MQT Bench
+qftentangled_n10,0,causal,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,1,qpdg,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,1,naive,0.5,1,0.2,2,10,MQT Bench
+qftentangled_n10,1,causal,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,2,qpdg,1.0,0,0.9,9,10,MQT Bench
+qftentangled_n10,2,naive,0.5,1,0.2,2,10,MQT Bench
+qftentangled_n10,2,causal,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,3,qpdg,1.0,0,0.8,8,10,MQT Bench
+qftentangled_n10,3,naive,0.5,1,0.2,2,10,MQT Bench
+qftentangled_n10,3,causal,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,4,qpdg,1.0,0,0.7,7,10,MQT Bench
+qftentangled_n10,4,naive,0.5,1,0.2,2,10,MQT Bench
+qftentangled_n10,4,causal,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,5,qpdg,1.0,0,0.6,6,10,MQT Bench
+qftentangled_n10,5,naive,0.5,1,0.2,2,10,MQT Bench
+qftentangled_n10,5,causal,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,6,qpdg,1.0,0,0.5,5,10,MQT Bench
+qftentangled_n10,6,naive,0.5,1,0.2,2,10,MQT Bench
+qftentangled_n10,6,causal,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,7,qpdg,1.0,0,0.4,4,10,MQT Bench
+qftentangled_n10,7,naive,0.5,1,0.2,2,10,MQT Bench
+qftentangled_n10,7,causal,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,8,qpdg,1.0,0,0.3,3,10,MQT Bench
+qftentangled_n10,8,naive,0.5,1,0.2,2,10,MQT Bench
+qftentangled_n10,8,causal,1.0,0,1.0,10,10,MQT Bench
+qftentangled_n10,9,qpdg,1.0,0,0.2,2,10,MQT Bench
+qftentangled_n10,9,naive,1.0,0,0.2,2,10,MQT Bench
+qftentangled_n10,9,causal,1.0,0,1.0,10,10,MQT Bench
+dj_n10,0,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,0,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,0,causal,1.0,0,0.1,2,20,MQT Bench
+dj_n10,1,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,1,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,1,causal,1.0,0,0.1,2,20,MQT Bench
+dj_n10,2,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,2,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,2,causal,1.0,0,0.1,2,20,MQT Bench
+dj_n10,3,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,3,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,3,causal,1.0,0,0.1,2,20,MQT Bench
+dj_n10,4,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,4,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,4,causal,1.0,0,0.1,2,20,MQT Bench
+dj_n10,5,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,5,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,5,causal,1.0,0,0.1,2,20,MQT Bench
+dj_n10,6,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,6,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,6,causal,1.0,0,0.1,2,20,MQT Bench
+dj_n10,7,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,7,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,7,causal,1.0,0,0.1,2,20,MQT Bench
+dj_n10,8,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,8,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,8,causal,1.0,0,0.1,2,20,MQT Bench
+dj_n10,9,qpdg,1.0,0,0.1,2,20,MQT Bench
+dj_n10,9,naive,1.0,0,0.1,2,20,MQT Bench
+dj_n10,9,causal,1.0,0,0.1,2,20,MQT Bench
+graphstate_n10,0,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,0,naive,0.5,1,0.15,3,20,MQT Bench
+graphstate_n10,0,causal,1.0,0,1.0,20,20,MQT Bench
+graphstate_n10,1,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,1,naive,0.5,1,0.15,3,20,MQT Bench
+graphstate_n10,1,causal,1.0,0,1.0,20,20,MQT Bench
+graphstate_n10,2,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,2,naive,0.5,1,0.15,3,20,MQT Bench
+graphstate_n10,2,causal,1.0,0,1.0,20,20,MQT Bench
+graphstate_n10,3,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,3,naive,0.5,1,0.15,3,20,MQT Bench
+graphstate_n10,3,causal,1.0,0,1.0,20,20,MQT Bench
+graphstate_n10,4,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,4,naive,0.49999999999999994,1,0.15,3,20,MQT Bench
+graphstate_n10,4,causal,1.0,0,1.0,20,20,MQT Bench
+graphstate_n10,5,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,5,naive,0.5,1,0.15,3,20,MQT Bench
+graphstate_n10,5,causal,1.0,0,1.0,20,20,MQT Bench
+graphstate_n10,6,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,6,naive,0.5,1,0.15,3,20,MQT Bench
+graphstate_n10,6,causal,1.0,0,1.0,20,20,MQT Bench
+graphstate_n10,7,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,7,naive,0.5,1,0.15,3,20,MQT Bench
+graphstate_n10,7,causal,1.0,0,1.0,20,20,MQT Bench
+graphstate_n10,8,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,8,naive,0.5,1,0.15,3,20,MQT Bench
+graphstate_n10,8,causal,1.0,0,1.0,20,20,MQT Bench
+graphstate_n10,9,qpdg,1.0,0,0.2,4,20,MQT Bench
+graphstate_n10,9,naive,0.5,1,0.15,3,20,MQT Bench
+graphstate_n10,9,causal,1.0,0,1.0,20,20,MQT Bench
+bv_n10,0,qpdg,1.0,0,0.21739130434782608,5,23,MQT Bench
+bv_n10,0,naive,1.0,0,0.21739130434782608,5,23,MQT Bench
+bv_n10,0,causal,1.0,0,0.5652173913043478,13,23,MQT Bench
+bv_n10,1,qpdg,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,1,naive,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,1,causal,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,2,qpdg,1.0,0,0.17391304347826086,4,23,MQT Bench
+bv_n10,2,naive,6.925423415391731e-34,1,0.13043478260869565,3,23,MQT Bench
+bv_n10,2,causal,1.0,0,0.5652173913043478,13,23,MQT Bench
+bv_n10,3,qpdg,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,3,naive,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,3,causal,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,4,qpdg,1.0,0,0.17391304347826086,4,23,MQT Bench
+bv_n10,4,naive,3.8458357978642687e-35,1,0.13043478260869565,3,23,MQT Bench
+bv_n10,4,causal,1.0,0,0.5652173913043478,13,23,MQT Bench
+bv_n10,5,qpdg,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,5,naive,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,5,causal,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,6,qpdg,1.0,0,0.17391304347826086,4,23,MQT Bench
+bv_n10,6,naive,2.819709750937284e-34,1,0.13043478260869565,3,23,MQT Bench
+bv_n10,6,causal,1.0,0,0.5652173913043478,13,23,MQT Bench
+bv_n10,7,qpdg,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,7,naive,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,7,causal,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,8,qpdg,1.0,0,0.17391304347826086,4,23,MQT Bench
+bv_n10,8,naive,1.582883074115788e-33,1,0.13043478260869565,3,23,MQT Bench
+bv_n10,8,causal,1.0,0,0.5652173913043478,13,23,MQT Bench
+bv_n10,9,qpdg,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,9,naive,1.0,0,0.08695652173913043,2,23,MQT Bench
+bv_n10,9,causal,1.0,0,0.08695652173913043,2,23,MQT Bench
+wstate_n10,0,qpdg,1.0,0,1.0,37,37,MQT Bench
+wstate_n10,0,naive,0.9,1,0.10810810810810811,4,37,MQT Bench
+wstate_n10,0,causal,1.0,0,1.0,37,37,MQT Bench
+wstate_n10,1,qpdg,1.0,0,1.0,37,37,MQT Bench
+wstate_n10,1,naive,0.9,1,0.16216216216216217,6,37,MQT Bench
+wstate_n10,1,causal,1.0,0,1.0,37,37,MQT Bench
+wstate_n10,2,qpdg,1.0,0,0.8918918918918919,33,37,MQT Bench
+wstate_n10,2,naive,0.9,1,0.16216216216216217,6,37,MQT Bench
+wstate_n10,2,causal,1.0,0,1.0,37,37,MQT Bench
+wstate_n10,3,qpdg,0.9999999999999999,0,0.7837837837837838,29,37,MQT Bench
+wstate_n10,3,naive,0.8999999999999999,1,0.16216216216216217,6,37,MQT Bench
+wstate_n10,3,causal,0.9999999999999999,0,1.0,37,37,MQT Bench
+wstate_n10,4,qpdg,0.9999999999999999,0,0.6756756756756757,25,37,MQT Bench
+wstate_n10,4,naive,0.8999999999999999,1,0.16216216216216217,6,37,MQT Bench
+wstate_n10,4,causal,0.9999999999999999,0,1.0,37,37,MQT Bench
+wstate_n10,5,qpdg,0.9999999999999999,0,0.5675675675675675,21,37,MQT Bench
+wstate_n10,5,naive,0.9,1,0.16216216216216217,6,37,MQT Bench
+wstate_n10,5,causal,1.0,0,1.0,37,37,MQT Bench
+wstate_n10,6,qpdg,1.0,0,0.4594594594594595,17,37,MQT Bench
+wstate_n10,6,naive,0.9,1,0.16216216216216217,6,37,MQT Bench
+wstate_n10,6,causal,1.0,0,1.0,37,37,MQT Bench
+wstate_n10,7,qpdg,0.9999999999999999,0,0.35135135135135137,13,37,MQT Bench
+wstate_n10,7,naive,0.8999999999999999,1,0.16216216216216217,6,37,MQT Bench
+wstate_n10,7,causal,0.9999999999999999,0,1.0,37,37,MQT Bench
+wstate_n10,8,qpdg,1.0,0,0.24324324324324326,9,37,MQT Bench
+wstate_n10,8,naive,0.9,1,0.16216216216216217,6,37,MQT Bench
+wstate_n10,8,causal,1.0,0,1.0,37,37,MQT Bench
+wstate_n10,9,qpdg,1.0,0,0.13513513513513514,5,37,MQT Bench
+wstate_n10,9,naive,0.09999999999999996,1,0.08108108108108109,3,37,MQT Bench
+wstate_n10,9,causal,1.0,0,1.0,37,37,MQT Bench
+ghz_n14,0,qpdg,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,0,naive,0.5,1,0.07142857142857142,1,14,MQT Bench
+ghz_n14,0,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,1,qpdg,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,1,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,1,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,2,qpdg,1.0,0,0.9285714285714286,13,14,MQT Bench
+ghz_n14,2,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,2,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,3,qpdg,1.0,0,0.8571428571428571,12,14,MQT Bench
+ghz_n14,3,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,3,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,4,qpdg,1.0,0,0.7857142857142857,11,14,MQT Bench
+ghz_n14,4,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,4,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,5,qpdg,1.0,0,0.7142857142857143,10,14,MQT Bench
+ghz_n14,5,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,5,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,6,qpdg,1.0,0,0.6428571428571429,9,14,MQT Bench
+ghz_n14,6,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,6,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,7,qpdg,1.0,0,0.5714285714285714,8,14,MQT Bench
+ghz_n14,7,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,7,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,8,qpdg,1.0,0,0.5,7,14,MQT Bench
+ghz_n14,8,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,8,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,9,qpdg,1.0,0,0.42857142857142855,6,14,MQT Bench
+ghz_n14,9,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,9,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,10,qpdg,1.0,0,0.35714285714285715,5,14,MQT Bench
+ghz_n14,10,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,10,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,11,qpdg,1.0,0,0.2857142857142857,4,14,MQT Bench
+ghz_n14,11,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,11,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,12,qpdg,1.0,0,0.21428571428571427,3,14,MQT Bench
+ghz_n14,12,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+ghz_n14,12,causal,1.0,0,1.0,14,14,MQT Bench
+ghz_n14,13,qpdg,1.0,0,0.14285714285714285,2,14,MQT Bench
+ghz_n14,13,naive,1.0,0,0.14285714285714285,2,14,MQT Bench
+ghz_n14,13,causal,1.0,0,1.0,14,14,MQT Bench
+grover_n14,0,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,0,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,0,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,1,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,1,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,1,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,2,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,2,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,2,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,3,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,3,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,3,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,4,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,4,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,4,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,5,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,5,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,5,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,6,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,6,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,6,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,7,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,7,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,7,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,8,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,8,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,8,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,9,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,9,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,9,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,10,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,10,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,10,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,11,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,11,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,11,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,12,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,12,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,12,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,13,qpdg,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,13,naive,1.0,0,0.07142857142857142,1,14,MQT Bench
+grover_n14,13,causal,1.0,0,0.07142857142857142,1,14,MQT Bench
+qftentangled_n14,0,qpdg,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,0,naive,0.5,1,0.07142857142857142,1,14,MQT Bench
+qftentangled_n14,0,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,1,qpdg,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,1,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,1,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,2,qpdg,1.0,0,0.9285714285714286,13,14,MQT Bench
+qftentangled_n14,2,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,2,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,3,qpdg,1.0,0,0.8571428571428571,12,14,MQT Bench
+qftentangled_n14,3,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,3,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,4,qpdg,1.0,0,0.7857142857142857,11,14,MQT Bench
+qftentangled_n14,4,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,4,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,5,qpdg,1.0,0,0.7142857142857143,10,14,MQT Bench
+qftentangled_n14,5,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,5,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,6,qpdg,1.0,0,0.6428571428571429,9,14,MQT Bench
+qftentangled_n14,6,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,6,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,7,qpdg,1.0,0,0.5714285714285714,8,14,MQT Bench
+qftentangled_n14,7,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,7,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,8,qpdg,1.0,0,0.5,7,14,MQT Bench
+qftentangled_n14,8,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,8,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,9,qpdg,1.0,0,0.42857142857142855,6,14,MQT Bench
+qftentangled_n14,9,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,9,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,10,qpdg,1.0,0,0.35714285714285715,5,14,MQT Bench
+qftentangled_n14,10,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,10,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,11,qpdg,1.0,0,0.2857142857142857,4,14,MQT Bench
+qftentangled_n14,11,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,11,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,12,qpdg,1.0,0,0.21428571428571427,3,14,MQT Bench
+qftentangled_n14,12,naive,0.5,1,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,12,causal,1.0,0,1.0,14,14,MQT Bench
+qftentangled_n14,13,qpdg,1.0,0,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,13,naive,1.0,0,0.14285714285714285,2,14,MQT Bench
+qftentangled_n14,13,causal,1.0,0,1.0,14,14,MQT Bench
+dj_n14,0,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,0,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,0,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,1,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,1,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,1,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,2,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,2,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,2,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,3,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,3,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,3,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,4,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,4,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,4,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,5,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,5,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,5,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,6,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,6,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,6,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,7,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,7,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,7,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,8,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,8,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,8,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,9,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,9,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,9,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,10,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,10,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,10,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,11,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,11,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,11,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,12,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,12,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,12,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,13,qpdg,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,13,naive,1.0,0,0.07142857142857142,2,28,MQT Bench
+dj_n14,13,causal,1.0,0,0.07142857142857142,2,28,MQT Bench
+graphstate_n14,0,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,0,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,0,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,1,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,1,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,1,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,2,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,2,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,2,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,3,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,3,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,3,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,4,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,4,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,4,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,5,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,5,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,5,causal,1.0,0,0.21428571428571427,6,28,MQT Bench
+graphstate_n14,6,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,6,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,6,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,7,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,7,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,7,causal,1.0,0,0.21428571428571427,6,28,MQT Bench
+graphstate_n14,8,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,8,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,8,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,9,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,9,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,9,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,10,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,10,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,10,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,11,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,11,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,11,causal,1.0,0,0.21428571428571427,6,28,MQT Bench
+graphstate_n14,12,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,12,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,12,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+graphstate_n14,13,qpdg,1.0,0,0.14285714285714285,4,28,MQT Bench
+graphstate_n14,13,naive,0.5,1,0.10714285714285714,3,28,MQT Bench
+graphstate_n14,13,causal,1.0,0,0.7857142857142857,22,28,MQT Bench
+bv_n14,0,qpdg,1.0,0,0.21212121212121213,7,33,MQT Bench
+bv_n14,0,naive,1.0,0,0.21212121212121213,7,33,MQT Bench
+bv_n14,0,causal,1.0,0,0.5757575757575758,19,33,MQT Bench
+bv_n14,1,qpdg,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,1,naive,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,1,causal,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,2,qpdg,1.0,0,0.12121212121212122,4,33,MQT Bench
+bv_n14,2,naive,2.8197097509372845e-34,1,0.09090909090909091,3,33,MQT Bench
+bv_n14,2,causal,1.0,0,0.5757575757575758,19,33,MQT Bench
+bv_n14,3,qpdg,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,3,naive,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,3,causal,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,4,qpdg,1.0,0,0.12121212121212122,4,33,MQT Bench
+bv_n14,4,naive,1.582883074115788e-33,1,0.09090909090909091,3,33,MQT Bench
+bv_n14,4,causal,1.0,0,0.5757575757575758,19,33,MQT Bench
+bv_n14,5,qpdg,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,5,naive,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,5,causal,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,6,qpdg,1.0,0,0.12121212121212122,4,33,MQT Bench
+bv_n14,6,naive,5.282067805095134e-35,1,0.09090909090909091,3,33,MQT Bench
+bv_n14,6,causal,1.0,0,0.5757575757575758,19,33,MQT Bench
+bv_n14,7,qpdg,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,7,naive,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,7,causal,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,8,qpdg,1.0,0,0.12121212121212122,4,33,MQT Bench
+bv_n14,8,naive,9.157435708208591e-34,1,0.09090909090909091,3,33,MQT Bench
+bv_n14,8,causal,1.0,0,0.5757575757575758,19,33,MQT Bench
+bv_n14,9,qpdg,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,9,naive,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,9,causal,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,10,qpdg,1.0,0,0.12121212121212122,4,33,MQT Bench
+bv_n14,10,naive,5.0914504108422073e-36,1,0.09090909090909091,3,33,MQT Bench
+bv_n14,10,causal,1.0,0,0.5757575757575758,19,33,MQT Bench
+bv_n14,11,qpdg,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,11,naive,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,11,causal,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,12,qpdg,1.0,0,0.12121212121212122,4,33,MQT Bench
+bv_n14,12,naive,4.300251369285977e-34,1,0.09090909090909091,3,33,MQT Bench
+bv_n14,12,causal,1.0,0,0.5757575757575758,19,33,MQT Bench
+bv_n14,13,qpdg,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,13,naive,1.0,0,0.06060606060606061,2,33,MQT Bench
+bv_n14,13,causal,1.0,0,0.06060606060606061,2,33,MQT Bench
+wstate_n14,0,qpdg,0.9999999999999998,0,1.0,53,53,MQT Bench
+wstate_n14,0,naive,0.9285714285714285,1,0.07547169811320754,4,53,MQT Bench
+wstate_n14,0,causal,0.9999999999999998,0,1.0,53,53,MQT Bench
+wstate_n14,1,qpdg,0.9999999999999998,0,1.0,53,53,MQT Bench
+wstate_n14,1,naive,0.9285714285714285,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,1,causal,0.9999999999999998,0,1.0,53,53,MQT Bench
+wstate_n14,2,qpdg,0.9999999999999998,0,0.9245283018867925,49,53,MQT Bench
+wstate_n14,2,naive,0.9285714285714285,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,2,causal,0.9999999999999998,0,1.0,53,53,MQT Bench
+wstate_n14,3,qpdg,0.9999999999999999,0,0.8490566037735849,45,53,MQT Bench
+wstate_n14,3,naive,0.9285714285714286,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,3,causal,1.0,0,1.0,53,53,MQT Bench
+wstate_n14,4,qpdg,1.0,0,0.7735849056603774,41,53,MQT Bench
+wstate_n14,4,naive,0.9285714285714286,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,4,causal,1.0,0,1.0,53,53,MQT Bench
+wstate_n14,5,qpdg,0.9999999999999998,0,0.6981132075471698,37,53,MQT Bench
+wstate_n14,5,naive,0.9285714285714285,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,5,causal,0.9999999999999998,0,1.0,53,53,MQT Bench
+wstate_n14,6,qpdg,0.9999999999999998,0,0.6226415094339622,33,53,MQT Bench
+wstate_n14,6,naive,0.9285714285714285,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,6,causal,0.9999999999999998,0,1.0,53,53,MQT Bench
+wstate_n14,7,qpdg,1.0,0,0.5471698113207547,29,53,MQT Bench
+wstate_n14,7,naive,0.9285714285714286,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,7,causal,1.0,0,1.0,53,53,MQT Bench
+wstate_n14,8,qpdg,1.0,0,0.4716981132075472,25,53,MQT Bench
+wstate_n14,8,naive,0.9285714285714287,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,8,causal,1.0,0,1.0,53,53,MQT Bench
+wstate_n14,9,qpdg,0.9999999999999998,0,0.39622641509433965,21,53,MQT Bench
+wstate_n14,9,naive,0.9285714285714285,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,9,causal,0.9999999999999998,0,1.0,53,53,MQT Bench
+wstate_n14,10,qpdg,0.9999999999999999,0,0.32075471698113206,17,53,MQT Bench
+wstate_n14,10,naive,0.9285714285714287,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,10,causal,1.0,0,1.0,53,53,MQT Bench
+wstate_n14,11,qpdg,1.0,0,0.24528301886792453,13,53,MQT Bench
+wstate_n14,11,naive,0.9285714285714286,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,11,causal,1.0,0,1.0,53,53,MQT Bench
+wstate_n14,12,qpdg,1.0,0,0.16981132075471697,9,53,MQT Bench
+wstate_n14,12,naive,0.9285714285714286,1,0.11320754716981132,6,53,MQT Bench
+wstate_n14,12,causal,1.0,0,1.0,53,53,MQT Bench
+wstate_n14,13,qpdg,0.9999999999999998,0,0.09433962264150944,5,53,MQT Bench
+wstate_n14,13,naive,0.0714285714285714,1,0.05660377358490566,3,53,MQT Bench
+wstate_n14,13,causal,0.9999999999999998,0,1.0,53,53,MQT Bench
+rand_cliff_1_AG,0,qpdg,1.0,0,1.0,3,3,VeriQBench
+rand_cliff_1_AG,0,naive,1.0,0,1.0,3,3,VeriQBench
+rand_cliff_1_AG,0,causal,1.0,0,1.0,3,3,VeriQBench
+rand_cliff_1_GD,0,qpdg,1.0,0,1.0,3,3,VeriQBench
+rand_cliff_1_GD,0,naive,1.0,0,1.0,3,3,VeriQBench
+rand_cliff_1_GD,0,causal,1.0,0,1.0,3,3,VeriQBench
+dqc_qft_2,0,qpdg,1.0,0,0.5,1,2,VeriQBench
+dqc_qft_2,0,naive,1.0,0,0.5,1,2,VeriQBench
+dqc_qft_2,0,causal,1.0,0,0.5,1,2,VeriQBench
+dqc_qft_2,1,qpdg,1.0,0,0.5,1,2,VeriQBench
+dqc_qft_2,1,naive,1.0,0,0.5,1,2,VeriQBench
+dqc_qft_2,1,causal,1.0,0,0.5,1,2,VeriQBench
+qft_2,0,qpdg,1.0,0,0.5,1,2,VeriQBench
+qft_2,0,naive,1.0,0,0.5,1,2,VeriQBench
+qft_2,0,causal,1.0,0,0.5,1,2,VeriQBench
+qft_2,1,qpdg,1.0,0,0.5,1,2,VeriQBench
+qft_2,1,naive,1.0,0,0.5,1,2,VeriQBench
+qft_2,1,causal,1.0,0,0.5,1,2,VeriQBench
+dqc_state_injection_S,0,qpdg,1.0,0,1.0,3,3,VeriQBench
+dqc_state_injection_S,0,naive,1.0,0,1.0,3,3,VeriQBench
+dqc_state_injection_S,0,causal,1.0,0,1.0,3,3,VeriQBench
+dqc_state_injection_S,1,qpdg,1.0,0,1.0,3,3,VeriQBench
+dqc_state_injection_S,1,naive,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_state_injection_S,1,causal,1.0,0,1.0,3,3,VeriQBench
+dqc_state_injection_T,0,qpdg,1.0,0,1.0,3,3,VeriQBench
+dqc_state_injection_T,0,naive,1.0,0,1.0,3,3,VeriQBench
+dqc_state_injection_T,0,causal,1.0,0,1.0,3,3,VeriQBench
+dqc_state_injection_T,1,qpdg,1.0,0,1.0,3,3,VeriQBench
+dqc_state_injection_T,1,naive,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_state_injection_T,1,causal,1.0,0,1.0,3,3,VeriQBench
+bv_2,0,qpdg,1.0,0,0.8333333333333334,5,6,VeriQBench
+bv_2,0,naive,0.5,1,0.5,3,6,VeriQBench
+bv_2,0,causal,1.0,0,1.0,6,6,VeriQBench
+bv_2,1,qpdg,1.0,0,0.6666666666666666,4,6,VeriQBench
+bv_2,1,naive,1.0,0,0.6666666666666666,4,6,VeriQBench
+bv_2,1,causal,1.0,0,1.0,6,6,VeriQBench
+rand_cliff_2_GD,0,qpdg,1.0,0,0.7777777777777778,7,9,VeriQBench
+rand_cliff_2_GD,0,naive,1.0,0,0.7777777777777778,7,9,VeriQBench
+rand_cliff_2_GD,0,causal,1.0,0,1.0,9,9,VeriQBench
+rand_cliff_2_GD,1,qpdg,1.0,0,0.6666666666666666,6,9,VeriQBench
+rand_cliff_2_GD,1,naive,0.5,1,0.5555555555555556,5,9,VeriQBench
+rand_cliff_2_GD,1,causal,1.0,0,1.0,9,9,VeriQBench
+rand_cliff_2_AG,0,qpdg,1.0,0,0.8181818181818182,9,11,VeriQBench
+rand_cliff_2_AG,0,naive,0.5,1,0.7272727272727273,8,11,VeriQBench
+rand_cliff_2_AG,0,causal,1.0,0,1.0,11,11,VeriQBench
+rand_cliff_2_AG,1,qpdg,1.0,0,0.5454545454545454,6,11,VeriQBench
+rand_cliff_2_AG,1,naive,1.0,0,0.45454545454545453,5,11,VeriQBench
+rand_cliff_2_AG,1,causal,1.0,0,1.0,11,11,VeriQBench
+quantum_volume_n2_d5_i0,0,qpdg,1.0,0,0.98,49,50,VeriQBench
+quantum_volume_n2_d5_i0,0,naive,0.6556300975109564,1,0.68,34,50,VeriQBench
+quantum_volume_n2_d5_i0,0,causal,0.9999999999999999,0,1.0,50,50,VeriQBench
+quantum_volume_n2_d5_i0,1,qpdg,1.0,0,0.98,49,50,VeriQBench
+quantum_volume_n2_d5_i0,1,naive,0.7242727998159212,1,0.62,31,50,VeriQBench
+quantum_volume_n2_d5_i0,1,causal,1.0,0,1.0,50,50,VeriQBench
+dqc_qft_3,0,qpdg,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_qft_3,0,naive,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_qft_3,0,causal,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_qft_3,1,qpdg,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_qft_3,1,naive,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_qft_3,1,causal,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_qft_3,2,qpdg,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_qft_3,2,naive,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_qft_3,2,causal,1.0,0,0.3333333333333333,1,3,VeriQBench
+qft_3,0,qpdg,1.0,0,0.3333333333333333,1,3,VeriQBench
+qft_3,0,naive,1.0,0,0.3333333333333333,1,3,VeriQBench
+qft_3,0,causal,1.0,0,0.3333333333333333,1,3,VeriQBench
+qft_3,1,qpdg,1.0,0,0.3333333333333333,1,3,VeriQBench
+qft_3,1,naive,1.0,0,0.3333333333333333,1,3,VeriQBench
+qft_3,1,causal,1.0,0,0.3333333333333333,1,3,VeriQBench
+qft_3,2,qpdg,1.0,0,0.3333333333333333,1,3,VeriQBench
+qft_3,2,naive,1.0,0,0.3333333333333333,1,3,VeriQBench
+qft_3,2,causal,1.0,0,0.3333333333333333,1,3,VeriQBench
+dqc_pe_2,0,qpdg,1.0,0,0.5,2,4,VeriQBench
+dqc_pe_2,0,naive,1.0,0,0.5,2,4,VeriQBench
+dqc_pe_2,0,causal,1.0,0,0.5,2,4,VeriQBench
+dqc_pe_2,1,qpdg,1.0,0,0.5,2,4,VeriQBench
+dqc_pe_2,1,naive,1.0,0,0.5,2,4,VeriQBench
+dqc_pe_2,1,causal,1.0,0,0.5,2,4,VeriQBench
+dqc_pe_2,2,qpdg,1.0,0,0.0,0,4,VeriQBench
+dqc_pe_2,2,naive,1.0,0,0.0,0,4,VeriQBench
+dqc_pe_2,2,causal,1.0,0,0.0,0,4,VeriQBench
+dqc_teleportation,0,qpdg,1.0,0,0.5,2,4,VeriQBench
+dqc_teleportation,0,naive,1.0,0,0.5,2,4,VeriQBench
+dqc_teleportation,0,causal,1.0,0,1.0,4,4,VeriQBench
+dqc_teleportation,1,qpdg,1.0,0,0.75,3,4,VeriQBench
+dqc_teleportation,1,naive,0.5,1,0.5,2,4,VeriQBench
+dqc_teleportation,1,causal,1.0,0,1.0,4,4,VeriQBench
+dqc_teleportation,2,qpdg,1.0,0,0.5,2,4,VeriQBench
+dqc_teleportation,2,naive,1.0,0,0.5,2,4,VeriQBench
+dqc_teleportation,2,causal,1.0,0,1.0,4,4,VeriQBench
+nth_prime3_inc,0,qpdg,1.0,0,0.75,3,4,VeriQBench
+nth_prime3_inc,0,naive,1.0,0,0.75,3,4,VeriQBench
+nth_prime3_inc,0,causal,1.0,0,1.0,4,4,VeriQBench
+nth_prime3_inc,1,qpdg,1.0,0,0.75,3,4,VeriQBench
+nth_prime3_inc,1,naive,1.0,0,0.75,3,4,VeriQBench
+nth_prime3_inc,1,causal,1.0,0,1.0,4,4,VeriQBench
+nth_prime3_inc,2,qpdg,1.0,0,0.75,3,4,VeriQBench
+nth_prime3_inc,2,naive,1.0,0,0.75,3,4,VeriQBench
+nth_prime3_inc,2,causal,1.0,0,1.0,4,4,VeriQBench
+pe_2,0,qpdg,1.0,0,0.5,2,4,VeriQBench
+pe_2,0,naive,1.0,0,0.5,2,4,VeriQBench
+pe_2,0,causal,1.0,0,0.5,2,4,VeriQBench
+pe_2,1,qpdg,1.0,0,0.5,2,4,VeriQBench
+pe_2,1,naive,1.0,0,0.5,2,4,VeriQBench
+pe_2,1,causal,1.0,0,0.5,2,4,VeriQBench
+pe_2,2,qpdg,1.0,0,0.0,0,4,VeriQBench
+pe_2,2,naive,1.0,0,0.0,0,4,VeriQBench
+pe_2,2,causal,1.0,0,0.0,0,4,VeriQBench
+ham3tc,0,qpdg,1.0,0,0.4,2,5,VeriQBench
+ham3tc,0,naive,1.0,0,0.4,2,5,VeriQBench
+ham3tc,0,causal,1.0,0,1.0,5,5,VeriQBench
+ham3tc,1,qpdg,1.0,0,0.8,4,5,VeriQBench
+ham3tc,1,naive,1.0,0,0.8,4,5,VeriQBench
+ham3tc,1,causal,1.0,0,1.0,5,5,VeriQBench
+ham3tc,2,qpdg,1.0,0,1.0,5,5,VeriQBench
+ham3tc,2,naive,1.0,0,1.0,5,5,VeriQBench
+ham3tc,2,causal,1.0,0,1.0,5,5,VeriQBench
+3_17tc,0,qpdg,1.0,0,0.8333333333333334,5,6,VeriQBench
+3_17tc,0,naive,0.0,1,0.5,3,6,VeriQBench
+3_17tc,0,causal,1.0,0,1.0,6,6,VeriQBench
+3_17tc,1,qpdg,1.0,0,0.8333333333333334,5,6,VeriQBench
+3_17tc,1,naive,0.0,1,0.6666666666666666,4,6,VeriQBench
+3_17tc,1,causal,1.0,0,1.0,6,6,VeriQBench
+3_17tc,2,qpdg,1.0,0,1.0,6,6,VeriQBench
+3_17tc,2,naive,1.0,0,1.0,6,6,VeriQBench
+3_17tc,2,causal,1.0,0,1.0,6,6,VeriQBench
+ham3_fc,0,qpdg,1.0,0,0.5,3,6,VeriQBench
+ham3_fc,0,naive,1.0,0,0.5,3,6,VeriQBench
+ham3_fc,0,causal,1.0,0,1.0,6,6,VeriQBench
+ham3_fc,1,qpdg,1.0,0,1.0,6,6,VeriQBench
+ham3_fc,1,naive,1.0,0,1.0,6,6,VeriQBench
+ham3_fc,1,causal,1.0,0,1.0,6,6,VeriQBench
+ham3_fc,2,qpdg,1.0,0,0.6666666666666666,4,6,VeriQBench
+ham3_fc,2,naive,1.0,0,0.6666666666666666,4,6,VeriQBench
+ham3_fc,2,causal,1.0,0,1.0,6,6,VeriQBench
+bv_3,0,qpdg,1.0,0,0.5555555555555556,5,9,VeriQBench
+bv_3,0,naive,0.5,1,0.3333333333333333,3,9,VeriQBench
+bv_3,0,causal,1.0,0,1.0,9,9,VeriQBench
+bv_3,1,qpdg,1.0,0,0.5555555555555556,5,9,VeriQBench
+bv_3,1,naive,0.5,1,0.3333333333333333,3,9,VeriQBench
+bv_3,1,causal,1.0,0,1.0,9,9,VeriQBench
+bv_3,2,qpdg,1.0,0,0.5555555555555556,5,9,VeriQBench
+bv_3,2,naive,1.0,0,0.5555555555555556,5,9,VeriQBench
+bv_3,2,causal,1.0,0,1.0,9,9,VeriQBench
+rand_cliff_3_GD,0,qpdg,1.0,0,0.6363636363636364,7,11,VeriQBench
+rand_cliff_3_GD,0,naive,0.5,1,0.5454545454545454,6,11,VeriQBench
+rand_cliff_3_GD,0,causal,1.0,0,1.0,11,11,VeriQBench
+rand_cliff_3_GD,1,qpdg,1.0,0,0.5454545454545454,6,11,VeriQBench
+rand_cliff_3_GD,1,naive,1.0,0,0.45454545454545453,5,11,VeriQBench
+rand_cliff_3_GD,1,causal,1.0,0,1.0,11,11,VeriQBench
+rand_cliff_3_GD,2,qpdg,1.0,0,0.36363636363636365,4,11,VeriQBench
+rand_cliff_3_GD,2,naive,0.5,1,0.2727272727272727,3,11,VeriQBench
+rand_cliff_3_GD,2,causal,1.0,0,1.0,11,11,VeriQBench
+grover_3,0,qpdg,1.0,0,0.5,8,16,VeriQBench
+grover_3,0,naive,1.0,0,0.4375,7,16,VeriQBench
+grover_3,0,causal,1.0,0,1.0,16,16,VeriQBench
+grover_3,1,qpdg,1.0,0,0.625,10,16,VeriQBench
+grover_3,1,naive,1.0,0,0.5625,9,16,VeriQBench
+grover_3,1,causal,1.0,0,1.0,16,16,VeriQBench
+grover_3,2,qpdg,1.0,0,0.1875,3,16,VeriQBench
+grover_3,2,naive,1.0,0,0.1875,3,16,VeriQBench
+grover_3,2,causal,1.0,0,1.0,16,16,VeriQBench
+rand_cliff_3_AG,0,qpdg,1.0,0,0.5294117647058824,9,17,VeriQBench
+rand_cliff_3_AG,0,naive,1.0,0,0.47058823529411764,8,17,VeriQBench
+rand_cliff_3_AG,0,causal,1.0,0,1.0,17,17,VeriQBench
+rand_cliff_3_AG,1,qpdg,1.0,0,0.47058823529411764,8,17,VeriQBench
+rand_cliff_3_AG,1,naive,1.0,0,0.4117647058823529,7,17,VeriQBench
+rand_cliff_3_AG,1,causal,1.0,0,1.0,17,17,VeriQBench
+rand_cliff_3_AG,2,qpdg,1.0,0,0.5882352941176471,10,17,VeriQBench
+rand_cliff_3_AG,2,naive,1.0,0,0.47058823529411764,8,17,VeriQBench
+rand_cliff_3_AG,2,causal,1.0,0,1.0,17,17,VeriQBench
+quantum_volume_n3_d5_i0,0,qpdg,1.0,0,0.96,48,50,VeriQBench
+quantum_volume_n3_d5_i0,0,naive,0.3349582708347451,1,0.52,26,50,VeriQBench
+quantum_volume_n3_d5_i0,0,causal,1.0,0,1.0,50,50,VeriQBench
+quantum_volume_n3_d5_i0,1,qpdg,0.9999999999999999,0,0.36,18,50,VeriQBench
+quantum_volume_n3_d5_i0,1,naive,0.9810473523847514,1,0.26,13,50,VeriQBench
+quantum_volume_n3_d5_i0,1,causal,1.0,0,1.0,50,50,VeriQBench
+quantum_volume_n3_d5_i0,2,qpdg,1.0,0,0.96,48,50,VeriQBench
+quantum_volume_n3_d5_i0,2,naive,0.8171929654097998,1,0.52,26,50,VeriQBench
+quantum_volume_n3_d5_i0,2,causal,1.0,0,1.0,50,50,VeriQBench
+adder_n4,0,qpdg,1.0,0,0.5,2,4,VeriQBench
+adder_n4,0,naive,1.0,0,0.5,2,4,VeriQBench
+adder_n4,0,causal,1.0,0,1.0,4,4,VeriQBench
+adder_n4,1,qpdg,1.0,0,0.5,2,4,VeriQBench
+adder_n4,1,naive,1.0,0,0.5,2,4,VeriQBench
+adder_n4,1,causal,1.0,0,1.0,4,4,VeriQBench
+adder_n4,2,qpdg,1.0,0,1.0,4,4,VeriQBench
+adder_n4,2,naive,1.0,0,1.0,4,4,VeriQBench
+adder_n4,2,causal,1.0,0,1.0,4,4,VeriQBench
+adder_n4,3,qpdg,1.0,0,0.5,2,4,VeriQBench
+adder_n4,3,naive,1.0,0,0.5,2,4,VeriQBench
+adder_n4,3,causal,1.0,0,1.0,4,4,VeriQBench
+dqc_qft_4,0,qpdg,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,0,naive,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,0,causal,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,1,qpdg,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,1,naive,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,1,causal,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,2,qpdg,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,2,naive,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,2,causal,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,3,qpdg,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,3,naive,1.0,0,0.25,1,4,VeriQBench
+dqc_qft_4,3,causal,1.0,0,0.25,1,4,VeriQBench
+qft_4,0,qpdg,1.0,0,0.25,1,4,VeriQBench
+qft_4,0,naive,1.0,0,0.25,1,4,VeriQBench
+qft_4,0,causal,1.0,0,0.25,1,4,VeriQBench
+qft_4,1,qpdg,1.0,0,0.25,1,4,VeriQBench
+qft_4,1,naive,1.0,0,0.25,1,4,VeriQBench
+qft_4,1,causal,1.0,0,0.25,1,4,VeriQBench
+qft_4,2,qpdg,1.0,0,0.25,1,4,VeriQBench
+qft_4,2,naive,1.0,0,0.25,1,4,VeriQBench
+qft_4,2,causal,1.0,0,0.25,1,4,VeriQBench
+qft_4,3,qpdg,1.0,0,0.25,1,4,VeriQBench
+qft_4,3,naive,1.0,0,0.25,1,4,VeriQBench
+qft_4,3,causal,1.0,0,0.25,1,4,VeriQBench
+rd32,0,qpdg,1.0,0,0.5,2,4,VeriQBench
+rd32,0,naive,1.0,0,0.5,2,4,VeriQBench
+rd32,0,causal,1.0,0,1.0,4,4,VeriQBench
+rd32,1,qpdg,1.0,0,1.0,4,4,VeriQBench
+rd32,1,naive,1.0,0,1.0,4,4,VeriQBench
+rd32,1,causal,1.0,0,1.0,4,4,VeriQBench
+rd32,2,qpdg,1.0,0,0.5,2,4,VeriQBench
+rd32,2,naive,1.0,0,0.5,2,4,VeriQBench
+rd32,2,causal,1.0,0,1.0,4,4,VeriQBench
+rd32,3,qpdg,1.0,0,0.5,2,4,VeriQBench
+rd32,3,naive,1.0,0,0.5,2,4,VeriQBench
+rd32,3,causal,1.0,0,1.0,4,4,VeriQBench
+dqc_pe_3,0,qpdg,1.0,0,0.3333333333333333,2,6,VeriQBench
+dqc_pe_3,0,naive,1.0,0,0.3333333333333333,2,6,VeriQBench
+dqc_pe_3,0,causal,1.0,0,0.3333333333333333,2,6,VeriQBench
+dqc_pe_3,1,qpdg,1.0,0,0.3333333333333333,2,6,VeriQBench
+dqc_pe_3,1,naive,1.0,0,0.3333333333333333,2,6,VeriQBench
+dqc_pe_3,1,causal,1.0,0,0.3333333333333333,2,6,VeriQBench
+dqc_pe_3,2,qpdg,1.0,0,0.3333333333333333,2,6,VeriQBench
+dqc_pe_3,2,naive,1.0,0,0.3333333333333333,2,6,VeriQBench
+dqc_pe_3,2,causal,1.0,0,0.3333333333333333,2,6,VeriQBench
+dqc_pe_3,3,qpdg,1.0,0,0.0,0,6,VeriQBench
+dqc_pe_3,3,naive,1.0,0,0.0,0,6,VeriQBench
+dqc_pe_3,3,causal,1.0,0,0.0,0,6,VeriQBench
+pe_3,0,qpdg,1.0,0,0.3333333333333333,2,6,VeriQBench
+pe_3,0,naive,1.0,0,0.3333333333333333,2,6,VeriQBench
+pe_3,0,causal,1.0,0,0.3333333333333333,2,6,VeriQBench
+pe_3,1,qpdg,1.0,0,0.3333333333333333,2,6,VeriQBench
+pe_3,1,naive,1.0,0,0.3333333333333333,2,6,VeriQBench
+pe_3,1,causal,1.0,0,0.3333333333333333,2,6,VeriQBench
+pe_3,2,qpdg,1.0,0,0.3333333333333333,2,6,VeriQBench
+pe_3,2,naive,1.0,0,0.3333333333333333,2,6,VeriQBench
+pe_3,2,causal,1.0,0,0.3333333333333333,2,6,VeriQBench
+pe_3,3,qpdg,1.0,0,0.0,0,6,VeriQBench
+pe_3,3,naive,1.0,0,0.0,0,6,VeriQBench
+pe_3,3,causal,1.0,0,0.0,0,6,VeriQBench
+mspk_nth_primes4_11,0,qpdg,1.0,0,0.5555555555555556,5,9,VeriQBench
+mspk_nth_primes4_11,0,naive,1.0,0,0.5555555555555556,5,9,VeriQBench
+mspk_nth_primes4_11,0,causal,1.0,0,1.0,9,9,VeriQBench
+mspk_nth_primes4_11,1,qpdg,1.0,0,1.0,9,9,VeriQBench
+mspk_nth_primes4_11,1,naive,1.0,0,1.0,9,9,VeriQBench
+mspk_nth_primes4_11,1,causal,1.0,0,1.0,9,9,VeriQBench
+mspk_nth_primes4_11,2,qpdg,1.0,0,0.5555555555555556,5,9,VeriQBench
+mspk_nth_primes4_11,2,naive,1.0,0,0.5555555555555556,5,9,VeriQBench
+mspk_nth_primes4_11,2,causal,1.0,0,1.0,9,9,VeriQBench
+mspk_nth_primes4_11,3,qpdg,1.0,0,0.4444444444444444,4,9,VeriQBench
+mspk_nth_primes4_11,3,naive,1.0,0,0.4444444444444444,4,9,VeriQBench
+mspk_nth_primes4_11,3,causal,1.0,0,1.0,9,9,VeriQBench
+nth_prime4_inc_d2,0,qpdg,1.0,0,0.5555555555555556,5,9,VeriQBench
+nth_prime4_inc_d2,0,naive,1.0,0,0.5555555555555556,5,9,VeriQBench
+nth_prime4_inc_d2,0,causal,1.0,0,1.0,9,9,VeriQBench
+nth_prime4_inc_d2,1,qpdg,1.0,0,1.0,9,9,VeriQBench
+nth_prime4_inc_d2,1,naive,1.0,0,1.0,9,9,VeriQBench
+nth_prime4_inc_d2,1,causal,1.0,0,1.0,9,9,VeriQBench
+nth_prime4_inc_d2,2,qpdg,1.0,0,0.5555555555555556,5,9,VeriQBench
+nth_prime4_inc_d2,2,naive,1.0,0,0.5555555555555556,5,9,VeriQBench
+nth_prime4_inc_d2,2,causal,1.0,0,1.0,9,9,VeriQBench
+nth_prime4_inc_d2,3,qpdg,1.0,0,0.4444444444444444,4,9,VeriQBench
+nth_prime4_inc_d2,3,naive,1.0,0,0.4444444444444444,4,9,VeriQBench
+nth_prime4_inc_d2,3,causal,1.0,0,1.0,9,9,VeriQBench
+nth_prime4_inc_d1,0,qpdg,1.0,0,0.6,6,10,VeriQBench
+nth_prime4_inc_d1,0,naive,1.0,0,0.6,6,10,VeriQBench
+nth_prime4_inc_d1,0,causal,1.0,0,1.0,10,10,VeriQBench
+nth_prime4_inc_d1,1,qpdg,1.0,0,1.0,10,10,VeriQBench
+nth_prime4_inc_d1,1,naive,1.0,0,1.0,10,10,VeriQBench
+nth_prime4_inc_d1,1,causal,1.0,0,1.0,10,10,VeriQBench
+nth_prime4_inc_d1,2,qpdg,1.0,0,0.5,5,10,VeriQBench
+nth_prime4_inc_d1,2,naive,1.0,0,0.5,5,10,VeriQBench
+nth_prime4_inc_d1,2,causal,1.0,0,1.0,10,10,VeriQBench
+nth_prime4_inc_d1,3,qpdg,1.0,0,0.5,5,10,VeriQBench
+nth_prime4_inc_d1,3,naive,1.0,0,0.5,5,10,VeriQBench
+nth_prime4_inc_d1,3,causal,1.0,0,1.0,10,10,VeriQBench
+hwb4-11-21,0,qpdg,1.0,0,0.5454545454545454,6,11,VeriQBench
+hwb4-11-21,0,naive,1.0,0,0.5454545454545454,6,11,VeriQBench
+hwb4-11-21,0,causal,1.0,0,1.0,11,11,VeriQBench
+hwb4-11-21,1,qpdg,1.0,0,0.5454545454545454,6,11,VeriQBench
+hwb4-11-21,1,naive,1.0,0,0.5454545454545454,6,11,VeriQBench
+hwb4-11-21,1,causal,1.0,0,1.0,11,11,VeriQBench
+hwb4-11-21,2,qpdg,1.0,0,0.6363636363636364,7,11,VeriQBench
+hwb4-11-21,2,naive,1.0,0,0.6363636363636364,7,11,VeriQBench
+hwb4-11-21,2,causal,1.0,0,1.0,11,11,VeriQBench
+hwb4-11-21,3,qpdg,1.0,0,0.5454545454545454,6,11,VeriQBench
+hwb4-11-21,3,naive,1.0,0,0.5454545454545454,6,11,VeriQBench
+hwb4-11-21,3,causal,1.0,0,1.0,11,11,VeriQBench
+bv_4,0,qpdg,1.0,0,0.4166666666666667,5,12,VeriQBench
+bv_4,0,naive,0.5,1,0.25,3,12,VeriQBench
+bv_4,0,causal,1.0,0,1.0,12,12,VeriQBench
+bv_4,1,qpdg,1.0,0,0.4166666666666667,5,12,VeriQBench
+bv_4,1,naive,0.5,1,0.25,3,12,VeriQBench
+bv_4,1,causal,1.0,0,1.0,12,12,VeriQBench
+bv_4,2,qpdg,1.0,0,0.4166666666666667,5,12,VeriQBench
+bv_4,2,naive,0.5,1,0.25,3,12,VeriQBench
+bv_4,2,causal,1.0,0,1.0,12,12,VeriQBench
+bv_4,3,qpdg,1.0,0,0.5,6,12,VeriQBench
+bv_4,3,naive,1.0,0,0.5,6,12,VeriQBench
+bv_4,3,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_4_49_12,0,qpdg,1.0,0,0.75,9,12,VeriQBench
+mspk_4_49_12,0,naive,1.0,0,0.75,9,12,VeriQBench
+mspk_4_49_12,0,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_4_49_12,1,qpdg,1.0,0,0.5833333333333334,7,12,VeriQBench
+mspk_4_49_12,1,naive,0.0,1,0.4166666666666667,5,12,VeriQBench
+mspk_4_49_12,1,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_4_49_12,2,qpdg,1.0,0,0.6666666666666666,8,12,VeriQBench
+mspk_4_49_12,2,naive,0.0,1,0.4166666666666667,5,12,VeriQBench
+mspk_4_49_12,2,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_4_49_12,3,qpdg,1.0,0,0.75,9,12,VeriQBench
+mspk_4_49_12,3,naive,0.0,1,0.6666666666666666,8,12,VeriQBench
+mspk_4_49_12,3,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_hwb4_12,0,qpdg,1.0,0,0.6666666666666666,8,12,VeriQBench
+mspk_hwb4_12,0,naive,1.0,0,0.6666666666666666,8,12,VeriQBench
+mspk_hwb4_12,0,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_hwb4_12,1,qpdg,1.0,0,0.5833333333333334,7,12,VeriQBench
+mspk_hwb4_12,1,naive,1.0,0,0.5833333333333334,7,12,VeriQBench
+mspk_hwb4_12,1,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_hwb4_12,2,qpdg,1.0,0,0.5833333333333334,7,12,VeriQBench
+mspk_hwb4_12,2,naive,1.0,0,0.5833333333333334,7,12,VeriQBench
+mspk_hwb4_12,2,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_hwb4_12,3,qpdg,1.0,0,0.4166666666666667,5,12,VeriQBench
+mspk_hwb4_12,3,naive,1.0,0,0.4166666666666667,5,12,VeriQBench
+mspk_hwb4_12,3,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_nth_primes4_12,0,qpdg,1.0,0,0.5833333333333334,7,12,VeriQBench
+mspk_nth_primes4_12,0,naive,1.0,0,0.5833333333333334,7,12,VeriQBench
+mspk_nth_primes4_12,0,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_nth_primes4_12,1,qpdg,1.0,0,0.8333333333333334,10,12,VeriQBench
+mspk_nth_primes4_12,1,naive,1.0,0,0.8333333333333334,10,12,VeriQBench
+mspk_nth_primes4_12,1,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_nth_primes4_12,2,qpdg,1.0,0,0.5833333333333334,7,12,VeriQBench
+mspk_nth_primes4_12,2,naive,1.0,0,0.5833333333333334,7,12,VeriQBench
+mspk_nth_primes4_12,2,causal,1.0,0,1.0,12,12,VeriQBench
+mspk_nth_primes4_12,3,qpdg,1.0,0,0.5,6,12,VeriQBench
+mspk_nth_primes4_12,3,naive,1.0,0,0.5,6,12,VeriQBench
+mspk_nth_primes4_12,3,causal,1.0,0,1.0,12,12,VeriQBench
+4b15g_2,0,qpdg,1.0,0,0.46153846153846156,6,13,VeriQBench
+4b15g_2,0,naive,1.0,0,0.46153846153846156,6,13,VeriQBench
+4b15g_2,0,causal,1.0,0,1.0,13,13,VeriQBench
+4b15g_2,1,qpdg,1.0,0,0.6153846153846154,8,13,VeriQBench
+4b15g_2,1,naive,0.0,1,0.46153846153846156,6,13,VeriQBench
+4b15g_2,1,causal,1.0,0,1.0,13,13,VeriQBench
+4b15g_2,2,qpdg,1.0,0,0.6153846153846154,8,13,VeriQBench
+4b15g_2,2,naive,0.0,1,0.5384615384615384,7,13,VeriQBench
+4b15g_2,2,causal,1.0,0,1.0,13,13,VeriQBench
+4b15g_2,3,qpdg,1.0,0,0.6923076923076923,9,13,VeriQBench
+4b15g_2,3,naive,1.0,0,0.6923076923076923,9,13,VeriQBench
+4b15g_2,3,causal,1.0,0,1.0,13,13,VeriQBench
+4b15g_3,0,qpdg,1.0,0,0.7692307692307693,10,13,VeriQBench
+4b15g_3,0,naive,0.0,1,0.5384615384615384,7,13,VeriQBench
+4b15g_3,0,causal,1.0,0,1.0,13,13,VeriQBench
+4b15g_3,1,qpdg,1.0,0,0.6923076923076923,9,13,VeriQBench
+4b15g_3,1,naive,0.0,1,0.6153846153846154,8,13,VeriQBench
+4b15g_3,1,causal,1.0,0,1.0,13,13,VeriQBench
+4b15g_3,2,qpdg,1.0,0,0.6923076923076923,9,13,VeriQBench
+4b15g_3,2,naive,0.0,1,0.5384615384615384,7,13,VeriQBench
+4b15g_3,2,causal,1.0,0,1.0,13,13,VeriQBench
+4b15g_3,3,qpdg,1.0,0,0.5384615384615384,7,13,VeriQBench
+4b15g_3,3,naive,1.0,0,0.38461538461538464,5,13,VeriQBench
+4b15g_3,3,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_4_49_13,0,qpdg,1.0,0,0.7692307692307693,10,13,VeriQBench
+mspk_4_49_13,0,naive,0.0,1,0.5384615384615384,7,13,VeriQBench
+mspk_4_49_13,0,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_4_49_13,1,qpdg,1.0,0,0.6923076923076923,9,13,VeriQBench
+mspk_4_49_13,1,naive,0.0,1,0.6153846153846154,8,13,VeriQBench
+mspk_4_49_13,1,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_4_49_13,2,qpdg,1.0,0,0.6923076923076923,9,13,VeriQBench
+mspk_4_49_13,2,naive,0.0,1,0.46153846153846156,6,13,VeriQBench
+mspk_4_49_13,2,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_4_49_13,3,qpdg,1.0,0,0.7692307692307693,10,13,VeriQBench
+mspk_4_49_13,3,naive,0.0,1,0.6923076923076923,9,13,VeriQBench
+mspk_4_49_13,3,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_hwb4_13,0,qpdg,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_hwb4_13,0,naive,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_hwb4_13,0,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_hwb4_13,1,qpdg,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_hwb4_13,1,naive,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_hwb4_13,1,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_hwb4_13,2,qpdg,1.0,0,0.38461538461538464,5,13,VeriQBench
+mspk_hwb4_13,2,naive,1.0,0,0.38461538461538464,5,13,VeriQBench
+mspk_hwb4_13,2,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_hwb4_13,3,qpdg,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_hwb4_13,3,naive,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_hwb4_13,3,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_nth_primes4_13,0,qpdg,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_nth_primes4_13,0,naive,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_nth_primes4_13,0,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_nth_primes4_13,1,qpdg,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_nth_primes4_13,1,naive,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_nth_primes4_13,1,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_nth_primes4_13,2,qpdg,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_nth_primes4_13,2,naive,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_nth_primes4_13,2,causal,1.0,0,1.0,13,13,VeriQBench
+mspk_nth_primes4_13,3,qpdg,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_nth_primes4_13,3,naive,1.0,0,0.6153846153846154,8,13,VeriQBench
+mspk_nth_primes4_13,3,causal,1.0,0,1.0,13,13,VeriQBench
+nth_prime4_inc_15_51,0,qpdg,1.0,0,0.6923076923076923,9,13,VeriQBench
+nth_prime4_inc_15_51,0,naive,1.0,0,0.6923076923076923,9,13,VeriQBench
+nth_prime4_inc_15_51,0,causal,1.0,0,1.0,13,13,VeriQBench
+nth_prime4_inc_15_51,1,qpdg,1.0,0,0.5384615384615384,7,13,VeriQBench
+nth_prime4_inc_15_51,1,naive,1.0,0,0.5384615384615384,7,13,VeriQBench
+nth_prime4_inc_15_51,1,causal,1.0,0,1.0,13,13,VeriQBench
+nth_prime4_inc_15_51,2,qpdg,1.0,0,0.5384615384615384,7,13,VeriQBench
+nth_prime4_inc_15_51,2,naive,1.0,0,0.5384615384615384,7,13,VeriQBench
+nth_prime4_inc_15_51,2,causal,1.0,0,1.0,13,13,VeriQBench
+nth_prime4_inc_15_51,3,qpdg,1.0,0,0.46153846153846156,6,13,VeriQBench
+nth_prime4_inc_15_51,3,naive,1.0,0,0.46153846153846156,6,13,VeriQBench
+nth_prime4_inc_15_51,3,causal,1.0,0,1.0,13,13,VeriQBench
+4_49tc1,0,qpdg,1.0,0,0.7857142857142857,11,14,VeriQBench
+4_49tc1,0,naive,0.0,1,0.6428571428571429,9,14,VeriQBench
+4_49tc1,0,causal,1.0,0,1.0,14,14,VeriQBench
+4_49tc1,1,qpdg,1.0,0,0.42857142857142855,6,14,VeriQBench
+4_49tc1,1,naive,0.0,1,0.35714285714285715,5,14,VeriQBench
+4_49tc1,1,causal,1.0,0,1.0,14,14,VeriQBench
+4_49tc1,2,qpdg,1.0,0,0.5714285714285714,8,14,VeriQBench
+4_49tc1,2,naive,0.0,1,0.5,7,14,VeriQBench
+4_49tc1,2,causal,1.0,0,1.0,14,14,VeriQBench
+4_49tc1,3,qpdg,1.0,0,0.7857142857142857,11,14,VeriQBench
+4_49tc1,3,naive,1.0,0,0.7857142857142857,11,14,VeriQBench
+4_49tc1,3,causal,1.0,0,1.0,14,14,VeriQBench
+4b15g_1,0,qpdg,1.0,0,0.6428571428571429,9,14,VeriQBench
+4b15g_1,0,naive,0.0,1,0.5,7,14,VeriQBench
+4b15g_1,0,causal,1.0,0,1.0,14,14,VeriQBench
+4b15g_1,1,qpdg,1.0,0,0.5714285714285714,8,14,VeriQBench
+4b15g_1,1,naive,0.0,1,0.5,7,14,VeriQBench
+4b15g_1,1,causal,1.0,0,1.0,14,14,VeriQBench
+4b15g_1,2,qpdg,1.0,0,0.7142857142857143,10,14,VeriQBench
+4b15g_1,2,naive,1.0,0,0.7142857142857143,10,14,VeriQBench
+4b15g_1,2,causal,1.0,0,1.0,14,14,VeriQBench
+4b15g_1,3,qpdg,1.0,0,0.42857142857142855,6,14,VeriQBench
+4b15g_1,3,naive,1.0,0,0.42857142857142855,6,14,VeriQBench
+4b15g_1,3,causal,1.0,0,1.0,14,14,VeriQBench
+4b15g_4,0,qpdg,1.0,0,0.5,7,14,VeriQBench
+4b15g_4,0,naive,1.0,0,0.5,7,14,VeriQBench
+4b15g_4,0,causal,1.0,0,1.0,14,14,VeriQBench
+4b15g_4,1,qpdg,1.0,0,0.6428571428571429,9,14,VeriQBench
+4b15g_4,1,naive,0.0,1,0.5,7,14,VeriQBench
+4b15g_4,1,causal,1.0,0,1.0,14,14,VeriQBench
+4b15g_4,2,qpdg,1.0,0,0.7142857142857143,10,14,VeriQBench
+4b15g_4,2,naive,0.0,1,0.6428571428571429,9,14,VeriQBench
+4b15g_4,2,causal,1.0,0,1.0,14,14,VeriQBench
+4b15g_4,3,qpdg,1.0,0,0.5714285714285714,8,14,VeriQBench
+4b15g_4,3,naive,0.0,1,0.5,7,14,VeriQBench
+4b15g_4,3,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4_49_14,0,qpdg,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_4_49_14,0,naive,0.0,1,0.5714285714285714,8,14,VeriQBench
+mspk_4_49_14,0,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4_49_14,1,qpdg,1.0,0,0.7142857142857143,10,14,VeriQBench
+mspk_4_49_14,1,naive,0.0,1,0.6428571428571429,9,14,VeriQBench
+mspk_4_49_14,1,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4_49_14,2,qpdg,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_4_49_14,2,naive,0.0,1,0.42857142857142855,6,14,VeriQBench
+mspk_4_49_14,2,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4_49_14,3,qpdg,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_4_49_14,3,naive,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_4_49_14,3,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4b15g_1,0,qpdg,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_4b15g_1,0,naive,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_4b15g_1,0,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4b15g_1,1,qpdg,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_4b15g_1,1,naive,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_4b15g_1,1,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4b15g_1,2,qpdg,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_4b15g_1,2,naive,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_4b15g_1,2,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4b15g_1,3,qpdg,1.0,0,0.42857142857142855,6,14,VeriQBench
+mspk_4b15g_1,3,naive,1.0,0,0.42857142857142855,6,14,VeriQBench
+mspk_4b15g_1,3,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4b15g_4,0,qpdg,1.0,0,0.42857142857142855,6,14,VeriQBench
+mspk_4b15g_4,0,naive,1.0,0,0.42857142857142855,6,14,VeriQBench
+mspk_4b15g_4,0,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4b15g_4,1,qpdg,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_4b15g_4,1,naive,0.0,1,0.5714285714285714,8,14,VeriQBench
+mspk_4b15g_4,1,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4b15g_4,2,qpdg,1.0,0,0.5,7,14,VeriQBench
+mspk_4b15g_4,2,naive,1.0,0,0.5,7,14,VeriQBench
+mspk_4b15g_4,2,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_4b15g_4,3,qpdg,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_4b15g_4,3,naive,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_4b15g_4,3,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_nth_primes4_14,0,qpdg,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_nth_primes4_14,0,naive,1.0,0,0.6428571428571429,9,14,VeriQBench
+mspk_nth_primes4_14,0,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_nth_primes4_14,1,qpdg,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_nth_primes4_14,1,naive,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_nth_primes4_14,1,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_nth_primes4_14,2,qpdg,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_nth_primes4_14,2,naive,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_nth_primes4_14,2,causal,1.0,0,1.0,14,14,VeriQBench
+mspk_nth_primes4_14,3,qpdg,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_nth_primes4_14,3,naive,1.0,0,0.5714285714285714,8,14,VeriQBench
+mspk_nth_primes4_14,3,causal,1.0,0,1.0,14,14,VeriQBench
+4b15g_5,0,qpdg,1.0,0,0.6,9,15,VeriQBench
+4b15g_5,0,naive,0.0,1,0.5333333333333333,8,15,VeriQBench
+4b15g_5,0,causal,1.0,0,1.0,15,15,VeriQBench
+4b15g_5,1,qpdg,1.0,0,0.7333333333333333,11,15,VeriQBench
+4b15g_5,1,naive,1.0,0,0.6,9,15,VeriQBench
+4b15g_5,1,causal,1.0,0,1.0,15,15,VeriQBench
+4b15g_5,2,qpdg,1.0,0,0.8,12,15,VeriQBench
+4b15g_5,2,naive,0.0,1,0.6,9,15,VeriQBench
+4b15g_5,2,causal,1.0,0,1.0,15,15,VeriQBench
+4b15g_5,3,qpdg,1.0,0,0.6666666666666666,10,15,VeriQBench
+4b15g_5,3,naive,0.0,1,0.5333333333333333,8,15,VeriQBench
+4b15g_5,3,causal,1.0,0,1.0,15,15,VeriQBench
+hwb4tc,0,qpdg,1.0,0,0.6666666666666666,10,15,VeriQBench
+hwb4tc,0,naive,1.0,0,0.6666666666666666,10,15,VeriQBench
+hwb4tc,0,causal,1.0,0,1.0,15,15,VeriQBench
+hwb4tc,1,qpdg,1.0,0,0.4666666666666667,7,15,VeriQBench
+hwb4tc,1,naive,1.0,0,0.4666666666666667,7,15,VeriQBench
+hwb4tc,1,causal,1.0,0,1.0,15,15,VeriQBench
+hwb4tc,2,qpdg,1.0,0,0.5333333333333333,8,15,VeriQBench
+hwb4tc,2,naive,1.0,0,0.5333333333333333,8,15,VeriQBench
+hwb4tc,2,causal,1.0,0,1.0,15,15,VeriQBench
+hwb4tc,3,qpdg,1.0,0,0.7333333333333333,11,15,VeriQBench
+hwb4tc,3,naive,1.0,0,0.7333333333333333,11,15,VeriQBench
+hwb4tc,3,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_2,0,qpdg,1.0,0,0.6,9,15,VeriQBench
+mspk_4b15g_2,0,naive,0.0,1,0.4666666666666667,7,15,VeriQBench
+mspk_4b15g_2,0,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_2,1,qpdg,1.0,0,0.7333333333333333,11,15,VeriQBench
+mspk_4b15g_2,1,naive,0.0,1,0.6666666666666666,10,15,VeriQBench
+mspk_4b15g_2,1,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_2,2,qpdg,1.0,0,0.6666666666666666,10,15,VeriQBench
+mspk_4b15g_2,2,naive,1.0,0,0.6,9,15,VeriQBench
+mspk_4b15g_2,2,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_2,3,qpdg,1.0,0,0.6666666666666666,10,15,VeriQBench
+mspk_4b15g_2,3,naive,1.0,0,0.5333333333333333,8,15,VeriQBench
+mspk_4b15g_2,3,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_3,0,qpdg,1.0,0,0.5333333333333333,8,15,VeriQBench
+mspk_4b15g_3,0,naive,0.0,1,0.3333333333333333,5,15,VeriQBench
+mspk_4b15g_3,0,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_3,1,qpdg,1.0,0,0.7333333333333333,11,15,VeriQBench
+mspk_4b15g_3,1,naive,1.0,0,0.6,9,15,VeriQBench
+mspk_4b15g_3,1,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_3,2,qpdg,1.0,0,0.6,9,15,VeriQBench
+mspk_4b15g_3,2,naive,1.0,0,0.5333333333333333,8,15,VeriQBench
+mspk_4b15g_3,2,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_3,3,qpdg,1.0,0,0.7333333333333333,11,15,VeriQBench
+mspk_4b15g_3,3,naive,1.0,0,0.7333333333333333,11,15,VeriQBench
+mspk_4b15g_3,3,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_5,0,qpdg,1.0,0,0.6666666666666666,10,15,VeriQBench
+mspk_4b15g_5,0,naive,0.0,1,0.6,9,15,VeriQBench
+mspk_4b15g_5,0,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_5,1,qpdg,1.0,0,0.6666666666666666,10,15,VeriQBench
+mspk_4b15g_5,1,naive,0.0,1,0.6,9,15,VeriQBench
+mspk_4b15g_5,1,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_5,2,qpdg,1.0,0,0.7333333333333333,11,15,VeriQBench
+mspk_4b15g_5,2,naive,0.0,1,0.6666666666666666,10,15,VeriQBench
+mspk_4b15g_5,2,causal,1.0,0,1.0,15,15,VeriQBench
+mspk_4b15g_5,3,qpdg,1.0,0,0.5333333333333333,8,15,VeriQBench
+mspk_4b15g_5,3,naive,1.0,0,0.4666666666666667,7,15,VeriQBench
+mspk_4b15g_5,3,causal,1.0,0,1.0,15,15,VeriQBench
+4_49_fc,0,qpdg,1.0,0,0.5789473684210527,11,19,VeriQBench
+4_49_fc,0,naive,0.0,1,0.42105263157894735,8,19,VeriQBench
+4_49_fc,0,causal,1.0,0,1.0,19,19,VeriQBench
+4_49_fc,1,qpdg,1.0,0,0.6842105263157895,13,19,VeriQBench
+4_49_fc,1,naive,0.0,1,0.631578947368421,12,19,VeriQBench
+4_49_fc,1,causal,1.0,0,1.0,19,19,VeriQBench
+4_49_fc,2,qpdg,1.0,0,0.631578947368421,12,19,VeriQBench
+4_49_fc,2,naive,0.0,1,0.5263157894736842,10,19,VeriQBench
+4_49_fc,2,causal,1.0,0,1.0,19,19,VeriQBench
+4_49_fc,3,qpdg,1.0,0,0.8947368421052632,17,19,VeriQBench
+4_49_fc,3,naive,1.0,0,0.8947368421052632,17,19,VeriQBench
+4_49_fc,3,causal,1.0,0,1.0,19,19,VeriQBench
+eff_1_4,0,qpdg,0.9999999999999999,0,0.2631578947368421,5,19,VeriQBench
+eff_1_4,0,naive,0.9999999999999999,0,0.2631578947368421,5,19,VeriQBench
+eff_1_4,0,causal,0.9999999999999999,0,1.0,19,19,VeriQBench
+eff_1_4,1,qpdg,0.9999999998382959,0,0.3684210526315789,7,19,VeriQBench
+eff_1_4,1,naive,5.974370722861918e-10,1,0.3157894736842105,6,19,VeriQBench
+eff_1_4,1,causal,0.9999999999999999,0,1.0,19,19,VeriQBench
+eff_1_4,2,qpdg,0.9999999998522286,0,0.5263157894736842,10,19,VeriQBench
+eff_1_4,2,naive,4.892121460463755e-10,1,0.3157894736842105,6,19,VeriQBench
+eff_1_4,2,causal,1.0,0,1.0,19,19,VeriQBench
+eff_1_4,3,qpdg,0.9999999998522286,0,0.631578947368421,12,19,VeriQBench
+eff_1_4,3,naive,3.557936187116003e-10,1,0.2631578947368421,5,19,VeriQBench
+eff_1_4,3,causal,1.0,0,1.0,19,19,VeriQBench
+eff_2_4,0,qpdg,0.9999999999999999,0,0.2631578947368421,5,19,VeriQBench
+eff_2_4,0,naive,0.9999999999999999,0,0.2631578947368421,5,19,VeriQBench
+eff_2_4,0,causal,0.9999999999999999,0,1.0,19,19,VeriQBench
+eff_2_4,1,qpdg,1.0,0,0.42105263157894735,8,19,VeriQBench
+eff_2_4,1,naive,0.9999999999855693,0,0.3157894736842105,6,19,VeriQBench
+eff_2_4,1,causal,1.0,0,1.0,19,19,VeriQBench
+eff_2_4,2,qpdg,0.9999999999893211,0,0.42105263157894735,8,19,VeriQBench
+eff_2_4,2,naive,0.9999999998327088,0,0.3157894736842105,6,19,VeriQBench
+eff_2_4,2,causal,1.0,0,1.0,19,19,VeriQBench
+eff_2_4,3,qpdg,0.9999999993943813,0,0.3157894736842105,6,19,VeriQBench
+eff_2_4,3,naive,6.0561875554613e-10,1,0.2631578947368421,5,19,VeriQBench
+eff_2_4,3,causal,1.0,0,1.0,19,19,VeriQBench
+eff_3_4,0,qpdg,1.0,0,0.2631578947368421,5,19,VeriQBench
+eff_3_4,0,naive,1.0,0,0.2631578947368421,5,19,VeriQBench
+eff_3_4,0,causal,1.0,0,1.0,19,19,VeriQBench
+eff_3_4,1,qpdg,0.9999999999098594,0,0.3684210526315789,7,19,VeriQBench
+eff_3_4,1,naive,5.879764397649508e-10,1,0.3157894736842105,6,19,VeriQBench
+eff_3_4,1,causal,0.9999999999999999,0,1.0,19,19,VeriQBench
+eff_3_4,2,qpdg,0.999999999833013,0,0.47368421052631576,9,19,VeriQBench
+eff_3_4,2,naive,0.999999999833013,0,0.3157894736842105,6,19,VeriQBench
+eff_3_4,2,causal,1.0,0,1.0,19,19,VeriQBench
+eff_3_4,3,qpdg,0.9999999996946388,0,0.3157894736842105,6,19,VeriQBench
+eff_3_4,3,naive,3.053612008552812e-10,1,0.2631578947368421,5,19,VeriQBench
+eff_3_4,3,causal,1.0,0,1.0,19,19,VeriQBench
+eff_4_4,0,qpdg,1.0,0,0.2631578947368421,5,19,VeriQBench
+eff_4_4,0,naive,1.0,0,0.2631578947368421,5,19,VeriQBench
+eff_4_4,0,causal,1.0,0,1.0,19,19,VeriQBench
+eff_4_4,1,qpdg,1.0,0,0.42105263157894735,8,19,VeriQBench
+eff_4_4,1,naive,0.9999999988849708,0,0.3157894736842105,6,19,VeriQBench
+eff_4_4,1,causal,1.0,0,1.0,19,19,VeriQBench
+eff_4_4,2,qpdg,0.9999999991473154,0,0.42105263157894735,8,19,VeriQBench
+eff_4_4,2,naive,0.9999999990180263,0,0.3157894736842105,6,19,VeriQBench
+eff_4_4,2,causal,1.0,0,1.0,19,19,VeriQBench
+eff_4_4,3,qpdg,0.9999999982632243,0,0.3157894736842105,6,19,VeriQBench
+eff_4_4,3,naive,1.736775842677788e-09,1,0.2631578947368421,5,19,VeriQBench
+eff_4_4,3,causal,1.0,0,1.0,19,19,VeriQBench
+eff_5_4,0,qpdg,1.0,0,0.2631578947368421,5,19,VeriQBench
+eff_5_4,0,naive,1.0,0,0.2631578947368421,5,19,VeriQBench
+eff_5_4,0,causal,1.0,0,1.0,19,19,VeriQBench
+eff_5_4,1,qpdg,1.0,0,0.42105263157894735,8,19,VeriQBench
+eff_5_4,1,naive,0.9999999995810173,0,0.3157894736842105,6,19,VeriQBench
+eff_5_4,1,causal,1.0,0,1.0,19,19,VeriQBench
+eff_5_4,2,qpdg,0.9999999997314825,0,0.42105263157894735,8,19,VeriQBench
+eff_5_4,2,naive,0.9999999995730547,0,0.3157894736842105,6,19,VeriQBench
+eff_5_4,2,causal,1.0,0,1.0,19,19,VeriQBench
+eff_5_4,3,qpdg,0.9999999986721684,0,0.3157894736842105,6,19,VeriQBench
+eff_5_4,3,naive,1.327831830345766e-09,1,0.2631578947368421,5,19,VeriQBench
+eff_5_4,3,causal,1.0,0,1.0,19,19,VeriQBench
+rand_cliff_4_GD,0,qpdg,1.0,0,0.6086956521739131,14,23,VeriQBench
+rand_cliff_4_GD,0,naive,0.5,1,0.5217391304347826,12,23,VeriQBench
+rand_cliff_4_GD,0,causal,1.0,0,1.0,23,23,VeriQBench
+rand_cliff_4_GD,1,qpdg,1.0,0,0.2608695652173913,6,23,VeriQBench
+rand_cliff_4_GD,1,naive,0.5,1,0.21739130434782608,5,23,VeriQBench
+rand_cliff_4_GD,1,causal,1.0,0,1.0,23,23,VeriQBench
+rand_cliff_4_GD,2,qpdg,1.0,0,0.391304347826087,9,23,VeriQBench
+rand_cliff_4_GD,2,naive,0.5,1,0.2608695652173913,6,23,VeriQBench
+rand_cliff_4_GD,2,causal,1.0,0,1.0,23,23,VeriQBench
+rand_cliff_4_GD,3,qpdg,1.0,0,0.391304347826087,9,23,VeriQBench
+rand_cliff_4_GD,3,naive,1.0,0,0.34782608695652173,8,23,VeriQBench
+rand_cliff_4_GD,3,causal,1.0,0,1.0,23,23,VeriQBench
+rand_cliff_4_AG,0,qpdg,1.0,0,0.4,10,25,VeriQBench
+rand_cliff_4_AG,0,naive,0.5,1,0.32,8,25,VeriQBench
+rand_cliff_4_AG,0,causal,1.0,0,1.0,25,25,VeriQBench
+rand_cliff_4_AG,1,qpdg,1.0,0,0.48,12,25,VeriQBench
+rand_cliff_4_AG,1,naive,0.5,1,0.32,8,25,VeriQBench
+rand_cliff_4_AG,1,causal,1.0,0,1.0,25,25,VeriQBench
+rand_cliff_4_AG,2,qpdg,1.0,0,0.44,11,25,VeriQBench
+rand_cliff_4_AG,2,naive,0.5,1,0.36,9,25,VeriQBench
+rand_cliff_4_AG,2,causal,1.0,0,1.0,25,25,VeriQBench
+rand_cliff_4_AG,3,qpdg,1.0,0,0.36,9,25,VeriQBench
+rand_cliff_4_AG,3,naive,1.0,0,0.36,9,25,VeriQBench
+rand_cliff_4_AG,3,causal,1.0,0,1.0,25,25,VeriQBench
+qcnn_4,0,qpdg,0.9999999999999999,0,0.3939393939393939,26,66,VeriQBench
+qcnn_4,0,naive,0.3705747227495933,1,0.21212121212121213,14,66,VeriQBench
+qcnn_4,0,causal,0.9999999999999999,0,1.0,66,66,VeriQBench
+qcnn_4,1,qpdg,1.0,0,0.42424242424242425,28,66,VeriQBench
+qcnn_4,1,naive,0.17967432926008017,1,0.21212121212121213,14,66,VeriQBench
+qcnn_4,1,causal,0.9999999999999999,0,1.0,66,66,VeriQBench
+qcnn_4,2,qpdg,1.0,0,0.8484848484848485,56,66,VeriQBench
+qcnn_4,2,naive,0.6654358717521051,1,0.45454545454545453,30,66,VeriQBench
+qcnn_4,2,causal,1.0,0,1.0,66,66,VeriQBench
+qcnn_4,3,qpdg,0.9999999997035853,0,0.7878787878787878,52,66,VeriQBench
+qcnn_4,3,naive,0.1716629186972219,1,0.48484848484848486,32,66,VeriQBench
+qcnn_4,3,causal,1.0,0,1.0,66,66,VeriQBench
+quantum_volume_n4_d5_i0,0,qpdg,1.0,0,0.87,87,100,VeriQBench
+quantum_volume_n4_d5_i0,0,naive,0.7230249078569182,1,0.31,31,100,VeriQBench
+quantum_volume_n4_d5_i0,0,causal,1.0,0,1.0,100,100,VeriQBench
+quantum_volume_n4_d5_i0,1,qpdg,1.0,0,0.87,87,100,VeriQBench
+quantum_volume_n4_d5_i0,1,naive,0.889309573273025,1,0.34,34,100,VeriQBench
+quantum_volume_n4_d5_i0,1,causal,1.0,0,1.0,100,100,VeriQBench
+quantum_volume_n4_d5_i0,2,qpdg,1.0,0,0.87,87,100,VeriQBench
+quantum_volume_n4_d5_i0,2,naive,0.9447342867666548,1,0.33,33,100,VeriQBench
+quantum_volume_n4_d5_i0,2,causal,1.0,0,1.0,100,100,VeriQBench
+quantum_volume_n4_d5_i0,3,qpdg,1.0,0,0.87,87,100,VeriQBench
+quantum_volume_n4_d5_i0,3,naive,0.7567125405001502,1,0.32,32,100,VeriQBench
+quantum_volume_n4_d5_i0,3,causal,0.9999999999999999,0,1.0,100,100,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,0,qpdg,1.0,0,0.25,1,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,0,naive,1.0,0,0.25,1,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,0,causal,1.0,0,1.0,4,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,1,qpdg,1.0,0,0.75,3,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,1,naive,1.0,0,0.75,3,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,1,causal,1.0,0,1.0,4,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,2,qpdg,1.0,0,0.0,0,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,2,naive,1.0,0,0.0,0,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,2,causal,1.0,0,0.0,0,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,3,qpdg,1.0,0,0.5,2,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,3,naive,1.0,0,0.5,2,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,3,causal,1.0,0,1.0,4,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,4,qpdg,1.0,0,0.5,2,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,4,naive,1.0,0,0.5,2,4,VeriQBench
+5QBT_4CYC_4GN_1.0P2_0,4,causal,1.0,0,1.0,4,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,0,qpdg,1.0,0,0.5,2,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,0,naive,1.0,0,0.5,2,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,0,causal,1.0,0,1.0,4,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,1,qpdg,1.0,0,0.25,1,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,1,naive,1.0,0,0.25,1,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,1,causal,1.0,0,1.0,4,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,2,qpdg,1.0,0,1.0,4,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,2,naive,1.0,0,1.0,4,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,2,causal,1.0,0,1.0,4,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,3,qpdg,1.0,0,0.25,1,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,3,naive,1.0,0,0.25,1,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,3,causal,1.0,0,1.0,4,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,4,qpdg,1.0,0,0.5,2,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,4,naive,1.0,0,0.5,2,4,VeriQBench
+mod_4mod5-n5-gc4-qc13,4,causal,1.0,0,1.0,4,4,VeriQBench
+dqc_qft_5,0,qpdg,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,0,naive,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,0,causal,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,1,qpdg,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,1,naive,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,1,causal,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,2,qpdg,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,2,naive,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,2,causal,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,3,qpdg,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,3,naive,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,3,causal,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,4,qpdg,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,4,naive,1.0,0,0.2,1,5,VeriQBench
+dqc_qft_5,4,causal,1.0,0,0.2,1,5,VeriQBench
+mod5d4,0,qpdg,1.0,0,0.2,1,5,VeriQBench
+mod5d4,0,naive,1.0,0,0.2,1,5,VeriQBench
+mod5d4,0,causal,1.0,0,1.0,5,5,VeriQBench
+mod5d4,1,qpdg,1.0,0,0.2,1,5,VeriQBench
+mod5d4,1,naive,1.0,0,0.2,1,5,VeriQBench
+mod5d4,1,causal,1.0,0,1.0,5,5,VeriQBench
+mod5d4,2,qpdg,1.0,0,0.6,3,5,VeriQBench
+mod5d4,2,naive,1.0,0,0.6,3,5,VeriQBench
+mod5d4,2,causal,1.0,0,1.0,5,5,VeriQBench
+mod5d4,3,qpdg,1.0,0,0.8,4,5,VeriQBench
+mod5d4,3,naive,1.0,0,0.8,4,5,VeriQBench
+mod5d4,3,causal,1.0,0,1.0,5,5,VeriQBench
+mod5d4,4,qpdg,1.0,0,0.4,2,5,VeriQBench
+mod5d4,4,naive,1.0,0,0.4,2,5,VeriQBench
+mod5d4,4,causal,1.0,0,1.0,5,5,VeriQBench
+qft_5,0,qpdg,1.0,0,0.2,1,5,VeriQBench
+qft_5,0,naive,1.0,0,0.2,1,5,VeriQBench
+qft_5,0,causal,1.0,0,0.2,1,5,VeriQBench
+qft_5,1,qpdg,1.0,0,0.2,1,5,VeriQBench
+qft_5,1,naive,1.0,0,0.2,1,5,VeriQBench
+qft_5,1,causal,1.0,0,0.2,1,5,VeriQBench
+qft_5,2,qpdg,1.0,0,0.2,1,5,VeriQBench
+qft_5,2,naive,1.0,0,0.2,1,5,VeriQBench
+qft_5,2,causal,1.0,0,0.2,1,5,VeriQBench
+qft_5,3,qpdg,1.0,0,0.2,1,5,VeriQBench
+qft_5,3,naive,1.0,0,0.2,1,5,VeriQBench
+qft_5,3,causal,1.0,0,0.2,1,5,VeriQBench
+qft_5,4,qpdg,1.0,0,0.2,1,5,VeriQBench
+qft_5,4,naive,1.0,0,0.2,1,5,VeriQBench
+qft_5,4,causal,1.0,0,0.2,1,5,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,0,qpdg,1.0,0,0.125,1,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,0,naive,1.0,0,0.125,1,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,0,causal,1.0,0,1.0,8,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,1,qpdg,1.0,0,1.0,8,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,1,naive,1.0,0,1.0,8,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,1,causal,1.0,0,1.0,8,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,2,qpdg,1.0,0,0.0,0,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,2,naive,1.0,0,0.0,0,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,2,causal,1.0,0,0.0,0,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,3,qpdg,1.0,0,0.875,7,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,3,naive,1.0,0,0.875,7,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,3,causal,1.0,0,1.0,8,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,4,qpdg,1.0,0,0.0,0,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,4,naive,1.0,0,0.0,0,8,VeriQBench
+5QBT_8CYC_8GN_1.0P2_0,4,causal,1.0,0,0.0,0,8,VeriQBench
+dqc_pe_4,0,qpdg,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,0,naive,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,0,causal,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,1,qpdg,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,1,naive,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,1,causal,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,2,qpdg,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,2,naive,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,2,causal,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,3,qpdg,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,3,naive,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,3,causal,1.0,0,0.25,2,8,VeriQBench
+dqc_pe_4,4,qpdg,1.0,0,0.0,0,8,VeriQBench
+dqc_pe_4,4,naive,1.0,0,0.0,0,8,VeriQBench
+dqc_pe_4,4,causal,1.0,0,0.0,0,8,VeriQBench
+mod5d1,0,qpdg,1.0,0,0.375,3,8,VeriQBench
+mod5d1,0,naive,1.0,0,0.375,3,8,VeriQBench
+mod5d1,0,causal,1.0,0,1.0,8,8,VeriQBench
+mod5d1,1,qpdg,1.0,0,0.375,3,8,VeriQBench
+mod5d1,1,naive,1.0,0,0.375,3,8,VeriQBench
+mod5d1,1,causal,1.0,0,1.0,8,8,VeriQBench
+mod5d1,2,qpdg,1.0,0,0.375,3,8,VeriQBench
+mod5d1,2,naive,1.0,0,0.375,3,8,VeriQBench
+mod5d1,2,causal,1.0,0,1.0,8,8,VeriQBench
+mod5d1,3,qpdg,1.0,0,0.375,3,8,VeriQBench
+mod5d1,3,naive,1.0,0,0.375,3,8,VeriQBench
+mod5d1,3,causal,1.0,0,1.0,8,8,VeriQBench
+mod5d1,4,qpdg,1.0,0,1.0,8,8,VeriQBench
+mod5d1,4,naive,1.0,0,1.0,8,8,VeriQBench
+mod5d1,4,causal,1.0,0,1.0,8,8,VeriQBench
+pe_4,0,qpdg,1.0,0,0.25,2,8,VeriQBench
+pe_4,0,naive,1.0,0,0.25,2,8,VeriQBench
+pe_4,0,causal,1.0,0,0.25,2,8,VeriQBench
+pe_4,1,qpdg,1.0,0,0.25,2,8,VeriQBench
+pe_4,1,naive,1.0,0,0.25,2,8,VeriQBench
+pe_4,1,causal,1.0,0,0.25,2,8,VeriQBench
+pe_4,2,qpdg,1.0,0,0.25,2,8,VeriQBench
+pe_4,2,naive,1.0,0,0.25,2,8,VeriQBench
+pe_4,2,causal,1.0,0,0.25,2,8,VeriQBench
+pe_4,3,qpdg,1.0,0,0.25,2,8,VeriQBench
+pe_4,3,naive,1.0,0,0.25,2,8,VeriQBench
+pe_4,3,causal,1.0,0,0.25,2,8,VeriQBench
+pe_4,4,qpdg,1.0,0,0.0,0,8,VeriQBench
+pe_4,4,naive,1.0,0,0.0,0,8,VeriQBench
+pe_4,4,causal,1.0,0,0.0,0,8,VeriQBench
+mod5d2,0,qpdg,1.0,0,0.4444444444444444,4,9,VeriQBench
+mod5d2,0,naive,1.0,0,0.4444444444444444,4,9,VeriQBench
+mod5d2,0,causal,1.0,0,1.0,9,9,VeriQBench
+mod5d2,1,qpdg,1.0,0,0.6666666666666666,6,9,VeriQBench
+mod5d2,1,naive,0.0,1,0.5555555555555556,5,9,VeriQBench
+mod5d2,1,causal,1.0,0,1.0,9,9,VeriQBench
+mod5d2,2,qpdg,1.0,0,0.5555555555555556,5,9,VeriQBench
+mod5d2,2,naive,0.0,1,0.4444444444444444,4,9,VeriQBench
+mod5d2,2,causal,1.0,0,1.0,9,9,VeriQBench
+mod5d2,3,qpdg,1.0,0,0.3333333333333333,3,9,VeriQBench
+mod5d2,3,naive,1.0,0,0.3333333333333333,3,9,VeriQBench
+mod5d2,3,causal,1.0,0,1.0,9,9,VeriQBench
+mod5d2,4,qpdg,1.0,0,0.6666666666666666,6,9,VeriQBench
+mod5d2,4,naive,0.0,1,0.4444444444444444,4,9,VeriQBench
+mod5d2,4,causal,1.0,0,1.0,9,9,VeriQBench
+bv_5,0,qpdg,1.0,0,0.3333333333333333,5,15,VeriQBench
+bv_5,0,naive,0.5,1,0.2,3,15,VeriQBench
+bv_5,0,causal,1.0,0,1.0,15,15,VeriQBench
+bv_5,1,qpdg,1.0,0,0.3333333333333333,5,15,VeriQBench
+bv_5,1,naive,0.5,1,0.2,3,15,VeriQBench
+bv_5,1,causal,1.0,0,1.0,15,15,VeriQBench
+bv_5,2,qpdg,1.0,0,0.3333333333333333,5,15,VeriQBench
+bv_5,2,naive,0.5,1,0.2,3,15,VeriQBench
+bv_5,2,causal,1.0,0,1.0,15,15,VeriQBench
+bv_5,3,qpdg,1.0,0,0.3333333333333333,5,15,VeriQBench
+bv_5,3,naive,0.5,1,0.2,3,15,VeriQBench
+bv_5,3,causal,1.0,0,1.0,15,15,VeriQBench
+bv_5,4,qpdg,1.0,0,0.4666666666666667,7,15,VeriQBench
+bv_5,4,naive,1.0,0,0.4666666666666667,7,15,VeriQBench
+bv_5,4,causal,1.0,0,1.0,15,15,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,0,qpdg,1.0,0,0.0,0,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,0,naive,1.0,0,0.0,0,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,0,causal,1.0,0,0.0,0,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,1,qpdg,1.0,0,0.625,10,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,1,naive,1.0,0,0.625,10,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,1,causal,1.0,0,1.0,16,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,2,qpdg,1.0,0,0.75,12,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,2,naive,1.0,0,0.75,12,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,2,causal,1.0,0,1.0,16,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,3,qpdg,1.0,0,0.25,4,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,3,naive,1.0,0,0.25,4,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,3,causal,1.0,0,1.0,16,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,4,qpdg,1.0,0,0.375,6,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,4,naive,1.0,0,0.375,6,16,VeriQBench
+5QBT_16CYC_16GN_1.0P2_0,4,causal,1.0,0,1.0,16,16,VeriQBench
+hwb5-24-102,0,qpdg,1.0,0,0.47368421052631576,9,19,VeriQBench
+hwb5-24-102,0,naive,1.0,0,0.47368421052631576,9,19,VeriQBench
+hwb5-24-102,0,causal,1.0,0,1.0,19,19,VeriQBench
+hwb5-24-102,1,qpdg,1.0,0,0.42105263157894735,8,19,VeriQBench
+hwb5-24-102,1,naive,1.0,0,0.42105263157894735,8,19,VeriQBench
+hwb5-24-102,1,causal,1.0,0,1.0,19,19,VeriQBench
+hwb5-24-102,2,qpdg,1.0,0,0.3684210526315789,7,19,VeriQBench
+hwb5-24-102,2,naive,1.0,0,0.3684210526315789,7,19,VeriQBench
+hwb5-24-102,2,causal,1.0,0,1.0,19,19,VeriQBench
+hwb5-24-102,3,qpdg,1.0,0,0.5263157894736842,10,19,VeriQBench
+hwb5-24-102,3,naive,1.0,0,0.42105263157894735,8,19,VeriQBench
+hwb5-24-102,3,causal,1.0,0,1.0,19,19,VeriQBench
+hwb5-24-102,4,qpdg,1.0,0,0.47368421052631576,9,19,VeriQBench
+hwb5-24-102,4,naive,1.0,0,0.47368421052631576,9,19,VeriQBench
+hwb5-24-102,4,causal,1.0,0,1.0,19,19,VeriQBench
+nth_prime5_inc_25_103,0,qpdg,1.0,0,0.47619047619047616,10,21,VeriQBench
+nth_prime5_inc_25_103,0,naive,1.0,0,0.47619047619047616,10,21,VeriQBench
+nth_prime5_inc_25_103,0,causal,1.0,0,1.0,21,21,VeriQBench
+nth_prime5_inc_25_103,1,qpdg,1.0,0,0.5714285714285714,12,21,VeriQBench
+nth_prime5_inc_25_103,1,naive,1.0,0,0.47619047619047616,10,21,VeriQBench
+nth_prime5_inc_25_103,1,causal,1.0,0,1.0,21,21,VeriQBench
+nth_prime5_inc_25_103,2,qpdg,1.0,0,0.38095238095238093,8,21,VeriQBench
+nth_prime5_inc_25_103,2,naive,1.0,0,0.38095238095238093,8,21,VeriQBench
+nth_prime5_inc_25_103,2,causal,1.0,0,1.0,21,21,VeriQBench
+nth_prime5_inc_25_103,3,qpdg,1.0,0,0.6190476190476191,13,21,VeriQBench
+nth_prime5_inc_25_103,3,naive,1.0,0,0.6190476190476191,13,21,VeriQBench
+nth_prime5_inc_25_103,3,causal,1.0,0,1.0,21,21,VeriQBench
+nth_prime5_inc_25_103,4,qpdg,1.0,0,0.38095238095238093,8,21,VeriQBench
+nth_prime5_inc_25_103,4,naive,1.0,0,0.38095238095238093,8,21,VeriQBench
+nth_prime5_inc_25_103,4,causal,1.0,0,1.0,21,21,VeriQBench

@@ -1,0 +1,10 @@
+{
+  "platform": "macOS-15.8-x86_64-i386-64bit",
+  "python": "3.12.2",
+  "cpu_count": 16,
+  "workers": 4,
+  "time_limit_s": 120,
+  "memory_limit_gib": 4.0,
+  "cpu": "Intel(R) Xeon(R) W-2140B CPU @ 3.20GHz",
+  "memory_gib": 32.0
+}

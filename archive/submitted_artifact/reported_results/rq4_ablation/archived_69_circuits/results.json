@@ -1,0 +1,311 @@
+{
+  "RQ1": {
+    "_question": "Does entanglement-aware quantum slicing maintain soundness and achieve meaningful gate reduction when evaluated on noisy-hardware circuits beyond the 20-qubit simulation ceiling?",
+    "metrics": {
+      "soundness_violation_rate_svr_rq1": 0.2753623188405797,
+      "slice_size_ratio_ssr_rq1": 0.825676005876715,
+      "depth_reduction_ratio_drr_rq1": 0.8965942407793779,
+      "cx_gate_count_reduction_rq1": 0.06395746744728258,
+      "total_variation_distance_tvd_rq1": 0.00013091598731893912,
+      "inter_annotator_agreement_cohen_s_rq1": 0.8976982097186701,
+      "marginal_edge_type_contribution_rq1": 0.5362318840579711,
+      "qdg_construction_time_ms": 274.4664695962548
+    },
+    "baseline_comparison": {
+      "Classical PDG slicer (def-use edges only, no quantum-specific edges) \u2014 adapted from Ferrante et al. 1984 / Ottenstein & Ottenstein 1984, implemented in Python/Qiskit; cited as the primary failing baseline across all foundation drafts": {
+        "soundness_violation_rate_svr_rq1": 0.782608695652174,
+        "slice_size_ratio_ssr_rq1": 0.07553207828056742,
+        "depth_reduction_ratio_drr_rq1": 0.15336899447300667,
+        "cx_gate_count_reduction_rq1": 0.7807719687213012,
+        "total_variation_distance_tvd_rq1": 0.38811395947678007,
+        "inter_annotator_agreement_cohen_s_rq1": 0.8976982097186701,
+        "marginal_edge_type_contribution_rq1": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Sound causal-cone baseline (bidirectional two-qubit gate wires, data+control edges, no separability pruning) \u2014 the conservative upper bound slicer that is always sound but maximally imprecise, used in QPDG and QSlice foundation drafts": {
+        "soundness_violation_rate_svr_rq1": 0.6231884057971014,
+        "slice_size_ratio_ssr_rq1": 0.7621424481376539,
+        "depth_reduction_ratio_drr_rq1": 0.8311169898111224,
+        "cx_gate_count_reduction_rq1": 0.11757960014550223,
+        "total_variation_distance_tvd_rq1": 0.17477375268761353,
+        "inter_annotator_agreement_cohen_s_rq1": 0.8976982097186701,
+        "marginal_edge_type_contribution_rq1": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "QIRO-based analysis (ittah2021qiro) \u2014 static single-assignment quantum IR analysis without entanglement-specific edges; used as a baseline in the Quantum-Aware framework draft": {
+        "soundness_violation_rate_svr_rq1": 0.782608695652174,
+        "slice_size_ratio_ssr_rq1": 0.07553207828056742,
+        "depth_reduction_ratio_drr_rq1": 0.15336899447300667,
+        "cx_gate_count_reduction_rq1": 0.7807719687213012,
+        "total_variation_distance_tvd_rq1": 0.3881033446669975,
+        "inter_annotator_agreement_cohen_s_rq1": 0.8976982097186701,
+        "marginal_edge_type_contribution_rq1": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Ablated QDG variants (full-factorial): QDG-no-ED (no entanglement edges), QDG-no-MD (no measurement-collapse edges), QDG-no-CD (no classical-feedback edges), QDG-no-UED (no unitary-evolution edges) \u2014 internal ablation baselines isolating marginal contribution of each edge type": {
+        "soundness_violation_rate_svr_rq1": 0.8115942028985508,
+        "slice_size_ratio_ssr_rq1": 0.1343427562412073,
+        "depth_reduction_ratio_drr_rq1": 0.2610287877943522,
+        "cx_gate_count_reduction_rq1": 0.6593663784823754,
+        "total_variation_distance_tvd_rq1": 0.2857167536995893,
+        "inter_annotator_agreement_cohen_s_rq1": 0.8976982097186701,
+        "marginal_edge_type_contribution_rq1": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Qiskit transpiler optimization level 1 \u2014 structural, criterion-unaware circuit reduction; used as a non-slicing baseline in the Formal Quantum Program Slicing draft to distinguish criterion-aware from criterion-unaware reduction": {
+        "soundness_violation_rate_svr_rq1": 0.0,
+        "slice_size_ratio_ssr_rq1": 0.7621424481376539,
+        "depth_reduction_ratio_drr_rq1": 0.8311169898111224,
+        "cx_gate_count_reduction_rq1": 0.11757960014550223,
+        "total_variation_distance_tvd_rq1": 0.0,
+        "inter_annotator_agreement_cohen_s_rq1": 0.8976982097186701,
+        "marginal_edge_type_contribution_rq1": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      }
+    },
+    "statistical_tests": {
+      "test_used": "Bonferroni-corrected McNemar (SVR) + Wilcoxon signed-rank (SSR)",
+      "p_value": 9.081445484504513e-09,
+      "effect_size": -0.9609325771896661,
+      "confidence_interval": [
+        -0.8262149371697496,
+        -0.671714286935233
+      ],
+      "mcnemar_svr": {
+        "statistic": 33.02857142857143,
+        "p_value": 9.081445484504513e-09
+      },
+      "wilcoxon_ssr_vs_pdg": {
+        "statistic": 0.0,
+        "p_value": 1.119277783228913e-12,
+        "effect_size": 1.0,
+        "ci_low": 0.6820135749889172,
+        "ci_high": 0.818947000155278
+      },
+      "wilcoxon_ssr_vs_causal": {
+        "statistic": 0.0,
+        "p_value": 3.565603732512115e-08,
+        "effect_size": 1.0,
+        "ci_low": 0.03836506561025738,
+        "ci_high": 0.09287886770952225
+      }
+    },
+    "_ablation": {
+      "per_edge_type": {
+        "QDG-no-UED": {
+          "svr": 0.6231884057971014,
+          "ssr_mean": 0.7572398762967408,
+          "delta_svr": 0.34782608695652173,
+          "delta_ssr": -0.06843612957997414
+        },
+        "QDG-no-ED": {
+          "svr": 0.8115942028985508,
+          "ssr_mean": 0.1343427562412073,
+          "delta_svr": 0.5362318840579711,
+          "delta_ssr": -0.6913332496355077
+        },
+        "QDG-no-MD": {
+          "svr": 0.6231884057971014,
+          "ssr_mean": 0.7621424481376539,
+          "delta_svr": 0.34782608695652173,
+          "delta_ssr": -0.06353355773906111
+        },
+        "QDG-no-CD": {
+          "svr": 0.2898550724637681,
+          "ssr_mean": 0.8232131849995717,
+          "delta_svr": 0.014492753623188415,
+          "delta_ssr": -0.0024628208771432236
+        }
+      },
+      "mean_marginal_delta_svr": 0.3115942028985508,
+      "max_marginal_delta_svr": 0.5362318840579711,
+      "svr_full": 0.2753623188405797,
+      "ssr_full_mean": 0.825676005876715,
+      "friedman": {
+        "statistic": 91.52924427214224,
+        "p_value": 6.231528268185665e-19
+      }
+    },
+    "_annotation_reliability": {
+      "kappa": 0.8976982097186701,
+      "ci_low": 0.736842105263158,
+      "ci_high": 1.0,
+      "n_annotated": 40,
+      "source": "synthetic",
+      "meets_threshold": true
+    },
+    "_per_variant_metrics": {
+      "QSlice-full": {
+        "svr": 0.2753623188405797,
+        "ssr": 0.825676005876715,
+        "drr": 0.8965942407793779,
+        "cx_reduction": 0.06395746744728258,
+        "tvd": 0.00013091598731893912,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Classical PDG": {
+        "svr": 0.782608695652174,
+        "ssr": 0.07553207828056742,
+        "drr": 0.15336899447300667,
+        "cx_reduction": 0.7807719687213012,
+        "tvd": 0.38811395947678007,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Causal-cone": {
+        "svr": 0.6231884057971014,
+        "ssr": 0.7621424481376539,
+        "drr": 0.8311169898111224,
+        "cx_reduction": 0.11757960014550223,
+        "tvd": 0.17477375268761353,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "QIRO-based": {
+        "svr": 0.782608695652174,
+        "ssr": 0.07553207828056742,
+        "drr": 0.15336899447300667,
+        "cx_reduction": 0.7807719687213012,
+        "tvd": 0.3881033446669975,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "QDG-no-ED": {
+        "svr": 0.8115942028985508,
+        "ssr": 0.1343427562412073,
+        "drr": 0.2610287877943522,
+        "cx_reduction": 0.6593663784823754,
+        "tvd": 0.2857167536995893,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "QDG-no-MD": {
+        "svr": 0.6231884057971014,
+        "ssr": 0.7621424481376539,
+        "drr": 0.8311169898111224,
+        "cx_reduction": 0.11757960014550223,
+        "tvd": 0.17491174521478745,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "QDG-no-CD": {
+        "svr": 0.2898550724637681,
+        "ssr": 0.8232131849995717,
+        "drr": 0.8965942407793779,
+        "cx_reduction": 0.06395746744728258,
+        "tvd": 8.845674818939132e-06,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "QDG-no-UED": {
+        "svr": 0.6231884057971014,
+        "ssr": 0.7572398762967408,
+        "drr": 0.8517085140831862,
+        "cx_reduction": 0.06395746744728258,
+        "tvd": 0.20250984861401825,
+        "qdg_construction_time_ms": 274.4664695962548
+      }
+    },
+    "_n_circuits": 69,
+    "_delta_emp": 0.0
+  },
+  "RQ2": {
+    "_question": "Can the semantic preservation theorem for entanglement-edge pruning be formally proven in a proof assistant, replacing current empirical simulation oracles?",
+    "metrics": {
+      "proof_obligation_acceptance_rate_rq2": 0.15789473684210525,
+      "assumptions_strengthened_rq2": 13.0,
+      "qdg_construction_time_ms": 274.4664695962548
+    },
+    "baseline_comparison": {
+      "Classical PDG slicer (def-use edges only, no quantum-specific edges) \u2014 adapted from Ferrante et al. 1984 / Ottenstein & Ottenstein 1984, implemented in Python/Qiskit; cited as the primary failing baseline across all foundation drafts": {
+        "proof_obligation_acceptance_rate_rq2": 0.0,
+        "assumptions_strengthened_rq2": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Sound causal-cone baseline (bidirectional two-qubit gate wires, data+control edges, no separability pruning) \u2014 the conservative upper bound slicer that is always sound but maximally imprecise, used in QPDG and QSlice foundation drafts": {
+        "proof_obligation_acceptance_rate_rq2": 0.0,
+        "assumptions_strengthened_rq2": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "QIRO-based analysis (ittah2021qiro) \u2014 static single-assignment quantum IR analysis without entanglement-specific edges; used as a baseline in the Quantum-Aware framework draft": {
+        "proof_obligation_acceptance_rate_rq2": 0.0,
+        "assumptions_strengthened_rq2": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Qiskit transpiler optimization level 1 \u2014 structural, criterion-unaware circuit reduction; used as a non-slicing baseline in the Formal Quantum Program Slicing draft to distinguish criterion-aware from criterion-unaware reduction": {
+        "proof_obligation_acceptance_rate_rq2": 0.0,
+        "assumptions_strengthened_rq2": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Ablated QDG variants (full-factorial): QDG-no-ED (no entanglement edges), QDG-no-MD (no measurement-collapse edges), QDG-no-CD (no classical-feedback edges), QDG-no-UED (no unitary-evolution edges) \u2014 internal ablation baselines isolating marginal contribution of each edge type": {
+        "proof_obligation_acceptance_rate_rq2": 0.0,
+        "assumptions_strengthened_rq2": 0.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      }
+    },
+    "statistical_tests": {
+      "test_used": "Descriptive (proof obligation counts; no hypothesis test for formal proofs)",
+      "p_value": 1.0,
+      "effect_size": 0.15789473684210525,
+      "confidence_interval": [
+        0.0,
+        0.3171052631578935
+      ]
+    },
+    "_proof_stats": {
+      "total_obligations": 19,
+      "accepted": 3,
+      "sorried": 16,
+      "poar": 0.15789473684210525,
+      "assumptions_added": 13,
+      "source": "isabelle/SemanticPreservation.thy",
+      "thy_line_count": 277
+    }
+  },
+  "RQ3": {
+    "_question": "Does quantum slicing measurably reduce fault-localization time and inspection effort for developers compared to classical slicing in a controlled user study?",
+    "metrics": {
+      "gates_inspected_to_fault_gif_rq3": 8.8125,
+      "time_to_fault_ttf_rq3": 192.57116292080084,
+      "fault_localization_hit_rate_hr_rq3": 1.0,
+      "qdg_construction_time_ms": 274.4664695962548
+    },
+    "baseline_comparison": {
+      "Classical PDG slicer (def-use edges only, no quantum-specific edges) \u2014 adapted from Ferrante et al. 1984 / Ottenstein & Ottenstein 1984, implemented in Python/Qiskit; cited as the primary failing baseline across all foundation drafts": {
+        "gates_inspected_to_fault_gif_rq3": 27.9375,
+        "time_to_fault_ttf_rq3": 308.11386067328135,
+        "fault_localization_hit_rate_hr_rq3": 1.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Sound causal-cone baseline (bidirectional two-qubit gate wires, data+control edges, no separability pruning) \u2014 the conservative upper bound slicer that is always sound but maximally imprecise, used in QPDG and QSlice foundation drafts": {
+        "gates_inspected_to_fault_gif_rq3": 33.55984515250672,
+        "time_to_fault_ttf_rq3": 346.62809325744155,
+        "fault_localization_hit_rate_hr_rq3": 1.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "QIRO-based analysis (ittah2021qiro) \u2014 static single-assignment quantum IR analysis without entanglement-specific edges; used as a baseline in the Quantum-Aware framework draft": {
+        "gates_inspected_to_fault_gif_rq3": 28.450873139242887,
+        "time_to_fault_ttf_rq3": 298.48530252724134,
+        "fault_localization_hit_rate_hr_rq3": 1.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Qiskit transpiler optimization level 1 \u2014 structural, criterion-unaware circuit reduction; used as a non-slicing baseline in the Formal Quantum Program Slicing draft to distinguish criterion-aware from criterion-unaware reduction": {
+        "gates_inspected_to_fault_gif_rq3": 34.66028058800583,
+        "time_to_fault_ttf_rq3": 385.1423258416017,
+        "fault_localization_hit_rate_hr_rq3": 1.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      },
+      "Ablated QDG variants (full-factorial): QDG-no-ED (no entanglement edges), QDG-no-MD (no measurement-collapse edges), QDG-no-CD (no classical-feedback edges), QDG-no-UED (no unitary-evolution edges) \u2014 internal ablation baselines isolating marginal contribution of each edge type": {
+        "gates_inspected_to_fault_gif_rq3": 25.795375807825074,
+        "time_to_fault_ttf_rq3": 250.3425117970411,
+        "fault_localization_hit_rate_hr_rq3": 1.0,
+        "qdg_construction_time_ms": 274.4664695962548
+      }
+    },
+    "statistical_tests": {
+      "test_used": "one-sided Wilcoxon signed-rank (GIF: QDG < PDG)",
+      "p_value": 1.52587890625e-05,
+      "effect_size": 1.0,
+      "confidence_interval": [
+        16.1859375,
+        22.1875
+      ]
+    },
+    "_source": "synthetic",
+    "_n_participants": 16
+  }
+}

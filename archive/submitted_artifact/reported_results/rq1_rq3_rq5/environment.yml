@@ -1,0 +1,16 @@
+name: research-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - cirq
+      - matplotlib==3.9.1
+      - numpy==1.26.4
+      - pandas==2.2.2
+      - pennylane
+      - qiskit
+      - qiskit-aer
+      - scipy==1.13.1

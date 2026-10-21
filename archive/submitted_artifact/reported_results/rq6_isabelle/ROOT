@@ -1,0 +1,3 @@
+session "QSlicePreserv" = "HOL" +
+  theories
+    SemanticPreservation_v2

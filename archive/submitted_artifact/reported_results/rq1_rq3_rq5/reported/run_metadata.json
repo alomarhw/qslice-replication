@@ -1,0 +1,23 @@
+{
+  "mode": "paper-grade",
+  "rows_or_items": 161,
+  "repeats": 1,
+  "datasets": [
+    "MQT Bench",
+    "QASMBench",
+    "VeriQBench"
+  ],
+  "corpus_counts": {
+    "QASMBench": 39,
+    "MQT Bench": 42,
+    "VeriQBench": 80
+  },
+  "paper_grade": true,
+  "max_qubits": 14,
+  "max_ops": 220,
+  "experiments": [
+    "RQ1-E1",
+    "RQ2-E1",
+    "RQ3-E1"
+  ]
+}
