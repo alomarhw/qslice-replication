@@ -570,4 +570,57 @@ fixed now:
   mid-circuit measurement, reset or feedback.
 
 ## Deviations (ICPC)
-None yet.
+
+### Deviation I-1 (2026-10-21, before any ICPC result): design corrections found while deriving the catalogue expectations
+These were found while deriving the catalogue's expected outcomes by hand. No ICPC experiment code had
+run, and no ICPC result existed.
+
+1. **§2.1, the perturbation.**
+   - *Was:* independent single-qubit Haar unitaries on each qubit of o_k.
+   - *Now:* **one Haar-random unitary on the joint space of o_k's qubits** (o_k acts on at most 8
+     qubits after preparation).
+   - *Reason:* a product of single-qubit unitaries cannot reveal a dependence carried by
+     entanglement. For example, q0 after the CX of a Bell pair is maximally mixed, so no local
+     unitary on q0 or q1 changes ρ_q0, and the CX would wrongly be labelled non-influencing. The
+     joint perturbation is the faithful analogue of Podgurski and Clarke's semantic dependence:
+     o_k influences q iff *some* operation in o_k's place would change ρ_q.
+2. **§2.1, the expectation for S-q.**
+   - *Was:* "S-q may miss an influencing operation only where the influence vanishes at |0…0⟩".
+   - *Why it is wrong:* QSlice removes operations whose effect *as written* is nil, and that can hold
+     for every input. In K4, an S gate before a CZ on the other wire commutes with the CZ, so it never
+     changes ρ_q0, yet a different gate there would.
+   - *Now:* S-q is expected to miss influencing operations whose as-written contribution is nil.
+3. **§2.1, an added descriptive measure.** **As-written contribution:** o_k contributes to q iff
+   deleting o_k alone changes ρ_q, at |0…0⟩ and at the same 10 Haar product inputs. Each pruning of
+   S-q is then classified as:
+   - a non-influencing removal;
+   - an influencing operation with no contribution at any tested input;
+   - an influencing operation that contributes at some input (an input-specific prune).
+
+   This separates *dependence* (what q could depend on: the right target for fault localization)
+   from *contribution* (what QSlice optimizes).
+4. **§1, the four-edge fix.**
+   - *Was:* "seeded from that qubit's last non-measurement operation".
+   - *Now:* **seeded from the criterion qubit's last operation of any kind.**
+   - *Reason:* a mid-circuit measurement or reset of the criterion qubit changes ρ_q and must be in
+     the slice. The original defect is that the slice was seeded *only* at measurement nodes, which
+     drops every later operation on the criterion qubit.
+5. **§1, the expectation for S-lcq.** Qiskit's `LightCone` drops gates that commute with the
+   backward-propagated observable, so its exact sets cannot be derived reliably by hand.
+   - **Catalogue expectation:** sound, and a subset of S-lc.
+   - Every catalogue entry where it is a strict subset is reported.
+   - On dynamic circuits the expectation is "not applicable, or sound and ⊆ S-lc".
+6. **§2.2, catalogue additions.** None of these changes an existing entry's circuit or criterion.
+   - **K6b:** K6 plus a later H on the criterion qubit.
+   - **K11b:** K11 plus a later H on the criterion qubit.
+
+     These are the only cases where a flow-insensitive entanglement dependence (S-yz) over-includes
+     no-signalling partner operations.
+   - **K17, a second criterion q1.** With q0 as the criterion, the partial uncompute is causally
+     irrelevant, because q0's last operation precedes it.
+   - **K20:** a measured-then-corrected criterion qubit (H q0; measure q0 → c; if c = 1: X q0). This
+     is the pattern behind the four-edge slicer's 5 unsound pairs.
+   - **K8:** an X on q2 is prepended as a preparation. The ICSE worked example prunes CX(q0, q2),
+     which touches the criterion, but Sec. III's algorithm prunes only operations that do not touch
+     the criterion qubit. With the X q2 preparation, K8 exercises the algorithm as specified. The
+     paper's worked example is rewritten to match.
