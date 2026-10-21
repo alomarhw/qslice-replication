@@ -1,0 +1,24 @@
+start Tue Oct 20 23:37:19 EDT 2026
+rq4 rc=0 Tue Oct 20 23:46:01 EDT 2026
+primary rc=0 Tue Oct 20 23:57:50 EDT 2026
+secondary rc=0 Wed Oct 21 00:09:44 EDT 2026
+rq5 rc=0 Wed Oct 21 00:57:48 EDT 2026
+IDENTICAL                          results/method_primary/TAB1_method.csv
+IDENTICAL                          results/method_primary/TAB_per_corpus_method.csv
+IDENTICAL                          results/method_primary/excluded.json
+IDENTICAL                          results/method_primary/forward_records.csv
+IDENTICAL                          results/method_primary/slice_records.csv
+IDENTICAL                          results/method_primary/tests.json
+IDENTICAL                          results/method_secondary/TAB1_method.csv
+IDENTICAL                          results/method_secondary/TAB_per_corpus_method.csv
+IDENTICAL                          results/method_secondary/excluded.json
+IDENTICAL                          results/method_secondary/forward_records.csv
+IDENTICAL                          results/method_secondary/slice_records.csv
+IDENTICAL                          results/method_secondary/tests.json
+IDENTICAL                          results/rq4_ablation/TAB_ablation_rerun.csv
+IDENTICAL                          results/rq4_ablation/excluded.json
+IDENTICAL                          results/rq4_ablation/records.csv
+IDENTICAL                          results/rq4_ablation/tests.json
+IDENTICAL (deterministic columns)  results/rq5_scalability/TAB_scalability_end_to_end.csv
+IDENTICAL (deterministic columns)  results/rq5_scalability/TAB_scalability_structural.csv
+$V regenerate.py --with-rq5  12024.93s user 2046.84s system 291% cpu 1:20:29.05 total

@@ -20,7 +20,7 @@ Environment:
 | Corpus hashes | `fetch_data.py --verify` | OK: every shipped corpus file matches `MANIFEST.sha256.tsv` | `fetch_verify.log` |
 | Oracle tests | `experiments/tests/test_oracle.py` | pass: random unitary circuits vs `Statevector` max error 2.2e-16; teleportation with feedback 2.2e-16; reset, mid-circuit and terminal measurement OK | `test_oracle.log` |
 | RQ1–RQ4 | `experiments/regenerate.py` | **16/16 IDENTICAL** byte for byte (`rq4_ablation/` 4 files, `method_primary/` 6, `method_secondary/` 6), 13 min 18 s | `regenerate_rq1_rq4.log` |
-| RQ5 | `fetch_data.py` then `regenerate.py --with-rq5` | running at commit time; added in a follow-up commit | `fetch_full.log`, `regenerate_with_rq5.log` |
+| RQ5 | `fetch_data.py` (QASMBench at `357b942`: 134/134 flattened circuits verified) then `regenerate.py --with-rq5` | **18/18 IDENTICAL**: the 16 RQ1–RQ4 files byte for byte again, and `TAB_scalability_structural.csv` and `TAB_scalability_end_to_end.csv` on their deterministic columns (timings and memory are machine-dependent and not compared). 1 h 20 min. | `fetch_full.log`, `regenerate_with_rq5.log` |
 | Hardware (RQ7) | `hardware/regenerate.py` | **IDENTICAL (content; line endings differ)**, `TAB_hardware_ibmq.csv`: 16/18 within TVD 0.05 (uncorrected; see D11) | `hardware_regenerate.log` |
 | Isabelle (RQ6) | `isabelle build -d . QSliceSoundness` (temp copy, Isabelle2025-2) | **exit 0**, including the first build of the HOL and HOL-Library heaps (22 s). The grep for `sorry`, `oops` and `axiomatization` finds nothing. | `isabelle_build.log` |
 

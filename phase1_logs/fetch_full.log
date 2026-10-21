@@ -1,0 +1,7 @@
+downloading QASMBench @ 357b942396d5 ...
+Extracted archive /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/data/QASMBench-master/QASMBench-master/large/quantum_telecloning_N1_M1000_LNN/Quantum_Telecloning_N1_M1000_LNN.qasm3.tar.gz -> /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/data/QASMBench-master/QASMBench-master/large/quantum_telecloning_N1_M1000_LNN/Quantum_Telecloning_N1_M1000_LNN.qasm3
+Extracted archive /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/data/QASMBench-master/QASMBench-master/large/QV_n1000/1000.qasm.tar.gz -> /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/data/QASMBench-master/QASMBench-master/large/QV_n1000/1000.qasm
+Extracted archive /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/data/QASMBench-master/QASMBench-master/large/quantum_telecloning_N1_M1000_all_to_all/Quantum_Telecloning_N1_M1000_all_to_all.qasm3.tar.gz -> /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/data/QASMBench-master/QASMBench-master/large/quantum_telecloning_N1_M1000_all_to_all/Quantum_Telecloning_N1_M1000_all_to_all.qasm3
+Extracted archive /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/data/QASMBench-master/QASMBench-master/large/QAOA_3SAT_N100_p1000/random_QAOA_angles_k3_N100_p1000.qasm.tar.gz -> /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/data/QASMBench-master/QASMBench-master/large/QAOA_3SAT_N100_p1000/random_QAOA_angles_k3_N100_p1000.qasm
+QASMBench @ 357b942396d5: 134/134 circuits verified in data/qasmbench
+verified shipped corpus files: OK
