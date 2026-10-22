@@ -1,0 +1,632 @@
+{
+ "rule": "Every circuit in qasmbench/ (full), mqtbench/ and veriqbench/ with 15-20 qubits and at most 1,000\ninstructions after the corpus-A preparation (common.corpus.load); de-duplicated by (name, qubits,\ninstructions); sorted by (qubits, instructions, path); at most 40 per corpus, smallest first.\nDeclared qubit counts (qreg sums) are read first so that files outside 15-20 qubits are never parsed.\nWrites results/icpc/corpus_l/corpus_l.json (selected + excluded with reasons).\nUsage (from experiments/): python icpc/corpus_l_select.py --data-root ../data\n",
+ "selected": [
+  {
+   "corpus": "QASMBench",
+   "name": "multiplier_n15",
+   "path": "qasmbench/medium/multiplier_n15.qasm",
+   "n_qubits": 15,
+   "n_ops": 70,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "QASMBench",
+   "name": "qf21_n15",
+   "path": "qasmbench/medium/qf21_n15.qasm",
+   "n_qubits": 15,
+   "n_ops": 73,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "QASMBench",
+   "name": "qec9xz_n17",
+   "path": "qasmbench/medium/qec9xz_n17.qasm",
+   "n_qubits": 17,
+   "n_ops": 53,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "QASMBench",
+   "name": "bigadder_n18",
+   "path": "qasmbench/medium/bigadder_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 28,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "QASMBench",
+   "name": "square_root_n18",
+   "path": "qasmbench/medium/square_root_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 545,
+   "dynamic_ops": 1
+  },
+  {
+   "corpus": "QASMBench",
+   "name": "qft_n18",
+   "path": "qasmbench/medium/qft_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 783,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "QASMBench",
+   "name": "bv_n19",
+   "path": "qasmbench/medium/bv_n19.qasm",
+   "n_qubits": 19,
+   "n_ops": 56,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "QASMBench",
+   "name": "qram_n20",
+   "path": "qasmbench/medium/qram_n20.qasm",
+   "n_qubits": 20,
+   "n_ops": 41,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "MQT Bench",
+   "name": "ghz_n18",
+   "path": "mqtbench/ghz_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 18,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "MQT Bench",
+   "name": "graphstate_n18",
+   "path": "mqtbench/graphstate_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 36,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "MQT Bench",
+   "name": "bv_n18",
+   "path": "mqtbench/bv_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 43,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "MQT Bench",
+   "name": "wstate_n18",
+   "path": "mqtbench/wstate_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 69,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "MQT Bench",
+   "name": "dj_n18",
+   "path": "mqtbench/dj_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 71,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "MQT Bench",
+   "name": "qft_n18",
+   "path": "mqtbench/qft_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 180,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "MQT Bench",
+   "name": "qftentangled_n18",
+   "path": "mqtbench/qftentangled_n18.qasm",
+   "n_qubits": 18,
+   "n_ops": 198,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "ham15-109-214",
+   "path": "veriqbench/combinational/rev_circuit/ham15-109-214.qasm",
+   "n_qubits": 15,
+   "n_ops": 0,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "ham15-70",
+   "path": "veriqbench/combinational/rev_circuit/ham15-70.qasm",
+   "n_qubits": 15,
+   "n_ops": 0,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "rd84d1",
+   "path": "veriqbench/combinational/rev_circuit/rd84d1.qasm",
+   "n_qubits": 15,
+   "n_ops": 28,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "gf2^5mult_29_129",
+   "path": "veriqbench/combinational/rev_circuit/gf2^5mult_29_129.qasm",
+   "n_qubits": 15,
+   "n_ops": 29,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "bv_15",
+   "path": "veriqbench/combinational/bv/bv_15.qasm",
+   "n_qubits": 15,
+   "n_ops": 45,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "grover_15",
+   "path": "veriqbench/combinational/grover/grover_15.qasm",
+   "n_qubits": 15,
+   "n_ops": 68,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "qft_15",
+   "path": "veriqbench/combinational/qft/qft_15.qasm",
+   "n_qubits": 15,
+   "n_ops": 120,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "pe_14",
+   "path": "veriqbench/combinational/pe/pe_14.qasm",
+   "n_qubits": 15,
+   "n_ops": 133,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "dqc_qft_15",
+   "path": "veriqbench/dynamic/qft/dqc_qft_15.qasm",
+   "n_qubits": 15,
+   "n_ops": 134,
+   "dynamic_ops": 1
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "dqc_pe_14",
+   "path": "veriqbench/dynamic/pe/dqc_pe_14.qasm",
+   "n_qubits": 15,
+   "n_ops": 146,
+   "dynamic_ops": 1
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "rand_cliff_15_GD",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_15_GD.qasm",
+   "n_qubits": 15,
+   "n_ops": 256,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "rand_cliff_15_AG",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_15_AG.qasm",
+   "n_qubits": 15,
+   "n_ops": 263,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "qaoa_15",
+   "path": "veriqbench/variational/QAOA/qaoa_15.qasm",
+   "n_qubits": 15,
+   "n_ops": 296,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "quantum_volume_n15_d5_i0",
+   "path": "veriqbench/combinational/qv/quantum_volume_n15_d5_i0.qasm",
+   "n_qubits": 15,
+   "n_ops": 350,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "16QBT_4CYC_8GN_1.0P2_0",
+   "path": "veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_4CYC_8GN_1.0P2_0.qasm",
+   "n_qubits": 16,
+   "n_ops": 8,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "16QBT_8CYC_16GN_1.0P2_0",
+   "path": "veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_8CYC_16GN_1.0P2_0.qasm",
+   "n_qubits": 16,
+   "n_ops": 16,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "adder_n16",
+   "path": "veriqbench/combinational/adder/adder_n16.qasm",
+   "n_qubits": 16,
+   "n_ops": 20,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "16QBT_16CYC_32GN_1.0P2_0",
+   "path": "veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_16CYC_32GN_1.0P2_0.qasm",
+   "n_qubits": 16,
+   "n_ops": 32,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "bv_16",
+   "path": "veriqbench/combinational/bv/bv_16.qasm",
+   "n_qubits": 16,
+   "n_ops": 48,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "16QBT_32CYC_64GN_1.0P2_0",
+   "path": "veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_32CYC_64GN_1.0P2_0.qasm",
+   "n_qubits": 16,
+   "n_ops": 64,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "16QBT_64CYC_128GN_1.0P2_0",
+   "path": "veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_64CYC_128GN_1.0P2_0.qasm",
+   "n_qubits": 16,
+   "n_ops": 128,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "qft_16",
+   "path": "veriqbench/combinational/qft/qft_16.qasm",
+   "n_qubits": 16,
+   "n_ops": 136,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "pe_15",
+   "path": "veriqbench/combinational/pe/pe_15.qasm",
+   "n_qubits": 16,
+   "n_ops": 150,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "dqc_qft_16",
+   "path": "veriqbench/dynamic/qft/dqc_qft_16.qasm",
+   "n_qubits": 16,
+   "n_ops": 151,
+   "dynamic_ops": 1
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "dqc_pe_15",
+   "path": "veriqbench/dynamic/pe/dqc_pe_15.qasm",
+   "n_qubits": 16,
+   "n_ops": 164,
+   "dynamic_ops": 1
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "rand_cliff_16_GD",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_16_GD.qasm",
+   "n_qubits": 16,
+   "n_ops": 281,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "rand_cliff_16_AG",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_16_AG.qasm",
+   "n_qubits": 16,
+   "n_ops": 296,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "qcnn_16",
+   "path": "veriqbench/variational/QCNN/qcnn_16.qasm",
+   "n_qubits": 16,
+   "n_ops": 330,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "quantum_volume_n16_d5_i0",
+   "path": "veriqbench/combinational/qv/quantum_volume_n16_d5_i0.qasm",
+   "n_qubits": 16,
+   "n_ops": 400,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "bv_17",
+   "path": "veriqbench/combinational/bv/bv_17.qasm",
+   "n_qubits": 17,
+   "n_ops": 51,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "grover_17",
+   "path": "veriqbench/combinational/grover/grover_17.qasm",
+   "n_qubits": 17,
+   "n_ops": 77,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "qft_17",
+   "path": "veriqbench/combinational/qft/qft_17.qasm",
+   "n_qubits": 17,
+   "n_ops": 153,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "pe_16",
+   "path": "veriqbench/combinational/pe/pe_16.qasm",
+   "n_qubits": 17,
+   "n_ops": 168,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "dqc_qft_17",
+   "path": "veriqbench/dynamic/qft/dqc_qft_17.qasm",
+   "n_qubits": 17,
+   "n_ops": 169,
+   "dynamic_ops": 1
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "dqc_pe_16",
+   "path": "veriqbench/dynamic/pe/dqc_pe_16.qasm",
+   "n_qubits": 17,
+   "n_ops": 183,
+   "dynamic_ops": 1
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "rand_cliff_17_GD",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_17_GD.qasm",
+   "n_qubits": 17,
+   "n_ops": 311,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "rand_cliff_17_AG",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_17_AG.qasm",
+   "n_qubits": 17,
+   "n_ops": 354,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "gf2^6mult_41_185",
+   "path": "veriqbench/combinational/rev_circuit/gf2^6mult_41_185.qasm",
+   "n_qubits": 18,
+   "n_ops": 41,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "bv_18",
+   "path": "veriqbench/combinational/bv/bv_18.qasm",
+   "n_qubits": 18,
+   "n_ops": 54,
+   "dynamic_ops": 0
+  },
+  {
+   "corpus": "VeriQBench",
+   "name": "qft_18",
+   "path": "veriqbench/combinational/qft/qft_18.qasm",
+   "n_qubits": 18,
+   "n_ops": 171,
+   "dynamic_ops": 0
+  }
+ ],
+ "excluded": [
+  {
+   "corpus": "QASMBench",
+   "path": "qasmbench/medium/dnn_n16.qasm",
+   "reason": "2016 instructions after preparation (> 1000)"
+  },
+  {
+   "corpus": "QASMBench",
+   "path": "qasmbench/medium/factor247_n15.qasm",
+   "reason": "660566 instructions after preparation (> 1000)"
+  },
+  {
+   "corpus": "MQT Bench",
+   "path": "mqtbench/grover_n18.qasm",
+   "reason": "2734370 instructions after preparation (> 1000)"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/qv/quantum_volume_n20_d20_i0.qasm",
+   "reason": "2000 instructions after preparation (> 1000)"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rev_circuit/ham15tc1.qasm",
+   "reason": "load: QASM2ParseError: \"ham15tc1.qasm:6,0: 'mcu1' is already defined\""
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rev_circuit/hwb11ps.qasm",
+   "reason": "load: QASM2ParseError: \"hwb11ps.qasm:6,142: 'c3sx' is not defined in this scope\""
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rev_circuit/hwb12ps.qasm",
+   "reason": "load: QASM2ParseError: \"hwb12ps.qasm:6,142: 'c3sx' is not defined in this scope\""
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rev_circuit/hwb13ps.qasm",
+   "reason": "load: QASM2ParseError: \"hwb13ps.qasm:6,142: 'c3sx' is not defined in this scope\""
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rev_circuit/hwb14ps.qasm",
+   "reason": "load: QASM2ParseError: \"hwb14ps.qasm:6,142: 'c3sx' is not defined in this scope\""
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rev_circuit/hwb15ps.qasm",
+   "reason": "load: QASM2ParseError: \"hwb15ps.qasm:6,142: 'c3sx' is not defined in this scope\""
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rev_circuit/mod1024adder.qasm",
+   "reason": "load: QASM2ParseError: \"mod1024adder.qasm:4,0: 'mcu1' is already defined\""
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/pe/pe_17.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/dynamic/qft/dqc_qft_18.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/dynamic/pe/dqc_pe_17.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_18_GD.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_18_AG.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/adder/adder_n19.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/bv/bv_19.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/grover/grover_19.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/qft/qft_19.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/pe/pe_18.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/dynamic/qft/dqc_qft_19.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/dynamic/pe/dqc_pe_18.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_19_GD.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_19_AG.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/qubit_mapping/Tokyo/20QBT_4CYC_8GN_1.0P2_0.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/qubit_mapping/Tokyo/20QBT_8CYC_16GN_1.0P2_0.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/qubit_mapping/Tokyo/20QBT_16CYC_32GN_1.0P2_0.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/bv/bv_20.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/qubit_mapping/Tokyo/20QBT_32CYC_64GN_1.0P2_0.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/qubit_mapping/Tokyo/20QBT_64CYC_128GN_1.0P2_0.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/rev_circuit/permanent3x3p3.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/qft/qft_20.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/combinational/pe/pe_19.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/dynamic/qft/dqc_qft_20.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/dynamic/pe/dqc_pe_19.qasm",
+   "reason": "over the 40-per-corpus cap"
+  },
+  {
+   "corpus": "VeriQBench",
+   "path": "veriqbench/variational/QAOA/qaoa_20.qasm",
+   "reason": "over the 40-per-corpus cap"
+  }
+ ]
+}
