@@ -1,0 +1,17 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  10/147 circuits, 8s
+  20/147 circuits, 8s
+  30/147 circuits, 91s
+  40/147 circuits, 244s
+  50/147 circuits, 244s
+  60/147 circuits, 905s
+  70/147 circuits, 905s
+  80/147 circuits, 905s
+  90/147 circuits, 905s
+  100/147 circuits, 905s
+  110/147 circuits, 905s
+  120/147 circuits, 905s
+  130/147 circuits, 905s
+  140/147 circuits, 905s
+  147/147 circuits, 905s
+rows 3834; circuits run 147; excluded 14; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/noise

@@ -15,3 +15,5 @@ Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Benc
   130/158 circuits, 183s
   140/158 circuits, 184s
   150/158 circuits, 213s
+  158/158 circuits, 28856s
+mutants 5375, units 6034; wrote results/icpc/rq3

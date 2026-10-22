@@ -13,3 +13,10 @@ rq3 start Wed Oct 21 20:38:30 EDT 2026 commit 905786f
 t1 claude rc=143 Wed Oct 21 20:39:02 EDT 2026
 t1 claude start Wed Oct 21 20:39:40 EDT 2026 commit 79811f4
 t1 claude rc=0 Wed Oct 21 20:57:47 EDT 2026
+corpusL start Thu Oct 22 02:45:12 EDT 2026 commit b4f28c4
+families start Thu Oct 22 02:58:29 EDT 2026 commit 41ae34d
+noise start Thu Oct 22 03:01:41 EDT 2026 commit 41ae34d
+noise rc=0 Thu Oct 22 03:32:28 EDT 2026
+families rc=0 Thu Oct 22 03:51:52 EDT 2026
+corpusL rc=0 Thu Oct 22 04:42:38 EDT 2026
+rq3 rc=0 Thu Oct 22 04:46:15 EDT 2026

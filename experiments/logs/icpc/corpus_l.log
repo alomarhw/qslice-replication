@@ -1,0 +1,57 @@
+0 circuits already finished, 55 to run
+  qasmbench/medium/qf21_n15.qasm: ok (27s, 152 MiB); 27s total
+  qasmbench/medium/multiplier_n15.qasm: ok (47s, 155 MiB); 47s total
+  qasmbench/medium/qec9xz_n17.qasm: ok (65s, 272 MiB); 92s total
+  qasmbench/medium/bigadder_n18.qasm: ok (142s, 422 MiB); 189s total
+  qasmbench/medium/square_root_n18.qasm: LIMIT wall (600s, 480 MiB); 692s total
+  qasmbench/medium/qft_n18.qasm: LIMIT wall (600s, 685 MiB); 790s total
+  qasmbench/medium/bv_n19.qasm: ok (304s, 726 MiB); 997s total
+  mqtbench/ghz_n18.qasm: ok (75s, 405 MiB); 1072s total
+  mqtbench/graphstate_n18.qasm: ok (60s, 405 MiB); 1132s total
+  mqtbench/bv_n18.qasm: ok (53s, 375 MiB); 1185s total
+  qasmbench/medium/qram_n20.qasm: LIMIT wall (601s, 208 MiB); 1390s total
+  mqtbench/wstate_n18.qasm: ok (390s, 429 MiB); 1575s total
+  mqtbench/dj_n18.qasm: ok (196s, 430 MiB); 1587s total
+  mqtbench/qft_n18.qasm: LIMIT wall (601s, 425 MiB); 2176s total
+  veriqbench/combinational/rev_circuit/ham15-109-214.qasm: ok (4s, 118 MiB); 2180s total
+  veriqbench/combinational/rev_circuit/ham15-70.qasm: ok (4s, 121 MiB); 2184s total
+  mqtbench/qftentangled_n18.qasm: LIMIT wall (600s, 443 MiB); 2187s total
+  veriqbench/combinational/rev_circuit/rd84d1.qasm: ok (16s, 147 MiB); 2200s total
+  veriqbench/combinational/rev_circuit/gf2^5mult_29_129.qasm: ok (22s, 149 MiB); 2210s total
+  veriqbench/combinational/bv/bv_15.qasm: ok (19s, 148 MiB); 2219s total
+  veriqbench/combinational/grover/grover_15.qasm: ok (51s, 149 MiB); 2260s total
+  veriqbench/combinational/qft/qft_15.qasm: ok (153s, 167 MiB); 2372s total
+  veriqbench/combinational/pe/pe_14.qasm: ok (171s, 167 MiB); 2431s total
+  veriqbench/dynamic/pe/dqc_pe_14.qasm: ok (7s, 152 MiB); 2439s total
+  veriqbench/dynamic/qft/dqc_qft_15.qasm: error (75s, 7362 MiB); 2448s total
+  veriqbench/combinational/rand_cliff/rand_cliff_15_GD.qasm: ok (473s, 182 MiB); 2911s total
+  veriqbench/combinational/rand_cliff/rand_cliff_15_AG.qasm: LIMIT wall (601s, 185 MiB); 3048s total
+  veriqbench/variational/QAOA/qaoa_15.qasm: ok (249s, 222 MiB); 3160s total
+  veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_4CYC_8GN_1.0P2_0.qasm: ok (5s, 176 MiB); 3165s total
+  veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_8CYC_16GN_1.0P2_0.qasm: ok (6s, 179 MiB); 3171s total
+  veriqbench/combinational/adder/adder_n16.qasm: ok (13s, 186 MiB); 3184s total
+  veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_16CYC_32GN_1.0P2_0.qasm: ok (11s, 182 MiB); 3196s total
+  veriqbench/combinational/bv/bv_16.qasm: ok (30s, 193 MiB); 3225s total
+  veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_32CYC_64GN_1.0P2_0.qasm: ok (28s, 192 MiB); 3253s total
+  veriqbench/combinational/qubit_mapping/Aspen-4/16QBT_64CYC_128GN_1.0P2_0.qasm: ok (111s, 209 MiB); 3364s total
+  veriqbench/combinational/qv/quantum_volume_n15_d5_i0.qasm: ok (443s, 243 MiB); 3491s total
+  veriqbench/combinational/qft/qft_16.qasm: ok (339s, 218 MiB); 3703s total
+  veriqbench/dynamic/qft/dqc_qft_16.qasm: LIMIT memory (82s, 8524 MiB); 3785s total
+  veriqbench/dynamic/pe/dqc_pe_15.qasm: ok (11s, 200 MiB); 3796s total
+  veriqbench/combinational/pe/pe_15.qasm: ok (397s, 212 MiB); 3889s total
+  veriqbench/combinational/rand_cliff/rand_cliff_16_GD.qasm: LIMIT wall (601s, 238 MiB); 4397s total
+  veriqbench/combinational/rand_cliff/rand_cliff_16_AG.qasm: LIMIT wall (601s, 243 MiB); 4489s total
+  veriqbench/variational/QCNN/qcnn_16.qasm: ok (487s, 260 MiB); 4885s total
+  veriqbench/combinational/bv/bv_17.qasm: ok (58s, 277 MiB); 4943s total
+  veriqbench/combinational/qv/quantum_volume_n16_d5_i0.qasm: ok (568s, 285 MiB); 5058s total
+  veriqbench/combinational/grover/grover_17.qasm: ok (176s, 276 MiB); 5119s total
+  veriqbench/combinational/qft/qft_17.qasm: LIMIT wall (600s, 297 MiB); 5658s total
+  veriqbench/dynamic/qft/dqc_qft_17.qasm: error (8s, 705 MiB); 5666s total
+  veriqbench/dynamic/pe/dqc_pe_16.qasm: ok (16s, 281 MiB); 5682s total
+  veriqbench/combinational/pe/pe_16.qasm: LIMIT wall (600s, 297 MiB); 5719s total
+  veriqbench/combinational/rand_cliff/rand_cliff_17_GD.qasm: LIMIT wall (600s, 314 MiB); 6282s total
+  veriqbench/combinational/rand_cliff/rand_cliff_17_AG.qasm: LIMIT wall (600s, 321 MiB); 6320s total
+  veriqbench/combinational/bv/bv_18.qasm: ok (125s, 427 MiB); 6445s total
+  veriqbench/combinational/rev_circuit/gf2^6mult_41_185.qasm: ok (245s, 425 MiB); 6528s total
+  veriqbench/combinational/qft/qft_18.qasm: LIMIT wall (600s, 463 MiB); 7045s total
+completed 39/55 circuits; wrote circuits.csv, slices.csv

@@ -1,0 +1,86 @@
+[
+  {
+    "corpus": "QASMBench",
+    "circuit": "vqe_uccsd_n4",
+    "path": "qasmbench/small/vqe_uccsd_n4.qasm",
+    "reason": "load: QASM2ParseError: \"vqe_uccsd_n4.qasm:225,8: 'q' is not defined in this scope\""
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "grover_n10",
+    "path": "mqtbench/grover_n10.qasm",
+    "reason": "load: prepared circuit has 33670 instructions (> 220) after decomposing gates wider than 8 qubits"
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "grover_n14",
+    "path": "mqtbench/grover_n14.qasm",
+    "reason": "load: prepared circuit has 366658 instructions (> 220) after decomposing gates wider than 8 qubits"
+  },
+  {
+    "corpus": "QASMBench",
+    "circuit": "seca_n11",
+    "path": "qasmbench/medium/seca_n11.qasm",
+    "reason": "11 qubits (> 10)"
+  },
+  {
+    "corpus": "QASMBench",
+    "circuit": "sat_n11",
+    "path": "qasmbench/medium/sat_n11.qasm",
+    "reason": "11 qubits (> 10)"
+  },
+  {
+    "corpus": "QASMBench",
+    "circuit": "cc_n12",
+    "path": "qasmbench/medium/cc_n12.qasm",
+    "reason": "12 qubits (> 10)"
+  },
+  {
+    "corpus": "QASMBench",
+    "circuit": "multiply_n13",
+    "path": "qasmbench/medium/multiply_n13.qasm",
+    "reason": "13 qubits (> 10)"
+  },
+  {
+    "corpus": "QASMBench",
+    "circuit": "bv_n14",
+    "path": "qasmbench/medium/bv_n14.qasm",
+    "reason": "14 qubits (> 10)"
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "ghz_n14",
+    "path": "mqtbench/ghz_n14.qasm",
+    "reason": "14 qubits (> 10)"
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "qftentangled_n14",
+    "path": "mqtbench/qftentangled_n14.qasm",
+    "reason": "14 qubits (> 10)"
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "dj_n14",
+    "path": "mqtbench/dj_n14.qasm",
+    "reason": "14 qubits (> 10)"
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "graphstate_n14",
+    "path": "mqtbench/graphstate_n14.qasm",
+    "reason": "14 qubits (> 10)"
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "bv_n14",
+    "path": "mqtbench/bv_n14.qasm",
+    "reason": "14 qubits (> 10)"
+  },
+  {
+    "corpus": "MQT Bench",
+    "circuit": "wstate_n14",
+    "path": "mqtbench/wstate_n14.qasm",
+    "reason": "14 qubits (> 10)"
+  }
+]
