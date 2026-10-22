@@ -711,3 +711,9 @@ These were found while implementing §6, from the API documentation. No LLM call
 - **The author decides** how O-small is reported: format failure as primary, with the sensitivity
   score in the text.
 - **The prompt is not changed.**
+
+### Deviation I-5 (2026-10-21, author decision, before any scored Claude call): Opus dropped; budget cap
+- **Opus dropped.** The Claude arms are `claude-sonnet-5-5` and `claude-haiku-5-5`.
+  `claude-opus-5-5` is dropped for cost, and its 5 development-check calls stay logged but unscored.
+- **Budget cap (§6.4).** USD 60 in total, set by the author: T1 USD 15, T2 USD 45. The T1 cap counts
+  the USD 0.09 development check.
