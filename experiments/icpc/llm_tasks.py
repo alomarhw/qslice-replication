@@ -75,6 +75,7 @@ CLAUDE = {  # model id -> USD per 1e6 input / output tokens (Deviation I-3 item 
 }
 OPEN = {"O-mid": "Qwen/Qwen2.5-Coder-32B-Instruct", "O-small": "Qwen/Qwen2.5-Coder-1.5B-Instruct"}
 CLAUDE_MAX_TOKENS, CLAUDE_EFFORT, OPEN_MAX_TOKENS = 16000, "medium", 2048
+RETRY_ROUNDS = 3
 
 
 def _rng(tag: str):
@@ -354,7 +355,7 @@ def cmd_run(a) -> int:
     for arm in arms:
         if arm in CLAUDE:
             import anthropic
-            clients[arm] = anthropic.Anthropic(max_retries=8)
+            clients[arm] = anthropic.Anthropic(max_retries=8, timeout=180)  # a stalled stream fails after 180 s idle
         elif arm in OPEN:
             import openai
             clients[arm] = openai.OpenAI(api_key="EMPTY", base_url=a.base_url, max_retries=4, timeout=600)
@@ -401,14 +402,20 @@ def cmd_run(a) -> int:
                 fh.write(json.dumps(rec) + "\n")
         return "error" if rec.get("error") else "ok"
 
-    t0 = time.time()
-    with ThreadPoolExecutor(max_workers=a.concurrency) as ex:
-        for i, status in enumerate(ex.map(work, jobs), 1):
-            counts[status] += 1
-            if i % 50 == 0 or i == len(jobs):
-                print(f"  {i}/{len(jobs)} {dict(counts)} ${budget.spent:.2f} {time.time() - t0:.0f}s", flush=True)
-    partial = counts["skipped"] > 0
-    print(("PARTIAL: budget cap reached; " if partial else "") + f"done {dict(counts)}; spent ${budget.spent:.2f}")
+    t0, skipped_any = time.time(), False
+    for rnd in range(1 + RETRY_ROUNDS):  # failed calls are logged, then retried in the next round
+        counts = defaultdict(int)
+        with ThreadPoolExecutor(max_workers=a.concurrency) as ex:
+            statuses = list(ex.map(work, jobs))
+        for st in statuses:
+            counts[st] += 1
+        skipped_any = skipped_any or counts["skipped"] > 0
+        print(f"  round {rnd}: {len(jobs)} calls {dict(counts)} ${budget.spent:.2f} {time.time() - t0:.0f}s", flush=True)
+        jobs = [j for j, st in zip(jobs, statuses) if st == "error"]
+        if not jobs:
+            break
+    partial = skipped_any
+    print(("PARTIAL: budget cap reached; " if partial else "") + f"done {dict(counts)}; still failing {len(jobs)}; spent ${budget.spent:.2f}")
     return 0
 
 
