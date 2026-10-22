@@ -116,7 +116,7 @@ class _Sim(base._Sim):
     different random unitaries on 5 or more qubits could otherwise share a cache entry."""
 
     def matrix(self, op) -> np.ndarray:
-        if op.name == "unitary":
+        if op.name == "unitary" and op.params:  # a QASM-defined gate that is merely named "unitary" has no matrix parameter
             m = np.asarray(op.params[0], dtype=complex)
             key = ("unitary", m.shape, m.tobytes())
             if key not in self._mat_cache:

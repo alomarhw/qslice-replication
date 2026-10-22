@@ -137,3 +137,12 @@ a labelled sensitivity check, reported for O-small.
 
   S-q is below the full circuit and below S-lc for the three capable models (exact McNemar
   p ≤ .02). A smaller slice from QSlice makes LLM fault localization worse, not better.
+
+**Bugs4Q RQ3** (`icpc/rq3_bugs4q.py`), on the 11 triaged bugs.
+- **Outcomes:** 7 killed, 1 injured, 1 alive. 2 excluded:
+  - Bug_19: `initialize` has no matrix for the oracle (§10);
+  - StackExchange/16: buggy and fixed circuits differ in qubit count, consistent with the triage
+    note "whole rewrite".
+- **Oracle fix:** a QASM-defined gate that is only *named* `unitary` (no matrix parameter) crashed the
+  oracle's cache. The oracle now falls back to the base matrix. This cannot change earlier results,
+  because such a gate would have crashed those runs.
