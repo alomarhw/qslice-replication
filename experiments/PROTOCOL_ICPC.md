@@ -729,3 +729,16 @@ These were found while implementing §6, from the API documentation. No LLM call
 - **Checkpointing.** The driver now writes a per-circuit checkpoint (`results/icpc/rq3/partial/`), so a
   crash no longer loses completed circuits.
 - **Smoke test.** It was run on the same 3 debug circuits as before; its output was deleted.
+
+### Author decision on §7.1 (2026-10-21)
+- **Decision.** Hardware is kept as **one Discussion paragraph**, answering Reviewer A on noise.
+- **Numbers.** It reports only the Correction 4 numbers from
+  `results/icpc/hardware/hardware_tvd_corrected.csv`:
+  - 16/18 within δ = 0.05;
+  - the noise-free TVD, which is 0 for all 18;
+  - the QAOA gaps attributed to hardware noise.
+- **Caveats, stated in the text:**
+  - a Z-basis TVD is phase-blind;
+  - the slices came from the four-edge `QSLICE_FULL` variant;
+  - full and slice ran on different physical qubits.
+- **Excluded.** No hardware number enters an RQ or the abstract.

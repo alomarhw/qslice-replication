@@ -111,3 +111,6 @@ noise". That holds for the size of the ICSE TVD values, but not for the correcte
 - The hardware slices came from the four-edge `QSLICE_FULL` variant, not the Sec. III method.
 
 **Decision for the author (§7.1):** a Discussion paragraph, or drop hardware.
+
+**Author decision (§7.1):** hardware is kept as one Discussion paragraph on noise, using the
+Correction 4 numbers only (`PROTOCOL_ICPC.md`).
