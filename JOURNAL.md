@@ -114,3 +114,6 @@ noise". That holds for the size of the ICSE TVD values, but not for the correcte
 
 **Author decision (§7.1):** hardware is kept as one Discussion paragraph on noise, using the
 Correction 4 numbers only (`PROTOCOL_ICPC.md`).
+
+**Author decision (Deviation I-4):** the frozen parser is primary. The post-hoc string-index parser is
+a labelled sensitivity check, reported for O-small.

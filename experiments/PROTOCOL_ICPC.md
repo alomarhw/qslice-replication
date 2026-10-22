@@ -742,3 +742,11 @@ These were found while implementing §6, from the API documentation. No LLM call
   - the slices came from the four-edge `QSLICE_FULL` variant;
   - full and slice ran on different physical qubits.
 - **Excluded.** No hardware number enters an RQ or the abstract.
+
+### Author decision on Deviation I-4 (2026-10-21)
+- **Primary.** The frozen parser (Deviation I-3 item 4) is primary for every arm. All tables and
+  tests use `<task>_scores.csv`.
+- **Sensitivity.** The post-hoc parser (`<task>_scores_lenient.csv`) is reported next to O-small's
+  numbers only, labelled "post hoc (string indices accepted)". Its effect on the other arms is
+  stated in one sentence.
+- **The same rule applies to T2.**
