@@ -1,1 +1,60 @@
 Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  10/158 circuits, 26839s
+  20/158 circuits, 26839s
+  30/158 circuits, 26839s
+  40/158 circuits, 26839s
+  50/158 circuits, 26839s
+  60/158 circuits, 26839s
+  70/158 circuits, 26839s
+  80/158 circuits, 26839s
+  90/158 circuits, 26839s
+  100/158 circuits, 26839s
+  110/158 circuits, 26839s
+  120/158 circuits, 26839s
+  130/158 circuits, 26839s
+  140/158 circuits, 26839s
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/process.py", line 263, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/process.py", line 212, in _process_chunk
+    return [fn(*args) for args in chunk]
+            ^^^^^^^^^
+  File "/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/icpc/rq3_run.py", line 117, in _worker
+    ex_s, ex_g = exam_scores(sl, fault, nops)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/icpc/rq3_run.py", line 60, in exam_scores
+    grank = next(i + 1 for i, p in enumerate(order_all) if p in fault)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+StopIteration
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/icpc/rq3_run.py", line 179, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/icpc/rq3_run.py", line 163, in main
+    for i, res in enumerate(ex.map(_worker, jobs, chunksize=1), 1):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/process.py", line 642, in _chain_from_iterable_of_lists
+    for element in iterable:
+RuntimeError: generator raised StopIteration

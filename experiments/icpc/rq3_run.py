@@ -22,7 +22,7 @@ import hashlib
 import json
 import sys
 import time
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 import numpy as np
@@ -83,6 +83,10 @@ def _worker(job):
         row = {"corpus": corpus, "circuit": name, "path": rel, "mutant": mid, "operator": m.operator,
                "provenance": PROVENANCE[m.operator], "site": m.site, "fault_site": ";".join(map(str, sorted(m.fault_site))),
                "n_ops_mutant": len(m.circuit.data)}
+        if not m.fault_site:  # Deviation I-6: the deleted gate was the only instruction on its qubits
+            row |= {"outcome": "excluded", "note": "empty fault site: deleted the only instruction on its qubits"}
+            mrows.append(row)
+            continue
         try:
             eq, rule = equivalent(qc, m.circuit, oi, rng)
             row |= {"equivalent": int(eq), "equivalence_rule": rule}
@@ -158,15 +162,31 @@ def main() -> int:
     excluded = [{"corpus": e.corpus, "circuit": e.name, "path": e.path, "reason": f"load: {e.error}"} for e in A if e.qc is None]
     sizes = {e.path: len(e.qc.data) * e.qc.num_qubits for e in A if e.qc is not None}
     jobs = sorted([(e.corpus, e.name, e.path, str(root)) for e in A if e.qc is not None][: a.limit], key=lambda j: -sizes[j[2]])
+    # per-circuit checkpoints: a rerun after a crash skips the circuits already done
+    ckpt = out / "partial"
+    ckpt.mkdir(exist_ok=True)
+    key = lambda j: hashlib.sha256(j[2].encode()).hexdigest()[:16]  # noqa: E731
+    done = {key(j): json.loads((ckpt / f"{key(j)}.json").read_text()) for j in jobs if (ckpt / f"{key(j)}.json").exists()}
+    todo = [j for j in jobs if key(j) not in done]
+    print(f"{len(done)} circuits from checkpoints, {len(todo)} to run", flush=True)
     M, U, R, t0 = [], [], [], time.time()
-    with ProcessPoolExecutor(max_workers=a.workers) as ex:
-        for i, res in enumerate(ex.map(_worker, jobs, chunksize=1), 1):
-            if "excluded" in res:
-                excluded.append({k: res[k] for k in ("corpus", "circuit", "path")} | {"reason": res["excluded"]})
-            else:
-                M += res["m"]; U += res["u"]; R += res["r"]
-            if i % 10 == 0 or i == len(jobs):
-                print(f"  {i}/{len(jobs)} circuits, {time.time() - t0:.0f}s", flush=True)
+
+    def results():
+        yield from done.values()
+        with ProcessPoolExecutor(max_workers=a.workers) as ex:
+            futs = {ex.submit(_worker, j): j for j in todo}
+            for f in as_completed(futs):
+                res = f.result()
+                (ckpt / f"{key(futs[f])}.json").write_text(json.dumps(res))
+                yield res
+
+    for i, res in enumerate(results(), 1):
+        if "excluded" in res:
+            excluded.append({k: res[k] for k in ("corpus", "circuit", "path")} | {"reason": res["excluded"]})
+        else:
+            M += res["m"]; U += res["u"]; R += res["r"]
+        if i % 10 == 0 or i == len(jobs):
+            print(f"  {i}/{len(jobs)} circuits, {time.time() - t0:.0f}s", flush=True)
     _write(out / "mutants.csv", sorted(M, key=lambda r: r["mutant"]))
     _write(out / "units.csv", sorted(U, key=lambda r: (r["mutant"], r["target"])))
     _write(out / "records.csv", sorted(R, key=lambda r: (r["mutant"], r["target"], r["slicer"])))

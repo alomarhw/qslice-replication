@@ -2,3 +2,17 @@ Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Benc
   10/158 circuits, 719s
   20/158 circuits, 719s
   30/158 circuits, 719s
+  40/158 circuits, 2865s
+  50/158 circuits, 2865s
+  60/158 circuits, 2865s
+  70/158 circuits, 2865s
+  80/158 circuits, 2865s
+  90/158 circuits, 2865s
+  100/158 circuits, 2865s
+  110/158 circuits, 2865s
+  120/158 circuits, 2865s
+  130/158 circuits, 2865s
+  140/158 circuits, 2865s
+  150/158 circuits, 2865s
+  158/158 circuits, 2865s
+rows: 3510; excluded: 3; wrote results/icpc/rq2_robustness

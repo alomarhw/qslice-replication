@@ -717,3 +717,15 @@ These were found while implementing §6, from the API documentation. No LLM call
   `claude-opus-5-5` is dropped for cost, and its 5 development-check calls stay logged but unscored.
 - **Budget cap (§6.4).** USD 60 in total, set by the author: T1 USD 15, T2 USD 45. The T1 cap counts
   the USD 0.09 development check.
+
+### Deviation I-6 (2026-10-21, after the first RQ3 run crashed, before any RQ3 result was written)
+- **The crash.** The first full RQ3 run (`440d12d`) crashed after 7.5 h with `StopIteration` in
+  `exam_scores`. A mutant had an empty fault site. This happens when M-del or M-ent ("unentangle")
+  deletes the only instruction on its qubits: there is then no instruction before or after the
+  deletion point to mark as the fault site (§4.1).
+- **No outputs.** No output files were written, so no RQ3 result was seen.
+- **Rule added to §10.** Such mutants are excluded with the reason "empty fault site", recorded in
+  `mutants.csv` with `outcome = excluded`, and counted.
+- **Checkpointing.** The driver now writes a per-circuit checkpoint (`results/icpc/rq3/partial/`), so a
+  crash no longer loses completed circuits.
+- **Smoke test.** It was run on the same 3 debug circuits as before; its output was deleted.
