@@ -1,1 +1,7 @@
 442 calls to make; spent so far $0.09 of $15.00
+428 calls to make; spent so far $0.18 of $15.00
+  round 0: 428 calls {'ok': 428, 'skipped': 0} $2.19 624s
+done {'ok': 428, 'skipped': 0}; still failing 0; spent $2.19
+300 calls to make; spent so far $2.19 of $15.00
+  round 0: 300 calls {'ok': 300, 'skipped': 0} $3.67 451s
+done {'ok': 300, 'skipped': 0}; still failing 0; spent $3.67
