@@ -770,3 +770,11 @@ These were found while implementing §6, from the API documentation. No LLM call
      shots, and Aer's shot average serves as the unconditional state. That value is an estimate;
      circuits without these operations are exact with one shot.
    - **Seeds:** the simulator seed is derived from the circuit path.
+
+### Author decision on Deviation I-7 (2026-10-22)
+- **Decision:** the structure families keep the §2.1 semantic-dependence oracle as ground truth.
+- **Why:**
+  - one definition of "can affect the criterion" for the whole paper;
+  - it covers the two random families (F-inv, F-depth);
+  - it is the same oracle that checks every slice's soundness.
+- **The paper states** that family ground truth is computed by this oracle, not derived per family.

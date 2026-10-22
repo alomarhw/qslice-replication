@@ -117,3 +117,6 @@ Correction 4 numbers only (`PROTOCOL_ICPC.md`).
 
 **Author decision (Deviation I-4):** the frozen parser is primary. The post-hoc string-index parser is
 a labelled sensitivity check, reported for O-small.
+
+**Author decision (Deviation I-7):** family ground truth is the §2.1 oracle. Its constructions are in
+`families/generate.py`.
