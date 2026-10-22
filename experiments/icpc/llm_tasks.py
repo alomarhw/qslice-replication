@@ -230,8 +230,14 @@ def items_t2(data_root: Path, rq3: Path):
         v = sorted(by_op.get(op, []), key=lambda u: (u["mutant"], int(u["target"])))
         if v:
             chosen += [v[i] for i in sorted(rng.choice(len(v), size=min(T2_PER_OPERATOR, len(v)), replace=False).tolist())]
+    # section 6.5: five development units for the format check, drawn from the primary units outside
+    # the sample (same seed); logged but never scored
+    chosen_ids = {(u["mutant"], u["target"]) for u in chosen}
+    rest = sorted((u for u in units if (u["mutant"], u["target"]) not in chosen_ids), key=lambda u: (u["mutant"], int(u["target"])))
+    dev = [rest[i] for i in sorted(rng.choice(len(rest), size=5, replace=False).tolist())]
+    dev_ids = {(u["mutant"], u["target"]) for u in dev}
     cache, out, excluded = {}, [], []
-    for u in chosen:
+    for u in chosen + dev:
         rel, mi, t = u["path"], int(u["mutant"].rsplit("#", 1)[1]), int(u["target"])
         if rel not in cache:
             cache[rel] = mutants(load(data_root / rel), rel)
@@ -263,7 +269,8 @@ def items_t2(data_root: Path, rq3: Path):
         for k in ("full", "q"):
             inputs[k]["none"] = T2_PROMPT.format(qubit=qn, context="", circuit=texts[k])
         out.append({"id": iid, "task": "t2", "source": "mutant", "corpus": u["corpus"], "key": u["mutant"],
-                    "operator": u["operator"], "target": t, "split": "score", "qubit": qn,
+                    "operator": u["operator"], "target": t,
+                    "split": "dev" if (u["mutant"], u["target"]) in dev_ids else "score", "qubit": qn,
                     "n_qubits": qc.num_qubits, "n_ops": len(qc.data),
                     "fault_site": sorted(m.fault_site), "slices": {k: sorted(v) for k, v in slices.items() if v is not None},
                     "inputs": inputs})
