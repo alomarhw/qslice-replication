@@ -81,3 +81,33 @@ does not touch either of them.
 - **GPU serving:** vLLM needed `VLLM_USE_FLASHINFER_SAMPLER=0`, since no CUDA toolkit is available
   for FlashInfer's JIT (`llm_models.md`).
 - **Lesson:** `pkill -f "vllm serve"` over ssh kills the ssh shell itself; use the `[b]in/vllm` pattern.
+
+**Hardware, rebuttal Correction 4 (§7.1)**, computed from the 18 captured `ibm_cleveland` jobs; no new
+hardware time. Script: `hardware/scripts/recompute_hardware_tvd_corrected.py`. Output:
+`experiments/results/icpc/hardware/hardware_tvd_corrected.csv`.
+
+**Defects in the ICSE script** (`recompute_hardware_tvd.py`, kept unchanged because it reproduces the
+reported table):
+1. It reads only the first classical register. The QAOA circuits have three one-bit registers.
+2. It guesses the criterion bit as the slice bit closest to 1/2, at the same position in the full
+   register. For QAOA it compared bit 0, while the slice measures bit 1. That is where
+   P_slice = 0.0 and TVD ≈ 0.49 came from.
+
+**Corrected rule.** Compare the bits the slice actually measures. In all 18 jobs, those bits measure
+the same virtual qubit in both pubs (checked via the layout).
+
+**Result.**
+- Still **16/18** within TVD 0.05.
+- qaoa: 0.491 → **0.053**. qaoa-T: 0.490 → **0.131**.
+- **Noise-free TVD of the submitted circuits is 0 for all 18**, so every slice run on hardware is
+  sound. The QAOA gaps are hardware noise: the full and slice circuits ran on different physical
+  qubits, and the qaoa-T full circuit has P(1) = 0.639 against an ideal 0.5.
+
+**Correction to the rebuttal.** It said the two exceptions "reflect our analysis rather than hardware
+noise". That holds for the size of the ICSE TVD values, but not for the corrected ones.
+
+**Caveats that stay.**
+- The TVD is Z-basis, so it is phase-blind.
+- The hardware slices came from the four-edge `QSLICE_FULL` variant, not the Sec. III method.
+
+**Decision for the author (§7.1):** a Discussion paragraph, or drop hardware.
