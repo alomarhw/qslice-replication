@@ -750,3 +750,23 @@ These were found while implementing §6, from the API documentation. No LLM call
   numbers only, labelled "post hoc (string indices accepted)". Its effect on the other arms is
   stated in one sentence.
 - **The same rule applies to T2.**
+
+### Deviation I-7 (2026-10-22, before the family and noise runs; the corpus-L selection was committed at `ba56c1b`)
+1. **§3.3 ground truth.**
+   - **Change:** the set of operations that can affect each criterion is computed with the §2.1
+     semantic-dependence oracle (`icpc/influence.py`). It is not derived symbolically per family.
+   - **Why:** this is the paper's definition of ground truth. A hand derivation for six parameterized
+     families, two of them random, would add a second, error-prone definition.
+   - **Constructions:** they follow the §3.3 table and are written down in `families/generate.py`.
+     For F-w, "uncompute part of it" is fixed as undoing the last ⌊n/2⌋ preparation steps.
+2. **§3.5 corpus L.**
+   - **Memory limit:** resident memory is polled with `ps`, because `psutil` is not in
+     `requirements.lock`. Per-stage results are logged, so a run that hits a limit is attributed to
+     its stage.
+   - **Fallback:** counted with QSlice's own rule, namely that `Statevector(circuit)` fails.
+3. **§7.2 noise.**
+   - **Terminal measurements** are removed before the final density matrix is saved.
+   - **Measurement, reset or `if_else`:** a circuit that still contains one is simulated with 1,024
+     shots, and Aer's shot average serves as the unconditional state. That value is an estimate;
+     circuits without these operations are exact with one shot.
+   - **Seeds:** the simulator seed is derived from the circuit path.
