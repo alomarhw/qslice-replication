@@ -146,7 +146,9 @@ def summarize(log: Path, sel) -> None:
         nxt = ["graph"] + [f"slice:{m}" for m in SLICERS] + ["oracle", "done"]
         stopped_at = next((x for x in nxt if x not in stages), "") if lim else ""
         crow.append({**{k: c[k] for k in ("corpus", "name", "path", "n_qubits", "n_ops")},
-                     "completed": int("done" in st), "limit": (lim or {}).get("limit") or ("error" if lim else ""),
+                     "completed": int("done" in st),
+                     "limit": (lim or {}).get("limit") or (("oracle branch limit" if "measurement branches" in (lim or {}).get("stderr", "")
+                                                          else "error") if lim else ""),
                      "stopped_at": stopped_at, "fallback": g.get("fallback", ""),
                      "q_seconds": st.get("slice:q", {}).get("seconds", ""),
                      "q_peak_rss_mib": st.get("slice:q", {}).get("peak_rss_mib", ""),
