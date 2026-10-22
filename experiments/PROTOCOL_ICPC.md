@@ -778,3 +778,27 @@ These were found while implementing §6, from the API documentation. No LLM call
   - it covers the two random families (F-inv, F-depth);
   - it is the same oracle that checks every slice's soundness.
 - **The paper states** that family ground truth is computed by this oracle, not derived per family.
+
+### Deviation I-8 (2026-10-22, AFTER all T1 and T2 calls; author decision): answer-line parser primary
+- **Found.** The pre-registered parser (Deviation I-3 item 4) falls back to "the last integer list
+  anywhere in the text", and that fallback reads non-answers.
+  - Qwen2.5-Coder-1.5B often answers with an instruction's text, such as `["cx q[0],q[4]"]`. The
+    fallback reads the qubit reference `q[4]` as instruction 4.
+  - Claude Sonnet 5.5 sometimes ends with a list of strings, such as `["6", "10", "5"]`. The fallback
+    takes the last prose citation instead, such as "[5] is the next candidate".
+  - In T2 this changes 24% of Sonnet's answers and 25% of Qwen-1.5B's.
+  - These are measurement errors, not a strictness choice.
+- **New primary rule (`parse_answer_line`).**
+  - Apply `json.loads` to the reply with code fences removed.
+  - Otherwise, take the reply's last non-empty line with Markdown emphasis stripped. It counts only if
+    it is exactly a list whose elements are all indices (`7`, `"7"`, `[7]`, `"[7]"`).
+  - A bracket inside prose or an identifier never counts.
+  - The rule is applied identically to every arm and to both tasks.
+- **Agreement.** On every T1 and T2 answer of Haiku 5.5 and Qwen2.5-Coder-32B, and on every T1 answer
+  of Sonnet, the new rule gives the same answer as the pre-registered rule.
+- **Kept as sensitivity.** The pre-registered rule is reported as a labelled sensitivity analysis
+  (`<task>_scores_frozen.csv`). It supersedes the Deviation I-4 decision. `_lenient` files are kept for
+  the record.
+- **Effect on findings.** The main T2 finding has the same direction under both rules: S-q slices
+  lower top-3 fault localization against the full circuit and against S-lc, for Sonnet, Haiku and
+  Qwen-32B. Only the magnitudes change (e.g. Sonnet, full circuit: 0.84 vs 0.73).

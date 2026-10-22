@@ -120,3 +120,20 @@ a labelled sensitivity check, reported for O-small.
 
 **Author decision (Deviation I-7):** family ground truth is the §2.1 oracle. Its constructions are in
 `families/generate.py`.
+
+**T2 done** (276 scored units × 6 prompts; Claude $15.22 of the $45 cap).
+- Scoring revealed that the pre-registered parser's fallback reads qubit references and prose
+  citations as answers.
+- The author chose an answer-line parser as primary (**Deviation I-8**). The pre-registered rule stays
+  as a labelled sensitivity analysis.
+- **Finding, top-3 with context, answer-line rule:**
+
+  | Model | full | S-lc | S-q | S-du |
+  |---|---|---|---|---|
+  | Sonnet 5.5 | .84 | .77 | .70 | .62 |
+  | Haiku 5.5 | .71 | .66 | .59 | .52 |
+  | Qwen-32B | .43 | .43 | .36 | .33 |
+  | Qwen-1.5B | .13 | .13 | .13 | .13 |
+
+  S-q is below the full circuit and below S-lc for the three capable models (exact McNemar
+  p ≤ .02). A smaller slice from QSlice makes LLM fault localization worse, not better.
