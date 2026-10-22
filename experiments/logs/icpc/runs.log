@@ -20,3 +20,9 @@ noise rc=0 Thu Oct 22 03:32:28 EDT 2026
 families rc=0 Thu Oct 22 03:51:52 EDT 2026
 corpusL rc=0 Thu Oct 22 04:42:38 EDT 2026
 rq3 rc=0 Thu Oct 22 04:46:15 EDT 2026
+t2 O-mid start Thu Oct 22 11:23:50 EDT 2026 commit c70f8c0
+t2 claude start Thu Oct 22 11:25:13 EDT 2026 commit 349de29
+t2 O-mid rc=0 Thu Oct 22 11:29:40 EDT 2026
+t2 O-small start Thu Oct 22 11:30:58 EDT 2026 commit 349de29
+t2 O-small rc=0 Thu Oct 22 11:31:57 EDT 2026
+t2 claude rc=0 Thu Oct 22 12:33:16 EDT 2026
