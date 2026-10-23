@@ -46,9 +46,13 @@ faulty operation. Most of the verdicts below follow from this distinction.
    complete.
 2. **Be precise about which property each slicer has.**
    - S-lc: (a) at every tested input, and (b).
-   - Qiskit `LightCone`: (a), smaller than S-lc on 243/732 pairs, never unsound at |0…0⟩, but
+   - Qiskit `LightCone`: (a) at every tested input, and smaller than S-lc on 243/732 pairs, but
      recall 0.93. It drops gates that commute with the observable, yet a fault there can still
-     matter. Its robustness to other inputs has **not** been measured yet (open item below).
+     matter. Robustness (Deviation I-10, `results/icpc/rq2_robustness_lcq`): 732/732 under random
+     basis inputs and under Haar product inputs, including all 243 pairs where it is smaller than
+     S-lc; 171/175 under parameter rebinding. The 4 failures are variational circuits
+     (`variational_n4`, two EfficientSU2) where a gate commutes with the observable only at its
+     written angle, as predicted before the run.
    - QSlice (S-q): (a) at |0…0⟩ only, recall 0.807.
 3. **QSlice's pruning is an input-specific explanation, not a program slice.** It answers "which
    operations shaped this qubit in this run at this input", which can still be useful, but it is
@@ -60,9 +64,10 @@ faulty operation. Most of the verdicts below follow from this distinction.
 
 ## Open items before Checkpoint B
 
-- **Robustness of S-lcq.** RQ2 tested only S-lc and S-q. Running S-lcq under the same three input
-  regimes would show whether Qiskit's pass is input-independent, as theory suggests. This needs a
-  pre-registration note, because §3 names only S-lc and S-q.
+- **Robustness of S-lcq.** Done (Deviation I-10): input-independent on every tested input, and
+  angle-dependent on 4 of 175 parameterized pairs. So the standard tool already gives most of
+  QSlice's size reduction (12% of it remains) without depending on the input, whereas QSlice's pruned
+  slices survive Haar inputs on 26.6% of pairs.
 - **Isabelle (F11).** Replace the theory with causal-cone soundness, or drop RQ6.
 - **Paper text D10.** The ICSE text still says Qiskit 2.4.2 and Aer; the corrected run uses qiskit
   2.3.0 and no Aer.
