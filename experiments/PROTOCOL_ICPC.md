@@ -838,3 +838,31 @@ These were found while implementing §6, from the API documentation. No LLM call
   observable only at its written angle (e.g. an angle of 0), so S-lcq may fail there.
 - **Reporting.** Descriptive; robust rate per regime, overall and for the pairs where S-lcq is
   strictly smaller than S-lc. Not part of the confirmatory family.
+
+### Deviation I-11 (2026-10-23, before any source-map result): how the §5 source map is built
+- **Why.** §5 says the map wraps `QuantumCircuit.append` "while a Bugs4Q program builds its
+  circuit". The Bugs4Q programs are never executed: `bugs4q/extract.py` builds every circuit from
+  a re-typed port with the original line numbers cited in comments. So the map goes through the
+  ports.
+- **Map (`icpc/qiskit_source_map.py`).**
+  1. Run each buggy port with `QuantumCircuit._append` wrapped. Record the innermost port line on
+     the call stack for every instruction appended to the port's circuit (gates built in helper
+     functions get the helper's line; composed sub-circuits get the `compose`/`append` line).
+  2. Map each port line to a line of the original buggy file. Use the port's `# Lnn` comment where
+     there is one. Otherwise take the most similar original line (difflib ratio ≥ 0.6 on
+     whitespace-stripped text, comments removed), searched between the original lines of the
+     nearest commented port lines before and after it. Below 0.6, the line is unmapped and
+     counted.
+  3. Map each instruction of the prepared buggy circuit (the one RQ3 slices,
+     `rq3_bugs4q._load`) to a traced instruction. Align (name, qubits) sequences with difflib.
+     Within an unequal block of equal length, match by qubits. Every other instruction is unmapped
+     and counted.
+- **Measures (descriptive, per RQ3 Bugs4Q unit and slicer).**
+  - fault lines = the original lines of the fault-site instructions;
+  - line containment = whether the slice's lines include a fault line;
+  - line inspection cost = the number of distinct original lines in the slice, also relative to the
+    lines that create any instruction.
+- **Cross-check.** The buggy original programs are sent to the authors' own Quantum Slicer
+  (`qiskit-static` mode, which never executes them). Its per-instruction lines are compared with
+  this map on (name, qubits)-aligned instructions, and the agreement rate is reported.
+- **Cutoff.** §5's: dropped, and said so, if it is not working by 2026-10-31.
