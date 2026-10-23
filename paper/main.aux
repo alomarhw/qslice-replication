@@ -13,20 +13,20 @@
 \newlabel{def:dep}{{3}{1}{}{subsection.3.2}{}}
 \citation{yu2025qpdg}
 \citation{javadi2024qiskit}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces One circuit under each dependence rule. (a)~The circuit. (b)~For criteria $q_0$ and $q_2$, the dependences of the criterion (black) and the operations each rule keeps; $F$ is the criterion's fidelity at $\lvert 000\rangle $. QSlice's slice of $q_2$ has $F=1$ at $\lvert 000\rangle $ but is unsound at all 20 random product inputs tested. (c)~The edges each rule builds, with the backward slice of $q_0$ shaded. Def-use lets $o_4$ write only its target, so the slice of $q_0$ skips the kickback through $o_4$. QPDG adds edges between operations on the same entanglement component, which pull in $o_0$.}}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces One Qiskit program under each dependence rule. (a)~The program; the comment on each line names the operation it creates. (b)~The dependences of $q_0$, the operations where a change can alter $q_0$'s state. (c)--(e)~The slice of $q_0$ that each rule computes, with the source lines it keeps and its fidelity at $\lvert 000\rangle $ and at 20 random product inputs. Def-use misses the kickback through $o_4$; entanglement closure adds $o_0$, which cannot affect $q_0$; the wire rule keeps exactly the dependences. (f)~State-based pruning of $q_2$ at $\lvert 000\rangle $ is exact at that input but drops three dependences and is wrong at all 20 random inputs. Slices, dependences and verdicts are computed by the study's code from the program in~(a).}}{2}{}\protected@file@percent }
 \newlabel{fig:dependence}{{1}{2}{}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Dependence rules}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Properties}{2}{}\protected@file@percent }
 \newlabel{thm:sound}{{1}{2}{}{subsection.3.4}{}}
-\newlabel{prop:complete}{{1}{2}{}{subsection.3.4}{}}
-\newlabel{prop:du}{{2}{2}{}{subsection.3.4}{}}
-\newlabel{prop:ent}{{3}{2}{}{subsection.3.4}{}}
 \citation{nielsen2010quantum}
 \bibstyle{IEEEtran}
 \bibdata{references}
 \bibcite{yu2025qpdg}{1}
 \bibcite{javadi2024qiskit}{2}
 \bibcite{nielsen2010quantum}{3}
+\newlabel{prop:complete}{{1}{3}{}{subsection.3.4}{}}
+\newlabel{prop:du}{{2}{3}{}{subsection.3.4}{}}
+\newlabel{prop:ent}{{3}{3}{}{subsection.3.4}{}}
 \newlabel{prop:joint}{{4}{3}{}{subsection.3.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Study Design}{3}{}\protected@file@percent }
 \newlabel{sec:design}{{IV}{3}{}{section.4}{}}

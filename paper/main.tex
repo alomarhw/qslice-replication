@@ -6,6 +6,7 @@
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{url}
+\usepackage{listings}
 \newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
 \providecommand{\ket}[1]{\lvert #1\rangle}
 \newtheorem{definition}{Definition}
@@ -36,13 +37,15 @@ Fig.~1.}
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_dependence.pdf}
-  \caption{One circuit under each dependence rule. (a)~The circuit. (b)~For criteria $q_0$ and $q_2$, the
-  dependences of the criterion (black) and the operations each rule keeps; $F$ is the criterion's fidelity
-  at $\ket{000}$. QSlice's slice of $q_2$ has $F=1$ at $\ket{000}$ but is unsound at all 20 random product
-  inputs tested. (c)~The edges each rule builds, with the backward slice of $q_0$ shaded. Def-use lets
-  $o_4$ write only its target, so the slice of $q_0$ skips the kickback through $o_4$. QPDG adds edges
-  between operations on the same entanglement component, which pull in $o_0$.}
+  \includegraphics[width=\textwidth]{figures/fig_example.pdf}
+  \caption{One Qiskit program under each dependence rule. (a)~The program; the comment on each line names
+  the operation it creates. (b)~The dependences of $q_0$, the operations where a change can alter
+  $q_0$'s state. (c)--(e)~The slice of $q_0$ that each rule computes, with the source lines it keeps and
+  its fidelity at $\ket{000}$ and at 20 random product inputs. Def-use misses the kickback through $o_4$;
+  entanglement closure adds $o_0$, which cannot affect $q_0$; the wire rule keeps exactly the dependences.
+  (f)~State-based pruning of $q_2$ at $\ket{000}$ is exact at that input but drops three dependences and is
+  wrong at all 20 random inputs. Slices, dependences and verdicts are computed by the study's code from
+  the program in~(a).}
   \label{fig:dependence}
 \end{figure*}
 

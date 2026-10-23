@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1792736420.62469 "main.aux" "main.bbl" "main" 1792736421.16733 0
-  "./references.bib" 1792736406.9651 26991 4c56ab4c70d26f7e1f4b041c3c248eef ""
+["bibtex main"] 1792736883.31335 "main.aux" "main.bbl" "main" 1792736883.36551 2
+  "./references.bib" 1792736446.95258 26961 a9a325fd7bab5cc3e4e909e45cf4cd8e ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "main.aux" 1792736420.98723 3345 d3a650671ecd4e946ffb874f4831c3aa "pdflatex"
+  "main.aux" 1792736883.12791 3493 7babb99e93136a4c979636cd857c6c6b "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1792736420.69093 "main.tex" "main.pdf" "main" 1792736421.16771 0
+["pdflatex"] 1792736882.78423 "main.tex" "main.pdf" "main" 1792736883.36577 0
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -42,8 +42,8 @@
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/public/stmaryrd/stmary6.tfm" 1302307949 848 068dd119e13b75777e62821af7d4f2a6 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/public/stmaryrd/stmary7.tfm" 1302307949 848 26631fcb3e4cb6757598b9cda7967b63 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/public/stmaryrd/stmary8.tfm" 1302307949 848 6125cdd3627e68d3db8013b98e587508 ""
-  "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb" 1248133631 32007 e8fa0078355f39467039935974716569 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb" 1248133631 32166 b0c356b15f19587482a9217ce1d8fa67 ""
+  "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb" 1248133631 26057 fad158094905eaf20f4ae3782af0c45c ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1248133631 37912 77d683123f92148345f3fc36a38d9ab1 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
@@ -57,7 +57,7 @@
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
-  "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb" 1248133631 36607 d654cb3f2bc54f57509240071db3bffa ""
+  "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb" 1248133631 24287 6b803fa9eb1ddff9112e00519b09dd9e ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb" 1302307949 27430 0e29b053ae98d5f87d872ee72a12d5f5 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb" 1136849748 45758 19968a0990191524e34e1994d4a31cb6 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1136849748 44729 811d6c62865936705a31c797a1d5dada ""
@@ -93,6 +93,10 @@
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/ieeetran/IEEEtran.cls" 1440712899 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1774899586 30909 7dedb28cb21a1e79c47a35a35ae3c507 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg" 1279039959 678 4792914a8f45be57bb98413425e4c7af ""
+  "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg" 1763671178 1865 73df61e45e2dfdc239ef37ab16d87d6a ""
+  "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.sty" 1763671178 81627 6a9c17f89f356724d1c9813b7025f0c1 ""
+  "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty" 1763671178 77105 002e983b638eadbf04e580642335f689 ""
+  "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/listings/lstpatch.sty" 1710360531 353 9024412f43e92cd5b21fe9ded82d0610 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1pcr.fd" 1137110629 985 1ed784d7bfe47179f3550d2303b073f8 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1ptm.fd" 1137110629 961 15056f4a61917ceed3a44e4ac11fcc52 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd" 1137110629 619 96f56dc5d1ef1fe1121f1cfeec70ee0c ""
@@ -105,10 +109,10 @@
   "/Users/alomarhw/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1780461613 2251155 18d2852fa51ed40198e07c4ecb052774 ""
   "/Users/alomarhw/Library/TinyTeX/texmf.cnf" 1780461570 637 edd806fb06a89761a6034e1968af9017 ""
   "abstract.tex" 1792735231.55798 2003 e6cff39b593934924b8b6d21c72edb63 ""
-  "figures/fig_dependence.pdf" 1792736390.07924 107225 84091ee69d4428ec76152a440c7a7712 ""
-  "main.aux" 1792736420.98723 3345 d3a650671ecd4e946ffb874f4831c3aa "pdflatex"
-  "main.bbl" 1792736420.68745 1524 9b34655c717bf13c78d0b640764d6a0f "bibtex main"
-  "main.tex" 1792736419.35256 2884 93ac5601bb70c3a29fdd03dfd8df618a ""
+  "figures/fig_example.pdf" 1792736882.45785 119309 9cbe52557515a36a36d168726f481829 ""
+  "main.aux" 1792736883.12791 3493 7babb99e93136a4c979636cd857c6c6b "pdflatex"
+  "main.bbl" 1792736883.36407 1516 51e6a5b26bdf595dae9f17fe04e87d6c "bibtex main"
+  "main.tex" 1792736882.54532 3055 5da0d75b079cb611ddd19a6f898fda8f ""
   "numbers.tex" 1792735236.10213 15808 d5a91f01a2a966ca353562d45596d4bd ""
   "sections/dependence.tex" 1792736419.34447 10051 1f0be2386eddebe242ba7907d238bbb0 ""
   (generated)

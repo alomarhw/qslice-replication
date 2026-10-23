@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.3)  23 OCT 2026 02:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.3)  23 OCT 2026 02:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -237,30 +237,53 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-\c@definition=\count307
-\c@theorem=\count308
-\c@proposition=\count309
+) (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count307
+\lst@gtempboxa=\box57
+\lst@token=\toks24
+\lst@length=\count308
+\lst@currlwidth=\dimen198
+\lst@column=\count309
+\lst@pos=\count310
+\lst@lostspace=\dimen199
+\lst@width=\dimen256
+\lst@newlines=\count311
+\lst@lineno=\count312
+\lst@maxwidth=\dimen257
+ (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+) (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count313
+\lst@skipnumbers=\count314
+\lst@framebox=\box58
+) (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+\c@definition=\count315
+\c@theorem=\count316
+\c@proposition=\count317
  (./numbers.tex) (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count310
+\l__color_backend_stack_int=\count318
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
 
 -- Lines per column: 56 (exact).
 (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
@@ -268,25 +291,27 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-)) (./abstract.tex)
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 31.
+))
+\c@lstlisting=\count319
+ (./abstract.tex)
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 32.
  (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<figures/fig_dependence.pdf, id=1, 574.45714pt x 205.10025pt>
-File: figures/fig_dependence.pdf Graphic file (type pdf)
-<use figures/fig_dependence.pdf>
-Package pdftex.def Info: figures/fig_dependence.pdf  used on input line 39.
-(pdftex.def)             Requested size: 516.0pt x 184.23486pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
+<figures/fig_example.pdf, id=1, 496.7589pt x 341.20573pt>
+File: figures/fig_example.pdf Graphic file (type pdf)
+<use figures/fig_example.pdf>
+Package pdftex.def Info: figures/fig_example.pdf  used on input line 40.
+(pdftex.def)             Requested size: 516.0pt x 354.42387pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
  (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
  (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 45.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 48.
  (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) (./sections/dependence.tex [1{/Users/alomarhw/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
@@ -294,7 +319,7 @@ LaTeX Font Info:    Trying to load font information for U+stmry on input line 45
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 82.
  (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [2 <./figures/fig_dependence.pdf>]) (./main.bbl)
+) [2 <./figures/fig_example.pdf>]) (./main.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -311,20 +336,24 @@ Before submitting the final camera ready copy, remember to:
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 4351 strings out of 469157
- 68926 string characters out of 5459492
- 488608 words of memory out of 5000000
- 33300 multiletter control sequences out of 15000+600000
+ 5727 strings out of 469157
+ 88966 string characters out of 5459492
+ 510709 words of memory out of 5000000
+ 34664 multiletter control sequences out of 15000+600000
  667020 words of font info for 121 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,8n,65p,735b,291s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (3 pages, 266409 bytes).
+ 57i,8n,65p,883b,293s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (3 pages, 262398 bytes).
 PDF statistics:
- 169 PDF objects out of 1000 (max. 8388607)
- 110 compressed objects within 2 object streams
+ 179 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
