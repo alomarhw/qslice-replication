@@ -29,9 +29,10 @@ PAPER = WS / "paper"
 
 
 def inline_inputs(tex: str) -> str:
-    """The app stores one main.tex, so \\input{numbers} and \\input{abstract} are inlined."""
-    for name in ("numbers", "abstract"):
-        tex = tex.replace(f"\\input{{{name}}}", (PAPER / f"{name}.tex").read_text())
+    """The app stores one main.tex, so every \\input{...} under paper/ is inlined."""
+    import re  # noqa: PLC0415
+    while (m := re.search(r"\\input\{([^}]+)\}", tex)):
+        tex = tex[:m.start()] + (PAPER / f"{m.group(1)}.tex").read_text() + tex[m.end():]
     return tex
 
 
@@ -71,11 +72,25 @@ def main() -> None:
         for i, t, s, c, r in decisions if i not in have]})
 
     tex = inline_inputs((PAPER / "main.tex").read_text())
-    res = compile_latex(tex, "")
+    bib = (PAPER / "references.bib").read_text()
+    import api.main as m  # noqa: PLC0415
+    fdir = m._project_figures_dir(pid)
+    fdir.mkdir(parents=True, exist_ok=True)
+    for pdf in (PAPER / "figures").glob("*.pdf"):
+        (fdir / pdf.name).write_bytes(pdf.read_bytes())
+    ui_root = Path.home() / "Library/CloudStorage/GoogleDrive-alomarhw@miamioh.edu/.shortcut-targets-by-id/0B51rXHkfdbSkTU1Bd1U1bkhyaFU/MU-Research/research-pilot-codex"
+    ui_fdir = ui_root / "projects" / "_figures" / str(pid)
+    if ui_root.is_dir() and ui_fdir.resolve() != fdir.resolve():  # the UI backend serves from its own checkout
+        ui_fdir.mkdir(parents=True, exist_ok=True)
+        for f in fdir.glob("*.pdf"):
+            (ui_fdir / f.name).write_bytes(f.read_bytes())
+        for c in (ui_root / "projects" / "_pdf_cache").glob(f"{pid}_*.pdf"):
+            c.unlink()
+    res = compile_latex(tex, bib, figures_dir=fdir)
     pages = _pdf_page_count(res.get("pdf_path"))
     wo = {
         "title": title, "author": "Hakam Alomari", "institution": "Miami University", "anonymous": True,
-        "template": "ieeetran", "mainTex": tex, "bib": "", "compiled": bool(res.get("ok")),
+        "template": "ieeetran", "mainTex": tex, "bib": bib, "compiled": bool(res.get("ok")),
         "pageCount": str(pages or ""), "wordCount": len(tex.split()), "fixAttempts": 0,
         "placeholders": tex.count("\\TODO{"), "paperMode": "draft: title and abstract; sections not yet written",
         "claimStrength": "draft", "claims": [], "unresolvedCitations": [], "citationsAdded": 0, "groundingIssues": [],
