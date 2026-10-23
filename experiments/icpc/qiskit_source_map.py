@@ -69,15 +69,16 @@ def port_to_original(code: str, original: list) -> dict:
     """{port line number: original line number or None}."""
     plines = code.split("\n")
     cited = {i + 1: int(m.group(1)) for i, ln in enumerate(plines) if (m := LCOMMENT.search(ln))}
-    out = {}
+    out, last = {}, 0
     for i, ln in enumerate(plines, 1):
         if i in cited:
-            out[i] = cited[i]
+            out[i] = last = cited[i]
             continue
         if not _norm(ln):
             out[i] = None
             continue
-        lo = max([cited[j] for j in cited if j < i], default=1)
+        # in order: after the previous mapped line, so repeated identical statements map one to one
+        lo = max([cited[j] for j in cited if j < i] + [last + 1], default=1)
         hi = min([cited[j] for j in cited if j > i], default=len(original))
         best, score = None, 0.0
         for k in range(lo, hi + 1):
@@ -85,6 +86,8 @@ def port_to_original(code: str, original: list) -> dict:
             if r > score:
                 best, score = k, r
         out[i] = best if score >= 0.6 else None
+        if out[i]:
+            last = out[i]
     return out
 
 

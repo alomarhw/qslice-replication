@@ -866,3 +866,8 @@ These were found while implementing §6, from the API documentation. No LLM call
   (`qiskit-static` mode, which never executes them). Its per-instruction lines are compared with
   this map on (name, qubits)-aligned instructions, and the agreement rate is reported.
 - **Cutoff.** §5's: dropped, and said so, if it is not working by 2026-10-31.
+- **Fix found by the cross-check (2026-10-23, before any line result was reported or used).** In
+  the first run, step 2 sent repeated identical statements (e.g. `circuit.x(search_register)`)
+  to the first matching original line. The cross-check flagged them, and the authors' tool was
+  right. Step 2 now searches in order: after the previous mapped line and before the next cited
+  one. The first run's output is replaced and kept out of any result.
