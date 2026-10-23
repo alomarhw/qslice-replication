@@ -1093,6 +1093,201 @@
   "tex": "232",
   "source": "results/icpc/cpdg/families_rows.csv"
  },
+ "PairsMqt": {
+  "value": 284,
+  "tex": "284",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "CircuitsMqt": {
+  "value": 40,
+  "tex": "40",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "PairsQasm": {
+  "value": 202,
+  "tex": "202",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "CircuitsQasm": {
+  "value": 38,
+  "tex": "38",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "PairsVeriq": {
+  "value": 298,
+  "tex": "298",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "CircuitsVeriq": {
+  "value": 80,
+  "tex": "80",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "MaxQubits": {
+  "value": 14,
+  "tex": "14",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "Mutants": {
+  "value": 5375,
+  "tex": "5{,}375",
+  "source": "results/icpc/rq3/mutants.csv"
+ },
+ "MutantsKilled": {
+  "value": 2662,
+  "tex": "2{,}662",
+  "source": "results/icpc/rq3/mutants.csv"
+ },
+ "MutantsInjured": {
+  "value": 240,
+  "tex": "240",
+  "source": "results/icpc/rq3/mutants.csv"
+ },
+ "MutantsAlive": {
+  "value": 2312,
+  "tex": "2{,}312",
+  "source": "results/icpc/rq3/mutants.csv"
+ },
+ "MutantsEquivalent": {
+  "value": 157,
+  "tex": "157",
+  "source": "results/icpc/rq3/mutants.csv"
+ },
+ "MutOperators": {
+  "value": 10,
+  "tex": "10",
+  "source": "results/icpc/rq3/mutants.csv"
+ },
+ "RqThreeSecondary": {
+  "value": 346,
+  "tex": "346",
+  "source": "results/icpc/rq3/units.csv"
+ },
+ "OracleErr": {
+  "value": 2.2e-16,
+  "tex": "\\ensuremath{2.2\\times 10^{-16}}",
+  "source": "experiments/logs/icpc/test_oracle_icpc.log (joint rho_W vs Statevector/partial_trace, random unitary circuits)"
+ },
+ "InfluenceInputs": {
+  "value": 11,
+  "tex": "11",
+  "source": "icpc/influence.py (|0...0> + N_INPUTS=10)"
+ },
+ "InfluencePerturbations": {
+  "value": 2,
+  "tex": "2",
+  "source": "icpc/influence.py (N_PERTURBATIONS)"
+ },
+ "RobDraws": {
+  "value": 100,
+  "tex": "100",
+  "source": "icpc/rq2_robustness.py (N_DRAWS)"
+ },
+ "CostMemLimit": {
+  "value": 4,
+  "tex": "4",
+  "source": "icpc/cost_run.py (RSS_GIB)"
+ },
+ "LcqPrecision": {
+  "value": 0.9670105699008265,
+  "tex": "0.967",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "LcqSize": {
+  "value": 0.6441428844428471,
+  "tex": "64.4\\%",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "CpdgPrecision": {
+  "value": 0.9620551982460799,
+  "tex": "0.962",
+  "source": "results/icpc/cpdg/rq1_records.csv"
+ },
+ "RqThreeSizeLc": {
+  "value": 0.7680706974698921,
+  "tex": "76.8\\%",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "RqThreeSizeYz": {
+  "value": 0.8288491758738917,
+  "tex": "82.9\\%",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "RqThreeSizeQ": {
+  "value": 0.6050831130955547,
+  "tex": "60.5\\%",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "RqThreeSizeDu": {
+  "value": 0.5749383157866916,
+  "tex": "57.5\\%",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "RqThreeSizeCpdg": {
+  "value": 0.5903591932774798,
+  "tex": "59.0\\%",
+  "source": "results/icpc/cpdg/rq3_records.csv"
+ },
+ "LcMissTotal": {
+  "value": 245,
+  "tex": "245",
+  "source": "results/icpc/rq3/records.csv + units.csv"
+ },
+ "LcMissCrm": {
+  "value": 66,
+  "tex": "66",
+  "source": "results/icpc/rq3/records.csv + units.csv"
+ },
+ "LcMissQsw": {
+  "value": 91,
+  "tex": "91",
+  "source": "results/icpc/rq3/records.csv + units.csv"
+ },
+ "LcMissEnt": {
+  "value": 59,
+  "tex": "59",
+  "source": "results/icpc/rq3/records.csv + units.csv"
+ },
+ "LcMissDel": {
+  "value": 29,
+  "tex": "29",
+  "source": "results/icpc/rq3/records.csv + units.csv"
+ },
+ "LcMissOtherOps": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq3/records.csv + units.csv"
+ },
+ "HFourLoss": {
+  "value": 0.13519690576652602,
+  "tex": "13.5",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "TTwoSonnetQVsLcLoss": {
+  "value": 0.07246376811594203,
+  "tex": "7.2",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "RobLcqParamFail": {
+  "value": 4,
+  "tex": "4",
+  "source": "results/icpc/rq2_robustness_lcq/pairs.csv"
+ },
+ "YzDynamicUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "LcDynamicUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "QDynamicUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1/records.csv"
+ },
  "MotFidelity": {
   "value": 0.49999999999999967,
   "tex": "0.50",
@@ -1107,6 +1302,46 @@
   "value": 0.9999999999999993,
   "tex": "1.00",
   "source": "paper/figures/src/fig_motivating_facts.json"
+ },
+ "TelDuOps": {
+  "value": 4,
+  "tex": "4",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "TelDuFidelity": {
+  "value": 0.4999999999999999,
+  "tex": "0.50",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "TelOps": {
+  "value": 9,
+  "tex": "9",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsOps": {
+  "value": 16,
+  "tex": "16",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsCpdgOps": {
+  "value": 4,
+  "tex": "4",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsCpdgFidelity": {
+  "value": 0.7682780166514009,
+  "tex": "0.77",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsWireOps": {
+  "value": 13,
+  "tex": "13",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsYzExtra": {
+  "value": 2,
+  "tex": "2",
+  "source": "paper/figures/src/fig_programs_facts.json"
  },
  "ExRandomInputs": {
   "value": 20,

@@ -124,31 +124,42 @@ $\operatorname{Tr}_{Q \setminus W}\llbracket P' \rrbracket(\rho) =
 measurement outcome is the same.
 \end{IEEEproof}
 
-The other rules fail one property or the other, as the circuit of Fig.~\ref{fig:dependence} shows.
+The other rules fail one property or the other, as the two programs of Fig.~\ref{fig:dependence} show.
+Each node of their graphs is an operation, labelled with the source line that created it, and each edge
+is a dependence of the wire rule, marked as data, control or quantum.
+
+Control dependence is needed whenever measurement outcomes steer later gates. In the teleportation
+program of Fig.~\ref{fig:dependence}a, the corrections on $q_2$ run only if the measurements of $q_0$
+and $q_1$ return $1$. Def-use ignores the classical bits. Its slice of $q_2$ keeps \numTelDuOps{} of the
+\numTelOps{} operations, and its fidelity is \numTelDuFidelity{}. The classical PDG follows the control
+edges from the measurements to the conditioned gates, and its slice equals the wire slice.
 
 \begin{proposition}[The classical PDG is unsound]\label{prop:du}
 There are circuits for which $B_{CPDG}(W)$, and hence $B_{DU}(W)$, does not preserve $W$ even at
 $\ket{0\dots0}$.
 \end{proposition}
 
-In Fig.~\ref{fig:dependence}, $o_4 = \mathrm{CX}(q_0, q_1)$ finds $q_1$ in $\ket{-}$ and so changes the
-phase of its control $q_0$ (phase kickback). The classical PDG treats the control as read only, and the
-circuit has no classical bits, so its slice of $q_0$ equals the def-use slice $\{o_3, o_5\}$. That slice
-ends in $\ket{0}$, while the circuit leaves $q_0$ in $\ket{1}$. Control dependence cannot repair this,
-because the missing dependence is quantum.
+In the ansatz of Fig.~\ref{fig:dependence}c, each \texttt{cx(qubit, qubit + 1)} acts on its control as
+well as its target. After the first layer, the state of $q_0$ depends on the rotations of $q_1$ and $q_2$
+through these gates. The classical PDG treats a control as read only, so its slice of $q_0$ keeps only
+the \numAnsCpdgOps{} rotations on $q_0$ itself, the bold nodes of Fig.~\ref{fig:dependence}d, with
+fidelity \numAnsCpdgFidelity{}. The edges it lacks are exactly the quantum edges of the graph. Control
+dependence cannot repair this, because the missing dependence is quantum. The wire slice keeps the
+\numAnsWireOps{} operations that are dependences of $q_0$, and no other.
 
 \begin{proposition}[Entanglement is neither necessary nor sufficient for dependence]\label{prop:ent}
 (i) An operation can be a dependence of $q$ although $q$ is never entangled with its qubits.
 (ii) An operation can act on a qubit entangled with $q$ and not be a dependence of $q$.
 \end{proposition}
 
-For (i), $q_0$ in Fig.~\ref{fig:dependence} is in a pure state after every operation, so it is never
-entangled with anything, yet $o_1$, $o_2$ and $o_4$ are dependences of it through kickback. For (ii), in
+For (i), $q_0$ in the buggy program of Fig.~\ref{fig:motivating} is in a pure state after every
+operation, so it is never entangled with anything. Yet \texttt{h(1)} and the CNOT are dependences of
+$q_0$, since the fix of line~6 changes the state of $q_0$. For (ii), in
 $\mathrm{H}(q_0)\,\mathrm{CX}(q_0, q_1)\,\mathrm{X}(q_1)$ the two qubits are maximally entangled, but
 $\mathrm{X}(q_1)$ is not a dependence of $q_0$. No operation on other qubits can change $\rho_{q_0}$
-(no-signaling). Entanglement closure therefore adds no dependence that the wire rule misses. It only
-adds operations that are not dependences, such as $o_0$ in Fig.~\ref{fig:dependence}, which joins the
-slice of $q_0$ because $q_2$ is coupled to $q_1$ after $q_0$'s last interaction.
+(no-signaling). Entanglement closure therefore adds no dependence that the wire rule misses. It only adds
+operations that are not dependences. In Fig.~\ref{fig:dependence}d it adds the \numAnsYzExtra{} rotations
+of $q_2$ in the second layer, which run after the last gate that can carry information from $q_2$ to $q_0$.
 
 \begin{proposition}[The wire rule distributes over criteria]\label{prop:joint}
 $B_W(W_1 \cup W_2) = B_W(W_1) \cup B_W(W_2)$.
@@ -162,9 +173,8 @@ the union of the needed sets for $W_1$ and $W_2$ at every position.
 Under the wire rule, a joint criterion is therefore the union of single-qubit slices. The criterion
 matters for pruning. State-based pruning for $\{q\}$ preserves $\rho_q$ but not the correlations of $q$
 with the other qubits, so it can delete an operation that changes $\rho_W$ for a larger $W$. It is also
-specific to its input. For $q_2$ in Fig.~\ref{fig:dependence}, it keeps $\{o_0, o_2, o_6\}$ at
-$\ket{000}$ and drops the dependences $o_1$, $o_3$ and $o_4$. That slice preserves $q_2$ at
-$\ket{000}$ but at none of 20 random product inputs.
+specific to its input, because the mutual information it tests and the reduced state it checks are
+those of one input. Section~\ref{sec:results} measures both effects.
 
 \paragraph*{Superposition}
 None of the rules depends on amplitudes. A dependence graph has one node per operation and edges

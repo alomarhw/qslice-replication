@@ -33,26 +33,23 @@ quantum programs, program slicing, program dependence, debugging, fault localiza
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_example.pdf}
-  \caption{One Qiskit program under each dependence rule. (a)~The program; the comment on each line names
-  the operation it creates. (b)~The dependences of $q_0$, the operations where a change can alter
-  $q_0$'s state. (c)--(e)~The slice of $q_0$ that each rule computes (the classical PDG equals def-use here, since the program has no classical bits), with the source lines it keeps and
-  its fidelity at $\ket{000}$ and at 20 random product inputs. The classical PDG misses the kickback through $o_4$;
-  entanglement closure adds $o_0$, which cannot affect $q_0$; the wire rule keeps exactly the dependences.
-  (f)~State-based pruning of $q_2$ at $\ket{000}$ is exact at that input but drops three dependences and is
-  wrong at all 20 random inputs. Slices, dependences and verdicts are computed by the study's code from
-  the program in~(a).}
+  \includegraphics[width=\textwidth]{figures/fig_programs.pdf}
+  \caption{Dependence graphs of two Qiskit programs. Nodes are operations, labelled with the source line
+  that created them; edges are the dependences of the wire rule. (a,\,b)~Teleportation needs control
+  dependence. The corrections on $q_2$ depend on the measurements through the green edges, which def-use
+  ignores. (c,\,d)~A hardware-efficient VQE ansatz needs quantum dependence. The blue edges, where a CNOT
+  changes its control, are missing from the classical PDG, whose slice of $q_0$ (bold) stops at $q_0$'s
+  own rotations. Entanglement closure adds two rotations of $q_2$ that are not dependences (orange). $F$
+  is the criterion's fidelity at $\ket{0\dots0}$. Graphs, slices and fidelities are computed by the
+  study's code from the programs shown.}
   \label{fig:dependence}
 \end{figure*}
 
 \input{sections/dependence}
 
-\section{Study Design}\label{sec:design}
-\TODO{Pre-registration and deviations; corpora; oracle; ground truth; statistics.}
+\input{sections/design}
 
-\section{Results}\label{sec:results}
-\TODO{RQ1 soundness and completeness; RQ2 safe precision; RQ3 fault localization (seeded, Bugs4Q in
-source lines, MBFL, LLM); RQ4 cost.}
+\input{sections/results}
 
 \section{Discussion}\label{sec:discussion}
 \TODO{Guidance for tool builders; hardware and noise; the source level.}

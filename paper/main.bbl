@@ -50,4 +50,25 @@ A.~Javadi-Abhari, M.~Treinish, K.~Krsulich, C.~J. Wood, J.~Lishman, J.~Gacon, S.
 \bibitem{nielsen2010quantum}
 M.~A. Nielsen and I.~L. Chuang, \emph{Quantum computation and quantum information}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge University Press, 2010.
 
+\bibitem{quetschlich2023mqt}
+N.~Quetschlich, L.~Burgholzer, and R.~Wille, ``{MQT Bench}: Benchmarking software and design automation tools for quantum computing,'' \emph{Quantum}, vol.~7, p. 1062, 2023.
+
+\bibitem{li2023qasmbench}
+A.~Li, S.~Stein, S.~Krishnamoorthy, and J.~Ang, ``{QASMBench}: A low-level quantum benchmark suite for {NISQ} evaluation and simulation,'' \emph{ACM Transactions on Quantum Computing}, vol.~4, no.~2, 2023.
+
+\bibitem{chen2022veriqbench}
+K.~Chen \emph{et~al.}, ``{VeriQBench}: A benchmark for multiple types of quantum circuits,'' \emph{arXiv preprint arXiv:2206.10880}, 2022.
+
+\bibitem{mendiluze2021muskit}
+E.~Mendiluze, S.~Ali, P.~Arcaini, and T.~Yue, ``Muskit: A mutation analysis tool for quantum software testing,'' in \emph{Proceedings of the 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)}, 2021, pp. 1266--1270.
+
+\bibitem{fortunato2022qmutpy}
+D.~Fortunato, J.~Campos, and R.~Abreu, ``{QMutPy}: A mutation testing tool for quantum algorithms and applications in {Qiskit},'' in \emph{Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)}, 2022, pp. 797--800.
+
+\bibitem{garcia2022testing}
+A.~G. de~la Barrera, I.~G.-R. de~Guzm{\'a}n, M.~Polo, and J.~A. Cruz-Lemus, ``Quantum software testing: Current trends and emerging proposals,'' in \emph{Quantum Software Engineering}, M.~A. Serrano, R.~P{\'e}rez-Castillo, and M.~Piattini, Eds.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2022, pp. 167--191.
+
+\bibitem{ishimoto2025mbfl}
+Y.~Ishimoto, M.~Kondo, N.~Ubayashi, Y.~Kamei, R.~Katsube, N.~Sato, and H.~Ogawa, ``Evaluating mutation-based fault localization for quantum programs,'' in \emph{Proceedings of the 29th International Conference on Evaluation and Assessment in Software Engineering (EASE)}, 2025, pp. 666--671.
+
 \end{thebibliography}

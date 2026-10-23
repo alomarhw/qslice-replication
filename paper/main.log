@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.3)  23 OCT 2026 03:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.3)  23 OCT 2026 04:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -316,15 +316,44 @@ LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 27
  (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ))
-<figures/fig_example.pdf, id=12, 496.7589pt x 341.20573pt>
-File: figures/fig_example.pdf Graphic file (type pdf)
-<use figures/fig_example.pdf>
-Package pdftex.def Info: figures/fig_example.pdf  used on input line 36.
-(pdftex.def)             Requested size: 516.0pt x 354.42387pt.
- (./sections/dependence.tex [2 <./figures/fig_motivating.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+<figures/fig_programs.pdf, id=12, 502.33574pt x 265.03416pt>
+File: figures/fig_programs.pdf Graphic file (type pdf)
+<use figures/fig_programs.pdf>
+Package pdftex.def Info: figures/fig_programs.pdf  used on input line 36.
+(pdftex.def)             Requested size: 516.0pt x 272.2522pt.
+ (./sections/dependence.tex [2 <./figures/fig_motivating.pdf>] [3 <./figures/fig_programs.pdf>]) (./sections/design.tex [4]
+Underfull \hbox (badness 10000) in paragraph at lines 51--55
+\OT1/ptm/m/n/10 again, with its po-si-tions fixed, un-der 100 ran-dom
+ []
 
- [3 <./figures/fig_example.pdf>]) [4] (./main.bbl)
+
+Underfull \hbox (badness 4378) in paragraph at lines 51--55
+\OT1/ptm/m/n/10 computational-basis in-puts, 100 ran-dom prod-uct in-puts
+ []
+
+
+Underfull \hbox (badness 2351) in paragraph at lines 74--79
+ \OT1/ptm/m/it/10 Fault lo-cal-iza-tion: [] \OT1/ptm/m/n/10 Mutation-based fault lo-cal-iza-tion
+ []
+
+) (./sections/results.tex [5]
+<figures/fig_robust.pdf, id=153, 255.9151pt x 106.10541pt>
+File: figures/fig_robust.pdf Graphic file (type pdf)
+<use figures/fig_robust.pdf>
+Package pdftex.def Info: figures/fig_robust.pdf  used on input line 53.
+(pdftex.def)             Requested size: 252.0pt x 104.48447pt.
+<figures/fig_llm.pdf, id=154, 274.95221pt x 106.02711pt>
+File: figures/fig_llm.pdf Graphic file (type pdf)
+<use figures/fig_llm.pdf>
+Package pdftex.def Info: figures/fig_llm.pdf  used on input line 101.
+(pdftex.def)             Requested size: 252.0pt x 97.18048pt.
+ [6 <./figures/fig_robust.pdf> <./figures/fig_llm.pdf>]
+<figures/fig_cost.pdf, id=185, 268.91066pt x 136.9607pt>
+File: figures/fig_cost.pdf Graphic file (type pdf)
+<use figures/fig_cost.pdf>
+Package pdftex.def Info: figures/fig_cost.pdf  used on input line 126.
+(pdftex.def)             Requested size: 252.0pt x 128.34807pt.
+) (./main.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -336,27 +365,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
-
-] (./main.aux)
+[7 <./figures/fig_cost.pdf>] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5753 strings out of 469157
- 89660 string characters out of 5459492
- 514851 words of memory out of 5000000
- 34688 multiletter control sequences out of 15000+600000
- 666709 words of font info for 120 fonts, out of 8000000 for 9000
+ 5858 strings out of 469157
+ 91731 string characters out of 5459492
+ 514210 words of memory out of 5000000
+ 34785 multiletter control sequences out of 15000+600000
+ 669134 words of font info for 124 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,8n,65p,974b,270s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 297984 bytes).
+ 57i,9n,65p,886b,279s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (7 pages, 356224 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
+ 288 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
