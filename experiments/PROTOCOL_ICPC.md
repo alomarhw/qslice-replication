@@ -821,3 +821,20 @@ These were found while implementing §6, from the API documentation. No LLM call
   results go to `results/icpc/rq1_lcq_remap` and are primary for the LightCone cross-check; both are
   reported. RQ1 code is not modified.
 - **Direction.** The change can only widen the baseline's coverage; it cannot make S-q look better.
+
+### Deviation I-10 (2026-10-23, before any S-lcq robustness result; author decision): RQ2 robustness of S-lcq
+- **Why.** §3.2 tests the robustness of S-lc and S-q only. The foundations review
+  (`FOUNDATIONS_REVIEW.md`) shows that Qiskit's `LightCone` (S-lcq) is smaller than S-lc on 243 of
+  732 pairs and never unsound at |0…0⟩. Whether it stays valid at other inputs decides whether it,
+  rather than S-lc, is the input-independent baseline QSlice must be compared with.
+- **Design (`icpc/rq2_robustness_lcq.py`).** The §3.2 regimes (R-basis, R-haar, R-param), draws (100),
+  seeds and soundness rule, imported unchanged from `icpc/rq2_robustness.py`, so every draw equals
+  the RQ2 run's. S-lcq uses the Deviation I-9 mapping and, like S-lc and S-q, is computed once at
+  |0…0⟩ on the circuit as written. Not-applicable pairs are recorded, not dropped silently.
+- **Reproduction check.** S-lc is re-run on the same draws. Its sound-draw counts must equal
+  `results/icpc/rq2_robustness` on every (pair, regime); a mismatch stops the analysis.
+- **Expectation stated before the run.** Commutation with the observable is input-independent, so
+  S-lcq should be robust under R-basis and R-haar. Under R-param, a gate may commute with the
+  observable only at its written angle (e.g. an angle of 0), so S-lcq may fail there.
+- **Reporting.** Descriptive; robust rate per regime, overall and for the pairs where S-lcq is
+  strictly smaller than S-lc. Not part of the confirmatory family.
