@@ -33,17 +33,26 @@ quantum programs, program slicing, program dependence, debugging, fault localiza
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_programs.pdf}
-  \caption{Dependence graphs of two Qiskit programs. Nodes are operations, labelled with the source line
-  that created them; edges are the dependences of the wire rule. (a,\,b)~Teleportation needs control
-  dependence. The corrections on $q_2$ depend on the measurements through the green edges, which def-use
-  ignores. (c,\,d)~A hardware-efficient VQE ansatz needs quantum dependence. The blue edges, where a CNOT
-  changes its control, are missing from the classical PDG, whose slice of $q_0$ (bold) stops at $q_0$'s
-  own rotations. Entanglement closure adds two rotations of $q_2$ that are not dependences (orange). $F$
-  is the criterion's fidelity at $\ket{0\dots0}$. Graphs, slices and fidelities are computed by the
-  study's code from the programs shown.}
-  \label{fig:dependence}
+  \includegraphics[width=\textwidth]{figures/fig_pdg_ansatz.pdf}
+  \caption{Quantum dependence in a hardware-efficient VQE ansatz, criterion $q_0$. Each node is an operation
+  as it executes, with the source line and loop iteration that created it, and both graphs place every node
+  at the same position. (b)~The classical PDG treats the control of a CNOT as read only. It lacks the orange
+  edges, so its slice of $q_0$ (shaded) keeps only the rotations of $q_0$ and misses the outlined
+  dependences. (c)~The wire rule has these edges as quantum edges, and its slice is exactly the dependences
+  of $q_0$. Entanglement closure would also add the purple rotations, which are not dependences. Graphs,
+  slices and fidelities at $\ket{0\dots0}$ are computed by the study's code from the program shown.}
+  \label{fig:ansatz}
 \end{figure*}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig_pdg_teleport.pdf}
+  \caption{Control dependence in teleportation, criterion $q_2$. The corrections depend on the measurements
+  only through the green control edges. Def-use ignores classical bits, so its graph is this one without
+  them, and its slice of $q_2$ misses the outlined operations. $F$ is the fidelity of $q_2$ at
+  $\ket{0\dots0}$. Line comments are omitted from the code.}
+  \label{fig:teleport}
+\end{figure}
 
 \input{sections/dependence}
 

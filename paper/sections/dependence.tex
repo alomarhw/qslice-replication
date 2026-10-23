@@ -124,12 +124,13 @@ $\operatorname{Tr}_{Q \setminus W}\llbracket P' \rrbracket(\rho) =
 measurement outcome is the same.
 \end{IEEEproof}
 
-The other rules fail one property or the other, as the two programs of Fig.~\ref{fig:dependence} show.
-Each node of their graphs is an operation, labelled with the source line that created it, and each edge
-is a dependence of the wire rule, marked as data, control or quantum.
+The other rules fail one property or the other, as the two programs of Figs.~\ref{fig:teleport}
+and~\ref{fig:ansatz} show. Each node of their graphs is an operation as it executes, labelled with the
+source line that created it and, inside a loop, the iteration. Each edge is a dependence of the rule named
+above the graph, marked as data, control or quantum.
 
 Control dependence is needed whenever measurement outcomes steer later gates. In the teleportation
-program of Fig.~\ref{fig:dependence}a, the corrections on $q_2$ run only if the measurements of $q_0$
+program of Fig.~\ref{fig:teleport}, the corrections on $q_2$ run only if the measurements of $q_0$
 and $q_1$ return $1$. Def-use ignores the classical bits. Its slice of $q_2$ keeps \numTelDuOps{} of the
 \numTelOps{} operations, and its fidelity is \numTelDuFidelity{}. The classical PDG follows the control
 edges from the measurements to the conditioned gates, and its slice equals the wire slice.
@@ -139,11 +140,11 @@ There are circuits for which $B_{CPDG}(W)$, and hence $B_{DU}(W)$, does not pres
 $\ket{0\dots0}$.
 \end{proposition}
 
-In the ansatz of Fig.~\ref{fig:dependence}c, each \texttt{cx(qubit, qubit + 1)} acts on its control as
+In the ansatz of Fig.~\ref{fig:ansatz}a, each \texttt{cx(qubit, qubit + 1)} acts on its control as
 well as its target. After the first layer, the state of $q_0$ depends on the rotations of $q_1$ and $q_2$
 through these gates. The classical PDG treats a control as read only, so its slice of $q_0$ keeps only
-the \numAnsCpdgOps{} rotations on $q_0$ itself, the bold nodes of Fig.~\ref{fig:dependence}d, with
-fidelity \numAnsCpdgFidelity{}. The edges it lacks are exactly the quantum edges of the graph. Control
+the \numAnsCpdgOps{} rotations on $q_0$ itself, the shaded nodes of Fig.~\ref{fig:ansatz}b, with
+fidelity \numAnsCpdgFidelity{}. The edges it lacks, drawn in orange, are exactly the quantum edges of Fig.~\ref{fig:ansatz}c. Control
 dependence cannot repair this, because the missing dependence is quantum. The wire slice keeps the
 \numAnsWireOps{} operations that are dependences of $q_0$, and no other.
 
@@ -158,7 +159,7 @@ $q_0$, since the fix of line~6 changes the state of $q_0$. For (ii), in
 $\mathrm{H}(q_0)\,\mathrm{CX}(q_0, q_1)\,\mathrm{X}(q_1)$ the two qubits are maximally entangled, but
 $\mathrm{X}(q_1)$ is not a dependence of $q_0$. No operation on other qubits can change $\rho_{q_0}$
 (no-signaling). Entanglement closure therefore adds no dependence that the wire rule misses. It only adds
-operations that are not dependences. In Fig.~\ref{fig:dependence}d it adds the \numAnsYzExtra{} rotations
+operations that are not dependences. In Fig.~\ref{fig:ansatz}c it adds the \numAnsYzExtra{} purple rotations
 of $q_2$ in the second layer, which run after the last gate that can carry information from $q_2$ to $q_0$.
 
 \begin{proposition}[The wire rule distributes over criteria]\label{prop:joint}
