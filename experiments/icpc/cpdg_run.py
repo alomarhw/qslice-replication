@@ -126,7 +126,7 @@ def main() -> int:
         if a.part in ("all", "rq3"):
             groups = defaultdict(list)
             for u in csv.DictReader(open(HERE / "results" / "icpc" / "rq3" / "units.csv")):
-                groups[(u["path"], int(u["mutant"]))].append(u)
+                groups[(u["path"], int(u["mutant"].rsplit("#", 1)[1]))].append(u)
             rows = []
             for f in as_completed([ex.submit(_rq3, (p, m, us, root)) for (p, m), us in groups.items()]):
                 rows += f.result()
