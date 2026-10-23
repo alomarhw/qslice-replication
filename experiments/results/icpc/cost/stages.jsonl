@@ -1,0 +1,771 @@
+{"kind": "F-depth", "name": "d10_s2", "stage": "graph", "n_qubits": 8, "n_ops": 97, "depth": 17, "build_seconds": 0.0325, "nodes": 97, "edges": {"data": 106, "entanglement": 4230}, "peak_rss_mib": 73.3}
+{"kind": "F-depth", "name": "d10_s0", "stage": "graph", "n_qubits": 8, "n_ops": 100, "depth": 19, "build_seconds": 0.0346, "nodes": 100, "edges": {"data": 112, "entanglement": 4512}, "peak_rss_mib": 74.0}
+{"kind": "F-depth", "name": "d10_s1", "stage": "graph", "n_qubits": 8, "n_ops": 101, "depth": 19, "build_seconds": 0.0352, "nodes": 101, "edges": {"data": 114, "entanglement": 4610}, "peak_rss_mib": 73.9}
+{"kind": "F-depth", "name": "d10_s3", "stage": "graph", "n_qubits": 8, "n_ops": 100, "depth": 19, "build_seconds": 0.0346, "nodes": 100, "edges": {"data": 112, "entanglement": 4512}, "peak_rss_mib": 73.9}
+{"kind": "F-depth", "name": "d10_s3", "stage": "q:0", "lc_seconds": 0.00031, "q_seconds": 0.1791, "peak_rss_mib": 75.6}
+{"kind": "F-depth", "name": "d10_s2", "stage": "q:0", "lc_seconds": 0.00037, "q_seconds": 0.193, "peak_rss_mib": 75.0}
+{"kind": "F-depth", "name": "d10_s0", "stage": "q:0", "lc_seconds": 0.00034, "q_seconds": 0.2277, "peak_rss_mib": 75.6}
+{"kind": "F-depth", "name": "d10_s1", "stage": "q:0", "lc_seconds": 0.00034, "q_seconds": 0.2888, "peak_rss_mib": 75.9}
+{"kind": "F-depth", "name": "d10_s3", "stage": "q:1", "lc_seconds": 0.00019, "q_seconds": 0.1954, "peak_rss_mib": 76.6}
+{"kind": "F-depth", "name": "d10_s0", "stage": "q:1", "lc_seconds": 0.00013, "q_seconds": 0.1583, "peak_rss_mib": 76.3}
+{"kind": "F-depth", "name": "d10_s2", "stage": "q:1", "lc_seconds": 0.00013, "q_seconds": 0.2263, "peak_rss_mib": 76.0}
+{"kind": "F-depth", "name": "d10_s1", "stage": "q:1", "lc_seconds": 0.00012, "q_seconds": 0.1958, "peak_rss_mib": 77.4}
+{"kind": "F-depth", "name": "d10_s2", "stage": "q:2", "lc_seconds": 0.00011, "q_seconds": 0.0749, "peak_rss_mib": 76.3}
+{"kind": "F-depth", "name": "d10_s0", "stage": "q:2", "lc_seconds": 0.00011, "q_seconds": 0.1159, "peak_rss_mib": 76.3}
+{"kind": "F-depth", "name": "d10_s3", "stage": "q:2", "lc_seconds": 0.00014, "q_seconds": 0.2361, "peak_rss_mib": 77.5}
+{"kind": "F-depth", "name": "d10_s2", "stage": "q:3", "lc_seconds": 0.00012, "q_seconds": 0.1539, "peak_rss_mib": 77.2}
+{"kind": "F-depth", "name": "d10_s0", "stage": "q:3", "lc_seconds": 0.00013, "q_seconds": 0.1697, "peak_rss_mib": 76.8}
+{"kind": "F-depth", "name": "d10_s1", "stage": "q:2", "lc_seconds": 0.00013, "q_seconds": 0.2261, "peak_rss_mib": 78.0}
+{"kind": "F-depth", "name": "d10_s2", "stage": "q:4", "lc_seconds": 0.00012, "q_seconds": 0.1012, "peak_rss_mib": 77.6}
+{"kind": "F-depth", "name": "d10_s3", "stage": "q:3", "lc_seconds": 0.00018, "q_seconds": 0.201, "peak_rss_mib": 77.9}
+{"kind": "F-depth", "name": "d10_s0", "stage": "q:4", "lc_seconds": 0.00017, "q_seconds": 0.1561, "peak_rss_mib": 77.3}
+{"kind": "F-depth", "name": "d10_s1", "stage": "q:3", "lc_seconds": 0.00012, "q_seconds": 0.1408, "peak_rss_mib": 78.6}
+{"kind": "F-depth", "name": "d10_s2", "stage": "q:5", "lc_seconds": 0.00012, "q_seconds": 0.1446, "peak_rss_mib": 78.3}
+{"kind": "F-depth", "name": "d10_s1", "stage": "q:4", "lc_seconds": 0.00011, "q_seconds": 0.0876, "peak_rss_mib": 78.8}
+{"kind": "F-depth", "name": "d10_s3", "stage": "q:4", "lc_seconds": 0.00011, "q_seconds": 0.1387, "peak_rss_mib": 78.4}
+{"kind": "F-depth", "name": "d10_s0", "stage": "q:5", "lc_seconds": 0.00012, "q_seconds": 0.1796, "peak_rss_mib": 77.8}
+{"kind": "F-depth", "name": "d10_s2", "stage": "q:6", "lc_seconds": 0.00011, "q_seconds": 0.1252, "peak_rss_mib": 78.8}
+{"kind": "F-depth", "name": "d10_s2", "stage": "q:7", "lc_seconds": 0.00012, "q_seconds": 0.1031, "peak_rss_mib": 78.9}
+{"kind": "F-depth", "name": "d10_s2", "stage": "done", "lc_total": 0.0012, "q_total": 1.1222, "q_end_to_end": 1.1547, "peak_rss_mib": 78.9}
+{"kind": "F-depth", "name": "d10_s0", "stage": "q:6", "lc_seconds": 0.00012, "q_seconds": 0.1229, "peak_rss_mib": 78.1}
+{"kind": "F-depth", "name": "d10_s3", "stage": "q:5", "lc_seconds": 0.00014, "q_seconds": 0.2775, "peak_rss_mib": 79.4}
+{"kind": "F-depth", "name": "d10_s1", "stage": "q:5", "lc_seconds": 0.00014, "q_seconds": 0.2939, "peak_rss_mib": 79.1}
+{"kind": "F-depth", "name": "d10_s0", "stage": "q:7", "lc_seconds": 0.00013, "q_seconds": 0.238, "peak_rss_mib": 78.3}
+{"kind": "F-depth", "name": "d10_s0", "stage": "done", "lc_total": 0.0012, "q_total": 1.3682, "q_end_to_end": 1.4028, "peak_rss_mib": 78.3}
+{"kind": "F-depth", "name": "d10_s3", "stage": "q:6", "lc_seconds": 0.00012, "q_seconds": 0.1777, "peak_rss_mib": 79.8}
+{"kind": "F-depth", "name": "d10_s1", "stage": "q:6", "lc_seconds": 0.00017, "q_seconds": 0.1928, "peak_rss_mib": 79.4}
+{"kind": "F-depth", "name": "d10_s1", "stage": "q:7", "lc_seconds": 0.00012, "q_seconds": 0.1378, "peak_rss_mib": 79.8}
+{"kind": "F-depth", "name": "d10_s1", "stage": "done", "lc_total": 0.0012, "q_total": 1.5635, "q_end_to_end": 1.5987, "peak_rss_mib": 79.8}
+{"kind": "F-depth", "name": "d10_s3", "stage": "q:7", "lc_seconds": 0.00013, "q_seconds": 0.1899, "peak_rss_mib": 80.4}
+{"kind": "F-depth", "name": "d10_s3", "stage": "done", "lc_total": 0.0013, "q_total": 1.5954, "q_end_to_end": 1.63, "peak_rss_mib": 80.4}
+{"kind": "F-depth", "name": "d10_s4", "stage": "graph", "n_qubits": 8, "n_ops": 97, "depth": 17, "build_seconds": 0.057, "nodes": 97, "edges": {"data": 106, "entanglement": 4232}, "peak_rss_mib": 73.2}
+{"kind": "F-depth", "name": "d10_s4", "stage": "q:0", "lc_seconds": 0.00034, "q_seconds": 0.1117, "peak_rss_mib": 74.4}
+{"kind": "F-depth", "name": "d10_s4", "stage": "q:1", "lc_seconds": 0.00011, "q_seconds": 0.1304, "peak_rss_mib": 74.9}
+{"kind": "F-depth", "name": "d20_s0", "stage": "graph", "n_qubits": 8, "n_ops": 250, "depth": 44, "build_seconds": 0.2696, "nodes": 250, "edges": {"data": 290, "entanglement": 28537}, "peak_rss_mib": 91.3}
+{"kind": "F-depth", "name": "d10_s4", "stage": "q:2", "lc_seconds": 0.00012, "q_seconds": 0.1068, "peak_rss_mib": 75.3}
+{"kind": "F-depth", "name": "d10_s4", "stage": "q:3", "lc_seconds": 0.00011, "q_seconds": 0.0959, "peak_rss_mib": 75.8}
+{"kind": "F-depth", "name": "d20_s1", "stage": "graph", "n_qubits": 8, "n_ops": 247, "depth": 45, "build_seconds": 0.2723, "nodes": 247, "edges": {"data": 283, "entanglement": 27806}, "peak_rss_mib": 91.2}
+{"kind": "F-depth", "name": "d10_s4", "stage": "q:4", "lc_seconds": 0.00014, "q_seconds": 0.1861, "peak_rss_mib": 76.3}
+{"kind": "F-depth", "name": "d20_s2", "stage": "graph", "n_qubits": 8, "n_ops": 247, "depth": 46, "build_seconds": 0.2711, "nodes": 247, "edges": {"data": 284, "entanglement": 27803}, "peak_rss_mib": 93.1}
+{"kind": "F-depth", "name": "d10_s4", "stage": "q:5", "lc_seconds": 0.00011, "q_seconds": 0.1475, "peak_rss_mib": 76.9}
+{"kind": "F-depth", "name": "d10_s4", "stage": "q:6", "lc_seconds": 0.00012, "q_seconds": 0.1927, "peak_rss_mib": 77.2}
+{"kind": "F-depth", "name": "d10_s4", "stage": "q:7", "lc_seconds": 0.00012, "q_seconds": 0.1534, "peak_rss_mib": 77.3}
+{"kind": "F-depth", "name": "d10_s4", "stage": "done", "lc_total": 0.0012, "q_total": 1.1245, "q_end_to_end": 1.1815, "peak_rss_mib": 77.3}
+{"kind": "F-depth", "name": "d20_s0", "stage": "q:0", "lc_seconds": 0.00054, "q_seconds": 1.7422, "peak_rss_mib": 99.4}
+{"kind": "F-depth", "name": "d20_s2", "stage": "q:0", "lc_seconds": 0.00055, "q_seconds": 1.5904, "peak_rss_mib": 100.1}
+{"kind": "F-depth", "name": "d20_s1", "stage": "q:0", "lc_seconds": 0.00054, "q_seconds": 1.6375, "peak_rss_mib": 98.2}
+{"kind": "F-depth", "name": "d20_s3", "stage": "graph", "n_qubits": 8, "n_ops": 246, "depth": 46, "build_seconds": 0.2482, "nodes": 246, "edges": {"data": 282, "entanglement": 27561}, "peak_rss_mib": 91.6}
+{"kind": "F-depth", "name": "d20_s1", "stage": "q:1", "lc_seconds": 0.00025, "q_seconds": 0.8112, "peak_rss_mib": 103.0}
+{"kind": "F-depth", "name": "d20_s0", "stage": "q:1", "lc_seconds": 0.00028, "q_seconds": 1.3531, "peak_rss_mib": 104.2}
+{"kind": "F-depth", "name": "d20_s2", "stage": "q:1", "lc_seconds": 0.0003, "q_seconds": 1.2307, "peak_rss_mib": 105.4}
+{"kind": "F-depth", "name": "d20_s3", "stage": "q:0", "lc_seconds": 0.00051, "q_seconds": 1.1542, "peak_rss_mib": 99.0}
+{"kind": "F-depth", "name": "d20_s1", "stage": "q:2", "lc_seconds": 0.00027, "q_seconds": 1.1728, "peak_rss_mib": 105.2}
+{"kind": "F-depth", "name": "d20_s2", "stage": "q:2", "lc_seconds": 0.00025, "q_seconds": 0.9337, "peak_rss_mib": 107.1}
+{"kind": "F-depth", "name": "d20_s3", "stage": "q:1", "lc_seconds": 0.00034, "q_seconds": 0.8957, "peak_rss_mib": 103.6}
+{"kind": "F-depth", "name": "d20_s0", "stage": "q:2", "lc_seconds": 0.00029, "q_seconds": 1.4565, "peak_rss_mib": 106.1}
+{"kind": "F-depth", "name": "d20_s1", "stage": "q:3", "lc_seconds": 0.00029, "q_seconds": 1.5619, "peak_rss_mib": 107.6}
+{"kind": "F-depth", "name": "d20_s2", "stage": "q:3", "lc_seconds": 0.0003, "q_seconds": 1.7815, "peak_rss_mib": 108.6}
+{"kind": "F-depth", "name": "d20_s3", "stage": "q:2", "lc_seconds": 0.00031, "q_seconds": 1.5795, "peak_rss_mib": 106.3}
+{"kind": "F-depth", "name": "d20_s0", "stage": "q:3", "lc_seconds": 0.00027, "q_seconds": 1.3729, "peak_rss_mib": 108.1}
+{"kind": "F-depth", "name": "d20_s1", "stage": "q:4", "lc_seconds": 0.00028, "q_seconds": 1.3702, "peak_rss_mib": 110.8}
+{"kind": "F-depth", "name": "d20_s3", "stage": "q:3", "lc_seconds": 0.0003, "q_seconds": 1.4861, "peak_rss_mib": 109.7}
+{"kind": "F-depth", "name": "d20_s0", "stage": "q:4", "lc_seconds": 0.00029, "q_seconds": 1.502, "peak_rss_mib": 111.2}
+{"kind": "F-depth", "name": "d20_s2", "stage": "q:4", "lc_seconds": 0.00029, "q_seconds": 1.7255, "peak_rss_mib": 112.7}
+{"kind": "F-depth", "name": "d20_s0", "stage": "q:5", "lc_seconds": 0.00026, "q_seconds": 0.998, "peak_rss_mib": 111.9}
+{"kind": "F-depth", "name": "d20_s1", "stage": "q:5", "lc_seconds": 0.00028, "q_seconds": 1.5396, "peak_rss_mib": 111.6}
+{"kind": "F-depth", "name": "d20_s3", "stage": "q:4", "lc_seconds": 0.00029, "q_seconds": 1.3848, "peak_rss_mib": 110.0}
+{"kind": "F-depth", "name": "d20_s2", "stage": "q:5", "lc_seconds": 0.0003, "q_seconds": 1.4403, "peak_rss_mib": 114.7}
+{"kind": "F-depth", "name": "d20_s0", "stage": "q:6", "lc_seconds": 0.00028, "q_seconds": 1.3825, "peak_rss_mib": 114.0}
+{"kind": "F-depth", "name": "d20_s1", "stage": "q:6", "lc_seconds": 0.00028, "q_seconds": 1.4256, "peak_rss_mib": 113.3}
+{"kind": "F-depth", "name": "d20_s3", "stage": "q:5", "lc_seconds": 0.00026, "q_seconds": 1.111, "peak_rss_mib": 113.7}
+{"kind": "F-depth", "name": "d20_s0", "stage": "q:7", "lc_seconds": 0.0002, "q_seconds": 0.4945, "peak_rss_mib": 115.9}
+{"kind": "F-depth", "name": "d20_s0", "stage": "done", "lc_total": 0.0024, "q_total": 10.3018, "q_end_to_end": 10.5714, "peak_rss_mib": 115.9}
+{"kind": "F-depth", "name": "d20_s2", "stage": "q:6", "lc_seconds": 0.00027, "q_seconds": 1.4048, "peak_rss_mib": 116.7}
+{"kind": "F-depth", "name": "d20_s1", "stage": "q:7", "lc_seconds": 0.00026, "q_seconds": 1.2591, "peak_rss_mib": 115.3}
+{"kind": "F-depth", "name": "d20_s1", "stage": "done", "lc_total": 0.0025, "q_total": 10.778, "q_end_to_end": 11.0502, "peak_rss_mib": 115.3}
+{"kind": "F-depth", "name": "d20_s3", "stage": "q:6", "lc_seconds": 0.00031, "q_seconds": 1.4917, "peak_rss_mib": 115.8}
+{"kind": "F-depth", "name": "d20_s4", "stage": "graph", "n_qubits": 8, "n_ops": 245, "depth": 47, "build_seconds": 0.2382, "nodes": 245, "edges": {"data": 280, "entanglement": 27320}, "peak_rss_mib": 91.4}
+{"kind": "F-depth", "name": "d20_s2", "stage": "q:7", "lc_seconds": 0.00027, "q_seconds": 1.2358, "peak_rss_mib": 117.0}
+{"kind": "F-depth", "name": "d20_s2", "stage": "done", "lc_total": 0.0025, "q_total": 11.3426, "q_end_to_end": 11.6138, "peak_rss_mib": 117.0}
+{"kind": "F-depth", "name": "d20_s3", "stage": "q:7", "lc_seconds": 0.00029, "q_seconds": 1.5168, "peak_rss_mib": 115.9}
+{"kind": "F-depth", "name": "d20_s3", "stage": "done", "lc_total": 0.0026, "q_total": 10.6197, "q_end_to_end": 10.8679, "peak_rss_mib": 115.9}
+{"kind": "F-depth", "name": "d20_s4", "stage": "q:0", "lc_seconds": 0.00073, "q_seconds": 1.5346, "peak_rss_mib": 98.9}
+{"kind": "F-depth", "name": "d40_s0", "stage": "graph", "n_qubits": 8, "n_ops": 503, "depth": 95, "build_seconds": 1.149, "nodes": 503, "edges": {"data": 595, "entanglement": 116052}, "peak_rss_mib": 161.4}
+{"kind": "F-depth", "name": "d20_s4", "stage": "q:1", "lc_seconds": 0.00034, "q_seconds": 0.8875, "peak_rss_mib": 103.8}
+{"kind": "F-depth", "name": "d40_s1", "stage": "graph", "n_qubits": 8, "n_ops": 503, "depth": 94, "build_seconds": 1.1298, "nodes": 503, "edges": {"data": 595, "entanglement": 116052}, "peak_rss_mib": 158.6}
+{"kind": "F-depth", "name": "d20_s4", "stage": "q:2", "lc_seconds": 0.00024, "q_seconds": 0.8997, "peak_rss_mib": 108.2}
+{"kind": "F-depth", "name": "d40_s2", "stage": "graph", "n_qubits": 8, "n_ops": 493, "depth": 90, "build_seconds": 1.0772, "nodes": 493, "edges": {"data": 575, "entanglement": 111119}, "peak_rss_mib": 158.4}
+{"kind": "F-depth", "name": "d20_s4", "stage": "q:3", "lc_seconds": 0.00022, "q_seconds": 0.7217, "peak_rss_mib": 111.4}
+{"kind": "F-depth", "name": "d20_s4", "stage": "q:4", "lc_seconds": 0.00026, "q_seconds": 1.3122, "peak_rss_mib": 111.6}
+{"kind": "F-depth", "name": "d20_s4", "stage": "q:5", "lc_seconds": 0.00025, "q_seconds": 1.1353, "peak_rss_mib": 112.9}
+{"kind": "F-depth", "name": "d40_s0", "stage": "q:0", "lc_seconds": 0.00126, "q_seconds": 5.66, "peak_rss_mib": 184.6}
+{"kind": "F-depth", "name": "d20_s4", "stage": "q:6", "lc_seconds": 0.00028, "q_seconds": 1.4369, "peak_rss_mib": 114.2}
+{"kind": "F-depth", "name": "d40_s1", "stage": "q:0", "lc_seconds": 0.00103, "q_seconds": 6.2543, "peak_rss_mib": 178.6}
+{"kind": "F-depth", "name": "d20_s4", "stage": "q:7", "lc_seconds": 0.00027, "q_seconds": 1.3299, "peak_rss_mib": 115.7}
+{"kind": "F-depth", "name": "d20_s4", "stage": "done", "lc_total": 0.0026, "q_total": 9.2577, "q_end_to_end": 9.4959, "peak_rss_mib": 115.7}
+{"kind": "F-depth", "name": "d40_s2", "stage": "q:0", "lc_seconds": 0.00086, "q_seconds": 7.8371, "peak_rss_mib": 177.7}
+{"kind": "F-depth", "name": "d40_s3", "stage": "graph", "n_qubits": 8, "n_ops": 491, "depth": 90, "build_seconds": 1.0716, "nodes": 491, "edges": {"data": 570, "entanglement": 110145}, "peak_rss_mib": 156.9}
+{"kind": "F-depth", "name": "d40_s0", "stage": "q:1", "lc_seconds": 0.00066, "q_seconds": 6.682, "peak_rss_mib": 199.0}
+{"kind": "F-depth", "name": "d40_s1", "stage": "q:1", "lc_seconds": 0.00068, "q_seconds": 6.4219, "peak_rss_mib": 192.8}
+{"kind": "F-depth", "name": "d40_s3", "stage": "q:0", "lc_seconds": 0.00092, "q_seconds": 4.2532, "peak_rss_mib": 178.7}
+{"kind": "F-depth", "name": "d40_s2", "stage": "q:1", "lc_seconds": 0.00073, "q_seconds": 6.3738, "peak_rss_mib": 187.1}
+{"kind": "F-depth", "name": "d40_s0", "stage": "q:2", "lc_seconds": 0.00069, "q_seconds": 6.2102, "peak_rss_mib": 201.7}
+{"kind": "F-depth", "name": "d40_s3", "stage": "q:1", "lc_seconds": 0.00064, "q_seconds": 5.9904, "peak_rss_mib": 189.0}
+{"kind": "F-depth", "name": "d40_s1", "stage": "q:2", "lc_seconds": 0.00065, "q_seconds": 6.9926, "peak_rss_mib": 202.7}
+{"kind": "F-depth", "name": "d40_s2", "stage": "q:2", "lc_seconds": 0.00066, "q_seconds": 6.6188, "peak_rss_mib": 192.6}
+{"kind": "F-depth", "name": "d40_s0", "stage": "q:3", "lc_seconds": 0.0007, "q_seconds": 6.1245, "peak_rss_mib": 212.2}
+{"kind": "F-depth", "name": "d40_s3", "stage": "q:2", "lc_seconds": 0.00067, "q_seconds": 5.6663, "peak_rss_mib": 200.6}
+{"kind": "F-depth", "name": "d40_s1", "stage": "q:3", "lc_seconds": 0.00066, "q_seconds": 6.6564, "peak_rss_mib": 207.5}
+{"kind": "F-depth", "name": "d40_s2", "stage": "q:3", "lc_seconds": 0.00075, "q_seconds": 6.665, "peak_rss_mib": 200.9}
+{"kind": "F-depth", "name": "d40_s3", "stage": "q:3", "lc_seconds": 0.0006, "q_seconds": 4.3186, "peak_rss_mib": 212.0}
+{"kind": "F-depth", "name": "d40_s0", "stage": "q:4", "lc_seconds": 0.0007, "q_seconds": 6.3921, "peak_rss_mib": 216.4}
+{"kind": "F-depth", "name": "d40_s1", "stage": "q:4", "lc_seconds": 0.00072, "q_seconds": 6.479, "peak_rss_mib": 215.1}
+{"kind": "F-depth", "name": "d40_s2", "stage": "q:4", "lc_seconds": 0.00063, "q_seconds": 5.3669, "peak_rss_mib": 206.1}
+{"kind": "F-depth", "name": "d40_s3", "stage": "q:4", "lc_seconds": 0.00066, "q_seconds": 5.3211, "peak_rss_mib": 224.4}
+{"kind": "F-depth", "name": "d40_s0", "stage": "q:5", "lc_seconds": 0.00068, "q_seconds": 6.0834, "peak_rss_mib": 218.4}
+{"kind": "F-depth", "name": "d40_s2", "stage": "q:5", "lc_seconds": 0.00061, "q_seconds": 4.9217, "peak_rss_mib": 216.3}
+{"kind": "F-depth", "name": "d40_s1", "stage": "q:5", "lc_seconds": 0.0007, "q_seconds": 6.6383, "peak_rss_mib": 223.2}
+{"kind": "F-depth", "name": "d40_s3", "stage": "q:5", "lc_seconds": 0.00068, "q_seconds": 5.6809, "peak_rss_mib": 229.6}
+{"kind": "F-depth", "name": "d40_s0", "stage": "q:6", "lc_seconds": 0.00066, "q_seconds": 5.446, "peak_rss_mib": 226.2}
+{"kind": "F-depth", "name": "d40_s2", "stage": "q:6", "lc_seconds": 0.00066, "q_seconds": 6.1768, "peak_rss_mib": 218.9}
+{"kind": "F-depth", "name": "d40_s3", "stage": "q:6", "lc_seconds": 0.00061, "q_seconds": 4.8997, "peak_rss_mib": 230.9}
+{"kind": "F-depth", "name": "d40_s1", "stage": "q:6", "lc_seconds": 0.00069, "q_seconds": 6.7032, "peak_rss_mib": 227.2}
+{"kind": "F-depth", "name": "d40_s0", "stage": "q:7", "lc_seconds": 0.00067, "q_seconds": 6.5756, "peak_rss_mib": 233.8}
+{"kind": "F-depth", "name": "d40_s0", "stage": "done", "lc_total": 0.006, "q_total": 49.1739, "q_end_to_end": 50.3228, "peak_rss_mib": 233.8}
+{"kind": "F-depth", "name": "d40_s3", "stage": "q:7", "lc_seconds": 0.00068, "q_seconds": 5.9264, "peak_rss_mib": 237.2}
+{"kind": "F-depth", "name": "d40_s3", "stage": "done", "lc_total": 0.0055, "q_total": 42.0566, "q_end_to_end": 43.1282, "peak_rss_mib": 237.2}
+{"kind": "F-depth", "name": "d40_s4", "stage": "graph", "n_qubits": 8, "n_ops": 505, "depth": 91, "build_seconds": 1.0971, "nodes": 505, "edges": {"data": 598, "entanglement": 117056}, "peak_rss_mib": 160.8}
+{"kind": "F-depth", "name": "d40_s2", "stage": "q:7", "lc_seconds": 0.00064, "q_seconds": 7.2406, "peak_rss_mib": 224.0}
+{"kind": "F-depth", "name": "d40_s2", "stage": "done", "lc_total": 0.0055, "q_total": 51.2006, "q_end_to_end": 52.2777, "peak_rss_mib": 224.0}
+{"kind": "F-depth", "name": "d40_s1", "stage": "q:7", "lc_seconds": 0.00065, "q_seconds": 6.4142, "peak_rss_mib": 228.8}
+{"kind": "F-depth", "name": "d40_s1", "stage": "done", "lc_total": 0.0058, "q_total": 52.5599, "q_end_to_end": 53.6897, "peak_rss_mib": 228.8}
+{"kind": "F-depth", "name": "d40_s4", "stage": "q:0", "lc_seconds": 0.00098, "q_seconds": 5.9507, "peak_rss_mib": 183.2}
+{"kind": "F-depth", "name": "d80_s0", "stage": "graph", "n_qubits": 8, "n_ops": 1075, "depth": 197, "build_seconds": 5.588, "nodes": 1075, "edges": {"data": 1291, "entanglement": 532694}, "peak_rss_mib": 481.4}
+{"kind": "F-depth", "name": "d80_s1", "stage": "graph", "n_qubits": 8, "n_ops": 1056, "depth": 189, "build_seconds": 5.2266, "nodes": 1056, "edges": {"data": 1253, "entanglement": 512535}, "peak_rss_mib": 470.0}
+{"kind": "F-depth", "name": "d80_s2", "stage": "graph", "n_qubits": 8, "n_ops": 1033, "depth": 187, "build_seconds": 5.0144, "nodes": 1033, "edges": {"data": 1208, "entanglement": 488610}, "peak_rss_mib": 445.8}
+{"kind": "F-depth", "name": "d40_s4", "stage": "q:1", "lc_seconds": 0.00082, "q_seconds": 6.161, "peak_rss_mib": 196.1}
+{"kind": "F-depth", "name": "d40_s4", "stage": "q:2", "lc_seconds": 0.00065, "q_seconds": 5.0872, "peak_rss_mib": 207.4}
+{"kind": "F-depth", "name": "d80_s2", "stage": "q:0", "lc_seconds": 0.0021, "q_seconds": 14.6633, "peak_rss_mib": 500.7}
+{"kind": "F-depth", "name": "d40_s4", "stage": "q:3", "lc_seconds": 0.0007, "q_seconds": 6.353, "peak_rss_mib": 214.5}
+{"kind": "F-depth", "name": "d80_s0", "stage": "q:0", "lc_seconds": 0.00247, "q_seconds": 17.063, "peak_rss_mib": 539.5}
+{"kind": "F-depth", "name": "d80_s1", "stage": "q:0", "lc_seconds": 0.00201, "q_seconds": 19.007, "peak_rss_mib": 522.1}
+{"kind": "F-depth", "name": "d40_s4", "stage": "q:4", "lc_seconds": 0.00071, "q_seconds": 7.0224, "peak_rss_mib": 222.7}
+{"kind": "F-depth", "name": "d40_s4", "stage": "q:5", "lc_seconds": 0.00071, "q_seconds": 5.744, "peak_rss_mib": 228.6}
+{"kind": "F-depth", "name": "d80_s2", "stage": "q:1", "lc_seconds": 0.00186, "q_seconds": 14.7349, "peak_rss_mib": 529.9}
+{"kind": "F-depth", "name": "d80_s0", "stage": "q:1", "lc_seconds": 0.00197, "q_seconds": 16.2831, "peak_rss_mib": 561.4}
+{"kind": "F-depth", "name": "d40_s4", "stage": "q:6", "lc_seconds": 0.00067, "q_seconds": 6.7652, "peak_rss_mib": 230.4}
+{"kind": "F-depth", "name": "d80_s1", "stage": "q:1", "lc_seconds": 0.00186, "q_seconds": 18.5777, "peak_rss_mib": 540.2}
+{"kind": "F-depth", "name": "d40_s4", "stage": "q:7", "lc_seconds": 0.00068, "q_seconds": 6.844, "peak_rss_mib": 232.4}
+{"kind": "F-depth", "name": "d40_s4", "stage": "done", "lc_total": 0.0059, "q_total": 49.9275, "q_end_to_end": 51.0246, "peak_rss_mib": 232.4}
+{"kind": "F-depth", "name": "d80_s2", "stage": "q:2", "lc_seconds": 0.00176, "q_seconds": 13.272, "peak_rss_mib": 543.8}
+{"kind": "F-depth", "name": "d80_s3", "stage": "graph", "n_qubits": 8, "n_ops": 1060, "depth": 199, "build_seconds": 5.2493, "nodes": 1060, "edges": {"data": 1265, "entanglement": 516735}, "peak_rss_mib": 469.0}
+{"kind": "F-depth", "name": "d80_s0", "stage": "q:2", "lc_seconds": 0.002, "q_seconds": 17.4182, "peak_rss_mib": 583.7}
+{"kind": "F-depth", "name": "d80_s1", "stage": "q:2", "lc_seconds": 0.00184, "q_seconds": 19.7324, "peak_rss_mib": 564.7}
+{"kind": "F-depth", "name": "d80_s2", "stage": "q:3", "lc_seconds": 0.00179, "q_seconds": 15.5966, "peak_rss_mib": 559.2}
+{"kind": "F-depth", "name": "d80_s3", "stage": "q:0", "lc_seconds": 0.00238, "q_seconds": 17.8063, "peak_rss_mib": 523.2}
+{"kind": "F-depth", "name": "d80_s0", "stage": "q:3", "lc_seconds": 0.00205, "q_seconds": 17.7788, "peak_rss_mib": 593.3}
+{"kind": "F-depth", "name": "d80_s2", "stage": "q:4", "lc_seconds": 0.00191, "q_seconds": 16.9962, "peak_rss_mib": 565.7}
+{"kind": "F-depth", "name": "d80_s1", "stage": "q:3", "lc_seconds": 0.00199, "q_seconds": 18.9185, "peak_rss_mib": 575.0}
+{"kind": "F-depth", "name": "d80_s3", "stage": "q:1", "lc_seconds": 0.00188, "q_seconds": 13.2139, "peak_rss_mib": 559.8}
+{"kind": "F-depth", "name": "d80_s0", "stage": "q:4", "lc_seconds": 0.00201, "q_seconds": 15.9355, "peak_rss_mib": 607.9}
+{"kind": "F-depth", "name": "d80_s2", "stage": "q:5", "lc_seconds": 0.00182, "q_seconds": 14.6869, "peak_rss_mib": 577.1}
+{"kind": "F-depth", "name": "d80_s3", "stage": "q:2", "lc_seconds": 0.00194, "q_seconds": 14.0546, "peak_rss_mib": 572.2}
+{"kind": "F-depth", "name": "d80_s1", "stage": "q:4", "lc_seconds": 0.00193, "q_seconds": 19.5705, "peak_rss_mib": 583.0}
+{"kind": "F-depth", "name": "d80_s0", "stage": "q:5", "lc_seconds": 0.00193, "q_seconds": 15.3826, "peak_rss_mib": 618.5}
+{"kind": "F-depth", "name": "d80_s2", "stage": "q:6", "lc_seconds": 0.00177, "q_seconds": 14.4385, "peak_rss_mib": 583.0}
+{"kind": "F-depth", "name": "d80_s3", "stage": "q:3", "lc_seconds": 0.0019, "q_seconds": 10.7939, "peak_rss_mib": 590.8}
+{"kind": "F-depth", "name": "d80_s0", "stage": "limit", "limit": "wall", "seconds": 120.3, "peak_rss_mib": 631.0, "stderr": ""}
+{"kind": "F-depth", "name": "d80_s1", "stage": "limit", "limit": "wall", "seconds": 120.3, "peak_rss_mib": 584.6, "stderr": ""}
+{"kind": "F-depth", "name": "d80_s2", "stage": "limit", "limit": "wall", "seconds": 120.1, "peak_rss_mib": 590.5, "stderr": ""}
+{"kind": "F-depth", "name": "d80_s3", "stage": "q:4", "lc_seconds": 0.00182, "q_seconds": 13.9281, "peak_rss_mib": 594.2}
+{"kind": "F-depth", "name": "d80_s4", "stage": "graph", "n_qubits": 8, "n_ops": 1044, "depth": 188, "build_seconds": 5.1693, "nodes": 1044, "edges": {"data": 1230, "entanglement": 499986}, "peak_rss_mib": 456.2}
+{"kind": "F-depth", "name": "d80_s3", "stage": "q:5", "lc_seconds": 0.00238, "q_seconds": 10.9547, "peak_rss_mib": 604.9}
+{"kind": "F-depth", "name": "d80_s4", "stage": "q:0", "lc_seconds": 0.00186, "q_seconds": 13.6658, "peak_rss_mib": 507.6}
+{"kind": "F-depth", "name": "d160_s1", "stage": "graph", "n_qubits": 8, "n_ops": 2101, "depth": 380, "build_seconds": 21.7172, "nodes": 2101, "edges": {"data": 2493, "entanglement": 2028875}, "peak_rss_mib": 1588.3}
+{"kind": "F-depth", "name": "d160_s0", "stage": "graph", "n_qubits": 8, "n_ops": 2119, "depth": 391, "build_seconds": 22.0089, "nodes": 2119, "edges": {"data": 2535, "entanglement": 2066754}, "peak_rss_mib": 1612.9}
+{"kind": "F-depth", "name": "d80_s3", "stage": "q:6", "lc_seconds": 0.00199, "q_seconds": 12.3068, "peak_rss_mib": 611.1}
+{"kind": "F-depth", "name": "d80_s4", "stage": "q:1", "lc_seconds": 0.00248, "q_seconds": 17.3608, "peak_rss_mib": 532.3}
+{"kind": "F-depth", "name": "d80_s3", "stage": "q:7", "lc_seconds": 0.00189, "q_seconds": 11.3051, "peak_rss_mib": 612.2}
+{"kind": "F-depth", "name": "d80_s3", "stage": "done", "lc_total": 0.0162, "q_total": 104.3635, "q_end_to_end": 109.6128, "peak_rss_mib": 612.2}
+{"kind": "F-depth", "name": "d80_s4", "stage": "q:2", "lc_seconds": 0.00179, "q_seconds": 15.6087, "peak_rss_mib": 550.9}
+{"kind": "F-depth", "name": "d160_s1", "stage": "q:0", "lc_seconds": 0.0058, "q_seconds": 39.7123, "peak_rss_mib": 1836.5}
+{"kind": "F-depth", "name": "d160_s0", "stage": "q:0", "lc_seconds": 0.00679, "q_seconds": 39.5014, "peak_rss_mib": 1860.1}
+{"kind": "F-depth", "name": "d160_s2", "stage": "graph", "n_qubits": 8, "n_ops": 2098, "depth": 388, "build_seconds": 21.1932, "nodes": 2098, "edges": {"data": 2486, "entanglement": 2022591}, "peak_rss_mib": 1581.6}
+{"kind": "F-depth", "name": "d80_s4", "stage": "q:3", "lc_seconds": 0.002, "q_seconds": 13.4823, "peak_rss_mib": 562.3}
+{"kind": "F-depth", "name": "d80_s4", "stage": "q:4", "lc_seconds": 0.00177, "q_seconds": 15.9608, "peak_rss_mib": 573.5}
+{"kind": "F-depth", "name": "d160_s0", "stage": "q:1", "lc_seconds": 0.0058, "q_seconds": 33.832, "peak_rss_mib": 1942.1}
+{"kind": "F-depth", "name": "d80_s4", "stage": "q:5", "lc_seconds": 0.00193, "q_seconds": 16.1794, "peak_rss_mib": 583.6}
+{"kind": "F-depth", "name": "d160_s2", "stage": "q:0", "lc_seconds": 0.00603, "q_seconds": 34.1441, "peak_rss_mib": 1828.8}
+{"kind": "F-depth", "name": "d160_s1", "stage": "q:1", "lc_seconds": 0.00533, "q_seconds": 42.0739, "peak_rss_mib": 1920.2}
+{"kind": "F-depth", "name": "d80_s4", "stage": "q:6", "lc_seconds": 0.00184, "q_seconds": 13.9456, "peak_rss_mib": 585.7}
+{"kind": "F-depth", "name": "d80_s4", "stage": "limit", "limit": "wall", "seconds": 120.2, "peak_rss_mib": 588.4, "stderr": ""}
+{"kind": "F-depth", "name": "d160_s0", "stage": "limit", "limit": "wall", "seconds": 120.3, "peak_rss_mib": 1974.9, "stderr": ""}
+{"kind": "F-depth", "name": "d160_s1", "stage": "limit", "limit": "wall", "seconds": 120.5, "peak_rss_mib": 1965.7, "stderr": ""}
+{"kind": "width-F-ghz", "name": "n4_k2", "stage": "graph", "n_qubits": 4, "n_ops": 6, "depth": 6, "build_seconds": 0.001, "nodes": 6, "edges": {"data": 6, "entanglement": 9}, "peak_rss_mib": 68.3}
+{"kind": "width-F-ghz", "name": "n4_k2", "stage": "q:0", "lc_seconds": 0.00033, "q_seconds": 0.0024, "peak_rss_mib": 68.4}
+{"kind": "width-F-ghz", "name": "n4_k2", "stage": "q:1", "lc_seconds": 4e-05, "q_seconds": 0.0041, "peak_rss_mib": 68.6}
+{"kind": "width-F-ghz", "name": "n4_k2", "stage": "q:2", "lc_seconds": 4e-05, "q_seconds": 0.0046, "peak_rss_mib": 68.7}
+{"kind": "width-F-ghz", "name": "n4_k2", "stage": "q:3", "lc_seconds": 4e-05, "q_seconds": 0.0044, "peak_rss_mib": 68.7}
+{"kind": "width-F-ghz", "name": "n4_k2", "stage": "done", "lc_total": 0.0004, "q_total": 0.0155, "q_end_to_end": 0.0165, "peak_rss_mib": 68.7}
+{"kind": "width-F-ghz", "name": "n5_k2", "stage": "graph", "n_qubits": 5, "n_ops": 7, "depth": 7, "build_seconds": 0.0007, "nodes": 7, "edges": {"data": 7, "entanglement": 14}, "peak_rss_mib": 69.0}
+{"kind": "width-F-ghz", "name": "n5_k2", "stage": "q:0", "lc_seconds": 0.00024, "q_seconds": 0.0018, "peak_rss_mib": 69.2}
+{"kind": "width-F-ghz", "name": "n5_k2", "stage": "q:1", "lc_seconds": 3e-05, "q_seconds": 0.0026, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n5_k2", "stage": "q:2", "lc_seconds": 4e-05, "q_seconds": 0.0041, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n5_k2", "stage": "q:3", "lc_seconds": 4e-05, "q_seconds": 0.0044, "peak_rss_mib": 69.5}
+{"kind": "width-F-ghz", "name": "n5_k2", "stage": "q:4", "lc_seconds": 4e-05, "q_seconds": 0.0056, "peak_rss_mib": 69.5}
+{"kind": "width-F-ghz", "name": "n5_k2", "stage": "done", "lc_total": 0.0004, "q_total": 0.0185, "q_end_to_end": 0.0192, "peak_rss_mib": 69.5}
+{"kind": "width-F-ghz", "name": "n6_k3", "stage": "graph", "n_qubits": 6, "n_ops": 9, "depth": 9, "build_seconds": 0.001, "nodes": 9, "edges": {"data": 10, "entanglement": 26}, "peak_rss_mib": 69.0}
+{"kind": "width-F-ghz", "name": "n6_k3", "stage": "q:0", "lc_seconds": 0.00023, "q_seconds": 0.0019, "peak_rss_mib": 69.1}
+{"kind": "width-F-ghz", "name": "n6_k3", "stage": "q:1", "lc_seconds": 3e-05, "q_seconds": 0.0029, "peak_rss_mib": 69.3}
+{"kind": "width-F-ghz", "name": "n6_k3", "stage": "q:2", "lc_seconds": 3e-05, "q_seconds": 0.005, "peak_rss_mib": 69.3}
+{"kind": "width-F-ghz", "name": "n6_k3", "stage": "q:3", "lc_seconds": 4e-05, "q_seconds": 0.0059, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n6_k3", "stage": "q:4", "lc_seconds": 4e-05, "q_seconds": 0.0057, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n6_k3", "stage": "q:5", "lc_seconds": 4e-05, "q_seconds": 0.0064, "peak_rss_mib": 69.5}
+{"kind": "width-F-ghz", "name": "n6_k3", "stage": "done", "lc_total": 0.0004, "q_total": 0.0278, "q_end_to_end": 0.0288, "peak_rss_mib": 69.5}
+{"kind": "width-F-ghz", "name": "n7_k3", "stage": "graph", "n_qubits": 7, "n_ops": 10, "depth": 10, "build_seconds": 0.0011, "nodes": 10, "edges": {"data": 11, "entanglement": 34}, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n7_k3", "stage": "q:0", "lc_seconds": 0.00039, "q_seconds": 0.0029, "peak_rss_mib": 69.5}
+{"kind": "width-F-ghz", "name": "n7_k3", "stage": "q:1", "lc_seconds": 4e-05, "q_seconds": 0.0034, "peak_rss_mib": 69.7}
+{"kind": "width-F-ghz", "name": "n7_k3", "stage": "q:2", "lc_seconds": 4e-05, "q_seconds": 0.0039, "peak_rss_mib": 69.8}
+{"kind": "width-F-ghz", "name": "n7_k3", "stage": "q:3", "lc_seconds": 4e-05, "q_seconds": 0.007, "peak_rss_mib": 69.8}
+{"kind": "width-F-ghz", "name": "n7_k3", "stage": "q:4", "lc_seconds": 4e-05, "q_seconds": 0.0073, "peak_rss_mib": 69.8}
+{"kind": "width-F-ghz", "name": "n7_k3", "stage": "q:5", "lc_seconds": 4e-05, "q_seconds": 0.0074, "peak_rss_mib": 69.8}
+{"kind": "width-F-ghz", "name": "n7_k3", "stage": "q:6", "lc_seconds": 4e-05, "q_seconds": 0.008, "peak_rss_mib": 69.9}
+{"kind": "width-F-ghz", "name": "n7_k3", "stage": "done", "lc_total": 0.0006, "q_total": 0.0399, "q_end_to_end": 0.041, "peak_rss_mib": 69.9}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "graph", "n_qubits": 8, "n_ops": 12, "depth": 12, "build_seconds": 0.0014, "nodes": 12, "edges": {"data": 14, "entanglement": 52}, "peak_rss_mib": 68.7}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "q:0", "lc_seconds": 0.00026, "q_seconds": 0.0026, "peak_rss_mib": 68.9}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "q:1", "lc_seconds": 3e-05, "q_seconds": 0.0033, "peak_rss_mib": 69.0}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "q:2", "lc_seconds": 3e-05, "q_seconds": 0.0044, "peak_rss_mib": 69.1}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "q:3", "lc_seconds": 5e-05, "q_seconds": 0.009, "peak_rss_mib": 69.1}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "q:4", "lc_seconds": 5e-05, "q_seconds": 0.0096, "peak_rss_mib": 69.1}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "q:5", "lc_seconds": 5e-05, "q_seconds": 0.0096, "peak_rss_mib": 69.3}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "q:6", "lc_seconds": 5e-05, "q_seconds": 0.0106, "peak_rss_mib": 69.3}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "q:7", "lc_seconds": 5e-05, "q_seconds": 0.0106, "peak_rss_mib": 69.3}
+{"kind": "width-F-ghz", "name": "n8_k4", "stage": "done", "lc_total": 0.0006, "q_total": 0.0597, "q_end_to_end": 0.0611, "peak_rss_mib": 69.3}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "graph", "n_qubits": 9, "n_ops": 13, "depth": 13, "build_seconds": 0.0015, "nodes": 13, "edges": {"data": 15, "entanglement": 63}, "peak_rss_mib": 68.9}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "q:0", "lc_seconds": 0.00029, "q_seconds": 0.0033, "peak_rss_mib": 69.1}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "q:1", "lc_seconds": 4e-05, "q_seconds": 0.0037, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "q:2", "lc_seconds": 4e-05, "q_seconds": 0.0047, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "q:3", "lc_seconds": 4e-05, "q_seconds": 0.0057, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "q:4", "lc_seconds": 4e-05, "q_seconds": 0.0104, "peak_rss_mib": 69.5}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "q:5", "lc_seconds": 5e-05, "q_seconds": 0.0109, "peak_rss_mib": 69.7}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "q:6", "lc_seconds": 5e-05, "q_seconds": 0.0116, "peak_rss_mib": 69.7}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "q:7", "lc_seconds": 5e-05, "q_seconds": 0.0112, "peak_rss_mib": 69.7}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "q:8", "lc_seconds": 5e-05, "q_seconds": 0.0121, "peak_rss_mib": 69.9}
+{"kind": "width-F-ghz", "name": "n9_k4", "stage": "done", "lc_total": 0.0006, "q_total": 0.0736, "q_end_to_end": 0.0751, "peak_rss_mib": 69.9}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "graph", "n_qubits": 10, "n_ops": 15, "depth": 15, "build_seconds": 0.0018, "nodes": 15, "edges": {"data": 18, "entanglement": 87}, "peak_rss_mib": 69.2}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:0", "lc_seconds": 0.00025, "q_seconds": 0.0031, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:1", "lc_seconds": 3e-05, "q_seconds": 0.0041, "peak_rss_mib": 69.7}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:2", "lc_seconds": 3e-05, "q_seconds": 0.0049, "peak_rss_mib": 69.7}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:3", "lc_seconds": 3e-05, "q_seconds": 0.0064, "peak_rss_mib": 69.8}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:4", "lc_seconds": 4e-05, "q_seconds": 0.0128, "peak_rss_mib": 70.0}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:5", "lc_seconds": 5e-05, "q_seconds": 0.0133, "peak_rss_mib": 70.0}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:6", "lc_seconds": 5e-05, "q_seconds": 0.014, "peak_rss_mib": 70.1}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:7", "lc_seconds": 6e-05, "q_seconds": 0.0146, "peak_rss_mib": 70.3}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:8", "lc_seconds": 5e-05, "q_seconds": 0.0144, "peak_rss_mib": 70.5}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "q:9", "lc_seconds": 5e-05, "q_seconds": 0.0152, "peak_rss_mib": 70.5}
+{"kind": "width-F-ghz", "name": "n10_k5", "stage": "done", "lc_total": 0.0006, "q_total": 0.1028, "q_end_to_end": 0.1045, "peak_rss_mib": 70.5}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "graph", "n_qubits": 11, "n_ops": 16, "depth": 16, "build_seconds": 0.0019, "nodes": 16, "edges": {"data": 19, "entanglement": 101}, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:0", "lc_seconds": 0.00025, "q_seconds": 0.0038, "peak_rss_mib": 69.7}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:1", "lc_seconds": 4e-05, "q_seconds": 0.0047, "peak_rss_mib": 69.9}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:2", "lc_seconds": 4e-05, "q_seconds": 0.0061, "peak_rss_mib": 70.1}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:3", "lc_seconds": 4e-05, "q_seconds": 0.0073, "peak_rss_mib": 70.3}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:4", "lc_seconds": 4e-05, "q_seconds": 0.0096, "peak_rss_mib": 70.5}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:5", "lc_seconds": 5e-05, "q_seconds": 0.0158, "peak_rss_mib": 70.6}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:6", "lc_seconds": 5e-05, "q_seconds": 0.0164, "peak_rss_mib": 70.7}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:7", "lc_seconds": 5e-05, "q_seconds": 0.0179, "peak_rss_mib": 71.0}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:8", "lc_seconds": 5e-05, "q_seconds": 0.0174, "peak_rss_mib": 71.2}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:9", "lc_seconds": 5e-05, "q_seconds": 0.0182, "peak_rss_mib": 71.3}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "q:10", "lc_seconds": 5e-05, "q_seconds": 0.0181, "peak_rss_mib": 71.5}
+{"kind": "width-F-ghz", "name": "n11_k5", "stage": "done", "lc_total": 0.0007, "q_total": 0.1352, "q_end_to_end": 0.1371, "peak_rss_mib": 71.5}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "graph", "n_qubits": 12, "n_ops": 18, "depth": 18, "build_seconds": 0.0021, "nodes": 18, "edges": {"data": 22, "entanglement": 131}, "peak_rss_mib": 69.4}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:0", "lc_seconds": 0.00025, "q_seconds": 0.0049, "peak_rss_mib": 69.6}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:1", "lc_seconds": 4e-05, "q_seconds": 0.0058, "peak_rss_mib": 69.9}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:2", "lc_seconds": 4e-05, "q_seconds": 0.0069, "peak_rss_mib": 70.0}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:3", "lc_seconds": 4e-05, "q_seconds": 0.0084, "peak_rss_mib": 70.1}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:4", "lc_seconds": 4e-05, "q_seconds": 0.01, "peak_rss_mib": 70.2}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:5", "lc_seconds": 5e-05, "q_seconds": 0.0198, "peak_rss_mib": 70.3}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:6", "lc_seconds": 5e-05, "q_seconds": 0.0211, "peak_rss_mib": 70.5}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:7", "lc_seconds": 5e-05, "q_seconds": 0.0214, "peak_rss_mib": 70.6}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:8", "lc_seconds": 5e-05, "q_seconds": 0.0231, "peak_rss_mib": 71.3}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:9", "lc_seconds": 5e-05, "q_seconds": 0.0225, "peak_rss_mib": 71.3}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:10", "lc_seconds": 5e-05, "q_seconds": 0.0225, "peak_rss_mib": 71.4}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "q:11", "lc_seconds": 5e-05, "q_seconds": 0.0234, "peak_rss_mib": 71.5}
+{"kind": "width-F-ghz", "name": "n12_k6", "stage": "done", "lc_total": 0.0008, "q_total": 0.1899, "q_end_to_end": 0.192, "peak_rss_mib": 71.5}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "graph", "n_qubits": 13, "n_ops": 19, "depth": 19, "build_seconds": 0.004, "nodes": 19, "edges": {"data": 23, "entanglement": 148}, "peak_rss_mib": 68.4}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:0", "lc_seconds": 0.00032, "q_seconds": 0.0091, "peak_rss_mib": 69.6}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:1", "lc_seconds": 5e-05, "q_seconds": 0.008, "peak_rss_mib": 70.7}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:2", "lc_seconds": 4e-05, "q_seconds": 0.0083, "peak_rss_mib": 70.7}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:3", "lc_seconds": 3e-05, "q_seconds": 0.0106, "peak_rss_mib": 70.9}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:4", "lc_seconds": 4e-05, "q_seconds": 0.0126, "peak_rss_mib": 71.1}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:5", "lc_seconds": 4e-05, "q_seconds": 0.0153, "peak_rss_mib": 71.1}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:6", "lc_seconds": 5e-05, "q_seconds": 0.0283, "peak_rss_mib": 71.2}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:7", "lc_seconds": 5e-05, "q_seconds": 0.0308, "peak_rss_mib": 72.9}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:8", "lc_seconds": 5e-05, "q_seconds": 0.0306, "peak_rss_mib": 73.6}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:9", "lc_seconds": 5e-05, "q_seconds": 0.0294, "peak_rss_mib": 73.6}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:10", "lc_seconds": 5e-05, "q_seconds": 0.0309, "peak_rss_mib": 73.7}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:11", "lc_seconds": 5e-05, "q_seconds": 0.0317, "peak_rss_mib": 74.5}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "q:12", "lc_seconds": 5e-05, "q_seconds": 0.0324, "peak_rss_mib": 74.9}
+{"kind": "width-F-ghz", "name": "n13_k6", "stage": "done", "lc_total": 0.0009, "q_total": 0.278, "q_end_to_end": 0.2821, "peak_rss_mib": 74.9}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "graph", "n_qubits": 14, "n_ops": 21, "depth": 21, "build_seconds": 0.0027, "nodes": 21, "edges": {"data": 26, "entanglement": 184}, "peak_rss_mib": 69.2}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:0", "lc_seconds": 0.00025, "q_seconds": 0.0138, "peak_rss_mib": 73.4}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:1", "lc_seconds": 6e-05, "q_seconds": 0.0145, "peak_rss_mib": 76.0}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:2", "lc_seconds": 5e-05, "q_seconds": 0.0166, "peak_rss_mib": 77.1}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:3", "lc_seconds": 4e-05, "q_seconds": 0.0259, "peak_rss_mib": 81.3}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:4", "lc_seconds": 7e-05, "q_seconds": 0.0238, "peak_rss_mib": 81.8}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:5", "lc_seconds": 5e-05, "q_seconds": 0.0325, "peak_rss_mib": 83.6}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:6", "lc_seconds": 6e-05, "q_seconds": 0.079, "peak_rss_mib": 87.7}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:7", "lc_seconds": 8e-05, "q_seconds": 0.0776, "peak_rss_mib": 89.7}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:8", "lc_seconds": 8e-05, "q_seconds": 0.0683, "peak_rss_mib": 90.1}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:9", "lc_seconds": 7e-05, "q_seconds": 0.0722, "peak_rss_mib": 91.4}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:10", "lc_seconds": 6e-05, "q_seconds": 0.0749, "peak_rss_mib": 92.2}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:11", "lc_seconds": 5e-05, "q_seconds": 0.0703, "peak_rss_mib": 92.3}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:12", "lc_seconds": 6e-05, "q_seconds": 0.0747, "peak_rss_mib": 93.3}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "q:13", "lc_seconds": 5e-05, "q_seconds": 0.0763, "peak_rss_mib": 94.6}
+{"kind": "width-F-ghz", "name": "n14_k7", "stage": "done", "lc_total": 0.001, "q_total": 0.7202, "q_end_to_end": 0.7229, "peak_rss_mib": 94.6}
+{"kind": "width-F-inv", "name": "w4_d10", "stage": "graph", "n_qubits": 4, "n_ops": 32, "depth": 21, "build_seconds": 0.0042, "nodes": 32, "edges": {"data": 34, "entanglement": 351}, "peak_rss_mib": 69.5}
+{"kind": "width-F-inv", "name": "w4_d10", "stage": "q:0", "lc_seconds": 0.00025, "q_seconds": 0.029, "peak_rss_mib": 70.0}
+{"kind": "width-F-inv", "name": "w4_d10", "stage": "q:1", "lc_seconds": 7e-05, "q_seconds": 0.0239, "peak_rss_mib": 70.2}
+{"kind": "width-F-inv", "name": "w4_d10", "stage": "q:2", "lc_seconds": 5e-05, "q_seconds": 0.0098, "peak_rss_mib": 70.2}
+{"kind": "width-F-inv", "name": "w4_d10", "stage": "q:3", "lc_seconds": 5e-05, "q_seconds": 0.0105, "peak_rss_mib": 70.3}
+{"kind": "width-F-inv", "name": "w4_d10", "stage": "done", "lc_total": 0.0004, "q_total": 0.0732, "q_end_to_end": 0.0774, "peak_rss_mib": 70.3}
+{"kind": "width-F-inv", "name": "w5_d10", "stage": "graph", "n_qubits": 5, "n_ops": 32, "depth": 25, "build_seconds": 0.0054, "nodes": 32, "edges": {"data": 45, "entanglement": 448}, "peak_rss_mib": 69.2}
+{"kind": "width-F-inv", "name": "w5_d10", "stage": "q:0", "lc_seconds": 0.00029, "q_seconds": 0.0356, "peak_rss_mib": 69.8}
+{"kind": "width-F-inv", "name": "w5_d10", "stage": "q:1", "lc_seconds": 7e-05, "q_seconds": 0.0334, "peak_rss_mib": 70.1}
+{"kind": "width-F-inv", "name": "w5_d10", "stage": "q:2", "lc_seconds": 7e-05, "q_seconds": 0.0366, "peak_rss_mib": 70.3}
+{"kind": "width-F-inv", "name": "w5_d10", "stage": "q:3", "lc_seconds": 4e-05, "q_seconds": 0.0134, "peak_rss_mib": 70.4}
+{"kind": "width-F-inv", "name": "w5_d10", "stage": "q:4", "lc_seconds": 5e-05, "q_seconds": 0.0145, "peak_rss_mib": 70.5}
+{"kind": "width-F-inv", "name": "w5_d10", "stage": "done", "lc_total": 0.0005, "q_total": 0.1336, "q_end_to_end": 0.139, "peak_rss_mib": 70.5}
+{"kind": "F-depth", "name": "d160_s2", "stage": "q:1", "lc_seconds": 0.00544, "q_seconds": 36.8631, "peak_rss_mib": 1906.6}
+{"kind": "width-F-inv", "name": "w6_d10", "stage": "graph", "n_qubits": 6, "n_ops": 66, "depth": 27, "build_seconds": 0.0151, "nodes": 66, "edges": {"data": 71, "entanglement": 1697}, "peak_rss_mib": 70.5}
+{"kind": "width-F-inv", "name": "w6_d10", "stage": "q:0", "lc_seconds": 0.00031, "q_seconds": 0.082, "peak_rss_mib": 71.5}
+{"kind": "width-F-inv", "name": "w6_d10", "stage": "q:1", "lc_seconds": 0.0001, "q_seconds": 0.095, "peak_rss_mib": 71.8}
+{"kind": "width-F-inv", "name": "w6_d10", "stage": "q:2", "lc_seconds": 0.0001, "q_seconds": 0.1125, "peak_rss_mib": 72.0}
+{"kind": "width-F-inv", "name": "w6_d10", "stage": "q:3", "lc_seconds": 6e-05, "q_seconds": 0.0247, "peak_rss_mib": 72.0}
+{"kind": "width-F-inv", "name": "w6_d10", "stage": "q:4", "lc_seconds": 6e-05, "q_seconds": 0.0254, "peak_rss_mib": 72.2}
+{"kind": "width-F-inv", "name": "w6_d10", "stage": "q:5", "lc_seconds": 6e-05, "q_seconds": 0.0269, "peak_rss_mib": 72.3}
+{"kind": "width-F-inv", "name": "w6_d10", "stage": "done", "lc_total": 0.0007, "q_total": 0.3665, "q_end_to_end": 0.3816, "peak_rss_mib": 72.3}
+{"kind": "width-F-inv", "name": "w7_d10", "stage": "graph", "n_qubits": 7, "n_ops": 94, "depth": 28, "build_seconds": 0.0284, "nodes": 94, "edges": {"data": 94, "entanglement": 3513}, "peak_rss_mib": 71.9}
+{"kind": "width-F-inv", "name": "w7_d10", "stage": "q:0", "lc_seconds": 0.00029, "q_seconds": 0.0534, "peak_rss_mib": 72.9}
+{"kind": "width-F-inv", "name": "w7_d10", "stage": "q:1", "lc_seconds": 8e-05, "q_seconds": 0.0328, "peak_rss_mib": 73.0}
+{"kind": "width-F-inv", "name": "w7_d10", "stage": "q:2", "lc_seconds": 8e-05, "q_seconds": 0.0373, "peak_rss_mib": 73.3}
+{"kind": "width-F-inv", "name": "w7_d10", "stage": "q:3", "lc_seconds": 8e-05, "q_seconds": 0.0422, "peak_rss_mib": 73.7}
+{"kind": "width-F-inv", "name": "w7_d10", "stage": "q:4", "lc_seconds": 7e-05, "q_seconds": 0.0381, "peak_rss_mib": 73.9}
+{"kind": "width-F-inv", "name": "w7_d10", "stage": "q:5", "lc_seconds": 7e-05, "q_seconds": 0.0428, "peak_rss_mib": 74.3}
+{"kind": "width-F-inv", "name": "w7_d10", "stage": "q:6", "lc_seconds": 7e-05, "q_seconds": 0.0428, "peak_rss_mib": 74.8}
+{"kind": "width-F-inv", "name": "w7_d10", "stage": "done", "lc_total": 0.0007, "q_total": 0.2895, "q_end_to_end": 0.3179, "peak_rss_mib": 74.8}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "graph", "n_qubits": 8, "n_ops": 60, "depth": 29, "build_seconds": 0.0159, "nodes": 60, "edges": {"data": 84, "entanglement": 1649}, "peak_rss_mib": 70.6}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "q:0", "lc_seconds": 0.0003, "q_seconds": 0.0986, "peak_rss_mib": 71.6}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "q:1", "lc_seconds": 0.0001, "q_seconds": 0.0921, "peak_rss_mib": 72.1}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "q:2", "lc_seconds": 0.0001, "q_seconds": 0.1058, "peak_rss_mib": 72.5}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "q:3", "lc_seconds": 9e-05, "q_seconds": 0.0959, "peak_rss_mib": 72.7}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "q:4", "lc_seconds": 6e-05, "q_seconds": 0.0275, "peak_rss_mib": 72.8}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "q:5", "lc_seconds": 6e-05, "q_seconds": 0.0291, "peak_rss_mib": 72.9}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "q:6", "lc_seconds": 6e-05, "q_seconds": 0.0327, "peak_rss_mib": 73.0}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "q:7", "lc_seconds": 6e-05, "q_seconds": 0.0344, "peak_rss_mib": 73.2}
+{"kind": "width-F-inv", "name": "w8_d10", "stage": "done", "lc_total": 0.0008, "q_total": 0.5162, "q_end_to_end": 0.532, "peak_rss_mib": 73.2}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "graph", "n_qubits": 9, "n_ops": 100, "depth": 29, "build_seconds": 0.0363, "nodes": 100, "edges": {"data": 111, "entanglement": 4393}, "peak_rss_mib": 72.2}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "q:0", "lc_seconds": 0.00033, "q_seconds": 0.1815, "peak_rss_mib": 73.6}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "q:1", "lc_seconds": 0.00012, "q_seconds": 0.1761, "peak_rss_mib": 74.5}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "q:2", "lc_seconds": 0.00013, "q_seconds": 0.1784, "peak_rss_mib": 75.3}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "q:3", "lc_seconds": 0.00013, "q_seconds": 0.2116, "peak_rss_mib": 76.0}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "q:4", "lc_seconds": 0.00013, "q_seconds": 0.2069, "peak_rss_mib": 76.7}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "q:5", "lc_seconds": 7e-05, "q_seconds": 0.0798, "peak_rss_mib": 77.1}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "q:6", "lc_seconds": 7e-05, "q_seconds": 0.0504, "peak_rss_mib": 77.7}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "q:7", "lc_seconds": 7e-05, "q_seconds": 0.0573, "peak_rss_mib": 78.0}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "q:8", "lc_seconds": 7e-05, "q_seconds": 0.0583, "peak_rss_mib": 78.4}
+{"kind": "width-F-inv", "name": "w9_d10", "stage": "done", "lc_total": 0.0011, "q_total": 1.2002, "q_end_to_end": 1.2365, "peak_rss_mib": 78.4}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "graph", "n_qubits": 10, "n_ops": 74, "depth": 31, "build_seconds": 0.0218, "nodes": 74, "edges": {"data": 102, "entanglement": 2550}, "peak_rss_mib": 70.6}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:0", "lc_seconds": 0.00031, "q_seconds": 0.1536, "peak_rss_mib": 72.4}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:1", "lc_seconds": 0.00017, "q_seconds": 0.1625, "peak_rss_mib": 73.3}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:2", "lc_seconds": 0.00011, "q_seconds": 0.1726, "peak_rss_mib": 74.0}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:3", "lc_seconds": 0.00011, "q_seconds": 0.1676, "peak_rss_mib": 74.3}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:4", "lc_seconds": 0.00011, "q_seconds": 0.172, "peak_rss_mib": 74.5}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:5", "lc_seconds": 7e-05, "q_seconds": 0.0417, "peak_rss_mib": 74.8}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:6", "lc_seconds": 7e-05, "q_seconds": 0.0422, "peak_rss_mib": 75.1}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:7", "lc_seconds": 7e-05, "q_seconds": 0.0456, "peak_rss_mib": 75.4}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:8", "lc_seconds": 7e-05, "q_seconds": 0.049, "peak_rss_mib": 75.6}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "q:9", "lc_seconds": 7e-05, "q_seconds": 0.0512, "peak_rss_mib": 75.9}
+{"kind": "width-F-inv", "name": "w10_d10", "stage": "done", "lc_total": 0.0012, "q_total": 1.0581, "q_end_to_end": 1.0799, "peak_rss_mib": 75.9}
+{"kind": "F-depth", "name": "d160_s3", "stage": "graph", "n_qubits": 8, "n_ops": 2071, "depth": 375, "build_seconds": 21.5493, "nodes": 2071, "edges": {"data": 2437, "entanglement": 1966414}, "peak_rss_mib": 1545.1}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "graph", "n_qubits": 11, "n_ops": 90, "depth": 31, "build_seconds": 0.0401, "nodes": 90, "edges": {"data": 127, "entanglement": 3831}, "peak_rss_mib": 72.1}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:0", "lc_seconds": 0.00034, "q_seconds": 0.2419, "peak_rss_mib": 74.7}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:1", "lc_seconds": 0.00013, "q_seconds": 0.2435, "peak_rss_mib": 75.7}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:2", "lc_seconds": 0.00013, "q_seconds": 0.2235, "peak_rss_mib": 76.3}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:3", "lc_seconds": 0.00013, "q_seconds": 0.2312, "peak_rss_mib": 77.3}
+{"kind": "F-depth", "name": "d160_s4", "stage": "graph", "n_qubits": 8, "n_ops": 2103, "depth": 376, "build_seconds": 21.8892, "nodes": 2103, "edges": {"data": 2496, "entanglement": 2033075}, "peak_rss_mib": 1586.6}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:4", "lc_seconds": 0.00012, "q_seconds": 0.2167, "peak_rss_mib": 77.8}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:5", "lc_seconds": 0.00012, "q_seconds": 0.2279, "peak_rss_mib": 78.3}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:6", "lc_seconds": 7e-05, "q_seconds": 0.0854, "peak_rss_mib": 78.4}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:7", "lc_seconds": 7e-05, "q_seconds": 0.0585, "peak_rss_mib": 78.6}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:8", "lc_seconds": 7e-05, "q_seconds": 0.0597, "peak_rss_mib": 78.7}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:9", "lc_seconds": 7e-05, "q_seconds": 0.0634, "peak_rss_mib": 79.0}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "q:10", "lc_seconds": 7e-05, "q_seconds": 0.0674, "peak_rss_mib": 79.4}
+{"kind": "width-F-inv", "name": "w11_d10", "stage": "done", "lc_total": 0.0013, "q_total": 1.719, "q_end_to_end": 1.7591, "peak_rss_mib": 79.4}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "graph", "n_qubits": 12, "n_ops": 104, "depth": 33, "build_seconds": 0.0414, "nodes": 104, "edges": {"data": 138, "entanglement": 5049}, "peak_rss_mib": 73.2}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:0", "lc_seconds": 0.00037, "q_seconds": 0.3375, "peak_rss_mib": 76.5}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:1", "lc_seconds": 0.00018, "q_seconds": 0.3401, "peak_rss_mib": 78.3}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:2", "lc_seconds": 0.00016, "q_seconds": 0.3753, "peak_rss_mib": 80.8}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:3", "lc_seconds": 0.00014, "q_seconds": 0.3707, "peak_rss_mib": 82.8}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:4", "lc_seconds": 0.00019, "q_seconds": 0.3705, "peak_rss_mib": 83.6}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:5", "lc_seconds": 0.00018, "q_seconds": 0.3373, "peak_rss_mib": 83.8}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:6", "lc_seconds": 8e-05, "q_seconds": 0.0689, "peak_rss_mib": 84.6}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:7", "lc_seconds": 8e-05, "q_seconds": 0.072, "peak_rss_mib": 85.0}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:8", "lc_seconds": 8e-05, "q_seconds": 0.0763, "peak_rss_mib": 85.8}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:9", "lc_seconds": 8e-05, "q_seconds": 0.0818, "peak_rss_mib": 86.6}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:10", "lc_seconds": 8e-05, "q_seconds": 0.0853, "peak_rss_mib": 86.7}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "q:11", "lc_seconds": 8e-05, "q_seconds": 0.088, "peak_rss_mib": 86.9}
+{"kind": "width-F-inv", "name": "w12_d10", "stage": "done", "lc_total": 0.0017, "q_total": 2.6038, "q_end_to_end": 2.6452, "peak_rss_mib": 86.9}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "graph", "n_qubits": 13, "n_ops": 98, "depth": 34, "build_seconds": 0.0406, "nodes": 98, "edges": {"data": 151, "entanglement": 4581}, "peak_rss_mib": 72.3}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:0", "lc_seconds": 0.00038, "q_seconds": 0.4286, "peak_rss_mib": 76.8}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:1", "lc_seconds": 0.00016, "q_seconds": 0.4166, "peak_rss_mib": 78.7}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:2", "lc_seconds": 0.00014, "q_seconds": 0.4075, "peak_rss_mib": 79.9}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:3", "lc_seconds": 0.00013, "q_seconds": 0.4329, "peak_rss_mib": 81.1}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:4", "lc_seconds": 0.00013, "q_seconds": 0.4566, "peak_rss_mib": 82.0}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:5", "lc_seconds": 0.00013, "q_seconds": 0.4184, "peak_rss_mib": 82.8}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:6", "lc_seconds": 0.00013, "q_seconds": 0.4047, "peak_rss_mib": 83.4}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:7", "lc_seconds": 7e-05, "q_seconds": 0.0797, "peak_rss_mib": 83.9}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:8", "lc_seconds": 7e-05, "q_seconds": 0.0888, "peak_rss_mib": 84.0}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:9", "lc_seconds": 8e-05, "q_seconds": 0.0913, "peak_rss_mib": 84.3}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:10", "lc_seconds": 7e-05, "q_seconds": 0.0972, "peak_rss_mib": 85.3}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:11", "lc_seconds": 8e-05, "q_seconds": 0.1045, "peak_rss_mib": 85.8}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "q:12", "lc_seconds": 8e-05, "q_seconds": 0.1123, "peak_rss_mib": 86.0}
+{"kind": "width-F-inv", "name": "w13_d10", "stage": "done", "lc_total": 0.0017, "q_total": 3.5391, "q_end_to_end": 3.5797, "peak_rss_mib": 86.0}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "graph", "n_qubits": 14, "n_ops": 104, "depth": 35, "build_seconds": 0.0445, "nodes": 104, "edges": {"data": 159, "entanglement": 5155}, "peak_rss_mib": 73.1}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:0", "lc_seconds": 0.0004, "q_seconds": 1.0288, "peak_rss_mib": 96.6}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:1", "lc_seconds": 0.0002, "q_seconds": 0.9834, "peak_rss_mib": 100.0}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:2", "lc_seconds": 0.00014, "q_seconds": 0.9837, "peak_rss_mib": 102.1}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:3", "lc_seconds": 0.00021, "q_seconds": 0.9892, "peak_rss_mib": 102.8}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:4", "lc_seconds": 0.00015, "q_seconds": 1.0189, "peak_rss_mib": 103.8}
+{"kind": "F-depth", "name": "d160_s2", "stage": "limit", "limit": "wall", "seconds": 120.4, "peak_rss_mib": 1947.4, "stderr": ""}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:5", "lc_seconds": 0.0002, "q_seconds": 1.2064, "peak_rss_mib": 104.4}
+{"kind": "corpusA-graph", "name": "deutsch_n2", "stage": "graph", "n_qubits": 2, "n_ops": 5, "depth": 4, "build_seconds": 0.0005, "nodes": 5, "edges": {"data": 4, "entanglement": 5}, "peak_rss_mib": 68.4}
+{"kind": "corpusA-graph", "name": "deutsch_n2", "stage": "done", "peak_rss_mib": 68.4}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:6", "lc_seconds": 0.00021, "q_seconds": 1.0129, "peak_rss_mib": 106.1}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:7", "lc_seconds": 0.00012, "q_seconds": 0.1749, "peak_rss_mib": 106.8}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:8", "lc_seconds": 0.00012, "q_seconds": 0.1822, "peak_rss_mib": 107.5}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:9", "lc_seconds": 9e-05, "q_seconds": 0.2207, "peak_rss_mib": 107.8}
+{"kind": "corpusA-graph", "name": "ipea_n2", "stage": "graph", "n_qubits": 2, "n_ops": 40, "depth": 40, "build_seconds": 0.0107, "nodes": 40, "edges": {"data": 42, "entanglement": 458, "control": 28}, "peak_rss_mib": 70.9}
+{"kind": "corpusA-graph", "name": "ipea_n2", "stage": "done", "peak_rss_mib": 70.9}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:10", "lc_seconds": 0.00011, "q_seconds": 0.2069, "peak_rss_mib": 107.8}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:11", "lc_seconds": 0.00012, "q_seconds": 0.2096, "peak_rss_mib": 108.0}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:12", "lc_seconds": 9e-05, "q_seconds": 0.2178, "peak_rss_mib": 108.1}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "q:13", "lc_seconds": 0.00011, "q_seconds": 0.25, "peak_rss_mib": 108.6}
+{"kind": "width-F-inv", "name": "w14_d10", "stage": "done", "lc_total": 0.0023, "q_total": 8.6855, "q_end_to_end": 8.73, "peak_rss_mib": 108.6}
+{"kind": "corpusA-graph", "name": "iswap_n2", "stage": "graph", "n_qubits": 2, "n_ops": 9, "depth": 7, "build_seconds": 0.0007, "nodes": 9, "edges": {"data": 9, "entanglement": 18}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "iswap_n2", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "quantumwalks_n2", "stage": "graph", "n_qubits": 2, "n_ops": 11, "depth": 7, "build_seconds": 0.001, "nodes": 11, "edges": {"data": 12, "entanglement": 31}, "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "quantumwalks_n2", "stage": "done", "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "grover_n2", "stage": "graph", "n_qubits": 2, "n_ops": 16, "depth": 11, "build_seconds": 0.0014, "nodes": 16, "edges": {"data": 16, "entanglement": 66}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "grover_n2", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "wstate_n3", "stage": "graph", "n_qubits": 3, "n_ops": 6, "depth": 5, "build_seconds": 0.0008, "nodes": 6, "edges": {"data": 6, "entanglement": 8}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "wstate_n3", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "teleportation_n3", "stage": "graph", "n_qubits": 3, "n_ops": 8, "depth": 6, "build_seconds": 0.0007, "nodes": 8, "edges": {"data": 7, "entanglement": 14}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "teleportation_n3", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "qaoa_n3", "stage": "graph", "n_qubits": 3, "n_ops": 15, "depth": 11, "build_seconds": 0.0014, "nodes": 15, "edges": {"data": 18, "entanglement": 78}, "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "qaoa_n3", "stage": "done", "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "toffoli_n3", "stage": "graph", "n_qubits": 3, "n_ops": 18, "depth": 12, "build_seconds": 0.0017, "nodes": 18, "edges": {"data": 21, "entanglement": 111}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "toffoli_n3", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "fredkin_n3", "stage": "graph", "n_qubits": 3, "n_ops": 19, "depth": 11, "build_seconds": 0.0019, "nodes": 19, "edges": {"data": 24, "entanglement": 131}, "peak_rss_mib": 70.0}
+{"kind": "corpusA-graph", "name": "fredkin_n3", "stage": "done", "peak_rss_mib": 70.0}
+{"kind": "corpusA-graph", "name": "linearsolver_n3", "stage": "graph", "n_qubits": 3, "n_ops": 19, "depth": 11, "build_seconds": 0.0018, "nodes": 19, "edges": {"data": 20, "entanglement": 124}, "peak_rss_mib": 68.8}
+{"kind": "corpusA-graph", "name": "linearsolver_n3", "stage": "done", "peak_rss_mib": 68.8}
+{"kind": "corpusA-graph", "name": "basis_change_n3", "stage": "graph", "n_qubits": 3, "n_ops": 33, "depth": 21, "build_seconds": 0.0043, "nodes": 33, "edges": {"data": 40, "entanglement": 402}, "peak_rss_mib": 70.0}
+{"kind": "corpusA-graph", "name": "basis_change_n3", "stage": "done", "peak_rss_mib": 70.0}
+{"kind": "corpusA-graph", "name": "cat_state_n4", "stage": "graph", "n_qubits": 4, "n_ops": 4, "depth": 4, "build_seconds": 0.0005, "nodes": 4, "edges": {"data": 3, "entanglement": 3}, "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "cat_state_n4", "stage": "done", "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "inverseqft_n4", "stage": "graph", "n_qubits": 4, "n_ops": 17, "depth": 11, "build_seconds": 0.0011, "nodes": 17, "edges": {"data": 13, "control": 6}, "peak_rss_mib": 70.4}
+{"kind": "corpusA-graph", "name": "inverseqft_n4", "stage": "done", "peak_rss_mib": 70.4}
+{"kind": "corpusA-graph", "name": "qrng_n4", "stage": "graph", "n_qubits": 4, "n_ops": 4, "depth": 1, "build_seconds": 0.0005, "nodes": 4, "edges": {}, "peak_rss_mib": 68.8}
+{"kind": "corpusA-graph", "name": "qrng_n4", "stage": "done", "peak_rss_mib": 68.8}
+{"kind": "corpusA-graph", "name": "qft_n4", "stage": "graph", "n_qubits": 4, "n_ops": 12, "depth": 8, "build_seconds": 0.0013, "nodes": 12, "edges": {"data": 14, "entanglement": 51}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "qft_n4", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "adder_n4", "stage": "graph", "n_qubits": 4, "n_ops": 23, "depth": 11, "build_seconds": 0.0025, "nodes": 23, "edges": {"data": 29, "entanglement": 209}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "adder_n4", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "hs4_n4", "stage": "graph", "n_qubits": 4, "n_ops": 28, "depth": 9, "build_seconds": 0.0019, "nodes": 28, "edges": {"data": 28, "entanglement": 104}, "peak_rss_mib": 69.1}
+{"kind": "corpusA-graph", "name": "hs4_n4", "stage": "done", "peak_rss_mib": 69.1}
+{"kind": "corpusA-graph", "name": "bell_n4", "stage": "graph", "n_qubits": 4, "n_ops": 33, "depth": 13, "build_seconds": 0.0042, "nodes": 33, "edges": {"data": 36, "entanglement": 426}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "bell_n4", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "variational_n4", "stage": "graph", "n_qubits": 4, "n_ops": 54, "depth": 33, "build_seconds": 0.011, "nodes": 54, "edges": {"data": 66, "entanglement": 1169}, "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "variational_n4", "stage": "done", "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "vqe_n4", "stage": "graph", "n_qubits": 4, "n_ops": 89, "depth": 27, "build_seconds": 0.0259, "nodes": 89, "edges": {"data": 94, "entanglement": 3126}, "peak_rss_mib": 72.2}
+{"kind": "corpusA-graph", "name": "vqe_n4", "stage": "done", "peak_rss_mib": 72.2}
+{"kind": "corpusA-graph", "name": "basis_test_n4", "stage": "graph", "n_qubits": 4, "n_ops": 98, "depth": 56, "build_seconds": 0.0336, "nodes": 98, "edges": {"data": 128, "entanglement": 4078}, "peak_rss_mib": 73.1}
+{"kind": "corpusA-graph", "name": "basis_test_n4", "stage": "done", "peak_rss_mib": 73.1}
+{"kind": "corpusA-graph", "name": "qec_sm_n5", "stage": "graph", "n_qubits": 5, "n_ops": 7, "depth": 6, "build_seconds": 0.0008, "nodes": 7, "edges": {"data": 6, "control": 6}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "qec_sm_n5", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "pea_n5", "stage": "graph", "n_qubits": 5, "n_ops": 29, "depth": 23, "build_seconds": 0.0065, "nodes": 29, "edges": {"data": 34, "entanglement": 368}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "pea_n5", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "lpn_n5", "stage": "graph", "n_qubits": 5, "n_ops": 11, "depth": 4, "build_seconds": 0.0008, "nodes": 11, "edges": {"data": 8, "entanglement": 13}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "lpn_n5", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "shor_n5", "stage": "graph", "n_qubits": 5, "n_ops": 24, "depth": 23, "build_seconds": 0.0027, "nodes": 24, "edges": {"data": 28, "entanglement": 168, "control": 7}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "shor_n5", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "qec_en_n5", "stage": "graph", "n_qubits": 5, "n_ops": 25, "depth": 17, "build_seconds": 0.0028, "nodes": 25, "edges": {"data": 30, "entanglement": 248}, "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "qec_en_n5", "stage": "done", "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "error_correctiond3_n5", "stage": "graph", "n_qubits": 5, "n_ops": 114, "depth": 77, "build_seconds": 0.0456, "nodes": 114, "edges": {"data": 158, "entanglement": 5714}, "peak_rss_mib": 73.9}
+{"kind": "corpusA-graph", "name": "error_correctiond3_n5", "stage": "done", "peak_rss_mib": 74.0}
+{"kind": "corpusA-graph", "name": "simon_n6", "stage": "graph", "n_qubits": 6, "n_ops": 16, "depth": 8, "build_seconds": 0.0011, "nodes": 16, "edges": {"data": 17, "entanglement": 16}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "simon_n6", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "sat_n7", "stage": "graph", "n_qubits": 7, "n_ops": 40, "depth": 21, "build_seconds": 0.0019, "nodes": 40, "edges": {"data": 52}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "sat_n7", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "bb84_n8", "stage": "graph", "n_qubits": 8, "n_ops": 35, "depth": 6, "build_seconds": 0.0016, "nodes": 35, "edges": {"data": 27}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "bb84_n8", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "qpe_n9", "stage": "graph", "n_qubits": 9, "n_ops": 33, "depth": 20, "build_seconds": 0.0039, "nodes": 33, "edges": {"data": 43, "entanglement": 363}, "peak_rss_mib": 70.3}
+{"kind": "corpusA-graph", "name": "qpe_n9", "stage": "done", "peak_rss_mib": 70.3}
+{"kind": "corpusA-graph", "name": "adder_n10", "stage": "graph", "n_qubits": 10, "n_ops": 14, "depth": 10, "build_seconds": 0.0019, "nodes": 14, "edges": {"data": 17}, "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "adder_n10", "stage": "done", "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "seca_n11", "stage": "graph", "n_qubits": 11, "n_ops": 72, "depth": 36, "build_seconds": 0.0206, "nodes": 72, "edges": {"data": 105, "entanglement": 2390}, "peak_rss_mib": 71.3}
+{"kind": "corpusA-graph", "name": "seca_n11", "stage": "done", "peak_rss_mib": 71.3}
+{"kind": "corpusA-graph", "name": "sat_n11", "stage": "graph", "n_qubits": 11, "n_ops": 91, "depth": 50, "build_seconds": 0.0037, "nodes": 91, "edges": {"data": 144}, "peak_rss_mib": 70.4}
+{"kind": "corpusA-graph", "name": "sat_n11", "stage": "done", "peak_rss_mib": 70.4}
+{"kind": "corpusA-graph", "name": "cc_n12", "stage": "graph", "n_qubits": 12, "n_ops": 48, "depth": 38, "build_seconds": 0.0098, "nodes": 48, "edges": {"data": 48, "entanglement": 1033, "control": 24}, "peak_rss_mib": 70.7}
+{"kind": "corpusA-graph", "name": "cc_n12", "stage": "done", "peak_rss_mib": 70.7}
+{"kind": "corpusA-graph", "name": "multiply_n13", "stage": "graph", "n_qubits": 13, "n_ops": 14, "depth": 6, "build_seconds": 0.0009, "nodes": 14, "edges": {"data": 17, "entanglement": 6}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "multiply_n13", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "bv_n14", "stage": "graph", "n_qubits": 14, "n_ops": 41, "depth": 16, "build_seconds": 0.0076, "nodes": 41, "edges": {"data": 40, "entanglement": 767}, "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "bv_n14", "stage": "done", "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "ghz_n3", "stage": "graph", "n_qubits": 3, "n_ops": 3, "depth": 3, "build_seconds": 0.0004, "nodes": 3, "edges": {"data": 2, "entanglement": 1}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "ghz_n3", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "F-depth", "name": "d160_s3", "stage": "q:0", "lc_seconds": 0.0063, "q_seconds": 39.264, "peak_rss_mib": 1785.0}
+{"kind": "corpusA-graph", "name": "grover_n3", "stage": "graph", "n_qubits": 3, "n_ops": 4, "depth": 2, "build_seconds": 0.0008, "nodes": 4, "edges": {"data": 3}, "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "grover_n3", "stage": "done", "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "qftentangled_n3", "stage": "graph", "n_qubits": 3, "n_ops": 4, "depth": 4, "build_seconds": 0.0009, "nodes": 4, "edges": {"data": 4, "entanglement": 2}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "qftentangled_n3", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "bv_n3", "stage": "graph", "n_qubits": 3, "n_ops": 6, "depth": 3, "build_seconds": 0.0005, "nodes": 6, "edges": {"data": 4, "entanglement": 2}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "bv_n3", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "dj_n3", "stage": "graph", "n_qubits": 3, "n_ops": 7, "depth": 4, "build_seconds": 0.0007, "nodes": 7, "edges": {"data": 6}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "dj_n3", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "graphstate_n3", "stage": "graph", "n_qubits": 3, "n_ops": 6, "depth": 4, "build_seconds": 0.0006, "nodes": 6, "edges": {"data": 6, "entanglement": 9}, "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "graphstate_n3", "stage": "done", "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "wstate_n3", "stage": "graph", "n_qubits": 3, "n_ops": 9, "depth": 6, "build_seconds": 0.0008, "nodes": 9, "edges": {"data": 10, "entanglement": 24}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "wstate_n3", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "ghz_n4", "stage": "graph", "n_qubits": 4, "n_ops": 4, "depth": 4, "build_seconds": 0.0009, "nodes": 4, "edges": {"data": 3, "entanglement": 3}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "ghz_n4", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "grover_n4", "stage": "graph", "n_qubits": 4, "n_ops": 6, "depth": 3, "build_seconds": 0.0018, "nodes": 6, "edges": {"data": 5}, "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "grover_n4", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "qftentangled_n4", "stage": "graph", "n_qubits": 4, "n_ops": 5, "depth": 5, "build_seconds": 0.0009, "nodes": 5, "edges": {"data": 6, "entanglement": 4}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "qftentangled_n4", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "bv_n4", "stage": "graph", "n_qubits": 4, "n_ops": 8, "depth": 3, "build_seconds": 0.0006, "nodes": 8, "edges": {"data": 5, "entanglement": 2}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "bv_n4", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "dj_n4", "stage": "graph", "n_qubits": 4, "n_ops": 9, "depth": 4, "build_seconds": 0.0008, "nodes": 9, "edges": {"data": 8}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "dj_n4", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "graphstate_n4", "stage": "graph", "n_qubits": 4, "n_ops": 8, "depth": 4, "build_seconds": 0.0008, "nodes": 8, "edges": {"data": 8, "entanglement": 20}, "peak_rss_mib": 68.5}
+{"kind": "corpusA-graph", "name": "graphstate_n4", "stage": "done", "peak_rss_mib": 68.5}
+{"kind": "corpusA-graph", "name": "wstate_n4", "stage": "graph", "n_qubits": 4, "n_ops": 13, "depth": 8, "build_seconds": 0.0013, "nodes": 13, "edges": {"data": 15, "entanglement": 60}, "peak_rss_mib": 68.8}
+{"kind": "corpusA-graph", "name": "wstate_n4", "stage": "done", "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "ghz_n5", "stage": "graph", "n_qubits": 5, "n_ops": 5, "depth": 5, "build_seconds": 0.0006, "nodes": 5, "edges": {"data": 4, "entanglement": 6}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "ghz_n5", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "grover_n5", "stage": "graph", "n_qubits": 5, "n_ops": 8, "depth": 4, "build_seconds": 0.0037, "nodes": 8, "edges": {"data": 7}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "grover_n5", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "qftentangled_n5", "stage": "graph", "n_qubits": 5, "n_ops": 6, "depth": 6, "build_seconds": 0.0015, "nodes": 6, "edges": {"data": 8, "entanglement": 7}, "peak_rss_mib": 69.1}
+{"kind": "corpusA-graph", "name": "qftentangled_n5", "stage": "done", "peak_rss_mib": 69.1}
+{"kind": "corpusA-graph", "name": "dj_n5", "stage": "graph", "n_qubits": 5, "n_ops": 11, "depth": 4, "build_seconds": 0.0009, "nodes": 11, "edges": {"data": 10}, "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "dj_n5", "stage": "done", "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "graphstate_n5", "stage": "graph", "n_qubits": 5, "n_ops": 10, "depth": 6, "build_seconds": 0.0009, "nodes": 10, "edges": {"data": 10, "entanglement": 35}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "graphstate_n5", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "bv_n5", "stage": "graph", "n_qubits": 5, "n_ops": 11, "depth": 4, "build_seconds": 0.0008, "nodes": 11, "edges": {"data": 8, "entanglement": 13}, "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "bv_n5", "stage": "done", "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "wstate_n5", "stage": "graph", "n_qubits": 5, "n_ops": 17, "depth": 10, "build_seconds": 0.0022, "nodes": 17, "edges": {"data": 20, "entanglement": 112}, "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "wstate_n5", "stage": "done", "peak_rss_mib": 69.0}
+{"kind": "F-depth", "name": "d160_s4", "stage": "q:0", "lc_seconds": 0.00582, "q_seconds": 47.8709, "peak_rss_mib": 1835.3}
+{"kind": "corpusA-graph", "name": "ghz_n8", "stage": "graph", "n_qubits": 8, "n_ops": 8, "depth": 8, "build_seconds": 0.0009, "nodes": 8, "edges": {"data": 7, "entanglement": 21}, "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "ghz_n8", "stage": "done", "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "grover_n8", "stage": "graph", "n_qubits": 8, "n_ops": 16, "depth": 9, "build_seconds": 0.0304, "nodes": 16, "edges": {"data": 15}, "peak_rss_mib": 71.8}
+{"kind": "corpusA-graph", "name": "grover_n8", "stage": "done", "peak_rss_mib": 71.8}
+{"kind": "corpusA-graph", "name": "qftentangled_n8", "stage": "graph", "n_qubits": 8, "n_ops": 9, "depth": 9, "build_seconds": 0.0018, "nodes": 9, "edges": {"data": 14, "entanglement": 22}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "qftentangled_n8", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "dj_n8", "stage": "graph", "n_qubits": 8, "n_ops": 17, "depth": 4, "build_seconds": 0.0012, "nodes": 17, "edges": {"data": 16}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "dj_n8", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "graphstate_n8", "stage": "graph", "n_qubits": 8, "n_ops": 16, "depth": 4, "build_seconds": 0.0017, "nodes": 16, "edges": {"data": 16, "entanglement": 104}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "graphstate_n8", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "bv_n8", "stage": "graph", "n_qubits": 8, "n_ops": 18, "depth": 5, "build_seconds": 0.0012, "nodes": 18, "edges": {"data": 13, "entanglement": 33}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "bv_n8", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "wstate_n8", "stage": "graph", "n_qubits": 8, "n_ops": 29, "depth": 16, "build_seconds": 0.004, "nodes": 29, "edges": {"data": 35, "entanglement": 364}, "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "wstate_n8", "stage": "done", "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "ghz_n10", "stage": "graph", "n_qubits": 10, "n_ops": 10, "depth": 10, "build_seconds": 0.001, "nodes": 10, "edges": {"data": 9, "entanglement": 36}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "ghz_n10", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "qftentangled_n10", "stage": "graph", "n_qubits": 10, "n_ops": 70, "depth": 22, "build_seconds": 0.0212, "nodes": 70, "edges": {"data": 119, "entanglement": 2295}, "peak_rss_mib": 73.0}
+{"kind": "corpusA-graph", "name": "qftentangled_n10", "stage": "done", "peak_rss_mib": 73.0}
+{"kind": "corpusA-graph", "name": "dj_n10", "stage": "graph", "n_qubits": 10, "n_ops": 41, "depth": 13, "build_seconds": 0.0067, "nodes": 41, "edges": {"data": 40, "entanglement": 753}, "peak_rss_mib": 71.5}
+{"kind": "corpusA-graph", "name": "dj_n10", "stage": "done", "peak_rss_mib": 71.5}
+{"kind": "corpusA-graph", "name": "graphstate_n10", "stage": "graph", "n_qubits": 10, "n_ops": 20, "depth": 6, "build_seconds": 0.0025, "nodes": 20, "edges": {"data": 20, "entanglement": 170}, "peak_rss_mib": 68.7}
+{"kind": "corpusA-graph", "name": "graphstate_n10", "stage": "done", "peak_rss_mib": 68.8}
+{"kind": "corpusA-graph", "name": "bv_n10", "stage": "graph", "n_qubits": 10, "n_ops": 23, "depth": 6, "build_seconds": 0.0016, "nodes": 23, "edges": {"data": 17, "entanglement": 62}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "bv_n10", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "wstate_n10", "stage": "graph", "n_qubits": 10, "n_ops": 37, "depth": 20, "build_seconds": 0.0057, "nodes": 37, "edges": {"data": 45, "entanglement": 612}, "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "wstate_n10", "stage": "done", "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "ghz_n14", "stage": "graph", "n_qubits": 14, "n_ops": 14, "depth": 14, "build_seconds": 0.0017, "nodes": 14, "edges": {"data": 13, "entanglement": 78}, "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "ghz_n14", "stage": "done", "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "qftentangled_n14", "stage": "graph", "n_qubits": 14, "n_ops": 126, "depth": 30, "build_seconds": 0.0673, "nodes": 126, "edges": {"data": 223, "entanglement": 7651}, "peak_rss_mib": 76.9}
+{"kind": "corpusA-graph", "name": "qftentangled_n14", "stage": "done", "peak_rss_mib": 76.9}
+{"kind": "corpusA-graph", "name": "dj_n14", "stage": "graph", "n_qubits": 14, "n_ops": 55, "depth": 16, "build_seconds": 0.0122, "nodes": 55, "edges": {"data": 54, "entanglement": 1397}, "peak_rss_mib": 71.4}
+{"kind": "corpusA-graph", "name": "dj_n14", "stage": "done", "peak_rss_mib": 71.4}
+{"kind": "corpusA-graph", "name": "graphstate_n14", "stage": "graph", "n_qubits": 14, "n_ops": 28, "depth": 4, "build_seconds": 0.003, "nodes": 28, "edges": {"data": 28, "entanglement": 218}, "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "graphstate_n14", "stage": "done", "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "bv_n14", "stage": "graph", "n_qubits": 14, "n_ops": 33, "depth": 8, "build_seconds": 0.0025, "nodes": 33, "edges": {"data": 25, "entanglement": 147}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "bv_n14", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "wstate_n14", "stage": "graph", "n_qubits": 14, "n_ops": 53, "depth": 28, "build_seconds": 0.0115, "nodes": 53, "edges": {"data": 65, "entanglement": 1300}, "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "wstate_n14", "stage": "done", "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "rand_cliff_1_AG", "stage": "graph", "n_qubits": 1, "n_ops": 3, "depth": 3, "build_seconds": 0.0004, "nodes": 3, "edges": {"data": 2}, "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "rand_cliff_1_AG", "stage": "done", "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "rand_cliff_1_GD", "stage": "graph", "n_qubits": 1, "n_ops": 3, "depth": 3, "build_seconds": 0.0004, "nodes": 3, "edges": {"data": 2}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "rand_cliff_1_GD", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "dqc_qft_2", "stage": "graph", "n_qubits": 2, "n_ops": 4, "depth": 4, "build_seconds": 0.0004, "nodes": 4, "edges": {"data": 2, "control": 1}, "peak_rss_mib": 69.1}
+{"kind": "corpusA-graph", "name": "dqc_qft_2", "stage": "done", "peak_rss_mib": 69.1}
+{"kind": "corpusA-graph", "name": "qft_2", "stage": "graph", "n_qubits": 2, "n_ops": 3, "depth": 3, "build_seconds": 0.0004, "nodes": 3, "edges": {"data": 2, "entanglement": 1}, "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "qft_2", "stage": "done", "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "dqc_state_injection_S", "stage": "graph", "n_qubits": 2, "n_ops": 5, "depth": 5, "build_seconds": 0.0005, "nodes": 5, "edges": {"data": 4, "entanglement": 3, "control": 1}, "peak_rss_mib": 70.5}
+{"kind": "corpusA-graph", "name": "dqc_state_injection_S", "stage": "done", "peak_rss_mib": 70.5}
+{"kind": "corpusA-graph", "name": "dqc_state_injection_T", "stage": "graph", "n_qubits": 2, "n_ops": 5, "depth": 5, "build_seconds": 0.0005, "nodes": 5, "edges": {"data": 4, "entanglement": 3, "control": 1}, "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "dqc_state_injection_T", "stage": "done", "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "bv_2", "stage": "graph", "n_qubits": 2, "n_ops": 6, "depth": 4, "build_seconds": 0.0006, "nodes": 6, "edges": {"data": 5, "entanglement": 7}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "bv_2", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "rand_cliff_2_GD", "stage": "graph", "n_qubits": 2, "n_ops": 9, "depth": 7, "build_seconds": 0.0007, "nodes": 9, "edges": {"data": 9, "entanglement": 21}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "rand_cliff_2_GD", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "rand_cliff_2_AG", "stage": "graph", "n_qubits": 2, "n_ops": 11, "depth": 8, "build_seconds": 0.001, "nodes": 11, "edges": {"data": 11, "entanglement": 32}, "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "rand_cliff_2_AG", "stage": "done", "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "quantum_volume_n2_d5_i0", "stage": "graph", "n_qubits": 2, "n_ops": 50, "depth": 35, "build_seconds": 0.0081, "nodes": 50, "edges": {"data": 63, "entanglement": 879}, "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "quantum_volume_n2_d5_i0", "stage": "done", "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "dqc_qft_3", "stage": "graph", "n_qubits": 3, "n_ops": 8, "depth": 7, "build_seconds": 0.0006, "nodes": 8, "edges": {"data": 5, "control": 3}, "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "dqc_qft_3", "stage": "done", "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "qft_3", "stage": "graph", "n_qubits": 3, "n_ops": 6, "depth": 5, "build_seconds": 0.0007, "nodes": 6, "edges": {"data": 6, "entanglement": 9}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "qft_3", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "dqc_pe_2", "stage": "graph", "n_qubits": 3, "n_ops": 8, "depth": 7, "build_seconds": 0.0007, "nodes": 8, "edges": {"data": 7, "entanglement": 16, "control": 1}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "dqc_pe_2", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "dqc_teleportation", "stage": "graph", "n_qubits": 3, "n_ops": 8, "depth": 6, "build_seconds": 0.001, "nodes": 8, "edges": {"data": 7, "entanglement": 17, "control": 2}, "peak_rss_mib": 68.6}
+{"kind": "corpusA-graph", "name": "dqc_teleportation", "stage": "done", "peak_rss_mib": 68.6}
+{"kind": "corpusA-graph", "name": "nth_prime3_inc", "stage": "graph", "n_qubits": 3, "n_ops": 4, "depth": 4, "build_seconds": 0.0005, "nodes": 4, "edges": {"data": 4, "entanglement": 2}, "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "nth_prime3_inc", "stage": "done", "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "pe_2", "stage": "graph", "n_qubits": 3, "n_ops": 7, "depth": 6, "build_seconds": 0.0006, "nodes": 7, "edges": {"data": 7, "entanglement": 12}, "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "pe_2", "stage": "done", "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "ham3tc", "stage": "graph", "n_qubits": 3, "n_ops": 5, "depth": 5, "build_seconds": 0.0005, "nodes": 5, "edges": {"data": 6, "entanglement": 4}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "ham3tc", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "3_17tc", "stage": "graph", "n_qubits": 3, "n_ops": 6, "depth": 6, "build_seconds": 0.0006, "nodes": 6, "edges": {"data": 6, "entanglement": 9}, "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "3_17tc", "stage": "done", "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "ham3_fc", "stage": "graph", "n_qubits": 3, "n_ops": 6, "depth": 6, "build_seconds": 0.0006, "nodes": 6, "edges": {"data": 7, "entanglement": 8}, "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "ham3_fc", "stage": "done", "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "bv_3", "stage": "graph", "n_qubits": 3, "n_ops": 9, "depth": 5, "build_seconds": 0.0008, "nodes": 9, "edges": {"data": 8, "entanglement": 24}, "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "bv_3", "stage": "done", "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "rand_cliff_3_GD", "stage": "graph", "n_qubits": 3, "n_ops": 11, "depth": 9, "build_seconds": 0.001, "nodes": 11, "edges": {"data": 11, "entanglement": 41}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "rand_cliff_3_GD", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "grover_3", "stage": "graph", "n_qubits": 3, "n_ops": 16, "depth": 9, "build_seconds": 0.0012, "nodes": 16, "edges": {"data": 16, "entanglement": 52}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "grover_3", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "rand_cliff_3_AG", "stage": "graph", "n_qubits": 3, "n_ops": 17, "depth": 11, "build_seconds": 0.0017, "nodes": 17, "edges": {"data": 20, "entanglement": 106}, "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "rand_cliff_3_AG", "stage": "done", "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "quantum_volume_n3_d5_i0", "stage": "graph", "n_qubits": 3, "n_ops": 50, "depth": 35, "build_seconds": 0.0102, "nodes": 50, "edges": {"data": 62, "entanglement": 967}, "peak_rss_mib": 70.6}
+{"kind": "corpusA-graph", "name": "quantum_volume_n3_d5_i0", "stage": "done", "peak_rss_mib": 70.6}
+{"kind": "corpusA-graph", "name": "adder_n4", "stage": "graph", "n_qubits": 4, "n_ops": 4, "depth": 4, "build_seconds": 0.0005, "nodes": 4, "edges": {"data": 4, "entanglement": 2}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "adder_n4", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "dqc_qft_4", "stage": "graph", "n_qubits": 4, "n_ops": 13, "depth": 10, "build_seconds": 0.001, "nodes": 13, "edges": {"data": 9, "control": 6}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "dqc_qft_4", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "qft_4", "stage": "graph", "n_qubits": 4, "n_ops": 10, "depth": 7, "build_seconds": 0.0011, "nodes": 10, "edges": {"data": 12, "entanglement": 33}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "qft_4", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "rd32", "stage": "graph", "n_qubits": 4, "n_ops": 4, "depth": 4, "build_seconds": 0.0005, "nodes": 4, "edges": {"data": 4, "entanglement": 2}, "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "rd32", "stage": "done", "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "dqc_pe_3", "stage": "graph", "n_qubits": 4, "n_ops": 14, "depth": 11, "build_seconds": 0.0014, "nodes": 14, "edges": {"data": 13, "entanglement": 65, "control": 3}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "dqc_pe_3", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "pe_3", "stage": "graph", "n_qubits": 4, "n_ops": 12, "depth": 9, "build_seconds": 0.0017, "nodes": 12, "edges": {"data": 14, "entanglement": 49}, "peak_rss_mib": 68.6}
+{"kind": "corpusA-graph", "name": "pe_3", "stage": "done", "peak_rss_mib": 68.6}
+{"kind": "corpusA-graph", "name": "mspk_nth_primes4_11", "stage": "graph", "n_qubits": 4, "n_ops": 11, "depth": 11, "build_seconds": 0.0017, "nodes": 11, "edges": {"data": 16, "entanglement": 39}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "mspk_nth_primes4_11", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "nth_prime4_inc_d2", "stage": "graph", "n_qubits": 4, "n_ops": 11, "depth": 11, "build_seconds": 0.0024, "nodes": 11, "edges": {"data": 17, "entanglement": 38}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "nth_prime4_inc_d2", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "nth_prime4_inc_d1", "stage": "graph", "n_qubits": 4, "n_ops": 12, "depth": 12, "build_seconds": 0.0018, "nodes": 12, "edges": {"data": 16, "entanglement": 50}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "nth_prime4_inc_d1", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "hwb4-11-21", "stage": "graph", "n_qubits": 4, "n_ops": 11, "depth": 10, "build_seconds": 0.0012, "nodes": 11, "edges": {"data": 18, "entanglement": 37}, "peak_rss_mib": 68.5}
+{"kind": "corpusA-graph", "name": "hwb4-11-21", "stage": "done", "peak_rss_mib": 68.5}
+{"kind": "corpusA-graph", "name": "bv_4", "stage": "graph", "n_qubits": 4, "n_ops": 12, "depth": 6, "build_seconds": 0.0012, "nodes": 12, "edges": {"data": 11, "entanglement": 50}, "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "bv_4", "stage": "done", "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "mspk_4_49_12", "stage": "graph", "n_qubits": 4, "n_ops": 12, "depth": 11, "build_seconds": 0.0013, "nodes": 12, "edges": {"data": 17, "entanglement": 48}, "peak_rss_mib": 68.8}
+{"kind": "corpusA-graph", "name": "mspk_4_49_12", "stage": "done", "peak_rss_mib": 68.8}
+{"kind": "corpusA-graph", "name": "mspk_hwb4_12", "stage": "graph", "n_qubits": 4, "n_ops": 12, "depth": 11, "build_seconds": 0.0012, "nodes": 12, "edges": {"data": 19, "entanglement": 47}, "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "mspk_hwb4_12", "stage": "done", "peak_rss_mib": 69.9}
+{"kind": "corpusA-graph", "name": "mspk_nth_primes4_12", "stage": "graph", "n_qubits": 4, "n_ops": 12, "depth": 12, "build_seconds": 0.0012, "nodes": 12, "edges": {"data": 20, "entanglement": 46}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "mspk_nth_primes4_12", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "4b15g_2", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 13, "build_seconds": 0.002, "nodes": 15, "edges": {"data": 21, "entanglement": 84}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "4b15g_2", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "4b15g_3", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 13, "build_seconds": 0.002, "nodes": 15, "edges": {"data": 21, "entanglement": 83}, "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "4b15g_3", "stage": "done", "peak_rss_mib": 69.2}
+{"kind": "corpusA-graph", "name": "mspk_4_49_13", "stage": "graph", "n_qubits": 4, "n_ops": 13, "depth": 13, "build_seconds": 0.0013, "nodes": 13, "edges": {"data": 20, "entanglement": 58}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "mspk_4_49_13", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "mspk_hwb4_13", "stage": "graph", "n_qubits": 4, "n_ops": 13, "depth": 12, "build_seconds": 0.0014, "nodes": 13, "edges": {"data": 20, "entanglement": 58}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "mspk_hwb4_13", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "mspk_nth_primes4_13", "stage": "graph", "n_qubits": 4, "n_ops": 13, "depth": 12, "build_seconds": 0.0014, "nodes": 13, "edges": {"data": 22, "entanglement": 56}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "mspk_nth_primes4_13", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "nth_prime4_inc_15_51", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 13, "build_seconds": 0.002, "nodes": 15, "edges": {"data": 23, "entanglement": 82}, "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "nth_prime4_inc_15_51", "stage": "done", "peak_rss_mib": 69.0}
+{"kind": "F-depth", "name": "d160_s3", "stage": "q:1", "lc_seconds": 0.00649, "q_seconds": 41.796, "peak_rss_mib": 1849.0}
+{"kind": "corpusA-graph", "name": "4_49tc1", "stage": "graph", "n_qubits": 4, "n_ops": 16, "depth": 15, "build_seconds": 0.0022, "nodes": 16, "edges": {"data": 25, "entanglement": 95}, "peak_rss_mib": 70.0}
+{"kind": "corpusA-graph", "name": "4_49tc1", "stage": "done", "peak_rss_mib": 70.0}
+{"kind": "corpusA-graph", "name": "4b15g_1", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 13, "build_seconds": 0.0018, "nodes": 15, "edges": {"data": 23, "entanglement": 81}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "4b15g_1", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "4b15g_4", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 12, "build_seconds": 0.0019, "nodes": 15, "edges": {"data": 19, "entanglement": 86}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "4b15g_4", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "mspk_4_49_14", "stage": "graph", "n_qubits": 4, "n_ops": 14, "depth": 12, "build_seconds": 0.0014, "nodes": 14, "edges": {"data": 22, "entanglement": 69}, "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "mspk_4_49_14", "stage": "done", "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_1", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 14, "build_seconds": 0.0022, "nodes": 15, "edges": {"data": 26, "entanglement": 79}, "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_1", "stage": "done", "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_4", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 15, "build_seconds": 0.0018, "nodes": 15, "edges": {"data": 25, "entanglement": 80}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_4", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "mspk_nth_primes4_14", "stage": "graph", "n_qubits": 4, "n_ops": 14, "depth": 14, "build_seconds": 0.0019, "nodes": 14, "edges": {"data": 23, "entanglement": 68}, "peak_rss_mib": 70.3}
+{"kind": "corpusA-graph", "name": "mspk_nth_primes4_14", "stage": "done", "peak_rss_mib": 70.3}
+{"kind": "corpusA-graph", "name": "4b15g_5", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 12, "build_seconds": 0.0015, "nodes": 15, "edges": {"data": 24, "entanglement": 81}, "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "4b15g_5", "stage": "done", "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "hwb4tc", "stage": "graph", "n_qubits": 4, "n_ops": 17, "depth": 16, "build_seconds": 0.0025, "nodes": 17, "edges": {"data": 22, "entanglement": 114}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "hwb4tc", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_2", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 14, "build_seconds": 0.0021, "nodes": 15, "edges": {"data": 25, "entanglement": 80}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_2", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_3", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 13, "build_seconds": 0.0015, "nodes": 15, "edges": {"data": 22, "entanglement": 83}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_3", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_5", "stage": "graph", "n_qubits": 4, "n_ops": 15, "depth": 13, "build_seconds": 0.0017, "nodes": 15, "edges": {"data": 22, "entanglement": 83}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "mspk_4b15g_5", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "4_49_fc", "stage": "graph", "n_qubits": 4, "n_ops": 23, "depth": 22, "build_seconds": 0.0041, "nodes": 23, "edges": {"data": 28, "entanglement": 225}, "peak_rss_mib": 70.2}
+{"kind": "corpusA-graph", "name": "4_49_fc", "stage": "done", "peak_rss_mib": 70.3}
+{"kind": "corpusA-graph", "name": "eff_1_4", "stage": "graph", "n_qubits": 4, "n_ops": 19, "depth": 7, "build_seconds": 0.0019, "nodes": 19, "edges": {"data": 18, "entanglement": 137}, "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "eff_1_4", "stage": "done", "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "eff_2_4", "stage": "graph", "n_qubits": 4, "n_ops": 19, "depth": 7, "build_seconds": 0.0019, "nodes": 19, "edges": {"data": 18, "entanglement": 137}, "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "eff_2_4", "stage": "done", "peak_rss_mib": 68.9}
+{"kind": "corpusA-graph", "name": "eff_3_4", "stage": "graph", "n_qubits": 4, "n_ops": 19, "depth": 7, "build_seconds": 0.0034, "nodes": 19, "edges": {"data": 18, "entanglement": 137}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "eff_3_4", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "eff_4_4", "stage": "graph", "n_qubits": 4, "n_ops": 19, "depth": 7, "build_seconds": 0.0019, "nodes": 19, "edges": {"data": 18, "entanglement": 137}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "eff_4_4", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "eff_5_4", "stage": "graph", "n_qubits": 4, "n_ops": 19, "depth": 7, "build_seconds": 0.0019, "nodes": 19, "edges": {"data": 18, "entanglement": 137}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "eff_5_4", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "rand_cliff_4_GD", "stage": "graph", "n_qubits": 4, "n_ops": 23, "depth": 13, "build_seconds": 0.0024, "nodes": 23, "edges": {"data": 26, "entanglement": 202}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "rand_cliff_4_GD", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "rand_cliff_4_AG", "stage": "graph", "n_qubits": 4, "n_ops": 25, "depth": 18, "build_seconds": 0.0029, "nodes": 25, "edges": {"data": 29, "entanglement": 254}, "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "rand_cliff_4_AG", "stage": "done", "peak_rss_mib": 70.1}
+{"kind": "corpusA-graph", "name": "qcnn_4", "stage": "graph", "n_qubits": 4, "n_ops": 66, "depth": 38, "build_seconds": 0.0151, "nodes": 66, "edges": {"data": 86, "entanglement": 1824}, "peak_rss_mib": 71.8}
+{"kind": "corpusA-graph", "name": "qcnn_4", "stage": "done", "peak_rss_mib": 71.8}
+{"kind": "corpusA-graph", "name": "quantum_volume_n4_d5_i0", "stage": "graph", "n_qubits": 4, "n_ops": 100, "depth": 35, "build_seconds": 0.0322, "nodes": 100, "edges": {"data": 126, "entanglement": 4260}, "peak_rss_mib": 72.4}
+{"kind": "corpusA-graph", "name": "quantum_volume_n4_d5_i0", "stage": "done", "peak_rss_mib": 72.4}
+{"kind": "corpusA-graph", "name": "5QBT_4CYC_4GN_1.0P2_0", "stage": "graph", "n_qubits": 5, "n_ops": 4, "depth": 4, "build_seconds": 0.0005, "nodes": 4, "edges": {"data": 3, "entanglement": 3}, "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "5QBT_4CYC_4GN_1.0P2_0", "stage": "done", "peak_rss_mib": 69.0}
+{"kind": "corpusA-graph", "name": "mod_4mod5-n5-gc4-qc13", "stage": "graph", "n_qubits": 5, "n_ops": 4, "depth": 4, "build_seconds": 0.0005, "nodes": 4, "edges": {"data": 4, "entanglement": 2}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "mod_4mod5-n5-gc4-qc13", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "dqc_qft_5", "stage": "graph", "n_qubits": 5, "n_ops": 19, "depth": 13, "build_seconds": 0.0012, "nodes": 19, "edges": {"data": 14, "control": 10}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "dqc_qft_5", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "mod5d4", "stage": "graph", "n_qubits": 5, "n_ops": 5, "depth": 4, "build_seconds": 0.0005, "nodes": 5, "edges": {"data": 5, "entanglement": 5}, "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "mod5d4", "stage": "done", "peak_rss_mib": 69.6}
+{"kind": "corpusA-graph", "name": "qft_5", "stage": "graph", "n_qubits": 5, "n_ops": 15, "depth": 9, "build_seconds": 0.0017, "nodes": 15, "edges": {"data": 20, "entanglement": 85}, "peak_rss_mib": 70.5}
+{"kind": "corpusA-graph", "name": "qft_5", "stage": "done", "peak_rss_mib": 70.5}
+{"kind": "F-depth", "name": "d160_s4", "stage": "q:1", "lc_seconds": 0.00683, "q_seconds": 45.0967, "peak_rss_mib": 1924.6}
+{"kind": "corpusA-graph", "name": "5QBT_8CYC_8GN_1.0P2_0", "stage": "graph", "n_qubits": 5, "n_ops": 8, "depth": 8, "build_seconds": 0.0007, "nodes": 8, "edges": {"data": 7, "entanglement": 21}, "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "5QBT_8CYC_8GN_1.0P2_0", "stage": "done", "peak_rss_mib": 69.5}
+{"kind": "corpusA-graph", "name": "dqc_pe_4", "stage": "graph", "n_qubits": 5, "n_ops": 21, "depth": 15, "build_seconds": 0.0026, "nodes": 21, "edges": {"data": 20, "entanglement": 164, "control": 6}, "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "dqc_pe_4", "stage": "done", "peak_rss_mib": 69.7}
+{"kind": "corpusA-graph", "name": "mod5d1", "stage": "graph", "n_qubits": 5, "n_ops": 8, "depth": 8, "build_seconds": 0.001, "nodes": 8, "edges": {"data": 11, "entanglement": 17}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "mod5d1", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "F-depth", "name": "d160_s3", "stage": "limit", "limit": "wall", "seconds": 120.3, "peak_rss_mib": 1893.4, "stderr": ""}
+{"kind": "corpusA-graph", "name": "pe_4", "stage": "graph", "n_qubits": 5, "n_ops": 18, "depth": 12, "build_seconds": 0.0031, "nodes": 18, "edges": {"data": 23, "entanglement": 126}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "pe_4", "stage": "done", "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "mod5d2", "stage": "graph", "n_qubits": 5, "n_ops": 9, "depth": 8, "build_seconds": 0.0008, "nodes": 9, "edges": {"data": 11, "entanglement": 25}, "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "mod5d2", "stage": "done", "peak_rss_mib": 69.4}
+{"kind": "corpusA-graph", "name": "bv_5", "stage": "graph", "n_qubits": 5, "n_ops": 15, "depth": 7, "build_seconds": 0.0015, "nodes": 15, "edges": {"data": 14, "entanglement": 85}, "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "bv_5", "stage": "done", "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "5QBT_16CYC_16GN_1.0P2_0", "stage": "graph", "n_qubits": 5, "n_ops": 16, "depth": 16, "build_seconds": 0.0016, "nodes": 16, "edges": {"data": 16, "entanglement": 104}, "peak_rss_mib": 69.8}
+{"kind": "corpusA-graph", "name": "5QBT_16CYC_16GN_1.0P2_0", "stage": "done", "peak_rss_mib": 69.8}
+{"kind": "F-depth", "name": "d160_s4", "stage": "limit", "limit": "wall", "seconds": 120.5, "peak_rss_mib": 1924.6, "stderr": ""}
+{"kind": "corpusA-graph", "name": "hwb5-24-102", "stage": "graph", "n_qubits": 5, "n_ops": 24, "depth": 20, "build_seconds": 0.0041, "nodes": 24, "edges": {"data": 42, "entanglement": 233}, "peak_rss_mib": 70.5}
+{"kind": "corpusA-graph", "name": "hwb5-24-102", "stage": "done", "peak_rss_mib": 70.5}
+{"kind": "corpusA-graph", "name": "nth_prime5_inc_25_103", "stage": "graph", "n_qubits": 5, "n_ops": 25, "depth": 22, "build_seconds": 0.0041, "nodes": 25, "edges": {"data": 43, "entanglement": 256}, "peak_rss_mib": 69.3}
+{"kind": "corpusA-graph", "name": "nth_prime5_inc_25_103", "stage": "done", "peak_rss_mib": 69.3}

@@ -1,0 +1,10 @@
+{
+ "platform": "macOS-15.8.2-x86_64-i386-64bit",
+ "machine": "x86_64",
+ "processor": "i386",
+ "cpu_count": 16,
+ "python": "3.12.2",
+ "wall_s": 120,
+ "rss_gib": 4,
+ "concurrent": 4
+}
