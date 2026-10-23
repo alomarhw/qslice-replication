@@ -20,7 +20,7 @@
 \end{quantikz}\\[-1pt]{\scriptsize source lines 5, 6, 7, 8, 9\\ operations where a change can alter $q_0$'s state}
 \end{minipage}\\[6pt]
 \begin{minipage}[t]{0.49\linewidth}\centering
-{\footnotesize\textbf{(c) Def-use slice of $q_0$}}\\[1pt]
+{\footnotesize\textbf{(c) Classical PDG slice of $q_0$ (data + control)}}\\[1pt]
 \begin{quantikz}[row sep={0.62cm,between origins}, column sep=0.2cm, wire types={q,q,q}]
 \lstick{$q_0$} &  &  &  & \gate{H}\gategroup[wires=1,steps=1,style={fill=cblue!28,draw=none,rounded corners=2pt,inner sep=0.4pt},background]{} & \ctrl{1}\gategroup[wires=2,steps=1,style={draw=cver,line width=0.8pt,dash pattern=on 2pt off 1.2pt,fill=none,rounded corners=2pt,inner sep=0.4pt},background]{} & \gate{H}\gategroup[wires=1,steps=1,style={fill=cblue!28,draw=none,rounded corners=2pt,inner sep=0.4pt},background]{} &  &  & \rstick{\scriptsize criterion} \\
 \lstick{$q_1$} &  & \gate{X}\gategroup[wires=1,steps=1,style={draw=cver,line width=0.8pt,dash pattern=on 2pt off 1.2pt,fill=none,rounded corners=2pt,inner sep=0.4pt},background]{} & \gate{H}\gategroup[wires=1,steps=1,style={draw=cver,line width=0.8pt,dash pattern=on 2pt off 1.2pt,fill=none,rounded corners=2pt,inner sep=0.4pt},background]{} &  & \targ{} &  & \ctrl{1} & \gate{Z} &  \\

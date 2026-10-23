@@ -1,44 +1,66 @@
 \relax 
+\citation{weiser1982programmers}
+\citation{ali2022sequantum}
+\citation{murillo2025roadmap}
+\citation{daloisio2024llm}
 \citation{yu2025qpdg}
+\citation{ferrante1987pdg}
+\citation{murillo2025roadmap}
+\citation{ye2026llmqse}
+\citation{zhao2023bugs4q}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
 \newlabel{sec:intro}{{I}{1}{}{section.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {II}Motivating Example}{1}{}\protected@file@percent }
-\newlabel{sec:example}{{II}{1}{}{section.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Quantum Dependence}{1}{}\protected@file@percent }
-\newlabel{sec:dependence}{{III}{1}{}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Circuits and their semantics}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Criteria, slices, and dependence}{1}{}\protected@file@percent }
-\newlabel{def:criterion}{{1}{1}{}{subsection.3.2}{}}
-\newlabel{def:sound}{{2}{1}{}{subsection.3.2}{}}
-\newlabel{def:dep}{{3}{1}{}{subsection.3.2}{}}
+\citation{zhao2023bugs4q}
+\citation{zhao2023bugs4q}
+\citation{zhao2023bugs4q}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A real bug from Bugs4Q~\cite  {zhao2023bugs4q}, posted on Stack Overflow. (a)~The program meant to prepare $(\lvert 01\rangle +\lvert 10\rangle )/\sqrt  {2}$, and line~6 should apply $X$. (b)~The buggy outcomes are uniform over all four bit strings, yet each qubit alone looks as intended. (c)~Asked which lines determine $q_0$, the classical PDG keeps line~5 alone and misses the faulty line~6; the wire rule keeps lines~5 to~7. Outcomes, slices and dependences are computed by the study's code.}}{2}{}\protected@file@percent }
+\newlabel{fig:motivating}{{1}{2}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}A Debugging Scenario}{2}{}\protected@file@percent }
+\newlabel{sec:example}{{II}{2}{}{section.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Quantum Dependence}{2}{}\protected@file@percent }
+\newlabel{sec:dependence}{{III}{2}{}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Circuits and their semantics}{2}{}\protected@file@percent }
+\citation{yu2025qpdg}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces One Qiskit program under each dependence rule. (a)~The program; the comment on each line names the operation it creates. (b)~The dependences of $q_0$, the operations where a change can alter $q_0$'s state. (c)--(e)~The slice of $q_0$ that each rule computes (the classical PDG equals def-use here, since the program has no classical bits), with the source lines it keeps and its fidelity at $\lvert 000\rangle $ and at 20 random product inputs. The classical PDG misses the kickback through $o_4$; entanglement closure adds $o_0$, which cannot affect $q_0$; the wire rule keeps exactly the dependences. (f)~State-based pruning of $q_2$ at $\lvert 000\rangle $ is exact at that input but drops three dependences and is wrong at all 20 random inputs. Slices, dependences and verdicts are computed by the study's code from the program in~(a).}}{3}{}\protected@file@percent }
+\newlabel{fig:dependence}{{2}{3}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Criteria, slices, and dependence}{3}{}\protected@file@percent }
+\newlabel{def:criterion}{{1}{3}{}{subsection.3.2}{}}
+\newlabel{def:sound}{{2}{3}{}{subsection.3.2}{}}
+\newlabel{def:dep}{{3}{3}{}{subsection.3.2}{}}
+\citation{ferrante1987pdg}
 \citation{yu2025qpdg}
 \citation{javadi2024qiskit}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces One Qiskit program under each dependence rule. (a)~The program; the comment on each line names the operation it creates. (b)~The dependences of $q_0$, the operations where a change can alter $q_0$'s state. (c)--(e)~The slice of $q_0$ that each rule computes, with the source lines it keeps and its fidelity at $\lvert 000\rangle $ and at 20 random product inputs. Def-use misses the kickback through $o_4$; entanglement closure adds $o_0$, which cannot affect $q_0$; the wire rule keeps exactly the dependences. (f)~State-based pruning of $q_2$ at $\lvert 000\rangle $ is exact at that input but drops three dependences and is wrong at all 20 random inputs. Slices, dependences and verdicts are computed by the study's code from the program in~(a).}}{2}{}\protected@file@percent }
-\newlabel{fig:dependence}{{1}{2}{}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Dependence rules}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Properties}{2}{}\protected@file@percent }
-\newlabel{thm:sound}{{1}{2}{}{subsection.3.4}{}}
 \citation{nielsen2010quantum}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Dependence rules}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Properties}{4}{}\protected@file@percent }
+\newlabel{thm:sound}{{1}{4}{}{subsection.3.4}{}}
+\newlabel{prop:complete}{{1}{4}{}{subsection.3.4}{}}
+\newlabel{prop:du}{{2}{4}{}{subsection.3.4}{}}
+\newlabel{prop:ent}{{3}{4}{}{subsection.3.4}{}}
+\newlabel{prop:joint}{{4}{4}{}{subsection.3.4}{}}
 \bibstyle{IEEEtran}
 \bibdata{references}
-\bibcite{yu2025qpdg}{1}
-\bibcite{javadi2024qiskit}{2}
-\bibcite{nielsen2010quantum}{3}
-\newlabel{prop:complete}{{1}{3}{}{subsection.3.4}{}}
-\newlabel{prop:du}{{2}{3}{}{subsection.3.4}{}}
-\newlabel{prop:ent}{{3}{3}{}{subsection.3.4}{}}
-\newlabel{prop:joint}{{4}{3}{}{subsection.3.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Study Design}{3}{}\protected@file@percent }
-\newlabel{sec:design}{{IV}{3}{}{section.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Results}{3}{}\protected@file@percent }
-\newlabel{sec:results}{{V}{3}{}{section.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Discussion}{3}{}\protected@file@percent }
-\newlabel{sec:discussion}{{VI}{3}{}{section.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Threats to Validity}{3}{}\protected@file@percent }
-\newlabel{sec:threats}{{VII}{3}{}{section.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Related Work}{3}{}\protected@file@percent }
-\newlabel{sec:related}{{VIII}{3}{}{section.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IX}Conclusion}{3}{}\protected@file@percent }
-\newlabel{sec:conclusion}{{IX}{3}{}{section.9}{}}
-\@writefile{toc}{\contentsline {section}{References}{3}{}\protected@file@percent }
-\gdef \@abspage@last{3}
+\bibcite{weiser1982programmers}{1}
+\bibcite{ali2022sequantum}{2}
+\bibcite{murillo2025roadmap}{3}
+\bibcite{daloisio2024llm}{4}
+\bibcite{yu2025qpdg}{5}
+\bibcite{ferrante1987pdg}{6}
+\bibcite{ye2026llmqse}{7}
+\bibcite{zhao2023bugs4q}{8}
+\bibcite{javadi2024qiskit}{9}
+\bibcite{nielsen2010quantum}{10}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Study Design}{5}{}\protected@file@percent }
+\newlabel{sec:design}{{IV}{5}{}{section.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Results}{5}{}\protected@file@percent }
+\newlabel{sec:results}{{V}{5}{}{section.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Discussion}{5}{}\protected@file@percent }
+\newlabel{sec:discussion}{{VI}{5}{}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Threats to Validity}{5}{}\protected@file@percent }
+\newlabel{sec:threats}{{VII}{5}{}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Related Work}{5}{}\protected@file@percent }
+\newlabel{sec:related}{{VIII}{5}{}{section.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Conclusion}{5}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{IX}{5}{}{section.9}{}}
+\@writefile{toc}{\contentsline {section}{References}{5}{}\protected@file@percent }
+\gdef \@abspage@last{5}

@@ -1032,5 +1032,95 @@
   "value": 18,
   "tex": "18",
   "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
+ },
+ "CpdgUnsound": {
+  "value": 204,
+  "tex": "204",
+  "source": "results/icpc/cpdg/rq1_records.csv"
+ },
+ "CpdgUnsoundPct": {
+  "value": 0.2602040816326531,
+  "tex": "26.0\\%",
+  "source": "results/icpc/cpdg/rq1_records.csv"
+ },
+ "CpdgRecall": {
+  "value": 0.7410165714806879,
+  "tex": "0.741",
+  "source": "results/icpc/cpdg/rq1_records.csv"
+ },
+ "CpdgSize": {
+  "value": 0.5304047196745563,
+  "tex": "53.0\\%",
+  "source": "results/icpc/cpdg/rq1_records.csv"
+ },
+ "CpdgDynamicUnsound": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/cpdg/rq1_records.csv"
+ },
+ "NDynamicPairs": {
+  "value": 80,
+  "tex": "80",
+  "source": "results/icpc/cpdg/rq1_records.csv"
+ },
+ "CpdgUnitaryUnsound": {
+  "value": 203,
+  "tex": "203",
+  "source": "results/icpc/cpdg/rq1_records.csv"
+ },
+ "DuDynamicUnsound": {
+  "value": 13,
+  "tex": "13",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "CpdgMissKickback": {
+  "value": 1688,
+  "tex": "1{,}688",
+  "source": "results/icpc/cpdg/rq1_misses.csv"
+ },
+ "CpdgMissFeedback": {
+  "value": 10,
+  "tex": "10",
+  "source": "results/icpc/cpdg/rq1_misses.csv"
+ },
+ "RqThreeContainCpdg": {
+  "value": 0.7883263009845288,
+  "tex": "78.8\\%",
+  "source": "results/icpc/cpdg/rq3_records.csv"
+ },
+ "FamCpdgUnsound": {
+  "value": 232,
+  "tex": "232",
+  "source": "results/icpc/cpdg/families_rows.csv"
+ },
+ "MotFidelity": {
+  "value": 0.49999999999999967,
+  "tex": "0.50",
+  "source": "paper/figures/src/fig_motivating_facts.json"
+ },
+ "MotPOne": {
+  "value": 0.4999999999999998,
+  "tex": "0.5",
+  "source": "paper/figures/src/fig_motivating_facts.json"
+ },
+ "MotDuFidelity": {
+  "value": 0.9999999999999993,
+  "tex": "1.00",
+  "source": "paper/figures/src/fig_motivating_facts.json"
+ },
+ "ExRandomInputs": {
+  "value": 20,
+  "tex": "20",
+  "source": "paper/figures/src/make_fig_example.py (N_RANDOM)"
+ },
+ "ExQSliceWrong": {
+  "value": 20,
+  "tex": "20",
+  "source": "paper/figures/src/fig_example_facts.json"
+ },
+ "ExDuFidelity": {
+  "value": 0.0,
+  "tex": "0.00",
+  "source": "paper/figures/src/fig_example_facts.json"
  }
 }

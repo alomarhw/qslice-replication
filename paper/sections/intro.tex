@@ -1,0 +1,61 @@
+\section{Introduction}\label{sec:intro}
+
+Program slicing finds the statements of a program that can affect a value at a point of interest, and
+debugging is where developers use it~\cite{weiser1982programmers}. Quantum programs are hard to debug.
+Their intermediate states cannot be inspected without disturbing them, their outcomes are probabilistic,
+and the effect of a gate on one qubit may show only in the outcomes of
+another~\cite{ali2022sequantum, murillo2025roadmap}. Developers who are new to quantum computing also find
+the code itself hard to understand~\cite{daloisio2024llm}. A slicer that tells a developer which lines of a
+quantum program can influence a wrong outcome would help with both problems.
+
+Slicing has been proposed for quantum programs. Yu and Zhao's quantum program dependence
+graph~\cite{yu2025qpdg} extends the classical program dependence graph~\cite{ferrante1987pdg} with
+entanglement, no-cloning, temporal and measurement dependences, and reduces slicing to graph reachability
+under the classical criterion $(s, V)$. A roadmap of quantum software engineering presents this graph as
+the basis for slicing, debugging and testing~\cite{murillo2025roadmap}, and a later one notes that
+validating such models remains open~\cite{ye2026llmqse}. No definition of quantum dependence has been
+checked against the semantics of quantum programs. It is therefore not known whether the slices such
+definitions produce contain the operations a developer must inspect.
+
+Section~\ref{sec:example} shows a real bug where this matters. Reading a two-qubit gate as a classical
+assignment gives a slice that omits the faulty line and still reproduces the qubit's state, and the bug
+itself shows only in the correlation between two qubits, which a single-variable criterion cannot
+express.
+
+This paper defines quantum dependence semantically, as the set of operations where a change can alter
+the state of the criterion qubits for some input, and generalizes the criterion to a set of qubits whose
+joint state the slice must preserve. We then measure how dependence definitions behave against this
+ground truth, in a pre-registered study on \numNPairs{} circuit--qubit pairs from three benchmark suites,
+\numFamCircuits{} circuits with known structure, \numRqThreeUnits{} seeded faults, and real bugs from
+Bugs4Q~\cite{zhao2023bugs4q}. The definitions range from the classical program dependence graph to
+pruning by simulation, and they include our documented reading of Yu and Zhao's graph.
+
+A correct slice needs data, control and quantum dependence. The classical program dependence graph
+has the first two, and it still gives wrong slices for \numCpdgUnsoundPct{} of the pairs. Control
+dependence repairs it on circuits with measurements and feedback, where it is wrong on
+\numCpdgDynamicUnsound{} of \numNDynamicPairs{} pairs against \numDuDynamicUnsound{} without control
+dependence. It cannot repair the rest, because a two-qubit gate can change its control qubit (phase
+kickback), a quantum dependence that no classical reading of the gate expresses. Following entanglement, as the dependence
+graph does, is sound but keeps \numRqOneYzSize{} of the circuit. A simple rule, in which every gate reads
+and writes all its qubits, keeps \numRqOneLcSize{}, misses no dependence, and stays correct on every
+tested input, and its soundness is machine-checked. Entanglement turns out to be neither necessary nor
+sufficient for dependence. Pruning by commutation shrinks the slices further and stays correct on all
+random inputs. Pruning by simulation shrinks them by \numHTwoRelative{}, but only for the input it was
+computed on. It removes the faulty operation in \numCQFour{} seeded faults and lowers the
+fault-localization accuracy of three language models by up to \numTTwoMaxDrop{} percentage points. A
+criterion over all affected qubits recovers \numCQFourRecovered{} of these faults.
+
+This paper makes four contributions. It gives semantic definitions of quantum dependence, slice
+soundness and dependence completeness, with a criterion over sets of qubits, and proves that the wire
+rule is sound and complete (Section~\ref{sec:dependence}). It reports the first comparison of quantum
+dependence definitions against a semantic ground truth, covering soundness, completeness, robustness to
+inputs and precision. It measures what each definition does to fault localization, by hand, with
+mutation-based fault localization and with language models, on seeded faults and on real bugs mapped to
+the lines of their Qiskit programs. Finally, it provides a replication package that regenerates every
+number in the paper.
+
+Section~\ref{sec:example} presents the debugging scenario, Section~\ref{sec:dependence} the definitions,
+Section~\ref{sec:design} the study design and Section~\ref{sec:results} the results.
+Section~\ref{sec:discussion} discusses what the results mean for tool builders,
+Section~\ref{sec:threats} the threats to validity, Section~\ref{sec:related} related work, and
+Section~\ref{sec:conclusion} concludes.

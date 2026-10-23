@@ -27,21 +27,17 @@ and Fault Localization}
 quantum programs, program slicing, program dependence, debugging, fault localization
 \end{IEEEkeywords}
 
-\section{Introduction}\label{sec:intro}
-\TODO{Comprehension and debugging motivation; the gap (slicing proposed, never validated); thesis;
-contributions C1--C5 (PAPER\_OUTLINE.md \S3).}
+\input{sections/intro}
 
-\section{Motivating Example}\label{sec:example}
-\TODO{Phase kickback in Deutsch's algorithm, and a bug that makes two qubits separable; this circuit is
-Fig.~1.}
+\input{sections/example}
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig_example.pdf}
   \caption{One Qiskit program under each dependence rule. (a)~The program; the comment on each line names
   the operation it creates. (b)~The dependences of $q_0$, the operations where a change can alter
-  $q_0$'s state. (c)--(e)~The slice of $q_0$ that each rule computes, with the source lines it keeps and
-  its fidelity at $\ket{000}$ and at 20 random product inputs. Def-use misses the kickback through $o_4$;
+  $q_0$'s state. (c)--(e)~The slice of $q_0$ that each rule computes (the classical PDG equals def-use here, since the program has no classical bits), with the source lines it keeps and
+  its fidelity at $\ket{000}$ and at 20 random product inputs. The classical PDG misses the kickback through $o_4$;
   entanglement closure adds $o_0$, which cannot affect $q_0$; the wire rule keeps exactly the dependences.
   (f)~State-based pruning of $q_2$ at $\ket{000}$ is exact at that input but drops three dependences and is
   wrong at all 20 random inputs. Slices, dependences and verdicts are computed by the study's code from

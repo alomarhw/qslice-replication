@@ -62,15 +62,23 @@ inputs and perturbations, so the measured $\mathit{Dep}_W(P)$ is a subset of the
 A \emph{dependence rule} $R$ assigns each operation the locations it reads, $r_R(o)$, and the
 locations it writes, $w_R(o)$. Operation $o_j$ depends on $o_i$ under $R$ if $i < j$ and some location
 in $w_R(o_i) \cap r_R(o_j)$ is not written by any operation between them. The backward slice
-$B_R(W)$ is the set of operations from which the last writer of some $q \in W$ is reachable. We compare
-three rules and two refinements of the wire rule.
+$B_R(W)$ is the set of operations from which the last writer of some $q \in W$ is reachable. A rule can
+account for three kinds of dependence. \emph{Data} dependence follows a qubit from the operation that
+last changed it. \emph{Control} dependence follows a classical bit from the measurement that wrote it to
+the operations its value conditions. \emph{Quantum} dependence lets a multi-qubit gate change every qubit
+it acts on, including its controls. We compare three rules that differ in which of these they include,
+and two refinements of the most complete one.
 
-\emph{Def-use} (DU) reads a gate as a classical assignment. A controlled gate reads its controls and
-targets and writes only its targets, and any other gate reads and writes all its qubits.
+\emph{Classical PDG} (CPDG) applies the classical program dependence graph~\cite{ferrante1987pdg} to the
+circuit, with data and control dependence. Its data dependence reads a gate as a classical assignment. A
+controlled gate reads its controls and targets and writes only its targets, and any other gate reads and
+writes all its qubits. Its control dependence follows the classical bits. A measurement writes its bit,
+and a conditioned gate reads the bits its condition tests. We also report \emph{def-use} (DU), the same
+data dependence without classical bits, as the minimal classical port.
 
-\emph{Wire} (W) lets every operation read and write all its locations, $r_W(o) = w_W(o) = \mathit{loc}(o)$.
-$B_W$ is the backward light cone of $W$, extended along classical bits from measurements to the gates
-they condition.
+\emph{Wire} (W) adds quantum dependence to the classical PDG. Every operation reads and writes all its
+locations, $r_W(o) = w_W(o) = \mathit{loc}(o)$, so a controlled gate also writes its controls. $B_W$ is the
+backward light cone of $W$, extended along classical bits from measurements to the gates they condition.
 
 \emph{Entanglement closure} (QPDG) is our documented reading of Yu and Zhao's
 graph~\cite{yu2025qpdg}, whose dependences are given informally. It adds to the wire edges an edge from
@@ -118,13 +126,16 @@ measurement outcome is the same.
 
 The other rules fail one property or the other, as the circuit of Fig.~\ref{fig:dependence} shows.
 
-\begin{proposition}[Def-use is unsound]\label{prop:du}
-There are circuits for which $B_{DU}(W)$ does not preserve $W$ even at $\ket{0\dots0}$.
+\begin{proposition}[The classical PDG is unsound]\label{prop:du}
+There are circuits for which $B_{CPDG}(W)$, and hence $B_{DU}(W)$, does not preserve $W$ even at
+$\ket{0\dots0}$.
 \end{proposition}
 
 In Fig.~\ref{fig:dependence}, $o_4 = \mathrm{CX}(q_0, q_1)$ finds $q_1$ in $\ket{-}$ and so changes the
-phase of its control $q_0$ (phase kickback). Def-use treats the control as read only. Its slice of
-$q_0$ is $\{o_3, o_5\}$, which ends in $\ket{0}$, while the circuit leaves $q_0$ in $\ket{1}$.
+phase of its control $q_0$ (phase kickback). The classical PDG treats the control as read only, and the
+circuit has no classical bits, so its slice of $q_0$ equals the def-use slice $\{o_3, o_5\}$. That slice
+ends in $\ket{0}$, while the circuit leaves $q_0$ in $\ket{1}$. Control dependence cannot repair this,
+because the missing dependence is quantum.
 
 \begin{proposition}[Entanglement is neither necessary nor sufficient for dependence]\label{prop:ent}
 (i) An operation can be a dependence of $q$ although $q$ is never entangled with its qubits.

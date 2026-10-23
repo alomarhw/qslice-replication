@@ -36,6 +36,7 @@ def facts(qc):
     from common.evaluate import materialise
     from icpc import oracle_icpc as oi
     from icpc.influence import influence, influence_sets
+    from icpc.cpdg import cpdg_slice
     from slicers.registry import Slicers
     n = qc.num_qubits
     base = oi.reduced_states(qc, range(n))
@@ -46,8 +47,8 @@ def facts(qc):
     out = {}
     for t in range(n):
         out[t] = {"dep": sorted(dep[t])}
-        for m in ("du", "yz", "lc", "q"):
-            sl = set(s.get(m)(t))
+        for m in ("du", "cpdg", "yz", "lc", "q"):
+            sl = set(cpdg_slice(qc, t)) if m == "cpdg" else set(s.get(m)(t))
             f0 = oi.uhlmann_fidelity(base[t], oi.reduced_states(materialise(qc, sl), range(n))[t])
             bad = 0
             for p in preps:
@@ -146,7 +147,7 @@ def main():
         code + "\\hfill",
         panel("(b) Dependences of $q_0$ (ground truth)", qc, dep_marks, 0,
               "source lines " + ", ".join(str(lines[k]) for k in d0["dep"]) + "\\\\ operations where a change can alter $q_0$'s state", labels=True) + "\\\\[6pt]",
-        panel("(c) Def-use slice of $q_0$", qc, marks("du", 0), 0, verdict("du", 0)) + "\\hfill",
+        panel("(c) Classical PDG slice of $q_0$ (data + control)", qc, marks("cpdg", 0), 0, verdict("cpdg", 0)) + "\\hfill",
         panel("(d) Entanglement-closure (QPDG) slice of $q_0$", qc, marks("yz", 0), 0, verdict("yz", 0)) + "\\\\[6pt]",
         panel("(e) Wire-rule slice of $q_0$", qc, marks("lc", 0), 0, verdict("lc", 0)) + "\\hfill",
         panel("(f) State-based (QSlice) slice of $q_2$ at $\\ket{000}$", qc, marks("q", 2), 2, verdict("q", 2)) + "\\\\[6pt]",

@@ -1,0 +1,46 @@
+\section{A Debugging Scenario}\label{sec:example}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig_motivating.pdf}
+  \caption{A real bug from Bugs4Q~\cite{zhao2023bugs4q}, posted on Stack Overflow. (a)~The program meant to
+  prepare $(\ket{01}+\ket{10})/\sqrt{2}$, and line~6 should apply $X$. (b)~The buggy outcomes are uniform
+  over all four bit strings, yet each qubit alone looks as intended. (c)~Asked which lines determine
+  $q_0$, the classical PDG keeps line~5 alone and misses the faulty line~6; the wire rule keeps lines~5 to~7.
+  Outcomes, slices and dependences are computed by the study's code.}
+  \label{fig:motivating}
+\end{figure}
+
+A developer asked on Stack Overflow why a two-qubit program did not produce the state
+$(\ket{01}+\ket{10})/\sqrt{2}$. The program and its fix are part of the Bugs4Q
+benchmark~\cite{zhao2023bugs4q}, and Fig.~\ref{fig:motivating}a shows the lines that build the
+circuit. The intended outcomes are $01$ and $10$, each with probability one half. As
+Fig.~\ref{fig:motivating}b shows, the program instead returns all four bit strings equally often.
+
+A natural first step is to check each qubit separately, and here both look correct. Each reads $1$ with
+probability \numMotPOne{}, in the buggy program and in the intended one alike. The error lies only in the
+correlation between the two qubits. A slicing criterion that names a single variable, as the classical
+criterion $(s, V)$ does when $V$ is one qubit, cannot express this failure. The criterion must be the
+pair $\{q_0, q_1\}$.
+
+Suppose the developer nevertheless slices backward from $q_0$ to see which lines determine it. A
+classical slicer follows data and control dependence. It reads \texttt{cx(0,1)} like the assignment
+$q_1 \leftarrow q_1 \oplus q_0$, which reads $q_0$ and writes only $q_1$, and the program has no classical
+conditions for control dependence to follow. Its slice of $q_0$ is therefore line~5 alone, as the left of
+Fig.~\ref{fig:motivating}c shows. The slice even appears to be right. Running line~5 alone gives $q_0$
+the same state as the whole program, with fidelity \numMotDuFidelity{}, because \texttt{h(1)} leaves
+$q_1$ in $\ket{+}$, on which the CNOT acts as the identity. The developer inspects \texttt{h(0)}, finds
+nothing wrong, and has no reason to look at line~6, where the bug is.
+
+Line~6 is nonetheless a dependence of $q_0$. Replacing \texttt{h(1)} by the intended \texttt{x(1)}
+turns $q_0$ from a pure state into a maximally mixed one, and the two states have fidelity only
+\numMotFidelity{}. A CNOT acts on its control as well as its target. The wire rule, which lets every
+gate read and write all its qubits, keeps lines~5 to~7, as the right of Fig.~\ref{fig:motivating}c
+shows. Its slice for the pair $\{q_0, q_1\}$ is the same, and it contains the bug.
+
+The program has three gates, so a developer could read it whole. The two mistakes it exposes are not
+specific to small programs, however. Reading a gate as an assignment misses influence that flows into a
+control qubit, and a one-qubit criterion misses errors in correlations. Section~\ref{sec:dependence}
+defines what a slice of a quantum program must contain, and Section~\ref{sec:results} measures how each
+definition fares on \numNPairs{} circuit--qubit pairs, \numRqThreeUnits{} seeded faults, and the
+Bugs4Q bugs.

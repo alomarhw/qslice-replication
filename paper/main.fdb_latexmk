@@ -1,18 +1,17 @@
 # Fdb version 4
-["bibtex main"] 1792736883.31335 "main.aux" "main.bbl" "main" 1792736883.36551 2
-  "./references.bib" 1792736446.95258 26961 a9a325fd7bab5cc3e4e909e45cf4cd8e ""
+["bibtex main"] 1792740205.30074 "main.aux" "main.bbl" "main" 1792740217.81432 0
+  "./references.bib" 1792737382.85877 28824 4352c6de8d8472c00870f0efc261f1f8 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "main.aux" 1792736883.12791 3493 7babb99e93136a4c979636cd857c6c6b "pdflatex"
+  "main.aux" 1792740217.63147 4795 c39622d822dafd7d90f91c61da1fa6be "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1792736882.78423 "main.tex" "main.pdf" "main" 1792736883.36577 0
+["pdflatex"] 1792740217.29051 "main.tex" "main.pdf" "main" 1792740217.81465 0
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
-  "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/times/ptmb8c.tfm" 1136768653 1340 d2f6275bc4fa3f07e3bc50aae2c71eab ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm" 1136768653 4524 6bce29db5bc272ba5f332261583fee9c ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/times/ptmbi7t.tfm" 1136768653 2228 e564491c42a4540b5ebb710a75ff306c ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm" 1136768653 4480 10409ed8bab5aea9ec9a78028b763919 ""
@@ -66,7 +65,6 @@
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb" 1136849748 45458 a3faba884469519614ca56ba5f6b1de1 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf" 1136768653 1344 6ff472164bf9de0fb2e864b28ac156d9 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf" 1136768653 1372 788387fea833ef5963f4c5bffe33eb89 ""
-  "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/vf/adobe/times/ptmb8c.vf" 1136768653 3556 f148a8ed6ef01fed553027171e4f9b22 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/vf/adobe/times/ptmbi7t.vf" 1136768653 1384 6ac0f8b839230f5d9389287365b243c0 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf" 1136768653 1380 0ea3a3370054be6da6acd929ec569f06 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf" 1136768653 1948 7330aeef3af211edff3b35fb2c12a0fd ""
@@ -99,7 +97,6 @@
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/listings/lstpatch.sty" 1710360531 353 9024412f43e92cd5b21fe9ded82d0610 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1pcr.fd" 1137110629 985 1ed784d7bfe47179f3550d2303b073f8 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1ptm.fd" 1137110629 961 15056f4a61917ceed3a44e4ac11fcc52 ""
-  "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd" 1137110629 619 96f56dc5d1ef1fe1121f1cfeec70ee0c ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/stmaryrd/Ustmry.fd" 1137110872 1766 216b0f832c406513647608b5bb9bb8ff ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty" 1302307949 11080 aa7f81da60ce104f0dbb8b827dd14383 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
@@ -108,13 +105,16 @@
   "/Users/alomarhw/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1792196258 384138 9cb6dc2ced87a756571260f3e12c097a ""
   "/Users/alomarhw/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1780461613 2251155 18d2852fa51ed40198e07c4ecb052774 ""
   "/Users/alomarhw/Library/TinyTeX/texmf.cnf" 1780461570 637 edd806fb06a89761a6034e1968af9017 ""
-  "abstract.tex" 1792735231.55798 2003 e6cff39b593934924b8b6d21c72edb63 ""
-  "figures/fig_example.pdf" 1792736882.45785 119309 9cbe52557515a36a36d168726f481829 ""
-  "main.aux" 1792736883.12791 3493 7babb99e93136a4c979636cd857c6c6b "pdflatex"
-  "main.bbl" 1792736883.36407 1516 51e6a5b26bdf595dae9f17fe04e87d6c "bibtex main"
-  "main.tex" 1792736882.54532 3055 5da0d75b079cb611ddd19a6f898fda8f ""
-  "numbers.tex" 1792735236.10213 15808 d5a91f01a2a966ca353562d45596d4bd ""
-  "sections/dependence.tex" 1792736419.34447 10051 1f0be2386eddebe242ba7907d238bbb0 ""
+  "abstract.tex" 1792740217.12691 2079 82a1ba18e324eb06495a2901e2d79573 ""
+  "figures/fig_example.pdf" 1792738587.52935 119643 2c71576e93fe0c92284d484e98dc2114 ""
+  "figures/fig_motivating.pdf" 1792738588.78494 99938 d512c6091634931cfe02997397b9f7a3 ""
+  "main.aux" 1792740217.63147 4795 c39622d822dafd7d90f91c61da1fa6be "pdflatex"
+  "main.bbl" 1792740205.35657 3328 4bfaed6e9c1f7c72623a0219ae60343b "bibtex main"
+  "main.tex" 1792738603.13681 2847 fa8ebb7b03edf8c11e28a0fba44df1d8 ""
+  "numbers.tex" 1792740184.84346 17195 32689c1e7ea5806e99e7c9675133b9e8 ""
+  "sections/dependence.tex" 1792738562.23321 11154 d8841eddf824a018939b88cbe2fee689 ""
+  "sections/example.tex" 1792738603.13634 3352 216e9654b36dd6b48bcd1516a9f849e6 ""
+  "sections/intro.tex" 1792740204.42562 5035 2fbd92308684c1c9fac053960c3ab5ab ""
   (generated)
   "main.aux"
   "main.log"
