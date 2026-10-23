@@ -871,3 +871,20 @@ These were found while implementing §6, from the API documentation. No LLM call
   to the first matching original line. The cross-check flagged them, and the authors' tool was
   right. Step 2 now searches in order: after the previous mapped line and before the next cited
   one. The first run's output is replaced and kept out of any result.
+
+### Deviation I-12 (2026-10-23, author decision, before any S-cpdg result): the full classical PDG as a baseline
+- **Why.** The pre-registered S-du ports classical *data* dependence only. It ignores classical bits,
+  so it has no control dependence from a measurement to the gates its bit conditions. A classical
+  slicer follows both kinds of dependence. The author decided that the comparison must include the
+  full classical PDG, and that a correct slice must account for data, control and quantum dependence.
+- **S-cpdg (`icpc/cpdg.py`).** S-du's qubit rule unchanged, plus classical bits: a measurement also
+  writes its bit, and an `if_else` also reads the bits its condition tests. S-du's backward pass.
+- **Checked before any result.** S-cpdg equals S-du on all 704 unitary corpus-A pairs. It is larger on
+  35 of the 80 dynamic pairs. On the catalogue's teleportation entry (K13) it equals S-lc.
+- **Scoring (`icpc/cpdg_run.py`).** Exactly as the pre-registered runs: RQ1 soundness at |0…0⟩,
+  dependence recall and miss categories; RQ3 containment and size on the same units; families
+  soundness and recall.
+- **Reporting.** S-du stays reported as pre-registered (H1 is unchanged). S-cpdg is reported beside
+  it, descriptively, as the strongest classical baseline. In the paper, the wire rule is presented
+  as classical data and control dependence plus quantum dependence (a multi-qubit gate acts on all
+  its qubits).
