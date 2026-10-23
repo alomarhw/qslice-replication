@@ -1,0 +1,1031 @@
+{
+ "NPairs": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "NCircuits": {
+  "value": 158,
+  "tex": "158",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneDuUnsound": {
+  "value": 216,
+  "tex": "216",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneDuUnsoundPct": {
+  "value": 0.2755102040816326,
+  "tex": "27.6\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneDuRecall": {
+  "value": 0.717607293380109,
+  "tex": "0.718",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneDuPrecision": {
+  "value": 0.9702694839603656,
+  "tex": "0.970",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneDuSize": {
+  "value": 0.5119337819212016,
+  "tex": "51.2\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneLcUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneLcUnsoundPct": {
+  "value": 0.0,
+  "tex": "0.0\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneLcRecall": {
+  "value": 1.0,
+  "tex": "1.000",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneLcPrecision": {
+  "value": 0.9232749570772351,
+  "tex": "0.923",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneLcSize": {
+  "value": 0.7036948679909367,
+  "tex": "70.4\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneYzUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneYzUnsoundPct": {
+  "value": 0.0,
+  "tex": "0.0\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneYzRecall": {
+  "value": 1.0,
+  "tex": "1.000",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneYzPrecision": {
+  "value": 0.8349990207678731,
+  "tex": "0.835",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneYzSize": {
+  "value": 0.7857218252650308,
+  "tex": "78.6\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneQUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneQUnsoundPct": {
+  "value": 0.0,
+  "tex": "0.0\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneQRecall": {
+  "value": 0.8065315828080251,
+  "tex": "0.807",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneQPrecision": {
+  "value": 0.9723126738738933,
+  "tex": "0.972",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneQSize": {
+  "value": 0.5402205554805595,
+  "tex": "54.0\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeUnfixedUnsound": {
+  "value": 5,
+  "tex": "5",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeUnfixedUnsoundPct": {
+  "value": 0.006377551020408163,
+  "tex": "0.6\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeUnfixedRecall": {
+  "value": 0.994390672935841,
+  "tex": "0.994",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeUnfixedPrecision": {
+  "value": 0.8644595599915934,
+  "tex": "0.864",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeUnfixedSize": {
+  "value": 0.7501121138122326,
+  "tex": "75.0\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeFixedUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeFixedUnsoundPct": {
+  "value": 0.0,
+  "tex": "0.0\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeFixedRecall": {
+  "value": 1.0,
+  "tex": "1.000",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeFixedPrecision": {
+  "value": 0.8640914153687904,
+  "tex": "0.864",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneFourEdgeFixedSize": {
+  "value": 0.7519697020856373,
+  "tex": "75.2\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "RqOneDuMissKickback": {
+  "value": 1737,
+  "tex": "1{,}737",
+  "source": "results/icpc/rq1/misses.csv"
+ },
+ "RqOneDuMissSameWire": {
+  "value": 835,
+  "tex": "835",
+  "source": "results/icpc/rq1/misses.csv"
+ },
+ "RqOneDuMissWrittenOperand": {
+  "value": 654,
+  "tex": "654",
+  "source": "results/icpc/rq1/misses.csv"
+ },
+ "RqOneDuMissFeedback": {
+  "value": 134,
+  "tex": "134",
+  "source": "results/icpc/rq1/misses.csv"
+ },
+ "RqOneQRemoved": {
+  "value": 2847,
+  "tex": "2{,}847",
+  "source": "results/icpc/rq1/pairs.csv"
+ },
+ "RqOneQRemovedNonInfluencing": {
+  "value": 669,
+  "tex": "669",
+  "source": "results/icpc/rq1/pairs.csv"
+ },
+ "RqOneQRemovedContributing": {
+  "value": 1618,
+  "tex": "1{,}618",
+  "source": "results/icpc/rq1/pairs.csv"
+ },
+ "RqOneQPrunedPairs": {
+  "value": 477,
+  "tex": "477",
+  "source": "results/icpc/rq1/pairs.csv"
+ },
+ "LcqApplicable": {
+  "value": 732,
+  "tex": "732",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "LcqNotApplicable": {
+  "value": 52,
+  "tex": "52",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "LcqNaMeasurements": {
+  "value": 42,
+  "tex": "42",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "LcqUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "LcqSmallerThanLc": {
+  "value": 243,
+  "tex": "243",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "LcqRecall": {
+  "value": 0.930308711783841,
+  "tex": "0.93",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "QVsLcqReduction": {
+  "value": 0.12286088984762125,
+  "tex": "12.3\\%",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "QVsLcqReductionPooled": {
+  "value": 0.10822285763798634,
+  "tex": "10.8\\%",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "QLargerThanLcq": {
+  "value": 72,
+  "tex": "72",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "HOnePHolm": {
+  "value": 3.7982270983039195e-65,
+  "tex": "p < 10^{-10}",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HTwoDiff": {
+  "value": 0.16347431251037725,
+  "tex": "16.3",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HTwoCILow": {
+  "value": 0.15093353240485863,
+  "tex": "15.1",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HTwoCIHigh": {
+  "value": 0.17650332554908665,
+  "tex": "17.7",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HTwoRelative": {
+  "value": 0.23230851885718562,
+  "tex": "23.2\\%",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HTwoSmaller": {
+  "value": 477,
+  "tex": "477",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HTwoPHolm": {
+  "value": 2.1312764230604268e-79,
+  "tex": "p < 10^{-10}",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HTwoR": {
+  "value": 1.0,
+  "tex": "1.00",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HThreeRate": {
+  "value": 0.5535714285714286,
+  "tex": "55.4\\%",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HThreeCILow": {
+  "value": 0.5185962868931138,
+  "tex": "51.9\\%",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HThreeCIHigh": {
+  "value": 0.5880241493038805,
+  "tex": "58.8\\%",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HThreePrunedRate": {
+  "value": 0.2662473794549266,
+  "tex": "26.6\\%",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HThreePrunedRobust": {
+  "value": 127,
+  "tex": "127",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HThreePrunedN": {
+  "value": 477,
+  "tex": "477",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFourContainQ": {
+  "value": 0.8217299578059072,
+  "tex": "82.2\\%",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFourContainLc": {
+  "value": 0.9569268635724332,
+  "tex": "95.7\\%",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFourDiff": {
+  "value": -0.13519690576652602,
+  "tex": "\\ensuremath{-}13.5",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFourCILow": {
+  "value": -0.1439873417721519,
+  "tex": "\\ensuremath{-}14.4",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFourCIHigh": {
+  "value": -0.12623066104078762,
+  "tex": "\\ensuremath{-}12.6",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFiveSizeDiff": {
+  "value": 2.8947368421052633,
+  "tex": "2.9",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFiveExamDiff": {
+  "value": -0.06099228483503924,
+  "tex": "\\ensuremath{-}0.061",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "RobQPrunedBasis": {
+  "value": 0.6582809224318659,
+  "tex": "65.8\\%",
+  "source": "results/icpc/rq2_robustness/pairs.csv"
+ },
+ "RobLcBasis": {
+  "value": 1.0,
+  "tex": "100.0\\%",
+  "source": "results/icpc/rq2_robustness/pairs.csv"
+ },
+ "RobQPrunedHaar": {
+  "value": 0.2662473794549266,
+  "tex": "26.6\\%",
+  "source": "results/icpc/rq2_robustness/pairs.csv"
+ },
+ "RobLcHaar": {
+  "value": 1.0,
+  "tex": "100.0\\%",
+  "source": "results/icpc/rq2_robustness/pairs.csv"
+ },
+ "RobQPrunedParam": {
+  "value": 0.7807017543859649,
+  "tex": "78.1\\%",
+  "source": "results/icpc/rq2_robustness/pairs.csv"
+ },
+ "RobLcParam": {
+  "value": 1.0,
+  "tex": "100.0\\%",
+  "source": "results/icpc/rq2_robustness/pairs.csv"
+ },
+ "RobLcqBasisRobust": {
+  "value": 732,
+  "tex": "732",
+  "source": "results/icpc/rq2_robustness_lcq/pairs.csv"
+ },
+ "RobLcqBasisN": {
+  "value": 732,
+  "tex": "732",
+  "source": "results/icpc/rq2_robustness_lcq/pairs.csv"
+ },
+ "RobLcqHaarRobust": {
+  "value": 732,
+  "tex": "732",
+  "source": "results/icpc/rq2_robustness_lcq/pairs.csv"
+ },
+ "RobLcqHaarN": {
+  "value": 732,
+  "tex": "732",
+  "source": "results/icpc/rq2_robustness_lcq/pairs.csv"
+ },
+ "RobLcqParamRobust": {
+  "value": 171,
+  "tex": "171",
+  "source": "results/icpc/rq2_robustness_lcq/pairs.csv"
+ },
+ "RobLcqParamN": {
+  "value": 175,
+  "tex": "175",
+  "source": "results/icpc/rq2_robustness_lcq/pairs.csv"
+ },
+ "AblUnfixedFull": {
+  "value": 0.0052,
+  "tex": "0.5\\%",
+  "source": "results/rq4_ablation/TAB_ablation_rerun.csv"
+ },
+ "AblUnfixedNoED": {
+  "value": 0.5405,
+  "tex": "54.0\\%",
+  "source": "results/rq4_ablation/TAB_ablation_rerun.csv"
+ },
+ "AblUnfixedNoMD": {
+  "value": 0.1341,
+  "tex": "13.4\\%",
+  "source": "results/rq4_ablation/TAB_ablation_rerun.csv"
+ },
+ "AblUnfixedNoUED": {
+  "value": 0.1331,
+  "tex": "13.3\\%",
+  "source": "results/rq4_ablation/TAB_ablation_rerun.csv"
+ },
+ "AblUnfixedNoCD": {
+  "value": 0.0478,
+  "tex": "4.8\\%",
+  "source": "results/rq4_ablation/TAB_ablation_rerun.csv"
+ },
+ "AblFixedFull": {
+  "value": 0.0,
+  "tex": "0.0\\%",
+  "source": "results/icpc/ablation_fixed/TAB_ablation_rerun.csv"
+ },
+ "AblFixedNoED": {
+  "value": 0.6393,
+  "tex": "63.9\\%",
+  "source": "results/icpc/ablation_fixed/TAB_ablation_rerun.csv"
+ },
+ "AblFixedNoMD": {
+  "value": 0.1299,
+  "tex": "13.0\\%",
+  "source": "results/icpc/ablation_fixed/TAB_ablation_rerun.csv"
+ },
+ "AblFixedNoUED": {
+  "value": 0.2609,
+  "tex": "26.1\\%",
+  "source": "results/icpc/ablation_fixed/TAB_ablation_rerun.csv"
+ },
+ "AblFixedNoCD": {
+  "value": 0.0665,
+  "tex": "6.7\\%",
+  "source": "results/icpc/ablation_fixed/TAB_ablation_rerun.csv"
+ },
+ "AblPairs": {
+  "value": 962,
+  "tex": "962",
+  "source": "results/icpc/ablation_fixed/TAB_ablation_rerun.csv"
+ },
+ "FamCircuits": {
+  "value": 119,
+  "tex": "119",
+  "source": "results/icpc/families/rows.csv"
+ },
+ "FamLcUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/families/rows.csv"
+ },
+ "FamYzUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/families/rows.csv"
+ },
+ "FamQUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/families/rows.csv"
+ },
+ "FamDuUnsound": {
+  "value": 232,
+  "tex": "232",
+  "source": "results/icpc/families/rows.csv"
+ },
+ "FamQSoundNotMinimal": {
+  "value": 212,
+  "tex": "212",
+  "source": "results/icpc/families/rows.csv"
+ },
+ "FamQRows": {
+  "value": 819,
+  "tex": "819",
+  "source": "results/icpc/families/rows.csv"
+ },
+ "CatEntries": {
+  "value": 24,
+  "tex": "24",
+  "source": "results/icpc/catalogue/catalogue.json"
+ },
+ "RqThreeUnits": {
+  "value": 5688,
+  "tex": "5{,}688",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "RqThreeContainDu": {
+  "value": 0.7730309423347398,
+  "tex": "77.3\\%",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "RqThreeContainLc": {
+  "value": 0.9569268635724332,
+  "tex": "95.7\\%",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "RqThreeContainYz": {
+  "value": 0.9738045007032349,
+  "tex": "97.4\\%",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "RqThreeContainQ": {
+  "value": 0.8217299578059072,
+  "tex": "82.2\\%",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "RqThreeContainRandom": {
+  "value": 0.6243565400843882,
+  "tex": "62.4\\%",
+  "source": "results/icpc/rq3/records.csv"
+ },
+ "CQFour": {
+  "value": 769,
+  "tex": "769",
+  "source": "results/icpc/rq3/units.csv"
+ },
+ "CQFourRecovered": {
+  "value": 691,
+  "tex": "691",
+  "source": "results/icpc/rq3/units.csv"
+ },
+ "BugsFourQKilled": {
+  "value": 7,
+  "tex": "7",
+  "source": "results/icpc/rq3_bugs4q/bugs.csv"
+ },
+ "BugsFourQInjured": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/rq3_bugs4q/bugs.csv"
+ },
+ "BugsFourQAlive": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/rq3_bugs4q/bugs.csv"
+ },
+ "BugsFourQExcluded": {
+  "value": 2,
+  "tex": "2",
+  "source": "results/icpc/rq3_bugs4q/bugs.csv"
+ },
+ "BugsFourQTriaged": {
+  "value": 107,
+  "tex": "107",
+  "source": "bugs4q/triage.csv"
+ },
+ "BugsFourQIncluded": {
+  "value": 11,
+  "tex": "11",
+  "source": "bugs4q/triage.csv"
+ },
+ "MapInstructions": {
+  "value": 137,
+  "tex": "137",
+  "source": "results/icpc/source_map/bugs.csv"
+ },
+ "MapMapped": {
+  "value": 136,
+  "tex": "136",
+  "source": "results/icpc/source_map/bugs.csv"
+ },
+ "MapCrossCompared": {
+  "value": 127,
+  "tex": "127",
+  "source": "results/icpc/source_map/crosscheck.csv"
+ },
+ "MapCrossAgree": {
+  "value": 127,
+  "tex": "127",
+  "source": "results/icpc/source_map/crosscheck.csv"
+ },
+ "MapCrossPrograms": {
+  "value": 5,
+  "tex": "5",
+  "source": "results/icpc/source_map/crosscheck.csv"
+ },
+ "LinesFullContained": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "LinesFullMean": {
+  "value": 10.733333333333333,
+  "tex": "10.7",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "LinesLcContained": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "LinesLcMean": {
+  "value": 10.333333333333334,
+  "tex": "10.3",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "LinesQContained": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "LinesQMean": {
+  "value": 9.466666666666667,
+  "tex": "9.5",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "LinesDuContained": {
+  "value": 14,
+  "tex": "14",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "LinesDuMean": {
+  "value": 4.933333333333334,
+  "tex": "4.9",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "LinesUnits": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "MbflUnits": {
+  "value": 293,
+  "tex": "293",
+  "source": "results/icpc/mbfl/units.csv"
+ },
+ "MbflExamAll": {
+  "value": 0.34842983613459044,
+  "tex": "0.348",
+  "source": "results/icpc/mbfl/units.csv"
+ },
+ "MbflExamQ": {
+  "value": 0.46487860385020346,
+  "tex": "0.465",
+  "source": "results/icpc/mbfl/units.csv"
+ },
+ "MbflExamLc": {
+  "value": 0.4191227207622083,
+  "tex": "0.419",
+  "source": "results/icpc/mbfl/units.csv"
+ },
+ "TTwoSonnetFull": {
+  "value": 0.8442028985507246,
+  "tex": "84.4\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoSonnetLc": {
+  "value": 0.7717391304347826,
+  "tex": "77.2\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoSonnetQ": {
+  "value": 0.6992753623188406,
+  "tex": "69.9\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoSonnetDu": {
+  "value": 0.6231884057971014,
+  "tex": "62.3\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoSonnetQVsFullDiff": {
+  "value": -0.14492753623188406,
+  "tex": "\\ensuremath{-}14.5",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoSonnetQVsFullCI": {
+  "value": [
+   -0.19927536231884058,
+   -0.09420289855072464
+  ],
+  "tex": "[\\ensuremath{-}19.9, \\ensuremath{-}9.4]",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoSonnetQVsFullP": {
+  "value": 1.6163814566157175e-07,
+  "tex": "p = 1.6\\times 10^{-7}",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoSonnetQVsLcDiff": {
+  "value": -0.07246376811594203,
+  "tex": "\\ensuremath{-}7.2",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoSonnetQVsLcCI": {
+  "value": [
+   -0.12318840579710146,
+   -0.025362318840579712
+  ],
+  "tex": "[\\ensuremath{-}12.3, \\ensuremath{-}2.5]",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoSonnetQVsLcP": {
+  "value": 0.00551520148550111,
+  "tex": "p = 0.006",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuFull": {
+  "value": 0.7137681159420289,
+  "tex": "71.4\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuLc": {
+  "value": 0.6594202898550725,
+  "tex": "65.9\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuQ": {
+  "value": 0.5869565217391305,
+  "tex": "58.7\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuDu": {
+  "value": 0.5181159420289855,
+  "tex": "51.8\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuQVsFullDiff": {
+  "value": -0.12681159420289856,
+  "tex": "\\ensuremath{-}12.7",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuQVsFullCI": {
+  "value": [
+   -0.18840579710144928,
+   -0.06521739130434782
+  ],
+  "tex": "[\\ensuremath{-}18.8, \\ensuremath{-}6.5]",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuQVsFullP": {
+  "value": 8.215921903007378e-05,
+  "tex": "p = 8.2\\times 10^{-5}",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuQVsLcDiff": {
+  "value": -0.07246376811594203,
+  "tex": "\\ensuremath{-}7.2",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuQVsLcCI": {
+  "value": [
+   -0.12681159420289856,
+   -0.021739130434782608
+  ],
+  "tex": "[\\ensuremath{-}12.7, \\ensuremath{-}2.2]",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoHaikuQVsLcP": {
+  "value": 0.01045481832189218,
+  "tex": "p = 0.010",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidFull": {
+  "value": 0.427536231884058,
+  "tex": "42.8\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidLc": {
+  "value": 0.4311594202898551,
+  "tex": "43.1\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidQ": {
+  "value": 0.36231884057971014,
+  "tex": "36.2\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidDu": {
+  "value": 0.3333333333333333,
+  "tex": "33.3\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidQVsFullDiff": {
+  "value": -0.06521739130434782,
+  "tex": "\\ensuremath{-}6.5",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidQVsFullCI": {
+  "value": [
+   -0.11594202898550725,
+   -0.014492753623188406
+  ],
+  "tex": "[\\ensuremath{-}11.6, \\ensuremath{-}1.4]",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidQVsFullP": {
+  "value": 0.01983432672806828,
+  "tex": "p = 0.020",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidQVsLcDiff": {
+  "value": -0.06884057971014493,
+  "tex": "\\ensuremath{-}6.9",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidQVsLcCI": {
+  "value": [
+   -0.11231884057971014,
+   -0.025362318840579712
+  ],
+  "tex": "[\\ensuremath{-}11.2, \\ensuremath{-}2.5]",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenMidQVsLcP": {
+  "value": 0.0033778479119064286,
+  "tex": "p = 0.003",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallFull": {
+  "value": 0.13043478260869565,
+  "tex": "13.0\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallLc": {
+  "value": 0.12681159420289856,
+  "tex": "12.7\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallQ": {
+  "value": 0.13043478260869565,
+  "tex": "13.0\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallDu": {
+  "value": 0.13405797101449277,
+  "tex": "13.4\\%",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallQVsFullDiff": {
+  "value": 0.0,
+  "tex": "0.0",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallQVsFullCI": {
+  "value": [
+   -0.043478260869565216,
+   0.043478260869565216
+  ],
+  "tex": "[\\ensuremath{-}4.3, 4.3]",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallQVsFullP": {
+  "value": 1.0,
+  "tex": "p = 1.00",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallQVsLcDiff": {
+  "value": 0.0036231884057971015,
+  "tex": "0.4",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallQVsLcCI": {
+  "value": [
+   -0.028985507246376812,
+   0.036231884057971016
+  ],
+  "tex": "[\\ensuremath{-}2.9, 3.6]",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoQwenSmallQVsLcP": {
+  "value": 1.0,
+  "tex": "p = 1.00",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "TTwoItems": {
+  "value": 276,
+  "tex": "276",
+  "source": "results/llm/t2_scores.csv"
+ },
+ "CostLcMaxMs": {
+  "value": 0.0162,
+  "tex": "16",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostQDepthTen": {
+  "value": 1.3682,
+  "tex": "1.4",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostBuildDepthTen": {
+  "value": 0.0346,
+  "tex": "0.03",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostQDepthTwenty": {
+  "value": 10.6197,
+  "tex": "10.6",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostBuildDepthTwenty": {
+  "value": 0.2696,
+  "tex": "0.27",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostQDepthForty": {
+  "value": 49.9275,
+  "tex": "49.9",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostBuildDepthForty": {
+  "value": 1.0971,
+  "tex": "1.10",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostDepthEightyOverLimit": {
+  "value": 4,
+  "tex": "4",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostBuildDepthEighty": {
+  "value": 5.2266,
+  "tex": "5.2",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostDepthOneSixtyOverLimit": {
+  "value": 5,
+  "tex": "5",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostBuildDepthOneSixty": {
+  "value": 21.7172,
+  "tex": "21.7",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostWallLimit": {
+  "value": 120,
+  "tex": "120",
+  "source": "icpc/cost_run.py"
+ },
+ "CostWidthQMax": {
+  "value": 8.6855,
+  "tex": "8.7",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CorpusLCircuits": {
+  "value": 55,
+  "tex": "55",
+  "source": "results/icpc/corpus_l/circuits.csv"
+ },
+ "CorpusLCompleted": {
+  "value": 39,
+  "tex": "39",
+  "source": "results/icpc/corpus_l/circuits.csv"
+ },
+ "NoiseLcCrossExactMax": {
+  "value": 4.249205154405189e-15,
+  "tex": "\\ensuremath{4.2\\times 10^{-15}}",
+  "source": "results/icpc/noise/pairs.csv"
+ },
+ "NoiseLcCrossExactNonzero": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/noise/pairs.csv"
+ },
+ "NoiseLcCrossExactN": {
+  "value": 1746,
+  "tex": "1{,}746",
+  "source": "results/icpc/noise/pairs.csv"
+ },
+ "NoiseLcCrossShotMax": {
+  "value": 0.03319316505856096,
+  "tex": "0.033",
+  "source": "results/icpc/noise/pairs.csv"
+ },
+ "NoiseQCrossExactMax": {
+  "value": 0.2448448108167967,
+  "tex": "\\ensuremath{2.4\\times 10^{-1}}",
+  "source": "results/icpc/noise/pairs.csv"
+ },
+ "NoiseQCrossExactNonzero": {
+  "value": 702,
+  "tex": "702",
+  "source": "results/icpc/noise/pairs.csv"
+ },
+ "NoiseQCrossExactN": {
+  "value": 1746,
+  "tex": "1{,}746",
+  "source": "results/icpc/noise/pairs.csv"
+ },
+ "NoiseQCrossShotMax": {
+  "value": 0.03319316505856096,
+  "tex": "0.033",
+  "source": "results/icpc/noise/pairs.csv"
+ },
+ "NoiseShots": {
+  "value": 1024,
+  "tex": "1{,}024",
+  "source": "icpc/noise_run.py"
+ },
+ "HwCircuits": {
+  "value": 18,
+  "tex": "18",
+  "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
+ },
+ "HwWithin": {
+  "value": 16,
+  "tex": "16",
+  "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
+ },
+ "HwNoiseFreeZero": {
+  "value": 18,
+  "tex": "18",
+  "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
+ }
+}
