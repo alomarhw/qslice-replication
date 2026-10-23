@@ -21,10 +21,8 @@ definition against that ground truth. The results:
 
 We then show what each choice does to a developer who is localizing a fault.
 
-**Title options** (must differ from the ICSE preprint):
-1. *What Does a Quantum Program Slice Depend On? Defining and Validating Quantum Dependences for Debugging*
-2. *Quantum Program Slicing, Validated: Dependences, Criteria, and Their Cost for Fault Localization*
-3. *Not Just Entanglement: Validating Quantum Dependence Definitions for Program Slicing*
+**Title (author's choice, 2026-10-23):** *Slicing Quantum Programs for Debugging: How Dependence
+Definitions Affect Soundness, Precision, and Fault Localization* (`paper/title.txt`).
 
 ## 2. Why this is a strong paper, not a weaker ICSE version
 
