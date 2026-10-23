@@ -8,3 +8,4 @@ data/qasmbench/medium/
 data/qasmbench/large/
 # RQ3 per-circuit checkpoints (final results are in results/icpc/rq3/)
 experiments/results/icpc/rq3/partial/
+paper/main.pdf
