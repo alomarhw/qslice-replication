@@ -1,0 +1,29 @@
+\section{Threats to Validity}\label{sec:threats}
+
+\paragraph*{Construct validity}
+We measure dependence by perturbing each operation at \numInfluenceInputs{} inputs. Finite sampling can
+miss a dependence that shows only at other inputs, which would understate the dependences every rule
+misses and overstate every rule's precision. It cannot make an unsound slice look sound, because
+soundness is judged by the oracle's fidelity, not by the measured dependences, and the wire rule's
+soundness for all inputs is proved. The fidelity threshold of $1 - 10^{-6}$ is far above the oracle's
+error of \numOracleErr{}. Whether the slice contains the fault site is a proxy for whether it helps a
+developer, so we add mutation-based ranking and language models, but we ran no study with developers.
+The language models saw one prompt at temperature~0.
+
+\paragraph*{Internal validity}
+Yu and Zhao's graph is described in prose, and we implemented our reading of it, with every interpretation
+choice recorded before the runs. A different reading could change its precision, but not its soundness,
+since its data edges alone already follow every qubit of a gate. The oracle shares no code with the
+slicers and agrees with Qiskit's simulation. The classical PDG and the order-preserving mapping for
+Qiskit's \texttt{LightCone} pass were added after the first runs. They are reported as deviations beside
+the pre-registered results, and neither enters the five confirmatory tests. The benchmark circuits may be
+in the language models' training data, which would favour the full circuit and is the same for every
+slice.
+
+\paragraph*{External validity}
+Exact simulation limits corpus~A to \numMaxQubits{} qubits. Corpus~L extends the cost measurements to
+20 qubits but not the soundness checks, and Theorem~\ref{thm:sound} covers any width. The circuits come
+from benchmark suites rather than applications, and the real bugs are few and small. All programs are
+Qiskit programs, and the dependence rules are stated on circuits, so they carry over to other languages
+once their programs are lowered to circuits. Seeded faults may differ from real ones. Our operators
+come from three published fault models.

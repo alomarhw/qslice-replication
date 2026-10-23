@@ -1,0 +1,45 @@
+\section{Discussion}\label{sec:discussion}
+
+\paragraph*{Guidance for tool builders}
+The results suggest how a slicer for quantum programs should be built. The base should be the wire rule,
+in which every gate reads and writes all its qubits. It is sound for every input, misses no dependence,
+and costs milliseconds. Reading a gate as a classical assignment is the pitfall to avoid, and adding
+control dependence does not remove it, since most of the dependences the classical PDG misses are
+quantum. Entanglement edges should not be added to make a slice safer. They buy no soundness that the
+wire rule lacks and cost precision, because a later operation on an entangled partner cannot change the
+criterion's state (Proposition~\ref{prop:ent}). Precision beyond the wire slice can come from
+commutation, which stayed correct on every random input but fails when the angles change, so a slicer
+for variational programs should recompute it after each parameter update. State-based pruning should be
+offered, if at all, as a view of one input, labelled as such, and never as the slice of the program.
+Finally, a slicer should let the developer name a set of qubits. Many quantum bugs show only in the
+correlation between qubits, as in Section~\ref{sec:example}, and by Proposition~\ref{prop:joint} the
+joint wire slice is just the union of the single-qubit slices, so the larger criterion costs nothing
+extra.
+
+\paragraph*{Noise and hardware}
+A slice is computed statically, so noise cannot change which operations it contains, only whether running
+it shows the developer what the full program would. We simulated the pairs of at most ten qubits under
+depolarizing noise at three error rates. The noisy state of the criterion under the wire slice differs
+from that under the full circuit by at most \numNoiseLcCrossExactMax{} in trace distance where the
+simulation is exact, which is rounding error, and by at most \numNoiseLcCrossShotMax{} where mid-circuit
+measurements force sampling with \numNoiseShots{} shots. This is what Theorem~\ref{thm:sound} leads one
+to expect, since depolarizing noise acts only on the qubits of its gate, so a removed gate and its noise
+lie outside the criterion's dependences alike. The state-based slice differs from the full circuit in
+\numNoiseQCrossExactNonzero{} of \numNoiseQCrossExactN{} exact runs, by up to \numNoiseQCrossExactMax{}.
+It removes noisy gates that the full program executes, so it can hide noise the developer is trying to
+diagnose. On IBM hardware, slices of \numHwCircuits{} circuits from an earlier implementation with
+entanglement edges matched the full circuits' measured distributions within a total variation distance of
+0.05 for \numHwWithin{}. The other two are QAOA circuits, whose distance is zero in noise-free simulation
+and is therefore due to the device, which ran the slice and the full circuit on different physical
+qubits. A distance of measured distributions is blind to phase, so these runs show only that slicing
+does not break execution on hardware.
+
+\paragraph*{The source level}
+Our slices are sets of executed operations, and a developer reads lines. A line inside a loop creates
+one operation per iteration, and the line belongs to the slice when any of them does. Line~12 of the
+ansatz in Fig.~\ref{fig:ansatz} creates the rotations of every qubit in both layers. The second-layer
+rotation of $q_2$ is not a dependence of $q_0$, yet line~12 stays in the slice because the other
+rotations are. A line-level slice can therefore keep code that no operation-level slice needs. Showing developers
+the iterations that matter, rather than whole lines, needs a slicer that works on the source and knows
+which iteration created each operation. Building it on a source representation such as srcML, which has
+been extended to quantum languages~\cite{behler2024supporting, behler2025static}, is the next step.

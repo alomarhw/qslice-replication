@@ -1,0 +1,11 @@
+\section{Conclusion}\label{sec:conclusion}
+
+A slice of a quantum program is correct only if it follows data, control and quantum dependence. We
+defined quantum dependence by the semantics of quantum programs and measured dependence definitions
+against it. The classical program dependence graph gives wrong slices for \numCpdgUnsoundPct{} of the
+pairs, because a two-qubit gate can change its control. Following entanglement is sound but imprecise,
+because entanglement is neither necessary nor sufficient for dependence. The wire rule is sound for every
+input, complete and cheap, and pruning by simulation trades that guarantee for slices that hold for one
+input and can remove the fault. Quantum slicers should start from the wire rule, take sets of qubits as
+criteria, and report precision beyond it only where it is safe. The replication package regenerates every
+number in this paper.
