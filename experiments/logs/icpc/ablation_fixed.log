@@ -1,0 +1,27 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  10/178 circuits, 3s
+  20/178 circuits, 3s
+  30/178 circuits, 3s
+  40/178 circuits, 3s
+  50/178 circuits, 3s
+  60/178 circuits, 3s
+  70/178 circuits, 6s
+  80/178 circuits, 6s
+  90/178 circuits, 6s
+  100/178 circuits, 6s
+  110/178 circuits, 6s
+  120/178 circuits, 6s
+  130/178 circuits, 6s
+  140/178 circuits, 6s
+  150/178 circuits, 6s
+  160/178 circuits, 6s
+  170/178 circuits, 50s
+  178/178 circuits, 50s
+  QSlice-full     SVR 0.0000  dSVR   (n=962 pairs)
+  QDG-no-ED       SVR 0.6393  dSVR 0.6393  (n=962 pairs)
+  QDG-no-MD       SVR 0.1299  dSVR 0.1299  (n=962 pairs)
+  QDG-no-UED      SVR 0.2609  dSVR 0.2609  (n=962 pairs)
+  QDG-no-CD       SVR 0.0665  dSVR 0.0665  (n=962 pairs)
+  Classical PDG   SVR 0.6476  dSVR   (n=962 pairs)
+  Causal-cone     SVR 0.1424  dSVR   (n=962 pairs)
+excluded circuits: 4; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/ablation_fixed

@@ -1,0 +1,57 @@
+scope,unit,n,variant,removed_edge_type,svr,delta_svr
+A,pair,784,QSlice-full,,0.0,
+A,pair,784,QDG-no-ED,ED (entanglement),0.6735,0.6735
+A,pair,784,QDG-no-MD,MD (measurement-collapse),0.0255,0.0255
+A,pair,784,QDG-no-UED,UED (unitary-evolution),0.25,0.25
+A,pair,784,QDG-no-CD,CD (classical-feedback),0.023,0.023
+A,pair,784,Classical PDG,,0.6888,
+A,pair,784,Causal-cone,,0.0383,
+A,circuit,158,QSlice-full,,0.0,
+A,circuit,158,QDG-no-ED,ED (entanglement),0.7722,0.7722
+A,circuit,158,QDG-no-MD,MD (measurement-collapse),0.0633,0.0633
+A,circuit,158,QDG-no-UED,UED (unitary-evolution),0.3671,0.3671
+A,circuit,158,QDG-no-CD,CD (classical-feedback),0.0443,0.0443
+A,circuit,158,Classical PDG,,0.8101,
+A,circuit,158,Causal-cone,,0.0823,
+B,pair,178,QSlice-full,,0.0,
+B,pair,178,QDG-no-ED,ED (entanglement),0.4888,0.4888
+B,pair,178,QDG-no-MD,MD (measurement-collapse),0.5899,0.5899
+B,pair,178,QDG-no-UED,UED (unitary-evolution),0.309,0.309
+B,pair,178,QDG-no-CD,CD (classical-feedback),0.2584,0.2584
+B,pair,178,Classical PDG,,0.4663,
+B,pair,178,Causal-cone,,0.6011,
+B,circuit,19,QSlice-full,,0.0,
+B,circuit,19,QDG-no-ED,ED (entanglement),0.5263,0.5263
+B,circuit,19,QDG-no-MD,MD (measurement-collapse),0.8947,0.8947
+B,circuit,19,QDG-no-UED,UED (unitary-evolution),0.5263,0.5263
+B,circuit,19,QDG-no-CD,CD (classical-feedback),0.4737,0.4737
+B,circuit,19,Classical PDG,,0.9474,
+B,circuit,19,Causal-cone,,0.9474,
+A+B,pair,962,QSlice-full,,0.0,
+A+B,pair,962,QDG-no-ED,ED (entanglement),0.6393,0.6393
+A+B,pair,962,QDG-no-MD,MD (measurement-collapse),0.1299,0.1299
+A+B,pair,962,QDG-no-UED,UED (unitary-evolution),0.2609,0.2609
+A+B,pair,962,QDG-no-CD,CD (classical-feedback),0.0665,0.0665
+A+B,pair,962,Classical PDG,,0.6476,
+A+B,pair,962,Causal-cone,,0.1424,
+A+B,circuit,177,QSlice-full,,0.0,
+A+B,circuit,177,QDG-no-ED,ED (entanglement),0.7458,0.7458
+A+B,circuit,177,QDG-no-MD,MD (measurement-collapse),0.1525,0.1525
+A+B,circuit,177,QDG-no-UED,UED (unitary-evolution),0.3842,0.3842
+A+B,circuit,177,QDG-no-CD,CD (classical-feedback),0.0904,0.0904
+A+B,circuit,177,Classical PDG,,0.8249,
+A+B,circuit,177,Causal-cone,,0.1751,
+dynamic circuits in A+B,pair,258,QSlice-full,,0.0,
+dynamic circuits in A+B,pair,258,QDG-no-ED,ED (entanglement),0.4574,0.4574
+dynamic circuits in A+B,pair,258,QDG-no-MD,MD (measurement-collapse),0.4845,0.4845
+dynamic circuits in A+B,pair,258,QDG-no-UED,UED (unitary-evolution),0.2946,0.2946
+dynamic circuits in A+B,pair,258,QDG-no-CD,CD (classical-feedback),0.2481,0.2481
+dynamic circuits in A+B,pair,258,Classical PDG,,0.4884,
+dynamic circuits in A+B,pair,258,Causal-cone,,0.531,
+dynamic circuits in A+B,circuit,36,QSlice-full,,0.0,
+dynamic circuits in A+B,circuit,36,QDG-no-ED,ED (entanglement),0.5278,0.5278
+dynamic circuits in A+B,circuit,36,QDG-no-MD,MD (measurement-collapse),0.75,0.75
+dynamic circuits in A+B,circuit,36,QDG-no-UED,UED (unitary-evolution),0.4722,0.4722
+dynamic circuits in A+B,circuit,36,QDG-no-CD,CD (classical-feedback),0.4444,0.4444
+dynamic circuits in A+B,circuit,36,Classical PDG,,0.9167,
+dynamic circuits in A+B,circuit,36,Causal-cone,,0.8611,

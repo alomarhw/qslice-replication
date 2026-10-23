@@ -1,0 +1,106 @@
+{
+  "A": {
+    "QDG-no-ED": {
+      "test": "exact McNemar",
+      "a_only": 528,
+      "b_only": 0,
+      "p_value": 2.2761049594727193e-159
+    },
+    "QDG-no-MD": {
+      "test": "exact McNemar",
+      "a_only": 20,
+      "b_only": 0,
+      "p_value": 1.9073486328125e-06
+    },
+    "QDG-no-UED": {
+      "test": "exact McNemar",
+      "a_only": 196,
+      "b_only": 0,
+      "p_value": 1.9913648889155653e-59
+    },
+    "QDG-no-CD": {
+      "test": "exact McNemar",
+      "a_only": 18,
+      "b_only": 0,
+      "p_value": 7.62939453125e-06
+    }
+  },
+  "B": {
+    "QDG-no-ED": {
+      "test": "exact McNemar",
+      "a_only": 87,
+      "b_only": 0,
+      "p_value": 1.2924697071141057e-26
+    },
+    "QDG-no-MD": {
+      "test": "exact McNemar",
+      "a_only": 105,
+      "b_only": 0,
+      "p_value": 4.930380657631324e-32
+    },
+    "QDG-no-UED": {
+      "test": "exact McNemar",
+      "a_only": 55,
+      "b_only": 0,
+      "p_value": 5.551115123125783e-17
+    },
+    "QDG-no-CD": {
+      "test": "exact McNemar",
+      "a_only": 46,
+      "b_only": 0,
+      "p_value": 2.842170943040401e-14
+    }
+  },
+  "A+B": {
+    "QDG-no-ED": {
+      "test": "exact McNemar",
+      "a_only": 615,
+      "b_only": 0,
+      "p_value": 1.4708983551653345e-185
+    },
+    "QDG-no-MD": {
+      "test": "exact McNemar",
+      "a_only": 125,
+      "b_only": 0,
+      "p_value": 4.70197740328915e-38
+    },
+    "QDG-no-UED": {
+      "test": "exact McNemar",
+      "a_only": 251,
+      "b_only": 0,
+      "p_value": 5.527147875260445e-76
+    },
+    "QDG-no-CD": {
+      "test": "exact McNemar",
+      "a_only": 64,
+      "b_only": 0,
+      "p_value": 1.0842021724855044e-19
+    }
+  },
+  "dynamic circuits in A+B": {
+    "QDG-no-ED": {
+      "test": "exact McNemar",
+      "a_only": 118,
+      "b_only": 0,
+      "p_value": 6.018531076210112e-36
+    },
+    "QDG-no-MD": {
+      "test": "exact McNemar",
+      "a_only": 125,
+      "b_only": 0,
+      "p_value": 4.70197740328915e-38
+    },
+    "QDG-no-UED": {
+      "test": "exact McNemar",
+      "a_only": 76,
+      "b_only": 0,
+      "p_value": 2.6469779601696886e-23
+    },
+    "QDG-no-CD": {
+      "test": "exact McNemar",
+      "a_only": 64,
+      "b_only": 0,
+      "p_value": 1.0842021724855044e-19
+    }
+  }
+}
