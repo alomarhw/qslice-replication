@@ -802,3 +802,22 @@ These were found while implementing §6, from the API documentation. No LLM call
 - **Effect on findings.** The main T2 finding has the same direction under both rules: S-q slices
   lower top-3 fault localization against the full circuit and against S-lc, for Sonnet, Haiku and
   Qwen-32B. Only the magnitudes change (e.g. Sonnet, full circuit: 0.84 vs 0.73).
+
+### Deviation I-9 (2026-10-23, AFTER the RQ1 run; author decision): S-lcq mapped back by order, not by labels alone
+- **Found.** `slicers/registry.py::_lightcone` labels each instruction, runs `LightCone`, and reads the
+  labels back. `LightCone` returns copies of QASM-defined gates (qasm2 `_DefinedGate`: `mcx`, `qft`,
+  oracles) without their labels. The RQ1 run therefore recorded 142 of its 184 "not applicable" S-lcq
+  pairs because of our wrapper, not because `LightCone` raised. §2 allows "not applicable" only when
+  the pass raises. The other 42 are the pass's own refusal (measurements with an observable).
+- **Change (`icpc/lcq_remap.py`).** The pass keeps an in-order subsequence of its input (it walks the
+  DAG in reverse topological order and re-applies kept nodes at the front). The output is aligned to
+  the input in order. Labelled instructions anchor. Unlabelled ones match an input instruction with
+  the same name, qubits, clbits and parameters between anchors. The alignment is computed
+  earliest-first and latest-first, and a pair whose two alignments differ is "ambiguous" and stays not
+  applicable. Scoring is unchanged (§2).
+- **Checked before the run.** On the 600 pairs the label mapping already handled, the new mapping
+  gives the identical S-lcq slice on all 600. It maps 132 of the other 184; 52 stay not applicable.
+- **Reporting.** The RQ1 S-lcq results (600 pairs) stay in `results/icpc/rq1` unchanged. The remapped
+  results go to `results/icpc/rq1_lcq_remap` and are primary for the LightCone cross-check; both are
+  reported. RQ1 code is not modified.
+- **Direction.** The change can only widen the baseline's coverage; it cannot make S-q look better.
