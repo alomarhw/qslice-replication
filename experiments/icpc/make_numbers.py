@@ -242,6 +242,8 @@ def main() -> int:
                 f"[{100 * np.percentile(boots, 2.5):.1f}, {100 * np.percentile(boots, 97.5):.1f}]", src)
             put(f"TTwo{nm}QVs{rnm}P", mc["p_value"], pval(mc["p_value"]), src)
     put("TTwoItems", len(hit[("claude-sonnet-5-5", "full")]), cnt(len(hit[("claude-sonnet-5-5", "full")])), src)
+    drops = [-NUMS[f"TTwo{nm}QVsFullDiff"]["value"] for nm in ("Sonnet", "Haiku", "QwenMid")]
+    put("TTwoMaxDrop", max(drops), f"{100 * max(drops):.1f}", src)
 
     # ---- RQ4: cost ---------------------------------------------------------------------------------------
     src = "results/icpc/cost/circuits.csv"

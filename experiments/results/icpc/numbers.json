@@ -893,6 +893,11 @@
   "tex": "276",
   "source": "results/llm/t2_scores.csv"
  },
+ "TTwoMaxDrop": {
+  "value": 0.14492753623188406,
+  "tex": "14.5",
+  "source": "results/llm/t2_scores.csv"
+ },
  "CostLcMaxMs": {
   "value": 0.0162,
   "tex": "16",
