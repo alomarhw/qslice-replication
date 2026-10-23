@@ -1,0 +1,10 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  20/158 circuits, 4s
+  40/158 circuits, 12s
+  60/158 circuits, 23s
+  80/158 circuits, 45s
+  100/158 circuits, 51s
+  120/158 circuits, 54s
+  140/158 circuits, 58s
+  158/158 circuits, 192s
+lcq applicable 732/784; unsound 0; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/rq1_lcq_remap
