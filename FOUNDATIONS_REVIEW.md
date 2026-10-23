@@ -34,7 +34,7 @@ faulty operation. Most of the verdicts below follow from this distinction.
 | F8 | QPDG differs from Yu & Zhao [27] by the soundness criterion and the pruning | **C-Q1:** include [27] as a baseline | Re-implemented (`slicers/yuzhao.py`): sound 784/784, dependence recall 1.000, precision 0.835, fault containment 97.4% | **The difference is real but not in our favour.** [27]'s reachability already gives sound, complete slices; what we add (pruning) costs completeness |
 | F9 | Forward completeness 1.0 vs 0.70 (RQ3, Table V) | (Correction 2: held by construction) | Not re-run as an RQ. The §2.1 ground truth replaces it with a non-circular measure | **Withdrawn.** Use the ground-truth recall in F1/F6 instead |
 | F10 | QPDG construction is sub-second up to 169 qubits (RQ5) | **B:** excludes the MI and simulation cost | End to end (`results/icpc/cost`): S-lc stays at milliseconds. Graph build grows about 4× per depth doubling (0.03 s → 21.7 s). S-q takes about 1.3 s at depth 17, 10 s at 45, 50 s at 92, and passes the 120 s limit at depth ~190 on 4 of 5 circuits (8 qubits). Width 14: up to 8.7 s | **Structural claim holds; the practical one does not.** Pruning is bounded by exact simulation, as Reviewer B said |
-| F11 | Isabelle proof of the semantic-preservation theorem (RQ6) | (Correction 5: axioms too strong) | Builds with no `sorry` (`VERIFY_CORRECTED.md`), but the rebuttal promised to replace it with causal-cone soundness only | **Must be replaced or dropped.** Not yet done |
+| F11 | Isabelle proof of the semantic-preservation theorem (RQ6) | (Correction 5: axioms too strong) | The replication package's `isabelle/QSliceSoundness.thy` already proves only the causal-cone result: `theorem cone_sound`, rdm W (run P ρ) = rdm W (run (cone P W) ρ) for every ρ, over a locale whose assumptions are shown satisfiable by a classical interpretation. It builds with no `sorry`, `oops` or `axiomatization` (`VERIFY_CORRECTED.md`) | **Done as the rebuttal promised.** Keep it as one sentence: the light cone's soundness, for every input, is machine-checked; pruning is checked only at run time. Never claim the pruning is proved |
 | F12 | IBM hardware: 16/18 within TVD 0.05 (RQ7) | **A-Q2:** noise and real hardware | Recomputed with the corrected register (D11): 16/18 within threshold; noise-free TVD 0 on all 18. Noisy simulation: S-lc's D_cross = 0 (`results/icpc/hardware`, `results/icpc/noise`) | **Holds as a discussion point only** (author decision, §7.1) |
 | F13 | Superposition does not enlarge the graph (rebuttal A-Q1) | **A-Q1** | Consistent with all runs: graph size depends on operations only (`results/icpc/cost`, graph columns) | **Holds** |
 
@@ -68,6 +68,7 @@ faulty operation. Most of the verdicts below follow from this distinction.
   angle-dependent on 4 of 175 parameterized pairs. So the standard tool already gives most of
   QSlice's size reduction (12% of it remains) without depending on the input, whereas QSlice's pruned
   slices survive Haar inputs on 26.6% of pairs.
-- **Isabelle (F11).** Replace the theory with causal-cone soundness, or drop RQ6.
+- **Isabelle (F11).** Resolved: the theory already proves causal-cone soundness only; only the claim
+  wording remains.
 - **Paper text D10.** The ICSE text still says Qiskit 2.4.2 and Aer; the corrected run uses qiskit
   2.3.0 and no Aer.
