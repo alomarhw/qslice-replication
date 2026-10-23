@@ -126,10 +126,33 @@ as a general slice.
 
 ## 5. What is still standing (from `ICPC_QSLICE_PLAN.md` and the reading)
 
+**Read 2026-10-23: Xia & Zhao, "Static Entanglement Analysis of Quantum Programs" (arXiv
+2304.05049; Q-SE 2023).** It is an entanglement analysis for Q#, not slicing. It tracks per-qubit
+0/1/superposition states, adds an entanglement edge when a controlled gate has a superposition
+control, and removes edges for exact inverse pairs ("uncomputation"). It has no tool and no
+evaluation (§5, §7), and its soundness argument is informal (§4.5). Positioning, now a headline
+claim: **quantum dependence is not entanglement.**
+- **Dependence without entanglement:** phase kickback, where the state stays a product state.
+  Their rule that phase gates on a control "do not change the control relationship" (p. 4) is
+  blind to it.
+- **Entanglement without dependence:** by no-signaling, a later gate on an entangled partner cannot
+  change the criterion's unconditional reduced state. This contradicts the QPDG's entanglement
+  edge (Yu & Zhao, p. 48). It matches RQ1: the wire rule with no entanglement edges is sound on
+  784/784. Correlations do change, which the joint criterion captures.
+- State the no-signaling point carefully (unconditional state vs post-measurement outcomes) and
+  check it against the catalogue.
+- Before citing its claim that entanglement is "transitive" (§2.2, after Perdrix 2007), check
+  Perdrix's definition.
+- New related work (entanglement analyses, none of them slicing):
+  - Perdrix, ENTCS 2007 and SAS 2008;
+  - ScaffCC (JavadiAbhari et al., 2015);
+  - Honda (arXiv 1511.01572);
+  - Prost & Zerrari (UC 2009);
+  - Twist (Yuan et al., POPL 2022).
+
 **Must do before Nov 5:**
-- [ ] **Read Xia & Zhao, "Static entanglement analysis of quantum programs" (Q-SE 2023)** before
-  claiming novelty on entanglement handling. Also check Shen et al. Q-SE 2025 (state-based analyses)
-  and Luo & Zhao JSS 2025.
+- [ ] Check Shen et al. Q-SE 2025 (state-based analyses) and Luo & Zhao JSS 2025. Get the published
+  Q-SE 2023 version of Xia & Zhao (DOI 10.1109/Q-SE59154.2023.00013) for the citation.
 - [ ] Re-read our `slicers/yuzhao.py` interpretation log against the QPDG paper's text. The QPDG
   paper's Listing 3 (`x(0); cx(0,1)`, p. 51) calls a product state entangled. Fix the exact wording
   of our "documented reading".
