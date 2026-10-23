@@ -1,0 +1,4 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+rq1: 784 pairs, unsound 204, 521s
+rq3: 6034 units, primary containment 0.7883, 530s
+families: 819 rows, unsound 232, 1603s

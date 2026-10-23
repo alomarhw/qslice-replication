@@ -46,3 +46,5 @@ source_map rc=0 Fri Oct 23 01:50:43 EDT 2026
 cpdg start Fri Oct 23 02:47:39 EDT 2026 commit 2c53397
 cpdg start (corrected id parsing) Fri Oct 23 02:48:01 EDT 2026 commit e2a498f
 cpdg stopped by hand Fri Oct 23 02:48:47 EDT 2026: reaching-definition fix for classical bits before any output was written
+cpdg start Fri Oct 23 02:55:45 EDT 2026 commit 6b55178
+cpdg rc=0 Fri Oct 23 03:22:29 EDT 2026
