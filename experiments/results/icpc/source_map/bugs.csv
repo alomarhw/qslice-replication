@@ -1,0 +1,9 @@
+bug_id,original_file,n_instructions,n_unmapped,n_creating_lines,n_code_lines,note
+StackExchange-page-1-25/Bug_9,StackExchange-page-1-25/Bug_9/bug_version.py,6,0,6,17,
+StackExchange/15,StackExchange/15/buggy.py,14,0,6,37,
+StackExchange/4,StackExchange/4/buggy.py,84,0,22,34,
+Terra-0-4000/22,Terra-0-4000/22/buggy.py,1,1,0,30,not traceable: traced 0 appends for 1 instructions
+stackoverflow-1-5/1,stackoverflow-1-5/1/buggy.py,9,0,9,20,
+stackoverflow-6-10/bug_1,stackoverflow-6-10/bug_1/buggy.py,6,0,6,24,
+stackoverflow-6-10/bug_2,stackoverflow-6-10/bug_2/buggy.py,3,0,3,13,
+stackoverflow-6-10/bug_3,stackoverflow-6-10/bug_3/buggy.py,14,0,8,24,

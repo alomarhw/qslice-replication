@@ -37,3 +37,9 @@ lcq_remap start Fri Oct 23 00:31:30 EDT 2026 commit 9baab33
 lcq_remap rc=0 Fri Oct 23 00:41:25 EDT 2026
 rq2_robustness_lcq start Fri Oct 23 00:47:42 EDT 2026 commit 0027c17
 rq2_robustness_lcq rc=0 Fri Oct 23 01:01:18 EDT 2026
+source_map start Fri Oct 23 01:49:28 EDT 2026 commit f692917
+source_map rc=1 Fri Oct 23 01:49:31 EDT 2026
+source_map rerun Fri Oct 23 01:50:00 EDT 2026 commit e5d2671 (first attempt stopped on Terra-0-4000/22, no output written)
+source_map rc=0 Fri Oct 23 01:50:04 EDT 2026
+source_map rerun Fri Oct 23 01:50:40 EDT 2026 commit 7da4670 (in-order fix)
+source_map rc=0 Fri Oct 23 01:50:43 EDT 2026
