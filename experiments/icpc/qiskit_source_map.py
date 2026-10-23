@@ -133,11 +133,15 @@ def main() -> int:
         orig_rel = ex.ANCHORS[bug][0][0]
         original = (root / orig_rel).read_text(encoding="utf-8", errors="replace").split("\n")
         port = ex.PORTS[bug]
-        built, plines = trace(port["buggy"], port["var"])
-        p2o = port_to_original(port["buggy"], original)
         stem = bug.replace("/", "__")
         prep = _load(stem, "buggy")
-        amap = align(prep, built)
+        try:
+            built, plines = trace(port["buggy"], port["var"])
+            note = ""
+        except RuntimeError as exc:  # e.g. built through DAGCircuit.apply_operation_back, which never calls _append
+            built, plines, note = None, [], f"not traceable: {exc}"
+        p2o = port_to_original(port["buggy"], original)
+        amap = align(prep, built) if built is not None else [None] * len(prep.data)
         line_of = [p2o.get(plines[j]) if j is not None else None for j in amap]
         for k, inst in enumerate(prep.data):
             irows.append({"bug_id": bug, "position": k, "gate": inst.operation.name, "built_index": amap[k],
@@ -146,7 +150,7 @@ def main() -> int:
         creating = {ln for ln in line_of if ln}
         brows.append({"bug_id": bug, "original_file": orig_rel, "n_instructions": len(prep.data),
                       "n_unmapped": sum(ln is None for ln in line_of), "n_creating_lines": len(creating),
-                      "n_code_lines": len(code_lines)})
+                      "n_code_lines": len(code_lines), "note": note})
         s = Slicers(prep, stem)
         for u in (x for x in units if x["bug_id"] == bug):
             t = int(u["target"])
@@ -159,7 +163,7 @@ def main() -> int:
                               "n_fault_lines": len(fault_lines), "contained_lines": int(bool(sl_lines & fault_lines)),
                               "slice_lines": len(sl_lines), "slice_lines_fraction": len(sl_lines) / max(len(creating), 1),
                               "unmapped_in_slice": sum(1 for k in sl if not line_of[k])})
-        if not a.no_crosscheck:
+        if not a.no_crosscheck and built is not None:
             nodes, err = capstone_lines("\n".join(original), Path(orig_rel).name)
             if nodes is None:
                 xrows.append({"bug_id": bug, "compared": 0, "agree": 0, "note": f"capstone error: {err}"})
