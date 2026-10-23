@@ -43,3 +43,6 @@ source_map rerun Fri Oct 23 01:50:00 EDT 2026 commit e5d2671 (first attempt stop
 source_map rc=0 Fri Oct 23 01:50:04 EDT 2026
 source_map rerun Fri Oct 23 01:50:40 EDT 2026 commit 7da4670 (in-order fix)
 source_map rc=0 Fri Oct 23 01:50:43 EDT 2026
+cpdg start Fri Oct 23 02:47:39 EDT 2026 commit 2c53397
+cpdg start (corrected id parsing) Fri Oct 23 02:48:01 EDT 2026 commit e2a498f
+cpdg stopped by hand Fri Oct 23 02:48:47 EDT 2026: reaching-definition fix for classical bits before any output was written

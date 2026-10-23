@@ -7,8 +7,8 @@ follows control dependence. S-cpdg keeps S-du's qubit rule unchanged and adds th
   - a measurement also writes its classical bit;
   - an if_else also reads the bits its condition tests (control dependence on the measurement that
     wrote them).
-The backward pass is S-du's: an instruction joins the slice when it writes a needed location, and the
-locations it reads become needed. On a circuit without classical bits S-cpdg equals S-du; the run checks
+The backward pass is S-du's, with reaching definitions: an instruction joins the slice when it writes a needed
+location, its classical writes stop being needed, and the locations it reads become needed. On a circuit without classical bits S-cpdg equals S-du; the run checks
 this on every unitary pair. What S-cpdg still lacks is quantum dependence, the effect of a controlled
 gate on its controls.
 """
@@ -46,9 +46,11 @@ def cpdg_slice(qc: QuantumCircuit, target_qubit: int) -> Set[int]:
             r |= _condition_bits(op, qc)
         reads.append(r)
         writes.append(w)
+    # Reaching definitions: a write kills the location. For qubits this changes nothing (every rule reads what it
+    # writes); for a classical bit it stops at the most recent measurement, as the wire rule's control edges do.
     needed, include = {("q", target_qubit)}, set()
     for i in range(len(qc.data) - 1, -1, -1):
         if writes[i] & needed:
             include.add(i)
-            needed |= reads[i]
+            needed = (needed - {x for x in writes[i] if x[0] == "c"}) | reads[i]
     return include

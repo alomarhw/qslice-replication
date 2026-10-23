@@ -888,3 +888,9 @@ These were found while implementing §6, from the API documentation. No LLM call
   it, descriptively, as the strongest classical baseline. In the paper, the wire rule is presented
   as classical data and control dependence plus quantum dependence (a multi-qubit gate acts on all
   its qubits).
+- **Fixed before any S-cpdg output (2026-10-23).** The first run was stopped by hand before it wrote
+  anything. Its backward pass copied S-du's, which never removes a written location, so a bit measured
+  twice would also pull in the overwritten measurement. S-cpdg now uses reaching definitions for
+  classical bits, as the definition in the paper and the wire rule's control edges do. Qubits are
+  unaffected: every rule reads what it writes. Rechecked: equal to S-du on all 704 unitary pairs, and
+  equal to S-lc on the catalogue's overwritten-bit entry (K14).
