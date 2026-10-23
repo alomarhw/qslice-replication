@@ -1,0 +1,108 @@
+{
+  "n_pairs_rq1": 784,
+  "H1": {
+    "test": "exact McNemar",
+    "a_only": 0,
+    "b_only": 216,
+    "p_value": 1.8991135491519597e-65,
+    "invalid_q": 0,
+    "invalid_du": 216
+  },
+  "H2": {
+    "test": "Wilcoxon signed-rank",
+    "n": 784,
+    "statistic": 0.0,
+    "p_value": 7.104254743534756e-80,
+    "mean_difference": 0.16347431251037725,
+    "ci95_mean_difference": [
+      0.15093353240485863,
+      0.17650332554908665
+    ],
+    "rank_biserial": 1.0,
+    "mean_size_lc": 0.7036948679909367,
+    "mean_size_q": 0.5402205554805595,
+    "relative_reduction": 0.23230851885718562,
+    "q_strictly_smaller": 477
+  },
+  "H3": {
+    "n": 784,
+    "robust": 434,
+    "rate": 0.5535714285714286,
+    "wilson95": [
+      0.5185962868931138,
+      0.5880241493038805
+    ],
+    "p_value": 1.0,
+    "pruned_pairs": {
+      "n": 477,
+      "robust": 127,
+      "rate": 0.2662473794549266,
+      "wilson95": [
+        0.22856458012284617,
+        0.30766509416767424
+      ]
+    }
+  },
+  "H4": {
+    "test": "exact McNemar",
+    "a_only": 0,
+    "b_only": 769,
+    "p_value": 6.441148769597133e-232,
+    "n_units": 5688,
+    "containment_q": 0.8217299578059072,
+    "containment_lc": 0.9569268635724332,
+    "difference": -0.13519690576652602,
+    "ci95_difference": [
+      -0.1439873417721519,
+      -0.12623066104078762
+    ],
+    "holds": false
+  },
+  "H5": {
+    "test": "Wilcoxon signed-rank",
+    "n": 4674,
+    "statistic": 0.0,
+    "p_value": 0.0,
+    "mean_difference": 2.8947368421052633,
+    "ci95_mean_difference": [
+      2.735339109970047,
+      3.0597026101839964
+    ],
+    "rank_biserial": 1.0,
+    "measure": "slice size in instructions (lc - q)",
+    "exam_slice_alongside": {
+      "test": "Wilcoxon signed-rank",
+      "n": 4674,
+      "statistic": 362501.5,
+      "p_value": 2.7274671979995712e-251,
+      "mean_difference": -0.06099228483503924,
+      "ci95_mean_difference": [
+        -0.06504695493777783,
+        -0.05705660489730999
+      ],
+      "rank_biserial": -0.7755138312323063
+    }
+  },
+  "holm": {
+    "H5": {
+      "p_holm": 0.0,
+      "reject": true
+    },
+    "H4": {
+      "p_holm": 2.5764595078388533e-231,
+      "reject": true
+    },
+    "H2": {
+      "p_holm": 2.1312764230604268e-79,
+      "reject": true
+    },
+    "H1": {
+      "p_holm": 3.7982270983039195e-65,
+      "reject": true
+    },
+    "H3": {
+      "p_holm": 1.0,
+      "reject": false
+    }
+  }
+}
