@@ -1032,3 +1032,22 @@ These were found while implementing §6, from the API documentation. No LLM call
   qubit the body touches to the needed set, so this many copies cover every dependence chain. The case is
   a test program (`tool/tests/programs/unknown_loop.py`). All checks are rerun on tool-v4, and the earlier
   versions' results are kept.
+
+### Deviation I-16 (2026-10-26, AFTER all results; author decision; exploratory): a flow-sensitive QPDG reading, and naming
+- **Why.** An ICSE reviewer asked for Yu & Zhao's QPDG [27] as a baseline. S-yz (`slicers/yuzhao.py`) is
+  that baseline and was pre-registered, but its entanglement rule (D-yz-5) is the static, flow-insensitive
+  one: two qubits count as entangled if a two-qubit gate joins them anywhere in the circuit. A reader can
+  object that this reading is weaker than [27] intends. D-yz-5 already names the alternative.
+- **S-yzf (new).** The same graph as S-yz (DATA + CONTROL edges, the same two-qubit coupling rule), but
+  entanglement is flow-sensitive. Operations are processed in order with a union-find over qubits that is
+  updated after each two-qubit gate, and an ENTANGLEMENT edge v -> u (v < u, on different qubits) is added
+  only if the qubits of v and u are in the same component just after u. Its edges contain the DATA edges,
+  so every S-yzf slice contains the wire slice (expected sound) and is contained in the S-yz slice.
+- **Measured, fixed before the run.** On corpus A (784 pairs): soundness at |0...0>, dependence recall and
+  precision against the RQ1 ground truth, size; S-yz is recomputed alongside and must equal the committed
+  RQ1 records. Soundness on the structure families and the dependence catalogue. Reported whatever the
+  outcome, as an exploratory row beside S-yz, outside H1-H5. No other measure is run.
+- **Naming (author decision).** The paper calls the graph of the wire rule the quantum dependence graph
+  (QDG) and the baseline "QPDG (Yu and Zhao)". In the code under `qslice/`, `method_eval/` and `archive/`,
+  the class `QDG` is the earlier version's typed graph, which S-yz is built from; it is not the paper's QDG.
+- Code: `slicers/yuzhao.py::yuzhao_flow_slice`, driver `icpc/yz_flow.py`, output `results/icpc/yz_flow/`.
