@@ -29,6 +29,7 @@ from tool.gates import GATES, NOT_SLICED
 
 MAX_OPS = 200_000
 MAX_ITER = 10_000
+MAX_STEPS = 300_000  # statements interpreted per program; beyond it the rest is reported as not traced
 E: FrozenSet[int] = frozenset()
 
 
@@ -44,8 +45,12 @@ UNK = _Unknown()
 class Reg:
     kind: str           # "q" or "c"
     name: str
-    size: Optional[int]
+    size: Optional[int]  # None: unknown statically; the register grows to cover the indices used on it
     uid: int
+    seen: int = -1       # largest index used on a register of unknown size
+
+
+ANY = -1  # placeholder qubit: "any qubit of a circuit of unknown size", expanded to all its qubits at the end
 
 
 @dataclass(frozen=True)
@@ -88,6 +93,7 @@ class Circuit:
     ops: List[Op] = field(default_factory=list)
     name: str = ""
     lines: FrozenSet[int] = E  # provenance of its construction (circuit and register lines)
+    layout_unknown: bool = False  # a register of unknown size is followed by another: offsets are not known
 
     def offset(self, reg: Reg) -> Optional[int]:
         regs = self.qregs if reg.kind == "q" else self.cregs
@@ -95,11 +101,14 @@ class Circuit:
         for r in regs:
             if r.uid == reg.uid:
                 return off
-            off += r.size or 0
+            off += r.size if r.size is not None else r.seen + 1
         return None
 
     def n(self, kind="q") -> int:
-        return sum(r.size or 0 for r in (self.qregs if kind == "q" else self.cregs))
+        return sum(r.size if r.size is not None else r.seen + 1 for r in (self.qregs if kind == "q" else self.cregs))
+
+    def unknown_size(self) -> bool:
+        return any(r.size is None for r in self.qregs)
 
 
 @dataclass
@@ -125,6 +134,10 @@ class InstrSet:
 class _Return(Exception):
     def __init__(self, v):
         self.v = v
+
+
+class _Budget(Exception):
+    pass
 
 
 class _Break(Exception):
@@ -179,6 +192,9 @@ class Interpreter:
         self.globals = Env()
         self.aliases: Dict[str, str] = {}
         self.star: List[str] = []
+        self.defined: List[Func] = []
+        self.called: set = set()
+        self.steps = 0
         self.base = 0
 
     # ---------------------------------------------------------------- helpers
@@ -212,15 +228,68 @@ class Interpreter:
     def run(self, unit) -> Trace:
         try:
             self.block(unit, self.globals)
-        except _Return:
+        except (_Return, _Break, _Continue):
             pass
+        except _Budget:
+            self.note(0, "interpretation budget exceeded: the rest of the program is not traced")
+        # Functions and methods the program defines but never calls are analysed as entry points, with unknown
+        # arguments (a may-analysis of what they build); circuits created there join the trace.
+        for f in list(self.defined):
+            if id(f.node) in self.called:
+                continue
+            self.entry(f)
+        self.finish_sizes()
         return Trace(self.path, self.circuits, self.notes)
+
+    def finish_sizes(self):
+        """Circuits of unknown size: ANY becomes every qubit the circuit turned out to have (a superset), and an
+        unknown register layout widens every operation to all qubits. Both are sound for the wire rule."""
+        for c in self.circuits:
+            if not c.unknown_size():
+                continue
+            allq = frozenset(range(max(c.n("q"), 1)))
+            if c.layout_unknown:
+                self.note(c.line, "register layout of a circuit of unknown size: operations widened to all qubits")
+            for op in c.ops:
+                if c.layout_unknown or any(ANY in s_ for s_ in op.qubits):
+                    op.qubits = tuple(allq if (c.layout_unknown or ANY in s_) else s_ for s_ in op.qubits)
+                    op.may = True
+
+    def entry(self, f):
+        fe = Env(f.env)
+        for pn, _ in f.params:
+            fe.set(pn, UNK, E)
+        ln = X.line(f.node)
+        self.note(ln, "function analysed as an entry point with unknown arguments")
+        self.called.add(id(f.node))
+        self.calls.append(ln)
+        try:
+            self.block(X.child(f.node, "block"), fe)
+        except (_Return, _Break, _Continue):
+            pass
+        except _Budget:
+            self.note(ln, "interpretation budget exceeded: the rest of the program is not traced")
+        finally:
+            self.calls.pop()
 
     def block(self, blk, env):
         for st in X.statements(blk):
             self.stmt(st, env)
 
     def stmt(self, st, env):
+        self.steps += 1
+        if self.steps > MAX_STEPS:
+            raise _Budget()
+        try:
+            self._stmt(st, env)
+        except (_Return, _Break, _Continue, _Budget):
+            raise
+        except RecursionError:
+            self.note(X.line(st), "statement not interpreted (recursion): operations there are not traced")
+        except Exception as exc:
+            self.note(X.line(st), f"statement not interpreted ({type(exc).__name__}): operations there are not traced")
+
+    def _stmt(self, st, env):
         t = X.tag(st)
         ln = X.line(st)
         if t in ("expr_stmt", "expr"):
@@ -255,7 +324,11 @@ class Interpreter:
         elif t == "throw":
             raise _Return((None, E))
         elif t == "class":
-            self.note(ln, "class definitions are not interpreted")
+            blk = X.child(st, "block")
+            for c in (X.statements(blk) if blk is not None else []):
+                if X.tag(c) == "function":
+                    self.do_def(c, Env(env), register=False)
+            self.note(ln, "class body: its methods are analysed as entry points")
         else:
             self.note(ln, f"statement <{t}> not interpreted")
 
@@ -463,7 +536,7 @@ class Interpreter:
                     self.ctx.pop()
                 return
 
-    def do_def(self, st, env):
+    def do_def(self, st, env, register=True):
         name = X.text(X.child(st, "name")).strip()
         params = []
         pl = X.child(st, "parameter_list")
@@ -475,7 +548,10 @@ class Interpreter:
             nm, _, dflt = ptxt.partition("=")
             nm = nm.split(":")[0].strip()
             params.append((nm, dflt.strip() or None))
-        env.set(name, Func(st, params, env), {X.line(st)})
+        f = Func(st, params, env)
+        if register:
+            env.set(name, f, {X.line(st)})
+        self.defined.append(f)
 
     def do_with(self, st, env):
         ln = X.line(st)
@@ -809,12 +885,16 @@ class Interpreter:
             else:
                 v = (UNK, E)
             fe.set(pn, v[0], v[1] | {L})
+        self.called.add(id(f.node))
         self.calls.append(L)
         try:
             self.block(X.child(f.node, "block"), fe)
             ret = (None, E)
         except _Return as r:
             ret = r.v
+        except (_Break, _Continue):
+            self.note(L, "break or continue outside a loop")
+            ret = (UNK, E)
         finally:
             self.calls.pop()
         return ret[0], frozenset(ret[1]) | {L}
@@ -951,12 +1031,19 @@ class Interpreter:
 
     def qubit_sets(self, circ: Circuit, v, L) -> Optional[List[FrozenSet[int]]]:
         """A qubit argument as a list (broadcast) of sets of global qubit indices."""
-        allq = frozenset(range(circ.n("q")))
+        allq = frozenset(range(circ.n("q"))) | ({ANY} if circ.unknown_size() else frozenset())
         if isinstance(v, bool):
             return None
         if isinstance(v, int):
             if 0 <= v < circ.n("q") or v < 0 and -v <= circ.n("q"):
                 return [frozenset({v % circ.n("q")})]
+            grow = [r for r in circ.qregs if r.size is None]
+            if v >= 0 and grow:
+                if grow[-1] is not circ.qregs[-1]:
+                    circ.layout_unknown = True
+                r = grow[-1]
+                r.seen = max(r.seen, v - (circ.offset(r) or 0))
+                return [frozenset({v})]
             self.note(L, f"qubit index {v} out of range")
             return [allq]
         if isinstance(v, Bit):
@@ -964,8 +1051,15 @@ class Interpreter:
             if off is None:
                 self.note(L, "a qubit of a register not in this circuit")
                 return [allq]
-            if v.index is None or v.reg.size is None:
-                return [frozenset(range(off, off + (v.reg.size or 0))) or allq]
+            if v.reg.size is None:
+                if v.reg is not circ.qregs[-1]:
+                    circ.layout_unknown = True
+                if isinstance(v.index, int) and v.index >= 0:
+                    v.reg.seen = max(v.reg.seen, v.index)
+                    return [frozenset({off + v.index})]
+                return [allq]
+            if v.index is None:
+                return [frozenset(range(off, off + v.reg.size)) or allq]
             return [frozenset({off + v.index})]
         if isinstance(v, Reg):
             off = circ.offset(v)
