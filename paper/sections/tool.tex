@@ -74,5 +74,6 @@ others build no circuit or are fragments. On the \numToolTextbookQiskit{} Qiskit
 textbook~\cite{qiskittextbook}, \numToolTextbookCircuit{} yield a circuit, and on the
 \numToolLintqQiskit{} Qiskit programs that the authors of the LintQ static analyzer collected from
 GitHub~\cite{paltenghi2024lintq},
-\numToolLintqCircuit{} yield a circuit and none crashes the tool. The tool takes \numToolBugsMedianMs{}~ms
+\numToolLintqCircuit{} yield a circuit, none crashes the tool, and \numToolLintqTimeouts{} exceeds
+the 60~s limit, because its nested loops of unknown length multiply the copies of their bodies. The tool takes \numToolBugsMedianMs{}~ms
 per Bugs4Q program and \numToolTextbookMedianMs{}~ms per textbook notebook in the median, srcML included.

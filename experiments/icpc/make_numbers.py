@@ -451,7 +451,7 @@ def main() -> int:
     put("ToolNestedToolWrong", nc["tool_wrong_total"], cnt(nc["tool_wrong_total"]), "results/icpc/tool_acceptance/nested_check.json")
     for path, nm, src in ((TA / "tool-v4" / "t3_bugs4q.csv", "Bugs", "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"),
                           (ICPC / "tool_coverage" / "textbook_v4.csv", "Textbook", "results/icpc/tool_coverage/textbook_v4.csv"),
-                          (ICPC / "tool_coverage" / "lintq_v3.csv", "Lintq", "results/icpc/tool_coverage/lintq_v3.csv")):
+                          (ICPC / "tool_coverage" / "lintq_v4.csv", "Lintq", "results/icpc/tool_coverage/lintq_v4.csv")):
         cov = rows(path)
         q = [r for r in cov if r["uses_qiskit"] == "1"]
         put(f"Tool{nm}Files", len(cov), cnt(len(cov)), src)
@@ -460,7 +460,10 @@ def main() -> int:
         put(f"Tool{nm}Circuit", sum(int(r["ops"]) > 0 for r in q), cnt(sum(int(r["ops"]) > 0 for r in q)), src)
         put(f"Tool{nm}Resolved", sum(int(r["ops"]) > 0 and r["may_ops"] == "0" for r in q),
             cnt(sum(int(r["ops"]) > 0 and r["may_ops"] == "0" for r in q)), src)
-        put(f"Tool{nm}Crashes", sum(bool(r["crash"]) for r in q), cnt(sum(bool(r["crash"]) for r in q)), src)
+        crashes = sum(bool(r["crash"]) and r["crash"] != "timeout" for r in q)  # a 60 s timeout is not a crash
+        put(f"Tool{nm}Crashes", crashes, cnt(crashes), src)
+        tos = sum(r["crash"] == "timeout" for r in q)
+        put(f"Tool{nm}Timeouts", tos, ["zero", "one", "two", "three"][tos] if tos < 4 else cnt(tos), src)
         sec = sorted(float(r["seconds"]) for r in q)
         put(f"Tool{nm}MedianMs", st.median(sec) * 1000, f"{st.median(sec) * 1000:.0f}", src)
 

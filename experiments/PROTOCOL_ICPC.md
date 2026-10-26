@@ -1056,3 +1056,8 @@ These were found while implementing §6, from the API documentation. No LLM call
   contains the S-lc slice and lies within the S-yz slice, and the recomputed S-yz equals the committed RQ1
   records. Families: 0 of 819 pairs unsound (S-yz also 0). Catalogue: 0 of 24 unsound. Reported as an
   exploratory row of Table I and one sentence in RQ1.
+- **Coverage on LintQ's corpus, tool-v4 (2026-10-26).** 4,136 of 7,567 programs yield a circuit (2,525 fully
+  resolved), and none crashes. One program (`circuit_generation_4cde1d.py`) exceeds the 60 s limit, where
+  tool-v3 took 0.1 s: its nested loops of unknown length each repeat their body len(touched)+1 times, and the
+  copies multiply. Counts from `results/icpc/tool_coverage/lintq_v4.csv`; the paper's LintQ numbers now come
+  from tool-v4, and timeouts are counted separately from crashes.

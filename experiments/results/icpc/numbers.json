@@ -1713,6 +1713,11 @@
   "tex": "0",
   "source": "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"
  },
+ "ToolBugsTimeouts": {
+  "value": 0,
+  "tex": "zero",
+  "source": "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"
+ },
  "ToolBugsMedianMs": {
   "value": 30.0,
   "tex": "30",
@@ -1748,6 +1753,11 @@
   "tex": "0",
   "source": "results/icpc/tool_coverage/textbook_v4.csv"
  },
+ "ToolTextbookTimeouts": {
+  "value": 0,
+  "tex": "zero",
+  "source": "results/icpc/tool_coverage/textbook_v4.csv"
+ },
  "ToolTextbookMedianMs": {
   "value": 49.0,
   "tex": "49",
@@ -1756,37 +1766,42 @@
  "ToolLintqFiles": {
   "value": 7568,
   "tex": "7{,}568",
-  "source": "results/icpc/tool_coverage/lintq_v3.csv"
+  "source": "results/icpc/tool_coverage/lintq_v4.csv"
  },
  "ToolLintqQiskit": {
   "value": 7567,
   "tex": "7{,}567",
-  "source": "results/icpc/tool_coverage/lintq_v3.csv"
+  "source": "results/icpc/tool_coverage/lintq_v4.csv"
  },
  "ToolLintqParsed": {
   "value": 7567,
   "tex": "7{,}567",
-  "source": "results/icpc/tool_coverage/lintq_v3.csv"
+  "source": "results/icpc/tool_coverage/lintq_v4.csv"
  },
  "ToolLintqCircuit": {
   "value": 4136,
   "tex": "4{,}136",
-  "source": "results/icpc/tool_coverage/lintq_v3.csv"
+  "source": "results/icpc/tool_coverage/lintq_v4.csv"
  },
  "ToolLintqResolved": {
-  "value": 2539,
-  "tex": "2{,}539",
-  "source": "results/icpc/tool_coverage/lintq_v3.csv"
+  "value": 2525,
+  "tex": "2{,}525",
+  "source": "results/icpc/tool_coverage/lintq_v4.csv"
  },
  "ToolLintqCrashes": {
   "value": 0,
   "tex": "0",
-  "source": "results/icpc/tool_coverage/lintq_v3.csv"
+  "source": "results/icpc/tool_coverage/lintq_v4.csv"
+ },
+ "ToolLintqTimeouts": {
+  "value": 1,
+  "tex": "one",
+  "source": "results/icpc/tool_coverage/lintq_v4.csv"
  },
  "ToolLintqMedianMs": {
-  "value": 55.0,
-  "tex": "55",
-  "source": "results/icpc/tool_coverage/lintq_v3.csv"
+  "value": 57.0,
+  "tex": "57",
+  "source": "results/icpc/tool_coverage/lintq_v4.csv"
  },
  "MotFidelity": {
   "value": 0.49999999999999967,

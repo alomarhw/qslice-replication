@@ -16,7 +16,7 @@ mechanized soundness proof, and the paper's sources. Every number in the paper i
 | RQ2 precision beyond the QDG slice | Commutation pruning stays correct on random inputs but fails on 4 of 175 pairs when angles change; treating angles as symbols is robust on all 175. State-based pruning is 23.2% smaller but stays correct under random inputs on only 55.4% of pairs |
 | RQ3 fault localization | The QDG slice contains the fault in 95.7% of 5,688 units, state-based pruning in 82.2%; pruning removes the fault in 769 units, and a joint criterion recovers 691; language models lose up to 14.5 points from state-based slices |
 | RQ4 cost | The QDG slice takes at most 7 ms per criterion; state-based pruning exceeds 120 s at the largest depths |
-| Static slicer | Trace equals the built circuit on 15 of 15 runnable programs; on Bugs4Q it reproduces 7 of 8 prepared circuits and the line slices of all 17 mapped units; 111 of 151 Bugs4Q programs, 60 of 72 textbook notebooks and 4,136 of 7,567 LintQ-corpus programs yield a circuit, with no crashes |
+| Static slicer | Trace equals the built circuit on 15 of 15 runnable programs; on Bugs4Q it reproduces 7 of 8 prepared circuits and the line slices of all 17 mapped units; 111 of 151 Bugs4Q programs, 60 of 72 textbook notebooks and 4,136 of 7,567 LintQ-corpus programs yield a circuit, with no crashes (one LintQ program exceeds the 60 s limit) |
 
 ## Layout
 ```
