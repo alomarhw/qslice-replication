@@ -11,9 +11,12 @@ Applied to a Qiskit program, such a slicer sees each gate as a call on one circu
 tell which qubits an operation depends on. A recent retrospective notes
 that slices can be defined by almost any semantic method, as the application requires, and names quantum
 programs as a future direction~\cite{gallagher2025program}. We follow that view and define the slice of a
-quantum program by the reduced state of its criterion. Probabilistic programs already showed that
-classical dependence does not carry over unchanged, since observations add dependences of their
-own~\cite{olmedo2025slicing}.
+quantum program by the reduced state of its criterion. Slicing of probabilistic programs preserves the distribution of the
+criterion variables, and conditioning adds dependences of its own~\cite{hur2014slicing,
+amtoft2020theory, olmedo2025slicing}. Our criterion is stronger. Preserving $\rho_W$ preserves the outcome
+distribution of every measurement of $W$, so our slices are also probabilistic slices of the measured
+program. The converse fails, because a distribution in one basis does not see phase or the kickback of
+Proposition~\ref{prop:du}.
 
 \paragraph*{Dependence in quantum programs}
 To our knowledge, Yu and Zhao's quantum program dependence graph~\cite{yu2025qpdg} is the only prior
