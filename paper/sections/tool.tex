@@ -8,8 +8,12 @@ Section~\ref{sec:example}.
 \paragraph*{Parsing}
 The tool parses the program with srcML~\cite{collard2011lightweight, collard2013srcml}, which turns source
 code into XML that keeps every character of the source and marks its syntax and the position of each
-element. A gate call such as \texttt{circuit.cx(0,1)} becomes a \texttt{call} element whose name gives the
-gate and whose arguments give its qubits, as stage~2 of Fig.~\ref{fig:overview} shows.
+element. srcML marks up Python syntax and knows nothing of quantum programs, so the quantum layer is ours.
+A table of \numToolGateTable{} Qiskit instruction methods records which arguments of each are qubits, bits
+and angles. With it, a \texttt{call} element such as \texttt{circuit.cx(0,1)} becomes a gate whose name
+gives its kind and whose arguments give its qubits, as stage~2 of Fig.~\ref{fig:overview} shows. The tool
+takes the structure of the program and the position of every element from srcML, and reads the text of
+each expression with Python's own parser.
 
 \paragraph*{Static interpretation}
 The tool walks the srcML tree and turns it into an operation trace, as the execution-order analysis of
@@ -54,6 +58,20 @@ over-approximation, an operation may act on several candidate qubits. It adds al
 removes a bit from $N$ only when it certainly writes that bit. $\mathit{cond}(o_k)$ is the set of bits that
 the condition of $o_k$ reads. The pass returns the operations of the slice, their lines and iterations, and
 the classical lines they depend on. Its cost is linear in the length of the trace for a fixed criterion.
+
+\paragraph*{Forward slices and profiles}
+The same trace gives the forward slices and qubit slice profiles of Section~\ref{sec:dependence}. A forward
+pass from the operations of a line marks every later operation that acts on a reached qubit or whose
+condition reads a reached bit, and returns their lines and the qubits and bits reached. On every operation
+and qubit of our test programs, the forward slices are dual to the backward ones. A profile combines one
+backward and one forward pass with the srcML of the gate calls on the qubit. Over the qubits of the Bugs4Q,
+textbook and sampled LintQ programs, \numProfBugsQubits{}, \numProfTextQubits{} and \numProfLintqQubits{}
+qubits from a sample of \numProfLintqSample{} LintQ files, the backward and forward slices of a qubit
+differ in their number of lines for \numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and
+\numProfLintqFwdNeBwd{} of the qubits, so neither direction stands in for the other. Of the qubits, \numProfBugsInFunction{},
+\numProfTextInFunction{} and \numProfLintqInFunction{} are acted on inside a function, where
+they go by the name of a parameter. In \numProfTextAliasGenuine{} textbook programs, checked by hand, a
+qubit has a second name, a function parameter or a loop variable over a register.
 
 \paragraph*{Validation}
 On \numToolDevPrograms{} programs that we wrote and can run, of up to \numToolDevMaxOps{} operations,

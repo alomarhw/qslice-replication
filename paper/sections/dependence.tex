@@ -1,8 +1,21 @@
-\section{Quantum Dependence}\label{sec:dependence}
+\section{Foundations of Quantum Program Slicing}\label{sec:dependence}
 
 This section defines what a slice of a quantum circuit must preserve, what an operation's dependence
-on a qubit is, and the dependence rules we compare. The definitions are independent of any slicer, and
-the evaluation in Section~\ref{sec:results} measures each rule against them.
+on a qubit is, the dependence rules we compare, the kinds of slices that follow from them, and the slice
+profile of a qubit. The definitions are independent of any slicer, and the evaluation in
+Section~\ref{sec:results} measures each rule against them.
+
+\subsection{Background}
+A quantum program builds a circuit, a sequence of operations on qubits. The state of a qubit is a
+superposition $\alpha\ket{0} + \beta\ket{1}$ of the two basis states, and measuring it yields $0$ or $1$
+with probabilities $|\alpha|^2$ and $|\beta|^2$ and leaves the qubit in the state observed. Gates are
+reversible operations on one or more qubits. A controlled gate such as the CNOT applies an operation to
+its target depending on its control, but it can also change the control. When the target is in a suitable
+superposition, a phase is kicked back onto the control, which is called phase kickback. Two qubits are
+entangled when their joint state is not a state of each qubit alone, and then the outcomes of measuring
+them are correlated. A reset returns a qubit to $\ket{0}$, and a measurement writes a classical bit that
+later gates may read as a condition. Qiskit programs build circuits in Python, with loops, functions and
+conditions that compute which gates act on which qubits.
 
 \subsection{Circuits and their semantics}
 A circuit $P = o_0 \dots o_{L-1}$ is a sequence of operations over qubits $Q = \{0, \dots, n-1\}$ and
@@ -219,9 +232,88 @@ with the other qubits, so it can delete an operation that changes $\rho_W$ for a
 specific to its input, because the mutual information it tests and the reduced state it checks are
 those of one input. Section~\ref{sec:results} measures both effects.
 
-\paragraph*{Superposition}
-None of the rules depends on amplitudes. Superposition changes amplitudes, not which qubits an operation
+\paragraph*{What is not a dependence}
+Entanglement does not decide dependence, by Proposition~\ref{prop:ent}. Nor do the other quantum
+phenomena that have been proposed as sources of dependence. No-cloning forbids copying an unknown state,
+and a CNOT that copies a basis state is a gate on two qubits, whose edges data dependence already has.
+Timing and scheduling decide when an operation runs on hardware, not which operations a state depends on,
+and they are not part of a circuit. None of the rules depends on amplitudes either. Superposition changes amplitudes, not which qubits an operation
 acts on~\cite{nielsen2010quantum}, and a dependence graph has one node per operation and edges between
 operations on shared locations, so superposition cannot enlarge it. Superposition matters only for
 state-based pruning, whose checks simulate the circuit and cost time exponential in its width, as
 Section~\ref{sec:results} shows.
+
+\subsection{Kinds of slices}
+The backward slice answers which operations determine the criterion. Classical slicing knows other kinds
+of slices~\cite{tip1994a, silva2012vocabulary}, and each carries over to quantum programs differently.
+
+\paragraph*{Forward slices}
+The forward slice $\Fw(o_k)$ of an operation is the set of operations reachable from $o_k$ in the QDG. It
+answers the question of a developer who changes a gate, namely which later operations and which qubits the
+change can reach. We say that $o_k$ reaches $q$ if $\Fw(o_k)$ contains the last operation on $q$.
+
+\begin{proposition}[Forward and backward slices are dual]\label{prop:dual}
+For every operation $o_k$ and qubit $q$, $o_k$ reaches $q$ if and only if $o_k \in \Bw(\{q\})$. Hence
+$o_k$ reaches every qubit of which it is a dependence.
+\end{proposition}
+
+\begin{IEEEproof}
+Both sides say that the QDG has a path from $o_k$ to the last operation on $q$. The second claim follows
+from Proposition~\ref{prop:complete}.
+\end{IEEEproof}
+
+\paragraph*{Undirected slices}
+Following QDG edges in both directions from the operations on $q$ gives the operations connected to $q$
+at all. Such a slice is sound, since it contains $\Bw(\{q\})$, but it also contains every operation that
+$q$ later affects and everything those operations depend on. Section~\ref{sec:results} shows that it keeps
+almost the whole circuit, so it is a pitfall rather than a decomposition of the program by qubit.
+
+\paragraph*{Joint criteria}
+By Proposition~\ref{prop:joint}, the QDG slice of a set of qubits is the union of their single-qubit
+slices, so a tool needs to compute only those. The criterion must still name the set when the fault lies
+in correlations, as the Bugs4Q bug of Section~\ref{sec:example} shows, because a pruned slice of each qubit
+alone need not preserve their joint state.
+
+\paragraph*{Static and conditioned slices}
+A static slice preserves the criterion at every input, as Definition~\ref{def:sound} requires. State-based pruning
+preserves it only at one given input, so it computes a conditioned slice in the sense of Canfora et
+al.~\cite{canfora1998conditioned}, which is correct for the inputs that satisfy a condition, here a single
+input. Quasi-static slicing, which fixes some of the inputs~\cite{venkatesh1991semantic}, lies in between.
+Section~\ref{sec:results} measures what this restriction buys and costs.
+
+\paragraph*{Granularity}
+A slice can be reported as operations, as loop iterations, or as source lines. Operations are the unit of
+the definitions and lines the unit of the developer. A line is in the slice if one of its operations is,
+and the tool also reports iterations, since one iteration of a loop can matter while the others do not, as
+in Fig.~\ref{fig:ansatz}.
+
+\subsection{Qubit slice profiles}
+srcSlice computes for every variable a slice profile that collects its definitions, uses, aliases, the
+functions it is passed to, and the variables that depend on it~\cite{alomari2014srcslice}. We define the
+analogous profile of a qubit $q$. It lists the lines of the operations on $q$, each of which both uses and
+defines $q$ under the QDG, the source expressions that denote $q$ in gate calls, the call sites of the
+functions inside which $q$ is acted on, the other qubits that the first operation on $q$ reaches, the bits
+measured from $q$ and the lines conditioned on them, and the lines of the backward slice of $q$ and of the
+forward slice of its first operation. Table~\ref{tab:profile} shows the profile of $q_0$ in
+Fig.~\ref{fig:bv}. A profile gathers in one view what a developer first asks about a qubit, and it costs
+one backward and one forward pass.
+
+\begin{table}[t]
+  \centering
+  \caption{Slice profile of $q_0$ in the program of Fig.~\ref{fig:bv}, computed by the tool}
+  \label{tab:profile}
+  \footnotesize\setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.36\columnwidth} >{\raggedright\arraybackslash}p{0.56\columnwidth}@{}}
+    \toprule
+    Entry & Value \\
+    \midrule
+    Uses and definitions & lines \numBvProfDefs{} \\
+    Names & \texttt{i} on lines \numBvProfNameI{}, \texttt{q} on line \numBvProfNameQ{} \\
+    Functions & none \\
+    Dependent qubits & \numBvProfDependents{} \\
+    Bits & \numBvProfBits{}, no conditioned lines \\
+    Backward slice & lines \numBvQdgLines{} \\
+    Forward slice & lines \numBvProfForward{} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

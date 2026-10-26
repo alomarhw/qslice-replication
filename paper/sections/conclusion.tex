@@ -7,7 +7,9 @@ two-qubit gate can change its control. Following entanglement is sound but impre
 entanglement is not sufficient for dependence, and it is not necessary either. Our quantum dependence graph
 (QDG) is sound for every input, dependence-complete and cheap, and state-based pruning trades that guarantee for slices that
 hold for one input and can remove the fault. Our static slicer shows that the QDG works on Qiskit
-source, where it reports the lines and iterations a developer must read to understand a qubit's state.
-Whether such slices improve comprehension needs a study with developers. Quantum slicers should start from
+source, where it reports the lines and iterations a developer must read to understand a qubit's state,
+and that forward slices and qubit profiles follow from the same graph. Whether such slices improve
+comprehension needs a study with developers, the last item of the roadmap of
+Section~\ref{sec:discussion}. Quantum slicers should start from
 the QDG, take sets of qubits as criteria, and report precision beyond it only where it is safe. The
 replication package at \url{https://anonymous.4open.science/r/qslice-replication-5B21} regenerates every number in this paper.

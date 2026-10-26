@@ -25,10 +25,10 @@ challenging~\cite{ye2026llmqse}. No definition of quantum dependence has been ch
 semantics of quantum programs. It is therefore not known whether the slices such definitions produce
 contain the operations a developer must inspect.
 
-Section~\ref{sec:example} shows a real bug where this matters. Reading a two-qubit gate as a classical
-assignment gives a slice that omits the faulty line and still reproduces the qubit's state, and the bug
-itself shows only in the correlation between two qubits, which a single-variable criterion cannot
-express.
+Section~\ref{sec:example} shows where this matters, on the Bernstein--Vazirani program of the Qiskit
+textbook with a seeded fault. Reading a two-qubit gate as a classical assignment gives a slice that omits
+the faulty line and still reproduces the qubit's state. A real bug from Bugs4Q adds that a fault may show
+only in the correlation between two qubits, which a single-variable criterion cannot express.
 
 This paper defines quantum dependence semantically, as the set of operations where a change can alter
 the state of the criterion qubits for some input, and generalizes the criterion to a set of qubits whose
@@ -56,17 +56,21 @@ removes the faulty operation in \numCQFour{} units and lowers the fault-localiza
 the four language models we tested by up to \numTTwoMaxDrop{} percentage points. A joint criterion over
 all wrong qubits recovers \numCQFourRecovered{} of these units.
 
-This paper makes five contributions. Section~\ref{sec:dependence} gives semantic definitions of quantum
-dependence, slice soundness and dependence completeness, with a criterion over sets of qubits, and defines
-the QDG, to our knowledge the first dependence graph for quantum programs that is proved sound and
-dependence-complete against such a definition. Section~\ref{sec:tool} presents a tool that slices
-programs written with Qiskit, IBM's open-source Python framework for quantum
-programs~\cite{javadi2024qiskit}, statically from their source, and reports the lines and
-loop iterations of a slice. Section~\ref{sec:results} reports, to our knowledge, the first comparison of
-quantum dependence definitions against a semantic ground truth, covering soundness, completeness,
-robustness to inputs and precision. It also measures what each definition does to fault localization on
-seeded faults and real bugs, by whether the slice contains the fault, with mutation-based fault
-localization and with language models. Finally, a replication package, available at
+This paper lays foundations for quantum program slicing and makes five contributions.
+Section~\ref{sec:dependence} gives semantic definitions of quantum dependence, slice soundness and
+dependence completeness, with a criterion over sets of qubits, and defines the QDG, to our knowledge the
+first dependence graph for quantum programs that is proved sound and dependence-complete against such a
+definition. It carries the kinds of classical slices over to quantum programs, with forward slices dual to
+backward ones, conditioned slices, and slice profiles of qubits in the style of srcSlice.
+Section~\ref{sec:tool} presents a tool that slices programs written with Qiskit, IBM's open-source Python
+framework for quantum programs~\cite{javadi2024qiskit}, statically from their source. It computes
+backward and forward slices and qubit profiles, and reports the lines and loop iterations of a slice.
+Section~\ref{sec:results} reports, to our knowledge, the first comparison of quantum dependence
+definitions against a semantic ground truth, covering soundness, completeness, robustness to inputs and
+precision. It also measures what each definition does to fault localization on seeded faults and real
+bugs, by whether the slice contains the fault, with mutation-based fault localization and with language
+models. Section~\ref{sec:discussion} states what the results settle and lays out a roadmap of the open
+problems. Finally, a replication package, available at
 \url{https://anonymous.4open.science/r/qslice-replication-5B21}, regenerates every number in the
-paper. Section~\ref{sec:design} describes the study design, and Sections~\ref{sec:discussion}
-to~\ref{sec:conclusion} discuss the results, the threats to validity and related work, and conclude.
+paper. Section~\ref{sec:design} describes the study design, and Sections~\ref{sec:threats}
+to~\ref{sec:conclusion} discuss the threats to validity and related work, and conclude.

@@ -60,6 +60,24 @@ agree with the hand-derived expectations for def-use, the QDG, the QPDG and stat
 pruning, and commutation pruning is sound and within the QDG slice on every case where Qiskit's pass
 applies.
 
+Further measures, exploratory and logged before they ran, test the foundations of
+Section~\ref{sec:dependence} on the \numFdPairs{} pairs whose criterion qubit some operation acts on. A
+graph that types its edges as data, control, measurement and entanglement edges, as the dependence kinds
+of the QPDG suggest, with an entanglement edge between the qubits of each two-qubit gate, gives exactly the
+QDG slice on all \numFdFourEdgeNoClosureEqual{} pairs. Only when its entanglement edges are closed
+transitively over coupled qubits does it differ, keeping \numFdFourEdgeSize{} of the circuit and equaling
+the QDG slice on \numFdFourEdgeEqual{} pairs. The per-gate edge is therefore the part of entanglement
+dependence that matters, and it is the quantum dependence of the QDG. Undirected slices keep \numFdUndSize{}
+of the circuit at precision \numFdUndPrecision{}, against \numFdLcPrecision{} for the QDG, and equal the QDG
+slice on only \numFdUndEqual{} pairs. Forward slices behave as Proposition~\ref{prop:dual} predicts. For
+every one of the \numFdFwdOps{} operations of corpus~A, the forward slice reaches every qubit that the
+operation influences in the ground truth, the duality holds, and the precision of the reached qubits is
+\numFdFwdPrecision{}. Finally, a wrong slice need not look wrong. Of the \numFdCpdgUnsound{} wrong slices of
+the classical PDG, \numFdCpdgZMatch{}, or \numFdCpdgZMatchPct{}, give the criterion the same distribution
+of outcomes in the computational basis as the whole circuit, so a histogram check would accept them, and
+so do \numFdDuZMatch{} of the \numFdDuUnsound{} wrong def-use slices. This is why soundness is judged by
+reduced states.
+
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figures/fig_size.pdf}

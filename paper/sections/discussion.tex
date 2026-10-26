@@ -1,11 +1,11 @@
-\section{Discussion}\label{sec:discussion}
+\section{A Roadmap for Quantum Program Slicing}\label{sec:discussion}
 
-\paragraph*{Guidance for tool builders}
-The results suggest how a slicer for quantum programs should be built. The base should be the QDG,
+\paragraph*{What is settled}
+The definitions and results settle how a slicer for quantum programs should be built. The base should be the QDG,
 in which every gate reads and writes all its qubits. It is sound for every input, misses no dependence,
 and costs milliseconds. Reading a gate as a classical assignment is the pitfall to avoid, and adding
 control dependence does not remove it. Entanglement edges, as in the QPDG, should not be added to make a slice safer. They
-buys no soundness that the QDG lacks and costs precision, because a later operation on an entangled
+buy no soundness that the QDG lacks and costs precision, because a later operation on an entangled
 partner cannot change the criterion's state, as Proposition~\ref{prop:ent} shows. Precision beyond the
 QDG slice can come from commutation pruning, which stays correct on every random input but fails when the
 angles change. Treating every angle as a symbol before the pass keeps it correct under all three input
@@ -14,7 +14,26 @@ after each parameter update. State-based pruning should be offered, if at all, a
 labeled as such, and never as the slice of the program. Finally, a slicer should let the developer name a
 set of qubits. Many quantum bugs show only in the correlation between qubits, as in
 Section~\ref{sec:example}, and by Proposition~\ref{prop:joint} the joint QDG slice is the union of the
-single-qubit slices, so a joint criterion needs no extra analysis.
+single-qubit slices, so a joint criterion needs no extra analysis. Forward slices and qubit profiles come
+from the same graph, and by Proposition~\ref{prop:dual} they need no separate argument for correctness.
+
+\paragraph*{What is open}
+Six problems remain, and each extends a classical line of work. The first is precision that holds for
+every input. The QDG is sound for all inputs and the dependence set is smaller, and closing that gap statically
+needs analyses that reason about states, such as a commutation analysis that is valid for all angles or an
+abstract interpretation of stabilizer states. The second is slices for classes of inputs. Conditioned and
+quasi-static slicing~\cite{canfora1998conditioned, venkatesh1991semantic} suggest slices that are sound for
+a stated class, such as basis states or product states, rather than for one input or for all. The third is
+hybrid programs. Variational algorithms loop between a classical optimizer and a circuit, and a slice that crosses
+this boundary needs interprocedural dependence through the measured results~\cite{horwitz1990interprocedural}.
+The fourth is the remaining kinds of slices. Chopping between two operations, amorphous slices that may rewrite
+gates, for instance by merging rotations, and criteria given by an observable rather than a reduced state
+all need definitions against the semantics of Section~\ref{sec:dependence}. The fifth is other languages and
+compiled code. srcML's markup for OpenQASM~\cite{behler2024supporting, behler2025static} gives a front end,
+and a slice of a transpiled circuit must be mapped back to the source through the compiler's layout.
+The sixth is evidence with developers. Our fault-localization results use seeded faults and the small programs of
+Bugs4Q, and a study of developers debugging real quantum programs with slices is the next step, as it was
+for classical slicing~\cite{weiser1982programmers}.
 
 \paragraph*{Noise and hardware}
 A slice is computed statically, so noise cannot change which operations it contains, only whether running
