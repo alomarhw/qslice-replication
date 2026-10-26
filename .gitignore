@@ -9,3 +9,8 @@ data/qasmbench/large/
 # RQ3 per-circuit checkpoints (final results are in results/icpc/rq3/)
 experiments/results/icpc/rq3/partial/
 paper/main.pdf
+
+# local only: personal tooling and the earlier submission (not part of the anonymous package)
+tools/save_to_rp.py
+paper/QSlice_31399_ICSE_final.tex
+paper/QSlice_31399_ICSE_final.bib

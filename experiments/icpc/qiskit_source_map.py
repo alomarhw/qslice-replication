@@ -14,6 +14,7 @@ Cross-check: the original buggy programs are sent to the authors' Quantum Slicer
 and its per-instruction lines are compared with this map on (name, qubits)-aligned instructions.
 Outputs (results/icpc/source_map/): instructions.csv, units.csv, bugs.csv, crosscheck.csv.
 Usage (from experiments/): python icpc/qiskit_source_map.py --bugs4q-root BUGS4Q_ROOT [--no-crosscheck]
+(the cross-check runs only when QSLICE_CROSSCHECK_URL names the external slicer service)
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ import argparse
 import csv
 import difflib
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -31,7 +33,7 @@ HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE / "bugs4q"))
 OUT = HERE / "results" / "icpc" / "source_map"
-SLICER_URL = "http://quantum-slicing.capstone.csi.miamioh.edu/api/analyze"
+SLICER_URL = os.environ.get("QSLICE_CROSSCHECK_URL", "")  # optional external slicer service for the cross-check
 LCOMMENT = re.compile(r"#\s*L(\d+)\b")
 
 
@@ -166,7 +168,7 @@ def main() -> int:
                               "n_fault_lines": len(fault_lines), "contained_lines": int(bool(sl_lines & fault_lines)),
                               "slice_lines": len(sl_lines), "slice_lines_fraction": len(sl_lines) / max(len(creating), 1),
                               "unmapped_in_slice": sum(1 for k in sl if not line_of[k])})
-        if not a.no_crosscheck and built is not None:
+        if not a.no_crosscheck and SLICER_URL and built is not None:
             nodes, err = capstone_lines("\n".join(original), Path(orig_rel).name)
             if nodes is None:
                 xrows.append({"bug_id": bug, "compared": 0, "agree": 0, "note": f"capstone error: {err}"})
