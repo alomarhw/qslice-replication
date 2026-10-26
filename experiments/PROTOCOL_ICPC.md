@@ -1010,3 +1010,15 @@ These were found while implementing §6, from the API documentation. No LLM call
 - **tool-v2 (`6a01767`, tag `tool-v2`), fixing what T1 found.** Non-integer slice bounds evaluate to UNK. Converting
   a circuit to a DAG is now reported as untraced. T1/T2 are rerun on tool-v2, and both versions' results are
   kept (`results/icpc/tool_acceptance/tool-v1`, `tool-v2`).
+- **Coverage on LintQ's corpus, tool-v2 (2026-10-26, descriptive).** 7,567 Qiskit programs: all parse, and
+  2,749 yield a circuit. 1,460 build circuits only inside functions or classes that the file never calls.
+  55 failed: 38 hit the 60 s timeout, 10 had a `break` or `continue` outside a loop, 7 had evaluation errors.
+- **tool-v3 (`9123ece`, tag `tool-v3`), author decision.**
+  - Functions and class methods that are defined but never called are analysed as entry points, with
+    unknown arguments.
+  - A circuit of unknown size is handled soundly. Its registers grow to cover the indices used on them, an
+    unknown index stands for any qubit and is expanded to all of the circuit's qubits at the end, and an
+    unknown register layout widens every operation.
+  - A global step budget and statement-level errors are reported as not traced, instead of failing.
+  - All earlier checks are rerun on tool-v3 (development programs, T1-T3, textbook, LintQ), and the
+    numbers of every version are kept.
