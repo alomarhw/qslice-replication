@@ -1,26 +1,17 @@
 \begin{abstract}
 Program slicing helps developers understand code by showing which statements can affect a value of
-interest, the question they ask when they debug. For quantum programs, slicing has been proposed by
-reusing the classical slicing criterion and graph reachability over a quantum program dependence graph,
-but no definition of quantum dependence has been checked against the semantics of quantum programs. We
-define it semantically, as the set of operations where a change can alter a qubit's state for some input,
-and use this ground truth to evaluate dependence definitions on \numNPairs{} circuit--qubit pairs from
-three benchmark suites, \numFamCircuits{} circuits with known structure, and \numRqThreeUnits{}
-fault--qubit units from \numMutantsKilled{} seeded faults. Even the full classical program dependence
-graph, with data and control dependence, gives wrong slices for \numCpdgUnsoundPct{} of the pairs,
-because it misses the effect of a gate on its control qubit, called phase kickback. Following
-entanglement, as the proposed quantum program dependence graph (QPDG) does, is sound but keeps
-\numRqOneYzSize{} of the circuit in our reimplementation, and \numYzfSize{} when entanglement is tracked
-along the program. Our quantum dependence graph (QDG), in which every gate reads and writes all its qubits,
-keeps \numRqOneLcSize{}, within \numLcExcess{} percentage points of the smallest slice that contains
-every dependence. It misses no dependence and stays correct on every tested input, and its soundness
-proof is mechanized for an abstract model. Commutation pruning shrinks these slices further, but stays
-correct when rotation angles change only if it treats them as symbols. State-based pruning shrinks them
-by \numHTwoRelative{}, but only for the input it was computed on. It removes the faulty operation in
-\numCQFour{} units and lowers the fault-localization accuracy of three of four language models by up to
-\numTTwoMaxDrop{} percentage points. A joint criterion over all wrong qubits recovers
-\numCQFourRecovered{} of these units. Our static slicer applies the QDG to Qiskit source and
-reports the lines and loop iterations a developer must read. Quantum dependence is not entanglement, and
-the results give tool builders a sound, input-independent dependence rule and a slicing criterion that
-fits quantum state.
+interest. For quantum programs, slicing has been proposed over a quantum program dependence graph (QPDG),
+but no definition of quantum dependence has been checked against what quantum programs compute. We define
+quantum dependence semantically, introduce the quantum dependence graph (QDG), in which every gate reads
+and writes all its qubits, and prove its slices sound and dependence-complete. We then evaluate
+dependence definitions against this ground truth on \numNPairs{} circuit--qubit pairs and
+\numRqThreeUnits{} units from seeded faults. The classical program dependence graph gives wrong slices
+for \numCpdgUnsoundPct{} of the pairs, because it misses phase kickback. The QPDG is sound but keeps
+\numRqOneYzSize{} of a circuit, while QDG slices keep \numRqOneLcSize{}, within \numLcExcess{}
+percentage points of the dependences themselves. State-based pruning, which simulates one input, shrinks
+slices by \numHTwoRelative{}, but its slices hold only for that input, drop the faulty operation in
+\numCQFour{} units, and lower the fault-localization accuracy of three of four language models by up to
+\numTTwoMaxDrop{} percentage points. A criterion over a set of qubits recovers \numCQFourRecovered{} of
+these units. Our static slicer applies the QDG to Qiskit source and reports the lines and loop iterations
+a developer must read.
 \end{abstract}
