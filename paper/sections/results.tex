@@ -8,6 +8,7 @@
   circuit.}
   \label{tab:rq1}
   \footnotesize\setlength{\tabcolsep}{2.6pt}
+  \begin{adjustbox}{max width=\columnwidth}
   \begin{tabular}{@{}l l r r r r r@{}}
     \toprule
     Rule & Dependence & Wrong & Dyn. & Recall & Prec. & Size \\
@@ -23,7 +24,8 @@
     Comm., symbolic$^{a}$ & wire, pruned       & \numLcqsUnsound{}      & \numLcqsDynamicUnsound{} & \numLcqsRecall{}      & \numLcqsPrecision{}      & \numLcqsSize{} \\
     State-based        & wire, pruned          & \numRqOneQUnsound{}    & \numQDynamicUnsound{}    & \numRqOneQRecall{}    & \numRqOneQPrecision{}    & \numRqOneQSize{} \\
     \bottomrule
-  \end{tabular}\\[2pt]
+  \end{tabular}
+  \end{adjustbox}\\[2pt]
   {\footnotesize $^{a}$\,On the \numLcqApplicable{} pairs where Qiskit's pass applies, of which
   \numLcqDynamicN{} are dynamic. The pass raises on \numLcqNaMeasurements{} pairs of circuits that measure.
   $^{b}$\,The smallest dependence-complete slice. It is a reference, not a slicer, so it has no
