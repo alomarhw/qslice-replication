@@ -7,7 +7,7 @@
 \definecolor{ink}{HTML}{1F2328}\definecolor{mute}{HTML}{6E7781}\definecolor{rule}{HTML}{D0D7DE}
 \definecolor{wire}{HTML}{0969DA}\definecolor{wireL}{HTML}{DDEBFF}
 \definecolor{fault}{HTML}{CF4A1B}\definecolor{faultL}{HTML}{FCE4DA}
-\definecolor{pdg}{HTML}{8C959F}\definecolor{tree}{HTML}{8250DF}\definecolor{treeL}{HTML}{F1EAFE}
+\definecolor{pdg}{HTML}{8C959F}\definecolor{hlC}{HTML}{FFF1B8}\definecolor{tree}{HTML}{8250DF}\definecolor{treeL}{HTML}{F1EAFE}
 \tikzset{
   >={Stealth[length=3.6pt,width=3.2pt]},
   stage/.style={font=\footnotesize\bfseries, text=ink, anchor=south west, inner sep=0pt},
@@ -19,99 +19,98 @@
   xleaf/.style={font=\ttfamily\fontsize{6}{7}\selectfont, text=ink, inner sep=1pt},
   gate/.style={rectangle, draw=ink, fill=white, line width=0.55pt, minimum size=11pt, inner sep=0pt,
         font=\fontsize{7}{8}\selectfont},
+  xml/.style={font=\ttfamily\fontsize{5.6}{6.4}\selectfont, anchor=west, inner sep=0pt},
   note/.style={font=\fontsize{6.4}{7.6}\selectfont\itshape, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}, text=mute, align=center, inner sep=1pt},
   flowarrow/.style={->, line width=0.7pt, draw=ink},
 }
+\newcommand{\hlbox}[1]{{\setlength{\fboxsep}{0.5pt}\colorbox{hlC}{\strut #1}}}
+\newcommand{\hlm}[1]{\raisebox{0.9ex}{\textcolor{tree}{\fontsize{4.6}{5}\selectfont\bfseries\rmfamily #1}}}
+\newcommand{\hl}[1]{\textcolor{tree}{\bfseries #1}}
 \begin{document}
 \begin{tikzpicture}
 
 \node[stnum] (n1) at (0.16,0.55) {1};
 \node[stage, anchor=west] at (0.38,0.55) {Qiskit program};
-\draw[rule, line width=0.6pt] (0.0,0.3) -- (3.45,0.3);
+\draw[rule, line width=0.6pt] (0.0,0.3) -- (3.3,0.3);
 \node[lno] at (0.32,0.0) {4};
 \node[code] at (0.42,0.0) {circuit = QuantumCircuit(2)};
 \node[lno] at (0.32,-0.36) {5};
 \node[code] at (0.42,-0.36) {circuit.h(0)};
-\fill[faultL, rounded corners=1pt] (0.02,-0.87) rectangle (3.43,-0.5499999999999999);
+\fill[faultL, rounded corners=1pt] (0.02,-0.87) rectangle (3.28,-0.5499999999999999);
 \node[lno] at (0.32,-0.72) {6};
 \node[code] at (0.42,-0.72) {circuit.h(1)};
 \node[lno] at (0.32,-1.08) {7};
 \node[code] at (0.42,-1.08) {circuit.cx(0,1)};
 \node[lno] at (0.32,-1.44) {8};
 \node[code] at (0.42,-1.44) {circuit.measure\_all()};
-\node[font=\fontsize{6.2}{7}\selectfont\bfseries, text=fault, anchor=east] at (3.39,-0.72) {fault};
+\node[font=\fontsize{6.2}{7}\selectfont\bfseries, text=fault, anchor=east] at (3.2399999999999998,-0.72) {fault};
 \node[code, text=mute] at (0.42,-1.7999999999999998) {\itshape\rmfamily\fontsize{6.3}{8}\selectfont lines 10--16: run on a simulator, print};
-\node[note, anchor=north west, align=left, text width=3.35cm] at (0.05,-2.0999999999999996) {Expected $(\lvert01\rangle{+}\lvert10\rangle)/\sqrt{2}$; line~6 should apply $X$.};
-\node[stnum] (n2) at (4.470000000000001,0.55) {2};
-\node[stage, anchor=west] at (4.69,0.55) {srcML, line 7};
-\draw[rule, line width=0.6pt] (4.3100000000000005,0.3) -- (8.260000000000002,0.3);
-\node[xn, anchor=north west] (es) at (4.460000000000001,0.12) {expr\_stmt\ \textcolor{mute}{pos=\textquotedbl7:1\textquotedbl}};
-\node[xn, anchor=north west] (cl) at (4.8100000000000005,-0.42) {call};
-\node[xn, anchor=north west] (nm) at (5.160000000000001,-0.96) {name};
-\node[xleaf, anchor=west] at ($(nm.east)+(0.08,0)$) {circuit.cx};
-\node[xn, anchor=north west] (al) at (5.160000000000001,-1.5) {argument\_list};
-\node[xn, anchor=north west] (a0) at (5.510000000000001,-2.04) {argument};
-\node[xleaf, anchor=west] at ($(a0.east)+(0.08,0)$) {0};
-\node[xn, anchor=north west] (a1) at (5.510000000000001,-2.58) {argument};
-\node[xleaf, anchor=west] at ($(a1.east)+(0.08,0)$) {1};
-\draw[tree, line width=0.5pt] ($(es.south west)+(0.17,0)$) |- (cl.west);
-\draw[tree, line width=0.5pt] ($(cl.south west)+(0.17,0)$) |- (nm.west);
-\draw[tree, line width=0.5pt] ($(cl.south west)+(0.17,0)$) |- (al.west);
-\draw[tree, line width=0.5pt] ($(al.south west)+(0.17,0)$) |- (a0.west);
-\draw[tree, line width=0.5pt] ($(al.south west)+(0.17,0)$) |- (a1.west);
-\node[draw=wire, fill=white, rounded corners=1.6pt, line width=0.55pt, font=\fontsize{6.3}{7.6}\selectfont, text=ink, align=left, inner sep=2.2pt, anchor=north east] (fact) at (8.240000000000002,-0.2) {\textbf{cx}: control $q_{0}$, target $q_{1}$\\\textcolor{wire}{wire rule: writes both}};
-\draw[wire, line width=0.55pt, dash pattern=on 1.4pt off 1pt] (cl.east) -- (cl.east -| fact.west);
-\node[stnum] (n3) at (9.280000000000001,0.55) {3};
-\node[stage, anchor=west] at (9.500000000000002,0.55) {Operation trace};
-\draw[rule, line width=0.6pt] (9.120000000000001,0.3) -- (12.97,0.3);
-\node[font=\fontsize{7}{8}\selectfont, text=ink, anchor=east] at (9.520000000000001,-0.55) {$q_0$};
-\draw[ink, line width=0.5pt] (9.57,-0.55) -- (11.860000000000003,-0.55);
-\node[font=\fontsize{7}{8}\selectfont, text=ink, anchor=east] at (9.520000000000001,-1.45) {$q_1$};
-\draw[ink, line width=0.5pt] (9.57,-1.45) -- (11.860000000000003,-1.45);
-\node[gate, fill=wireL, draw=ink] at (9.840000000000002,-0.55) {H};
-\node[font=\fontsize{6}{7}\selectfont, text=mute] at (9.840000000000002,-0.19000000000000006) {line 5};
-\node[gate, fill=faultL, draw=fault] at (10.580000000000002,-1.45) {H};
-\node[font=\fontsize{6}{7}\selectfont, text=fault] at (10.580000000000002,-0.19000000000000006) {line 6};
-\fill[wireL, rounded corners=1.5pt] (11.120000000000003,-1.67) rectangle (11.520000000000001,-0.33000000000000007);
-\draw[ink, line width=0.55pt] (11.320000000000002,-0.55) -- (11.320000000000002,-1.5699999999999998);
-\fill[ink] (11.320000000000002,-0.55) circle (1.5pt);
-\draw[ink, line width=0.55pt, fill=white] (11.320000000000002,-1.45) circle (3.3pt);
-\draw[ink, line width=0.55pt] (11.204000000000002,-1.45) -- (11.436000000000002,-1.45) (11.320000000000002,-1.566) -- (11.320000000000002,-1.3339999999999999);
-\node[font=\fontsize{6}{7}\selectfont, text=mute] at (11.320000000000002,-0.19000000000000006) {line 7};
-\draw[wire, line width=0.8pt] (11.880000000000003,-0.7200000000000001) -- (11.880000000000003,-0.38);
-\node[font=\fontsize{6.3}{7}\selectfont, text=wire, anchor=west, align=left] at (11.920000000000003,-0.55) {criterion\\[-1pt]$\{q_0\}$};
-\draw[->, wire, line width=0.75pt] (11.270000000000001,-1.25) to[bend left=40] (11.270000000000001,-0.68);
-\node[font=\fontsize{6}{7}\selectfont, text=wire, align=right, anchor=east] at (11.120000000000003,-0.98) {kickback:\\[-1pt]\texttt{cx} writes $q_0$};
-\node[note, anchor=north west, align=left, text width=3.75cm] at (9.170000000000002,-1.8699999999999999) {shaded: kept by the wire rule's backward pass from $q_0$. The terminal measurement of line~8 is outside the criterion.};
-\node[stnum] (n4) at (13.99,0.55) {4};
-\node[stage, anchor=west] at (14.21,0.55) {Slice of $q_0$};
-\draw[rule, line width=0.6pt] (13.83,0.3) -- (17.78,0.3);
-\node[font=\fontsize{5.8}{6.5}\selectfont\bfseries, text=wire] at (14.03,0.13) {wire};
-\node[font=\fontsize{5.8}{6.5}\selectfont\bfseries, text=pdg] at (14.51,0.13) {PDG};
-\fill[wire!45] (13.94,-0.22) rectangle (14.12,-0.01999999999999999);
-\fill[pdg!50] (14.42,-0.22) rectangle (14.6,-0.01999999999999999);
-\node[lno] at (15.0,-0.12) {4};
-\node[code] at (15.08,-0.12) {circuit = QuantumCircuit(2)};
-\fill[wire] (13.94,-0.58) rectangle (14.12,-0.38);
-\fill[pdg] (14.42,-0.58) rectangle (14.6,-0.38);
-\node[lno] at (15.0,-0.48) {5};
-\node[code] at (15.08,-0.48) {circuit.h(0)};
-\fill[faultL, rounded corners=1pt] (13.85,-0.99) rectangle (17.76,-0.6699999999999999);
-\fill[wire] (13.94,-0.94) rectangle (14.12,-0.74);
-\node[lno] at (15.0,-0.84) {6};
-\node[code] at (15.08,-0.84) {circuit.h(1)};
-\fill[wire] (13.94,-1.3000000000000003) rectangle (14.12,-1.1);
-\node[lno] at (15.0,-1.2000000000000002) {7};
-\node[code] at (15.08,-1.2000000000000002) {circuit.cx(0,1)};
-\node[lno] at (15.0,-1.56) {8};
-\node[code] at (15.08,-1.56) {circuit.measure\_all()};
-\node[font=\fontsize{6.2}{7}\selectfont, text=fault, anchor=north west, align=left] at (13.85,-1.8699999999999999) {\textbf{wire rule:} fault line~6 kept\\\textbf{classical PDG:} line~5 only, fault missed};
-\node[note, anchor=north west, align=left, text width=3.85cm] at (13.85,-2.4699999999999998) {full square: quantum line; light: classical line (circuit construction).};
-\draw[flowarrow] (3.5100000000000002,0.3) -- (4.250000000000001,0.3);
-\node[note, anchor=south, font=\fontsize{5.8}{7}\selectfont\itshape] at (3.8800000000000003,0.32) {parse};
-\draw[flowarrow] (8.320000000000002,0.3) -- (9.06,0.3);
-\node[note, anchor=south, font=\fontsize{5.8}{7}\selectfont\itshape] at (8.690000000000001,0.32) {interpret};
-\draw[flowarrow] (13.030000000000001,0.3) -- (13.77,0.3);
-\node[note, anchor=south, font=\fontsize{5.8}{7}\selectfont\itshape] at (13.4,0.32) {slice};
+\node[note, anchor=north west, align=left, text width=3.1999999999999997cm] at (0.05,-2.0999999999999996) {Expected $(\lvert01\rangle{+}\lvert10\rangle)/\sqrt{2}$; line~6 should apply $X$.};
+\node[stnum] (n2) at (4.26,0.55) {2};
+\node[stage, anchor=west] at (4.4799999999999995,0.55) {srcML of line 7};
+\draw[rule, line width=0.6pt] (4.1,0.3) -- (8.55,0.3);
+\node[xml] at (4.18,-0.02) {\textcolor{tree}{<expr\_stmt \hlbox{pos:start="7:1"}\hlm{d}>}};
+\node[xml] at (4.31,-0.275) {\textcolor{tree}{<expr>}\textcolor{tree}{\hlbox{<call>}\hlm{a}}};
+\node[xml] at (4.4399999999999995,-0.53) {\textcolor{tree}{<name>}\textcolor{tree}{<name>}\textcolor{ink}{\bfseries circuit}\textcolor{tree}{</name>}};
+\node[xml] at (4.569999999999999,-0.785) {\textcolor{tree}{<operator>}\textcolor{ink}{\bfseries .}\textcolor{tree}{</operator>}\textcolor{tree}{<name>}\hlbox{\textcolor{ink}{\bfseries cx}}\hlm{b}\textcolor{tree}{</name>}\textcolor{tree}{</name>}};
+\node[xml] at (4.4399999999999995,-1.04) {\textcolor{tree}{<argument\_list>}\textcolor{ink}{\bfseries (}\textcolor{tree}{<argument>}\textcolor{tree}{<expr>}};
+\node[xml] at (4.569999999999999,-1.295) {\textcolor{tree}{<literal type="number">}\hlbox{\textcolor{ink}{\bfseries 0}}\hlm{c}\textcolor{tree}{</literal>}};
+\node[xml] at (4.569999999999999,-1.55) {\textcolor{tree}{</expr>}\textcolor{tree}{</argument>}\textcolor{ink}{\bfseries ,}\textcolor{tree}{<argument>}\textcolor{tree}{<expr>}};
+\node[xml] at (4.569999999999999,-1.8050000000000002) {\textcolor{tree}{<literal type="number">}\hlbox{\textcolor{ink}{\bfseries 1}}\textcolor{tree}{</literal>}};
+\node[xml] at (4.569999999999999,-2.06) {\textcolor{tree}{</expr>}\textcolor{tree}{</argument>}\textcolor{ink}{\bfseries )}\textcolor{tree}{</argument\_list>}};
+\node[xml] at (4.31,-2.315) {\textcolor{tree}{\hlbox{</call>}}\textcolor{tree}{</expr>}\textcolor{tree}{</expr\_stmt>}};
+\node[anchor=north west, align=left, font=\fontsize{6.2}{7.6}\selectfont, text=ink, inner sep=0pt] at (4.18,-2.65) {\hl{a}\,\texttt{call} $\to$ one operation\quad \hl{b}\,\texttt{cx} $\to$ gate\\\hl{c}\,\texttt{0},\,\texttt{1} $\to$ $q_{0}$ control, $q_{1}$ target\\\hl{d}\,position $\to$ line 7\quad \textcolor{wire}{wire rule: writes both}};
+\node[stnum] (n3) at (9.510000000000002,0.55) {3};
+\node[stage, anchor=west] at (9.730000000000002,0.55) {Operation trace};
+\draw[rule, line width=0.6pt] (9.350000000000001,0.3) -- (13.100000000000001,0.3);
+\node[font=\fontsize{7}{8}\selectfont, text=ink, anchor=east] at (9.750000000000002,-0.55) {$q_0$};
+\draw[ink, line width=0.5pt] (9.8,-0.55) -- (12.090000000000003,-0.55);
+\node[font=\fontsize{7}{8}\selectfont, text=ink, anchor=east] at (9.750000000000002,-1.45) {$q_1$};
+\draw[ink, line width=0.5pt] (9.8,-1.45) -- (12.090000000000003,-1.45);
+\node[gate, fill=wireL, draw=ink] at (10.070000000000002,-0.55) {H};
+\node[font=\fontsize{6}{7}\selectfont, text=mute] at (10.070000000000002,-0.19000000000000006) {line 5};
+\node[gate, fill=faultL, draw=fault] at (10.810000000000002,-1.45) {H};
+\node[font=\fontsize{6}{7}\selectfont, text=fault] at (10.810000000000002,-0.19000000000000006) {line 6};
+\fill[wireL, rounded corners=1.5pt] (11.350000000000003,-1.67) rectangle (11.750000000000002,-0.33000000000000007);
+\draw[ink, line width=0.55pt] (11.550000000000002,-0.55) -- (11.550000000000002,-1.5699999999999998);
+\fill[ink] (11.550000000000002,-0.55) circle (1.5pt);
+\draw[ink, line width=0.55pt, fill=white] (11.550000000000002,-1.45) circle (3.3pt);
+\draw[ink, line width=0.55pt] (11.434000000000003,-1.45) -- (11.666000000000002,-1.45) (11.550000000000002,-1.566) -- (11.550000000000002,-1.3339999999999999);
+\node[font=\fontsize{6}{7}\selectfont, text=mute] at (11.550000000000002,-0.19000000000000006) {line 7};
+\draw[wire, line width=0.8pt] (12.110000000000003,-0.7200000000000001) -- (12.110000000000003,-0.38);
+\node[font=\fontsize{6.3}{7}\selectfont, text=wire, anchor=west, align=left] at (12.150000000000004,-0.55) {criterion\\[-1pt]$\{q_0\}$};
+\draw[->, wire, line width=0.75pt] (11.500000000000002,-1.25) to[bend left=40] (11.500000000000002,-0.68);
+\node[font=\fontsize{6}{7}\selectfont, text=wire, align=right, anchor=east] at (11.350000000000003,-0.98) {kickback:\\[-1pt]\texttt{cx} writes $q_0$};
+\node[note, anchor=north west, align=left, text width=3.65cm] at (9.400000000000002,-1.8699999999999999) {shaded: kept by the wire rule's backward pass from $q_0$. The terminal measurement of line~8 is outside the criterion.};
+\node[stnum] (n4) at (14.060000000000002,0.55) {4};
+\node[stage, anchor=west] at (14.280000000000003,0.55) {Slice of $q_0$};
+\draw[rule, line width=0.6pt] (13.900000000000002,0.3) -- (17.750000000000004,0.3);
+\node[font=\fontsize{5.8}{6.5}\selectfont\bfseries, text=wire] at (14.100000000000001,0.13) {wire};
+\node[font=\fontsize{5.8}{6.5}\selectfont\bfseries, text=pdg] at (14.580000000000002,0.13) {PDG};
+\fill[wire!45] (14.010000000000002,-0.22) rectangle (14.190000000000001,-0.01999999999999999);
+\fill[pdg!50] (14.490000000000002,-0.22) rectangle (14.670000000000002,-0.01999999999999999);
+\node[lno] at (15.070000000000002,-0.12) {4};
+\node[code] at (15.150000000000002,-0.12) {circuit = QuantumCircuit(2)};
+\fill[wire] (14.010000000000002,-0.58) rectangle (14.190000000000001,-0.38);
+\fill[pdg] (14.490000000000002,-0.58) rectangle (14.670000000000002,-0.38);
+\node[lno] at (15.070000000000002,-0.48) {5};
+\node[code] at (15.150000000000002,-0.48) {circuit.h(0)};
+\fill[faultL, rounded corners=1pt] (13.920000000000002,-0.99) rectangle (17.730000000000004,-0.6699999999999999);
+\fill[wire] (14.010000000000002,-0.94) rectangle (14.190000000000001,-0.74);
+\node[lno] at (15.070000000000002,-0.84) {6};
+\node[code] at (15.150000000000002,-0.84) {circuit.h(1)};
+\fill[wire] (14.010000000000002,-1.3000000000000003) rectangle (14.190000000000001,-1.1);
+\node[lno] at (15.070000000000002,-1.2000000000000002) {7};
+\node[code] at (15.150000000000002,-1.2000000000000002) {circuit.cx(0,1)};
+\node[lno] at (15.070000000000002,-1.56) {8};
+\node[code] at (15.150000000000002,-1.56) {circuit.measure\_all()};
+\node[font=\fontsize{6.2}{7}\selectfont, text=fault, anchor=north west, align=left] at (13.920000000000002,-1.8699999999999999) {\textbf{wire rule:} fault line~6 kept\\\textbf{classical PDG:} line~5 only, fault missed};
+\node[note, anchor=north west, align=left, text width=3.75cm] at (13.920000000000002,-2.4699999999999998) {full square: quantum line; light: classical line (circuit construction).};
+\draw[flowarrow] (3.36,0.3) -- (4.04,0.3);
+\node[note, anchor=south, font=\fontsize{5.8}{7}\selectfont\itshape] at (3.6999999999999997,0.32) {parse};
+\draw[flowarrow] (8.610000000000001,0.3) -- (9.290000000000001,0.3);
+\node[note, anchor=south, font=\fontsize{5.8}{7}\selectfont\itshape] at (8.950000000000001,0.32) {interpret};
+\draw[flowarrow] (13.160000000000002,0.3) -- (13.840000000000002,0.3);
+\node[note, anchor=south, font=\fontsize{5.8}{7}\selectfont\itshape] at (13.500000000000002,0.32) {slice};
 \end{tikzpicture}
 \end{document}
