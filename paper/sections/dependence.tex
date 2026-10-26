@@ -68,7 +68,8 @@ $B_R(W)$ is the set of operations from which the last writer of some $q \in W$ i
 account for three kinds of dependence. \emph{Data} dependence follows a qubit from the operation that
 last changed it. \emph{Control} dependence follows a classical bit from the measurement that wrote it to
 the operations its value conditions. \emph{Quantum} dependence lets a multi-qubit gate change every qubit
-it acts on, including its controls. We compare three rules that differ in which of these they include,
+it acts on, including its controls, as phase kickback does. It is neither entanglement nor superposition,
+and Proposition~\ref{prop:ent} and the end of this section show that neither decides dependence. We compare three rules that differ in which of these they include,
 and two refinements of the most complete one.
 
 The \emph{classical PDG}, written CPDG in subscripts, applies the classical program dependence
@@ -109,9 +110,12 @@ qubits as entangled only from the gate that couples them on.
     Criterion & statement and variables $(s, V)$ & set of qubits, joint state \\
     Dependences & data, control, entanglement, no-cloning, temporal, measurement & data, control,
       quantum \\
+    Quantum dependence & not separate, whether a gate writes its control is not stated & a gate writes every qubit it
+      acts on, controls included (phase kickback) \\
     Defined by & prose & read and write sets, and the semantics of Definition~\ref{def:dep} \\
-    Control qubit of a gate & unspecified & written by the gate \\
-    Entangled qubits & edges between all their operations & no extra edge \\
+    Entanglement & edges between all operations on entangled qubits & no edge, neither necessary nor
+      sufficient (Proposition~\ref{prop:ent}) \\
+    Superposition & not tracked & no edge, changes amplitudes, not which qubits are acted on \\
     Guarantee & none stated & sound, dependence-complete \\
     Implementation & future work & circuits and Qiskit source \\
     \bottomrule
