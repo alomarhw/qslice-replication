@@ -23,7 +23,7 @@
   note/.style={font=\scriptsize, anchor=north, align=center},
 }
 \begin{document}
-\begin{minipage}{17.6cm}\begin{minipage}[t]{5.6cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=15,firstnumber=4]{programs/_display/ansatz.py}\end{minipage}\hfill\begin{minipage}[t]{11.9cm}\vspace{0pt}\centering\begin{tikzpicture}
+\begin{minipage}{17.6cm}\begin{minipage}[t]{6.4cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=15,firstnumber=4]{programs/_display/ansatz.py}\end{minipage}\hfill\begin{minipage}[t]{11.1cm}\vspace{0pt}\centering\begin{tikzpicture}
 \begin{scope}[xshift=0.000cm]
 \node[insl] (m0) at (0.752,6.333) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
 \node[insl] (m1) at (0.752,5.466) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
@@ -61,9 +61,9 @@
 \draw[missingE] (m6) -- (m8);
 \draw[missingE] (m7) -- (m10);
 \node[ttl] at (2.417,6.693) {(b) Classical PDG};
-\node[note] at (2.417,-0.076) {slice of $q_0$: 4 of 16 operations, fidelity 0.77\\misses 9 dependences};
+\node[note] at (2.417,-0.076) {slice of $q_0$: 4 of 16 operations\\fidelity 0.77, misses 9 dependences};
 \end{scope}
-\begin{scope}[xshift=5.730cm]
+\begin{scope}[xshift=5.480cm]
 \node[insl] (m0) at (0.752,6.333) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
 \node[insl] (m1) at (0.752,5.466) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
 \node[insl] (m2) at (2.417,6.333) {ry(2.44) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
@@ -98,6 +98,6 @@
 \draw[dataE] (m13) -- (m15);
 \draw[dataE] (m14) -- (m15);
 \node[ttl] at (2.417,6.693) {(c) Wire rule};
-\node[note] at (2.417,-0.076) {slice of $q_0$: 13 of 16 operations, fidelity 1.00\\exactly the dependences of $q_0$};
+\node[note] at (2.417,-0.076) {slice of $q_0$: 13 of 16 operations\\fidelity 1.00, exactly the dependences};
 \end{scope}
 \end{tikzpicture}\end{minipage}\\[4pt]\centering{\scriptsize \mbox{\tikz\draw[dataE](0,0)--(0.45,0); data}\hspace{0.9em} \mbox{\tikz\draw[quantumE](0,0)--(0.45,0); quantum}\hspace{0.9em} \mbox{\tikz\draw[missingE](0,0)--(0.45,0); quantum edge missing from the classical PDG}\hspace{0.9em} \mbox{\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice}\hspace{0.9em} \mbox{\tikz\node[missdep,minimum width=4mm,minimum height=2.4mm]{}; dependence the slice misses}\hspace{0.9em} \mbox{\tikz\node[entx,minimum width=4mm,minimum height=2.4mm]{}; added by entanglement closure, not a dependence}\hspace{0.9em} \mbox{\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion}}\end{minipage}\end{document}

@@ -208,12 +208,12 @@ def ansatz():
     n = len(qc.data)
     sty_l = {k: "insl" for k in sl["cpdg"]} | {k: "missdep" for k in dep - sl["cpdg"]}
     sty_r = {k: "insl" for k in sl["wire"]} | {k: "entx" for k in ent}
-    nl = rf"slice of $q_{t}$: {len(sl['cpdg'])} of {n} operations, fidelity {f['cpdg']:.2f}\\misses {len(dep - sl['cpdg'])} dependences"
-    nr = rf"slice of $q_{t}$: {len(sl['wire'])} of {n} operations, fidelity {f['wire']:.2f}\\exactly the dependences of $q_{t}$"
+    nl = rf"slice of $q_{t}$: {len(sl['cpdg'])} of {n} operations\\fidelity {f['cpdg']:.2f}, misses {len(dep - sl['cpdg'])} dependences"
+    nr = rf"slice of $q_{t}$: {len(sl['wire'])} of {n} operations\\fidelity {f['wire']:.2f}, exactly the dependences"
     pl, w = panel(qc, lines, iters, pos, El, missing, sty_l, seed(qc, "cpdg", t), r"(b) Classical PDG", nl, 0.0)
-    pr, _ = panel(qc, lines, iters, pos, Er, set(), sty_r, seed(qc, "wire", t), r"(c) Wire rule", nr, w + 2.4)
-    tex = (TEX_HEAD + r"\begin{minipage}{17.6cm}" + listing("ansatz.py", 4, 15, "5.6cm", "(a) VQE ansatz") +
-           r"\hfill\begin{minipage}[t]{11.9cm}\vspace{0pt}\centering\begin{tikzpicture}" + "\n" + pl + "\n" + pr + "\n" +
+    pr, _ = panel(qc, lines, iters, pos, Er, set(), sty_r, seed(qc, "wire", t), r"(c) Wire rule", nr, w + 2.15)
+    tex = (TEX_HEAD + r"\begin{minipage}{17.6cm}" + listing("ansatz.py", 4, 15, "6.4cm", "(a) VQE ansatz") +
+           r"\hfill\begin{minipage}[t]{11.1cm}\vspace{0pt}\centering\begin{tikzpicture}" + "\n" + pl + "\n" + pr + "\n" +
            r"\end{tikzpicture}\end{minipage}\\[4pt]\centering" +
            legend(["data", "quantum", "missing", "slice", "missed", "entx", "crit"]) + r"\end{minipage}\end{document}" + "\n")
     (SRC / "fig_pdg_ansatz.tex").write_text(tex)
