@@ -8,8 +8,8 @@ T1  The tool reads each original buggy program statically (tool/, frozen at tag 
 T2  For every RQ3 unit (bug, criterion qubit), the original lines of the tool's wire slice are compared with
     the original lines of S-lc's slice of the prepared circuit (slicers/registry.py), mapped the same way.
 Differences are reported as found. No Bugs4Q file is executed.
-Outputs (results/icpc/tool_acceptance/): t1.csv, t2.csv, summary.json.
-Usage (from experiments/): python icpc/tool_acceptance.py --bugs4q-root BUGS4Q_ROOT
+Outputs (results/icpc/tool_acceptance/<tag>/): t1.csv, t2.csv, summary.json. A tool error is recorded as a result.
+Usage (from experiments/): python icpc/tool_acceptance.py --bugs4q-root BUGS4Q_ROOT [--tag tool-v1]
 """
 
 from __future__ import annotations
@@ -61,13 +61,15 @@ def tool_ops(circ):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--bugs4q-root", required=True)
+    ap.add_argument("--tag", default="tool-v1", help="tool version label for the output folder")
     a = ap.parse_args()
     from icpc.rq3_bugs4q import _load
     from slicers.registry import Slicers
     from tool.interp import trace_file
     from tool.slicer import terminal, wire_slice
     root = Path(a.bugs4q_root)
-    OUT.mkdir(parents=True, exist_ok=True)
+    out = OUT / a.tag
+    out.mkdir(parents=True, exist_ok=True)
     smap = HERE / "results" / "icpc" / "source_map"
     bugs = list(csv.DictReader(open(smap / "bugs.csv")))
     ins = list(csv.DictReader(open(smap / "instructions.csv")))
@@ -80,7 +82,16 @@ def main() -> int:
         rows = sorted((r for r in ins if r["bug_id"] == bug), key=lambda r: int(r["position"]))
         line_of = [int(r["original_line"]) if r["original_line"] else None for r in rows]
         ref = prepared_ops(prep, line_of)
-        tr = trace_file(root / b["original_file"])
+        try:
+            tr = trace_file(root / b["original_file"])
+        except Exception as exc:  # a tool error is a result: recorded, never hidden
+            t1.append({"bug_id": bug, "prepared_ops": len(ref), "tool_ops": 0, "exact": 0, "matched": 0,
+                       "circuit_index": -1, "circuits": 0, "notes": 0,
+                       "first_difference": f"tool error: {type(exc).__name__}: {exc}"[:200], "tool_notes": ""})
+            for u in (x for x in units if x["bug_id"] == bug):
+                t2.append({"bug_id": bug, "target": int(u["target"]), "analysis": u["analysis"], "study_lines": "",
+                           "tool_lines": "", "equal": 0, "note": f"tool error: {type(exc).__name__}"})
+            continue
         # the tool's circuit that matches the prepared one best (programs may build several)
         cands = [(difflib.SequenceMatcher(None, [x[:2] for x in tool_ops(c)], [x[:2] for x in ref], autojunk=False).ratio(), i, c)
                  for i, c in enumerate(tr.circuits)]
@@ -112,7 +123,7 @@ def main() -> int:
                     "note": "" if not any(None in x[1] for x in mine) else "unresolved qubits in trace"}
             t2.append(row)
     for name, rows in (("t1.csv", t1), ("t2.csv", t2)):
-        with open(OUT / name, "w", newline="") as fh:
+        with open(out / name, "w", newline="") as fh:
             w = csv.DictWriter(fh, fieldnames=list(dict.fromkeys(k for r in rows for k in r)))
             w.writeheader()
             w.writerows(rows)
@@ -122,7 +133,8 @@ def main() -> int:
             "t2_units": len(t2), "t2_equal": sum(r["equal"] for r in t2),
             "t2_units_mapped": sum(1 for r in t2 if r["study_lines"]),
             "t2_equal_mapped": sum(r["equal"] for r in t2 if r["study_lines"])}
-    (OUT / "summary.json").write_text(json.dumps(summ, indent=1))
+    summ["tool_version"] = a.tag
+    (out / "summary.json").write_text(json.dumps(summ, indent=1))
     print(json.dumps(summ))
     for r in t1:
         print(("EXACT " if r["exact"] else "DIFF  ") + r["bug_id"], r["prepared_ops"], r["tool_ops"], r["first_difference"][:120])
