@@ -74,9 +74,12 @@ cd ../paper && latexmk -pdf main.tex
 ```bash
 python -m tool.cli PROGRAM.py                        # slice of every qubit: operations, quantum and classical lines
 python -m tool.cli PROGRAM.py --qubits 0,1           # one joint criterion; add --annotate, --trace or --json
+python -m tool.cli PROGRAM.py --qubits 0 --profile   # slice profile of q0 (uses, names, dependents, bits, both slices)
+python -m tool.cli PROGRAM.py --forward 25           # forward slice from the operations of line 25
+python -m tool.corpus.profiles CORPUS_DIR OUT.csv    # profiles of every qubit of a corpus
 python -m tool.tests.dev_summary                     # trace and slice checks on tool/tests/programs and tool/tests/big
 python -m tool.tests.nested_check                    # nested conditional blocks against the oracle
-(cd experiments && python icpc/tool_acceptance.py --bugs4q-root BUGS4Q_ROOT --tag tool-v4)   # T1 and T2
+(cd experiments && python icpc/tool_acceptance.py --bugs4q-root BUGS4Q_ROOT --tag tool-v5)   # T1 and T2
 python -m tool.corpus.coverage CORPUS_DIR OUT.csv    # T3 coverage on a corpus of Qiskit programs
 ```
 The tool reads programs and never runs them. The Bugs4Q, Qiskit textbook and LintQ corpora are not
@@ -105,4 +108,5 @@ and scores are committed, so the numbers regenerate without new calls.
 ## Pre-registration
 `experiments/PROTOCOL_ICPC.md` was committed before any run. Each later change is a dated deviation with
 its reason, and deviations made after a result say so. The static slicer is frozen at git tags
-`tool-v1` to `tool-v4`. Each version's results are kept, and the paper reports `tool-v4`.
+`tool-v1` to `tool-v5`. Each version's results are kept, and the paper reports `tool-v5`, which adds forward slices
+and qubit slice profiles to `tool-v4` and gives identical backward slices and acceptance results.
