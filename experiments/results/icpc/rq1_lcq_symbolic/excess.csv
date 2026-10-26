@@ -1,0 +1,1549 @@
+corpus,circuit,path,n_qubits,n_ops,dynamic,target,position,gate,n_gate_qubits,touches_criterion,removal_changes_any,removed_by_lcqs,criterion_constant,cut_by_reset_or_measure,category
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,10,23,0,4,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,10,23,0,6,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,10,23,0,6,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,10,23,0,8,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,10,23,0,8,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n10,mqtbench/bv_n10.qasm,10,23,0,8,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,4,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,6,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,6,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,8,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,8,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,8,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,10,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,10,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,10,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,10,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,12,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,12,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,12,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,12,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n14,mqtbench/bv_n14.qasm,14,33,0,12,10,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n5,mqtbench/bv_n5.qasm,5,11,0,4,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,8,18,0,4,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,8,18,0,6,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,bv_n8,mqtbench/bv_n8.qasm,8,18,0,6,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,1,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,1,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,2,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,2,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,2,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,2,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,3,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,3,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,3,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,3,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,3,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,4,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,4,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,4,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,4,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,4,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,4,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,5,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,5,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,5,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,5,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,5,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,5,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,5,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,5,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,6,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,10,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,7,11,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,10,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,11,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n10,mqtbench/dj_n10.qasm,10,41,0,8,12,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,1,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,1,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,2,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,2,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,2,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,2,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,3,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,3,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,3,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,3,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,3,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,4,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,4,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,4,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,4,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,4,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,4,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,5,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,5,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,5,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,5,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,5,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,5,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,5,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,5,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,6,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,10,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,7,11,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,10,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,11,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,8,12,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,10,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,11,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,12,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,13,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,9,14,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,10,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,11,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,12,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,13,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,14,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,15,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,10,16,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,10,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,11,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,12,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,13,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,14,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,15,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,16,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,11,17,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,1,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,3,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,6,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,7,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,9,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,10,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,11,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,12,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,13,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,14,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,15,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,16,x,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,17,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,12,18,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,0,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,1,x,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,3,x,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,6,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,7,x,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,8,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,9,x,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,10,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,11,x,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,12,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,13,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,14,x,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,15,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,16,x,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,17,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,18,h,1,0,0,0,0,0,other
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,14,55,0,13,19,h,1,0,0,0,0,0,other
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,3,7,0,0,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n3,mqtbench/dj_n3.qasm,3,7,0,1,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,4,9,0,0,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,4,9,0,0,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,4,9,0,1,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,4,9,0,1,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,4,9,0,2,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n4,mqtbench/dj_n4.qasm,4,9,0,2,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,0,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,0,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,0,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,1,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,1,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,1,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,2,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,2,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,2,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,3,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,3,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n5,mqtbench/dj_n5.qasm,5,11,0,3,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,0,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,0,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,0,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,0,6,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,0,7,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,0,8,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,1,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,1,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,1,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,1,6,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,1,7,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,1,8,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,2,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,2,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,2,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,2,6,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,2,7,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,2,8,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,3,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,3,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,3,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,3,6,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,3,7,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,3,8,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,4,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,4,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,4,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,4,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,4,7,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,4,8,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,5,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,5,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,5,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,5,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,5,6,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,5,8,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,6,2,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,6,3,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,6,4,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,6,5,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,6,6,h,1,0,0,0,0,0,other
+MQT Bench,dj_n8,mqtbench/dj_n8.qasm,8,17,0,6,7,h,1,0,0,0,0,0,other
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,1,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,2,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,2,1,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,2,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,2,5,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,2,6,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,3,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,3,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,3,5,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,6,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,7,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,7,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,7,3,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,7,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,7,5,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,7,9,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,7,10,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,7,11,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,8,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,8,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,8,5,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,8,7,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,9,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,9,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,9,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,9,5,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,9,7,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,9,8,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,9,9,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n10,mqtbench/graphstate_n10.qasm,10,20,0,9,10,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,3,1,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,3,16,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,3,17,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,4,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,4,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,6,1,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,8,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,8,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,8,3,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,9,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,9,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,9,3,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,10,11,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,12,13,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,12,16,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,13,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n14,mqtbench/graphstate_n14.qasm,14,28,0,13,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,4,8,0,2,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n4,mqtbench/graphstate_n4.qasm,4,8,0,3,1,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,1,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,1,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,1,3,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,2,1,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,2,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,2,5,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,2,6,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,3,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,4,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,4,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n5,mqtbench/graphstate_n5.qasm,5,10,0,4,5,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,2,1,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,3,1,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,3,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,3,6,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,4,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,5,0,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,5,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,5,3,cz,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,6,5,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,6,8,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,7,2,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,graphstate_n8,mqtbench/graphstate_n8.qasm,8,16,0,7,4,h,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,12,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,14,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,15,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,17,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,18,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,19,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,21,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,22,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,23,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,24,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,26,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,27,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,28,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,29,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,30,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,32,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,33,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,34,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,35,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,36,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,37,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,39,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,40,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,41,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,42,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,43,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,44,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,45,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,47,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,48,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,49,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,50,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,51,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,52,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,53,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,54,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,56,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,57,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,58,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,59,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,60,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,61,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,62,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,63,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,0,64,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,15,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,18,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,19,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,22,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,23,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,24,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,27,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,28,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,29,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,30,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,33,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,34,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,35,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,36,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,37,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,40,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,41,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,42,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,43,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,44,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,45,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,48,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,49,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,50,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,51,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,52,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,53,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,54,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,57,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,58,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,59,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,60,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,61,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,62,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,1,63,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,19,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,23,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,24,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,28,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,29,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,30,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,34,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,35,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,36,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,37,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,41,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,42,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,43,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,44,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,45,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,49,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,50,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,51,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,52,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,53,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,58,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,59,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,60,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,61,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,2,62,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,24,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,29,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,30,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,35,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,36,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,37,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,42,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,43,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,44,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,50,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,51,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,52,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,59,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,60,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,3,61,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,4,30,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,4,36,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,4,43,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,4,51,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n10,mqtbench/qftentangled_n10.qasm,10,70,0,4,60,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,12,cx,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,13,cx,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,16,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,18,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,19,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,21,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,22,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,23,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,25,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,26,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,27,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,28,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,30,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,31,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,32,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,33,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,34,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,36,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,37,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,38,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,39,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,40,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,41,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,43,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,44,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,45,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,46,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,47,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,48,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,49,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,51,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,52,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,53,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,54,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,55,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,56,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,57,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,58,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,60,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,61,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,62,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,63,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,64,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,65,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,66,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,67,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,68,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,70,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,71,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,72,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,73,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,74,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,75,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,76,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,77,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,78,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,79,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,81,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,82,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,83,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,84,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,85,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,86,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,87,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,88,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,89,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,90,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,91,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,93,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,94,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,95,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,96,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,97,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,98,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,99,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,100,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,101,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,102,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,103,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,104,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,106,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,107,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,108,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,109,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,110,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,111,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,112,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,113,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,114,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,115,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,116,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,117,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,0,118,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,13,cx,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,19,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,22,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,23,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,26,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,27,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,28,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,31,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,32,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,33,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,34,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,37,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,38,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,39,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,40,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,41,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,44,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,45,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,46,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,47,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,48,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,49,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,52,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,53,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,54,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,55,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,56,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,57,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,58,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,61,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,62,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,63,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,64,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,65,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,66,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,67,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,68,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,71,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,72,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,73,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,74,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,75,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,76,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,77,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,78,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,79,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,82,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,83,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,84,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,85,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,86,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,87,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,88,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,89,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,90,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,91,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,92,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,94,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,95,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,96,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,97,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,98,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,99,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,100,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,101,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,102,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,103,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,104,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,105,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,107,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,108,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,109,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,110,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,111,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,112,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,113,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,114,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,115,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,116,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,1,117,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,23,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,27,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,28,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,32,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,33,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,34,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,38,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,39,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,40,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,41,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,45,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,46,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,47,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,48,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,49,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,53,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,54,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,55,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,56,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,57,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,58,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,62,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,63,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,64,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,65,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,66,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,67,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,68,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,72,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,73,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,74,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,75,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,76,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,77,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,78,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,79,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,83,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,84,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,85,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,86,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,87,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,88,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,89,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,90,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,91,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,95,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,96,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,97,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,98,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,99,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,100,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,101,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,102,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,103,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,105,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,106,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,108,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,109,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,110,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,111,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,112,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,113,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,114,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,115,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,2,116,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,28,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,33,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,34,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,39,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,40,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,41,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,46,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,47,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,48,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,49,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,54,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,55,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,56,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,57,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,58,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,63,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,64,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,65,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,66,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,67,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,68,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,73,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,74,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,75,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,76,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,77,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,78,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,79,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,84,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,85,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,86,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,87,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,88,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,89,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,90,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,96,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,97,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,98,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,99,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,100,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,101,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,102,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,105,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,109,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,110,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,111,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,112,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,113,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,114,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,3,115,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,34,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,40,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,41,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,47,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,48,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,49,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,55,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,56,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,57,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,58,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,64,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,65,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,66,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,67,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,68,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,74,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,75,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,76,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,77,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,78,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,85,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,86,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,87,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,88,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,89,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,97,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,98,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,99,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,100,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,101,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,110,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,111,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,112,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,113,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,4,114,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,41,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,48,cp,2,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,49,h,1,0,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,56,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,57,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,58,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,65,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,66,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,67,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,75,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,76,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,77,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,86,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,87,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,88,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,98,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,99,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,100,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,111,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,112,cp,2,0,0,1,0,0,removed_by_lcqs
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,5,113,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,6,49,h,1,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,6,57,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,6,66,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,6,76,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,6,87,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,6,99,cp,2,1,0,0,0,0,other
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,14,126,0,6,112,cp,2,1,0,0,0,0,other
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,10,37,0,2,25,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,10,37,0,3,22,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,10,37,0,4,19,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,10,37,0,5,16,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,10,37,0,6,13,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,10,37,0,7,10,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,10,37,0,8,7,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n10,mqtbench/wstate_n10.qasm,10,37,0,9,4,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,2,37,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,3,34,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,4,31,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,5,28,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,6,25,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,7,22,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,8,19,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,9,16,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,10,13,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,11,10,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,12,7,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n14,mqtbench/wstate_n14.qasm,14,53,0,13,4,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n3,mqtbench/wstate_n3.qasm,3,9,0,2,4,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,4,13,0,2,7,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n4,mqtbench/wstate_n4.qasm,4,13,0,3,4,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,5,17,0,2,10,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,5,17,0,3,7,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n5,mqtbench/wstate_n5.qasm,5,17,0,4,4,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,8,29,0,2,19,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,8,29,0,3,16,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,8,29,0,4,13,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,8,29,0,5,10,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,8,29,0,6,7,ry,1,0,0,1,0,0,removed_by_lcqs
+MQT Bench,wstate_n8,mqtbench/wstate_n8.qasm,8,29,0,7,4,ry,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,1,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,2,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,2,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,3,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,3,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,3,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,4,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,4,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,4,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,4,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,5,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,5,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,5,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,5,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,5,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,6,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,6,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,6,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,6,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,6,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,6,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,7,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,7,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,7,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,7,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,7,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,7,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,7,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,8,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,8,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,8,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,8,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,8,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,8,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,8,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,8,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,9,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,9,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,9,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,9,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,9,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,9,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,9,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,9,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,9,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,10,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,11,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,0,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,12,11,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,0,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,1,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,2,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,3,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,4,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,5,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,6,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,7,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,8,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,9,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,10,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,11,h,1,0,0,0,0,0,other
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,14,41,0,13,12,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,1,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,12,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,13,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,14,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,15,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,16,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,17,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,18,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,19,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,20,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,21,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,0,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,0,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,13,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,14,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,15,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,16,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,17,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,18,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,19,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,20,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,21,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,1,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,0,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,1,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,14,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,15,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,16,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,17,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,18,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,19,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,20,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,21,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,2,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,0,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,1,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,2,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,4,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,15,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,16,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,17,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,18,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,19,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,20,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,21,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,3,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,0,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,1,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,2,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,3,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,5,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,16,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,17,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,18,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,19,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,20,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,21,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,4,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,0,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,1,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,2,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,3,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,4,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,6,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,7,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,17,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,18,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,19,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,20,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,21,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,5,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,0,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,1,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,2,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,3,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,4,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,5,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,6,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,8,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,19,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,20,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,21,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,7,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,0,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,1,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,2,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,3,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,4,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,5,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,6,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,7,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,9,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,20,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,21,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,8,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,0,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,1,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,2,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,3,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,4,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,5,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,6,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,7,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,8,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,10,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,21,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,9,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,0,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,1,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,2,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,3,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,4,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,5,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,6,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,7,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,8,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,9,h,1,0,0,0,0,0,other
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,10,22,measure,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,11,1,h,1,0,1,0,1,0,removal_changes_any
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,11,2,h,1,0,0,0,1,0,criterion_constant
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,11,4,h,1,0,0,0,1,0,criterion_constant
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,11,5,h,1,0,0,0,1,0,criterion_constant
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,11,8,h,1,0,0,0,1,0,criterion_constant
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,11,9,h,1,0,1,0,1,0,removal_changes_any
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,12,48,1,11,31,if_else,1,0,0,0,1,0,criterion_constant
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,1,0,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,3,2,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,4,2,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,6,0,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,7,1,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,7,2,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,7,5,ccx,3,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,8,0,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,8,2,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,8,4,ccx,3,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,9,1,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,9,2,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,9,5,ccx,3,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,9,7,ccx,3,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,10,0,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,10,2,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,10,4,ccx,3,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,10,6,ccx,3,0,0,1,0,0,removed_by_lcqs
+QASMBench,multiply_n13,qasmbench/medium/multiply_n13.qasm,13,14,0,12,2,x,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,7,22,x,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,8,30,x,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,9,65,h,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,9,66,h,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,9,70,x,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,9,71,x,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,10,63,ccx,3,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,10,65,h,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,10,66,h,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,10,67,h,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,10,70,x,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,10,71,x,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,10,72,x,1,0,0,0,0,0,other
+QASMBench,sat_n11,qasmbench/medium/sat_n11.qasm,11,91,0,10,75,ccx,3,0,0,0,0,0,other
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,0,27,measure,1,0,0,0,0,0,other
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,0,29,cx,2,0,0,0,0,0,other
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,4,0,z,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,4,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,5,0,z,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,5,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,7,0,z,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,7,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,7,2,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,8,0,z,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,8,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,seca_n11,qasmbench/medium/seca_n11.qasm,11,72,1,8,2,cx,2,0,0,1,0,1,removed_by_lcqs
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,0,0,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,2,0,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,2,1,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,2,5,majority,3,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,3,0,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,3,1,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,3,2,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,3,5,majority,3,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,3,6,majority,3,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,4,0,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,4,1,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,4,2,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,4,3,x,1,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,4,5,majority,3,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,4,6,majority,3,0,0,0,0,0,other
+QASMBench,adder_n10,qasmbench/small/adder_n10.qasm,10,14,0,4,7,majority,3,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,0,z,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,14,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,16,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,17,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,18,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,19,h,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,20,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,21,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,22,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,23,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,24,h,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,25,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,26,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,27,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,40,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,41,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,66,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,68,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,69,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,70,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,71,h,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,72,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,73,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,74,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,75,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,76,h,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,77,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,78,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,79,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,90,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,0,93,swap,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,0,z,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,14,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,16,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,17,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,18,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,19,h,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,20,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,21,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,22,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,23,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,24,h,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,25,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,26,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,27,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,40,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,41,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,66,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,68,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,69,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,70,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,71,h,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,72,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,73,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,74,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,75,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,76,h,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,77,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,78,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,79,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,91,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,93,swap,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,94,swap,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,1,96,swap,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,3,z,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,15,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,28,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,29,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,30,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,31,h,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,32,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,33,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,34,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,35,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,36,h,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,37,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,38,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,39,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,42,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,54,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,67,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,78,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,80,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,81,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,82,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,83,h,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,84,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,85,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,86,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,87,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,88,h,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,89,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,90,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,91,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,92,swap,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,94,swap,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,2,95,swap,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,3,z,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,15,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,28,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,29,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,30,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,31,h,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,32,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,33,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,34,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,35,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,36,h,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,37,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,38,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,39,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,42,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,54,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,67,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,79,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,80,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,81,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,82,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,83,h,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,84,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,85,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,86,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,87,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,88,h,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,89,cx,2,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,90,rz,1,0,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,91,rz,1,1,0,0,0,0,other
+QASMBench,basis_test_n4,qasmbench/small/basis_test_n4.qasm,4,98,0,3,92,swap,2,1,0,0,0,0,other
+QASMBench,bell_n4,qasmbench/small/bell_n4.qasm,4,33,0,3,0,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,20,sdg,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,27,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,38,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,64,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,67,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,68,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,69,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,70,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,71,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,72,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,73,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,79,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,82,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,83,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,84,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,85,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,86,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,87,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,88,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,0,90,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,1,0,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,1,57,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,1,78,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,1,83,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,1,100,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,4,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,26,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,37,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,57,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,58,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,66,cx,2,1,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,81,cx,2,1,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,92,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,94,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,97,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,2,102,cx,2,1,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,3,7,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,3,10,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,3,15,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,3,18,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,3,27,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,3,42,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,3,45,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,3,52,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,3,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,17,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,24,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,27,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,38,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,42,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,53,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,55,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,57,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,59,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,60,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,61,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,62,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,63,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,64,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,65,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,67,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,68,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,69,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,70,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,71,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,72,h,1,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,73,cx,2,0,0,0,0,0,other
+QASMBench,error_correctiond3_n5,qasmbench/small/error_correctiond3_n5.qasm,5,114,0,4,90,h,1,0,0,0,0,0,other
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,0,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,9,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,10,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,17,if_else,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,18,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,19,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,20,reset,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,21,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,24,if_else,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,25,if_else,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,26,if_else,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,27,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,28,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,29,reset,1,0,0,0,0,0,other
+QASMBench,ipea_n2,qasmbench/small/ipea_n2.qasm,2,40,1,1,30,h,1,0,0,0,0,0,other
+QASMBench,lpn_n5,qasmbench/small/lpn_n5.qasm,5,11,0,0,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,pea_n5,qasmbench/small/pea_n5.qasm,5,29,0,4,0,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,0,13,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,3,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,7,cx,2,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,8,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,10,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,11,cx,2,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,12,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,13,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,14,cx,2,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,15,cx,2,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,1,21,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,2,8,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,3,3,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,3,4,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,3,8,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,3,9,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,3,12,h,1,0,0,0,0,0,other
+QASMBench,qec_en_n5,qasmbench/small/qec_en_n5.qasm,5,25,0,3,21,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,qec_sm_n5,qasmbench/small/qec_sm_n5.qasm,5,7,1,4,0,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,0,6,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,0,7,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,0,8,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,0,10,cz,2,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,1,6,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,1,7,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,1,8,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,1,10,cz,2,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,2,6,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,2,7,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,2,8,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,2,10,cz,2,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,3,6,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,3,7,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,3,8,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,3,10,cz,2,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,4,6,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,4,7,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,4,8,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,4,10,cz,2,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,5,7,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,6,7,x,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,7,5,h,1,0,0,0,0,0,other
+QASMBench,qpe_n9,qasmbench/small/qpe_n9.qasm,9,33,0,7,6,x,1,0,0,0,0,0,other
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,7,40,0,5,10,x,1,0,0,0,0,0,other
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,7,40,0,5,11,x,1,0,0,0,0,0,other
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,7,40,0,6,2,x,1,0,0,0,0,0,other
+QASMBench,sat_n7,qasmbench/small/sat_n7.qasm,7,40,0,6,3,x,1,0,0,0,0,0,other
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,0,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,0,2,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,0,3,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,0,8,if_else,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,0,9,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,0,10,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,1,0,x,1,0,0,0,0,0,other
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,1,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,1,2,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,1,3,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,1,7,cx,2,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,1,8,if_else,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,1,9,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,1,10,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,2,0,x,1,0,0,0,0,0,other
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,2,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,2,2,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,2,3,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,2,7,cx,2,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,2,8,if_else,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,2,9,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,2,10,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,3,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,3,2,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,3,3,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,3,8,if_else,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,3,9,h,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,shor_n5,qasmbench/small/shor_n5.qasm,5,24,1,3,10,measure,1,0,0,0,0,1,cut_by_reset_or_measure
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,6,16,0,0,1,h,1,0,0,0,0,0,other
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,6,16,0,0,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,6,16,0,0,3,cx,2,0,0,1,0,0,removed_by_lcqs
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,6,16,0,1,0,h,1,0,0,0,0,0,other
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,6,16,0,1,2,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,simon_n6,qasmbench/small/simon_n6.qasm,6,16,0,1,3,cx,2,0,0,1,0,0,removed_by_lcqs
+QASMBench,teleportation_n3,qasmbench/small/teleportation_n3.qasm,3,8,0,0,3,h,1,0,0,1,0,0,removed_by_lcqs
+QASMBench,toffoli_n3,qasmbench/small/toffoli_n3.qasm,3,18,0,1,8,tdg,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_3,veriqbench/combinational/bv/bv_3.qasm,3,9,0,1,0,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,4,12,0,1,0,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,4,12,0,2,0,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_4,veriqbench/combinational/bv/bv_4.qasm,4,12,0,2,1,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,5,15,0,1,0,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,5,15,0,2,0,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,5,15,0,2,1,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,5,15,0,3,0,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,5,15,0,3,1,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,bv_5,veriqbench/combinational/bv/bv_5.qasm,5,15,0,3,2,h,1,0,0,1,0,0,removed_by_lcqs
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,3,7,0,2,1,h,1,0,1,0,0,0,removal_changes_any
+VeriQBench,rand_cliff_2_AG,veriqbench/combinational/rand_cliff/rand_cliff_2_AG.qasm,2,11,0,0,9,sdg,1,1,0,0,0,0,other
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,3,17,0,2,0,x,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_3_AG,veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm,3,17,0,2,4,h,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,0,x,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,1,z,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,3,h,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,4,sdg,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,5,h,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,6,h,1,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,7,cx,2,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,8,h,1,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,9,sdg,1,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,10,cx,2,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,2,11,swap,2,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,3,2,x,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,3,12,h,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,3,13,sdg,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,3,14,h,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,3,15,sdg,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_AG,veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm,4,25,0,3,16,swap,2,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,0,10,s,1,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,0,11,h,1,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,2,1,h,1,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,2,2,s,1,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,2,3,s,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,2,4,h,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,2,7,cx,2,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,2,8,cx,2,1,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,3,10,s,1,0,0,0,0,0,other
+VeriQBench,rand_cliff_4_GD,veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm,4,23,0,3,11,h,1,0,0,0,0,0,other
+VeriQBench,4_49_fc,veriqbench/combinational/rev_circuit/4_49_fc.qasm,4,23,0,1,18,cx,2,1,0,0,0,0,other
+VeriQBench,hwb5-24-102,veriqbench/combinational/rev_circuit/hwb5-24-102.qasm,5,24,0,0,18,x,1,0,0,0,0,0,other
+VeriQBench,dqc_teleportation,veriqbench/dynamic/dqc_teleportation.qasm,3,8,1,0,0,h,1,0,0,0,0,0,other
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,3,8,1,0,1,h,1,0,0,0,0,0,other
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,3,8,1,2,1,h,1,0,1,0,0,0,removal_changes_any
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,4,14,1,0,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,4,14,1,0,2,h,1,0,0,0,0,0,other
+VeriQBench,dqc_pe_3,veriqbench/dynamic/pe/dqc_pe_3.qasm,4,14,1,1,2,h,1,0,0,0,0,0,other
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,5,21,1,0,1,h,1,0,0,0,0,1,cut_by_reset_or_measure
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,5,21,1,0,2,h,1,0,0,0,0,1,cut_by_reset_or_measure
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,5,21,1,0,3,h,1,0,0,0,0,0,other
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,5,21,1,1,2,h,1,0,0,0,0,1,cut_by_reset_or_measure
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,5,21,1,1,3,h,1,0,0,0,0,0,other
+VeriQBench,dqc_pe_4,veriqbench/dynamic/pe/dqc_pe_4.qasm,5,21,1,2,3,h,1,0,0,0,0,0,other

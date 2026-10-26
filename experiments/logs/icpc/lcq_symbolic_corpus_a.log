@@ -1,0 +1,18 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  10/158 circuits, 122s
+  20/158 circuits, 155s
+  30/158 circuits, 184s
+  40/158 circuits, 214s
+  50/158 circuits, 240s
+  60/158 circuits, 262s
+  70/158 circuits, 283s
+  80/158 circuits, 294s
+  90/158 circuits, 305s
+  100/158 circuits, 314s
+  110/158 circuits, 321s
+  120/158 circuits, 326s
+  130/158 circuits, 329s
+  140/158 circuits, 332s
+  150/158 circuits, 335s
+  158/158 circuits, 637s
+lcqs applicable 732/784; unsound 0; excess ops 1548; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/rq1_lcq_symbolic

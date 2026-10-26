@@ -935,3 +935,14 @@ These were found while implementing §6, from the API documentation. No LLM call
   - is robust on 100% of its applicable pairs in R-basis, R-haar and R-param;
   - and, for a rule built from B2, reduces mean corpus-A size by at least 1 point.
   Otherwise the result is reported as a finding, with its counts, and the rule is not used.
+- **B2 outcome and the rule it suggests (2026-10-25, after B2's output, before the rule's output).** Of the
+  1,548 excess operations on 225 pairs, 644 are removed by B1 and 4 change the criterion when deleted alone.
+  Of the remaining 844, 538 are in circuits with SWAP gates. Checked by hand on `basis_test_n4`: the
+  circuit ends with SWAPs, so the criterion's final state is the state of another wire, and a Givens block
+  that never reaches that wire is kept by the wire rule. **Rule S-lcw (`icpc/wire_swap.py`):** the wire
+  rule, except that a top-level, unconditioned `swap(a, b)` is a move. It joins the slice if a or b is
+  needed, and the needed set is permuted, a ↔ b, instead of being widened to both. A SWAP exchanges the
+  two wires' states exactly, for every input and with no angle, so the backward pass is sound by the
+  argument of Theorem 1 applied to the relabelled wires. Checked before scoring: with the move disabled the
+  pass must equal S-lc on every corpus-A pair. Scored as B1 (corpus A soundness and recall/precision,
+  robustness in all three regimes, families, catalogue) against the same gate.
