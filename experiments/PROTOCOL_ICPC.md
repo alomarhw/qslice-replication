@@ -1003,3 +1003,10 @@ These were found while implementing §6, from the API documentation. No LLM call
       renamings (`u1`->`p`, `cu1`->`cp`, `cnot`->`cx`, `toffoli`->`ccx`, `u3`->`u`, `iden`->`id`).
     - T2 compares the lines of the operations in the tool's wire slice with the original lines of
       S-lc's operations on the prepared circuit, mapped through `results/icpc/source_map/instructions.csv`.
+- **T1/T2 on tool-v1 (2026-10-26).** T1: 7 of 8 bugs trace-exact (136 of 137 operations). T2: 17 of 17 units
+  with mapped lines are line-equal. tool-v1 crashed on `Terra-0-4000/22` (a non-integer slice bound). That
+  program builds its circuit by rewriting a `DAGCircuit`, and the study's runtime source map could not
+  trace it either.
+- **tool-v2 (`6a01767`, tag `tool-v2`), fixing what T1 found.** Non-integer slice bounds evaluate to UNK. Converting
+  a circuit to a DAG is now reported as untraced. T1/T2 are rerun on tool-v2, and both versions' results are
+  kept (`results/icpc/tool_acceptance/tool-v1`, `tool-v2`).
