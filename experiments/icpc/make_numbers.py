@@ -459,7 +459,31 @@ def main() -> int:
     put("FdFwdOps", fw["ops"], cnt(fw["ops"]), src)
     put("FdFwdPrecision", fw["precision"], f"{fw['precision']:.3f}", src)
 
+    # ---- qubit slice profiles over the corpora (Deviation I-17, tool-v5; tool/corpus/profiles.py) ----------
+    PR = ICPC / "profiles"
+    for f, nm in (("bugs4q", "Bugs"), ("textbook", "Text"), ("lintq500", "Lintq")):
+        r = [x for x in rows(PR / f"{f}.csv") if not x["error"]]
+        src = f"results/icpc/profiles/{f}.csv"
+        put(f"Prof{nm}Files", len({x["file"] for x in r}), cnt(len({x["file"] for x in r})), src)
+        put(f"Prof{nm}Qubits", len(r), cnt(len(r)), src)
+        fn = sum(x["in_function"] == "1" for x in r) / len(r)
+        put(f"Prof{nm}InFunction", fn, pct(fn, 0), src)
+        fb = sum(x["fwd_lines"] != x["bwd_lines"] for x in r) / len(r)
+        put(f"Prof{nm}FwdNeBwd", fb, pct(fb, 0), src)
+    lq = rows(PR / "lintq500.csv")
+    put("ProfLintqSample", len({x["file"] for x in lq}), cnt(len({x["file"] for x in lq})), "results/icpc/profiles/lintq500.csv")
+    put("ProfLintqTimeouts", sum(x["error"] == "timeout" for x in lq), cnt(sum(x["error"] == "timeout" for x in lq)), "results/icpc/profiles/lintq500.csv")
+    ac = rows(PR / "alias_check_textbook.csv")
+    flagged = {x["file"] for x in rows(PR / "textbook.csv") if not x["error"] and int(x["names"]) > 1}
+    assert flagged == {x["file"] for x in ac}, "alias check does not cover the flagged textbook files"
+    put("ProfTextAliasFlagged", len(ac), cnt(len(ac)), "results/icpc/profiles/alias_check_textbook.csv")
+    put("ProfTextAliasGenuine", sum(x["genuine"] == "1" for x in ac), cnt(sum(x["genuine"] == "1" for x in ac)),
+        "results/icpc/profiles/alias_check_textbook.csv")
+
     # ---- the static program slicer (Deviation I-15; tool-v4, the final version; earlier versions' results kept) --
+    sys.path.insert(0, str(HERE.parents[1]))
+    from tool.gates import GATES  # noqa: PLC0415
+    put("ToolGateTable", len(GATES), cnt(len(GATES)), "tool/gates.py")
     TA = ICPC / "tool_acceptance"
     dev = json.load(open(TA / "dev_checks.json"))
     src = "results/icpc/tool_acceptance/dev_checks.json"
@@ -501,6 +525,35 @@ def main() -> int:
     put("MotFidelity", mot["F_q0_buggy_vs_fixed"], f"{mot['F_q0_buggy_vs_fixed']:.2f}", "paper/figures/src/fig_motivating_facts.json")
     put("MotPOne", mot["P1_buggy"][0], f"{mot['P1_buggy'][0]:.1f}", "paper/figures/src/fig_motivating_facts.json")
     put("MotDuFidelity", mot["F_du_q0_at_00"], f"{mot['F_du_q0_at_00']:.2f}", "paper/figures/src/fig_motivating_facts.json")
+    bv = json.load(open(figs / "fig_bv_facts.json"))
+    src = "paper/figures/src/fig_bv_facts.json"
+    assert set(bv["dep"]) == set(bv["op_slices"]["lc"]), "BV: the QDG slice should be exactly the dependences"
+    assert bv["min_purity_q0"] > 1 - 1e-9, "BV: q0 should never be entangled"
+    words = lambda xs: ", ".join(str(x) for x in xs[:-1]) + (" and " if len(xs) > 1 else "") + str(xs[-1])  # noqa: E731
+    put("BvCpdgLines", bv["tool_lines"]["cpdg"]["quantum"], words(bv["tool_lines"]["cpdg"]["quantum"]), src)
+    put("BvQdgLines", bv["tool_lines"]["lc"]["quantum"], words(bv["tool_lines"]["lc"]["quantum"]), src)
+    put("BvMissedLines", bv["cpdg_missed_lines"], words(bv["cpdg_missed_lines"]), src)
+    put("BvCpdgClassical", bv["tool_lines"]["cpdg"]["classical"], words(bv["tool_lines"]["cpdg"]["classical"]), src)
+    put("BvQdgClassical", bv["tool_lines"]["lc"]["classical"], words(bv["tool_lines"]["lc"]["classical"]), src)
+    put("BvCpdgFidelity", bv["fidelity_slice_vs_program"]["cpdg"], f"{bv['fidelity_slice_vs_program']['cpdg']:.2f}", src)
+    put("BvFixFidelity", bv["F_q0_buggy_vs_fixed"], f"{bv['F_q0_buggy_vs_fixed']:.2f}", src)
+    put("BvOps", len(bv["ops"]), cnt(len(bv["ops"])), src)
+    put("BvQdgOps", len(bv["op_slices"]["lc"]), cnt(len(bv["op_slices"]["lc"])), src)
+    put("BvCpdgOps", len(bv["op_slices"]["cpdg"]), cnt(len(bv["op_slices"]["cpdg"])), src)
+    (ob, pb), = bv["P_buggy"].items()
+    (of, pf), = bv["P_fixed"].items()
+    assert pb > 1 - 1e-9 and pf > 1 - 1e-9
+    pf0 = bv["profile_q0"]
+    assert pf0["backward_lines"] == bv["tool_lines"]["lc"]["quantum"] and not pf0["functions"] and not pf0["conditioned_lines"]
+    assert sorted(pf0["names"]) == ["i", "q"]
+    put("BvProfDefs", pf0["defs_uses"], words(pf0["defs_uses"]), src)
+    put("BvProfNameI", pf0["names"]["i"], words(pf0["names"]["i"]), src)
+    put("BvProfNameQ", pf0["names"]["q"], words(pf0["names"]["q"]), src)
+    put("BvProfDependents", pf0["dependents"], words([f"$q_{d}$" for d in pf0["dependents"]]), src)
+    put("BvProfBits", pf0["bits"], words([f"$c_{d}$" for d in pf0["bits"]]), src)
+    put("BvProfForward", pf0["forward_lines"], words(pf0["forward_lines"]), src)
+    put("BvBuggyOut", ob, ob, src)
+    put("BvFixedOut", of, of, src)
     ex = json.load(open(figs / "fig_example_facts.json"))
     pr = json.load(open(figs / "fig_programs_facts.json"))
     A_, B_ = pr["teleport"], pr["ansatz"]

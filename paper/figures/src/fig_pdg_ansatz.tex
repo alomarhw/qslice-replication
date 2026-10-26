@@ -21,27 +21,31 @@
   controlE/.style={-{Stealth[length=1.3mm]}, draw=cgreen, line width=0.85pt, dash pattern=on 2.2pt off 1.1pt},
   missingE/.style={-{Stealth[length=1.3mm]}, draw=cver, line width=0.85pt, dash pattern=on 1.8pt off 1.2pt},
   ttl/.style={font=\footnotesize\bfseries, anchor=south},
+  cl/.style={op, draw=black!45, fill=black!4, font=\ttfamily\fontsize{5.6}{6.2}\selectfont},
+  clsl/.style={cl, fill=cblue!22, draw=black!60},
+  loopbox/.style={draw=black!40, rounded corners=3pt, line width=0.5pt, dash pattern=on 2.5pt off 1.2pt},
+  boxlbl/.style={font=\ttfamily\fontsize{5.2}{5.6}\selectfont, text=black!65, inner sep=1pt},
   note/.style={font=\scriptsize, anchor=north, align=center},
 }
 \begin{document}
-\begin{minipage}{17.6cm}\begin{minipage}[t]{6.55cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=15,firstnumber=4]{programs/_display/ansatz.py}\par\vspace{10pt}{\scriptsize\raggedright \tikz\draw[dataE](0,0)--(0.45,0); data\par\vspace{2.5pt}\tikz\draw[quantumE](0,0)--(0.45,0); quantum\par\vspace{2.5pt}\tikz\draw[missingE](0,0)--(0.45,0); quantum edge missing from the classical PDG\par\vspace{2.5pt}\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice\par\vspace{2.5pt}\tikz\node[missdep,minimum width=4mm,minimum height=2.4mm]{}; dependence the slice misses\par\vspace{2.5pt}\tikz\node[entx,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence\par\vspace{2.5pt}\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion\par}\end{minipage}\hfill\begin{minipage}[t]{10.95cm}\vspace{0pt}\centering\begin{tikzpicture}
+\begin{minipage}{17.6cm}\begin{minipage}[t]{6.0cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=15,firstnumber=4]{programs/_display/ansatz.py}\par\vspace{10pt}{\scriptsize\raggedright \tikz\draw[dataE](0,0)--(0.45,0); data\par\vspace{2.5pt}\tikz\draw[controlE](0,0)--(0.45,0); control\par\vspace{2.5pt}\tikz\draw[quantumE](0,0)--(0.45,0); quantum\par\vspace{2.5pt}\tikz\draw[missingE](0,0)--(0.45,0); quantum edge missing from the classical PDG\par\vspace{2.5pt}\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice\par\vspace{2.5pt}\tikz\node[missdep,minimum width=4mm,minimum height=2.4mm]{}; dependence the slice misses\par\vspace{2.5pt}\tikz\node[entx,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence\par\vspace{2.5pt}\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion\par\vspace{2.5pt}\tikz\node[cl,minimum width=4mm,minimum height=2.4mm]{}; classical statement (shaded if in the slice)\par\vspace{2.5pt}\tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of a loop\par}\end{minipage}\hfill\begin{minipage}[t]{11.5cm}\vspace{0pt}\centering\begin{tikzpicture}
 \begin{scope}[xshift=0.000cm]
-\node[insl] (m0) at (0.752,6.333) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
-\node[insl] (m1) at (0.752,5.466) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
-\node[missdep] (m2) at (2.417,6.333) {ry(2.44) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
-\node[missdep] (m3) at (2.417,5.466) {rz(1.42) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
-\node[missdep] (m4) at (4.082,5.466) {ry(0.94) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
-\node[missdep] (m5) at (4.082,4.599) {rz(5.49) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
-\node[missdep] (m6) at (2.417,4.599) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 0}};
-\node[missdep] (m7) at (3.772,3.732) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 0}};
-\node[insl] (m8) at (0.752,3.732) {ry(0.02) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
-\node[insl,crit] (m9) at (0.752,1.998) {rz(5.16) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
-\node[missdep] (m10) at (2.417,2.865) {ry(2.50) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
-\node[missdep] (m11) at (2.417,1.998) {rz(2.94) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
-\node[op] (m12) at (4.082,2.865) {ry(0.95) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
-\node[op] (m13) at (4.082,1.131) {rz(1.75) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
-\node[missdep] (m14) at (2.417,1.131) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 1}};
-\node[op] (m15) at (3.235,0.264) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 1}};
+\node[insl] (m0) at (4.600,7.293) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
+\node[insl] (m1) at (4.600,6.426) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
+\node[missdep] (m2) at (2.935,7.293) {ry(2.44) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
+\node[missdep] (m3) at (2.935,6.426) {rz(1.42) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
+\node[missdep] (m4) at (1.270,6.426) {ry(0.94) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
+\node[missdep] (m5) at (1.270,5.559) {rz(5.49) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
+\node[missdep] (m6) at (2.935,5.559) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 0}};
+\node[missdep] (m7) at (1.891,4.692) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 0}};
+\node[insl] (m8) at (4.600,3.373) {ry(0.02) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
+\node[insl,crit] (m9) at (4.600,2.506) {rz(5.16) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
+\node[missdep] (m10) at (2.935,3.373) {ry(2.50) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
+\node[missdep] (m11) at (2.935,2.506) {rz(2.94) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
+\node[op] (m12) at (1.270,2.506) {ry(0.95) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
+\node[op] (m13) at (1.270,1.639) {rz(1.75) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
+\node[missdep] (m14) at (2.935,1.639) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 1}};
+\node[op] (m15) at (2.088,0.772) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 1}};
 \draw[dataE] (m0) -- (m1);
 \draw[dataE] (m1) -- (m6);
 \draw[dataE] (m1) -- (m8);
@@ -61,26 +65,47 @@
 \draw[dataE] (m14) -- (m15);
 \draw[missingE] (m6) -- (m8);
 \draw[missingE] (m7) -- (m10);
-\node[ttl] at (2.417,6.693) {(b) Classical PDG};
-\node[note] at (2.417,-0.076) {slice of $q_0$: 4 of 16 operations\\fidelity 0.77, misses 9 dependences};
+\draw[loopbox] (0.610,4.392) rectangle (5.260,8.013);
+\node[boxlbl, anchor=north west] at (0.630,7.993) {layer = 0};
+\node[cl, anchor=north east, inner ysep=0.6pt] at (5.240,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 14}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.940,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 11}};
+\draw[loopbox] (0.610,0.472) rectangle (5.260,4.093);
+\node[boxlbl, anchor=north west] at (0.630,4.073) {layer = 1};
+\node[cl, anchor=north east, inner ysep=0.6pt] at (5.240,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 14}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.940,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 11}};
+\node[clsl] (cn) at (1.107,9.443) {n = 3\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 4}};
+\node[clsl] (cly) at (2.478,9.443) {layers = 2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 5}};
+\node[clsl] (crng) at (4.306,9.443) {rng = default\_rng(7)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 6}};
+\node[clsl] (cqc) at (3.849,8.893) {qc = QuantumCircuit(n, n)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 8}};
+\node[clsl] (cfor) at (1.884,8.423) {for layer in range(layers)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 10}};
+\draw[dataE] (cn) -- (cqc);
+\draw[dataE] (cly) -- (cfor);
+\draw[controlE] (cfor.west) -| (0.490,7.593) -- (0.610,7.593);
+\draw[controlE] (cfor.west) -| (0.400,3.673) -- (0.610,3.673);
+\draw[dataE] (crng.east) -| (5.380,7.593) -- (5.260,7.593);
+\draw[dataE] (crng.east) -| (5.470,3.673) -- (5.260,3.673);
+\draw[dataE] (cqc.east) -| (5.560,7.593) -- (5.260,7.593);
+\draw[dataE] (cqc.east) -| (5.650,3.673) -- (5.260,3.673);
+\node[ttl] at (2.935,9.743) {(b) Classical PDG};
+\node[note] at (2.935,0.432) {slice of $q_0$: 4 of 16 operations\\fidelity 0.77, misses 9 dependences};
 \end{scope}
-\begin{scope}[xshift=5.480cm]
-\node[insl] (m0) at (0.752,6.333) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
-\node[insl] (m1) at (0.752,5.466) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
-\node[insl] (m2) at (2.417,6.333) {ry(2.44) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
-\node[insl] (m3) at (2.417,5.466) {rz(1.42) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
-\node[insl] (m4) at (4.082,5.466) {ry(0.94) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
-\node[insl] (m5) at (4.082,4.599) {rz(5.49) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
-\node[insl] (m6) at (2.417,4.599) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 0}};
-\node[insl] (m7) at (3.772,3.732) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 0}};
-\node[insl] (m8) at (0.752,3.732) {ry(0.02) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
-\node[insl] (m9) at (0.752,1.998) {rz(5.16) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
-\node[insl] (m10) at (2.417,2.865) {ry(2.50) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
-\node[insl] (m11) at (2.417,1.998) {rz(2.94) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
-\node[entx] (m12) at (4.082,2.865) {ry(0.95) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
-\node[entx] (m13) at (4.082,1.131) {rz(1.75) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
-\node[insl,crit] (m14) at (2.417,1.131) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 1}};
-\node[op] (m15) at (3.235,0.264) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 1}};
+\begin{scope}[xshift=6.080cm]
+\node[insl] (m0) at (4.600,7.293) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
+\node[insl] (m1) at (4.600,6.426) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
+\node[insl] (m2) at (2.935,7.293) {ry(2.44) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
+\node[insl] (m3) at (2.935,6.426) {rz(1.42) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
+\node[insl] (m4) at (1.270,6.426) {ry(0.94) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
+\node[insl] (m5) at (1.270,5.559) {rz(5.49) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
+\node[insl] (m6) at (2.935,5.559) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 0}};
+\node[insl] (m7) at (1.891,4.692) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 0}};
+\node[insl] (m8) at (4.600,3.373) {ry(0.02) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
+\node[insl] (m9) at (4.600,2.506) {rz(5.16) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
+\node[insl] (m10) at (2.935,3.373) {ry(2.50) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
+\node[insl] (m11) at (2.935,2.506) {rz(2.94) q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
+\node[entx] (m12) at (1.270,2.506) {ry(0.95) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 1}};
+\node[entx] (m13) at (1.270,1.639) {rz(1.75) q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 1}};
+\node[insl,crit] (m14) at (2.935,1.639) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 1}};
+\node[op] (m15) at (2.088,0.772) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 15, iter 1}};
 \draw[dataE] (m0) -- (m1);
 \draw[dataE] (m1) -- (m6);
 \draw[dataE] (m2) -- (m3);
@@ -98,7 +123,28 @@
 \draw[dataE] (m12) -- (m13);
 \draw[dataE] (m13) -- (m15);
 \draw[dataE] (m14) -- (m15);
-\node[ttl] at (2.417,6.693) {(c) QDG};
-\node[note] at (2.417,-0.076) {slice of $q_0$: 13 of 16 operations\\fidelity 1.00, exactly the dependences};
+\draw[loopbox] (0.610,4.392) rectangle (5.260,8.013);
+\node[boxlbl, anchor=north west] at (0.630,7.993) {layer = 0};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (5.240,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 14}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.940,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 11}};
+\draw[loopbox] (0.610,0.472) rectangle (5.260,4.093);
+\node[boxlbl, anchor=north west] at (0.630,4.073) {layer = 1};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (5.240,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 14}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.940,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 11}};
+\node[clsl] (cn) at (1.107,9.443) {n = 3\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 4}};
+\node[clsl] (cly) at (2.478,9.443) {layers = 2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 5}};
+\node[clsl] (crng) at (4.306,9.443) {rng = default\_rng(7)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 6}};
+\node[clsl] (cqc) at (3.849,8.893) {qc = QuantumCircuit(n, n)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 8}};
+\node[clsl] (cfor) at (1.884,8.423) {for layer in range(layers)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 10}};
+\draw[dataE] (cn) -- (cqc);
+\draw[dataE] (cly) -- (cfor);
+\draw[controlE] (cfor.west) -| (0.490,7.593) -- (0.610,7.593);
+\draw[controlE] (cfor.west) -| (0.400,3.673) -- (0.610,3.673);
+\draw[dataE] (crng.east) -| (5.380,7.593) -- (5.260,7.593);
+\draw[dataE] (crng.east) -| (5.470,3.673) -- (5.260,3.673);
+\draw[dataE] (cqc.east) -| (5.560,7.593) -- (5.260,7.593);
+\draw[dataE] (cqc.east) -| (5.650,3.673) -- (5.260,3.673);
+\node[ttl] at (2.935,9.743) {(c) QDG};
+\node[note] at (2.935,0.432) {slice of $q_0$: 13 of 16 operations\\fidelity 1.00, exactly the dependences};
 \end{scope}
 \end{tikzpicture}\end{minipage}\end{minipage}\end{document}

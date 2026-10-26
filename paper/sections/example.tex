@@ -2,46 +2,51 @@
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\columnwidth]{figures/fig_motivating.pdf}
-  \caption{A real bug from Bugs4Q~\cite{zhao2023bugs4q}, posted on Stack Overflow. (a)~The program is meant
-  to prepare $(\ket{01}+\ket{10})/\sqrt{2}$, and line~6 should apply $X$. (b)~The buggy outcomes are
-  uniform over all four bit strings, yet each qubit alone looks as intended. (c)~Asked which lines determine
-  $q_0$, the classical PDG keeps the shaded line~5 alone and misses the dashed faulty line~6 and CNOT, and
-  the QDG keeps lines~5 to~7. Outcomes, slices and dependences are computed by the study's code.}
-  \label{fig:motivating}
+  \includegraphics[width=\columnwidth]{figures/fig_bv.pdf}
+  \caption{The Bernstein--Vazirani program of the Qiskit textbook~\cite{qiskittextbook}, with comments and
+  blank lines omitted and the textbook's line numbers kept. Line~25 carries a seeded fault, \texttt{x(n)}
+  where the textbook applies \texttt{z(n)}. The two columns mark the statements in the backward slice of
+  $q_0$ under the classical PDG and under the QDG. The classical PDG misses the orange lines, which are
+  dependences of $q_0$. Slices are computed by our tool statically, and outcomes and dependences by the
+  study's code.}
+  \label{fig:bv}
 \end{figure}
 
-A developer asked on Stack Overflow why a two-qubit program did not produce the state
-$(\ket{01}+\ket{10})/\sqrt{2}$, an equal superposition of the bit strings $01$ and $10$, written $q_1q_0$.
-The program and its fix are part of Bugs4Q~\cite{zhao2023bugs4q}, a benchmark of real bugs in Qiskit
-programs, and Fig.~\ref{fig:motivating}a shows the lines that build the circuit. The intended outcomes are
-$01$ and $10$, each with probability one half. As Fig.~\ref{fig:motivating}b shows, the program instead
-returns all four bit strings equally often.
+The Bernstein--Vazirani algorithm~\cite{bernstein1997qct} finds a hidden bit string $s$ with a single query
+to an oracle that computes the parity of $s \wedge x$. Fig.~\ref{fig:bv} shows the program of the Qiskit
+textbook~\cite{qiskittextbook}, with $s = 011$. The algorithm rests on phase kickback. Lines~24 and~25
+prepare the auxiliary qubit $q_3$ in $\ket{-}$, a superposition of $0$ and $1$ with opposite signs. Each
+CNOT of line~40 has the auxiliary as its target, and on $\ket{-}$ it leaves the target unchanged and flips
+the phase of its control instead. The Hadamard gates of line~47 turn these phases into the bits of $s$. We
+seeded one fault, a one-token change on line~25 that applies $X$ instead of $Z$. The auxiliary is then left
+in $\ket{+}$, on which a CNOT acts as the identity, and the program returns \numBvBuggyOut{} instead of
+\numBvFixedOut{}.
 
-A natural first step is to check each qubit separately, and here both look correct. Each reads $1$ with
-probability \numMotPOne{}, in the buggy program and in the intended one alike. The error lies only in the
-correlation between the two qubits. A slicing criterion that names a single variable, as the classical
-criterion $(s, V)$ does when $V$ is one qubit, cannot express this failure. The criterion must be the
-pair $\{q_0, q_1\}$.
+The developer sees $q_0$ read $0$ where $s$ says $1$, and slices backward from $q_0$ to see which
+statements determine it. A classical slicer follows data and control dependence. It reads
+\texttt{cx(q, n)}, the controlled-NOT that flips its target when its control is $1$, as the assignment
+$q_n \leftarrow q_n \oplus q$, which reads $q$ and writes only the auxiliary. Its slice of $q_0$ keeps the
+Hadamard gates of lines~\numBvCpdgLines{} and the statements that compute their qubits, lines
+\numBvCpdgClassical{}, as the left column of Fig.~\ref{fig:bv} shows. The slice even appears to be right.
+Its \numBvCpdgOps{} operations give $q_0$ the same state as the whole program, with fidelity
+\numBvCpdgFidelity{}, where fidelity measures the similarity of two quantum states and is $1$ exactly when
+they are equal. Two Hadamard gates on $q_0$ show nothing wrong, and the slice gives the developer no
+reason to look at lines~\numBvMissedLines{}, where the fault is.
 
-Suppose the developer nevertheless slices backward from $q_0$ to see which lines determine it. A
-classical slicer follows data and control dependence. It reads \texttt{cx(0,1)}, the controlled-NOT
-(CNOT) gate that flips its target $q_1$ when its control $q_0$ is $1$, as the assignment
-$q_1 \leftarrow q_1 \oplus q_0$, which reads $q_0$ and writes only $q_1$. The program has no classical
-conditions for control dependence to follow. Its slice of $q_0$ is therefore line~5 alone, as the left of
-Fig.~\ref{fig:motivating}c shows. The slice even appears to be right. Running line~5 alone gives $q_0$
-the same state as the whole program, with fidelity \numMotDuFidelity{}, where fidelity measures the
-similarity of two quantum states and is $1$ exactly when they are equal. The reason is that \texttt{h(1)}
-leaves $q_1$ in $\ket{+}$, an equal superposition of $0$ and $1$, on which the CNOT acts as the identity.
-The developer inspects \texttt{h(0)}, finds nothing wrong, and has no reason to look at line~6, where the
-bug is.
+These lines are nonetheless dependences of $q_0$. Restoring $Z$ on line~25 turns $q_0$ from $\ket{0}$ into
+$\ket{1}$, two states with fidelity \numBvFixFidelity{}. A CNOT acts on its control as well as its target.
+The QDG, in which every gate reads and writes all its qubits, keeps lines~\numBvQdgLines{}, exactly the
+dependences of $q_0$, together with the statements that compute them, among them the oracle's loop and
+condition on lines~35 to~39. Its slice contains the fault. Entanglement plays no part here, since $q_0$ is in
+a pure state after every operation and so is never entangled with the auxiliary.
 
-Line~6 is nonetheless a dependence of $q_0$. Replacing \texttt{h(1)} by the intended \texttt{x(1)}
-turns $q_0$ from a pure state, which is fully determined, into a maximally mixed one, which behaves as a
-uniformly random bit, and the two states have fidelity only \numMotFidelity{}. A CNOT acts on its control
-as well as its target. The QDG, which lets every gate read and write all its qubits, keeps lines~5
-to~7, as the right of Fig.~\ref{fig:motivating}c shows. Its slice for the pair $\{q_0, q_1\}$ is the same,
-and it contains the bug.
+Choosing a single qubit as the criterion was enough here, because the fault shows in $q_0$ alone. It is not
+always enough. In a real bug from Bugs4Q~\cite{zhao2023bugs4q}, posted on Stack Overflow, a two-qubit
+program meant to prepare $(\ket{01}+\ket{10})/\sqrt{2}$ applies \texttt{h(1)} where \texttt{x(1)} was
+needed, and returns all four bit strings equally often. Each qubit alone reads $1$ with probability
+\numMotPOne{}, in the buggy program and in the intended one alike, and the error lies only in the
+correlation between the two. A criterion that names a single qubit, as the classical criterion $(s, V)$
+does when $V$ is one qubit, cannot express this failure. The criterion must be the pair $\{q_0, q_1\}$.
 
-The program has three gates, but its two lessons scale. Reading a gate as an assignment misses influence
-that flows into a control qubit, and a one-qubit criterion misses errors in correlations.
+The two lessons scale. Reading a gate as an assignment misses influence that flows into a control qubit,
+and a one-qubit criterion misses errors in correlations.

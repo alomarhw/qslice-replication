@@ -193,9 +193,10 @@ The QDG slice keeps the \numAnsWireOps{} operations that are dependences of $q_0
 (ii) An operation can act on a qubit entangled with $q$ and not be a dependence of $q$.
 \end{proposition}
 
-For (i), $q_0$ in the buggy program of Fig.~\ref{fig:motivating} is in a pure state after every
-operation, so it is never entangled with anything. Yet \texttt{h(1)} and the CNOT are dependences of
-$q_0$, since the fix of line~6 changes the state of $q_0$. For (ii), in
+For (i), $q_0$ in the program of Fig.~\ref{fig:bv} is in a pure state after every operation, in the
+buggy version and the fixed one, so it is never entangled with anything. Yet the gates of lines~24
+and~25 on the auxiliary and the CNOT of line~40 are dependences of $q_0$, since restoring $Z$ on line~25
+changes the state of $q_0$. For (ii), in
 $\mathrm{H}(q_0)\,\mathrm{CX}(q_0, q_1)\,\mathrm{X}(q_1)$ the two qubits are maximally entangled, but
 $\mathrm{X}(q_1)$ is not a dependence of $q_0$. By no-signaling, no operation on other qubits can change
 $\rho_{q_0}$. The entanglement edges of the QPDG therefore add no dependence that the QDG misses. They only add

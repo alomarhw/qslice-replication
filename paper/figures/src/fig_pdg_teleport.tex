@@ -21,10 +21,14 @@
   controlE/.style={-{Stealth[length=1.3mm]}, draw=cgreen, line width=0.85pt, dash pattern=on 2.2pt off 1.1pt},
   missingE/.style={-{Stealth[length=1.3mm]}, draw=cver, line width=0.85pt, dash pattern=on 1.8pt off 1.2pt},
   ttl/.style={font=\footnotesize\bfseries, anchor=south},
+  cl/.style={op, draw=black!45, fill=black!4, font=\ttfamily\fontsize{5.6}{6.2}\selectfont},
+  clsl/.style={cl, fill=cblue!22, draw=black!60},
+  loopbox/.style={draw=black!40, rounded corners=3pt, line width=0.5pt, dash pattern=on 2.5pt off 1.2pt},
+  boxlbl/.style={font=\ttfamily\fontsize{5.2}{5.6}\selectfont, text=black!65, inner sep=1pt},
   note/.style={font=\scriptsize, anchor=north, align=center},
 }
 \begin{document}
-\begin{minipage}{8.7cm}\begin{minipage}[t]{3.55cm}\vspace{0pt}{\footnotesize\textbf{(a) Teleportation}}\\[3pt]\lstinputlisting[style=qiskit,firstline=7,lastline=17,firstnumber=7]{programs/_display/teleport.py}\end{minipage}\hfill\begin{minipage}[t]{5.05cm}\vspace{0pt}\centering\begin{tikzpicture}
+\begin{minipage}{8.7cm}\begin{minipage}[t]{3.55cm}\vspace{0pt}{\footnotesize\textbf{(a) Teleportation}}\\[3pt]\lstinputlisting[style=qiskit,firstline=3,lastline=17,firstnumber=3]{programs/_display/teleport.py}\end{minipage}\hfill\begin{minipage}[t]{5.05cm}\vspace{0pt}\centering\begin{tikzpicture}
 \begin{scope}[xshift=0.000cm]
 \node[missdepsl] (m0) at (1.228,3.732) {ry(0.90) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 7}};
 \node[insl] (m1) at (2.852,3.732) {h q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 8}};
@@ -45,7 +49,12 @@
 \draw[controlE] (m5) -- (m8);
 \draw[controlE] (m6) -- (m7);
 \draw[dataE] (m7) -- (m8);
-\node[ttl] at (2.205,4.092) {(b) Classical PDG};
+\node[clsl] (cq) at (1.368,5.682) {q = QuantumRegister(3, \textquotedbl q\textquotedbl)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 3}};
+\node[clsl] (cc) at (3.042,5.132) {c = ClassicalRegister(2, \textquotedbl c\textquotedbl)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 4}};
+\node[clsl] (cqc) at (1.870,4.582) {qc = QuantumCircuit(q, c)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 5}};
+\draw[dataE] (cq) -- (cqc);
+\draw[dataE] (cc) -- (cqc);
+\node[ttl] at (2.205,5.982) {(b) Classical PDG};
 \node[note] at (2.205,-0.076) {slice of $q_2$: 9 of 9, $F = 1.00$\\def-use: 4 of 9, $F = 0.50$};
 \end{scope}
-\end{tikzpicture}\end{minipage}\\[4pt]\centering{\scriptsize \mbox{\tikz\draw[dataE](0,0)--(0.45,0); data}\hspace{0.9em} \mbox{\tikz\draw[controlE](0,0)--(0.45,0); control}\hspace{0.9em} \mbox{\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice}}\\[1pt]{\scriptsize \mbox{\tikz\node[missdepsl,minimum width=4mm,minimum height=2.4mm]{}; in the slice, missed by def-use}\hspace{0.9em} \mbox{\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion}}\end{minipage}\end{document}
+\end{tikzpicture}\end{minipage}\\[4pt]\centering{\scriptsize \mbox{\tikz\draw[dataE](0,0)--(0.45,0); data}\hspace{0.9em} \mbox{\tikz\draw[controlE](0,0)--(0.45,0); control}\hspace{0.9em} \mbox{\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice}}\\[1pt]{\scriptsize \mbox{\tikz\node[missdepsl,minimum width=4mm,minimum height=2.4mm]{}; in the slice, missed by def-use}\hspace{0.9em} \mbox{\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion}}\\[1pt]{\scriptsize \mbox{\tikz\node[cl,minimum width=4mm,minimum height=2.4mm]{}; classical statement (shaded if in the slice)}}\end{minipage}\end{document}

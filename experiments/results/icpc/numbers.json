@@ -1708,6 +1708,86 @@
   "tex": "0.930",
   "source": "results/icpc/foundations/summary.json"
  },
+ "ProfBugsFiles": {
+  "value": 110,
+  "tex": "110",
+  "source": "results/icpc/profiles/bugs4q.csv"
+ },
+ "ProfBugsQubits": {
+  "value": 290,
+  "tex": "290",
+  "source": "results/icpc/profiles/bugs4q.csv"
+ },
+ "ProfBugsInFunction": {
+  "value": 0.13793103448275862,
+  "tex": "14\\%",
+  "source": "results/icpc/profiles/bugs4q.csv"
+ },
+ "ProfBugsFwdNeBwd": {
+  "value": 0.5862068965517241,
+  "tex": "59\\%",
+  "source": "results/icpc/profiles/bugs4q.csv"
+ },
+ "ProfTextFiles": {
+  "value": 58,
+  "tex": "58",
+  "source": "results/icpc/profiles/textbook.csv"
+ },
+ "ProfTextQubits": {
+  "value": 196,
+  "tex": "196",
+  "source": "results/icpc/profiles/textbook.csv"
+ },
+ "ProfTextInFunction": {
+  "value": 0.4489795918367347,
+  "tex": "45\\%",
+  "source": "results/icpc/profiles/textbook.csv"
+ },
+ "ProfTextFwdNeBwd": {
+  "value": 0.75,
+  "tex": "75\\%",
+  "source": "results/icpc/profiles/textbook.csv"
+ },
+ "ProfLintqFiles": {
+  "value": 215,
+  "tex": "215",
+  "source": "results/icpc/profiles/lintq500.csv"
+ },
+ "ProfLintqQubits": {
+  "value": 1053,
+  "tex": "1{,}053",
+  "source": "results/icpc/profiles/lintq500.csv"
+ },
+ "ProfLintqInFunction": {
+  "value": 0.5555555555555556,
+  "tex": "56\\%",
+  "source": "results/icpc/profiles/lintq500.csv"
+ },
+ "ProfLintqFwdNeBwd": {
+  "value": 0.8243114909781576,
+  "tex": "82\\%",
+  "source": "results/icpc/profiles/lintq500.csv"
+ },
+ "ProfLintqSample": {
+  "value": 500,
+  "tex": "500",
+  "source": "results/icpc/profiles/lintq500.csv"
+ },
+ "ProfLintqTimeouts": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/profiles/lintq500.csv"
+ },
+ "ProfTextAliasFlagged": {
+  "value": 5,
+  "tex": "5",
+  "source": "results/icpc/profiles/alias_check_textbook.csv"
+ },
+ "ProfTextAliasGenuine": {
+  "value": 3,
+  "tex": "3",
+  "source": "results/icpc/profiles/alias_check_textbook.csv"
+ },
  "ToolDevPrograms": {
   "value": 15,
   "tex": "15",
@@ -1907,6 +1987,145 @@
   "value": 0.9999999999999993,
   "tex": "1.00",
   "source": "paper/figures/src/fig_motivating_facts.json"
+ },
+ "BvCpdgLines": {
+  "value": [
+   29,
+   47
+  ],
+  "tex": "29 and 47",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvQdgLines": {
+  "value": [
+   24,
+   25,
+   29,
+   40,
+   47
+  ],
+  "tex": "24, 25, 29, 40 and 47",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvMissedLines": {
+  "value": [
+   24,
+   25,
+   40
+  ],
+  "tex": "24, 25 and 40",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvCpdgClassical": {
+  "value": [
+   16,
+   21,
+   28,
+   46
+  ],
+  "tex": "16, 21, 28 and 46",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvQdgClassical": {
+  "value": [
+   16,
+   17,
+   21,
+   28,
+   35,
+   36,
+   37,
+   39,
+   46
+  ],
+  "tex": "16, 17, 21, 28, 35, 36, 37, 39 and 46",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvCpdgFidelity": {
+  "value": 0.9999999999999984,
+  "tex": "1.00",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvFixFidelity": {
+  "value": 3.6284213880533408e-34,
+  "tex": "0.00",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvOps": {
+  "value": 11,
+  "tex": "11",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvQdgOps": {
+  "value": 5,
+  "tex": "5",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvCpdgOps": {
+  "value": 2,
+  "tex": "2",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvProfDefs": {
+  "value": [
+   29,
+   40,
+   47,
+   51
+  ],
+  "tex": "29, 40, 47 and 51",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvProfNameI": {
+  "value": [
+   29,
+   47,
+   51
+  ],
+  "tex": "29, 47 and 51",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvProfNameQ": {
+  "value": [
+   40
+  ],
+  "tex": "40",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvProfDependents": {
+  "value": [
+   1,
+   3
+  ],
+  "tex": "$q_1$ and $q_3$",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvProfBits": {
+  "value": [
+   0
+  ],
+  "tex": "$c_0$",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvProfForward": {
+  "value": [
+   29,
+   40,
+   47,
+   51
+  ],
+  "tex": "29, 40, 47 and 51",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvBuggyOut": {
+  "value": "000",
+  "tex": "000",
+  "source": "paper/figures/src/fig_bv_facts.json"
+ },
+ "BvFixedOut": {
+  "value": "011",
+  "tex": "011",
+  "source": "paper/figures/src/fig_bv_facts.json"
  },
  "TelDuOps": {
   "value": 4,

@@ -1,0 +1,6 @@
+file,flagged_names,genuine,reason
+ch-algorithms/grover.py,a | b | var_qubits; clause_qubits | output; output | output_qubit,1,function parameters bound to register qubits
+ch-algorithms/teleportation.py,a | b; a | psi,1,function parameters bound to qubits
+ch-applications/hhl_tutorial.py,qrl | qu,1,qu iterates over the slice qrl = qr[nb:nb+nl]
+ch-applications/image-processing-frqi-neqr.py,num_qubits | qc_image,0,num_qubits is an integer index
+ch-paper-implementations/vqls.py,auxiliary | auxiliary_index | qubits; ia | qubits,0,auxiliary_index and ia are integer parameters
