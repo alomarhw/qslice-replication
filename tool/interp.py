@@ -572,7 +572,7 @@ class Interpreter:
                 seq = self.iterate(obj)
                 return (UNK if seq is None else [Bit(obj, None)] if isinstance(obj, Reg) else UNK), lines
             seq = self.iterate(obj)
-            if seq is None:
+            if seq is None or not all(v is None or (isinstance(v, int) and not isinstance(v, bool)) for v in (lo[0], hi[0], st[0])):
                 return UNK, lines
             return seq[slice(lo[0], hi[0], st[0])], lines
         idx, il = self.ev(n.slice, L, env)
@@ -784,7 +784,9 @@ class Interpreter:
         if isinstance(f, tuple) and f[:1] == ("__name__",):
             return self.named_call(f[1], args, kw, lines, L)
         callee = f[1].split(".")[-1] if isinstance(f, tuple) and f[:1] == ("__name__",) else ""
-        if callee not in READ_ONLY:
+        if callee in OPAQUE:
+            self.note(L, f"{callee}: the circuit is converted to a DAG; operations rewritten there are not traced")
+        elif callee not in READ_ONLY:
             for v in list(args) + list(kw.values()):
                 if isinstance(v, Circuit):
                     self.note(L, "a circuit is passed to a function the tool cannot see: its operations there are not traced")
@@ -819,6 +821,9 @@ class Interpreter:
 
     def named_call(self, full, args, kw, lines, L):
         short = full.split(".")[-1]
+        if short in OPAQUE and any(isinstance(v, Circuit) for v in list(args) + list(kw.values())):
+            self.note(L, f"{short}: the circuit is converted to a DAG; operations rewritten there are not traced")
+            return UNK, lines
         try:
             if short == "range" and all(isinstance(a, int) for a in args):
                 return range(*args), lines
@@ -1139,11 +1144,13 @@ class Interpreter:
         return InstrSet([op] if op else [], circ), lines
 
 
+# Calls that turn a circuit into another representation the tool does not follow (rewrites there are not traced)
+OPAQUE = {"circuit_to_dag", "dag_to_circuit", "substitute_node_with_dag", "apply_operation_back", "apply_operation_front"}
 # Functions and methods that only read a circuit they are given (simulation, compilation, display, analysis).
 READ_ONLY = {"execute", "transpile", "assemble", "run", "plot_histogram", "plot_state_city", "plot_bloch_multivector",
              "plot_state_qsphere", "plot_circuit_layout", "plot_gate_map", "circuit_drawer", "draw", "print", "display",
              "Statevector", "DensityMatrix", "Operator", "from_instruction", "from_label", "evolve", "simulate",
-             "dag_to_circuit", "circuit_to_dag", "circuit_to_instruction", "circuit_to_gate", "dumps", "dump", "qasm",
+             "circuit_to_instruction", "circuit_to_gate", "dumps", "dump", "qasm",
              "qasm2", "qasm3", "count_ops", "depth", "size", "width", "len", "str", "repr", "Sampler", "Estimator",
              "SamplerV2", "EstimatorV2", "result", "get_counts", "get_statevector", "save", "append_to_list",
              "assertEqual", "assertTrue", "assertIsInstance", "submit", "job", "isinstance", "copy", "deepcopy"}
