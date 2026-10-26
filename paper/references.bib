@@ -24,10 +24,13 @@
 }
 
 @article{tip1994a,
-  title     = {A survey of program slicing techniques},
-  author    = {F. Tip},
-  year      = {1994},
-  journal   = {Journal of Programming Languages},
+  title   = {A Survey of Program Slicing Techniques},
+  author  = {Frank Tip},
+  journal = {Journal of Programming Languages},
+  volume  = {3},
+  number  = {3},
+  pages   = {121--189},
+  year    = {1995}
 }
 
 @article{binkley2004a,
@@ -47,27 +50,32 @@
 }
 
 @inproceedings{agrawal1990dynamic,
-  title     = {Dynamic program slicing},
-  author    = {H. Agrawal and J. R. Horgan},
+  title     = {Dynamic Program Slicing},
+  author    = {Hiralal Agrawal and Joseph R. Horgan},
+  booktitle = {ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)},
+  pages     = {246--256},
   year      = {1990},
-  booktitle = {ACM-SIGPLAN Symposium on Programming Language Design and Implementation},
-  doi       = {10.1145/93542.93576},
+  doi       = {10.1145/93542.93576}
 }
 
 @article{weiser1982programmers,
-  title     = {Programmers use slices when debugging},
-  author    = {M. Weiser},
-  year      = {1982},
-  journal   = {CACM},
-  doi       = {10.1145/358557.358577},
+  title   = {Programmers Use Slices When Debugging},
+  author  = {Mark Weiser},
+  journal = {Communications of the ACM},
+  volume  = {25},
+  number  = {7},
+  pages   = {446--452},
+  year    = {1982},
+  doi     = {10.1145/358557.358577}
 }
 
-@article{harman2008program,
-  title     = {Program slicing},
-  author    = {M. Harman and K. Gallagher},
+@inproceedings{harman2008program,
+  title     = {Program Slicing},
+  author    = {Keith Gallagher and David Binkley},
+  booktitle = {Frontiers of Software Maintenance (FoSM)},
+  pages     = {58--67},
   year      = {2008},
-  journal   = {2008 Frontiers of Software Maintenance},
-  doi       = {10.1016/S0950-5849(98)00084-6},
+  doi       = {10.1109/FOSM.2008.4659249}
 }
 
 @inproceedings{binkley2014orbs,
@@ -136,11 +144,14 @@
 }
 
 @article{olmedo2025slicing,
-  title     = {Slicing of Probabilistic Programs: A Review of Existing Approaches},
-  author    = {Federico Olmedo},
-  year      = {2025},
-  journal   = {ACM Computing Surveys},
-  abstract  = {Program slicing aims to simplify programs by identifying and removing non-essential parts while preserving program behavior. It is widely used for program understanding, debugging, and software maintenance. This article provides an overview of slicing techniques for probabilistic programs, which blend traditional programming constructs with random sampling and conditioning. These programs have exp},
+  title   = {Slicing of Probabilistic Programs: A Review of Existing Approaches},
+  author  = {Federico Olmedo},
+  journal = {ACM Computing Surveys},
+  volume  = {58},
+  number  = {3},
+  pages   = {1--40},
+  year    = {2025},
+  doi     = {10.1145/3764581}
 }
 
 @article{aparna2026formal,
@@ -249,7 +260,7 @@
 }
 
 @inproceedings{chen2023smelly,
-  title     = {The Smelly Eight: An Empirical Study on the Prevalence of Code Smells in Quantum Computing},
+  title     = {The {Smelly Eight}: An Empirical Study on the Prevalence of Code Smells in Quantum Computing},
   author    = {Qihong Chen and R{\'u}ben C{\^a}mara and Jos{\'e} Campos and Andr{\'e} Souto and Iftekhar Ahmed},
   year      = {2023},
   booktitle = {IEEE/ACM International Conference on Software Engineering (ICSE)},
@@ -284,16 +295,22 @@
   title     = {The program dependence graph and its use in optimization},
   author    = {Jeanne Ferrante and Karl J. Ottenstein and Joe D. Warren},
   year      = {1987},
-  journal = {ACM Transactions on Programming Languages and Systems (TOPLAS)},
+  journal = {ACM Transactions on Programming Languages and Systems},
   doi       = {10.1145/24039.24041},
+  volume = {9},
+  number = {3},
+  pages = {319--349}
 }
 
 @article{horwitz1990interprocedural,
   title     = {Interprocedural slicing using dependence graphs},
   author    = {Susan Horwitz and Thomas Reps and David Binkley},
   year      = {1990},
-  journal = {ACM Transactions on Programming Languages and Systems (TOPLAS)},
+  journal = {ACM Transactions on Programming Languages and Systems},
   doi       = {10.1145/77606.77608},
+  volume = {12},
+  number = {1},
+  pages = {26--60}
 }
 
 @inproceedings{gong2023learning,
@@ -311,6 +328,7 @@
   volume    = {2},
   pages     = {709--722},
   doi       = {10.1038/s42254-020-00245-7},
+  number = {12}
 }
 
 @article{horodecki2009entanglement,
@@ -335,11 +353,12 @@
   booktitle = {IBM Quantum platform documentation},
 }
 
-@inproceedings{qiskit2025,
-  title     = {Qiskit: An Open-Source Quantum Computing Framework},
-  author    = {{IBM Quantum}},
-  year      = {2025},
-  booktitle = {IBM Quantum},
+@misc{qiskit2025,
+  title        = {{LightCone} transpiler pass, {Qiskit} {SDK} documentation},
+  author       = {{IBM Quantum}},
+  howpublished = {\url{https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.transpiler.passes.LightCone}},
+  note         = {Accessed 2026-10-26},
+  year         = {2025}
 }
 
 @inproceedings{kaul2023uniform,
@@ -353,7 +372,7 @@
 
 @inproceedings{metwalli2022debugging,
   title     = {A tool for debugging quantum circuits},
-  author    = {Sara Ayman Metwalli and Rodney Van Meter},
+  author    = {Sara Ayman Metwalli and Rodney {Van Meter}},
   year      = {2022},
   booktitle = {IEEE International Conference on Quantum Computing and Engineering (QCE)},
   doi       = {10.1109/QCE53715.2022.00085},
@@ -376,11 +395,14 @@
 }
 
 @article{paltenghi2024lintq,
-  title     = {Analyzing quantum programs with LintQ: A static analysis framework for Qiskit},
-  author    = {Matteo Paltenghi and Michael Pradel},
-  year      = {2024},
-  journal = {Proceedings of the ACM on Software Engineering (FSE)},
-  doi       = {10.1145/3660802},
+  title   = {Analyzing Quantum Programs with {LintQ}: A Static Analysis Framework for {Qiskit}},
+  author  = {Matteo Paltenghi and Michael Pradel},
+  journal = {Proceedings of the ACM on Software Engineering},
+  volume  = {1},
+  number  = {FSE},
+  pages   = {2144--2166},
+  year    = {2024},
+  doi     = {10.1145/3660802}
 }
 
 @inproceedings{salam2024quantum,
@@ -434,8 +456,8 @@
 }
 
 @inproceedings{zhao2023qchecker,
-  title     = {QChecker: Detecting bugs in quantum programs via static analysis},
-  author    = {Pengzhao Zhao and Xiongfei Wu and Zhuo Li and Jianjun Zhao},
+  title     = {{QChecker}: Detecting Bugs in Quantum Programs via Static Analysis},
+  author    = {Pengzhan Zhao and Xiongfei Wu and Zhuo Li and Jianjun Zhao},
   year      = {2023},
   booktitle = {IEEE/ACM International Workshop on Quantum Software Engineering (Q-SE)},
   doi       = {10.1109/Q-SE59154.2023.00014},
@@ -444,10 +466,11 @@
 
 @inproceedings{zhao2021bugpatterns,
   title     = {Identifying bug patterns in quantum programs},
-  author    = {Pengzhao Zhao and Jianjun Zhao and Lei Ma},
+  author    = {Pengzhan Zhao and Jianjun Zhao and Lei Ma},
   year      = {2021},
   booktitle = {IEEE/ACM International Workshop on Quantum Software Engineering (Q-SE)},
   doi       = {10.1109/Q-SE52541.2021.00011},
+  pages = {16--21}
 }
 
 @article{hunter2007matplotlib,
@@ -570,11 +593,12 @@
   doi     = {10.22331/q-2023-07-20-1062},
 }
 
-@article{chen2022veriqbench,
-  title   = {{VeriQBench}: A Benchmark for Multiple Types of Quantum Circuits},
-  author  = {Kean Chen and others},
-  journal = {arXiv preprint arXiv:2206.10880},
-  year    = {2022},
+@misc{chen2022veriqbench,
+  title        = {{VeriQBench}: A Benchmark for Multiple Types of Quantum Circuits},
+  author       = {Kean Chen and Wang Fang and Ji Guan and Xin Hong and Mingyu Huang and Junyi Liu and Qisheng Wang and Mingsheng Ying},
+  howpublished = {arXiv:2206.10880},
+  year         = {2022},
+  doi          = {10.48550/arXiv.2206.10880}
 }
 
 @book{nipkow2002isabelle,
@@ -597,11 +621,11 @@
 
 % ---- added for the ICPC paper; VERIFY every entry below against Crossref/arXiv before submission ----
 @misc{javadi2024qiskit,
-  title         = {Quantum computing with {Qiskit}},
-  author        = {Ali Javadi-Abhari and Matthew Treinish and Kevin Krsulich and Christopher J. Wood and Jake Lishman and Julien Gacon and Simon Martiel and Paul D. Nation and Lev S. Bishop and Andrew W. Cross and Blake R. Johnson and Jay M. Gambetta},
-  year          = {2024},
-  eprint        = {2405.08810},
-  archivePrefix = {arXiv}
+  title        = {Quantum Computing with {Qiskit}},
+  author       = {Ali Javadi-Abhari and Matthew Treinish and Kevin Krsulich and Christopher J. Wood and Jake Lishman and Julien Gacon and Simon Martiel and Paul D. Nation and Lev S. Bishop and Andrew W. Cross and Blake R. Johnson and Jay M. Gambetta},
+  howpublished = {arXiv:2405.08810},
+  year         = {2024},
+  doi          = {10.48550/arXiv.2405.08810}
 }
 
 % Entries below: bibliographic data from Crossref (2026-10-23) or as printed on the paper itself.
@@ -616,13 +640,14 @@
 }
 @article{murillo2025roadmap,
   title     = {Quantum Software Engineering: Roadmap and Challenges Ahead},
-  author    = {Juan Manuel Murillo and Jose Garcia-Alonso and Enrique Moguel and Johanna Barzen and Frank Leymann and Shaukat Ali and Tao Yue and Paolo Arcaini and Ricardo P{\'e}rez-Castillo and Ignacio Garc{\'i}a-Rodr{\'i}guez de Guzm{\'a}n and Mario Piattini and Antonio Ruiz-Cort{\'e}s and Antonio Brogi and Jianjun Zhao and Andriy Miranskyy and Manuel Wimmer},
+  author    = {Juan Manuel Murillo and Jose Garcia-Alonso and Enrique Moguel and Johanna Barzen and Frank Leymann and Shaukat Ali and Tao Yue and Paolo Arcaini and Ricardo P{\'e}rez-Castillo and Ignacio {Garc{\'i}a-Rodr{\'i}guez de Guzm{\'a}n} and Mario Piattini and Antonio Ruiz-Cort{\'e}s and Antonio Brogi and Jianjun Zhao and Andriy Miranskyy and Manuel Wimmer},
   journal   = {ACM Transactions on Software Engineering and Methodology},
   volume    = {34},
   number    = {5},
   articleno = {154},
   year      = {2025},
-  doi       = {10.1145/3712002}
+  doi       = {10.1145/3712002},
+  pages = {154:1--154:48}
 }
 @article{ye2026llmqse,
   title     = {Large Language Models for Quantum Software Engineering: Opportunities and Challenges in Modeling, Generation, Testing, and Repair},
@@ -632,7 +657,8 @@
   number    = {9},
   articleno = {273},
   year      = {2026},
-  doi       = {10.1145/3828167}
+  doi       = {10.1145/3828167},
+  pages = {273:1--273:42}
 }
 @article{ali2022sequantum,
   title     = {When Software Engineering Meets Quantum Computing},
@@ -646,7 +672,7 @@
 }
 @inproceedings{daloisio2024llm,
   title     = {Exploring {LLM}-Driven Explanations for Quantum Algorithms},
-  author    = {Giordano d'Aloisio and Sophie Fortz and Carol Hanna and Daniel Fortunato and Avner Bensoussan and E{\~n}aut Mendiluze Usandizaga and Federica Sarro},
+  author    = {Giordano d'Aloisio and Sophie Fortz and Carol Hanna and Daniel Fortunato and Avner Bensoussan and E{\~n}aut {Mendiluze Usandizaga} and Federica Sarro},
   booktitle = {Proceedings of the 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)},
   pages     = {475--481},
   year      = {2024},
@@ -654,7 +680,7 @@
 }
 @inproceedings{mendiluze2021muskit,
   title     = {Muskit: A Mutation Analysis Tool for Quantum Software Testing},
-  author    = {Ena{\~n}ut Mendiluze and Shaukat Ali and Paolo Arcaini and Tao Yue},
+  author    = {E{\~n}aut Mendiluze and Shaukat Ali and Paolo Arcaini and Tao Yue},
   booktitle = {Proceedings of the 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)},
   pages     = {1266--1270},
   year      = {2021},
@@ -670,7 +696,7 @@
 }
 @incollection{garcia2022testing,
   title     = {Quantum Software Testing: Current Trends and Emerging Proposals},
-  author    = {Antonio Garc{\'i}a de la Barrera and Ignacio Garc{\'i}a-Rodr{\'i}guez de Guzm{\'a}n and Macario Polo and Jos{\'e} A. Cruz-Lemus},
+  author    = {Antonio {Garc{\'i}a de la Barrera} and Ignacio {Garc{\'i}a-Rodr{\'i}guez de Guzm{\'a}n} and Macario Polo and Jos{\'e} A. Cruz-Lemus},
   booktitle = {Quantum Software Engineering},
   editor    = {Manuel A. Serrano and Ricardo P{\'e}rez-Castillo and Mario Piattini},
   publisher = {Springer},
@@ -760,7 +786,7 @@
 }
 @article{metwalli2024testing,
   title     = {Testing and Debugging Quantum Circuits},
-  author    = {Sara Ayman Metwalli and Rodney Van Meter},
+  author    = {Sara Ayman Metwalli and Rodney {Van Meter}},
   journal   = {IEEE Transactions on Quantum Engineering},
   volume    = {5},
   pages     = {2500415},
@@ -777,7 +803,7 @@
   doi       = {10.22331/q-2018-08-06-79}
 }
 @article{amy2020staq,
-  title     = {staq---A full-stack quantum processing toolkit},
+  title     = {{staq}---{A} Full-Stack Quantum Processing Toolkit},
   author    = {Matthew Amy and Vlad Gheorghiu},
   journal   = {Quantum Science and Technology},
   volume    = {5},
@@ -788,7 +814,7 @@
 }
 @inproceedings{murali2019triq,
   title     = {Full-Stack, Real-System Quantum Computer Studies: Architectural Comparisons and Design Insights},
-  author    = {Prakash Murali and Norbert Matthias Linke and Margaret Martonosi and Ali Javadi Abhari and Nhung Hong Nguyen and Cinthia Huerta Alderete},
+  author    = {Prakash Murali and Norbert Matthias Linke and Margaret Martonosi and Ali {Javadi-Abhari} and Nhung Hong Nguyen and Cinthia Huerta Alderete},
   booktitle = {International Symposium on Computer Architecture (ISCA)},
   pages     = {527--540},
   year      = {2019},
@@ -871,6 +897,6 @@
   title        = {The {Qiskit} Textbook},
   author       = {{Qiskit Community}},
   howpublished = {\url{https://github.com/qiskit-community/qiskit-textbook}},
-  note         = {Archived repository, accessed 2026-10-25},
+  note         = {Accessed 2026-10-26},
   year         = {2024}
 }
