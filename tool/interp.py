@@ -606,6 +606,8 @@ class Interpreter:
             if isinstance(x, list) and isinstance(y, list) and isinstance(op, ast.Add):
                 return x + y, lines
             return UNK, lines
+        if not self._small_enough(op, x, y):
+            return UNK, lines
         try:
             f = {ast.Add: lambda p, q: p + q, ast.Sub: lambda p, q: p - q, ast.Mult: lambda p, q: p * q,
                  ast.Div: lambda p, q: p / q, ast.FloorDiv: lambda p, q: p // q, ast.Mod: lambda p, q: p % q,
@@ -617,6 +619,26 @@ class Interpreter:
             return r, lines
         except Exception:
             return UNK, lines
+
+    @staticmethod
+    def _small_enough(op, x, y) -> bool:
+        """Refuse operations whose result could be huge (they run in C and cannot be interrupted): large powers,
+        shifts and sequence repetitions. The result is then UNK, which is sound."""
+        def big(v, lim):
+            return isinstance(v, (int, float)) and not isinstance(v, bool) and abs(v) > lim
+        if isinstance(op, ast.Pow):
+            if isinstance(x, (int, float)) and isinstance(y, (int, float)):
+                if big(y, 64) or (big(x, 2 ** 20) and not (isinstance(y, (int, float)) and abs(y) <= 1)):
+                    return False
+        if isinstance(op, (ast.LShift,)) and big(y, 64):
+            return False
+        if isinstance(op, ast.Mult):
+            for a_, b_ in ((x, y), (y, x)):
+                if isinstance(a_, (list, tuple, str)) and isinstance(b_, int) and len(a_) * abs(b_) > 100_000:
+                    return False
+            if big(x, 10 ** 300) or big(y, 10 ** 300):
+                return False
+        return True
 
     def ev_UnaryOp(self, n, L, env):
         x, xl = self.ev(n.operand, L, env)

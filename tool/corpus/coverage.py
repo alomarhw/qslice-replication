@@ -73,7 +73,7 @@ def main():
     rows = []
     from concurrent.futures import ProcessPoolExecutor
     with ProcessPoolExecutor(max_workers=a.workers) as ex:
-        for i, r in enumerate(ex.map(one, files, [a.timeout] * len(files), chunksize=8), 1):
+        for i, r in enumerate(ex.map(one, files, [a.timeout] * len(files), chunksize=1), 1):
             rows.append(r)
             if i % 500 == 0:
                 print(f"  {i}/{len(files)}", flush=True)
