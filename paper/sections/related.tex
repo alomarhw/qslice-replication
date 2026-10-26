@@ -38,9 +38,11 @@ Studies of code smells take a similar per-qubit view of circuits~\cite{chen2023s
 \paragraph*{Entanglement analysis}
 A line of work approximates statically which qubits may be entangled, with type systems for patterns and
 higher-order functions~\cite{perdrix2007types, prost2009reasoning}, abstract
-interpretation~\cite{perdrix2008entanglement}, the stabilizer formalism~\cite{honda2015stabilizer}, a
+interpretation~\cite{perdrix2008entanglement, yu2021abstract}, the stabilizer formalism~\cite{honda2015stabilizer}, a
 type system that tracks purity~\cite{yuan2022twist}, and dataflow rules for Q\#
-programs~\cite{xia2025entanglement}. These analyses answer whether qubits are correlated, which matters
+programs~\cite{xia2025entanglement}. The ScaffCC compiler conservatively assumes that two qubits which
+interact may be entangled~\cite{javadiabhari2015scaffcc, zhao2023qchecker}, which is the entanglement
+closure we evaluate. These analyses answer whether qubits are correlated, which matters
 for optimization and for reasoning about measurement. They are not slicers, and
 Proposition~\ref{prop:ent} shows that their answer does not decide dependence.
 
@@ -64,7 +66,7 @@ barriers, depth or gate type~\cite{qiskitaddonutils}. Neither has a criterion, a
 fault by hand. Metwalli and Van Meter's phase tests show that a phase is wrong but not where to look. A criterion
 over a set of qubits answers that question. Bug studies~\cite{zhao2021bugpatterns} and benchmarks such
 as Bugs4Q~\cite{zhao2023bugs4q} catalogue real faults, and static checkers such as
-QChecker~\cite{zhao2023qchecker} detect known bug patterns. Mutation
+QChecker~\cite{zhao2023qchecker} detect known bug patterns but not wrong outputs. Mutation
 tools~\cite{mendiluze2021muskit, fortunato2022qmutpy} and fault models~\cite{garcia2022testing} supply
 the faults of our study, and mutation-based fault localization has been adapted to quantum programs by
 Ishimoto et al.~\cite{ishimoto2025mbfl}. Slicing is complementary to these tools, since it tells them

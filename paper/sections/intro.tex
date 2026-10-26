@@ -2,10 +2,12 @@
 
 Program slicing finds the statements of a program that can affect a value at a point of interest, and
 debugging is where developers use it~\cite{weiser1982programmers}. Quantum programs are hard to debug.
-Their intermediate states cannot be inspected without disturbing them, their outcomes are probabilistic,
+Their intermediate states cannot be inspected without disturbing them, so assertions on a state work only in
+simulation~\cite{svore2018qsharp}. Their outcomes are probabilistic,
 and the effect of a gate on one qubit may show only in the outcomes of
 another~\cite{ali2022sequantum, murillo2025roadmap}. Developers who are new to quantum computing also find
-the code itself hard to understand~\cite{daloisio2024llm}. A slicer that tells a developer which lines of a
+the code itself hard to understand~\cite{daloisio2024llm}. Static checkers find known bug patterns, but
+22 of the 42 bugs in Bugs4Q are wrong outputs that such checkers cannot detect~\cite{zhao2023qchecker}. A slicer that tells a developer which lines of a
 quantum program can influence a wrong outcome would help with both problems.
 
 Slicing has been proposed for quantum programs. Yu and Zhao's quantum program dependence

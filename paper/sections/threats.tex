@@ -25,5 +25,7 @@ Exact simulation limits corpus~A to \numMaxQubits{} qubits. Corpus~L extends the
 20 qubits but not the soundness checks, and Theorem~\ref{thm:sound} covers any width. The circuits come
 from benchmark suites rather than applications, and the real bugs are few and small. All programs are
 Qiskit programs, and the dependence rules are stated on circuits, so they carry over to other languages
-once their programs are lowered to circuits. Seeded faults may differ from real ones. Our operators
+once their programs are lowered to circuits. A program whose loops depend on measurement outcomes, such as
+a repeat-until-success loop in Q\#~\cite{svore2018qsharp}, has no single circuit, and a static slicer
+must over-approximate its iterations. Seeded faults may differ from real ones. Our operators
 come from three published fault models.

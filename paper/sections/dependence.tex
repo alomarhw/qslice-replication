@@ -141,7 +141,8 @@ $\ket{0\dots0}$.
 \end{proposition}
 
 In the ansatz of Fig.~\ref{fig:ansatz}a, each \texttt{cx(qubit, qubit + 1)} acts on its control as
-well as its target. After the first layer, the state of $q_0$ depends on the rotations of $q_1$ and $q_2$
+well as its target. A controlled operation acts coherently on a superposition of its
+controls~\cite{svore2018qsharp}, so its control is not a classical read. After the first layer, the state of $q_0$ depends on the rotations of $q_1$ and $q_2$
 through these gates. The classical PDG treats a control as read only, so its slice of $q_0$ keeps only
 the \numAnsCpdgOps{} rotations on $q_0$ itself, the shaded nodes of Fig.~\ref{fig:ansatz}b, with
 fidelity \numAnsCpdgFidelity{}. The edges it lacks, drawn in orange, are exactly the quantum edges of Fig.~\ref{fig:ansatz}c. Control
