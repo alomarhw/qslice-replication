@@ -67,8 +67,8 @@ instructions it keeps. The real bugs come from Bugs4Q~\cite{zhao2023bugs4q}. Of 
 entries, \numBugsFourQIncluded{} are circuit-level faults whose buggy and fixed programs can be ported
 mechanically to the current Qiskit. Of these, \numBugsFourQKilled{} change a qubit's measured
 distribution, \numBugsFourQInjured{} changes only a phase, \numBugsFourQAlive{} changes no qubit, and
-\numBugsFourQExcluded{} exceed the oracle. We map their slices back to the lines of the original Qiskit
-programs.
+\numBugsFourQExcluded{} exceed the oracle. Their slices in lines come from our tool, which reads the
+original programs (Section~\ref{sec:tool}).
 
 \paragraph*{Fault localization}
 Mutation-based fault localization ranks instructions with the Ochiai formula, as for quantum programs

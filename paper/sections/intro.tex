@@ -49,17 +49,18 @@ computed on. It removes the faulty operation in \numCQFour{} seeded faults and l
 fault-localization accuracy of three language models by up to \numTTwoMaxDrop{} percentage points. A
 criterion over all affected qubits recovers \numCQFourRecovered{} of these faults.
 
-This paper makes four contributions. It gives semantic definitions of quantum dependence, slice
+This paper makes five contributions. It gives semantic definitions of quantum dependence, slice
 soundness and dependence completeness, with a criterion over sets of qubits, and proves that the wire
 rule is sound and complete (Section~\ref{sec:dependence}). It reports the first comparison of quantum
 dependence definitions against a semantic ground truth, covering soundness, completeness, robustness to
 inputs and precision. It measures what each definition does to fault localization, by hand, with
-mutation-based fault localization and with language models, on seeded faults and on real bugs mapped to
-the lines of their Qiskit programs. Finally, it provides a replication package that regenerates every
-number in the paper.
+mutation-based fault localization and with language models, on seeded faults and on real bugs. It
+provides a tool that slices Qiskit programs from their source, statically, with the validated rule, and
+reports the lines and loop iterations of a slice (Section~\ref{sec:tool}). Finally, it provides a
+replication package that regenerates every number in the paper.
 
 Section~\ref{sec:example} presents the debugging scenario, Section~\ref{sec:dependence} the definitions,
-Section~\ref{sec:design} the study design and Section~\ref{sec:results} the results.
+Section~\ref{sec:tool} the tool, Section~\ref{sec:design} the study design and Section~\ref{sec:results} the results.
 Section~\ref{sec:discussion} discusses what the results mean for tool builders,
 Section~\ref{sec:threats} the threats to validity, Section~\ref{sec:related} related work, and
 Section~\ref{sec:conclusion} concludes.

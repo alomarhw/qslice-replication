@@ -7,6 +7,8 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{listings}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 \newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
 \providecommand{\ket}[1]{\lvert #1\rangle}
 \newtheorem{definition}{Definition}
@@ -55,6 +57,28 @@ quantum programs, program slicing, program dependence, debugging, fault localiza
 \end{figure}
 
 \input{sections/dependence}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_overview.pdf}
+  \caption{The tool on the program of Fig.~\ref{fig:motivating}, statically. srcML parses the program (1, 2);
+  the letters mark the elements the tool reads. Static interpretation gives the operation trace (3), the wire
+  rule its dependence graph (4), and the backward pass from the criterion $\{q_0\}$ the slice in lines (5).
+  The \texttt{cx} writes its control $q_0$, so the faulty line~6 is in the slice; the classical PDG's last
+  writer of $q_0$ is line~5, and it misses the fault. Computed by the tool from the original Bugs4Q file.}
+  \label{fig:overview}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_srcml_loops.pdf}
+  \caption{srcML of the ansatz of Fig.~\ref{fig:ansatz}a, lines 10 to 15, with the elements the tool reads
+  (1), and its unrolled operations in the slice of $q_0$ (2). The angle arguments are elided. Every
+  operation keeps its line and iteration, so the tool can report which iterations of a line matter.}
+  \label{fig:loops}
+\end{figure*}
+
+\input{sections/tool}
 
 \input{sections/design}
 

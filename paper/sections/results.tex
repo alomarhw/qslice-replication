@@ -144,8 +144,8 @@ Slicing does not hand a model information it lacks; it can only remove the fault
 On the real Bugs4Q programs, the wire slices keep every faulty line, as do the full programs, while
 removing little, \numLinesLcMean{} of \numLinesFullMean{} lines on average over \numLinesUnits{} units.
 These programs are small. Def-use loses the faulty line in one unit, the bug of
-Section~\ref{sec:example}. An independent mapping by the authors' static Qiskit parser agrees with ours
-on all \numMapCrossAgree{} instructions both could map.
+Section~\ref{sec:example}. The tool computes these lines from the original programs without running them,
+and they equal the slices of the prepared circuits mapped to lines on all \numToolTTwoUnits{} units.
 
 \subsection{RQ4: What does it cost?}
 
@@ -165,4 +165,5 @@ second-largest depth and for all \numCostDepthOneSixtyOverLimit{} at the largest
 exponentially with width, reaching \numCostWidthQMax{}~s at 14 qubits. On corpus~L it completes on
 \numCorpusLCompleted{} of \numCorpusLCircuits{} circuits of 15 to 20 qubits. A graph with entanglement
 edges is itself costly, because the closure links every pair of operations on a coupling component; the
-wire rule needs only the per-qubit edges.
+wire rule needs only the per-qubit edges. On source code, the tool takes \numToolBugsMedianMs{}~ms per Bugs4Q program
+in the median, parsing included.

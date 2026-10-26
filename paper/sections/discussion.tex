@@ -35,11 +35,11 @@ qubits. A distance of measured distributions is blind to phase, so these runs sh
 does not break execution on hardware.
 
 \paragraph*{The source level}
-Our slices are sets of executed operations, and a developer reads lines. A line inside a loop creates
-one operation per iteration, and the line belongs to the slice when any of them does. Line~12 of the
-ansatz in Fig.~\ref{fig:ansatz} creates the rotations of every qubit in both layers. The second-layer
-rotation of $q_2$ is not a dependence of $q_0$, yet line~12 stays in the slice because the other
-rotations are. A line-level slice can therefore keep code that no operation-level slice needs. Showing developers
-the iterations that matter, rather than whole lines, needs a slicer that works on the source and knows
-which iteration created each operation. Building it on a source representation such as srcML, which has
-been extended to quantum languages~\cite{behler2024supporting, behler2025static}, is the next step.
+A developer reads lines, and a line inside a loop creates one operation per iteration. The line
+belongs to the slice when any of them does, so a line-level slice can keep code that no operation-level
+slice needs. Fig.~\ref{fig:loops} shows this for the ansatz. In its second layer, the rotations of $q_2$
+are not dependences of $q_0$, yet lines 12 and 13 are in the slice. Our tool therefore reports the
+iterations of each line. Its static interpretation has limits. A circuit rewritten as a DAG or built
+from a QASM string is reported but not traced, and a loop over a range computed at run time is
+over-approximated. srcML's markup for OpenQASM~\cite{behler2024supporting, behler2025static} would let
+the same back end slice OpenQASM programs.

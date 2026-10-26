@@ -1,0 +1,142 @@
+[
+ {
+  "program": "tool/tests/big/bernstein_vazirani.py",
+  "ops": 45,
+  "qubits": 13,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/big/grover.py",
+  "ops": 334,
+  "qubits": 7,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/big/qaoa_maxcut.py",
+  "ops": 89,
+  "qubits": 10,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/big/qft_roundtrip.py",
+  "ops": 185,
+  "qubits": 12,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/big/qpe.py",
+  "ops": 312,
+  "qubits": 9,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/big/repetition_code.py",
+  "ops": 34,
+  "qubits": 9,
+  "trace_equal": true,
+  "slices_equal": false,
+  "differing_qubits": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "nested_conditions": true
+ },
+ {
+  "program": "tool/tests/big/ripple_adder.py",
+  "ops": 68,
+  "qubits": 18,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/big/shor_mod15.py",
+  "ops": 1842,
+  "qubits": 12,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/big/teleport_chain.py",
+  "ops": 34,
+  "qubits": 9,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/big/two_local_vqe.py",
+  "ops": 135,
+  "qubits": 9,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/programs/t01_functions.py",
+  "ops": 14,
+  "qubits": 6,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/programs/t02_broadcast_lists.py",
+  "ops": 23,
+  "qubits": 5,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "tool/tests/programs/t03_control.py",
+  "ops": 14,
+  "qubits": 3,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "paper/figures/src/programs/ansatz.py",
+  "ops": 19,
+  "qubits": 3,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
+  "program": "paper/figures/src/programs/teleport.py",
+  "ops": 9,
+  "qubits": 3,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ }
+]

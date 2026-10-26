@@ -1468,6 +1468,126 @@
   "tex": "651",
   "source": "results/icpc/corpus_l/slices.csv"
  },
+ "ToolDevPrograms": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/tool_acceptance/dev_checks.json"
+ },
+ "ToolDevTraceEqual": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/tool_acceptance/dev_checks.json"
+ },
+ "ToolDevSliceEqual": {
+  "value": 14,
+  "tex": "14",
+  "source": "results/icpc/tool_acceptance/dev_checks.json"
+ },
+ "ToolDevMaxOps": {
+  "value": 1842,
+  "tex": "1{,}842",
+  "source": "results/icpc/tool_acceptance/dev_checks.json"
+ },
+ "ToolTOneBugs": {
+  "value": 8,
+  "tex": "8",
+  "source": "results/icpc/tool_acceptance/tool-v2/summary.json"
+ },
+ "ToolTOneExact": {
+  "value": 7,
+  "tex": "7",
+  "source": "results/icpc/tool_acceptance/tool-v2/summary.json"
+ },
+ "ToolTOneOps": {
+  "value": 137,
+  "tex": "137",
+  "source": "results/icpc/tool_acceptance/tool-v2/summary.json"
+ },
+ "ToolTOneOpsMatched": {
+  "value": 136,
+  "tex": "136",
+  "source": "results/icpc/tool_acceptance/tool-v2/summary.json"
+ },
+ "ToolTTwoUnits": {
+  "value": 17,
+  "tex": "17",
+  "source": "results/icpc/tool_acceptance/tool-v2/summary.json"
+ },
+ "ToolTTwoEqual": {
+  "value": 17,
+  "tex": "17",
+  "source": "results/icpc/tool_acceptance/tool-v2/summary.json"
+ },
+ "ToolBugsFiles": {
+  "value": 218,
+  "tex": "218",
+  "source": "results/icpc/tool_acceptance/tool-v2/t3_bugs4q.csv"
+ },
+ "ToolBugsQiskit": {
+  "value": 151,
+  "tex": "151",
+  "source": "results/icpc/tool_acceptance/tool-v2/t3_bugs4q.csv"
+ },
+ "ToolBugsParsed": {
+  "value": 151,
+  "tex": "151",
+  "source": "results/icpc/tool_acceptance/tool-v2/t3_bugs4q.csv"
+ },
+ "ToolBugsCircuit": {
+  "value": 111,
+  "tex": "111",
+  "source": "results/icpc/tool_acceptance/tool-v2/t3_bugs4q.csv"
+ },
+ "ToolBugsResolved": {
+  "value": 103,
+  "tex": "103",
+  "source": "results/icpc/tool_acceptance/tool-v2/t3_bugs4q.csv"
+ },
+ "ToolBugsCrashes": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/tool_acceptance/tool-v2/t3_bugs4q.csv"
+ },
+ "ToolBugsMedianMs": {
+  "value": 40.0,
+  "tex": "40",
+  "source": "results/icpc/tool_acceptance/tool-v2/t3_bugs4q.csv"
+ },
+ "ToolTextbookFiles": {
+  "value": 85,
+  "tex": "85",
+  "source": "results/icpc/tool_coverage/textbook.csv"
+ },
+ "ToolTextbookQiskit": {
+  "value": 72,
+  "tex": "72",
+  "source": "results/icpc/tool_coverage/textbook.csv"
+ },
+ "ToolTextbookParsed": {
+  "value": 72,
+  "tex": "72",
+  "source": "results/icpc/tool_coverage/textbook.csv"
+ },
+ "ToolTextbookCircuit": {
+  "value": 59,
+  "tex": "59",
+  "source": "results/icpc/tool_coverage/textbook.csv"
+ },
+ "ToolTextbookResolved": {
+  "value": 55,
+  "tex": "55",
+  "source": "results/icpc/tool_coverage/textbook.csv"
+ },
+ "ToolTextbookCrashes": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/tool_coverage/textbook.csv"
+ },
+ "ToolTextbookMedianMs": {
+  "value": 75.0,
+  "tex": "75",
+  "source": "results/icpc/tool_coverage/textbook.csv"
+ },
  "MotFidelity": {
   "value": 0.49999999999999967,
   "tex": "0.50",
