@@ -5,7 +5,10 @@ Weiser introduced slicing as a debugging aid~\cite{weiser1982programmers}. Ferra
 al.~\cite{ferrante1987pdg} and, across procedures, Horwitz et al.~\cite{horwitz1990interprocedural}
 reduced it to reachability in a dependence graph, and dynamic slicing restricts a slice to one
 execution~\cite{korel1988dynamic, agrawal1990dynamic}, much as state-based pruning restricts it to one
-input. Surveys cover the many variants~\cite{tip1994a, harman2008program}. A recent retrospective notes
+input. Surveys cover the many variants~\cite{tip1994a, harman2008program}. General analysis frameworks such as WALA
+provide dependence-graph slicers for Java, JavaScript and, through a separate front end, Python~\cite{wala}.
+Applied to a Qiskit program, such a slicer sees each gate as a call on one circuit object, so it cannot
+tell which qubits an operation depends on. A recent retrospective notes
 that slices can be defined by almost any semantic method, as the application requires, and names quantum
 programs as a future direction~\cite{gallagher2025program}. We follow that view and define the slice of a
 quantum program by the reduced state of its criterion. Probabilistic programs already showed that
@@ -56,8 +59,9 @@ A recent roadmap finds that debugging research for quantum programs is still in 
 lists slicing among its opportunities, and finds almost no use of dependence graphs or data-flow
 analysis~\cite{ramalho2025road}. The slicing it reviews is that of Metwalli and Van
 Meter~\cite{metwalli2022debugging, metwalli2024testing}, which splits a circuit at breakpoints the
-developer places and drops idle qubits. It has no criterion, and the developer still narrows the
-fault by hand, since their phase tests show that a phase is wrong but not where to look. A criterion
+developer places and drops idle qubits. Qiskit's own slicing utilities likewise partition a circuit, by
+barriers, depth or gate type~\cite{qiskitaddonutils}. Neither has a criterion, and the developer still narrows the
+fault by hand. Metwalli and Van Meter's phase tests show that a phase is wrong but not where to look. A criterion
 over a set of qubits answers that question. Bug studies~\cite{zhao2021bugpatterns} and benchmarks such
 as Bugs4Q~\cite{zhao2023bugs4q} catalogue real faults, and static checkers such as
 QChecker~\cite{zhao2023qchecker} detect known bug patterns. Mutation
