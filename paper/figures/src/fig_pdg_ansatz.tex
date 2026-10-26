@@ -6,7 +6,7 @@
 \lstdefinestyle{qiskit}{language=Python,basicstyle=\ttfamily\fontsize{5.6}{6.9}\selectfont,numbers=left,
   numberstyle=\fontsize{5}{6}\selectfont\color{black!55},numbersep=3pt,keywordstyle=\color{cblue}\bfseries,
   commentstyle=\color{black!55}\itshape,showstringspaces=false,frame=single,rulecolor=\color{black!25},
-  xleftmargin=9pt,framexleftmargin=9pt,columns=flexible,keepspaces=true,aboveskip=0pt,belowskip=0pt}
+  xleftmargin=13pt,framexleftmargin=11pt,framerule=0.4pt,columns=flexible,keepspaces=true,aboveskip=0pt,belowskip=0pt}
 \tikzset{
   op/.style={rectangle, rounded corners=2pt, draw=black!60, line width=0.45pt, fill=white, align=center,
              inner xsep=2pt, inner ysep=1.3pt, font=\ttfamily\fontsize{6}{6.6}\selectfont},
@@ -23,7 +23,7 @@
   note/.style={font=\scriptsize, anchor=north, align=center},
 }
 \begin{document}
-\begin{minipage}{17.6cm}\begin{minipage}[t]{6.4cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=15,firstnumber=4]{programs/_display/ansatz.py}\end{minipage}\hfill\begin{minipage}[t]{11.1cm}\vspace{0pt}\centering\begin{tikzpicture}
+\begin{minipage}{17.6cm}\begin{minipage}[t]{6.55cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=15,firstnumber=4]{programs/_display/ansatz.py}\end{minipage}\hfill\begin{minipage}[t]{10.95cm}\vspace{0pt}\centering\begin{tikzpicture}
 \begin{scope}[xshift=0.000cm]
 \node[insl] (m0) at (0.752,6.333) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
 \node[insl] (m1) at (0.752,5.466) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};

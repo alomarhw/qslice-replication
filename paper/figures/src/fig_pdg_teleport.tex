@@ -6,7 +6,7 @@
 \lstdefinestyle{qiskit}{language=Python,basicstyle=\ttfamily\fontsize{5.6}{6.9}\selectfont,numbers=left,
   numberstyle=\fontsize{5}{6}\selectfont\color{black!55},numbersep=3pt,keywordstyle=\color{cblue}\bfseries,
   commentstyle=\color{black!55}\itshape,showstringspaces=false,frame=single,rulecolor=\color{black!25},
-  xleftmargin=9pt,framexleftmargin=9pt,columns=flexible,keepspaces=true,aboveskip=0pt,belowskip=0pt}
+  xleftmargin=13pt,framexleftmargin=11pt,framerule=0.4pt,columns=flexible,keepspaces=true,aboveskip=0pt,belowskip=0pt}
 \tikzset{
   op/.style={rectangle, rounded corners=2pt, draw=black!60, line width=0.45pt, fill=white, align=center,
              inner xsep=2pt, inner ysep=1.3pt, font=\ttfamily\fontsize{6}{6.6}\selectfont},
@@ -23,7 +23,7 @@
   note/.style={font=\scriptsize, anchor=north, align=center},
 }
 \begin{document}
-\begin{minipage}{8.7cm}\begin{minipage}[t]{3.1cm}\vspace{0pt}{\footnotesize\textbf{(a) Teleportation}}\\[3pt]\lstinputlisting[style=qiskit,firstline=7,lastline=17,firstnumber=7]{programs/_display/teleport.py}\end{minipage}\hfill\begin{minipage}[t]{5.4cm}\vspace{0pt}\centering\begin{tikzpicture}
+\begin{minipage}{8.7cm}\begin{minipage}[t]{3.55cm}\vspace{0pt}{\footnotesize\textbf{(a) Teleportation}}\\[3pt]\lstinputlisting[style=qiskit,firstline=7,lastline=17,firstnumber=7]{programs/_display/teleport.py}\end{minipage}\hfill\begin{minipage}[t]{5.05cm}\vspace{0pt}\centering\begin{tikzpicture}
 \begin{scope}[xshift=0.000cm]
 \node[missdepsl] (m0) at (1.228,3.732) {ry(0.90) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 7}};
 \node[insl] (m1) at (2.852,3.732) {h q1\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 8}};
@@ -45,6 +45,6 @@
 \draw[controlE] (m6) -- (m7);
 \draw[dataE] (m7) -- (m8);
 \node[ttl] at (2.205,4.092) {(b) Classical PDG};
-\node[note] at (2.205,-0.076) {slice of $q_2$: 9 of 9 operations, $F = 1.00$\\def-use, no control edges: 4 of 9, $F = 0.50$};
+\node[note] at (2.205,-0.076) {slice of $q_2$: 9 of 9, $F = 1.00$\\def-use: 4 of 9, $F = 0.50$};
 \end{scope}
 \end{tikzpicture}\end{minipage}\\[4pt]\centering{\scriptsize \mbox{\tikz\draw[dataE](0,0)--(0.45,0); data}\hspace{0.9em} \mbox{\tikz\draw[controlE](0,0)--(0.45,0); control}\hspace{0.9em} \mbox{\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice}}\\[1pt]{\scriptsize \mbox{\tikz\node[missdepsl,minimum width=4mm,minimum height=2.4mm]{}; in the slice, missed by def-use}\hspace{0.9em} \mbox{\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion}}\end{minipage}\end{document}
