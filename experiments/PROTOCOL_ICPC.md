@@ -1022,3 +1022,13 @@ These were found while implementing §6, from the API documentation. No LLM call
   - A global step budget and statement-level errors are reported as not traced, instead of failing.
   - All earlier checks are rerun on tool-v3 (development programs, T1-T3, textbook, LintQ), and the
     numbers of every version are kept.
+- **Coverage on LintQ's corpus, tool-v3 (2026-10-26).** 4,136 of 7,567 programs yield a circuit (2,539 of them
+  fully resolved), and none fails. 463 programs carry a not-traced note.
+- **tool-v4 (`8d974dc`, tag `tool-v4`), soundness fix found by the pre-submission review.** tool-v3 interpreted
+  the body of a loop with an unknown iteration count twice. A dependence can be carried through more
+  iterations than that, so for some criteria the slice missed operations. For example, with the body
+  `cx(2,3); cx(1,2); cx(0,1)` and criterion q3, the dependence on `cx(0,1)` needs three iterations.
+  tool-v4 repeats the body len(touched)+1 times, and at least twice. Each further iteration can add only a
+  qubit the body touches to the needed set, so this many copies cover every dependence chain. The case is
+  a test program (`tool/tests/programs/unknown_loop.py`). All checks are rerun on tool-v4, and the earlier
+  versions' results are kept.
