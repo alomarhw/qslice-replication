@@ -992,3 +992,14 @@ These were found while implementing §6, from the API documentation. No LLM call
   3 construct tests, 10 larger ones, up to 1,842 operations), the static trace equals the executed
   circuit. Barriers are dropped, as the study's loader does. The slice of every qubit equals S-lc, except
   on the nested-condition program, where the difference is S-lc's.
+- **Freeze (2026-10-26, before any T1-T3 output).** The tool is frozen at commit `c797b25` (tag `tool-v1`).
+  - **Bugs4Q copy.** The /tmp copy of Bugs4Q was emptied by the system. The pinned commit 7a71983 was
+    downloaded again into `qslice-icpc-data/bugs4q` (218 Python files, as before). Checked against the
+    study's records: every one of the 136 source-map instructions points to an original line that
+    contains its gate call. The 9 apparent differences are the port's `cu1` -> `cp` renaming.
+  - **Comparison rules, fixed now.**
+    - T1 compares the tool's operations, without barriers and terminal measurements (as the study's
+      loader drops them), with the prepared circuit. Gate names are normalized for the port's API
+      renamings (`u1`->`p`, `cu1`->`cp`, `cnot`->`cx`, `toffoli`->`ccx`, `u3`->`u`, `iden`->`id`).
+    - T2 compares the lines of the operations in the tool's wire slice with the original lines of
+      S-lc's operations on the prepared circuit, mapped through `results/icpc/source_map/instructions.csv`.
