@@ -7,7 +7,7 @@
   to prepare $(\ket{01}+\ket{10})/\sqrt{2}$, and line~6 should apply $X$. (b)~The buggy outcomes are
   uniform over all four bit strings, yet each qubit alone looks as intended. (c)~Asked which lines determine
   $q_0$, the classical PDG keeps the shaded line~5 alone and misses the dashed faulty line~6 and CNOT, and
-  the wire rule keeps lines~5 to~7. Outcomes, slices and dependences are computed by the study's code.}
+  the QDG keeps lines~5 to~7. Outcomes, slices and dependences are computed by the study's code.}
   \label{fig:motivating}
 \end{figure}
 
@@ -39,7 +39,7 @@ bug is.
 Line~6 is nonetheless a dependence of $q_0$. Replacing \texttt{h(1)} by the intended \texttt{x(1)}
 turns $q_0$ from a pure state, which is fully determined, into a maximally mixed one, which behaves as a
 uniformly random bit, and the two states have fidelity only \numMotFidelity{}. A CNOT acts on its control
-as well as its target. The wire rule, which lets every gate read and write all its qubits, keeps lines~5
+as well as its target. The QDG, which lets every gate read and write all its qubits, keeps lines~5
 to~7, as the right of Fig.~\ref{fig:motivating}c shows. Its slice for the pair $\{q_0, q_1\}$ is the same,
 and it contains the bug.
 

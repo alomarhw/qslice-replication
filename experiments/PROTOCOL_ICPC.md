@@ -1051,3 +1051,8 @@ These were found while implementing §6, from the API documentation. No LLM call
   (QDG) and the baseline "QPDG (Yu and Zhao)". In the code under `qslice/`, `method_eval/` and `archive/`,
   the class `QDG` is the earlier version's typed graph, which S-yz is built from; it is not the paper's QDG.
 - Code: `slicers/yuzhao.py::yuzhao_flow_slice`, driver `icpc/yz_flow.py`, output `results/icpc/yz_flow/`.
+- **Outcome (2026-10-26).** Corpus A: S-yzf is sound on all 784 pairs (0 of 80 dynamic pairs wrong), recall
+  1.000, precision 0.849, mean size 77.5% (S-yz 78.6%, S-lc 70.4%, dependence set 65.6%). Every S-yzf slice
+  contains the S-lc slice and lies within the S-yz slice, and the recomputed S-yz equals the committed RQ1
+  records. Families: 0 of 819 pairs unsound (S-yz also 0). Catalogue: 0 of 24 unsound. Reported as an
+  exploratory row of Table I and one sentence in RQ1.

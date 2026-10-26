@@ -196,7 +196,7 @@ def main():
     tot = len(keep)
     allops = len(circ.ops) - len(term)
     o.append(rf"\node[note, anchor=north west, align=left, text width={WR - 0.1}cm] at ({X + 0.05},{-1.85}) "
-             rf"{{Filled squares are in the wire slice of $q_0$, {tot} of {allops} operations. The lines are the same in every "
+             rf"{{Filled squares are in the QDG slice of $q_0$, {tot} of {allops} operations. The lines are the same in every "
              r"iteration, but in the second layer the rotations of $q_2$ and its \texttt{cx} are not dependences of $q_0$; "
              r"a line-level slice keeps lines 12, 13 and 15 anyway.};")
     o.append(r"\end{tikzpicture}")

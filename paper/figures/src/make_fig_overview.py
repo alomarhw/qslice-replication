@@ -178,7 +178,7 @@ def main():
         o.append(rf"\node[xml] at ({X2 + 0.08 + 0.13 * d},{y0 - i * 0.255}) {{{xml_tex(r)}}};")
     legend = (r"\hl{a}\,\texttt{call} $\to$ one operation\quad \hl{b}\,\texttt{cx} $\to$ gate\\"
               rf"\hl{{c}}\,\texttt{{0}},\,\texttt{{1}} $\to$ $q_{{{lits[0]}}}$ control, $q_{{{lits[1]}}}$ target\\"
-              rf"\hl{{d}}\,position $\to$ line {cx.line}\quad \textcolor{{wire}}{{the wire rule writes both}}")
+              rf"\hl{{d}}\,position $\to$ line {cx.line}\quad \textcolor{{wire}}{{the QDG writes both}}")
     o.append(rf"\node[anchor=north west, align=left, font=\fontsize{{6.2}}{{7.6}}\selectfont, text=ink, inner sep=0pt] at "
              rf"({X2 + 0.08},{y0 - len(rows) * 0.255 - 0.08}) {{{legend}}};")
 
@@ -199,7 +199,7 @@ def main():
              r"{Read statically. Grey measurements are terminal.};")
 
     # ---------------------------------------------------------------- 4 dependence graph (wire rule)
-    header(X4, 4, "Dependence graph", W4)
+    header(X4, 4, "QDG", W4)
     gx = X4 + 0.3
     nodes = {}
     for op in ops:
@@ -220,12 +220,12 @@ def main():
     o.append(r"\draw[->, wire, line width=0.9pt] (crit) -- node[right, font=\fontsize{5.6}{6.4}\selectfont, text=wire, align=left] {last writer,\\[-1pt]\texttt{cx} writes $q_0$} (g2);")
     o.append(r"\draw[->, pdg, line width=0.7pt, dash pattern=on 1.6pt off 1.1pt] (crit.west) to[out=180, in=180] (g0.west);")
     o.append(rf"\node[note, anchor=north west, align=left, text width={W4 - 0.1}cm] at ({X4 + 0.04},{top - 2.75}) "
-             r"{Shaded nodes are the wire rule's backward reach, and the \textcolor{pdg}{dashed} arrow is the classical PDG's last writer.};")
+             r"{Shaded nodes are the QDG's backward reach, and the \textcolor{pdg}{dashed} arrow is the classical PDG's last writer.};")
 
     # ---------------------------------------------------------------- 5 slice on the source
     header(X5, 5, "Slice of $q_0$", W5)
     cw, cp = X5 + 0.2, X5 + 0.68
-    o.append(rf"\node[font=\fontsize{{5.8}}{{6.5}}\selectfont\bfseries, text=wire] at ({cw},{top + 0.13}) {{wire}};")
+    o.append(rf"\node[font=\fontsize{{5.8}}{{6.5}}\selectfont\bfseries, text=wire] at ({cw},{top + 0.13}) {{QDG}};")
     o.append(rf"\node[font=\fontsize{{5.8}}{{6.5}}\selectfont\bfseries, text=pdg] at ({cp},{top + 0.13}) {{PDG}};")
     for i, n in enumerate(SHOW):
         y = top - 0.12 - i * dy
@@ -242,7 +242,7 @@ def main():
         o.append(rf"\node[code] at ({X5 + 1.25},{y}) {{{tex(src[n - 1].strip())}}};")
     yf = top - 0.12 - (FAULT - SHOW.start) * dy
     o.append(rf"\node[font=\fontsize{{6.2}}{{7}}\selectfont, text=fault, anchor=north west, align=left] at ({X5 + 0.02},{top - 0.12 - len(SHOW) * dy + 0.05}) "
-             r"{\textbf{wire rule} keeps the faulty line~6\\\textbf{classical PDG} keeps line~5 only};")
+             r"{\textbf{QDG} keeps the faulty line~6\\\textbf{classical PDG} keeps line~5 only};")
     o.append(rf"\node[note, anchor=north west, align=left, text width={W5 - 0.1}cm] at ({X5 + 0.02},{top - 0.12 - len(SHOW) * dy - 0.55}) "
              r"{A full square marks a quantum line, a light one a classical line that builds the circuit.};")
 

@@ -79,16 +79,44 @@ bits. A measurement writes its bit, and a conditioned gate reads the bits its co
 report \emph{def-use} (DU), the same data dependence without classical bits, as the simplest transfer of
 classical slicing.
 
-The \emph{wire rule} adds quantum dependence to the classical PDG. Every operation reads and writes all
-its locations, $r_{\mathrm{wire}}(o) = w_{\mathrm{wire}}(o) = \mathit{loc}(o)$, so a controlled gate also
-writes its controls. $\Bw(W)$ is the backward light cone of $W$, the operations from which a chain of
-shared qubits reaches $W$, extended along classical bits from measurements to the gates they condition.
-We call it the wire slice.
+The \emph{quantum dependence graph} (QDG) adds quantum dependence to the classical PDG. Its nodes are
+the operations, and every operation reads and writes all its locations,
+$r_{\mathrm{QDG}}(o) = w_{\mathrm{QDG}}(o) = \mathit{loc}(o)$, so a controlled gate also writes its
+controls. Its edges are the resulting data, control and quantum dependences. The QDG slice $\Bw(W)$ is
+backward reachability in the QDG from $W$. It is the backward light cone of $W$, the operations from which
+a chain of shared qubits reaches $W$, extended along classical bits from measurements to the gates they
+condition. Table~\ref{tab:qdg} contrasts the QDG with Yu and Zhao's QPDG.
 
-\emph{Entanglement closure} is our documented reading of Yu and Zhao's QPDG~\cite{yu2025qpdg}, whose
-dependences are given informally. It adds to the wire rule an edge from every operation to every later
-one when both act on qubits of the same component of the coupling graph, which links any two qubits joined
-by a multi-qubit gate anywhere in the circuit.
+The \emph{QPDG} is our reimplementation of Yu and Zhao's graph~\cite{yu2025qpdg} as a baseline. Its
+dependences are given in prose, so we logged every choice before any run. Data and control dependence are
+implemented as in the QDG, with every gate writing all its qubits. Entanglement dependence needs a rule for
+when two qubits are entangled, which the QPDG does not give. We use the static rule of entanglement
+analysis, under which qubits joined by a two-qubit gate anywhere in the circuit are entangled, and add an
+edge from every operation to every later one on qubits of the same such component. No-cloning dependence,
+whose example is a CNOT that copies a basis state, adds no edge beyond data dependence, and temporal
+dependence concerns execution timing, which is not part of a circuit. A flow-sensitive variant counts two
+qubits as entangled only from the gate that couples them on.
+
+\begin{table}[t]
+  \centering
+  \caption{Yu and Zhao's QPDG and our QDG}
+  \label{tab:qdg}
+  \footnotesize\setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.21\columnwidth} >{\raggedright\arraybackslash}p{0.38\columnwidth} >{\raggedright\arraybackslash}p{0.35\columnwidth}@{}}
+    \toprule
+    & QPDG~\cite{yu2025qpdg} & QDG \\
+    \midrule
+    Criterion & statement and variables $(s, V)$ & set of qubits, joint state \\
+    Dependences & data, control, entanglement, no-cloning, temporal, measurement & data, control,
+      quantum \\
+    Defined by & prose & read and write sets, and the semantics of Definition~\ref{def:dep} \\
+    Control qubit of a gate & unspecified & written by the gate \\
+    Entangled qubits & edges between all their operations & no extra edge \\
+    Guarantee & none stated & sound, dependence-complete \\
+    Implementation & future work & circuits and Qiskit source \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \emph{Commutation pruning} keeps the operations of $\Bw(W)$ that do not commute with the Pauli
 observables $X$, $Y$ and $Z$ of every criterion qubit, propagated backward through the circuit. An
@@ -102,7 +130,7 @@ $10^{-9}$ and the removal still preserves $W$ at that input.
 
 \subsection{Properties}
 
-\begin{theorem}[The wire rule is sound]\label{thm:sound}
+\begin{theorem}[The QDG is sound]\label{thm:sound}
 For every circuit $P$ and criterion $W$, $\Bw(W)$ is a sound slice for $W$.
 \end{theorem}
 
@@ -116,14 +144,14 @@ over $P$ gives the claim for $W$. The theorem is mechanized in the Isabelle/HOL 
 abstract model of local operations whose assumptions are shown satisfiable.
 \end{IEEEproof}
 
-\begin{proposition}[The wire rule is dependence-complete]\label{prop:complete}
+\begin{proposition}[The QDG is dependence-complete]\label{prop:complete}
 $\mathit{Dep}_W(P) \subseteq \Bw(W)$.
 \end{proposition}
 
 \begin{IEEEproof}
 Let $o_k \notin \Bw(W)$, and let $P'$ insert $U$ after $o_k$. If $U$ were in $\Bw(W)$ for $P'$,
 then $o_k$, which precedes $U$ on the same locations, would be in $\Bw(W)$ for $P$. So $P'$ and $P$
-have the same wire slice, and by Theorem~\ref{thm:sound} both preserve $W$. Hence
+have the same QDG slice, and by Theorem~\ref{thm:sound} both preserve $W$. Hence
 $\operatorname{Tr}_{Q \setminus W}\llbracket P' \rrbracket(\rho) =
 \operatorname{Tr}_{Q \setminus W}\llbracket P|_{\Bw(W)} \rrbracket(\rho) =
 \operatorname{Tr}_{Q \setminus W}\llbracket P \rrbracket(\rho)$. The argument for an inverted
@@ -137,7 +165,7 @@ state of $q_0$ to $q_2$ by measuring $q_0$ and $q_1$ and correcting $q_2$ with g
 outcomes. In the program of Fig.~\ref{fig:teleport}, the corrections run only if the measurements return
 $1$. Def-use ignores the classical bits. Its slice of $q_2$ keeps \numTelDuOps{} of the \numTelOps{}
 operations, and its fidelity is \numTelDuFidelity{}. The classical PDG follows the control edges from the
-measurements to the conditioned gates, and its slice equals the wire slice.
+measurements to the conditioned gates, and its slice equals the QDG slice.
 
 \begin{proposition}[The classical PDG is unsound]\label{prop:du}
 There are circuits for which $B_{\mathrm{CPDG}}(W)$, and hence $B_{\mathrm{DU}}(W)$, does not preserve $W$
@@ -154,7 +182,7 @@ The classical PDG treats a control as read only, so its slice of $q_0$ keeps onl
 rotations on $q_0$ itself, the shaded nodes of Fig.~\ref{fig:ansatz}b, with fidelity
 \numAnsCpdgFidelity{}. The edges it lacks, drawn in orange, are exactly the quantum edges of
 Fig.~\ref{fig:ansatz}c. Control dependence cannot repair this, because the missing dependence is quantum.
-The wire slice keeps the \numAnsWireOps{} operations that are dependences of $q_0$, and no other.
+The QDG slice keeps the \numAnsWireOps{} operations that are dependences of $q_0$, and no other.
 
 \begin{proposition}[Entanglement is neither necessary nor sufficient for dependence]\label{prop:ent}
 (i) An operation can be a dependence of $q$ although $q$ is never entangled with its qubits.
@@ -166,12 +194,12 @@ operation, so it is never entangled with anything. Yet \texttt{h(1)} and the CNO
 $q_0$, since the fix of line~6 changes the state of $q_0$. For (ii), in
 $\mathrm{H}(q_0)\,\mathrm{CX}(q_0, q_1)\,\mathrm{X}(q_1)$ the two qubits are maximally entangled, but
 $\mathrm{X}(q_1)$ is not a dependence of $q_0$. By no-signaling, no operation on other qubits can change
-$\rho_{q_0}$. Entanglement closure therefore adds no dependence that the wire rule misses. It only adds
+$\rho_{q_0}$. The entanglement edges of the QPDG therefore add no dependence that the QDG misses. They only add
 operations that are not dependences. In Fig.~\ref{fig:ansatz}c it adds the \numAnsYzExtra{} purple
 rotations of $q_2$ in the second layer, which run after the last gate that carries information from $q_2$
 to $q_0$.
 
-\begin{proposition}[The wire rule distributes over criteria]\label{prop:joint}
+\begin{proposition}[The QDG distributes over criteria]\label{prop:joint}
 $\Bw(W_1 \cup W_2) = \Bw(W_1) \cup \Bw(W_2)$.
 \end{proposition}
 
@@ -180,7 +208,7 @@ By induction over the backward pass of Theorem~\ref{thm:sound}, the needed set f
 the union of the needed sets for $W_1$ and $W_2$ at every position.
 \end{IEEEproof}
 
-Under the wire rule, a joint criterion is therefore the union of single-qubit slices. The criterion
+Under the QDG, a joint criterion is therefore the union of single-qubit slices. The criterion
 matters for pruning. State-based pruning for $\{q\}$ preserves $\rho_q$ but not the correlations of $q$
 with the other qubits, so it can delete an operation that changes $\rho_W$ for a larger $W$. It is also
 specific to its input, because the mutual information it tests and the reduced state it checks are

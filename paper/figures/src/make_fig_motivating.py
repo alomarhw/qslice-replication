@@ -107,7 +107,7 @@ def main():
         f"{{\\scriptsize each qubit alone reads 1 with probability {facts['P1_buggy'][0]:.1f} in both versions}}\\\\[5pt]",
         "{\\footnotesize\\textbf{(c) Slices of $q_0$ in the buggy program}}\\\\[2pt]",
         "\\begin{minipage}[t]{0.49\\linewidth}\\centering{\\scriptsize Classical PDG: line " + lab(du0) + "}\\\\" + qcirc(set(du0), miss_du) + "\\end{minipage}\\hfill",
-        "\\begin{minipage}[t]{0.49\\linewidth}\\centering{\\scriptsize Wire rule: lines " + lab(lc0) + "}\\\\" + qcirc(set(lc0), set()) + "\\end{minipage}",
+        "\\begin{minipage}[t]{0.49\\linewidth}\\centering{\\scriptsize QDG: lines " + lab(lc0) + "}\\\\" + qcirc(set(lc0), set()) + "\\end{minipage}",
         "\\end{varwidth}\\end{document}",
     ]
     (SRC / "fig_motivating.tex").write_text("\n".join(tex) + "\n")

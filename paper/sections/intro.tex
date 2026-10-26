@@ -38,26 +38,28 @@ measure how dependence definitions behave against this ground truth, in a study 
 before any run, on \numNPairs{} circuit--qubit pairs from three benchmark suites, \numFamCircuits{}
 circuits with known structure, \numRqThreeUnits{} fault--qubit units from \numMutantsKilled{} seeded
 faults, and real bugs from Bugs4Q~\cite{zhao2023bugs4q}. The definitions range from the classical PDG to
-state-based pruning, which removes operations by simulating the circuit at one input, and they include our
-documented reading of the QPDG.
+state-based pruning, which removes operations by simulating the circuit at one input, and they include a
+documented reimplementation of the QPDG as a baseline.
 
 A correct slice needs data, control and quantum dependence. The classical PDG has the first two and still
 gives wrong slices for \numCpdgUnsoundPct{} of the pairs. A two-qubit gate can change its control qubit,
 an effect called phase kickback, and no classical reading of the gate expresses this quantum dependence.
-Following entanglement, as the QPDG does, is sound but keeps \numRqOneYzSize{} of the circuit. The wire
-rule, in which every gate reads and writes all its qubits, keeps \numRqOneLcSize{}, only \numLcExcess{}
+Following entanglement, as the QPDG does, is sound but keeps \numRqOneYzSize{} of the circuit, and
+\numYzfSize{} when entanglement is tracked along the program. Our quantum dependence graph
+(QDG), in which every gate reads and writes all its qubits, keeps \numRqOneLcSize{}, only \numLcExcess{}
 percentage points above the dependences themselves. It misses no dependence and stays correct on every
 tested input, and its soundness proof is mechanized for an abstract model of local operations.
 Entanglement turns out to be neither necessary nor sufficient for dependence. Commutation pruning shrinks
-the wire slices further, and it stays correct when angles change only if it treats them as symbols.
+the QDG slices further, and it stays correct when angles change only if it treats them as symbols.
 State-based pruning shrinks them by \numHTwoRelative{}, but only for the input it was computed on. It
 removes the faulty operation in \numCQFour{} units and lowers the fault-localization accuracy of three of
 the four language models we tested by up to \numTTwoMaxDrop{} percentage points. A joint criterion over
 all wrong qubits recovers \numCQFourRecovered{} of these units.
 
 This paper makes five contributions. Section~\ref{sec:dependence} gives semantic definitions of quantum
-dependence, slice soundness and dependence completeness, with a criterion over sets of qubits, and proves
-that the wire rule is sound and dependence-complete. Section~\ref{sec:tool} presents a tool that slices
+dependence, slice soundness and dependence completeness, with a criterion over sets of qubits, and defines
+the QDG, to our knowledge the first dependence graph for quantum programs that is proved sound and
+dependence-complete against such a definition. Section~\ref{sec:tool} presents a tool that slices
 programs written with Qiskit, IBM's open-source Python framework for quantum
 programs~\cite{javadi2024qiskit}, from their source and without running them, and reports the lines and
 loop iterations of a slice. Section~\ref{sec:results} reports, to our knowledge, the first comparison of

@@ -47,7 +47,7 @@ def robust():
     def rate(xs):
         return 100 * sum(r["robust"] == "1" for r in xs) / len(xs)
     series = [
-        ("wire", "cblue!75", lambda g: [r for r in rob if r["slicer"] == "lc" and r["regime"] == g]),
+        ("QDG", "cblue!75", lambda g: [r for r in rob if r["slicer"] == "lc" and r["regime"] == g]),
         ("commutation", "cgreen!75", lambda g: [r for r in lcq if r["regime"] == g]),
         ("commutation, symbolic angles", "cgreen!35", lambda g: [r for r in lcqs if r["regime"] == g]),
         ("state-based, pruned pairs", "cver!75", lambda g: [r for r in rob if r["slicer"] == "q" and r["regime"] == g and r["pruned"] == "1"]),
@@ -70,7 +70,7 @@ def llm():
     for r in t2:
         hit[(r["arm"], r["input"])].append(int(r["top3"]))
     models = [("claude-sonnet-5-5", "Sonnet 5.5"), ("claude-haiku-5-5", "Haiku 5.5"), ("O-mid", "Qwen-Coder 32B"), ("O-small", "Qwen-Coder 1.5B")]
-    inputs = [("full", "full circuit", "cgrey"), ("lc", "wire slice", "cblue"), ("q", "state-based slice", "cver"), ("du", "def-use slice", "cora")]
+    inputs = [("full", "full circuit", "cgrey"), ("lc", "QDG slice", "cblue"), ("q", "state-based slice", "cver"), ("du", "def-use slice", "cora")]
     body = [r"\begin{tikzpicture}\begin{axis}[ybar, bar width=5pt, width=8.6cm, height=4.0cm, ymin=0, ymax=100,",
             r" ylabel={fault in top 3 (\%)}, symbolic x coords={" + ",".join(l for _, l in models) + "}, xtick=data, enlarge x limits=0.15,",
             r" xticklabels={" + ",".join("{" + l.replace("Coder ", "Coder\\\\") + "}" for _, l in models) + "}, xticklabel style={align=center},",
@@ -100,8 +100,8 @@ def cost():
             by[d]["q"].append(r["q_seconds"])
     ds = sorted(by)
     xd = {d: st.median(by[d]["depth"]) for d in ds}
-    series = [("wire, per criterion", "cblue", "lc", "*"), ("state-based, per criterion", "cver", "q", "square*"),
-              ("entanglement closure, graph build", "cpurple", "build", "triangle*")]
+    series = [("QDG, per criterion", "cblue", "lc", "*"), ("state-based, per criterion", "cver", "q", "square*"),
+              ("QPDG, graph build", "cpurple", "build", "triangle*")]
     ticks = ",".join(str(int(xd[d])) for d in ds)
     body = [r"\begin{tikzpicture}\begin{axis}[width=8.6cm, height=4.4cm, xmode=log, ymode=log, log basis x=2,",
             r" xtick={" + ticks + "}, xticklabels={" + ticks + "}, xlabel={circuit depth (width 8, median of 5 circuits)},",
@@ -123,8 +123,8 @@ def size():
     bins = ["WTwo", "WFour", "WSeven", "WEleven"]
     coords = ["a", "b", "c", "d", "e"]  # plain coordinates; the labels below hold the dashes and the line break
     ticks = ["2--3", "4--6", "7--10", "11--14", r"{15--20\\corpus L}"]
-    series = [("dependence set", "cgrey", "Floor", None), ("wire", "cblue", "Lc", "CorpusLSizeLc"),
-              ("commutation", "cgreen", "Lcq", "CorpusLSizeLcq"), ("entanglement closure", "cpurple", "Yz", "CorpusLSizeYz")]
+    series = [("dependence set", "cgrey", "Floor", None), ("QDG", "cblue", "Lc", "CorpusLSizeLc"),
+              ("commutation", "cgreen", "Lcq", "CorpusLSizeLcq"), ("QPDG", "cpurple", "Yz", "CorpusLSizeYz")]
     body = [r"\begin{tikzpicture}\begin{axis}[ybar, bar width=5pt, width=8.6cm, height=4.3cm, ymin=0, ymax=100,",
             r" ytick={0,25,50,75,100}, ylabel={slice size (\% of circuit)}, xlabel={circuit width (qubits)},",
             r" symbolic x coords={" + ",".join(coords) + "}, xtick={" + ",".join(coords) + "}, xticklabels={" + ",".join(ticks) + "},",

@@ -9,8 +9,9 @@ three benchmark suites, \numFamCircuits{} circuits with known structure, and \nu
 fault--qubit units from \numMutantsKilled{} seeded faults. Even the full classical program dependence
 graph, with data and control dependence, gives wrong slices for \numCpdgUnsoundPct{} of the pairs,
 because it misses the effect of a gate on its control qubit, called phase kickback. Following
-entanglement, as the proposed quantum program dependence graph does, is sound but keeps
-\numRqOneYzSize{} of the circuit. The wire rule, in which every gate reads and writes all its qubits,
+entanglement, as the proposed quantum program dependence graph (QPDG) does, is sound but keeps
+\numRqOneYzSize{} of the circuit in our reimplementation, and \numYzfSize{} when entanglement is tracked
+along the program. Our quantum dependence graph (QDG), in which every gate reads and writes all its qubits,
 keeps \numRqOneLcSize{}, within \numLcExcess{} percentage points of the smallest slice that contains
 every dependence. It misses no dependence and stays correct on every tested input, and its soundness
 proof is mechanized for an abstract model. Commutation pruning shrinks these slices further, but stays
@@ -18,7 +19,7 @@ correct when rotation angles change only if it treats them as symbols. State-bas
 by \numHTwoRelative{}, but only for the input it was computed on. It removes the faulty operation in
 \numCQFour{} units and lowers the fault-localization accuracy of three of four language models by up to
 \numTTwoMaxDrop{} percentage points. A joint criterion over all wrong qubits recovers
-\numCQFourRecovered{} of these units. Our static slicer applies the wire rule to Qiskit source and
+\numCQFourRecovered{} of these units. Our static slicer applies the QDG to Qiskit source and
 reports the lines and loop iterations a developer must read. Quantum dependence is not entanglement, and
 the results give tool builders a sound, input-independent dependence rule and a slicing criterion that
 fits quantum state.

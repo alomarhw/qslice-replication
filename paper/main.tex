@@ -2,6 +2,7 @@
 \usepackage{amsmath,amssymb,stmaryrd}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{array}
 \usepackage{adjustbox}
 \usepackage{xcolor}
 \usepackage{url}
@@ -9,7 +10,7 @@
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \providecommand{\ket}[1]{\lvert #1\rangle}
-\newcommand{\Bw}{B_{\mathrm{wire}}}
+\newcommand{\Bw}{B_{\mathrm{QDG}}}
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}{Proposition}
@@ -49,8 +50,8 @@ quantum programs, program comprehension, program slicing, program dependence, de
   it executes, with the source line and loop iteration that created it, and both graphs place every node at
   the same position. (b)~The classical PDG treats the control of a CNOT as read only. It lacks the orange,
   dashed edges, so its shaded slice of $q_0$ keeps only the rotations of $q_0$ and misses the outlined
-  dependences. (c)~The wire rule has these edges as quantum edges, and its slice is exactly the dependences
-  of $q_0$. Entanglement closure would also add the purple rotations, which are not dependences. Graphs,
+  dependences. (c)~The QDG has these edges as quantum edges, and its slice is exactly the dependences
+  of $q_0$. The QPDG would also add the purple rotations, which are not dependences. Graphs,
   slices and fidelities at $\ket{0\dots0}$ are computed by the study's code from the program shown.}
   \label{fig:ansatz}
 \end{figure*}
@@ -62,7 +63,7 @@ quantum programs, program comprehension, program slicing, program dependence, de
   \includegraphics[width=\textwidth]{figures/fig_overview.pdf}
   \caption{The tool slices the program of Fig.~\ref{fig:motivating} without running it. srcML parses the
   program in stages 1 and 2, and the letters mark the elements the tool reads. Static interpretation yields
-  the operation trace in stage 3, the wire rule its dependence graph in stage 4, and the backward pass from
+  the operation trace in stage 3, its quantum dependence graph (QDG) in stage 4, and the backward pass from
   the criterion $\{q_0\}$ the slice in lines in stage 5. Because \texttt{cx} writes its control $q_0$, the
   faulty line~6 is in the slice. The classical PDG's last writer of $q_0$ is line~5, so it misses the fault.
   The tool computed the figure from the original Bugs4Q file.}

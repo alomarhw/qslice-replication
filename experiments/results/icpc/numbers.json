@@ -1578,6 +1578,46 @@
   "tex": "732",
   "source": "results/icpc/rq1_lcq_symbolic/robustness.csv"
  },
+ "YzfN": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/yz_flow/records.csv"
+ },
+ "YzfSize": {
+  "value": 0.7753642243994814,
+  "tex": "77.5\\%",
+  "source": "results/icpc/yz_flow/records.csv"
+ },
+ "YzfUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/yz_flow/records.csv"
+ },
+ "YzfDynamicUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/yz_flow/records.csv"
+ },
+ "YzfRecall": {
+  "value": 1.0,
+  "tex": "1.000",
+  "source": "results/icpc/yz_flow/records.csv"
+ },
+ "YzfPrecision": {
+  "value": 0.8486663064075879,
+  "tex": "0.849",
+  "source": "results/icpc/yz_flow/records.csv"
+ },
+ "YzfExcess": {
+  "value": 11.900000000000006,
+  "tex": "11.9",
+  "source": "results/icpc/yz_flow/records.csv"
+ },
+ "YzfFamUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/yz_flow/families.csv"
+ },
  "ToolDevPrograms": {
   "value": 15,
   "tex": "15",

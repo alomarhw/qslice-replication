@@ -185,7 +185,7 @@ LEGEND = {"data": r"\tikz\draw[dataE](0,0)--(0.45,0); data",
           "slice": r"\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice",
           "missed": r"\tikz\node[missdep,minimum width=4mm,minimum height=2.4mm]{}; dependence the slice misses",
           "missed_du": r"\tikz\node[missdepsl,minimum width=4mm,minimum height=2.4mm]{}; in the slice, missed by def-use",
-          "entx": r"\tikz\node[entx,minimum width=4mm,minimum height=2.4mm]{}; added by entanglement closure, not a dependence",
+          "entx": r"\tikz\node[entx,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence",
           "crit": r"\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion"}
 
 
@@ -218,7 +218,7 @@ def ansatz():
     nl = rf"slice of $q_{t}$: {len(sl['cpdg'])} of {n} operations\\fidelity {f['cpdg']:.2f}, misses {len(dep - sl['cpdg'])} dependences"
     nr = rf"slice of $q_{t}$: {len(sl['wire'])} of {n} operations\\fidelity {f['wire']:.2f}, exactly the dependences"
     pl, w = panel(qc, lines, iters, pos, El, missing, sty_l, seed(qc, "cpdg", t), r"(b) Classical PDG", nl, 0.0)
-    pr, _ = panel(qc, lines, iters, pos, Er, set(), sty_r, seed(qc, "wire", t), r"(c) Wire rule", nr, w + 2.15)
+    pr, _ = panel(qc, lines, iters, pos, Er, set(), sty_r, seed(qc, "wire", t), r"(c) QDG", nr, w + 2.15)
     tex = (TEX_HEAD + r"\begin{minipage}{17.6cm}" + listing("ansatz.py", 4, 15, "6.55cm", "(a) VQE ansatz",
                                       legend_column(["data", "quantum", "missing", "slice", "missed", "entx", "crit"])) +
            r"\hfill\begin{minipage}[t]{10.95cm}\vspace{0pt}\centering\begin{tikzpicture}" + "\n" + pl + "\n" + pr + "\n" +

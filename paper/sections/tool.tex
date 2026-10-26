@@ -1,7 +1,7 @@
 \section{A Static Slicer for Qiskit Programs}\label{sec:tool}
 
 Developers write Qiskit programs, not circuits, and a slice helps them only as lines of their program. We
-therefore built a tool that slices a Qiskit program from its source, without running it, with the wire rule
+therefore built a tool that slices a Qiskit program from its source, without running it, with the QDG
 of Section~\ref{sec:dependence}. Fig.~\ref{fig:overview} shows its steps on the program of
 Section~\ref{sec:example}.
 
@@ -18,18 +18,18 @@ It evaluates the program's expressions over an abstract domain of known values, 
 circuits. It unrolls loops and records the iteration of each operation, inlines functions, and follows
 \texttt{if\_test} and \texttt{c\_if}, Qiskit's two constructs for gates conditioned on measured bits, as
 Fig.~\ref{fig:loops} shows for the ansatz. Each value carries the lines that computed it, so the tool knows
-the classical lines, the statements that compute an operation's qubits, angles and conditions. The wire
-rule does not need angle values, so angles drawn at run time stay symbolic. Where a value cannot be
+the classical lines, the statements that compute an operation's qubits, angles and conditions. The QDG
+ does not need angle values, so angles drawn at run time stay symbolic. Where a value cannot be
 resolved statically, the tool over-approximates. An unknown qubit index makes the operation act on every
 qubit it may denote, and an unknown condition runs every branch. A loop over an unknown range repeats its
 body once more than the number of qubits the body touches, which covers every chain of dependences through
-the loop. Because the wire rule never removes a qubit from the needed set, these over-approximations can
+the loop. Because the QDG never removes a qubit from the needed set, these over-approximations can
 only enlarge a slice, and the tool reports each of them. When a circuit is passed to code the tool does not
 model, such as a rewrite of its directed acyclic graph (DAG) representation, the tool reports it as not
 traced.
 
 \begin{algorithm}[t]
-\caption{Wire-rule slice of a static operation trace}\label{alg:slice}
+\caption{QDG slice of a static operation trace}\label{alg:slice}
 \footnotesize
 \begin{algorithmic}[1]
 \Require trace $o_0 \dots o_{L-1}$, criterion $W$, a set of qubits
@@ -59,7 +59,7 @@ the classical lines they depend on. Its cost is linear in the length of the trac
 On \numToolDevPrograms{} programs that we wrote and can run, of up to \numToolDevMaxOps{} operations,
 including Shor's order finding, Grover search, phase estimation, an adder, the Quantum Approximate
 Optimization Algorithm (QAOA) and a repetition code, the static trace equals the circuit Qiskit builds. The
-slice of every qubit equals the circuit-level wire slice that the study uses on \numToolDevSliceEqual{} of
+slice of every qubit equals the circuit-level QDG slice that the study uses on \numToolDevSliceEqual{} of
 them. The remaining program nests conditional blocks, which the circuit-level slicer reads only by their
 outer condition. On \numToolNestedDraws{} random product inputs, the state simulator of
 Section~\ref{sec:design} finds the circuit-level slice wrong \numToolNestedStudyWrong{} times and the

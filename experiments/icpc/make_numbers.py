@@ -412,6 +412,24 @@ def main() -> int:
         rb = [r for r in rows(ICPC / "rq1_lcq_symbolic" / "robustness.csv") if r["slicer"] == "lcqs" and r["regime"] == reg]
         put(f"Lcqs{nm}Robust", sum(r["robust"] == "1" for r in rb), cnt(sum(r["robust"] == "1" for r in rb)), "results/icpc/rq1_lcq_symbolic/robustness.csv")
         put(f"Lcqs{nm}N", len(rb), cnt(len(rb)), "results/icpc/rq1_lcq_symbolic/robustness.csv")
+    # flow-sensitive QPDG reading (Deviation I-16; exploratory)
+    src = "results/icpc/yz_flow/records.csv"
+    yf = rows(ICPC / "yz_flow" / "records.csv")
+    rq1_yz = {(r["path"], r["target"]): r["size"] for r in rows(ICPC / "rq1" / "records.csv") if r["slicer"] == "yz"}
+    assert all(rq1_yz[(r["path"], r["target"])] == r["size"] for r in yf if r["slicer"] == "yz"), "S-yz rerun differs from RQ1"
+    yzf = [r for r in yf if r["slicer"] == "yzf"]
+    assert all(r["contains_lc"] == "1" and r["within_yz"] == "1" for r in yzf)
+    put("YzfN", len(yzf), cnt(len(yzf)), src)
+    put("YzfSize", st.mean(float(r["size_fraction"]) for r in yzf), pct(st.mean(float(r["size_fraction"]) for r in yzf)), src)
+    put("YzfUnsound", sum(r["sound"] != "1" for r in yzf), cnt(sum(r["sound"] != "1" for r in yzf)), src)
+    put("YzfDynamicUnsound", sum(r["sound"] != "1" for r in yzf if r["dynamic"] == "1"),
+        cnt(sum(r["sound"] != "1" for r in yzf if r["dynamic"] == "1")), src)
+    put("YzfRecall", st.mean(float(r["dep_recall"]) for r in yzf), f"{st.mean(float(r['dep_recall']) for r in yzf):.3f}", src)
+    put("YzfPrecision", st.mean(float(r["dep_precision"]) for r in yzf), f"{st.mean(float(r['dep_precision']) for r in yzf):.3f}", src)
+    yfx = round(100 * NUMS['YzfSize']['value'], 1) - round(100 * NUMS['DepFloor']['value'], 1)
+    put("YzfExcess", yfx, f"{yfx:.1f}", src)
+    fam = [r for r in rows(ICPC / "yz_flow" / "families.csv") if r["slicer"] == "yzf"]
+    put("YzfFamUnsound", sum(r["sound"] != "1" for r in fam), cnt(sum(r["sound"] != "1" for r in fam)), "results/icpc/yz_flow/families.csv")
 
     # ---- the static program slicer (Deviation I-15; tool-v4, the final version; earlier versions' results kept) --
     TA = ICPC / "tool_acceptance"

@@ -12,10 +12,10 @@ mechanized soundness proof, and the paper's sources. Every number in the paper i
 
 | Question | Result |
 |---|---|
-| RQ1 soundness and completeness | On 784 circuit–qubit pairs, the classical PDG gives wrong slices for 26.0% of them; the wire rule is wrong on none, has recall 1.000 and keeps 70.4% of a circuit, 4.8 points above the dependences themselves (65.6%); entanglement closure is sound but keeps 78.6% |
-| RQ2 precision beyond the wire slice | Commutation pruning stays correct on random inputs but fails on 4 of 175 pairs when angles change; treating angles as symbols is robust on all 175. State-based pruning is 23.2% smaller but stays correct under random inputs on only 55.4% of pairs |
-| RQ3 fault localization | The wire slice contains the fault in 95.7% of 5,688 units, state-based pruning in 82.2%; pruning removes the fault in 769 units, and a joint criterion recovers 691; language models lose up to 14.5 points from state-based slices |
-| RQ4 cost | The wire slice takes at most 7 ms per criterion; state-based pruning exceeds 120 s at the largest depths |
+| RQ1 soundness and completeness | On 784 circuit–qubit pairs, the classical PDG gives wrong slices for 26.0% of them; our quantum dependence graph (QDG) is wrong on none, has recall 1.000 and keeps 70.4% of a circuit, 4.8 points above the dependences themselves (65.6%); Yu and Zhao's QPDG, reimplemented as a baseline, is sound but keeps 78.6% |
+| RQ2 precision beyond the QDG slice | Commutation pruning stays correct on random inputs but fails on 4 of 175 pairs when angles change; treating angles as symbols is robust on all 175. State-based pruning is 23.2% smaller but stays correct under random inputs on only 55.4% of pairs |
+| RQ3 fault localization | The QDG slice contains the fault in 95.7% of 5,688 units, state-based pruning in 82.2%; pruning removes the fault in 769 units, and a joint criterion recovers 691; language models lose up to 14.5 points from state-based slices |
+| RQ4 cost | The QDG slice takes at most 7 ms per criterion; state-based pruning exceeds 120 s at the largest depths |
 | Static slicer | Trace equals the built circuit on 15 of 15 runnable programs; on Bugs4Q it reproduces 7 of 8 prepared circuits and the line slices of all 17 mapped units; 111 of 151 Bugs4Q programs, 60 of 72 textbook notebooks and 4,136 of 7,567 LintQ-corpus programs yield a circuit, with no crashes |
 
 ## Layout
@@ -23,7 +23,7 @@ mechanized soundness proof, and the paper's sources. Every number in the paper i
 tool/                  the static slicer for Qiskit programs (Section IV)
   srcml.py             parses a program with srcML (positions on)
   interp.py            static interpretation over an abstract domain -> operation trace
-  slicer.py            the wire rule on the trace (Algorithm 1) -> lines, iterations, classical lines
+  slicer.py            the QDG slice of the trace (Algorithm 1) -> lines, iterations, classical lines
   gates.py             gate signatures derived from Qiskit
   cli.py               command line
   tests/               trace and slice checks, the nested-condition check, test programs
@@ -42,6 +42,12 @@ paper/                 LaTeX sources, numbers.tex, figures and the scripts that 
 Other top-level folders (`qslice/`, `fouredge/`, `selection/`, `hardware/`, `archive/`) hold the code of an
 earlier version of this study. The current study reuses `selection/` (corpus definition) and the hardware
 runs that the Discussion reports.
+
+**Names in the code.** The paper's QDG is the slicer `lc` in `experiments/slicers/registry.py` (S-lc in the
+protocol) and the tool in `tool/`. The QPDG baseline is S-yz (`experiments/slicers/yuzhao.py`, whose header
+logs every interpretation choice) and its flow-sensitive variant S-yzf. The class named `QDG` in `qslice/`,
+`experiments/method_eval/` and `archive/` is the earlier version's typed graph, which S-yz is built from; it
+is not the paper's QDG.
 
 ## Requirements
 - Python 3.12 with the pinned packages in `experiments/requirements.lock` (qiskit 2.3.0, numpy 1.26.4);

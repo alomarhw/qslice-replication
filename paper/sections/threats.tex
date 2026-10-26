@@ -4,7 +4,7 @@
 We measure dependence by perturbing each operation at \numInfluenceInputs{} inputs. Finite sampling can
 miss a dependence that shows only at other inputs, which would understate the dependences every rule
 misses and overstate every rule's precision. It cannot make an unsound slice look sound, because
-soundness is judged by the oracle's fidelity, not by the measured dependences, and the wire rule's
+soundness is judged by the oracle's fidelity, not by the measured dependences, and the QDG's
 soundness for all inputs is proved. The other rules are judged at $\ket{0\dots0}$ and on \numRobDraws{}
 draws per input regime, so they could be wrong at inputs we did not draw. The fidelity threshold of
 $1 - 10^{-6}$ is far above the oracle's error of \numOracleErr{}. Whether the slice contains the fault site

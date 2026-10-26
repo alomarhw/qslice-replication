@@ -1,19 +1,19 @@
 \section{Discussion}\label{sec:discussion}
 
 \paragraph*{Guidance for tool builders}
-The results suggest how a slicer for quantum programs should be built. The base should be the wire rule,
+The results suggest how a slicer for quantum programs should be built. The base should be the QDG,
 in which every gate reads and writes all its qubits. It is sound for every input, misses no dependence,
 and costs milliseconds. Reading a gate as a classical assignment is the pitfall to avoid, and adding
-control dependence does not remove it. Entanglement closure should not be added to make a slice safer. It
-buys no soundness that the wire rule lacks and costs precision, because a later operation on an entangled
+control dependence does not remove it. Entanglement edges, as in the QPDG, should not be added to make a slice safer. They
+buys no soundness that the QDG lacks and costs precision, because a later operation on an entangled
 partner cannot change the criterion's state, as Proposition~\ref{prop:ent} shows. Precision beyond the
-wire slice can come from commutation pruning, which stays correct on every random input but fails when the
+QDG slice can come from commutation pruning, which stays correct on every random input but fails when the
 angles change. Treating every angle as a symbol before the pass keeps it correct under all three input
 regimes, so a slicer for variational programs should use the symbolic variant or recompute commutation
 after each parameter update. State-based pruning should be offered, if at all, as a view of one input,
 labeled as such, and never as the slice of the program. Finally, a slicer should let the developer name a
 set of qubits. Many quantum bugs show only in the correlation between qubits, as in
-Section~\ref{sec:example}, and by Proposition~\ref{prop:joint} the joint wire slice is the union of the
+Section~\ref{sec:example}, and by Proposition~\ref{prop:joint} the joint QDG slice is the union of the
 single-qubit slices, so a joint criterion needs no extra analysis.
 
 \paragraph*{Noise and hardware}
@@ -22,7 +22,7 @@ it shows the developer what the whole program would. As a pre-registered descrip
 simulated the pairs of at most ten qubits under depolarizing noise, which replaces a gate's qubits by a
 random state with a small probability, at two-qubit error rates of $10^{-3}$, $10^{-2}$ and
 $3\cdot10^{-2}$. We compare the criterion's noisy states by their trace distance, which is $0$ for equal
-states and $1$ for perfectly distinguishable ones. Under the wire slice and under the whole circuit they
+states and $1$ for perfectly distinguishable ones. Under the QDG slice and under the whole circuit they
 differ by at most \numNoiseLcCrossExactMax{} where the simulation is exact, which is rounding error, and by
 at most \numNoiseLcCrossShotMax{} where mid-circuit measurements force sampling with \numNoiseShots{}
 shots. Theorem~\ref{thm:sound} predicts this, since depolarizing noise acts only on the qubits of its gate,
@@ -31,7 +31,7 @@ differs from the whole circuit in \numNoiseQCrossExactNonzero{} of \numNoiseQCro
 up to \numNoiseQCrossExactMax{}. It removes noisy gates that the whole program executes, and errors
 accumulate with the number of gates~\cite{preskill2018nisq}, so it can hide noise the developer is trying
 to diagnose. On IBM hardware, slices of \numHwCircuits{} circuits from a preliminary implementation of
-entanglement closure matched the whole circuits' measured distributions within a total variation distance
+the QPDG matched the whole circuits' measured distributions within a total variation distance
 of 0.05 for \numHwWithin{}. The other \numHwOutside{} are QAOA circuits, whose distance is zero in
 noise-free simulation and is therefore due to the device, which ran the slice and the whole circuit on
 different physical qubits. A distance of measured distributions is blind to phase, so these runs show only

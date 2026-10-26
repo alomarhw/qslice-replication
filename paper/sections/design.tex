@@ -2,7 +2,7 @@
 
 We ask four research questions.
 \textbf{RQ1} asks which dependence definitions give sound and dependence-complete slices.
-\textbf{RQ2} asks how much smaller than the wire slice a slice can safely be, and under which inputs the
+\textbf{RQ2} asks how much smaller than the QDG slice a slice can safely be, and under which inputs the
 extra precision holds.
 \textbf{RQ3} asks what each definition does to fault localization, by whether the slice contains the
 fault, with mutation-based fault localization and with language models.
@@ -46,9 +46,9 @@ Section~\ref{sec:dependence}, checks the ground truth and every slicer before th
 
 \paragraph*{Slicers}
 Each rule of Section~\ref{sec:dependence} has an implementation. The classical PDG and def-use
-implement their read and write rules directly. The wire rule is a backward slice over per-qubit data edges
-and measurement-to-condition edges. Entanglement closure adds the coupling-component edges of our
-documented reading of the QPDG~\cite{yu2025qpdg}, with every interpretation choice logged before the runs.
+implement their read and write rules directly. The QDG is a backward slice over per-qubit data edges
+and measurement-to-condition edges. The QPDG adds the coupling-component edges of
+Section~\ref{sec:dependence}, and its flow-sensitive variant adds them only from the coupling gate on.
 Commutation pruning uses Qiskit's \texttt{LightCone} pass, and an exploratory variant replaces every angle
 by a symbol before the pass, so that commutation must hold for all angles. State-based pruning uses the
 algorithm and thresholds of Section~\ref{sec:dependence}, and a variant takes a joint criterion.
@@ -91,9 +91,9 @@ open-weight Qwen2.5-Coder models of 32B and 1.5B parameters.
 
 \paragraph*{Statistics}
 Five confirmatory hypotheses compare state-based pruning with the other rules. H1 states that it is wrong
-on fewer pairs than def-use, H2 that its slices are smaller than wire slices, and H3 that at least 95\% of
+on fewer pairs than def-use, H2 that its slices are smaller than QDG slices, and H3 that at least 95\% of
 pairs keep a correct slice under random product inputs. H4 states that it loses at most five percentage
-points of fault containment against the wire slice, and H5 that its slices are smaller where both contain
+points of fault containment against the QDG slice, and H5 that its slices are smaller where both contain
 the fault. We test them with exact McNemar tests, which compare paired yes-or-no outcomes, and Wilcoxon
 signed-rank tests on paired sizes, and Holm's method corrects across the five. Effect sizes come first,
 with bootstrap 95\% confidence intervals (10{,}000 resamples) and Wilson intervals for proportions.
