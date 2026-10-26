@@ -1088,3 +1088,16 @@ These were found while implementing §6, from the API documentation. No LLM call
   slip: the ancilla is prepared with `h(n); x(n)` instead of `h(n); z(n)`, so the program returns 000 instead of the
   secret 011. It replaces the 3-gate Bugs4Q bug in Section II; that real bug stays in Fig. 4 and Proposition 3.
   The example's facts are computed by the tool and the oracle (figure generator), and the bug is labeled as seeded.
+- **Outcome (2026-10-26).** Foundations: on the 779 pairs whose criterion qubit is acted on (the other 5 RQ1 pairs
+  are idle qubits with empty slices), the four-edge graph without closure equals S-lc on all pairs; with closure it
+  keeps 75.7% (S-lc 70.8%). Undirected slices keep 93.9% at precision 0.713 (S-lc 0.923), so they are reported as a
+  pitfall. Seeding at every operation equals seeding at the last. 88 of 204 unsound S-cpdg slices (43%) and 88 of 216
+  unsound S-du slices (41%) keep the criterion's Z-basis distribution. Forward slices are complete and dual on all
+  3,156 operations (precision 0.930). Tool-v5: dev checks, nested check and T1/T2 identical to tool-v4; forward/
+  backward duality on all test programs (356 operation-qubit pairs). Profiles: backward and forward line counts differ
+  for 59/75/82% of qubits (Bugs4Q/textbook/LintQ sample), 14/45/56% are acted on inside a function. The automatic
+  alias count stays noisy (integer parameters such as `num_qubits` look like names), so only the hand-checked textbook
+  count is reported (3 of 5 flagged programs, `results/icpc/profiles/alias_check_textbook.csv`). Section II: the
+  textbook BV with the seeded line-25 slip (`programs/bv.py`, checked line by line against the textbook file);
+  Proposition 3(i) now uses this program, whose q0 is pure after every operation in both versions; the Bugs4Q bug stays
+  in Section II for the joint criterion and in Fig. 4. Numbers via `make_numbers.py` (Fd*, Prof*, Bv*).
