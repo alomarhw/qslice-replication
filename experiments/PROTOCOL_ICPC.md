@@ -951,3 +951,26 @@ These were found while implementing §6, from the API documentation. No LLM call
   slicer. S-lcw fails the size condition: 0 unsound, robust 784/784, 784/784, 187/187, recall 1.000, but
   mean size 69.6% against 70.4%, a 0.74-point reduction (20 pairs in 5 circuits; 40 pairs have SWAPs).
   It is not reported as a slicer; its counts may be reported as a finding about the wire rule's excess.
+
+### Deviation I-15 (2026-10-25, author decision; recorded before any Bugs4Q output of the tool): a static program slicer
+- **Why.** The study slices circuits, and its Bugs4Q lines come from *running* re-typed ports. The author
+  decided that the paper must present a real program slicer: one that reads a Qiskit program's source,
+  without running it, and applies the validated wire rule. See `TOOL_PLAN.md`.
+- **The tool (`tool/`).**
+  - srcML 1.1 parses the program with positions.
+  - A static interpreter (`tool/interp.py`) turns it into an operation trace (gate, qubits, bits,
+    condition bits, line, iteration, call sites, classical provenance). It never runs the program.
+    Unresolved indices, conditions and loops are over-approximated and recorded.
+  - The wire rule's backward pass (`tool/slicer.py`) gives the slice as operations, quantum lines and
+    classical lines.
+- **Developed on** the two figure programs and three test programs of our own (`tool/tests/programs/`)
+  only. On all five, the static trace equals the circuit Qiskit builds, and the slice of every qubit
+  equals S-lc on that circuit (`tool/tests/check_trace.py`, `check_slice.py`).
+- **Acceptance tests, fixed now and run once the tool is frozen (commit recorded):**
+  - **T1:** for each RQ3 Bugs4Q original, the static trace against the prepared circuit through the
+    committed source map. Compare the (gate, qubits, original line) sequences.
+  - **T2:** the tool's wire-rule quantum lines against the committed line results
+    (`results/icpc/source_map/units.csv`, slicer lc).
+  - **T3:** coverage on all 218 Bugs4Q Python files (resolved, partly resolved, unsupported, and why).
+  - **Reporting.** Differences are reported as found and never edited away. A difference found by T1
+    or T2 may be fixed only in a new, dated tool version, with both versions' results reported.
