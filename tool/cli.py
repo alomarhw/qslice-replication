@@ -56,6 +56,9 @@ def main(argv=None) -> int:
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--trace", action="store_true")
     ap.add_argument("--annotate", action="store_true")
+    ap.add_argument("--forward", type=int, metavar="LINE",
+                    help="forward slice from the operations created at source line LINE")
+    ap.add_argument("--profile", action="store_true", help="slice profile of each criterion qubit")
     a = ap.parse_args(argv)
     t0 = time.perf_counter()
     unit = X.parse_file(Path(a.program))
@@ -77,6 +80,22 @@ def main(argv=None) -> int:
         res.append({"criterion": crit, "operations": len(s.ops), "of": len(circ.ops), "may_operations": s.may,
                     "quantum_lines": sorted(s.quantum_lines), "classical_lines": sorted(s.classical_lines),
                     "iterations": {str(l): sorted(map(list, v)) for l, v in s.iterations.items() if any(v)}})
+    if a.forward is not None:
+        from tool.slicer import forward_slice  # noqa: PLC0415
+        start = [k for k, op in enumerate(circ.ops) if op.line == a.forward]
+        f = forward_slice(circ, start)
+        res.append({"forward_from_line": a.forward, "operations": len(f.ops), "lines": sorted(f.lines),
+                    "qubits": sorted(f.qubits), "bits": sorted(f.bits)})
+    if a.profile:
+        from tool.profile import qubit_arg_texts, slice_profile  # noqa: PLC0415
+        args = qubit_arg_texts(Path(a.program))
+        for crit in parse_criterion(circ, a.qubits):
+            for q in crit:
+                p = slice_profile(circ, q, args)
+                res.append({"profile_of_qubit": q, "defs_uses": sorted(p.defs_uses), "names": sorted(p.names),
+                            "function_call_sites": sorted(p.functions), "dependent_qubits": sorted(p.dependents),
+                            "bits": sorted(p.bits), "conditioned_lines": sorted(p.conditioned_lines),
+                            "backward_lines": sorted(p.backward_lines), "forward_lines": sorted(p.forward_lines)})
     t3 = time.perf_counter()
     out = {"program": a.program, "qubits": circ.n("q"), "operations": len(circ.ops), "circuits": len(trace.circuits),
            "notes": [f"line {l}: {m}" for l, m in trace.notes],
@@ -92,8 +111,11 @@ def main(argv=None) -> int:
             print(f"{mark} {i:4d}  {ln}")
     else:
         for r in res:
-            print(f"criterion {r['criterion']}: {r['operations']}/{len(circ.ops)} operations; quantum lines "
-                  f"{r['quantum_lines']}; classical lines {r['classical_lines']}")
+            if "criterion" in r:
+                print(f"criterion {r['criterion']}: {r['operations']}/{len(circ.ops)} operations; quantum lines "
+                      f"{r['quantum_lines']}; classical lines {r['classical_lines']}")
+            else:
+                print(json.dumps(r))
         for n in out["notes"]:
             print("note:", n)
     return 0

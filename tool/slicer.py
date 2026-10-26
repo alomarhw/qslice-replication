@@ -73,3 +73,38 @@ def wire_slice(circ: Circuit, criterion: Iterable[int], rule: str = "wire", keep
         cl |= set(op.deps)
         it.setdefault(op.line, set()).add(op.iters)
     return Slice(keep, ql, cl - ql, it, sum(circ.ops[k].may for k in keep))
+
+
+@dataclass
+class ForwardSlice:
+    ops: List[int]                      # positions the start can affect, in trace order (the start included)
+    lines: Set[int]                     # their source lines
+    iterations: Dict[int, Set[Tuple]]   # line -> iteration vectors of its operations in the slice
+    qubits: FrozenSet[int]              # qubits whose final state the start can affect
+    bits: FrozenSet[int]                # classical bits whose value the start can affect
+
+
+def forward_slice(circ: Circuit, start: Iterable[int]) -> ForwardSlice:
+    """Forward QDG slice of the operations at positions `start`: every later operation that reads a location
+    they can affect, under the same rule as wire_slice (an operation reads and writes all its qubits, a
+    measurement writes its bits, a conditioned operation reads its condition bits). By duality, q is in
+    .qubits exactly when the start is in the backward slice of q (without terminal-measurement skipping)."""
+    start = sorted(set(start))
+    if not start:
+        return ForwardSlice([], set(), {}, frozenset(), frozenset())
+    aff_q: Set[int] = set()
+    aff_c: Set[int] = set()
+    keep: List[int] = []
+    for k in range(start[0], len(circ.ops)):
+        op = circ.ops[k]
+        if op.name in NOT_SLICED:
+            continue
+        if k in start or (op.touched & aff_q) or (op.cond & aff_c):
+            keep.append(k)
+            aff_q |= op.touched
+            if op.name == "measure":
+                aff_c |= {b for s in op.clbits for b in s}
+    it: Dict[int, Set[Tuple]] = {}
+    for k in keep:
+        it.setdefault(circ.ops[k].line, set()).add(circ.ops[k].iters)
+    return ForwardSlice(keep, {circ.ops[k].line for k in keep}, it, frozenset(aff_q), frozenset(aff_c))
