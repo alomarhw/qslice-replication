@@ -1061,3 +1061,30 @@ These were found while implementing §6, from the API documentation. No LLM call
   tool-v3 took 0.1 s: its nested loops of unknown length each repeat their body len(touched)+1 times, and the
   copies multiply. Counts from `results/icpc/tool_coverage/lintq_v4.csv`; the paper's LintQ numbers now come
   from tool-v4, and timeouts are counted separately from crashes.
+
+### Deviation I-17 (2026-10-26, AFTER all results; author decision; exploratory): foundations measures, forward slices, slice profiles, a new Section II example
+- **Why.** The author's review asked for a foundational treatment: what a quantum slice must and must not follow,
+  forward as well as backward slices, srcSlice-style slice profiles, slicing at the level of all program statements,
+  and a richer debugging scenario. Each candidate was first tested in exploratory scratch runs against a decision
+  rule (author rule: evaluate before adopting), and only the passing ones are adopted. The adopted measures are
+  produced by committed drivers; none enters H1-H5.
+- **Measures (driver `icpc/foundations_eval.py`, corpus A, the RQ1 oracle and ground truth, output
+  `results/icpc/foundations/`):**
+  - four-edge typed graph (UED/ED/MD/CD, `fouredge/src`) with and without its transitive entanglement closure,
+    against S-lc (is the closure the only difference?);
+  - undirected ("decomposition") reachability from every operation on the criterion qubit, in the QDG and in the
+    four-edge graph: soundness, size, recall, precision;
+  - backward QDG slices seeded at every operation on q vs at its last operation (equal by construction);
+  - for every unsound S-du and S-cpdg slice: whether the criterion's Z-basis outcome distribution still matches
+    (would a histogram check notice?);
+  - forward QDG slices of every operation: completeness against the per-operation influence sets
+    (`icpc/influence.py`) and the duality q in F(o) iff o in B(q).
+- **Slice profiles (driver `tool/corpus/profiles.py`, Bugs4Q, the Qiskit textbook, a seeded random sample of 500
+  LintQ programs):** per qubit, operations, lines, distinct names in qubit arguments (from the tool's gate table),
+  use inside functions, dependent qubits, conditioned operations, and backward vs forward line counts. Descriptive.
+- **Tool-v5 (tag `tool-v5`):** adds `forward_slice` and `slice_profile` and their CLI options. The backward slicer
+  and the interpreter are unchanged; all earlier checks are rerun and must give the tool-v4 results.
+- **Section II example.** The Qiskit textbook's Bernstein-Vazirani program (in our textbook corpus) with one seeded
+  slip: the ancilla is prepared with `h(n); x(n)` instead of `h(n); z(n)`, so the program returns 000 instead of the
+  secret 011. It replaces the 3-gate Bugs4Q bug in Section II; that real bug stays in Fig. 4 and Proposition 3.
+  The example's facts are computed by the tool and the oracle (figure generator), and the bug is labeled as seeded.
