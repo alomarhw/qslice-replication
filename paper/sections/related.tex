@@ -1,63 +1,67 @@
 \section{Related Work}\label{sec:related}
 
 \paragraph*{Program slicing}
-Weiser introduced slicing as a debugging aid~\cite{weiser1982programmers}. Ferrante et
-al.~\cite{ferrante1987pdg} and, across procedures, Horwitz et al.~\cite{horwitz1990interprocedural}
-reduced it to reachability in a dependence graph, and dynamic slicing restricts a slice to one
-execution~\cite{korel1988dynamic, agrawal1990dynamic}, much as state-based pruning restricts it to one
-input. Surveys cover the many variants~\cite{tip1994a, harman2008program}. General analysis frameworks such as WALA
-provide dependence-graph slicers for Java, JavaScript and, through a separate front end, Python~\cite{wala}.
-Applied to a Qiskit program, such a slicer sees each gate as a call on one circuit object, so it cannot
-tell which qubits an operation depends on. A recent retrospective notes
-that slices can be defined by almost any semantic method, as the application requires, and names quantum
-programs as a future direction~\cite{gallagher2025program}. We follow that view and define the slice of a
-quantum program by the reduced state of its criterion. Slicing of probabilistic programs preserves the distribution of the
-criterion variables, and conditioning adds dependences of its own~\cite{hur2014slicing,
-amtoft2020theory, olmedo2025slicing}. Our criterion is stronger. Preserving $\rho_W$ preserves the outcome
-distribution of every measurement of $W$, so our slices are also probabilistic slices of the measured
-program. The converse fails, because a distribution in one basis does not see phase or the kickback of
-Proposition~\ref{prop:du}.
+Weiser introduced slicing as an aid to program comprehension during debugging~\cite{weiser1982programmers}.
+Ferrante et al.~\cite{ferrante1987pdg} and, across procedures, Horwitz et
+al.~\cite{horwitz1990interprocedural} reduced it to reachability in a dependence graph, and dynamic
+slicing restricts a slice to one execution~\cite{korel1988dynamic, agrawal1990dynamic}, much as state-based
+pruning restricts it to one input. Surveys cover the many variants~\cite{tip1994a, harman2008program}.
+General analysis frameworks such as WALA provide dependence-graph slicers for Java, JavaScript and, through
+a separate front end, Python~\cite{wala}. Applied to a Qiskit program, such a slicer sees each gate as a
+call on one circuit object, so it cannot tell which qubits an operation depends on. A recent retrospective
+notes that slices can be defined by almost any semantic method, as the application requires, and names
+quantum programs as a future direction~\cite{gallagher2025program}. We follow that view and define the
+slice of a quantum program by the reduced state of its criterion. Slicing of probabilistic programs
+preserves the distribution of the criterion variables, and conditioning adds dependences of its
+own~\cite{hur2014slicing, amtoft2020theory, olmedo2025slicing}. Our criterion is stronger. Preserving
+$\rho_W$ preserves the outcome distribution of every measurement of $W$, so our slices are also
+probabilistic slices of the measured program. The converse fails, because a distribution in one basis does
+not see phase or the phase kickback that Proposition~\ref{prop:du} illustrates.
 
 \paragraph*{Dependence in quantum programs}
-To our knowledge, Yu and Zhao's quantum program dependence graph~\cite{yu2025qpdg} is the only prior
-proposal of dependence-based slicing for quantum programs. It adds entanglement, no-cloning, temporal and measurement
-dependences to the classical graph, keeps the classical criterion $(s, V)$, and slices by reachability.
-Its dependences are defined in prose, an entanglement dependence holding when the qubits of two
-statements are entangled, and the paper leaves an implementation and its evaluation to future work. Its
-no-cloning example, \texttt{x(0)} followed by \texttt{cx(0,1)}, is described as entangling the two qubits,
-although it produces the product state $\ket{11}$. The dependence is real but the entanglement is not,
-which is case~(i) of Proposition~\ref{prop:ent}. We operationalize the graph as the wire rule with
-entanglement closure and evaluate it against the semantics. Other program representations model qubits
-without a dependence semantics. The quantum code property graph of Kaul et al.~\cite{kaul2023uniform}
-adds a data-flow edge from the control of a CNOT to its target and treats the control as unchanged. This
-is the classical reading that phase kickback breaks, as Proposition~\ref{prop:du} shows. LintQ~\cite{paltenghi2024lintq}
-orders two operations exactly when they act on a common qubit, which is the relation of the wire rule,
-and uses it to find bug patterns while giving up soundness by design. We show that this relation is the
-sound and complete basis for slicing. Behler et al.\ extend srcML to OpenQASM, analyze the order of the
-operations on each qubit, and name the slicing of individual qubits as future
-work~\cite{behler2024supporting, behler2025static}. Our results give such a slicer its dependence rule.
-Studies of code smells take a similar per-qubit view of circuits~\cite{chen2023smelly}.
+To our knowledge, Yu and Zhao's QPDG~\cite{yu2025qpdg} is the only prior proposal of dependence-based
+slicing for quantum programs. It adds entanglement, no-cloning, temporal and measurement dependences to
+the classical graph, which informally follow entangled qubits, forbid copying a qubit, order operations in
+time and link measurements to their uses. It keeps the classical criterion $(s, V)$ and slices by
+reachability. Its dependences are defined in prose. For example, an entanglement dependence holds when the
+qubits of two statements are entangled, and the paper leaves an implementation and its evaluation to
+future work. Its no-cloning example, \texttt{x(0)} followed by \texttt{cx(0,1)}, is described as
+entangling the two qubits, although it produces the product state $\ket{11}$. The dependence is real but
+the entanglement is not, which is case~(i) of Proposition~\ref{prop:ent}. We operationalize the graph as
+the wire rule with entanglement closure and evaluate it against the semantics. Other program
+representations model qubits without a dependence semantics. The quantum code property graph of Kaul et
+al.~\cite{kaul2023uniform} adds a data-flow edge from the control of a CNOT to its target and treats the
+control as unchanged. This is the classical reading that phase kickback breaks, as
+Proposition~\ref{prop:du} shows. LintQ, a static analyzer for Qiskit programs~\cite{paltenghi2024lintq},
+orders two operations exactly when they act on a common qubit, which is the relation of the wire rule, and
+uses it to find bug patterns, aiming by design at neither full soundness nor full precision. We show that
+this relation gives sound and dependence-complete slices. Behler et al.\ extend srcML to OpenQASM and
+analyze the order of the operations on each qubit~\cite{behler2024supporting}, and they name the slicing
+of individual qubits as future work~\cite{behler2025static}. Our results give such a slicer its dependence
+rule. Code-smell detectors also inspect the operations on each qubit, for example to flag idle
+qubits~\cite{chen2023smelly}.
 
 \paragraph*{Entanglement analysis}
 A line of work approximates statically which qubits may be entangled, with type systems for patterns and
 higher-order functions~\cite{perdrix2007types, prost2009reasoning}, abstract
-interpretation~\cite{perdrix2008entanglement, yu2021abstract}, the stabilizer formalism~\cite{honda2015stabilizer}, a
-type system that tracks purity~\cite{yuan2022twist}, and dataflow rules for Q\#
-programs~\cite{xia2025entanglement}. The ScaffCC compiler conservatively assumes that two qubits which
-interact may be entangled~\cite{javadiabhari2015scaffcc, zhao2023qchecker}, which is the entanglement
-closure we evaluate. These analyses answer whether qubits are correlated, which matters
-for optimization and for reasoning about measurement. They are not slicers, and
-Proposition~\ref{prop:ent} shows that their answer does not decide dependence.
+interpretation~\cite{perdrix2008entanglement, yu2021abstract}, the stabilizer
+formalism~\cite{honda2015stabilizer}, a type system that tracks purity~\cite{yuan2022twist}, and dataflow
+rules for Q\# programs~\cite{xia2025entanglement}. The ScaffCC compiler conservatively assumes that two
+qubits which interact may be entangled~\cite{javadiabhari2015scaffcc, zhao2023qchecker}, which is the
+entanglement closure we evaluate. These analyses answer whether qubits are correlated, which matters for
+optimization and for reasoning about measurement. They are not slicers, and Proposition~\ref{prop:ent}
+shows that their answer does not decide dependence.
 
 \paragraph*{Light cones and compilers}
 Heim et al.\ observe that dependences between quantum instructions should account for instructions
 that commute even when they act on the same qubits~\cite{heim2020quantum}. Qiskit's \texttt{LightCone}
 pass restricts a circuit to the gates that can reach an observable and drops gates that commute with
-it~\cite{qiskit2025, javadi2024qiskit}. Compilers build gate-dependence graphs to map and schedule
-circuits on hardware~\cite{murali2019triq} and cancel or merge gates while keeping the circuit
-equivalent~\cite{amy2020staq}. None of them selects the operations relevant to a criterion. We show
-that the plain light cone is the sound and complete slice of a set of qubits, and that commutation is
-safe for random inputs but not when the angles change.
+it~\cite{qiskit2025}. Compilers build gate-dependence graphs to map and schedule circuits on
+hardware~\cite{murali2019triq} and cancel or merge gates while keeping the circuit
+equivalent~\cite{amy2020staq}. None of them selects the operations relevant to a criterion. We show that
+the wire slice, which is the backward light cone, is the sound and dependence-complete slice of a set of
+qubits, and that commutation is safe for random inputs but, unless angles are treated as symbols, not when
+the angles change.
 
 \paragraph*{Debugging quantum programs}
 A recent roadmap finds that debugging research for quantum programs is still in an initial phase,
@@ -65,13 +69,13 @@ lists slicing among its opportunities, and finds almost no use of dependence gra
 analysis~\cite{ramalho2025road}. The slicing it reviews is that of Metwalli and Van
 Meter~\cite{metwalli2022debugging, metwalli2024testing}, which splits a circuit at breakpoints the
 developer places and drops idle qubits. Qiskit's own slicing utilities likewise partition a circuit, by
-barriers, depth or gate type~\cite{qiskitaddonutils}. Neither has a criterion, and the developer still narrows the
-fault by hand. Metwalli and Van Meter's phase tests show that a phase is wrong but not where to look. A criterion
-over a set of qubits answers that question. Bug studies~\cite{zhao2021bugpatterns} and benchmarks such
-as Bugs4Q~\cite{zhao2023bugs4q} catalogue real faults, and static checkers such as
-QChecker~\cite{zhao2023qchecker} and Q-PAC~\cite{nayak2023qpac} detect known bug and fix patterns but
-not wrong outputs. Mutation
-tools~\cite{mendiluze2021muskit, fortunato2022qmutpy} and fault models~\cite{garcia2022testing} supply
-the faults of our study, and mutation-based fault localization has been adapted to quantum programs by
+barriers, depth, gate type or edge coloring~\cite{qiskitaddonutils}. Neither has a criterion, and the
+developer still narrows the fault by hand. Metwalli and Van Meter's phase tests detect a wrong phase on a
+slice, but locating the faulty qubit takes further test vectors that the developer designs by hand. A slice
+for a joint criterion narrows where to look. Bug studies~\cite{zhao2021bugpatterns} and benchmarks such as
+Bugs4Q~\cite{zhao2023bugs4q} catalog real faults, and static checkers such as
+QChecker~\cite{zhao2023qchecker} and Q-PAC~\cite{nayak2023qpac} detect known bug and fix patterns. Mutation
+tools~\cite{mendiluze2021muskit, fortunato2022qmutpy} and fault models~\cite{garcia2022testing} supply the
+faults of our study, and mutation-based fault localization has been adapted to quantum programs by
 Ishimoto et al.~\cite{ishimoto2025mbfl}. Slicing is complementary to these tools, since it tells them
 where to look.

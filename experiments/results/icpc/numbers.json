@@ -359,6 +359,11 @@
   "tex": "\\ensuremath{-}0.061",
   "source": "results/icpc/confirmatory/summary.json"
  },
+ "HFiveExamQHigher": {
+  "value": 0.06099228483503924,
+  "tex": "0.061",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
  "RobQPrunedBasis": {
   "value": 0.6582809224318659,
   "tex": "65.8\\%",
@@ -1523,6 +1528,26 @@
   "tex": "0",
   "source": "results/icpc/rq1_lcq_symbolic/records.csv"
  },
+ "LcqsN": {
+  "value": 732,
+  "tex": "732",
+  "source": "results/icpc/rq1_lcq_symbolic/records.csv"
+ },
+ "LcqsDynamicUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1_lcq_symbolic/records.csv"
+ },
+ "LcqsRecall": {
+  "value": 0.9392218416949525,
+  "tex": "0.939",
+  "source": "results/icpc/rq1_lcq_symbolic/records.csv"
+ },
+ "LcqsPrecision": {
+  "value": 0.9659508969285853,
+  "tex": "0.966",
+  "source": "results/icpc/rq1_lcq_symbolic/records.csv"
+ },
  "LcqsParamRobust": {
   "value": 175,
   "tex": "175",
@@ -1531,6 +1556,26 @@
  "LcqsParamN": {
   "value": 175,
   "tex": "175",
+  "source": "results/icpc/rq1_lcq_symbolic/robustness.csv"
+ },
+ "LcqsBasisRobust": {
+  "value": 732,
+  "tex": "732",
+  "source": "results/icpc/rq1_lcq_symbolic/robustness.csv"
+ },
+ "LcqsBasisN": {
+  "value": 732,
+  "tex": "732",
+  "source": "results/icpc/rq1_lcq_symbolic/robustness.csv"
+ },
+ "LcqsHaarRobust": {
+  "value": 732,
+  "tex": "732",
+  "source": "results/icpc/rq1_lcq_symbolic/robustness.csv"
+ },
+ "LcqsHaarN": {
+  "value": 732,
+  "tex": "732",
   "source": "results/icpc/rq1_lcq_symbolic/robustness.csv"
  },
  "ToolDevPrograms": {
@@ -1755,7 +1800,7 @@
  },
  "AnsYzExtra": {
   "value": 2,
-  "tex": "2",
+  "tex": "two",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "ExRandomInputs": {

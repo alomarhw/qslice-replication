@@ -7,7 +7,7 @@
 \definecolor{ink}{HTML}{1F2328}\definecolor{mute}{HTML}{6E7781}\definecolor{rule}{HTML}{D0D7DE}
 \definecolor{wire}{HTML}{0969DA}\definecolor{wireL}{HTML}{DDEBFF}
 \definecolor{fault}{HTML}{CF4A1B}\definecolor{faultL}{HTML}{FCE4DA}
-\definecolor{pdg}{HTML}{8C959F}\definecolor{hlC}{HTML}{FFF1B8}\definecolor{tree}{HTML}{8250DF}\definecolor{treeL}{HTML}{F1EAFE}
+\definecolor{pdg}{HTML}{8C959F}\definecolor{hlC}{HTML}{FFF1B8}\definecolor{tree}{HTML}{6639BA}\definecolor{treeL}{HTML}{F1EAFE}
 \tikzset{
   >={Stealth[length=3.6pt,width=3.2pt]},
   stage/.style={font=\footnotesize\bfseries, text=ink, anchor=south west, inner sep=0pt},
@@ -21,12 +21,12 @@
         inner xsep=2pt, inner ysep=1.4pt, align=center},
   gate/.style={rectangle, draw=ink, fill=white, line width=0.55pt, minimum size=11pt, inner sep=0pt,
         font=\fontsize{7}{8}\selectfont},
-  xml/.style={font=\ttfamily\fontsize{5.6}{6.4}\selectfont, anchor=west, inner sep=0pt},
+  xml/.style={font=\ttfamily\fontsize{6}{6.8}\selectfont, anchor=west, inner sep=0pt},
   note/.style={font=\fontsize{6.4}{7.6}\selectfont\itshape, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}, text=mute, align=center, inner sep=1pt},
   flowarrow/.style={->, line width=0.7pt, draw=ink},
 }
 \newcommand{\hlbox}[1]{{\setlength{\fboxsep}{0.5pt}\colorbox{hlC}{\strut #1}}}
-\newcommand{\hlm}[1]{\raisebox{0.9ex}{\textcolor{tree}{\fontsize{4.6}{5}\selectfont\bfseries\rmfamily #1}}}
+\newcommand{\hlm}[1]{\raisebox{0.9ex}{\textcolor{tree}{\fontsize{5.4}{6}\selectfont\bfseries\rmfamily #1}}}
 \newcommand{\hl}[1]{\textcolor{tree}{\bfseries #1}}
 \begin{document}
 \begin{tikzpicture}
@@ -61,24 +61,24 @@
 \node[xml] at (3.8400000000000003,-1.8050000000000002) {\textcolor{tree}{<literal type="number">}\hlbox{\textcolor{ink}{\bfseries 1}}\textcolor{tree}{</literal>}};
 \node[xml] at (3.8400000000000003,-2.06) {\textcolor{tree}{</expr>}\textcolor{tree}{</argument>}\textcolor{ink}{\bfseries )}\textcolor{tree}{</argument\_list>}};
 \node[xml] at (3.58,-2.315) {\textcolor{tree}{\hlbox{</call>}}\textcolor{tree}{</expr>}\textcolor{tree}{</expr\_stmt>}};
-\node[anchor=north west, align=left, font=\fontsize{6.2}{7.6}\selectfont, text=ink, inner sep=0pt] at (3.45,-2.65) {\hl{a}\,\texttt{call} $\to$ one operation\quad \hl{b}\,\texttt{cx} $\to$ gate\\\hl{c}\,\texttt{0},\,\texttt{1} $\to$ $q_{0}$ control, $q_{1}$ target\\\hl{d}\,position $\to$ line 7\quad \textcolor{wire}{wire rule: writes both}};
+\node[anchor=north west, align=left, font=\fontsize{6.2}{7.6}\selectfont, text=ink, inner sep=0pt] at (3.45,-2.65) {\hl{a}\,\texttt{call} $\to$ one operation\quad \hl{b}\,\texttt{cx} $\to$ gate\\\hl{c}\,\texttt{0},\,\texttt{1} $\to$ $q_{0}$ control, $q_{1}$ target\\\hl{d}\,position $\to$ line 7\quad \textcolor{wire}{the wire rule writes both}};
 \node[stnum] (n3) at (8.270000000000001,0.55) {3};
 \node[stage, anchor=west] at (8.490000000000002,0.55) {Trace};
 \draw[rule, line width=0.6pt] (8.110000000000001,0.3) -- (10.06,0.3);
 \node[anchor=north west, font=\fontsize{6.4}{8}\selectfont, text=ink, inner sep=0pt] at (8.170000000000002,-0.05) {\setlength{\tabcolsep}{3pt}\begin{tabular}{rll}\textcolor{mute}{line}&\textcolor{mute}{gate}&\textcolor{mute}{qubits}\\[1pt]5&\texttt{h}&$q_0$\\[1pt]6&\texttt{h}&$q_1$\\[1pt]7&\texttt{cx}&$q_0$,\,$q_1$\\[1pt]\textcolor{mute}{8}&\textcolor{mute}{\texttt{measure}}&\textcolor{mute}{$q_0$}\\[1pt]\textcolor{mute}{8}&\textcolor{mute}{\texttt{measure}}&\textcolor{mute}{$q_1$}\\[1pt]\end{tabular}};
-\node[note, anchor=north west, align=left, text width=1.8499999999999999cm] at (8.15,-2.0) {Read from the source, not run. Grey: terminal.};
+\node[note, anchor=north west, align=left, text width=1.8499999999999999cm] at (8.15,-2.0) {Read statically. Grey measurements are terminal.};
 \node[stnum] (n4) at (10.64,0.55) {4};
 \node[stage, anchor=west] at (10.860000000000001,0.55) {Dependence graph};
 \draw[rule, line width=0.6pt] (10.48,0.3) -- (13.33,0.3);
 \node[gnode, fill=wireL, draw=ink] (g0) at (11.330000000000002,-0.35) {h q0\\[-1pt]{\rmfamily\itshape\fontsize{5.6}{6}\selectfont line 5}};
-\node[gnode, fill=faultL, draw=fault] (g1) at (12.63,-0.35) {h q1\\[-1pt]{\rmfamily\itshape\fontsize{5.6}{6}\selectfont line 6}};
+\node[gnode, fill=wireL, draw=fault, line width=0.9pt] (g1) at (12.63,-0.35) {h q1\\[-1pt]{\rmfamily\itshape\fontsize{5.6}{6}\selectfont line 6}};
 \node[gnode, fill=wireL, draw=ink] (g2) at (11.98,-1.4) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5.6}{6}\selectfont line 7}};
 \draw[->, draw=ink!60, line width=0.55pt] (g0) -- node[left, pos=0.45, font=\fontsize{5.6}{6}\selectfont, text=mute] {$q_0$} (g2);
 \draw[->, draw=ink!60, line width=0.55pt] (g1) -- node[right, pos=0.45, font=\fontsize{5.6}{6}\selectfont, text=mute] {$q_1$} (g2);
 \node[rectangle, rounded corners=1.5pt, draw=wire, line width=0.7pt, font=\fontsize{6.3}{7}\selectfont, text=wire, inner sep=1.8pt] (crit) at (11.98,-2.35) {criterion $\{q_0\}$};
-\draw[->, wire, line width=0.9pt] (crit) -- node[right, font=\fontsize{5.6}{6.4}\selectfont, text=wire, align=left] {last writer:\\[-1pt]\texttt{cx} writes $q_0$} (g2);
+\draw[->, wire, line width=0.9pt] (crit) -- node[right, font=\fontsize{5.6}{6.4}\selectfont, text=wire, align=left] {last writer,\\[-1pt]\texttt{cx} writes $q_0$} (g2);
 \draw[->, pdg, line width=0.7pt, dash pattern=on 1.6pt off 1.1pt] (crit.west) to[out=180, in=180] (g0.west);
-\node[note, anchor=north west, align=left, text width=2.75cm] at (10.52,-2.75) {Shaded: wire-rule backward reach. \textcolor{pdg}{Dashed}: classical PDG's last writer.};
+\node[note, anchor=north west, align=left, text width=2.75cm] at (10.52,-2.75) {Shaded nodes are the wire rule's backward reach, and the \textcolor{pdg}{dashed} arrow is the classical PDG's last writer.};
 \node[stnum] (n5) at (13.91,0.55) {5};
 \node[stage, anchor=west] at (14.13,0.55) {Slice of $q_0$};
 \draw[rule, line width=0.6pt] (13.75,0.3) -- (17.2,0.3);
@@ -101,8 +101,8 @@
 \node[code] at (15.0,-1.2000000000000002) {circuit.cx(0,1)};
 \node[lno] at (14.92,-1.56) {8};
 \node[code] at (15.0,-1.56) {circuit.measure\_all()};
-\node[font=\fontsize{6.2}{7}\selectfont, text=fault, anchor=north west, align=left] at (13.77,-1.8699999999999999) {\textbf{wire rule:} fault line~6 kept\\\textbf{classical PDG:} line~5 only, fault missed};
-\node[note, anchor=north west, align=left, text width=3.35cm] at (13.77,-2.4699999999999998) {full square: quantum line; light: classical line (circuit construction).};
+\node[font=\fontsize{6.2}{7}\selectfont, text=fault, anchor=north west, align=left] at (13.77,-1.8699999999999999) {\textbf{wire rule} keeps the faulty line~6\\\textbf{classical PDG} keeps line~5 only};
+\node[note, anchor=north west, align=left, text width=3.35cm] at (13.77,-2.4699999999999998) {A full square marks a quantum line, a light one a classical line that builds the circuit.};
 \draw[flowarrow] (3.0,0.3) -- (3.3200000000000003,0.3);
 \draw[flowarrow] (7.74,0.3) -- (8.06,0.3);
 \draw[flowarrow] (10.110000000000001,0.3) -- (10.43,0.3);

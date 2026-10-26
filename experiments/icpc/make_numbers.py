@@ -142,6 +142,7 @@ def main() -> int:
     put("HFourCIHigh", c["H4"]["ci95_difference"][1], f"{100 * c['H4']['ci95_difference'][1]:.1f}", src)
     put("HFiveSizeDiff", c["H5"]["mean_difference"], f"{c['H5']['mean_difference']:.1f}", src)
     put("HFiveExamDiff", c["H5"]["exam_slice_alongside"]["mean_difference"], f"{c['H5']['exam_slice_alongside']['mean_difference']:.3f}", src)
+    put("HFiveExamQHigher", -c["H5"]["exam_slice_alongside"]["mean_difference"], f"{-c['H5']['exam_slice_alongside']['mean_difference']:.3f}", src)  # state-based minus wire
 
     # ---- RQ2: robustness under three input regimes -------------------------------------------------------
     src = "results/icpc/rq2_robustness/pairs.csv"
@@ -402,9 +403,15 @@ def main() -> int:
     ls_ = [r for r in rows(ICPC / "rq1_lcq_symbolic" / "records.csv") if r["slicer"] == "lcqs" and r["applicable"] == "1"]
     put("LcqsSize", st.mean(float(r["size_fraction"]) for r in ls_), pct(st.mean(float(r["size_fraction"]) for r in ls_)), src)
     put("LcqsUnsound", sum(r["sound"] != "1" for r in ls_), cnt(sum(r["sound"] != "1" for r in ls_)), src)
-    rb = [r for r in rows(ICPC / "rq1_lcq_symbolic" / "robustness.csv") if r["slicer"] == "lcqs" and r["regime"] == "R-param"]
-    put("LcqsParamRobust", sum(r["robust"] == "1" for r in rb), cnt(sum(r["robust"] == "1" for r in rb)), "results/icpc/rq1_lcq_symbolic/robustness.csv")
-    put("LcqsParamN", len(rb), cnt(len(rb)), "results/icpc/rq1_lcq_symbolic/robustness.csv")
+    put("LcqsN", len(ls_), cnt(len(ls_)), src)
+    put("LcqsDynamicUnsound", sum(r["sound"] != "1" for r in ls_ if r["dynamic"] == "1"),
+        cnt(sum(r["sound"] != "1" for r in ls_ if r["dynamic"] == "1")), src)
+    put("LcqsRecall", st.mean(float(r["dep_recall"]) for r in ls_), f"{st.mean(float(r['dep_recall']) for r in ls_):.3f}", src)
+    put("LcqsPrecision", st.mean(float(r["dep_precision"]) for r in ls_), f"{st.mean(float(r['dep_precision']) for r in ls_):.3f}", src)
+    for reg, nm in (("R-param", "Param"), ("R-basis", "Basis"), ("R-haar", "Haar")):
+        rb = [r for r in rows(ICPC / "rq1_lcq_symbolic" / "robustness.csv") if r["slicer"] == "lcqs" and r["regime"] == reg]
+        put(f"Lcqs{nm}Robust", sum(r["robust"] == "1" for r in rb), cnt(sum(r["robust"] == "1" for r in rb)), "results/icpc/rq1_lcq_symbolic/robustness.csv")
+        put(f"Lcqs{nm}N", len(rb), cnt(len(rb)), "results/icpc/rq1_lcq_symbolic/robustness.csv")
 
     # ---- the static program slicer (Deviation I-15; tool-v4, the final version; earlier versions' results kept) --
     TA = ICPC / "tool_acceptance"
@@ -455,7 +462,7 @@ def main() -> int:
     put("AnsCpdgOps", len(B_["slices"]["cpdg"]), cnt(len(B_["slices"]["cpdg"])), "paper/figures/src/fig_programs_facts.json")
     put("AnsCpdgFidelity", B_["fidelity"]["cpdg"], f"{B_['fidelity']['cpdg']:.2f}", "paper/figures/src/fig_programs_facts.json")
     put("AnsWireOps", len(B_["slices"]["lc"]), cnt(len(B_["slices"]["lc"])), "paper/figures/src/fig_programs_facts.json")
-    put("AnsYzExtra", len(set(B_["slices"]["yz"]) - set(B_["dep"])), cnt(len(set(B_["slices"]["yz"]) - set(B_["dep"]))), "paper/figures/src/fig_programs_facts.json")
+    put("AnsYzExtra", len(set(B_["slices"]["yz"]) - set(B_["dep"])), "zero one two three four five six seven eight nine".split()[len(set(B_["slices"]["yz"]) - set(B_["dep"]))], "paper/figures/src/fig_programs_facts.json")
     put("ExRandomInputs", 20, "20", "paper/figures/src/make_fig_example.py (N_RANDOM)")
     put("ExQSliceWrong", ex["facts"]["2"]["q"]["unsound_random"], cnt(ex["facts"]["2"]["q"]["unsound_random"]), "paper/figures/src/fig_example_facts.json")
     put("ExDuFidelity", ex["facts"]["0"]["du"]["F0"], f"{ex['facts']['0']['du']['F0']:.2f}", "paper/figures/src/fig_example_facts.json")

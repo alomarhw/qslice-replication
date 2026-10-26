@@ -2,105 +2,111 @@
 
 \begin{table}[t]
   \centering
-  \caption{RQ1: Slices of the \numNPairs{} corpus-A pairs at $\ket{0\dots0}$. Wrong: slices that do not
-  preserve the criterion (dynamic: of the \numNDynamicPairs{} pairs with measurement or feedback).
-  Recall and precision are against the semantic dependences; size is the mean share of the circuit. Wire adds quantum dependence to the classical PDG; state-based pruning runs at $\ket{0\dots0}$.}
+  \caption{Slices of the \numNPairs{} corpus-A pairs at $\ket{0\dots0}$ for RQ1. Wrong counts the slices
+  that do not preserve the criterion, and Dyn.\ counts those among the \numNDynamicPairs{} pairs in dynamic
+  circuits. Recall and precision are against the dependence set, and size is the mean share of the
+  circuit.}
   \label{tab:rq1}
-  \footnotesize\setlength{\tabcolsep}{3pt}
-  \resizebox{\columnwidth}{!}{%
+  \footnotesize\setlength{\tabcolsep}{2.6pt}
   \begin{tabular}{@{}l l r r r r r@{}}
     \toprule
     Rule & Dependence & Wrong & Dyn. & Recall & Prec. & Size \\
     \midrule
-    Dependences$^{b}$  & semantic              & --                     & --                       & 1.000                 & 1.000                    & \numDepFloor{} \\
+    Dependence set$^{b}$ & semantic            & --                     & --                       & 1.000                 & 1.000                    & \numDepFloor{} \\
     \midrule
     Def-use            & data                  & \numRqOneDuUnsound{}   & \numDuDynamicUnsound{}   & \numRqOneDuRecall{}   & \numRqOneDuPrecision{}   & \numRqOneDuSize{} \\
     Classical PDG      & data, control         & \numCpdgUnsound{}      & \numCpdgDynamicUnsound{} & \numCpdgRecall{}      & \numCpdgPrecision{}      & \numCpdgSize{} \\
-    Wire               & + quantum             & \numRqOneLcUnsound{}   & \numLcDynamicUnsound{}   & \numRqOneLcRecall{}   & \numRqOneLcPrecision{}   & \numRqOneLcSize{} \\
-    QPDG reading       & wire + entangl.       & \numRqOneYzUnsound{}   & \numYzDynamicUnsound{}   & \numRqOneYzRecall{}   & \numRqOneYzPrecision{}   & \numRqOneYzSize{} \\
+    Wire rule          & + quantum             & \numRqOneLcUnsound{}   & \numLcDynamicUnsound{}   & \numRqOneLcRecall{}   & \numRqOneLcPrecision{}   & \numRqOneLcSize{} \\
+    Ent.\ closure      & wire + entangl.       & \numRqOneYzUnsound{}   & \numYzDynamicUnsound{}   & \numRqOneYzRecall{}   & \numRqOneYzPrecision{}   & \numRqOneYzSize{} \\
     \midrule
-    Commutation$^{a}$  & wire, pruned          & \numLcqUnsound{}       & --                       & \numLcqRecall{}       & \numLcqPrecision{}       & \numLcqSize{} \\
+    Commutation$^{a}$  & wire, pruned          & \numLcqUnsound{}       & \numLcqDynamicUnsound{}  & \numLcqRecall{}       & \numLcqPrecision{}       & \numLcqSize{} \\
+    Comm., symbolic$^{a}$ & wire, pruned       & \numLcqsUnsound{}      & \numLcqsDynamicUnsound{} & \numLcqsRecall{}      & \numLcqsPrecision{}      & \numLcqsSize{} \\
     State-based        & wire, pruned          & \numRqOneQUnsound{}    & \numQDynamicUnsound{}    & \numRqOneQRecall{}    & \numRqOneQPrecision{}    & \numRqOneQSize{} \\
     \bottomrule
-  \end{tabular}}\\[2pt]
-  {\footnotesize $^{a}$\,On the \numLcqApplicable{} pairs where Qiskit's pass applies; it rejects
-  circuits that measure, which leaves no dynamic pair. $^{b}$\,The semantic dependences themselves,
-  the smallest dependence-complete slice. They are a reference, not a slicer, so they have no
+  \end{tabular}\\[2pt]
+  {\footnotesize $^{a}$\,On the \numLcqApplicable{} pairs where Qiskit's pass applies, of which
+  \numLcqDynamicN{} are dynamic. The pass raises on \numLcqNaMeasurements{} pairs of circuits that measure.
+  $^{b}$\,The smallest dependence-complete slice. It is a reference, not a slicer, so it has no
   soundness value.}
 \end{table}
 
 \subsection{RQ1: Which definitions give sound and complete slices?}
 
 Table~\ref{tab:rq1} shows that only the rules with quantum dependence are sound. The classical PDG gives a
-wrong slice for \numCpdgUnsound{} of the \numNPairs{} pairs (\numCpdgUnsoundPct{}). Its control
-dependence matters on circuits with measurement and feedback, where it is wrong on
-\numCpdgDynamicUnsound{} pair against \numDuDynamicUnsound{} for def-use, which ignores classical bits. On
-the unitary circuits the two rules are identical, and both are wrong on \numCpdgUnitaryUnsound{} pairs.
-Of the dependences the classical PDG misses, \numCpdgMissKickback{} reach the criterion only through a
-gate on which the criterion qubit is a control, the phase kickback of Proposition~\ref{prop:du}; only
-\numCpdgMissFeedback{} reach it through classical feedback. The confirmatory test H1 confirms that
+wrong slice for \numCpdgUnsound{} of the \numNPairs{} pairs, or \numCpdgUnsoundPct{}. Its control
+dependence matters on dynamic circuits, where it is wrong on \numCpdgDynamicUnsound{} pair against
+\numDuDynamicUnsound{} for def-use, which ignores classical bits. On the unitary circuits the two rules
+are identical, and both are wrong on \numCpdgUnitaryUnsound{} pairs. Of the \numCpdgMissTotal{}
+dependences the classical PDG misses, \numCpdgMissKickback{} reach the criterion only through a gate on
+which the criterion qubit is a control, the phase kickback that Proposition~\ref{prop:du} illustrates, and
+only \numCpdgMissFeedback{} reach it through classical feedback. The confirmatory test H1 confirms that
 state-based pruning, which starts from the wire slice, is wrong on fewer pairs than def-use
 (\numRqOneQUnsound{} against \numRqOneDuUnsound{}, exact McNemar, Holm \numHOnePHolm{}).
 
-The wire rule is sound on every pair and recovers every dependence (recall \numRqOneLcRecall{}), as
-Theorem~\ref{thm:sound} and Proposition~\ref{prop:complete} predict. Our reading of the quantum program
-dependence graph is sound for the same reason, since its data edges already follow every qubit of a
-gate, but its entanglement edges add operations that are not dependences. Its precision falls from
-\numRqOneLcPrecision{} to \numRqOneYzPrecision{}, and its slices grow from \numRqOneLcSize{} to
-\numRqOneYzSize{} of the circuit. On the \numFamCircuits{} circuits with known structure, no rule with
-quantum dependence is ever wrong, while the classical PDG is wrong on \numFamCpdgUnsound{} of their
-pairs. The \numCatEntries{} catalogue cases agree with the hand-derived expectations for every rule.
+The wire rule is sound on every pair and recovers every dependence, as Theorem~\ref{thm:sound} and
+Proposition~\ref{prop:complete} predict. Entanglement closure is also sound, but its added edges bring in
+operations that are not dependences. Its precision falls from \numRqOneLcPrecision{} to
+\numRqOneYzPrecision{}, and its slices grow from \numRqOneLcSize{} to \numRqOneYzSize{} of the circuit. On
+the \numFamCircuits{} circuits with known structure, no rule with quantum dependence is ever wrong, while
+the classical PDG is wrong on \numFamCpdgUnsound{} of their pairs. The \numCatEntries{} catalog cases
+agree with the hand-derived expectations for def-use, the wire rule, entanglement closure and state-based
+pruning, and commutation pruning is sound and within the wire slice on every case where Qiskit's pass
+applies.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figures/fig_size.pdf}
-  \caption{RQ1: Mean slice size by circuit width. The grey bars are the dependences, the smallest size a
-  dependence-complete slice can have. Corpus~L has no ground truth, which would need exact simulation of
-  every perturbation at 15 to 20 qubits. Commutation is shown where Qiskit's pass applies.}
+  \caption{Mean slice size by circuit width, for RQ1. The grey bars are the dependence set, the smallest
+  size a dependence-complete slice can have. Corpus~L has no grey bar, because its ground truth would need
+  exact simulation of every perturbation at 15 to 20 qubits. Commutation is shown where Qiskit's pass
+  applies.}
   \label{fig:size}
 \end{figure}
 
-Slice sizes should be read against the dependences themselves. The dependences of a qubit make up
-\numDepFloor{} of its circuit on average, so no dependence-complete slice can be smaller, and the wire
-slice keeps only \numLcExcess{} points more. It equals the dependence set exactly on \numLcExact{} of the
-\numNPairs{} pairs, and on \numPairsAllDep{} pairs every operation of the circuit is a dependence. The
-QPDG reading keeps \numYzExcess{} points more than the dependences. The sizes are large because most
-benchmark circuits are small and densely coupled. Fig.~\ref{fig:size} shows that slices shrink as
+Slice sizes should be read against the dependence set. The dependences of a qubit make up \numDepFloor{}
+of its circuit on average, so no dependence-complete slice can be smaller, and the wire slice keeps only
+\numLcExcess{} percentage points more. It equals the dependence set exactly on \numLcExact{} of the
+\numNPairs{} pairs, and on \numPairsAllDep{} pairs every operation of the circuit is a dependence.
+Entanglement closure keeps \numYzExcess{} points more than the dependence set. The sizes are large because
+most benchmark circuits are small and densely coupled. As Fig.~\ref{fig:size} shows, slices shrink as
 circuits widen and less of a circuit can reach one qubit. At 11 to 14 qubits the wire slice keeps
-\numWElevenLc{} of the circuit, and on the circuits of corpus~L it keeps \numCorpusLSizeLc{}. The QPDG
-reading stays near \numCorpusLSizeYz{}, because entanglement closure links the operations of a whole
-coupling component however wide the circuit is. Commutation falls below the floor, to \numWElevenLcq{} at
-11 to 14 qubits. It is sound at the tested inputs but not dependence-complete. Deleting a gate that
-commutes with the criterion's observables leaves the criterion unchanged, although a different gate at
-the same position would change it.
+\numWElevenLc{} of the circuit. On corpus~L, most of whose circuits come from VeriQBench, it keeps
+\numCorpusLSizeLc{}, so width alone does not set the size. Entanglement closure stays near
+\numCorpusLSizeYz{}, because it links the operations of a whole coupling component however wide the
+circuit is. Commutation pruning falls below the dependence set, to \numWElevenLcq{} at 11 to 14 qubits,
+because it is sound at the tested inputs but not dependence-complete, as RQ2 explains.
 
 \subsection{RQ2: How much precision beyond the wire slice is safe?}
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figures/fig_robust.pdf}
-  \caption{RQ2: Share of pairs whose slice, computed at $\ket{0\dots0}$, stays correct in all
-  \numRobDraws{} draws of each input regime. State-based pruning is shown for the
-  \numHThreePrunedN{} pairs it prunes; on the others it equals the wire slice.}
+  \caption{Share of pairs whose slice, computed at $\ket{0\dots0}$, stays correct in all \numRobDraws{}
+  draws of each input regime, for RQ2. Commutation is shown on the \numLcqApplicable{} pairs where Qiskit's
+  pass applies, state-based pruning on the \numHThreePrunedN{} pairs it prunes, and angle rebinding on the
+  pairs of circuits with rotation angles.}
   \label{fig:robust}
 \end{figure}
 
-Both refinements make slices smaller, but only commutation keeps them correct. State-based pruning
+Both refinements make slices smaller, but only commutation pruning keeps them correct. State-based pruning
 shrinks the wire slice by \numHTwoDiff{} percentage points of the circuit (95\% CI \numHTwoCILow{} to
 \numHTwoCIHigh{}), a relative reduction of \numHTwoRelative{}, and is smaller on \numHTwoSmaller{} pairs
 (H2, Wilcoxon, Holm \numHTwoPHolm{}). Fig.~\ref{fig:robust} shows what that costs. Of the pairs it
 prunes, the slice stays correct for all random product inputs on only \numHThreePrunedRate{}, and over
 all pairs on \numHThreeRate{} (Wilson CI \numHThreeCILow{} to \numHThreeCIHigh{}), far below the
-pre-registered threshold of 95\% (H3 fails). State-based pruning is therefore a property of one input,
+pre-registered threshold of 95\%, so H3 fails. A state-based slice is therefore a property of one input,
 not of the program.
 
-Commutation is smaller than the wire slice on \numLcqSmallerThanLc{} of \numLcqApplicable{} pairs and
-stays correct on every random basis and product input. It fails only when the angles change, on
-\numRobLcqParamFail{} pairs of variational circuits whose gates commute with the
-criterion's observable at their written angle. State-based pruning is only \numQVsLcqReduction{} smaller
-than commutation on average, and larger on \numQLargerThanLcq{} pairs. Commutation also misses
-dependences (recall \numLcqRecall{}). It drops a gate that commutes with the observable, although a fault
-at that gate could still change the criterion.
+Commutation pruning is smaller than the wire slice on \numLcqSmallerThanLc{} of \numLcqApplicable{} pairs
+and stays correct on every random basis and product input. It fails only when the angles change, on
+\numRobLcqParamFail{} of \numRobLcqParamN{} pairs of variational circuits whose gates commute with the
+criterion's observables at their written angle. The symbolic variant removes these failures. It stays
+correct on all \numLcqsBasisN{} pairs under basis and product inputs and on all \numLcqsParamN{} under
+angle rebinding, at a mean size of \numLcqsSize{} against \numLcqSize{}. State-based slices are only
+\numQVsLcqReduction{} smaller than commutation-pruned slices on average, and larger on
+\numQLargerThanLcq{} pairs. Commutation pruning misses dependences, with recall \numLcqRecall{}, because
+it drops a gate that commutes with the observables, although a different gate at that position could
+change the criterion.
 
 \subsection{RQ3: What does each definition do to fault localization?}
 
@@ -113,57 +119,62 @@ entangling gate (\numLcMissEnt{}) or a deleted gate (\numLcMissDel{}). These fau
 that a slice of the faulty program would have to follow, a limit of slicing any faulty program rather
 than of the rule.
 
-State-based pruning loses \numHFourLoss{} percentage points of containment against the wire slice
-(CI \numHFourCILow{} to \numHFourCIHigh{}), so H4, which allowed a loss of at most five points, fails. In
-\numCQFour{} units the wire slice contains the fault and the pruned slice does not. In most of them the
-fault makes the criterion separable from qubits it should be correlated with, and pruning then removes the
-faulty operation as irrelevant to the single criterion qubit. Slicing with a criterion over all the wrong
-qubits recovers \numCQFourRecovered{} of these units. The pruned slices are smaller where both contain the
-fault, by \numHFiveSizeDiff{} instructions on average (H5), but the fault then ranks later within them
-(EXAM difference \numHFiveExamDiff{}). Mutation-based fault localization confirms that pruning does not
-help a ranking. Its mean EXAM score is \numMbflExamAll{} over the whole circuit, \numMbflExamLc{} within
-the wire slice and \numMbflExamQ{} within the state-based slice (lower is better).
+State-based pruning changes containment by \numHFourDiff{} percentage points against the wire slice
+(95\% CI \numHFourCILow{} to \numHFourCIHigh{}), so H4, which allowed a loss of at most five points, fails.
+In \numCQFour{} units the wire slice contains the fault and the state-based slice does not. Pruning removes
+an operation when the criterion is uncorrelated with its qubits at the input, so a fault that breaks a
+correlation can make the faulty operation look irrelevant to the single criterion qubit. A joint criterion
+over all wrong qubits recovers \numCQFourRecovered{} of these units. Where both slices contain the fault,
+the state-based slice is smaller by \numHFiveSizeDiff{} operations on average, so H5 holds. The fault is
+ranked no later there, because the state-based slice is a subset of the wire slice, but its EXAM score is
+higher by \numHFiveExamQHigher{}. With mutation-based fault localization on \numMbflUnits{} units, the mean
+EXAM score is \numMbflExamAll{} over the whole circuit, \numMbflExamLc{} within the wire slice and
+\numMbflExamQ{} within the state-based slice, each slice scored on the \numMbflNLc{} and \numMbflNQ{}
+units whose slice contains the fault. Neither slice improves the normalized ranking.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figures/fig_llm.pdf}
-  \caption{RQ3: Share of the \numTTwoItems{} faulty circuits for which a language model names the faulty
-  instruction among its top three, given the whole circuit or a slice of it.}
+  \caption{Share of the \numTTwoItems{} units, each a faulty circuit and its wrong qubit, for which a
+  language model names the faulty operation among its top three, given the whole circuit or a slice of it,
+  for RQ3.}
   \label{fig:llm}
 \end{figure}
 
-Language models localize faults worse from pruned slices (Fig.~\ref{fig:llm}). Claude Sonnet~5.5 finds
-the fault in its top three for \numTTwoSonnetFull{} of the faulty circuits, \numTTwoSonnetLc{} of the wire
-slices and \numTTwoSonnetQ{} of the state-based slices. The state-based slice is
-\numTTwoMaxDrop{} points worse than the full circuit (CI \numTTwoSonnetQVsFullCI{}, exact McNemar
-\numTTwoSonnetQVsFullP{}) and \numTTwoSonnetQVsLcLoss{} points worse than the wire slice
-(\numTTwoSonnetQVsLcP{}). Haiku~5.5 and Qwen2.5-Coder-32B show the same order, and the 1.5B model
-localizes too few faults for the input to matter. No slice beats the whole circuit for these models.
-Slicing does not hand a model information it lacks; it can only remove the fault.
+Fig.~\ref{fig:llm} shows that language models localize faults less often from state-based slices. Claude
+Sonnet~5.5 finds the fault in its top three for \numTTwoSonnetFull{} of the units given the whole circuit,
+\numTTwoSonnetLc{} given the wire slice and \numTTwoSonnetQ{} given the state-based slice. Against the
+whole circuit the state-based slice differs by \numTTwoSonnetQVsFullDiff{} percentage points (95\% CI
+\numTTwoSonnetQVsFullCI{}, exact McNemar \numTTwoSonnetQVsFullP{}), and against the wire slice by
+\numTTwoSonnetQVsLcDiff{} points (CI \numTTwoSonnetQVsLcCI{}, \numTTwoSonnetQVsLcP{}). Haiku~5.5 shows the
+same order. For Qwen2.5-Coder-32B the wire slice and the whole circuit are level, at \numTTwoQwenMidLc{}
+and \numTTwoQwenMidFull{}, and the state-based slice is lower, at \numTTwoQwenMidQ{}. The 1.5B model
+localizes too few faults for the input to matter. No state-based slice beats the whole circuit for any
+model. Slicing does not hand a model information it lacks, and it can remove the fault.
 
-On the real Bugs4Q programs, the wire slices keep every faulty line, as do the full programs, while
-removing little, \numLinesLcMean{} of \numLinesFullMean{} lines on average over \numLinesUnits{} units.
-These programs are small. Def-use loses the faulty line in one unit, the bug of
-Section~\ref{sec:example}. The tool computes these lines from the original programs without running them,
-and they equal the slices of the prepared circuits mapped to lines on all \numToolTTwoUnits{} units.
+On the real Bugs4Q programs, the wire slices keep every faulty line, as do the whole programs, and keep
+\numLinesLcMean{} of \numLinesFullMean{} lines on average over \numLinesUnits{} units. These programs are
+small. Def-use loses the faulty line in \numLinesDuMissed{} of these units, and also in the phase-only unit
+of the bug of Section~\ref{sec:example}, where its slice of $q_0$ omits line~6.
 
 \subsection{RQ4: What does it cost?}
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figures/fig_cost.pdf}
-  \caption{RQ4: Median time per criterion and of building the dependence graph, for circuits of width 8
-  and growing depth. At the two largest depths, only the criteria finished within the limit are counted,
-  so the state-based time is a lower bound.}
+  \caption{Median time to slice one criterion and to build the graph of entanglement closure, for circuits
+  of width 8 and growing depth, for RQ4. At the two largest depths, only the criteria that finished within
+  the limit are counted, so the state-based time is a lower bound.}
   \label{fig:cost}
 \end{figure}
 
-The wire slice costs milliseconds at every depth (Fig.~\ref{fig:cost}), at most \numCostLcMaxMs{}~ms per
-circuit. State-based pruning simulates the circuit for every candidate removal. Its time grows with depth
-and exceeds the \numCostWallLimit{}~s limit for \numCostDepthEightyOverLimit{} of the 5 circuits at the
-second-largest depth and for all \numCostDepthOneSixtyOverLimit{} at the largest. It also grows
-exponentially with width, reaching \numCostWidthQMax{}~s at 14 qubits. On corpus~L it completes on
-\numCorpusLCompleted{} of \numCorpusLCircuits{} circuits of 15 to 20 qubits. A graph with entanglement
-edges is itself costly, because the closure links every pair of operations on a coupling component; the
-wire rule needs only the per-qubit edges. On source code, the tool takes \numToolBugsMedianMs{}~ms per Bugs4Q program
-in the median, parsing included.
+As Fig.~\ref{fig:cost} shows, the wire slice costs milliseconds at every depth, at most
+\numCostLcMaxCritMs{}~ms per criterion. State-based pruning simulates the circuit for every candidate
+removal. Its time grows with depth and exceeds the \numCostWallLimit{}~s limit for
+\numCostDepthEightyOverLimit{} of the five circuits at the second-largest depth and for all
+\numCostDepthOneSixtyOverLimit{} at the largest. It also grows exponentially with width, reaching
+\numCostWidthQMax{}~s at 14 qubits. On corpus~L it completes on \numCorpusLCompleted{} of
+\numCorpusLCircuits{} circuits of 15 to 20 qubits. The graph of entanglement closure is itself costly,
+taking \numCostBuildDepthForty{}~s to build at depth 40 and \numCostBuildDepthOneSixty{}~s at depth 160 in
+the median, because the closure links every pair of operations on a coupling component, while the wire
+rule needs only the per-qubit edges.
