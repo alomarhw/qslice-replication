@@ -1,1 +1,1 @@
-Slicing Quantum Programs for Debugging: How Dependence Definitions Affect Soundness, Precision, and Fault Localization
+Quantum Program Slicing for Comprehension

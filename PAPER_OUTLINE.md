@@ -21,8 +21,9 @@ definition against that ground truth. The results:
 
 We then show what each choice does to a developer who is localizing a fault.
 
-**Title (author's choice, 2026-10-23):** *Slicing Quantum Programs for Debugging: How Dependence
-Definitions Affect Soundness, Precision, and Fault Localization* (`paper/title.txt`).
+**Title (author's choice, 2026-10-26):** *Quantum Program Slicing for Comprehension*. It uses the ICSE reviewers' own terms
+("quantum program slicing"; Reviewer B's comprehension concern) for the ICPC audience. Earlier title (2026-10-23):
+*Slicing Quantum Programs for Debugging: How Dependence Definitions Affect Soundness, Precision, and Fault Localization*.
 
 ## 2. Why this is a strong paper, not a weaker ICSE version
 
