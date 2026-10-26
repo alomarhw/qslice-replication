@@ -177,6 +177,7 @@ class Interpreter:
         self.nops = 0
         self.globals = Env()
         self.aliases: Dict[str, str] = {}
+        self.star: List[str] = []
         self.base = 0
 
     # ---------------------------------------------------------------- helpers
@@ -319,7 +320,10 @@ class Interpreter:
                     self.aliases[a.asname or a.name.split(".")[0]] = a.name
             elif isinstance(node, ast.ImportFrom):
                 for a in node.names:
-                    self.aliases[a.asname or a.name] = f"{node.module}.{a.name}"
+                    if a.name == "*":
+                        self.star.append(node.module or "")
+                    else:
+                        self.aliases[a.asname or a.name] = f"{node.module}.{a.name}"
 
     def _control(self, st):
         ctl = X.child(st, "control")
@@ -525,6 +529,8 @@ class Interpreter:
             return {"True": True, "False": False, "None": None}[n.id], E
         if n.id in self.aliases or n.id in BUILTINS:
             return ("__name__", self.aliases.get(n.id, n.id)), E
+        if self.star:  # from <module> import *: an undefined name may come from it
+            return ("__name__", f"{self.star[-1]}.{n.id}"), E
         return UNK, E
 
     def ev_Attribute(self, n, L, env):
@@ -754,9 +760,11 @@ class Interpreter:
             return self.method(f[1], f[2], args, kw, lines, L, n, env)
         if isinstance(f, tuple) and f[:1] == ("__name__",):
             return self.named_call(f[1], args, kw, lines, L)
-        for v in list(args) + list(kw.values()):
-            if isinstance(v, Circuit):
-                self.note(L, "a circuit is passed to a function the tool cannot see: its operations there are not traced")
+        callee = f[1].split(".")[-1] if isinstance(f, tuple) and f[:1] == ("__name__",) else ""
+        if callee not in READ_ONLY:
+            for v in list(args) + list(kw.values()):
+                if isinstance(v, Circuit):
+                    self.note(L, "a circuit is passed to a function the tool cannot see: its operations there are not traced")
         return UNK, lines
 
     def call_func(self, f: Func, n, L, env):
@@ -907,9 +915,10 @@ class Interpreter:
             return UNK, lines
         if isinstance(obj, tuple) and obj[:1] == ("__name__",):
             return self.named_call(f"{obj[1]}.{name}", args, kw, lines, L)
-        for v in list(args) + list(kw.values()):
-            if isinstance(v, Circuit):
-                self.note(L, "a circuit is passed to a method the tool cannot see: its operations there are not traced")
+        if name not in READ_ONLY:
+            for v in list(args) + list(kw.values()):
+                if isinstance(v, Circuit):
+                    self.note(L, "a circuit is passed to a method the tool cannot see: its operations there are not traced")
         return UNK, lines
 
     def qubit_sets(self, circ: Circuit, v, L) -> Optional[List[FrozenSet[int]]]:
@@ -1106,6 +1115,14 @@ class Interpreter:
         return InstrSet([op] if op else [], circ), lines
 
 
+# Functions and methods that only read a circuit they are given (simulation, compilation, display, analysis).
+READ_ONLY = {"execute", "transpile", "assemble", "run", "plot_histogram", "plot_state_city", "plot_bloch_multivector",
+             "plot_state_qsphere", "plot_circuit_layout", "plot_gate_map", "circuit_drawer", "draw", "print", "display",
+             "Statevector", "DensityMatrix", "Operator", "from_instruction", "from_label", "evolve", "simulate",
+             "dag_to_circuit", "circuit_to_dag", "circuit_to_instruction", "circuit_to_gate", "dumps", "dump", "qasm",
+             "qasm2", "qasm3", "count_ops", "depth", "size", "width", "len", "str", "repr", "Sampler", "Estimator",
+             "SamplerV2", "EstimatorV2", "result", "get_counts", "get_statevector", "save", "append_to_list",
+             "assertEqual", "assertTrue", "assertIsInstance", "submit", "job", "isinstance", "copy", "deepcopy"}
 PLURAL = {"control_qubits", "ancilla_qubits", "target_qubits", "qubits", "qargs"}
 BUILTINS = {"range", "len", "list", "tuple", "zip", "enumerate", "int", "float", "abs", "round", "min", "max", "sum",
             "sorted", "reversed", "print", "bool", "str", "set", "pow", "getattr", "isinstance"}
