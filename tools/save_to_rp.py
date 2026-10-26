@@ -9,6 +9,7 @@ Run from the Research Pilot repository root:
 """
 import os
 import sys
+import re
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -76,12 +77,20 @@ def main() -> None:
     import api.main as m  # noqa: PLC0415
     fdir = m._project_figures_dir(pid)
     fdir.mkdir(parents=True, exist_ok=True)
-    for pdf in (PAPER / "figures").glob("*.pdf"):
-        (fdir / pdf.name).write_bytes(pdf.read_bytes())
+    # Only the figures the paper includes: RP appends any other figure in this folder to the preview.
+    used = set(re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{figures/([^}]+\.pdf)\}", tex))
+    for old in fdir.glob("*.pdf"):
+        if old.name not in used:
+            old.unlink()
+    for name in sorted(used):
+        (fdir / name).write_bytes((PAPER / "figures" / name).read_bytes())
     ui_root = Path.home() / "Library/CloudStorage/GoogleDrive-alomarhw@miamioh.edu/.shortcut-targets-by-id/0B51rXHkfdbSkTU1Bd1U1bkhyaFU/MU-Research/research-pilot-codex"
     ui_fdir = ui_root / "projects" / "_figures" / str(pid)
     if ui_root.is_dir() and ui_fdir.resolve() != fdir.resolve():  # the UI backend serves from its own checkout
         ui_fdir.mkdir(parents=True, exist_ok=True)
+        for old in ui_fdir.glob("*.pdf"):
+            if old.name not in used:
+                old.unlink()
         for f in fdir.glob("*.pdf"):
             (ui_fdir / f.name).write_bytes(f.read_bytes())
         for c in (ui_root / "projects" / "_pdf_cache").glob(f"{pid}_*.pdf"):

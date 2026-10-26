@@ -7,6 +7,7 @@
   Recall and precision are against the semantic dependences; size is the mean share of the circuit. Wire adds quantum dependence to the classical PDG; state-based pruning runs at $\ket{0\dots0}$.}
   \label{tab:rq1}
   \footnotesize\setlength{\tabcolsep}{3pt}
+  \resizebox{\columnwidth}{!}{%
   \begin{tabular}{@{}l l r r r r r@{}}
     \toprule
     Rule & Dependence & Wrong & Dyn. & Recall & Prec. & Size \\
@@ -19,7 +20,7 @@
     Commutation$^{a}$  & wire, pruned          & \numLcqUnsound{}       & --                       & \numLcqRecall{}       & \numLcqPrecision{}       & \numLcqSize{} \\
     State-based        & wire, pruned          & \numRqOneQUnsound{}    & \numQDynamicUnsound{}    & \numRqOneQRecall{}    & \numRqOneQPrecision{}    & \numRqOneQSize{} \\
     \bottomrule
-  \end{tabular}\\[2pt]
+  \end{tabular}}\\[2pt]
   {\footnotesize $^{a}$\,On the \numLcqApplicable{} pairs where Qiskit's pass applies; it rejects
   circuits that measure, which leaves no dynamic pair.}
 \end{table}
