@@ -26,8 +26,8 @@ measurements force sampling with \numNoiseShots{} shots. This is what Theorem~\r
 to expect, since depolarizing noise acts only on the qubits of its gate, so a removed gate and its noise
 lie outside the criterion's dependences alike. The state-based slice differs from the full circuit in
 \numNoiseQCrossExactNonzero{} of \numNoiseQCrossExactN{} exact runs, by up to \numNoiseQCrossExactMax{}.
-It removes noisy gates that the full program executes, so it can hide noise the developer is trying to
-diagnose. On IBM hardware, slices of \numHwCircuits{} circuits from an earlier implementation with
+It removes noisy gates that the full program executes, and errors accumulate with the number of
+gates~\cite{preskill2018nisq}, so it can hide noise the developer is trying to diagnose. On IBM hardware, slices of \numHwCircuits{} circuits from an earlier implementation with
 entanglement edges matched the full circuits' measured distributions within a total variation distance of
 0.05 for \numHwWithin{}. The other two are QAOA circuits, whose distance is zero in noise-free simulation
 and is therefore due to the device, which ran the slice and the full circuit on different physical
