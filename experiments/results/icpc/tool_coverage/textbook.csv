@@ -1,0 +1,86 @@
+file,parsed,uses_qiskit,circuits,ops,qubits,may_ops,unresolved_qubit_ops,notes,unsound_notes,crash,seconds,slice_ok,note_kinds
+about.py,1,0,0,0,0,0,0,0,0,,0.044,0,
+ch-algorithms/bernstein-vazirani.py,1,1,1,14,4,0,0,0,0,,0.045,1,
+ch-algorithms/defining-quantum-circuits.py,1,0,0,0,0,0,0,0,0,,0.033,0,
+ch-algorithms/deutsch-jozsa.py,1,1,10,15,5,0,0,6,0,,0.065,1,unknown condition x3; loop over an unknown sequence x2; statement <print> not interpreted x1
+ch-algorithms/grover.py,1,1,13,45,9,0,0,0,0,,0.096,1,
+ch-algorithms/hidden-shift-problem.py,1,1,20,18,4,0,0,0,0,,0.088,1,
+ch-algorithms/quantum-counting.py,1,1,3,30,4,0,0,0,0,,0.08,1,
+ch-algorithms/quantum-fourier-transform.py,1,1,10,12,4,0,0,1,0,,0.076,1,QuantumCircuit.inverse x1
+ch-algorithms/quantum-key-distribution.py,1,1,1202,10,1,10,0,7,0,,1.82,1,unknown condition x6; loop over an unknown sequence x1
+ch-algorithms/quantum-phase-estimation.py,1,1,3,59,6,0,0,0,0,,0.057,1,
+ch-algorithms/quantum-walk-search-algorithm.py,1,1,6,41,11,0,0,3,0,,0.055,1,QuantumCircuit.inverse x2; QuantumCircuit.control is not modelled x1
+ch-algorithms/shor.py,1,1,22,896,4,0,0,5,0,,0.487,1,unknown condition x3; try x1; loop over an unknown sequence x1
+ch-algorithms/simon.py,1,1,2,3,6,0,0,2,0,,0.036,1,loop over an unknown sequence x2
+ch-algorithms/superdense-coding.py,1,1,1,2,2,0,0,1,0,,0.044,1,unknown condition x1
+ch-algorithms/teleportation.py,1,1,8,11,3,0,0,0,0,,0.055,1,
+ch-appendix/linear_algebra.py,1,1,0,0,0,0,0,0,0,,0.036,0,
+ch-appendix/qiskit.py,1,1,8,10,5,0,0,3,0,,0.054,1,loop over an unknown sequence x3
+ch-applications/facial-expression-recognition.py,1,1,0,0,0,0,0,1,0,,0.069,0,loop over an unknown sequence x1
+ch-applications/hhl_tutorial.py,1,1,1,37,4,0,0,1,0,,0.081,1,loop over an unknown sequence x1
+ch-applications/image-processing-frqi-neqr.py,1,1,4,48,10,0,0,0,0,,0.086,1,
+ch-applications/qaoa.py,1,1,5,6,0,6,6,5,0,,0.076,1,loop over an unknown sequence x4; QuantumCircuit of unknown size x1
+ch-applications/quantum-edge-detection.py,1,1,4,9,3,0,0,2,0,,3.616,1,loop over an unknown sequence x2
+ch-applications/satisfiability-grover.py,1,1,0,0,0,0,0,1,0,,0.033,0,class definitions are not interpreted x1
+ch-applications/vqe-molecules.py,1,1,2,2,1,0,0,1,0,,0.075,1,loop over an unknown sequence x1
+ch-demos/chsh.py,1,1,8,7,2,7,0,6,0,,0.066,1,loop over an unknown sequence x6
+ch-demos/coin-game.py,1,1,1,3,1,0,0,3,0,,0.051,1,unknown condition x3
+ch-demos/first-quantum-game.py,1,1,1,1,1,0,0,0,0,,0.057,1,
+ch-demos/piday-code.py,1,1,11,4204,13,0,0,0,0,,1.438,1,
+ch-demos/variational-quantum-regression.py,1,1,2,3,1,0,0,4,0,,0.086,1,QuantumCircuit of unknown size x2; unknown condition x2
+ch-ex/Solutions/Exercise for 2.4.py,1,1,20,32,1,0,0,2,0,,0.076,1,try x2
+ch-ex/Solutions/Exercise for 2.5.py,1,1,23,10,5,0,0,0,0,,0.105,1,
+ch-ex/ex1.py,1,1,18,3,1,0,0,0,0,,0.052,1,
+ch-ex/ex2.py,1,1,10,22,1,0,0,1,0,,0.056,1,try x1
+ch-ex/ex3.py,1,1,5,4,5,0,0,0,0,,0.095,1,
+ch-ex/hello-qiskit.py,1,1,4,4,2,0,0,4,0,,18.141,1,unknown condition x3; loop over an unknown sequence x1
+ch-gates/fun-matrices.py,1,1,0,0,0,0,0,0,0,,0.028,0,
+ch-gates/introduction.py,1,0,0,0,0,0,0,0,0,,0.027,0,
+ch-gates/more-circuit-identities.py,1,1,18,6,2,0,0,0,0,,0.039,1,
+ch-gates/multiple-qubits-entangled-states.py,1,1,6,3,3,0,0,2,0,,0.032,1,QuantumCircuit.save_unitary is not modelled x2
+ch-gates/oracles.py,1,1,3,2,3,0,0,2,0,,0.028,1,QuantumCircuit.inverse x2
+ch-gates/phase-kickback.py,1,1,11,5,2,0,0,3,0,,0.052,1,QuantumCircuit.save_unitary is not modelled x3
+ch-gates/proving-universality.py,1,1,0,0,0,0,0,0,0,,0.033,0,
+ch-gates/quantum-gates.py,1,1,1,2,2,0,0,3,0,,0.041,1,loop over an unknown sequence x2; QuantumCircuit.save_unitary is not modelled x1
+ch-gates/standard-gate-set.py,1,0,0,0,0,0,0,0,0,,0.041,0,
+ch-labs/Lab01_QuantumCircuits.py,1,1,23,7,3,0,0,1,0,,0.097,1,statement text not parseable x1
+ch-labs/Lab02_QuantumMeasurement.py,1,1,38,3,1,0,0,8,0,,0.152,1,statement text not parseable x4; unknown condition x3; compose x1
+ch-labs/Lab03_AccuracyQPE.py,1,1,0,0,0,0,0,0,0,,0.063,0,
+ch-labs/Lab04_IterativePhaseEstimation.py,1,1,8,14,5,0,0,2,0,,0.083,1,statement text not parseable x1; ClassicalRegister of unknown size x1
+ch-labs/Lab05_Scalable_Shor_Algorithm.py,1,1,15,128,4,0,0,2,0,,0.127,1,QuantumCircuit.inverse x2
+ch-labs/Lab06_Grover_search_with_an_unknown_number_of_solutions.py,1,1,2,4,3,0,0,0,0,,0.04,1,
+ch-labs/Lab07_QuantumSimulationSearchAlgorithm.py,1,1,22,22,6,0,0,1,0,,0.066,1,loop over an unknown sequence x1
+ch-labs/Lab08_QEC.py,1,1,7,6,3,0,0,4,0,,0.046,1,QuantumCircuit of unknown size x2; QuantumRegister of unknown size x1; ClassicalRegister of unknown size x1
+ch-machine-learning/machine-learning-qiskit-pytorch.py,1,1,1,0,0,0,0,9,0,,0.077,0,class definitions are not interpreted x4; loop over an unknown sequence x3; QuantumCircuit of unknown size x1; QuantumCircuit.run is not modelled x1
+ch-paper-implementations/tsp.py,1,1,9,1024,9,0,0,1,0,,0.427,1,append x1
+ch-paper-implementations/vqls.py,1,1,8,26,5,9,9,0,0,,0.119,1,
+ch-prerequisites/python-and-jupyter-notebooks.py,1,0,0,0,0,0,0,0,0,,0.045,0,
+ch-prerequisites/setting-the-environment.py,1,0,0,0,0,0,0,0,0,,0.038,0,
+ch-quantum-hardware/Jaynes-Cummings-model.py,1,1,0,0,0,0,0,2,0,,0.085,0,loop over an unknown sequence x2
+ch-quantum-hardware/Open-quantum-systems.py,1,1,0,0,0,0,0,4,0,,0.065,0,loop over an unknown sequence x4
+ch-quantum-hardware/ac-Stark-shift.py,1,1,1,2,1,0,0,3,0,,0.063,1,unknown condition x1; QuantumCircuit.add_calibration is not modelled x1; loop over an unknown sequence x1
+ch-quantum-hardware/accessing_higher_energy_states.py,1,1,5,3,1,0,0,4,0,,0.157,1,QuantumCircuit.add_calibration is not modelled x3; loop over an unknown sequence x1
+ch-quantum-hardware/cQED-JC-SW.py,1,0,0,0,0,0,0,0,0,,0.04,0,
+ch-quantum-hardware/calibrating-qubits-pulse.py,1,1,8,3,1,0,0,11,0,,0.13,1,QuantumCircuit.add_calibration is not modelled x7; loop over an unknown sequence x4
+ch-quantum-hardware/density-matrix.py,1,1,2,4,2,0,0,0,0,,0.047,1,
+ch-quantum-hardware/error-correction-repetition-code.py,1,1,15,6,3,0,0,0,0,,0.088,1,
+ch-quantum-hardware/hamiltonian-tomography.py,1,1,8,10,5,0,0,7,0,,0.112,1,loop over an unknown sequence x4; QuantumCircuit.add_calibration is not modelled x2; unknown condition x1
+ch-quantum-hardware/measurement-error-mitigation.py,1,1,6,4,2,0,0,1,0,,0.056,1,loop over an unknown sequence x1
+ch-quantum-hardware/measuring-quantum-volume.py,1,1,0,0,0,0,0,3,0,,0.109,0,unknown condition x2; loop over an unknown sequence x1
+ch-quantum-hardware/randomized-benchmarking.py,1,1,1,0,0,0,0,4,0,,0.049,0,loop over an unknown sequence x2; QuantumCircuit of unknown size x1; QuantumCircuit.save_unitary is not modelled x1
+ch-quantum-hardware/transmon-physics.py,1,0,0,0,0,0,0,0,0,,0.046,0,
+ch-quantum-hardware/transpiling-quantum-circuits.py,1,1,5,15,3,0,0,0,0,,0.047,1,
+ch-states/atoms-computation.py,1,1,7,9,8,0,0,0,0,,0.045,1,
+ch-states/case-for-quantum.py,1,1,0,0,0,0,0,0,0,,0.037,0,
+ch-states/introduction.py,1,0,0,0,0,0,0,0,0,,0.032,0,
+ch-states/old-states-many-qubits.py,1,1,1,3,2,0,0,1,0,,0.04,1,loop over an unknown sequence x1
+ch-states/old-unique-properties-qubits.py,1,1,9,5,2,0,0,0,0,,0.046,1,
+ch-states/old-writing-down-qubit-states.py,1,1,4,6,1,0,0,2,0,,0.041,1,unknown condition x2
+ch-states/representing-qubit-states.py,1,1,6,2,1,0,0,0,0,,0.045,1,
+ch-states/single-qubit-gates.py,1,1,6,3,1,0,0,0,0,,0.04,1,
+ch-upcoming/0.py,1,0,0,0,0,0,0,0,0,,0.031,0,
+preface.py,1,1,1,4,2,0,0,0,0,,0.028,1,
+upcoming.py,1,0,0,0,0,0,0,0,0,,0.03,0,
+using-the-textbook.py,1,0,0,0,0,0,0,0,0,,0.031,0,
+what-is-quantum.py,1,0,0,0,0,0,0,0,0,,0.072,0,
+widgets-index.py,1,1,0,0,0,0,0,0,0,,0.031,0,
