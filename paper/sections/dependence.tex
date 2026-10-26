@@ -89,7 +89,7 @@ graph, which links any two qubits joined by a multi-qubit gate anywhere in the c
 propagated backward from $W$, the union over the Pauli observables $X$, $Y$ and $Z$ on each criterion
 qubit, as implemented by Qiskit's \texttt{LightCone} transpiler pass~\cite{javadi2024qiskit}.
 
-\emph{State-based pruning} (QSlice) starts from $B_W(W)$ at a given input, by default $\ket{0\dots0}$.
+\emph{State-based pruning} starts from $B_W(W)$ at a given input, by default $\ket{0\dots0}$.
 It removes an operation that does not act on the criterion when the mutual information between the
 criterion and the operation's qubits is below $10^{-9}$, and when the removal still preserves $W$ at
 that input.

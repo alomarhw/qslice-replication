@@ -1,0 +1,18 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  10/158 circuits, 79s
+  20/158 circuits, 107s
+  30/158 circuits, 130s
+  40/158 circuits, 153s
+  50/158 circuits, 167s
+  60/158 circuits, 181s
+  70/158 circuits, 197s
+  80/158 circuits, 203s
+  90/158 circuits, 209s
+  100/158 circuits, 212s
+  110/158 circuits, 216s
+  120/158 circuits, 219s
+  130/158 circuits, 221s
+  140/158 circuits, 223s
+  150/158 circuits, 224s
+  158/158 circuits, 374s
+lcw pairs 784; unsound 0; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/rq1_wire_swap

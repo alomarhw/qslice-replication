@@ -946,3 +946,8 @@ These were found while implementing §6, from the API documentation. No LLM call
   argument of Theorem 1 applied to the relabelled wires. Checked before scoring: with the move disabled the
   pass must equal S-lc on every corpus-A pair. Scored as B1 (corpus A soundness and recall/precision,
   robustness in all three regimes, families, catalogue) against the same gate.
+- **Gate outcome (2026-10-25).** B1 (S-lcqs) passes: 0 unsound on corpus A (732 applicable), families
+  and catalogue; robust 732/732, 732/732, 175/175; mean size 65.2% (S-lcq 64.4%). It is reported as a
+  slicer. S-lcw fails the size condition: 0 unsound, robust 784/784, 784/784, 187/187, recall 1.000, but
+  mean size 69.6% against 70.4%, a 0.74-point reduction (20 pairs in 5 circuits; 40 pairs have SWAPs).
+  It is not reported as a slicer; its counts may be reported as a finding about the wire rule's excess.
