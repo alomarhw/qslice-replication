@@ -481,7 +481,7 @@ def main() -> int:
         "results/icpc/profiles/alias_check_textbook.csv")
 
     # ---- the static program slicer (Deviation I-15; tool-v4, the final version; earlier versions' results kept) --
-    sys.path.insert(0, str(HERE.parents[1]))
+    sys.path.insert(0, str(HERE.parent))
     from tool.gates import GATES  # noqa: PLC0415
     put("ToolGateTable", len(GATES), cnt(len(GATES)), "tool/gates.py")
     TA = ICPC / "tool_acceptance"

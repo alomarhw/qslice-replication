@@ -1788,6 +1788,11 @@
   "tex": "3",
   "source": "results/icpc/profiles/alias_check_textbook.csv"
  },
+ "ToolGateTable": {
+  "value": 73,
+  "tex": "73",
+  "source": "tool/gates.py"
+ },
  "ToolDevPrograms": {
   "value": 15,
   "tex": "15",
