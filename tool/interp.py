@@ -21,6 +21,7 @@ from __future__ import annotations
 import ast
 import math
 import textwrap
+import time
 from dataclasses import dataclass, field
 from typing import Any, Dict, FrozenSet, List, Optional, Tuple
 
@@ -31,6 +32,7 @@ MAX_OPS = 200_000
 MAX_ITER = 10_000
 MAX_UNKNOWN_COPIES = 65  # copies of a loop body with an unknown iteration count (covers bodies touching up to 64 qubits)
 MAX_STEPS = 300_000  # statements interpreted per program; beyond it the rest is reported as not traced
+CLOCK_EVERY = 1_000  # with a time limit, the clock is read every CLOCK_EVERY statements or operations
 E: FrozenSet[int] = frozenset()
 
 
@@ -212,8 +214,9 @@ def _join(states, cond_lines):
 
 
 class Interpreter:
-    def __init__(self, path: str):
+    def __init__(self, path: str, seconds: Optional[float] = None):
         self.path = path
+        self.deadline = time.monotonic() + seconds if seconds else None  # beyond it the rest is reported as not traced
         self.circuits: List[Circuit] = []
         self.notes: List[Tuple[int, str]] = []
         self.uid = 0
@@ -313,7 +316,7 @@ class Interpreter:
 
     def stmt(self, st, env):
         self.steps += 1
-        if self.steps > MAX_STEPS:
+        if self.steps > MAX_STEPS or self.deadline and self.steps % CLOCK_EVERY == 0 and time.monotonic() > self.deadline:
             raise _Budget()
         try:
             self._stmt(st, env)
@@ -1115,7 +1118,7 @@ class Interpreter:
 
     def qubit_sets(self, circ: Circuit, v, L) -> Optional[List[FrozenSet[int]]]:
         """A qubit argument as a list (broadcast) of sets of global qubit indices."""
-        allq = frozenset(range(circ.n("q"))) | ({ANY} if circ.unknown_size() else frozenset())
+        allq = lambda: frozenset(range(circ.n("q"))) | ({ANY} if circ.unknown_size() else frozenset())  # noqa: E731
         if isinstance(v, bool):
             return None
         if isinstance(v, int):
@@ -1129,26 +1132,26 @@ class Interpreter:
                 r.seen = max(r.seen, v - (circ.offset(r) or 0))
                 return [frozenset({v})]
             self.note(L, f"qubit index {v} out of range")
-            return [allq]
+            return [allq()]
         if isinstance(v, Bit):
             off = circ.offset(v.reg)
             if off is None:
                 self.note(L, "a qubit of a register not in this circuit")
-                return [allq]
+                return [allq()]
             if v.reg.size is None:
                 if v.reg is not circ.qregs[-1]:
                     circ.layout_unknown = True
                 if isinstance(v.index, int) and v.index >= 0:
                     v.reg.seen = max(v.reg.seen, v.index)
                     return [frozenset({off + v.index})]
-                return [allq]
+                return [allq()]
             if v.index is None:
-                return [frozenset(range(off, off + v.reg.size)) or allq]
+                return [frozenset(range(off, off + v.reg.size)) or allq()]
             return [frozenset({off + v.index})]
         if isinstance(v, Reg):
             off = circ.offset(v)
             if off is None or v.size is None:
-                return [allq]
+                return [allq()]
             return [frozenset({off + i}) for i in range(v.size)]
         if isinstance(v, (list, tuple, range)):
             out = []
@@ -1158,7 +1161,7 @@ class Interpreter:
                     return None
                 out.extend(s)
             return out
-        return [allq]  # UNK or anything else: any qubit (a may-operation)
+        return [allq()]  # UNK or anything else: any qubit (a may-operation)
 
     def cbits_of(self, circ: Circuit, v, L) -> FrozenSet[int]:
         if isinstance(v, int) and not isinstance(v, bool):
@@ -1179,6 +1182,8 @@ class Interpreter:
         if self.nops >= MAX_OPS:
             self.note(L, "operation limit reached")
             return None
+        if self.deadline and self.nops % CLOCK_EVERY == 0 and time.monotonic() > self.deadline:
+            raise _Budget()
         cond, cl = self.cond_bits(circ)
         unresolved = any(len(s) != 1 for s in qsets)
         op = Op(name, tuple(qsets), tuple(csets), cond, L, tuple(self.calls), self.iters(),
@@ -1337,7 +1342,8 @@ BUILTINS = {"range", "len", "list", "tuple", "zip", "enumerate", "int", "float",
             "sorted", "reversed", "print", "bool", "str", "set", "pow", "getattr", "isinstance"}
 
 
-def trace_file(path) -> Trace:
+def trace_file(path, seconds: Optional[float] = None) -> Trace:
+    """With seconds, interpretation stops at that wall-clock limit and the rest is reported as not traced."""
     from pathlib import Path
     unit = X.parse_file(Path(path))
-    return Interpreter(str(path)).run(unit)
+    return Interpreter(str(path), seconds).run(unit)

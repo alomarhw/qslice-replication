@@ -5,9 +5,10 @@ with (qr in qr[0], qubit in qubit); literals and other expressions are not names
 (an identifier the file uses as a subscript, binds by a loop over range(...), or assigns a number, as i in
 qc.h(i)), and an argument that calls a function (range(n)) names no single qubit.
 Usage: python -m tool.corpus.profiles CORPUS_DIR OUT.csv [--sample N --seed S] [--timeout S] [--max-qubits Q]"""
-import argparse, ast, csv, random, re, signal
+import argparse, ast, csv, random, re, signal, time
 from pathlib import Path
 
+from tool.corpus.hardlimit import run_all
 from tool.interp import Interpreter
 from tool import srcml as X
 from tool.profile import qubit_arg_texts, slice_profile
@@ -64,8 +65,11 @@ def one(path: Path, root: Path, timeout: int, max_qubits: int):
     rel = str(path.relative_to(root))
     signal.signal(signal.SIGALRM, _alarm)
     signal.alarm(timeout)
+    t0 = time.perf_counter()
     try:
-        c = Interpreter(str(path)).run(X.parse_file(path)).main_circuit()
+        c = Interpreter(str(path), timeout).run(X.parse_file(path)).main_circuit()
+        if time.perf_counter() - t0 > timeout:
+            raise Timeout()  # the interpreter stopped at the limit: its partial trace is not counted
         if c is None or not c.ops:
             return [{"file": rel, "qubit": -1, "error": "no circuit"}]
         args = qubit_arg_texts(path)
@@ -89,6 +93,10 @@ def one(path: Path, root: Path, timeout: int, max_qubits: int):
         signal.alarm(0)
 
 
+def timed_out(path: Path, root: Path, timeout: int, max_qubits: int):
+    return [{"file": str(path.relative_to(root)), "qubit": -1, "error": "timeout"}]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("corpus")
@@ -104,11 +112,9 @@ def main():
     if a.sample and a.sample < len(files):
         files = sorted(random.Random(a.seed).sample(files, a.sample))
     rows = []
-    from concurrent.futures import ProcessPoolExecutor
     n = len(files)
-    with ProcessPoolExecutor(max_workers=a.workers) as ex:
-        for r in ex.map(one, files, [root] * n, [a.timeout] * n, [a.max_qubits] * n, chunksize=1):
-            rows.extend(r)
+    for r in run_all(one, [(f, root, a.timeout, a.max_qubits) for f in files], a.timeout, timed_out, a.workers):
+        rows.extend(r)
     keys = ["file", "qubit", "n_qubits", "def_use_lines", "names", "name_texts", "in_function", "dependents", "bits",
             "conditioned_lines", "bwd_lines", "fwd_lines", "error"]
     with open(a.out, "w", newline="") as fh:

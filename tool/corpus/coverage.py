@@ -6,6 +6,7 @@ from collections import Counter
 from pathlib import Path
 
 from tool import srcml as X
+from tool.corpus.hardlimit import run_all
 from tool.interp import Interpreter
 from tool.slicer import wire_slice
 
@@ -34,7 +35,9 @@ def one(path: Path, timeout: int):
     try:
         unit = X.parse_file(path)
         row["parsed"] = 1
-        tr = Interpreter(str(path)).run(unit)
+        tr = Interpreter(str(path), timeout - (time.perf_counter() - t0)).run(unit)
+        if time.perf_counter() - t0 > timeout:
+            raise Timeout()  # the interpreter stopped at the limit: its partial trace is not counted
         c = tr.main_circuit()
         row["circuits"] = len(tr.circuits)
         row["notes"] = len(tr.notes)
@@ -59,6 +62,12 @@ def one(path: Path, timeout: int):
     return row
 
 
+def timed_out(path: Path, timeout: int):
+    return {"file": str(path), "parsed": 0, "uses_qiskit": int("qiskit" in path.read_text(errors="replace")), "circuits": 0,
+            "ops": 0, "qubits": 0, "may_ops": 0, "unresolved_qubit_ops": 0, "notes": 0, "unsound_notes": 0,
+            "crash": "timeout", "seconds": float(timeout), "slice_ok": 0, "note_kinds": ""}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("corpus")
@@ -71,12 +80,10 @@ def main():
     if a.limit:
         files = files[: a.limit]
     rows = []
-    from concurrent.futures import ProcessPoolExecutor
-    with ProcessPoolExecutor(max_workers=a.workers) as ex:
-        for i, r in enumerate(ex.map(one, files, [a.timeout] * len(files), chunksize=1), 1):
-            rows.append(r)
-            if i % 500 == 0:
-                print(f"  {i}/{len(files)}", flush=True)
+    for i, r in enumerate(run_all(one, [(f, a.timeout) for f in files], a.timeout, timed_out, a.workers), 1):
+        rows.append(r)
+        if i % 500 == 0:
+            print(f"  {i}/{len(files)}", flush=True)
     with open(a.out, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]))
         w.writeheader()
