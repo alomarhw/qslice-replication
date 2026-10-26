@@ -384,7 +384,7 @@ def main() -> int:
         put(f"CorpusLSize{sn}", st.mean(x), pct(st.mean(x)), src)
         put(f"CorpusLSize{sn}N", len(x), cnt(len(x)), src)
 
-    # ---- the static program slicer (Deviation I-15; tool-v2) -------------------------------------------------
+    # ---- the static program slicer (Deviation I-15; tool-v3, the final version; v1 and v2 results are kept) ---
     TA = ICPC / "tool_acceptance"
     dev = json.load(open(TA / "dev_checks.json"))
     src = "results/icpc/tool_acceptance/dev_checks.json"
@@ -393,13 +393,14 @@ def main() -> int:
     put("ToolDevSliceEqual", sum(r["slices_equal"] for r in dev), cnt(sum(r["slices_equal"] for r in dev)), src)
     put("ToolDevMaxOps", max(r["ops"] for r in dev), cnt(max(r["ops"] for r in dev)), src)
     assert all(r["nested_conditions"] for r in dev if not r["slices_equal"]), "a slice difference outside nested conditions"
-    ts = json.load(open(TA / "tool-v2" / "summary.json"))
-    src = "results/icpc/tool_acceptance/tool-v2/summary.json"
+    ts = json.load(open(TA / "tool-v3" / "summary.json"))
+    src = "results/icpc/tool_acceptance/tool-v3/summary.json"
     for k, nm in (("t1_bugs", "ToolTOneBugs"), ("t1_exact", "ToolTOneExact"), ("t1_ops_prepared", "ToolTOneOps"),
                   ("t1_ops_matched", "ToolTOneOpsMatched"), ("t2_units_mapped", "ToolTTwoUnits"), ("t2_equal_mapped", "ToolTTwoEqual")):
         put(nm, ts[k], cnt(ts[k]), src)
-    for path, nm, src in ((TA / "tool-v2" / "t3_bugs4q.csv", "Bugs", "results/icpc/tool_acceptance/tool-v2/t3_bugs4q.csv"),
-                          (ICPC / "tool_coverage" / "textbook.csv", "Textbook", "results/icpc/tool_coverage/textbook.csv")):
+    for path, nm, src in ((TA / "tool-v3" / "t3_bugs4q.csv", "Bugs", "results/icpc/tool_acceptance/tool-v3/t3_bugs4q.csv"),
+                          (ICPC / "tool_coverage" / "textbook_v3.csv", "Textbook", "results/icpc/tool_coverage/textbook_v3.csv"),
+                          (ICPC / "tool_coverage" / "lintq_v3.csv", "Lintq", "results/icpc/tool_coverage/lintq_v3.csv")):
         cov = rows(path)
         q = [r for r in cov if r["uses_qiskit"] == "1"]
         put(f"Tool{nm}Files", len(cov), cnt(len(cov)), src)
