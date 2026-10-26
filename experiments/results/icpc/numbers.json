@@ -1618,6 +1618,96 @@
   "tex": "0",
   "source": "results/icpc/yz_flow/families.csv"
  },
+ "FdPairs": {
+  "value": 779,
+  "tex": "779",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdIdleQubits": {
+  "value": 5,
+  "tex": "5",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "FdFourEdgeNoClosureEqual": {
+  "value": 779,
+  "tex": "779",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdFourEdgeSize": {
+  "value": 0.7567962085175092,
+  "tex": "75.7\\%",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdFourEdgeEqual": {
+  "value": 522,
+  "tex": "522",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdFourEdgePrecision": {
+  "value": 0.8632190881246876,
+  "tex": "0.863",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdUndSize": {
+  "value": 0.9388702402878883,
+  "tex": "93.9\\%",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdUndPrecision": {
+  "value": 0.7129269034821393,
+  "tex": "0.713",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdUndEqual": {
+  "value": 231,
+  "tex": "231",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdLcPrecision": {
+  "value": 0.92278249852189,
+  "tex": "0.923",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdCpdgUnsound": {
+  "value": 204,
+  "tex": "204",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdCpdgZMatch": {
+  "value": 88,
+  "tex": "88",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdCpdgZMatchPct": {
+  "value": 0.43137254901960786,
+  "tex": "43\\%",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdDuUnsound": {
+  "value": 216,
+  "tex": "216",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdDuZMatch": {
+  "value": 88,
+  "tex": "88",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdDuZMatchPct": {
+  "value": 0.4074074074074074,
+  "tex": "41\\%",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdFwdOps": {
+  "value": 3156,
+  "tex": "3{,}156",
+  "source": "results/icpc/foundations/summary.json"
+ },
+ "FdFwdPrecision": {
+  "value": 0.9303472509746274,
+  "tex": "0.930",
+  "source": "results/icpc/foundations/summary.json"
+ },
  "ToolDevPrograms": {
   "value": 15,
   "tex": "15",

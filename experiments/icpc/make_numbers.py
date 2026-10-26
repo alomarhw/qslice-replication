@@ -431,6 +431,34 @@ def main() -> int:
     fam = [r for r in rows(ICPC / "yz_flow" / "families.csv") if r["slicer"] == "yzf"]
     put("YzfFamUnsound", sum(r["sound"] != "1" for r in fam), cnt(sum(r["sound"] != "1" for r in fam)), "results/icpc/yz_flow/families.csv")
 
+    # ---- foundations measures (Deviation I-17, exploratory): four-edge graph, undirected slices, forward slices --
+    fd = json.load(open(ICPC / "foundations" / "summary.json"))
+    src = "results/icpc/foundations/summary.json"
+    idle = sum(r["slicer"] == "lc" and r["size"] == "0" for r in rows(ICPC / "rq1" / "records.csv"))
+    assert fd["lc"]["n"] + idle == NUMS["NPairs"]["value"] and fd["excluded"] == 0, "foundations pairs differ from RQ1"
+    put("FdPairs", fd["lc"]["n"], cnt(fd["lc"]["n"]), src)
+    put("FdIdleQubits", idle, cnt(idle), "results/icpc/rq1/records.csv")
+    assert fd["lc"]["equal_to_lc"] == fd["lc"]["n"] and fd["lc_all"]["equal_to_lc"] == fd["lc"]["n"]
+    assert fd["cpdg"]["unsound"] == NUMS["CpdgUnsound"]["value"], "classical PDG reading differs from RQ1"
+    put("FdFourEdgeNoClosureEqual", fd["4e_nocl"]["equal_to_lc"], cnt(fd["4e_nocl"]["equal_to_lc"]), src)
+    put("FdFourEdgeSize", fd["4e"]["size"], pct(fd["4e"]["size"]), src)
+    put("FdFourEdgeEqual", fd["4e"]["equal_to_lc"], cnt(fd["4e"]["equal_to_lc"]), src)
+    put("FdFourEdgePrecision", fd["4e"]["precision"], f"{fd['4e']['precision']:.3f}", src)
+    assert fd["und_qdg"] == fd["und_4e"]
+    put("FdUndSize", fd["und_qdg"]["size"], pct(fd["und_qdg"]["size"]), src)
+    put("FdUndPrecision", fd["und_qdg"]["precision"], f"{fd['und_qdg']['precision']:.3f}", src)
+    put("FdUndEqual", fd["und_qdg"]["equal_to_lc"], cnt(fd["und_qdg"]["equal_to_lc"]), src)
+    put("FdLcPrecision", fd["lc"]["precision"], f"{fd['lc']['precision']:.3f}", src)
+    for k, nm in (("cpdg", "Cpdg"), ("du", "Du")):
+        put(f"Fd{nm}Unsound", fd[k]["unsound"], cnt(fd[k]["unsound"]), src)
+        put(f"Fd{nm}ZMatch", fd[k]["unsound_but_z_matches"], cnt(fd[k]["unsound_but_z_matches"]), src)
+        put(f"Fd{nm}ZMatchPct", fd[k]["unsound_but_z_matches"] / fd[k]["unsound"],
+            pct(fd[k]["unsound_but_z_matches"] / fd[k]["unsound"], 0), src)
+    fw = fd["forward"]
+    assert fw["complete"] == fw["ops"] and fw["dual_ok"] == fw["ops"]
+    put("FdFwdOps", fw["ops"], cnt(fw["ops"]), src)
+    put("FdFwdPrecision", fw["precision"], f"{fw['precision']:.3f}", src)
+
     # ---- the static program slicer (Deviation I-15; tool-v4, the final version; earlier versions' results kept) --
     TA = ICPC / "tool_acceptance"
     dev = json.load(open(TA / "dev_checks.json"))
