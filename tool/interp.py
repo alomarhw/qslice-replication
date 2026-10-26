@@ -72,6 +72,7 @@ class Op:
     deps: FrozenSet[int]                 # classical provenance: lines computing qubits, bits, angles, conditions
     may: bool = False                    # under an unknown condition or loop, or with an unresolved qubit
     params: Tuple[Any, ...] = ()
+    nctrl: int = 0                       # leading qubit operands that are controls (for the classical-PDG rule)
 
     @property
     def touched(self) -> FrozenSet[int]:
@@ -969,14 +970,14 @@ class Interpreter:
             return frozenset().union(*[self.cbits_of(circ, x, L) for x in v]) if v else frozenset()
         return frozenset(range(circ.n("c")))
 
-    def emit(self, circ: Circuit, name, qsets: List[FrozenSet[int]], csets, lines, L, params=()):
+    def emit(self, circ: Circuit, name, qsets: List[FrozenSet[int]], csets, lines, L, params=(), nctrl=0):
         if self.nops >= MAX_OPS:
             self.note(L, "operation limit reached")
             return None
         cond, cl = self.cond_bits(circ)
         unresolved = any(len(s) != 1 for s in qsets)
         op = Op(name, tuple(qsets), tuple(csets), cond, L, tuple(self.calls), self.iters(),
-                frozenset(lines) | cl | self.ctx_lines() | circ.lines, self.may > 0 or unresolved, tuple(params))
+                frozenset(lines) | cl | self.ctx_lines() | circ.lines, self.may > 0 or unresolved, tuple(params), nctrl)
         circ.ops.append(op)
         self.nops += 1
         return op
@@ -1054,10 +1055,11 @@ class Interpreter:
         width = max(lens) if lens else 1
         ops = []
         if all(x in (1, width) for x in lens):
+            nctrl = sum(len(s) for p, s in plural if p.startswith("control")) + sum(1 for p, _ in qargs if p.startswith("control"))
             for i in range(width):
                 qs = [x for _, s in plural for x in s] + [s[i if len(s) > 1 else 0] for _, s in qargs]
                 cs = [c[i if len(c) > 1 else 0] for c in cargs]
-                ops.append(self.emit(circ, name, qs, cs, lines, L, params))
+                ops.append(self.emit(circ, name, qs, cs, lines, L, params, nctrl))
         else:
             self.note(L, f"{name}: argument lengths do not broadcast; one may-operation on all named qubits")
             qs = [x for _, s in plural for x in s] + [frozenset().union(*s) for _, s in qargs]

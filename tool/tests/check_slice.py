@@ -23,7 +23,7 @@ def main():
         qc = nb
         s = Slicers(qc, p)
         for q in range(qc.num_qubits):
-            mine = Counter((c.ops[k].name, tuple(sorted(next(iter(x)) for x in c.ops[k].qubits))) for k in wire_slice(c, [q]).ops)
+            mine = Counter((c.ops[k].name, tuple(sorted(next(iter(x)) for x in c.ops[k].qubits))) for k in wire_slice(c, [q], keep_terminal=True).ops)
             ref = Counter()
             for k in s.lc(q):
                 sub = qc.copy_empty_like()
