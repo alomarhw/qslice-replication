@@ -15,8 +15,7 @@ of a quantum program can influence a wrong outcome would help them understand th
 
 Slicing has been proposed for quantum programs. Yu and Zhao's quantum program dependence graph
 (QPDG)~\cite{yu2025qpdg} extends the classical program dependence graph (PDG)~\cite{ferrante1987pdg} with
-entanglement, no-cloning, temporal and measurement dependences. Two qubits are entangled when their joint
-state cannot be described as a state of each qubit alone. The QPDG reduces slicing to graph reachability
+entanglement, no-cloning, temporal and measurement dependences. The QPDG reduces slicing to graph reachability
 under the classical slicing criterion $(s, V)$, which names a statement $s$ and the variables $V$ whose
 values the slice must preserve. A roadmap of quantum software engineering describes this graph as
 facilitating slicing and dependence analysis for debugging, testing and
@@ -70,7 +69,5 @@ definitions against a semantic ground truth, covering soundness, completeness, r
 precision. It also measures what each definition does to fault localization on seeded faults and real
 bugs, by whether the slice contains the fault, with mutation-based fault localization and with language
 models. Section~\ref{sec:discussion} states what the results settle and lays out a roadmap of the open
-problems. Finally, a replication package, available at
-\url{https://anonymous.4open.science/r/qslice-replication-5B21}, regenerates every number in the
-paper. Section~\ref{sec:design} describes the study design, and Sections~\ref{sec:threats}
+problems. Finally, a replication package regenerates every number in the paper. Section~\ref{sec:design} describes the study design, and Sections~\ref{sec:threats}
 to~\ref{sec:conclusion} discuss the threats to validity and related work, and conclude.

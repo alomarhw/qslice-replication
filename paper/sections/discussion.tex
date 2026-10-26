@@ -14,8 +14,7 @@ after each parameter update. State-based pruning should be offered, if at all, a
 labeled as such, and never as the slice of the program. Finally, a slicer should let the developer name a
 set of qubits. Many quantum bugs show only in the correlation between qubits, as in
 Section~\ref{sec:example}, and by Proposition~\ref{prop:joint} the joint QDG slice is the union of the
-single-qubit slices, so a joint criterion needs no extra analysis. Forward slices and qubit profiles come
-from the same graph, and by Proposition~\ref{prop:dual} they need no separate argument for correctness.
+single-qubit slices, so a joint criterion needs no extra analysis.
 
 \paragraph*{What is open}
 Six problems remain, and each extends a classical line of work. The first is precision that holds for
@@ -56,11 +55,3 @@ noise-free simulation and is therefore due to the device, which ran the slice an
 different physical qubits. A distance of measured distributions is blind to phase, so these runs show only
 that slicing does not break execution on hardware.
 
-\paragraph*{The source level}
-A developer reads lines, and a line inside a loop creates one operation per iteration. The line
-belongs to the slice when any of them does, so a line-level slice can keep code that no operation-level
-slice needs. Fig.~\ref{fig:loops} shows this for the ansatz. In its second layer, the rotations of $q_2$
-are not dependences of $q_0$, yet lines 12 and 13 are in the slice. Our tool therefore reports the
-iterations of each line. Section~\ref{sec:tool} lists the limits of its static interpretation. srcML's
-markup for OpenQASM~\cite{behler2024supporting, behler2025static} would let the same back end slice
-OpenQASM programs.

@@ -50,9 +50,8 @@ state-based pruning, which starts from the QDG slice, is wrong on fewer pairs th
 The QDG is sound on every pair and recovers every dependence, as Theorem~\ref{thm:sound} and
 Proposition~\ref{prop:complete} predict. The QPDG is also sound, but its entanglement edges bring in
 operations that are not dependences. Its precision falls from \numRqOneLcPrecision{} to
-\numRqOneYzPrecision{}, and its slices grow from \numRqOneLcSize{} to \numRqOneYzSize{} of the circuit. A stronger reading,
-which counts two qubits as entangled only from the gate that couples them on, is equally sound and keeps
-\numYzfSize{}, still \numYzfExcess{} percentage points above the dependence set, so the imprecision comes
+\numRqOneYzPrecision{}, and its slices grow from \numRqOneLcSize{} to \numRqOneYzSize{} of the circuit. The flow-sensitive
+QPDG is equally sound and keeps \numYzfSize{}, still \numYzfExcess{} percentage points above the dependence set, so the imprecision comes
 from the entanglement edges themselves and not from our reading of them. On
 the \numFamCircuits{} circuits with known structure, no rule with quantum dependence is ever wrong, the flow-sensitive QPDG included, while
 the classical PDG is wrong on \numFamCpdgUnsound{} of their pairs. The \numCatEntries{} catalog cases

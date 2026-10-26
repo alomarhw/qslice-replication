@@ -19,7 +19,7 @@ every language-model finding the same direction. The dependence set as a referen
 symbolic-angle variant of commutation pruning were added after all results. The static slicer and its
 acceptance tests were added last, and the tests were fixed before any output of the slicer. None of these
 changes enters the five confirmatory tests, and no test in the code asserts an expected result. The
-replication package~\url{https://anonymous.4open.science/r/qslice-replication-5B21} contains the protocol, the deviations, the logs of every run, and the commit each run
+replication package contains the protocol, the deviations, the logs of every run, and the commit each run
 used.
 
 \paragraph*{Circuits}
@@ -37,7 +37,8 @@ $U \dots U^{\dagger}$. For scale, corpus~L has \numCorpusLCircuits{} larger circ
 All slices are judged by one independent oracle. It simulates the circuit's unconditional state exactly,
 by branching over measurement outcomes, and shares no code with any slicer. It agrees with Qiskit's
 statevector simulation to within \numOracleErr{} on random circuits. A slice preserves the criterion when
-the fidelity of the criterion's reduced states is at least $1 - 10^{-6}$. The dependences of
+the Uhlmann fidelity of the criterion's reduced states, the standard similarity measure for such states,
+is at least $1 - 10^{-6}$. The dependences of
 Definition~\ref{def:dep} are measured by inserting \numInfluencePerturbations{} random unitaries after
 every operation and comparing the criterion's state at \numInfluenceInputs{} inputs, $\ket{0\dots0}$ and
 ten random product states, in which each qubit has its own random state and none is entangled. A
@@ -45,13 +46,10 @@ dependence catalog of \numCatEntries{} hand-derived cases, including the example
 Section~\ref{sec:dependence}, checks the ground truth and every slicer before the runs.
 
 \paragraph*{Slicers}
-Each rule of Section~\ref{sec:dependence} has an implementation. The classical PDG and def-use
-implement their read and write rules directly. The QDG is a backward slice over per-qubit data edges
-and measurement-to-condition edges. The QPDG adds the coupling-component edges of
-Section~\ref{sec:dependence}, and its flow-sensitive variant adds them only from the coupling gate on.
-Commutation pruning uses Qiskit's \texttt{LightCone} pass, and an exploratory variant replaces every angle
-by a symbol before the pass, so that commutation must hold for all angles. State-based pruning uses the
-algorithm and thresholds of Section~\ref{sec:dependence}, and a variant takes a joint criterion.
+Each rule of Section~\ref{sec:dependence} is implemented on circuits, directly from its read and write
+sets or its pruning step. An exploratory variant of commutation pruning replaces every angle by a symbol
+before Qiskit's pass, so that commutation must hold for all angles, and a variant of state-based pruning
+takes a joint criterion.
 
 \paragraph*{Robustness}
 A slice computed at $\ket{0\dots0}$ is rechecked, positions fixed, under \numRobDraws{} random

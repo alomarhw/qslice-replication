@@ -22,12 +22,9 @@ not see phase or the phase kickback that Proposition~\ref{prop:du} illustrates.
 
 \paragraph*{Dependence in quantum programs}
 To our knowledge, Yu and Zhao's QPDG~\cite{yu2025qpdg} is the only prior proposal of dependence-based
-slicing for quantum programs. It adds entanglement, no-cloning, temporal and measurement dependences to
-the classical graph, which informally follow entangled qubits, forbid copying a qubit, order operations in
-time and link measurements to their uses. It keeps the classical criterion $(s, V)$ and slices by
-reachability. Its dependences are defined in prose. For example, an entanglement dependence holds when the
-qubits of two statements are entangled, and the paper leaves an implementation and its evaluation to
-future work. Its no-cloning example, \texttt{x(0)} followed by \texttt{cx(0,1)}, is described as
+slicing for quantum programs. Its dependences are defined in prose. For example, an entanglement dependence
+holds when the qubits of two statements are entangled, and the paper leaves an implementation and its
+evaluation to future work. Its no-cloning example, \texttt{x(0)} followed by \texttt{cx(0,1)}, is described as
 entangling the two qubits, although it produces the product state $\ket{11}$. The dependence is real but
 the entanglement is not, which is case~(i) of Proposition~\ref{prop:ent}. We implement the graph as a
 documented baseline and evaluate it against the semantics. Other program
@@ -60,10 +57,7 @@ that commute even when they act on the same qubits~\cite{heim2020quantum}. Qiski
 pass restricts a circuit to the gates that can reach an observable and drops gates that commute with
 it~\cite{qiskit2025}. Compilers build gate-dependence graphs to map and schedule circuits on
 hardware~\cite{murali2019triq} and cancel or merge gates while keeping the circuit
-equivalent~\cite{amy2020staq}. None of them selects the operations relevant to a criterion. We show that
-the QDG slice, which is the backward light cone, is the sound and dependence-complete slice of a set of
-qubits, and that commutation is safe for random inputs but, unless angles are treated as symbols, not when
-the angles change.
+equivalent~\cite{amy2020staq}. None of them selects the operations relevant to a criterion.
 
 \paragraph*{Debugging quantum programs}
 A recent roadmap finds that debugging research for quantum programs is still in an initial phase,

@@ -5,18 +5,6 @@ on a qubit is, the dependence rules we compare, the kinds of slices that follow 
 profile of a qubit. The definitions are independent of any slicer, and the evaluation in
 Section~\ref{sec:results} measures each rule against them.
 
-\subsection{Background}
-A quantum program builds a circuit, a sequence of operations on qubits. The state of a qubit is a
-superposition $\alpha\ket{0} + \beta\ket{1}$ of the two basis states, and measuring it yields $0$ or $1$
-with probabilities $|\alpha|^2$ and $|\beta|^2$ and leaves the qubit in the state observed. Gates are
-reversible operations on one or more qubits. A controlled gate such as the CNOT applies an operation to
-its target depending on its control, but it can also change the control. When the target is in a suitable
-superposition, a phase is kicked back onto the control, which is called phase kickback. Two qubits are
-entangled when their joint state is not a state of each qubit alone, and then the outcomes of measuring
-them are correlated. A reset returns a qubit to $\ket{0}$, and a measurement writes a classical bit that
-later gates may read as a condition. Qiskit programs build circuits in Python, with loops, functions and
-conditions that compute which gates act on which qubits.
-
 \subsection{Circuits and their semantics}
 A circuit $P = o_0 \dots o_{L-1}$ is a sequence of operations over qubits $Q = \{0, \dots, n-1\}$ and
 classical bits $C$. Each operation $o$ acts on a set of \emph{locations} $\mathit{loc}(o) \subseteq
@@ -49,8 +37,7 @@ it preserves $W$ at every input.
 \end{definition}
 
 Comparing reduced states is basis-independent. It detects phase errors that a measured distribution in
-one basis misses. In the experiments, equality means that the Uhlmann fidelity of the two reduced states,
-the standard similarity measure for such states, is at least $1 - 10^{-6}$.
+one basis misses.
 
 Soundness says that the slice reproduces what the criterion qubits end up in. A developer localizing a
 fault needs a second guarantee, that the slice contains every place where a fault could change that
@@ -106,9 +93,8 @@ dependences are given in prose, so we logged every choice before any run. Data a
 implemented as in the QDG, with every gate writing all its qubits. Entanglement dependence needs a rule for
 when two qubits are entangled, which the QPDG does not give. We use the static rule of entanglement
 analysis, under which qubits joined by a two-qubit gate anywhere in the circuit are entangled, and add an
-edge from every operation to every later one on qubits of the same such component. No-cloning dependence,
-whose example is a CNOT that copies a basis state, adds no edge beyond data dependence, and temporal
-dependence concerns execution timing, which is not part of a circuit. A flow-sensitive variant counts two
+edge from every operation to every later one on qubits of the same such component. Its no-cloning and
+temporal dependences add no edge, as the end of this section explains. A flow-sensitive variant counts two
 qubits as entangled only from the gate that couples them on.
 
 \begin{table}[t]
@@ -226,12 +212,6 @@ By induction over the backward pass of Theorem~\ref{thm:sound}, the needed set f
 the union of the needed sets for $W_1$ and $W_2$ at every position.
 \end{IEEEproof}
 
-Under the QDG, a joint criterion is therefore the union of single-qubit slices. The criterion
-matters for pruning. State-based pruning for $\{q\}$ preserves $\rho_q$ but not the correlations of $q$
-with the other qubits, so it can delete an operation that changes $\rho_W$ for a larger $W$. It is also
-specific to its input, because the mutual information it tests and the reduced state it checks are
-those of one input. Section~\ref{sec:results} measures both effects.
-
 \paragraph*{What is not a dependence}
 Entanglement does not decide dependence, by Proposition~\ref{prop:ent}. Nor do the other quantum
 phenomena that have been proposed as sources of dependence. No-cloning forbids copying an unknown state,
@@ -270,13 +250,15 @@ almost the whole circuit, so it is a pitfall rather than a decomposition of the 
 
 \paragraph*{Joint criteria}
 By Proposition~\ref{prop:joint}, the QDG slice of a set of qubits is the union of their single-qubit
-slices, so a tool needs to compute only those. The criterion must still name the set when the fault lies
-in correlations, as the Bugs4Q bug of Section~\ref{sec:example} shows, because a pruned slice of each qubit
-alone need not preserve their joint state.
+slices, so a tool needs to compute only those. The criterion still matters for pruning, and it must name
+the set when the fault lies in correlations, as the Bugs4Q bug of Section~\ref{sec:example} shows.
+State-based pruning for $\{q\}$ preserves $\rho_q$ but not the correlations of $q$ with the other qubits,
+so it can delete an operation that changes $\rho_W$ for a larger $W$.
 
 \paragraph*{Static and conditioned slices}
 A static slice preserves the criterion at every input, as Definition~\ref{def:sound} requires. State-based pruning
-preserves it only at one given input, so it computes a conditioned slice in the sense of Canfora et
+tests mutual information and checks the reduced state at one given input, and preserves the criterion only
+there, so it computes a conditioned slice in the sense of Canfora et
 al.~\cite{canfora1998conditioned}, which is correct for the inputs that satisfy a condition, here a single
 input. Quasi-static slicing, which fixes some of the inputs~\cite{venkatesh1991semantic}, lies in between.
 Section~\ref{sec:results} measures what this restriction buys and costs.
@@ -284,8 +266,9 @@ Section~\ref{sec:results} measures what this restriction buys and costs.
 \paragraph*{Granularity}
 A slice can be reported as operations, as loop iterations, or as source lines. Operations are the unit of
 the definitions and lines the unit of the developer. A line is in the slice if one of its operations is,
-and the tool also reports iterations, since one iteration of a loop can matter while the others do not, as
-in Fig.~\ref{fig:ansatz}.
+so a line-level slice can keep code that no operation-level slice needs. In the second layer of the ansatz
+of Fig.~\ref{fig:ansatz}, the rotations of $q_2$ are not dependences of $q_0$, yet lines 12 and 13 are in
+the slice. The tool therefore also reports the iterations of each line.
 
 \subsection{Qubit slice profiles}
 srcSlice computes for every variable a slice profile that collects its definitions, uses, aliases, the

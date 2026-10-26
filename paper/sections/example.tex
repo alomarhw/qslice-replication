@@ -12,6 +12,19 @@
   \label{fig:bv}
 \end{figure}
 
+\paragraph*{Background}
+The state of a qubit is a
+superposition $\alpha\ket{0} + \beta\ket{1}$ of the two basis states, and measuring it yields $0$ or $1$
+with probabilities $|\alpha|^2$ and $|\beta|^2$ and leaves the qubit in the state observed. Gates are
+reversible operations on one or more qubits. A controlled gate such as the CNOT applies an operation to
+its target depending on its control, but it can also change the control. When the target is in a suitable
+superposition, a phase is kicked back onto the control, which is called phase kickback. Two qubits are
+entangled when their joint state is not a state of each qubit alone, and then the outcomes of measuring
+them are correlated. A reset returns a qubit to $\ket{0}$, and a measurement writes a classical bit that
+later gates may read as a condition. Qiskit programs build circuits in Python, with loops, functions and
+conditions that compute which gates act on which qubits.
+
+\paragraph*{The scenario}
 The Bernstein--Vazirani algorithm~\cite{bernstein1997qct} finds a hidden bit string $s$ with a single query
 to an oracle that computes the parity of $s \wedge x$. Fig.~\ref{fig:bv} shows the program of the Qiskit
 textbook~\cite{qiskittextbook}, with $s = 011$. The algorithm rests on phase kickback. Lines~24 and~25
