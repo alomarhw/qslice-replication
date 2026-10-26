@@ -69,7 +69,8 @@ barriers, depth or gate type~\cite{qiskitaddonutils}. Neither has a criterion, a
 fault by hand. Metwalli and Van Meter's phase tests show that a phase is wrong but not where to look. A criterion
 over a set of qubits answers that question. Bug studies~\cite{zhao2021bugpatterns} and benchmarks such
 as Bugs4Q~\cite{zhao2023bugs4q} catalogue real faults, and static checkers such as
-QChecker~\cite{zhao2023qchecker} detect known bug patterns but not wrong outputs. Mutation
+QChecker~\cite{zhao2023qchecker} and Q-PAC~\cite{nayak2023qpac} detect known bug and fix patterns but
+not wrong outputs. Mutation
 tools~\cite{mendiluze2021muskit, fortunato2022qmutpy} and fault models~\cite{garcia2022testing} supply
 the faults of our study, and mutation-based fault localization has been adapted to quantum programs by
 Ishimoto et al.~\cite{ishimoto2025mbfl}. Slicing is complementary to these tools, since it tells them
