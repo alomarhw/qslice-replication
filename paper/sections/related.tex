@@ -8,7 +8,9 @@ slicing restricts a slice to one execution~\cite{korel1988dynamic, agrawal1990dy
 pruning restricts it to one input. Surveys cover the many variants~\cite{tip1994a, harman2008program}.
 General analysis frameworks such as WALA provide dependence-graph slicers for Java, JavaScript and, through
 a separate front end, Python~\cite{wala}. Applied to a Qiskit program, such a slicer sees each gate as a
-call on one circuit object, so it cannot tell which qubits an operation depends on. A recent retrospective
+call on one circuit object, so it cannot tell which qubits an operation depends on. srcSlice computes
+static slices from the srcML markup of classical programs~\cite{alomari2014srcslice}, as our tool does
+for Qiskit programs, but it has no notion of qubits. A recent retrospective
 notes that slices can be defined by almost any semantic method, as the application requires, and names
 quantum programs as a future direction~\cite{gallagher2025program}. We follow that view and define the
 slice of a quantum program by the reduced state of its criterion. Slicing of probabilistic programs
