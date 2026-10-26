@@ -819,6 +819,10 @@ class Interpreter:
                 return getattr(math, {"arcsin": "asin", "arccos": "acos", "arctan": "atan"}.get(short, short))(*args), lines
             if short == "print":
                 return None, lines
+            if short == "getattr" and len(args) >= 2 and isinstance(args[1], str):
+                return ("__method__", args[0], args[1]), lines
+            if short == "isinstance":
+                return UNK, lines
         except Exception:
             return UNK, lines
         if short in ("QuantumRegister", "ClassicalRegister", "AncillaRegister"):
@@ -1104,7 +1108,7 @@ class Interpreter:
 
 PLURAL = {"control_qubits", "ancilla_qubits", "target_qubits", "qubits", "qargs"}
 BUILTINS = {"range", "len", "list", "tuple", "zip", "enumerate", "int", "float", "abs", "round", "min", "max", "sum",
-            "sorted", "reversed", "print", "bool", "str", "set", "pow"}
+            "sorted", "reversed", "print", "bool", "str", "set", "pow", "getattr", "isinstance"}
 
 
 def trace_file(path) -> Trace:

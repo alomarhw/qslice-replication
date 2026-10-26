@@ -20,15 +20,18 @@ def built(path):
     return max(made, key=lambda c: len(c.data))
 
 
-def flat(qc):
+def flat(qc, outer=None):
+    """(gate, global qubits) in order, with if_else blocks expanded recursively (a block's qubits map to the outer
+    instruction's qubits)."""
     out = []
     for inst in qc.data:
         op = inst.operation
+        idx = [qc.find_bit(q).index for q in inst.qubits]
+        idx = [outer[i] for i in idx] if outer is not None else idx
         if op.name == "if_else":
-            for i in op.blocks[0].data:
-                out.append((i.operation.name, tuple(qc.find_bit(q).index for q in i.qubits)))
+            out.extend(flat(op.blocks[0], idx))
             continue
-        out.append((op.name, tuple(qc.find_bit(q).index for q in inst.qubits)))
+        out.append((op.name, tuple(idx)))
     return [x for x in out if x[0] != "barrier"]
 
 

@@ -974,3 +974,21 @@ These were found while implementing §6, from the API documentation. No LLM call
   - **T3:** coverage on all 218 Bugs4Q Python files (resolved, partly resolved, unsupported, and why).
   - **Reporting.** Differences are reported as found and never edited away. A difference found by T1
     or T2 may be fixed only in a new, dated tool version, with both versions' results reported.
+- **Addendum (2026-10-25): nested conditions.** Found while checking the tool on a repetition code of our own,
+  which nests `if_test` blocks (`tool/tests/big/repetition_code.py`).
+  - **Oracle fix.** `common/oracle.py::terminal_measurements` looked only at an `if_else`'s outer condition.
+    A measurement read only by a nested condition was taken as terminal and never projected, so the inner
+    block never fired. It now counts every classical bit of the instruction as read. This can only make
+    fewer measurements terminal.
+    - Checked: `tests/test_oracle_icpc.py` and `tests/test_oracle.py` pass, and the catalogue output is
+      byte-identical.
+    - No study circuit nests conditions: corpus A is OpenQASM 2, and the catalogue, Bugs4Q ports and
+      families have single-level conditions or none. No committed result changes.
+  - **Circuit-level slicers.** The study's slicers (S-lc and the others in `slicers/registry.py`) read
+    only the outer condition of a nested `if_else`. On the repetition code, S-lc's slice of data[3] is
+    wrong on 29 of 30 random product inputs. The tool's slice, which reads every enclosing condition, is
+    wrong on none. This does not affect the study, for the same reason.
+- **Development checks so far (programs of our own, safe to run).** On 15 programs (2 figure programs,
+  3 construct tests, 10 larger ones, up to 1,842 operations), the static trace equals the executed
+  circuit. Barriers are dropped, as the study's loader does. The slice of every qubit equals S-lc, except
+  on the nested-condition program, where the difference is S-lc's.

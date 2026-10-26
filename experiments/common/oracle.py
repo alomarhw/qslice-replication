@@ -154,6 +154,10 @@ def terminal_measurements(qc: QuantumCircuit) -> set[int]:
             cond = inst.operation.condition
             tgt = cond[0]
             read_later.update([tgt] if isinstance(tgt, Clbit) else list(tgt))
+            # Fixed 2026-10-25 (Deviation I-15 addendum): bits read by a condition nested inside the blocks are
+            # among the instruction's clbits; without this, a measurement read only by a nested condition was
+            # treated as terminal and never projected. No study circuit nests conditions (checked).
+            read_later.update(inst.clbits)
         if name not in SKIP:
             touched_later.update(inst.qubits)
     return out
