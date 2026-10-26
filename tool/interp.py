@@ -29,6 +29,7 @@ from tool.gates import GATES, NOT_SLICED
 
 MAX_OPS = 200_000
 MAX_ITER = 10_000
+MAX_UNKNOWN_COPIES = 65  # copies of a loop body with an unknown iteration count (covers bodies touching up to 64 qubits)
 MAX_STEPS = 300_000  # statements interpreted per program; beyond it the rest is reported as not traced
 E: FrozenSet[int] = frozenset()
 
@@ -420,18 +421,10 @@ class Interpreter:
         seq, sl = self.eval_text(it, ln, env)
         items = self.iterate(seq)
         if items is None:
-            self.note(ln, "loop over an unknown sequence: body interpreted twice, as may-operations")
-            self.may += 1
-            for i in range(2):
+            def body(i):
                 self.assign(target, (UNK, sl), ln, env)
-                self.ctx.append(("for", ln, frozenset(sl), i))
-                try:
-                    self.block(blk, env)
-                except (_Break, _Continue):
-                    pass
-                finally:
-                    self.ctx.pop()
-            self.may -= 1
+                self.block(blk, env)
+            self.unknown_loop(ln, "for", sl, body)
             return
         for i, x in enumerate(items):
             self.assign(target, (x, sl), ln, env)
@@ -446,6 +439,33 @@ class Interpreter:
             self.ctx.pop()
         else:
             return
+
+    def unknown_loop(self, ln, kind, lines, body_once):
+        """A loop whose iteration count is unknown. A dependence can travel backward through any number of
+        iterations, but each further iteration can only add a qubit the body touches to the needed set, so
+        len(touched) + 1 copies of the body cover every chain (at least two). The copies are may-operations."""
+        self.note(ln, f"{kind} with an unknown iteration count: body repeated to cover every dependence chain, as may-operations")
+        self.may += 1
+        try:
+            i, touched, need = 0, set(), 2
+            while i < need and i < MAX_UNKNOWN_COPIES:
+                before = {id(c): len(c.ops) for c in self.circuits}
+                self.ctx.append((kind, ln, frozenset(lines), i))
+                try:
+                    body_once(i)
+                except (_Break, _Continue):
+                    pass
+                finally:
+                    self.ctx.pop()
+                for c in self.circuits:
+                    for op in c.ops[before.get(id(c), 0):]:
+                        touched |= {(id(c), q) for q in op.touched}
+                need = max(2, len(touched) + 1)
+                i += 1
+            if need > MAX_UNKNOWN_COPIES:
+                self.note(ln, "loop copies capped: dependences through more iterations are not traced")
+        finally:
+            self.may -= 1
 
     def iterate(self, seq):
         if isinstance(seq, (list, tuple, range)):
@@ -466,17 +486,7 @@ class Interpreter:
         while n < MAX_ITER:
             c, cl = self.eval_text(cond, ln, env)
             if c is UNK:
-                self.note(ln, "while loop with an unknown condition: body interpreted twice, as may-operations")
-                self.may += 1
-                for i in range(2):
-                    self.ctx.append(("while", ln, frozenset(cl), i))
-                    try:
-                        self.block(blk, env)
-                    except (_Break, _Continue):
-                        pass
-                    finally:
-                        self.ctx.pop()
-                self.may -= 1
+                self.unknown_loop(ln, "while", cl, lambda i: self.block(blk, env))
                 return
             if not c:
                 return
