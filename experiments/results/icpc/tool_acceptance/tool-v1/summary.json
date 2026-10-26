@@ -1,0 +1,11 @@
+{
+ "t1_bugs": 8,
+ "t1_exact": 7,
+ "t1_ops_prepared": 137,
+ "t1_ops_matched": 136,
+ "t2_units": 19,
+ "t2_equal": 17,
+ "t2_units_mapped": 17,
+ "t2_equal_mapped": 17,
+ "tool_version": "tool-v1"
+}
