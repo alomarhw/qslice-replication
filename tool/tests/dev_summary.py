@@ -10,7 +10,8 @@ from tool.slicer import wire_slice
 from tool.tests.check_trace import built, flat
 
 PROGS = sorted(Path("tool/tests/big").glob("*.py")) + sorted(Path("tool/tests/programs").glob("t0*.py")) + \
-        sorted(Path("paper/figures/src/programs").glob("*.py"))
+        sorted(p for p in Path("paper/figures/src/programs").glob("*.py") if p.name != "bv.py")
+# bv.py is the textbook listing, whose i() gate the current Qiskit no longer has; make_fig_bv.py checks it instead
 
 
 def main():

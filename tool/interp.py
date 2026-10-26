@@ -180,6 +180,37 @@ SAFE_MATH = {"sqrt", "sin", "cos", "tan", "arcsin", "arccos", "arctan", "asin", 
              "floor", "ceil", "pi", "e"}
 
 
+def _is_name(v) -> bool:
+    """An unresolved external name is represented as the tuple ("__name__", dotted name)."""
+    return isinstance(v, tuple) and v[:1] == ("__name__",)
+
+
+def _same(a, b) -> bool:
+    if a is b:
+        return True
+    if type(a) is type(b) and isinstance(a, (int, float, str, bool, tuple, frozenset, range)):
+        try:
+            return bool(a == b)
+        except Exception:
+            return False
+    return False
+
+
+def _join(states, cond_lines):
+    """Join of variable states from alternative paths. A variable bound on only some paths keeps its value
+    (using it on the others would fail); one bound to different values becomes unknown. Provenance is the
+    union, plus the lines of the condition that chose the path."""
+    out = {}
+    for k in set().union(*states):
+        vals = [s[k] for s in states if k in s]
+        lines = frozenset().union(*(frozenset(v[1]) for v in vals))
+        if all(_same(v[0], vals[0][0]) for v in vals):
+            out[k] = (vals[0][0], lines if len(vals) == 1 else lines)
+        else:
+            out[k] = (UNK, lines | cond_lines)
+    return out
+
+
 class Interpreter:
     def __init__(self, path: str):
         self.path = path
@@ -189,6 +220,7 @@ class Interpreter:
         self.ctx: List[Tuple[str, int, FrozenSet[int], Any]] = []  # (kind, line, lines, extra): for/if/while/with
         self.calls: List[int] = []
         self.may = 0
+        self.frames: List[Dict[str, Any]] = [{"tail": 0, "rets": []}]  # per call: may-depth after a may-exit, may-returns
         self.nops = 0
         self.globals = Env()
         self.aliases: Dict[str, str] = {}
@@ -264,6 +296,7 @@ class Interpreter:
         self.note(ln, "function analysed as an entry point with unknown arguments")
         self.called.add(id(f.node))
         self.calls.append(ln)
+        self.frames.append({"tail": 0, "rets": []})
         try:
             self.block(X.child(f.node, "block"), fe)
         except (_Return, _Break, _Continue):
@@ -272,6 +305,7 @@ class Interpreter:
             self.note(ln, "interpretation budget exceeded: the rest of the program is not traced")
         finally:
             self.calls.pop()
+            self.may -= self.frames.pop()["tail"]
 
     def block(self, blk, env):
         for st in X.statements(blk):
@@ -424,7 +458,7 @@ class Interpreter:
             def body(i):
                 self.assign(target, (UNK, sl), ln, env)
                 self.block(blk, env)
-            self.unknown_loop(ln, "for", sl, body)
+            self.unknown_loop(ln, "for", sl, body, env)
             return
         for i, x in enumerate(items):
             self.assign(target, (x, sl), ln, env)
@@ -440,14 +474,16 @@ class Interpreter:
         else:
             return
 
-    def unknown_loop(self, ln, kind, lines, body_once):
+    def unknown_loop(self, ln, kind, lines, body_once, env=None):
         """A loop whose iteration count is unknown. A dependence can travel backward through any number of
         iterations, but each further iteration can only add a qubit the body touches to the needed set, so
-        len(touched) + 1 copies of the body cover every chain (at least two). The copies are may-operations."""
+        len(touched) + 1 copies of the body cover every chain (at least two), counting qubits and bits. The copies are
+        may-operations, and a variable whose value differs between copies leaves the loop unknown."""
         self.note(ln, f"{kind} with an unknown iteration count: body repeated to cover every dependence chain, as may-operations")
         self.may += 1
         try:
             i, touched, need = 0, set(), 2
+            snaps = [dict(env.vars)] if env is not None else []
             while i < need and i < MAX_UNKNOWN_COPIES:
                 before = {id(c): len(c.ops) for c in self.circuits}
                 self.ctx.append((kind, ln, frozenset(lines), i))
@@ -460,14 +496,21 @@ class Interpreter:
                 for c in self.circuits:
                     for op in c.ops[before.get(id(c), 0):]:
                         touched |= {(id(c), q) for q in op.touched}
+                        touched |= {(id(c), "c", b) for s_ in op.clbits for b in s_} | {(id(c), "c", b) for b in op.cond}
                 need = max(2, len(touched) + 1)
                 i += 1
+                if env is not None:
+                    snaps.append(dict(env.vars))
             if need > MAX_UNKNOWN_COPIES:
                 self.note(ln, "loop copies capped: dependences through more iterations are not traced")
+            if env is not None:
+                env.vars = _join(snaps, frozenset(lines) | {ln})
         finally:
             self.may -= 1
 
     def iterate(self, seq):
+        if _is_name(seq):
+            return None  # an unresolved external name (e.g. sys.argv) is not a known sequence
         if isinstance(seq, (list, tuple, range)):
             return list(seq)[:MAX_ITER]
         if isinstance(seq, Reg):
@@ -486,7 +529,7 @@ class Interpreter:
         while n < MAX_ITER:
             c, cl = self.eval_text(cond, ln, env)
             if c is UNK:
-                self.unknown_loop(ln, "while", cl, lambda i: self.block(blk, env))
+                self.unknown_loop(ln, "while", cl, lambda i: self.block(blk, env), env)
                 return
             if not c:
                 return
@@ -510,41 +553,60 @@ class Interpreter:
                 branches.append((X.text(X.child(c, "condition")).strip(), X.child(c, "block"), X.line(c)))
             elif t == "else":
                 branches.append((None, X.child(c, "block"), X.line(c)))
-        taken_unknown = False
         lines = set()
-        for cond, blk, ln in branches:
-            if cond is None:
-                self.ctx.append(("if", ln, frozenset(lines), None))
-                try:
-                    if taken_unknown:
-                        self.may += 1
-                    self.block(blk, env)
-                finally:
-                    if taken_unknown:
-                        self.may -= 1
-                    self.ctx.pop()
-                return
-            c, cl = self.eval_text(cond, ln, env)
-            lines |= set(cl) | {ln}
-            if c is UNK or taken_unknown:
-                if not taken_unknown:
+        for k, (cond, blk, ln) in enumerate(branches):
+            if cond is not None:
+                c, cl = self.eval_text(cond, ln, env)
+                lines |= set(cl) | {ln}
+                if c is UNK:
                     self.note(ln, "unknown condition: every branch interpreted, as may-operations")
-                taken_unknown = True
-                self.ctx.append(("if", ln, frozenset(lines), None))
-                self.may += 1
-                try:
-                    self.block(blk, env)
-                finally:
-                    self.may -= 1
-                    self.ctx.pop()
-                continue
-            if c:
-                self.ctx.append(("if", ln, frozenset(lines), None))
-                try:
-                    self.block(blk, env)
-                finally:
-                    self.ctx.pop()
-                return
+                    self.may_branches(branches[k:], lines, env)
+                    return
+                if not c:
+                    continue
+            self.ctx.append(("if", ln, frozenset(lines), None))
+            try:
+                self.block(blk, env)
+            finally:
+                self.ctx.pop()
+            return
+
+    def may_branches(self, branches, lines, env):
+        """The branches from the first unknown condition on. Each starts from the state before the if, and the
+        states after them are joined: a variable whose value differs between paths becomes unknown, so later
+        operations act on every qubit it may denote. A return, break or continue in a branch does not stop the
+        analysis: the rest of the function is interpreted as may-operations, and a returned value is joined with
+        the function's other return values."""
+        pre = dict(env.vars)
+        posts, exited, has_else = [], False, False
+        for cond, blk, ln in branches:
+            env.vars = dict(pre)
+            if cond is None:
+                has_else = True
+            else:
+                _, cl = self.eval_text(cond, ln, env)
+                lines |= set(cl) | {ln}
+            self.ctx.append(("if", ln, frozenset(lines), None))
+            self.may += 1
+            try:
+                self.block(blk, env)
+                posts.append(env.vars)
+            except _Return as r:
+                self.frames[-1]["rets"].append(r.v)
+                exited = True
+            except (_Break, _Continue):
+                posts.append(env.vars)
+                exited = True
+            finally:
+                self.may -= 1
+                self.ctx.pop()
+        if not has_else:
+            posts.append(pre)
+        env.vars = _join(posts or [pre], frozenset(lines))
+        if exited:
+            self.note(branches[0][2], "return, break or continue under an unknown condition: the rest of the function is interpreted as may-operations")
+            self.may += 1
+            self.frames[-1]["tail"] += 1
 
     def do_def(self, st, env, register=True):
         name = X.text(X.child(st, "name")).strip()
@@ -897,6 +959,7 @@ class Interpreter:
             fe.set(pn, v[0], v[1] | {L})
         self.called.add(id(f.node))
         self.calls.append(L)
+        self.frames.append({"tail": 0, "rets": []})
         try:
             self.block(X.child(f.node, "block"), fe)
             ret = (None, E)
@@ -907,6 +970,17 @@ class Interpreter:
             ret = (UNK, E)
         finally:
             self.calls.pop()
+            fr = self.frames.pop()
+            self.may -= fr["tail"]
+        if fr["rets"]:
+            # a return under an unknown condition: the call may return any of the values. A None from an early
+            # exit cannot be used as a circuit later without failing, so it does not widen the result.
+            cands = [r for r in fr["rets"] + [ret] if r[0] is not None]
+            lines_ = frozenset().union(*(frozenset(r[1]) for r in fr["rets"] + [ret]))
+            if cands and all(_same(c[0], cands[0][0]) for c in cands):
+                ret = (cands[0][0], lines_)
+            elif cands:
+                ret = (UNK, lines_)
         return ret[0], frozenset(ret[1]) | {L}
 
     def named_call(self, full, args, kw, lines, L):
@@ -923,7 +997,7 @@ class Interpreter:
                     return (a.size if a.size is not None else UNK), lines
                 if isinstance(a, Circuit):
                     return len(a.ops), lines
-                return (len(a) if isinstance(a, (list, tuple, range, str, dict)) else UNK), lines
+                return (len(a) if isinstance(a, (list, tuple, range, str, dict)) and not _is_name(a) else UNK), lines
             if short in ("list", "tuple", "sorted", "reversed", "set"):
                 seq = self.iterate(args[0]) if args else []
                 if seq is None:

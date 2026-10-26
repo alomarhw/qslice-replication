@@ -104,6 +104,8 @@ def forward_slice(circ: Circuit, start: Iterable[int]) -> ForwardSlice:
             aff_q |= op.touched
             if op.name == "measure":
                 aff_c |= {b for s in op.clbits for b in s}
+        elif op.name == "measure" and not op.may and not op.cond and all(len(s) == 1 for s in op.clbits):
+            aff_c -= {b for s in op.clbits for b in s}  # certainly overwritten by a value the start cannot affect, as in wire_slice
     it: Dict[int, Set[Tuple]] = {}
     for k in keep:
         it.setdefault(circ.ops[k].line, set()).add(circ.ops[k].iters)
