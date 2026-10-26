@@ -57,3 +57,37 @@ def yuzhao_slice(qc: QuantumCircuit, target_qubit: int, method_code: str | Path)
     g = QDGControlFixed(qc, "yz")
     g.build(include_entanglement=True, include_control=True)
     return set(g.backward_slice(target_qubit))
+
+
+def yuzhao_flow_slice(qc: QuantumCircuit, target_qubit: int, method_code: str | Path) -> Set[int]:
+    """Backward S-yzf slice (instruction positions) of `qc` for criterion qubit `target_qubit`."""
+    return set(yuzhao_flow_graph(qc, method_code).backward_slice(target_qubit))
+
+
+def yuzhao_flow_graph(qc: QuantumCircuit, method_code: str | Path):
+    """S-yzf (Deviation I-16, exploratory): S-yz with flow-sensitive entanglement. Qubits join a component
+    only from the two-qubit gate that couples them on; an ENTANGLEMENT edge v -> u (v < u, different qubits)
+    exists only if their qubits share a component just after u. DATA and CONTROL edges are those of S-yz."""
+    if str(method_code) not in sys.path:
+        sys.path.insert(0, str(method_code))
+    from method_eval.control_fix import QDGControlFixed
+    from qdg import EdgeType
+    g = QDGControlFixed(qc, "yzf")
+    g.build(include_entanglement=False, include_control=True)
+    parent = list(range(qc.num_qubits))
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+    qubits = [[qc.find_bit(q).index for q in inst.qubits] for inst in qc.data]
+    for u, qs in enumerate(qubits):
+        if len(qs) == 2:  # the coupling rule of S-yz (qslice/qdg.py::_add_entanglement_edges)
+            parent[find(qs[0])] = find(qs[1])
+        for v in range(u):
+            # as in S-yz: some qubit a of v and a different qubit b of u in one component (here: at u)
+            if (any(a != b and find(a) == find(b) for a in qubits[v] for b in qs)
+                    and not g.graph.has_edge(v, u)):
+                g.graph.add_edge(v, u, edge_type=EdgeType.ENTANGLEMENT)
+    return g
