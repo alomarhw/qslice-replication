@@ -12,6 +12,8 @@
     \toprule
     Rule & Dependence & Wrong & Dyn. & Recall & Prec. & Size \\
     \midrule
+    Dependences$^{b}$  & semantic              & --                     & --                       & 1.000                 & 1.000                    & \numDepFloor{} \\
+    \midrule
     Def-use            & data                  & \numRqOneDuUnsound{}   & \numDuDynamicUnsound{}   & \numRqOneDuRecall{}   & \numRqOneDuPrecision{}   & \numRqOneDuSize{} \\
     Classical PDG      & data, control         & \numCpdgUnsound{}      & \numCpdgDynamicUnsound{} & \numCpdgRecall{}      & \numCpdgPrecision{}      & \numCpdgSize{} \\
     Wire               & + quantum             & \numRqOneLcUnsound{}   & \numLcDynamicUnsound{}   & \numRqOneLcRecall{}   & \numRqOneLcPrecision{}   & \numRqOneLcSize{} \\
@@ -22,7 +24,9 @@
     \bottomrule
   \end{tabular}}\\[2pt]
   {\footnotesize $^{a}$\,On the \numLcqApplicable{} pairs where Qiskit's pass applies; it rejects
-  circuits that measure, which leaves no dynamic pair.}
+  circuits that measure, which leaves no dynamic pair. $^{b}$\,The semantic dependences themselves,
+  the smallest dependence-complete slice. They are a reference, not a slicer, so they have no
+  soundness value.}
 \end{table}
 
 \subsection{RQ1: Which definitions give sound and complete slices?}
@@ -46,6 +50,29 @@ gate, but its entanglement edges add operations that are not dependences. Its pr
 \numRqOneYzSize{} of the circuit. On the \numFamCircuits{} circuits with known structure, no rule with
 quantum dependence is ever wrong, while the classical PDG is wrong on \numFamCpdgUnsound{} of their
 pairs. The \numCatEntries{} catalogue cases agree with the hand-derived expectations for every rule.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig_size.pdf}
+  \caption{RQ1: Mean slice size by circuit width. The grey bars are the dependences, the smallest size a
+  dependence-complete slice can have. Corpus~L has no ground truth, which would need exact simulation of
+  every perturbation at 15 to 20 qubits. Commutation is shown where Qiskit's pass applies.}
+  \label{fig:size}
+\end{figure}
+
+Slice sizes should be read against the dependences themselves. The dependences of a qubit make up
+\numDepFloor{} of its circuit on average, so no dependence-complete slice can be smaller, and the wire
+slice keeps only \numLcExcess{} points more. It equals the dependence set exactly on \numLcExact{} of the
+\numNPairs{} pairs, and on \numPairsAllDep{} pairs every operation of the circuit is a dependence. The
+QPDG reading keeps \numYzExcess{} points more than the dependences. The sizes are large because most
+benchmark circuits are small and densely coupled. Fig.~\ref{fig:size} shows that slices shrink as
+circuits widen and less of a circuit can reach one qubit. At 11 to 14 qubits the wire slice keeps
+\numWElevenLc{} of the circuit, and on the circuits of corpus~L it keeps \numCorpusLSizeLc{}. The QPDG
+reading stays near \numCorpusLSizeYz{}, because entanglement closure links the operations of a whole
+coupling component however wide the circuit is. Commutation falls below the floor, to \numWElevenLcq{} at
+11 to 14 qubits. It is sound at the tested inputs but not dependence-complete. Deleting a gate that
+commutes with the criterion's observables leaves the criterion unchanged, although a different gate at
+the same position would change it.
 
 \subsection{RQ2: How much precision beyond the wire slice is safe?}
 

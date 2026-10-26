@@ -3,7 +3,7 @@
 \paragraph*{Guidance for tool builders}
 The results suggest how a slicer for quantum programs should be built. The base should be the wire rule,
 in which every gate reads and writes all its qubits. It is sound for every input, misses no dependence,
-and costs milliseconds. Reading a gate as a classical assignment is the pitfall to avoid, and adding
+keeps on average only \numLcExcess{} points more than the dependences, and costs milliseconds. Reading a gate as a classical assignment is the pitfall to avoid, and adding
 control dependence does not remove it, since most of the dependences the classical PDG misses are
 quantum. Entanglement edges should not be added to make a slice safer. They buy no soundness that the
 wire rule lacks and cost precision, because a later operation on an entangled partner cannot change the

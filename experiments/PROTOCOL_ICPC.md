@@ -894,3 +894,44 @@ These were found while implementing §6, from the API documentation. No LLM call
   classical bits, as the definition in the paper and the wire rule's control edges do. Qubits are
   unaffected: every rule reads what it writes. Rechecked: equal to S-du on all 704 unitary pairs, and
   equal to S-lc on the catalogue's overwritten-bit entry (K14).
+
+### Deviation I-13 (2026-10-25, AFTER all RQ1 results; author decision): slice size against the dependence floor
+- **Why.** Table I reports mean slice size as a share of the circuit. Read alone, the wire rule's 70.4%
+  looks weak, but no dependence-complete slice can be smaller than the dependences themselves. The
+  sizes need that reference point.
+- **Added measures (descriptive, from committed files only; no new run, no test).** Computed in
+  `icpc/make_numbers.py` from `results/icpc/rq1/records.csv`, `rq1_lcq_remap/records.csv` and
+  `corpus_l/{circuits,slices}.csv`:
+  - the dependence floor, the mean of `n_influencing / n_ops` per pair;
+  - the wire slice's and the QPDG reading's mean excess over it, and the number of pairs where the
+    wire slice equals the dependence set;
+  - mean size by width bin (2–3, 4–6, 7–10, 11–14 qubits) for the floor, wire, QPDG reading and
+    commutation (applicable pairs);
+  - corpus-L mean sizes (size / n_ops), measured in the cost run but not reported before.
+- **Exclusion.** Two corpus-L circuits (`ham15-109-214`, `ham15-70`) were loaded with zero operations.
+  They have no size and are excluded from the size means, and counted.
+- **Reported.** A reference row in Table I (size and recall/precision only; the dependence set is not
+  run as a slice, so it has no soundness value), one RQ1 paragraph, and a size-by-width figure
+  (`icpc/make_result_figs.py::size`). None of the 267 earlier numbers changes; checked by diffing
+  `results/icpc/numbers.json`.
+
+### Deviation I-14 (2026-10-25, AFTER all results; author decision; exploratory): a tighter sound rule
+- **Why.** The wire slice is 4.7 points above the dependence floor on average, and commutation fails
+  under angle rebinding on 4 of 175 pairs. The author asked whether a tighter rule is possible.
+- **Status.** Exploratory and post hoc. It is outside the confirmatory family H1–H5, and no
+  pre-registered result is changed or replaced.
+- **B1, commutation for all angles (`icpc/lcq_symbolic.py`).** Replace every numeric gate angle by a
+  fresh `Parameter` before Qiskit's `LightCone`, which keeps a gate whose commutation depends on an
+  unbound angle. Union over X, Y and Z as in S-lcq; positions mapped back by name, qubits and clbits
+  in order. Scored as RQ1 (soundness at |0…0⟩, recall and precision), robustness as Deviation I-10
+  (R-basis, R-haar, R-param), and on the families and the catalogue.
+- **B2, the wire rule's excess (`icpc/wire_excess.py`).** Per-position influence for the pairs whose
+  wire slice exceeds the dependence set (`icpc/influence.py`, oracle only). Each excess operation is
+  tagged: (a) its removal alone changes the criterion's state; (b) removed by B1; (c) the criterion's
+  final state is the same under every perturbation; (d) cut off by a reset or measurement; (e) other.
+- **Decision gate (fixed now, before any B1 or B2 output).** A rule is reported as a slicer only if it:
+  - is independent of input and angle, with a written soundness argument;
+  - is 0 unsound on corpus A, the families and the catalogue;
+  - is robust on 100% of its applicable pairs in R-basis, R-haar and R-param;
+  - and, for a rule built from B2, reduces mean corpus-A size by at least 1 point.
+  Otherwise the result is reported as a finding, with its counts, and the rule is not used.

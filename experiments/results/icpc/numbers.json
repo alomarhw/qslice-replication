@@ -1288,6 +1288,186 @@
   "tex": "0",
   "source": "results/icpc/rq1/records.csv"
  },
+ "DepFloor": {
+  "value": 0.6563708382103166,
+  "tex": "65.6\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "DepFloorMedian": {
+  "value": 0.7142857142857143,
+  "tex": "71.4\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "LcExcess": {
+  "value": 0.04732402978062013,
+  "tex": "4.7",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "LcExact": {
+  "value": 559,
+  "tex": "559",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "LcExcessPairs": {
+  "value": 225,
+  "tex": "225",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "YzExcess": {
+  "value": 0.12935098705471418,
+  "tex": "12.9",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "PairsAllDep": {
+  "value": 180,
+  "tex": "180",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WTwoPairs": {
+  "value": 110,
+  "tex": "110",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WTwoFloor": {
+  "value": 0.8202109814927856,
+  "tex": "82.0\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WTwoLc": {
+  "value": 0.8364828483662567,
+  "tex": "83.6\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WTwoYz": {
+  "value": 0.876215558240115,
+  "tex": "87.6\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WTwoLcq": {
+  "value": 0.8259793492315083,
+  "tex": "82.6\\%",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "WFourPairs": {
+  "value": 377,
+  "tex": "377",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WFourFloor": {
+  "value": 0.7499231733850629,
+  "tex": "75.0\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WFourLc": {
+  "value": 0.7773543709797699,
+  "tex": "77.7\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WFourYz": {
+  "value": 0.8167093817127544,
+  "tex": "81.7\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WFourLcq": {
+  "value": 0.7549661001453086,
+  "tex": "75.5\\%",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "WSevenPairs": {
+  "value": 150,
+  "tex": "150",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WSevenFloor": {
+  "value": 0.5273852867433312,
+  "tex": "52.7\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WSevenLc": {
+  "value": 0.5993219269107247,
+  "tex": "59.9\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WSevenYz": {
+  "value": 0.7116980114648087,
+  "tex": "71.2\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WSevenLcq": {
+  "value": 0.5014185801099952,
+  "tex": "50.1\\%",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "WElevenPairs": {
+  "value": 145,
+  "tex": "145",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WElevenFloor": {
+  "value": 0.4175358607931961,
+  "tex": "41.8\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WElevenLc": {
+  "value": 0.5153294916456841,
+  "tex": "51.5\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WElevenYz": {
+  "value": 0.710124558454771,
+  "tex": "71.0\\%",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WElevenLcq": {
+  "value": 0.390398737716644,
+  "tex": "39.0\\%",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "CorpusLEmpty": {
+  "value": 2,
+  "tex": "2",
+  "source": "results/icpc/corpus_l/circuits.csv"
+ },
+ "CorpusLSizeLc": {
+  "value": 0.5584334848813827,
+  "tex": "55.8\\%",
+  "source": "results/icpc/corpus_l/slices.csv"
+ },
+ "CorpusLSizeLcN": {
+  "value": 876,
+  "tex": "876",
+  "source": "results/icpc/corpus_l/slices.csv"
+ },
+ "CorpusLSizeLcq": {
+  "value": 0.43175108505982457,
+  "tex": "43.2\\%",
+  "source": "results/icpc/corpus_l/slices.csv"
+ },
+ "CorpusLSizeLcqN": {
+  "value": 762,
+  "tex": "762",
+  "source": "results/icpc/corpus_l/slices.csv"
+ },
+ "CorpusLSizeYz": {
+  "value": 0.7201641549184432,
+  "tex": "72.0\\%",
+  "source": "results/icpc/corpus_l/slices.csv"
+ },
+ "CorpusLSizeYzN": {
+  "value": 876,
+  "tex": "876",
+  "source": "results/icpc/corpus_l/slices.csv"
+ },
+ "CorpusLSizeQ": {
+  "value": 0.23656616699121455,
+  "tex": "23.7\\%",
+  "source": "results/icpc/corpus_l/slices.csv"
+ },
+ "CorpusLSizeQN": {
+  "value": 651,
+  "tex": "651",
+  "source": "results/icpc/corpus_l/slices.csv"
+ },
  "MotFidelity": {
   "value": 0.49999999999999967,
   "tex": "0.50",

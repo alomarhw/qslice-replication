@@ -5,6 +5,8 @@
   fig_llm.tex     RQ3: top-3 fault-localization accuracy per model and input (results/llm/t2_scores.csv,
                   context prompt, temperature 0)
   fig_cost.tex    RQ4: median time per depth at width 8 (results/icpc/cost/circuits.csv)
+  fig_size.tex    RQ1: mean slice size by circuit width against the dependence floor (results/icpc/numbers.json,
+                  written by icpc/make_numbers.py from rq1, rq1_lcq_remap and corpus_l; Deviation I-13)
 Writes the .tex files to ../paper/figures/src/; compile each with pdflatex.
 Usage (from experiments/): python icpc/make_result_figs.py
 """
@@ -111,9 +113,34 @@ def cost():
     return HEAD + "\n".join(body) + "\n\\end{document}\n"
 
 
+def size():
+    """Mean slice size by width. Corpus L has no dependence floor: its ground truth would need simulation."""
+    import json
+    N = json.load(open(RES / "icpc" / "numbers.json"))
+    bins = ["WTwo", "WFour", "WSeven", "WEleven"]
+    coords = ["a", "b", "c", "d", "e"]  # plain coordinates; the labels below hold the dashes and the line break
+    ticks = ["2--3", "4--6", "7--10", "11--14", r"{15--20\\corpus L}"]
+    series = [("dependences (floor)", "cgrey", "Floor", None), ("wire", "cblue", "Lc", "CorpusLSizeLc"),
+              ("commutation", "cgreen", "Lcq", "CorpusLSizeLcq"), ("QPDG reading", "cora", "Yz", "CorpusLSizeYz")]
+    body = [r"\begin{tikzpicture}\begin{axis}[ybar, bar width=5pt, width=8.6cm, height=4.3cm, ymin=0, ymax=100,",
+            r" ytick={0,25,50,75,100}, ylabel={slice size (\% of circuit)}, xlabel={circuit width (qubits)},",
+            r" symbolic x coords={" + ",".join(coords) + "}, xtick={" + ",".join(coords) + "}, xticklabels={" + ",".join(ticks) + "},",
+            r" xticklabel style={align=center}, enlarge x limits=0.13,",
+            r" legend style={at={(0.5,1.03)}, anchor=south, legend columns=4, /tikz/every even column/.append style={column sep=4pt}}, area legend]"]
+    labels = coords
+    for lab, col, key, lkey in series:
+        pts = [f"({l},{100 * N[b + key]['value']:.1f})" for b, l in zip(bins, coords)]
+        if lkey:
+            pts.append(f"({labels[-1]},{100 * N[lkey]['value']:.1f})")
+        body.append(rf"\addplot[fill={col}!80, draw=none] coordinates {{" + " ".join(pts) + "};")
+    body.append(r"\legend{" + ",".join("{" + l + "}" for l, _, _, _ in series) + "}")
+    body.append(r"\end{axis}\end{tikzpicture}")
+    return HEAD + "\n".join(body) + "\n\\end{document}\n"
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("fig_robust", robust), ("fig_llm", llm), ("fig_cost", cost)):
+    for name, fn in (("fig_robust", robust), ("fig_llm", llm), ("fig_cost", cost), ("fig_size", size)):
         (OUT / f"{name}.tex").write_text(fn())
         print("wrote", OUT / f"{name}.tex")
 

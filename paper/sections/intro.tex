@@ -37,7 +37,8 @@ dependence repairs it on circuits with measurements and feedback, where it is wr
 dependence. It cannot repair the rest, because a two-qubit gate can change its control qubit (phase
 kickback), a quantum dependence that no classical reading of the gate expresses. Following entanglement, as the dependence
 graph does, is sound but keeps \numRqOneYzSize{} of the circuit. A simple rule, in which every gate reads
-and writes all its qubits, keeps \numRqOneLcSize{}, misses no dependence, and stays correct on every
+and writes all its qubits, keeps \numRqOneLcSize{}, only \numLcExcess{} points above the dependences
+themselves, misses no dependence, and stays correct on every
 tested input, and its soundness is machine-checked. Entanglement turns out to be neither necessary nor
 sufficient for dependence. Pruning by commutation shrinks the slices further and stays correct on all
 random inputs. Pruning by simulation shrinks them by \numHTwoRelative{}, but only for the input it was
