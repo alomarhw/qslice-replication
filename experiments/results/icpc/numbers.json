@@ -226,7 +226,17 @@
  },
  "LcqRecall": {
   "value": 0.930308711783841,
-  "tex": "0.93",
+  "tex": "0.930",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "LcqDynamicN": {
+  "value": 38,
+  "tex": "38",
+  "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "LcqDynamicUnsound": {
+  "value": 0,
+  "tex": "0",
   "source": "results/icpc/rq1_lcq_remap/records.csv"
  },
  "QVsLcqReduction": {
@@ -644,9 +654,24 @@
   "tex": "15",
   "source": "results/icpc/source_map/units.csv"
  },
+ "LinesDuMissed": {
+  "value": 1,
+  "tex": "one",
+  "source": "results/icpc/source_map/units.csv"
+ },
  "MbflUnits": {
   "value": 293,
   "tex": "293",
+  "source": "results/icpc/mbfl/units.csv"
+ },
+ "MbflNLc": {
+  "value": 287,
+  "tex": "287",
+  "source": "results/icpc/mbfl/units.csv"
+ },
+ "MbflNQ": {
+  "value": 264,
+  "tex": "264",
   "source": "results/icpc/mbfl/units.csv"
  },
  "MbflExamAll": {
@@ -995,7 +1020,7 @@
  },
  "NoiseQCrossExactMax": {
   "value": 0.2448448108167967,
-  "tex": "\\ensuremath{2.4\\times 10^{-1}}",
+  "tex": "0.24",
   "source": "results/icpc/noise/pairs.csv"
  },
  "NoiseQCrossExactNonzero": {
@@ -1026,6 +1051,11 @@
  "HwWithin": {
   "value": 16,
   "tex": "16",
+  "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
+ },
+ "HwOutside": {
+  "value": 2,
+  "tex": "two",
   "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
  },
  "HwNoiseFreeZero": {
@@ -1081,6 +1111,11 @@
  "CpdgMissFeedback": {
   "value": 10,
   "tex": "10",
+  "source": "results/icpc/cpdg/rq1_misses.csv"
+ },
+ "CpdgMissTotal": {
+  "value": 3174,
+  "tex": "3{,}174",
   "source": "results/icpc/cpdg/rq1_misses.csv"
  },
  "RqThreeContainCpdg": {
@@ -1151,6 +1186,11 @@
  "MutantsEquivalent": {
   "value": 157,
   "tex": "157",
+  "source": "results/icpc/rq3/mutants.csv"
+ },
+ "MutantsExcluded": {
+  "value": 4,
+  "tex": "4",
   "source": "results/icpc/rq3/mutants.csv"
  },
  "MutOperators": {
@@ -1300,7 +1340,7 @@
  },
  "LcExcess": {
   "value": 0.04732402978062013,
-  "tex": "4.7",
+  "tex": "4.8",
   "source": "results/icpc/rq1/records.csv"
  },
  "LcExact": {
@@ -1315,7 +1355,7 @@
  },
  "YzExcess": {
   "value": 0.12935098705471418,
-  "tex": "12.9",
+  "tex": "13.0",
   "source": "results/icpc/rq1/records.csv"
  },
  "PairsAllDep": {
@@ -1468,6 +1508,31 @@
   "tex": "651",
   "source": "results/icpc/corpus_l/slices.csv"
  },
+ "CostLcMaxCritMs": {
+  "value": 6.83,
+  "tex": "7",
+  "source": "results/icpc/cost/stages.jsonl"
+ },
+ "LcqsSize": {
+  "value": 0.651617965025442,
+  "tex": "65.2\\%",
+  "source": "results/icpc/rq1_lcq_symbolic/records.csv"
+ },
+ "LcqsUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/rq1_lcq_symbolic/records.csv"
+ },
+ "LcqsParamRobust": {
+  "value": 175,
+  "tex": "175",
+  "source": "results/icpc/rq1_lcq_symbolic/robustness.csv"
+ },
+ "LcqsParamN": {
+  "value": 175,
+  "tex": "175",
+  "source": "results/icpc/rq1_lcq_symbolic/robustness.csv"
+ },
  "ToolDevPrograms": {
   "value": 15,
   "tex": "15",
@@ -1491,102 +1556,117 @@
  "ToolTOneBugs": {
   "value": 8,
   "tex": "8",
-  "source": "results/icpc/tool_acceptance/tool-v3/summary.json"
+  "source": "results/icpc/tool_acceptance/tool-v4/summary.json"
  },
  "ToolTOneExact": {
   "value": 7,
   "tex": "7",
-  "source": "results/icpc/tool_acceptance/tool-v3/summary.json"
+  "source": "results/icpc/tool_acceptance/tool-v4/summary.json"
  },
  "ToolTOneOps": {
   "value": 137,
   "tex": "137",
-  "source": "results/icpc/tool_acceptance/tool-v3/summary.json"
+  "source": "results/icpc/tool_acceptance/tool-v4/summary.json"
  },
  "ToolTOneOpsMatched": {
   "value": 136,
   "tex": "136",
-  "source": "results/icpc/tool_acceptance/tool-v3/summary.json"
+  "source": "results/icpc/tool_acceptance/tool-v4/summary.json"
  },
  "ToolTTwoUnits": {
   "value": 17,
   "tex": "17",
-  "source": "results/icpc/tool_acceptance/tool-v3/summary.json"
+  "source": "results/icpc/tool_acceptance/tool-v4/summary.json"
  },
  "ToolTTwoEqual": {
   "value": 17,
   "tex": "17",
-  "source": "results/icpc/tool_acceptance/tool-v3/summary.json"
+  "source": "results/icpc/tool_acceptance/tool-v4/summary.json"
+ },
+ "ToolNestedDraws": {
+  "value": 30,
+  "tex": "30",
+  "source": "results/icpc/tool_acceptance/nested_check.json"
+ },
+ "ToolNestedStudyWrong": {
+  "value": 29,
+  "tex": "29",
+  "source": "results/icpc/tool_acceptance/nested_check.json"
+ },
+ "ToolNestedToolWrong": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/tool_acceptance/nested_check.json"
  },
  "ToolBugsFiles": {
   "value": 218,
   "tex": "218",
-  "source": "results/icpc/tool_acceptance/tool-v3/t3_bugs4q.csv"
+  "source": "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"
  },
  "ToolBugsQiskit": {
   "value": 151,
   "tex": "151",
-  "source": "results/icpc/tool_acceptance/tool-v3/t3_bugs4q.csv"
+  "source": "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"
  },
  "ToolBugsParsed": {
   "value": 151,
   "tex": "151",
-  "source": "results/icpc/tool_acceptance/tool-v3/t3_bugs4q.csv"
+  "source": "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"
  },
  "ToolBugsCircuit": {
   "value": 111,
   "tex": "111",
-  "source": "results/icpc/tool_acceptance/tool-v3/t3_bugs4q.csv"
+  "source": "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"
  },
  "ToolBugsResolved": {
   "value": 103,
   "tex": "103",
-  "source": "results/icpc/tool_acceptance/tool-v3/t3_bugs4q.csv"
+  "source": "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"
  },
  "ToolBugsCrashes": {
   "value": 0,
   "tex": "0",
-  "source": "results/icpc/tool_acceptance/tool-v3/t3_bugs4q.csv"
+  "source": "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"
  },
  "ToolBugsMedianMs": {
-  "value": 35.0,
-  "tex": "35",
-  "source": "results/icpc/tool_acceptance/tool-v3/t3_bugs4q.csv"
+  "value": 30.0,
+  "tex": "30",
+  "source": "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"
  },
  "ToolTextbookFiles": {
   "value": 85,
   "tex": "85",
-  "source": "results/icpc/tool_coverage/textbook_v3.csv"
+  "source": "results/icpc/tool_coverage/textbook_v4.csv"
  },
  "ToolTextbookQiskit": {
   "value": 72,
   "tex": "72",
-  "source": "results/icpc/tool_coverage/textbook_v3.csv"
+  "source": "results/icpc/tool_coverage/textbook_v4.csv"
  },
  "ToolTextbookParsed": {
   "value": 72,
   "tex": "72",
-  "source": "results/icpc/tool_coverage/textbook_v3.csv"
+  "source": "results/icpc/tool_coverage/textbook_v4.csv"
  },
  "ToolTextbookCircuit": {
   "value": 60,
   "tex": "60",
-  "source": "results/icpc/tool_coverage/textbook_v3.csv"
+  "source": "results/icpc/tool_coverage/textbook_v4.csv"
  },
  "ToolTextbookResolved": {
-  "value": 52,
-  "tex": "52",
-  "source": "results/icpc/tool_coverage/textbook_v3.csv"
+  "value": 50,
+  "tex": "50",
+  "source": "results/icpc/tool_coverage/textbook_v4.csv"
  },
  "ToolTextbookCrashes": {
   "value": 0,
   "tex": "0",
-  "source": "results/icpc/tool_coverage/textbook_v3.csv"
+  "source": "results/icpc/tool_coverage/textbook_v4.csv"
  },
  "ToolTextbookMedianMs": {
-  "value": 61.5,
-  "tex": "62",
-  "source": "results/icpc/tool_coverage/textbook_v3.csv"
+  "value": 49.0,
+  "tex": "49",
+  "source": "results/icpc/tool_coverage/textbook_v4.csv"
  },
  "ToolLintqFiles": {
   "value": 7568,

@@ -1,0 +1,62 @@
+{
+ "program": "tool/tests/big/repetition_code.py",
+ "draws": 30,
+ "qubits": [
+  {
+   "qubit": 0,
+   "study_wrong": 0,
+   "tool_wrong": 0,
+   "draws": 30
+  },
+  {
+   "qubit": 1,
+   "study_wrong": 0,
+   "tool_wrong": 0,
+   "draws": 30
+  },
+  {
+   "qubit": 2,
+   "study_wrong": 0,
+   "tool_wrong": 0,
+   "draws": 30
+  },
+  {
+   "qubit": 3,
+   "study_wrong": 29,
+   "tool_wrong": 0,
+   "draws": 30
+  },
+  {
+   "qubit": 4,
+   "study_wrong": 0,
+   "tool_wrong": 0,
+   "draws": 30
+  },
+  {
+   "qubit": 5,
+   "study_wrong": 0,
+   "tool_wrong": 0,
+   "draws": 30
+  },
+  {
+   "qubit": 6,
+   "study_wrong": 0,
+   "tool_wrong": 0,
+   "draws": 30
+  },
+  {
+   "qubit": 7,
+   "study_wrong": 0,
+   "tool_wrong": 0,
+   "draws": 30
+  },
+  {
+   "qubit": 8,
+   "study_wrong": 0,
+   "tool_wrong": 0,
+   "draws": 30
+  }
+ ],
+ "study_wrong_max": 29,
+ "tool_wrong_total": 0
+}

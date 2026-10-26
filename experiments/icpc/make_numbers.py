@@ -107,7 +107,10 @@ def main() -> int:
     sz = lambda k, s: int(lq[k]["size"]) if s == "lcq" else int(rq1[k][s]["size"])  # noqa: E731
     smaller = sum(sz(k, "lcq") < sz(k, "lc") for k in ap)
     put("LcqSmallerThanLc", smaller, cnt(smaller), src)
-    put("LcqRecall", st.mean(float(lq[k]["dep_recall"]) for k in ap), f"{st.mean(float(lq[k]['dep_recall']) for k in ap):.2f}", src)
+    put("LcqRecall", st.mean(float(lq[k]["dep_recall"]) for k in ap), f"{st.mean(float(lq[k]['dep_recall']) for k in ap):.3f}", src)
+    dyn_ap = [k for k in ap if lq[k]["dynamic"] == "1"]
+    put("LcqDynamicN", len(dyn_ap), cnt(len(dyn_ap)), src)
+    put("LcqDynamicUnsound", sum(lq[k]["sound"] != "1" for k in dyn_ap), cnt(sum(lq[k]["sound"] != "1" for k in dyn_ap)), src)
     nz = [k for k in ap if sz(k, "lcq") > 0]
     red = st.mean(1 - sz(k, "q") / sz(k, "lcq") for k in nz)
     put("QVsLcqReduction", red, pct(red), src)
@@ -209,11 +212,15 @@ def main() -> int:
         put(f"Lines{nm}Contained", sum(r["contained_lines"] == "1" for r in x), cnt(sum(r["contained_lines"] == "1" for r in x)), src + "units.csv")
         put(f"Lines{nm}Mean", st.mean(int(r["slice_lines"]) for r in x), f"{st.mean(int(r['slice_lines']) for r in x):.1f}", src + "units.csv")
     put("LinesUnits", len([r for r in um if r["slicer"] == "full"]), cnt(len([r for r in um if r["slicer"] == "full"])), src + "units.csv")
+    put("LinesDuMissed", NUMS["LinesUnits"]["value"] - NUMS["LinesDuContained"]["value"],
+        ["no", "one", "two", "three"][NUMS["LinesUnits"]["value"] - NUMS["LinesDuContained"]["value"]], src + "units.csv")
 
     # ---- RQ3: MBFL ---------------------------------------------------------------------------------------
     src = "results/icpc/mbfl/units.csv"
     mb = [r for r in rows(ICPC / "mbfl" / "units.csv") if not r.get("excluded")]
     put("MbflUnits", len(mb), cnt(len(mb)), src)
+    put("MbflNLc", sum(bool(r["exam_lc_avg"]) for r in mb), cnt(sum(bool(r["exam_lc_avg"]) for r in mb)), src)
+    put("MbflNQ", sum(bool(r["exam_q_avg"]) for r in mb), cnt(sum(bool(r["exam_q_avg"]) for r in mb)), src)
     for s, nm in (("all", "All"), ("q", "Q"), ("lc", "Lc")):
         x = [float(r[f"exam_{s}_avg"]) for r in mb if r.get(f"exam_{s}_avg")]
         put(f"MbflExam{nm}", st.mean(x), f"{st.mean(x):.3f}", src)
@@ -272,7 +279,7 @@ def main() -> int:
     for s, nm in (("lc", "Lc"), ("q", "Q")):
         ex_ = [float(r["D_cross"]) for r in nz_ if r["slicer"] == s and r["shots_full"] == "1"]
         dy = [float(r["D_cross"]) for r in nz_ if r["slicer"] == s and r["shots_full"] != "1"]
-        put(f"Noise{nm}CrossExactMax", max(ex_), sci(max(ex_)), src)
+        put(f"Noise{nm}CrossExactMax", max(ex_), sci(max(ex_)) if max(ex_) < 0.01 else f"{max(ex_):.2f}", src)
         put(f"Noise{nm}CrossExactNonzero", sum(x > 1e-9 for x in ex_), cnt(sum(x > 1e-9 for x in ex_)), src)
         put(f"Noise{nm}CrossExactN", len(ex_), cnt(len(ex_)), src)
         put(f"Noise{nm}CrossShotMax", max(dy), f"{max(dy):.3f}", src)
@@ -280,6 +287,7 @@ def main() -> int:
     hw = rows(ICPC / "hardware" / "hardware_tvd_corrected.csv")
     put("HwCircuits", len(hw), cnt(len(hw)), "results/icpc/hardware/hardware_tvd_corrected.csv")
     put("HwWithin", sum(r["within_delta"] == "True" for r in hw), cnt(sum(r["within_delta"] == "True" for r in hw)), "results/icpc/hardware/hardware_tvd_corrected.csv")
+    put("HwOutside", sum(r["within_delta"] != "True" for r in hw), ["zero", "one", "two", "three"][sum(r["within_delta"] != "True" for r in hw)], "results/icpc/hardware/hardware_tvd_corrected.csv")
     put("HwNoiseFreeZero", sum(float(r["TVD_noise_free"]) == 0 for r in hw), cnt(sum(float(r["TVD_noise_free"]) == 0 for r in hw)), "results/icpc/hardware/hardware_tvd_corrected.csv")
 
     # ---- classical PDG baseline (Deviation I-12) -------------------------------------------------------------
@@ -299,6 +307,7 @@ def main() -> int:
     cm = Counter(m["category"] for m in rows(ICPC / "cpdg" / "rq1_misses.csv"))
     put("CpdgMissKickback", cm["kickback"], cnt(cm["kickback"]), "results/icpc/cpdg/rq1_misses.csv")
     put("CpdgMissFeedback", cm["feedback"], cnt(cm["feedback"]), "results/icpc/cpdg/rq1_misses.csv")
+    put("CpdgMissTotal", sum(cm.values()), cnt(sum(cm.values())), "results/icpc/cpdg/rq1_misses.csv")
     c3 = [r for r in rows(ICPC / "cpdg" / "rq3_records.csv") if r["analysis"] == "primary"]
     put("RqThreeContainCpdg", sum(int(r["contained"]) for r in c3) / len(c3), pct(sum(int(r["contained"]) for r in c3) / len(c3)), "results/icpc/cpdg/rq3_records.csv")
     fc = rows(ICPC / "cpdg" / "families_rows.csv")
@@ -314,6 +323,7 @@ def main() -> int:
     put("Mutants", len(mut), cnt(len(mut)), "results/icpc/rq3/mutants.csv")
     for o, nm in (("killed", "Killed"), ("injured", "Injured"), ("alive", "Alive"), ("equivalent", "Equivalent")):
         put(f"Mutants{nm}", sum(m["outcome"] == o for m in mut), cnt(sum(m["outcome"] == o for m in mut)), "results/icpc/rq3/mutants.csv")
+    put("MutantsExcluded", sum(m["outcome"] == "excluded" for m in mut), cnt(sum(m["outcome"] == "excluded" for m in mut)), "results/icpc/rq3/mutants.csv")
     put("MutOperators", len({m["operator"] for m in mut}), cnt(len({m["operator"] for m in mut})), "results/icpc/rq3/mutants.csv")
     put("RqThreeSecondary", sum(r["analysis"] == "secondary" for r in rows(ICPC / "rq3" / "units.csv")), cnt(sum(r["analysis"] == "secondary" for r in rows(ICPC / "rq3" / "units.csv"))), "results/icpc/rq3/units.csv")
     put("OracleErr", 2.2e-16, sci(2.2e-16), "experiments/logs/icpc/test_oracle_icpc.log (joint rho_W vs Statevector/partial_trace, random unitary circuits)")
@@ -354,13 +364,13 @@ def main() -> int:
     put("DepFloorMedian", st.median(dep.values()), pct(st.median(dep.values())), src)
     exc = {k: (int(r["size"]) - int(r["n_influencing"])) / int(r["n_ops"]) for k, r in lcr.items()}
     assert min(exc.values()) >= 0, "wire slice smaller than the dependence set: contradicts Proposition 1"
-    put("LcExcess", st.mean(exc.values()), f"{100 * st.mean(exc.values()):.1f}", src)
+    put("LcExcess", st.mean(exc.values()), f"{round(100 * NUMS['RqOneLcSize']['value'], 1) - round(100 * st.mean(dep.values()), 1):.1f}", src)
     exact = sum(e == 0 for e in exc.values())
     put("LcExact", exact, cnt(exact), src)
     put("LcExcessPairs", len(exc) - exact, cnt(len(exc) - exact), src)
     assert exact + (len(exc) - exact) == NUMS["NPairs"]["value"]
     yex = st.mean((int(v["yz"]["size"]) - int(v["yz"]["n_influencing"])) / int(v["yz"]["n_ops"]) for v in rq1.values())
-    put("YzExcess", yex, f"{100 * yex:.1f}", src)
+    put("YzExcess", yex, f"{round(100 * NUMS['RqOneYzSize']['value'], 1) - round(100 * st.mean(dep.values()), 1):.1f}", src)
     alld = sum(int(r["n_influencing"]) == int(r["n_ops"]) for r in lcr.values())
     put("PairsAllDep", alld, cnt(alld), src)
     assert NUMS["DepFloor"]["value"] <= NUMS["RqOneLcSize"]["value"]
@@ -384,7 +394,19 @@ def main() -> int:
         put(f"CorpusLSize{sn}", st.mean(x), pct(st.mean(x)), src)
         put(f"CorpusLSize{sn}N", len(x), cnt(len(x)), src)
 
-    # ---- the static program slicer (Deviation I-15; tool-v3, the final version; v1 and v2 results are kept) ---
+    stg = [json.loads(l) for l in open(ICPC / "cost" / "stages.jsonl")]
+    lcs = [r["lc_seconds"] for r in stg if r.get("kind") == "F-depth" and str(r.get("stage", "")).startswith("q:")]
+    put("CostLcMaxCritMs", max(lcs) * 1000, f"{max(lcs) * 1000:.0f}", "results/icpc/cost/stages.jsonl")
+    # symbolic-angle commutation (Deviation I-14, B1; exploratory)
+    src = "results/icpc/rq1_lcq_symbolic/records.csv"
+    ls_ = [r for r in rows(ICPC / "rq1_lcq_symbolic" / "records.csv") if r["slicer"] == "lcqs" and r["applicable"] == "1"]
+    put("LcqsSize", st.mean(float(r["size_fraction"]) for r in ls_), pct(st.mean(float(r["size_fraction"]) for r in ls_)), src)
+    put("LcqsUnsound", sum(r["sound"] != "1" for r in ls_), cnt(sum(r["sound"] != "1" for r in ls_)), src)
+    rb = [r for r in rows(ICPC / "rq1_lcq_symbolic" / "robustness.csv") if r["slicer"] == "lcqs" and r["regime"] == "R-param"]
+    put("LcqsParamRobust", sum(r["robust"] == "1" for r in rb), cnt(sum(r["robust"] == "1" for r in rb)), "results/icpc/rq1_lcq_symbolic/robustness.csv")
+    put("LcqsParamN", len(rb), cnt(len(rb)), "results/icpc/rq1_lcq_symbolic/robustness.csv")
+
+    # ---- the static program slicer (Deviation I-15; tool-v4, the final version; earlier versions' results kept) --
     TA = ICPC / "tool_acceptance"
     dev = json.load(open(TA / "dev_checks.json"))
     src = "results/icpc/tool_acceptance/dev_checks.json"
@@ -393,13 +415,17 @@ def main() -> int:
     put("ToolDevSliceEqual", sum(r["slices_equal"] for r in dev), cnt(sum(r["slices_equal"] for r in dev)), src)
     put("ToolDevMaxOps", max(r["ops"] for r in dev), cnt(max(r["ops"] for r in dev)), src)
     assert all(r["nested_conditions"] for r in dev if not r["slices_equal"]), "a slice difference outside nested conditions"
-    ts = json.load(open(TA / "tool-v3" / "summary.json"))
-    src = "results/icpc/tool_acceptance/tool-v3/summary.json"
+    ts = json.load(open(TA / "tool-v4" / "summary.json"))
+    src = "results/icpc/tool_acceptance/tool-v4/summary.json"
     for k, nm in (("t1_bugs", "ToolTOneBugs"), ("t1_exact", "ToolTOneExact"), ("t1_ops_prepared", "ToolTOneOps"),
                   ("t1_ops_matched", "ToolTOneOpsMatched"), ("t2_units_mapped", "ToolTTwoUnits"), ("t2_equal_mapped", "ToolTTwoEqual")):
         put(nm, ts[k], cnt(ts[k]), src)
-    for path, nm, src in ((TA / "tool-v3" / "t3_bugs4q.csv", "Bugs", "results/icpc/tool_acceptance/tool-v3/t3_bugs4q.csv"),
-                          (ICPC / "tool_coverage" / "textbook_v3.csv", "Textbook", "results/icpc/tool_coverage/textbook_v3.csv"),
+    nc = json.load(open(TA / "nested_check.json"))
+    put("ToolNestedDraws", nc["draws"], cnt(nc["draws"]), "results/icpc/tool_acceptance/nested_check.json")
+    put("ToolNestedStudyWrong", nc["study_wrong_max"], cnt(nc["study_wrong_max"]), "results/icpc/tool_acceptance/nested_check.json")
+    put("ToolNestedToolWrong", nc["tool_wrong_total"], cnt(nc["tool_wrong_total"]), "results/icpc/tool_acceptance/nested_check.json")
+    for path, nm, src in ((TA / "tool-v4" / "t3_bugs4q.csv", "Bugs", "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"),
+                          (ICPC / "tool_coverage" / "textbook_v4.csv", "Textbook", "results/icpc/tool_coverage/textbook_v4.csv"),
                           (ICPC / "tool_coverage" / "lintq_v3.csv", "Lintq", "results/icpc/tool_coverage/lintq_v3.csv")):
         cov = rows(path)
         q = [r for r in cov if r["uses_qiskit"] == "1"]
