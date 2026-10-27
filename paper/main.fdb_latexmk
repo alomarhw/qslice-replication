@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1793080893.37822 "main.aux" "main.bbl" "main" 1793080894.21919 0
+["bibtex main"] 1793081079.4686 "main.aux" "main.bbl" "main" 1793081080.30517 0
   "./references.bib" 1793047500.7851 42482 4bd5ed7746a4c37c402a001e85ac86c4 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "main.aux" 1793080893.94336 13427 eb5e6192c7eb17e4f06c8583b43b8050 "pdflatex"
+  "main.aux" 1793081080.03205 13427 827bf926c45a0d6f758ebd65caac9b0e "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1793080893.44367 "main.tex" "main.pdf" "main" 1793080894.21953 0
+["pdflatex"] 1793081079.53482 "main.tex" "main.pdf" "main" 1793081080.30553 0
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -63,7 +63,6 @@
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb" 1215737283 175641 e30a691dc1402b08fd6535cf8a31e5b7 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb" 1558214095 80472 80293bde06887d309938fd1de50ad188 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb" 1558214095 55526 184de5d68af8c544d6d1653244a2b006 ""
-  "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb" 1572128992 35776 3cf3205badc1a3a38b65b34f4cef78d9 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb" 1572128992 34733 61fa3c01fac511e451670c1b454ff211 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb" 1736550153 65081 1217ccf27de85b7db49806ee29c16745 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/txsys.pfb" 1724614892 45985 fd5f8adcc4f0e93e9a95469e12126723 ""
@@ -148,9 +147,9 @@
   "figures/fig_pdg_ansatz.pdf" 1793080892.34216 163010 e5ff2e4d149e2b2cf261098c0cfb1d0a ""
   "figures/fig_robust.pdf" 1792996486.65487 37756 b16205793b120054c238802e8b1e9f06 ""
   "figures/fig_size.pdf" 1792996489.29277 37949 cecf54359a4ef65a12ba764f58c68c22 ""
-  "figures/fig_tool.pdf" 1793079108.13569 151429 6f17a9df928d74f4c4b81e690acd50e2 ""
-  "main.aux" 1793080893.94336 13427 eb5e6192c7eb17e4f06c8583b43b8050 "pdflatex"
-  "main.bbl" 1793080893.43937 16892 7d02182b39ec772117bd448d0be0aeed "bibtex main"
+  "figures/fig_tool.pdf" 1793081078.39627 148229 e5f4748baa93babdfcb05e86bf4328ed ""
+  "main.aux" 1793081080.03205 13427 827bf926c45a0d6f758ebd65caac9b0e "pdflatex"
+  "main.bbl" 1793081079.53033 16892 7d02182b39ec772117bd448d0be0aeed "bibtex main"
   "main.tex" 1793080732.11186 2760 ed367a6836e4d88d75e129c093364d19 ""
   "numbers.tex" 1793078572.37555 40650 0e7c4b6b696091aff0e5cd55f6e0aacb ""
   "sections/conclusion.tex" 1793071321.17592 1714 b5000a4f975becbe0a192296d7b128c5 ""
