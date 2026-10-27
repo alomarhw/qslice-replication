@@ -1,0 +1,219 @@
+file,parsed,uses_qiskit,circuits,ops,qubits,may_ops,unresolved_qubit_ops,notes,unsound_notes,crash,seconds,slice_ok,note_kinds
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Aer/bug_1/buggy.py,1,1,1,10,5,0,0,0,0,,0.041,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Aer/bug_1/fixed.py,1,1,1,5,5,0,0,0,0,,0.044,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Aer/bug_10/buggy.py,1,1,1,5,2,0,0,0,0,,0.054,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Aer/bug_10/fixed.py,1,1,1,5,2,0,0,0,0,,0.045,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Aer/bug_7/buggy.py,1,1,1,4,3,0,0,0,0,,0.042,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Aer/bug_7/fixed.py,1,1,1,4,3,0,0,0,0,,0.048,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/1/buggy.py,1,0,0,0,0,0,0,1,0,,0.041,0,function analysed as an entry point with unknown arguments x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/1/fixed.py,1,0,0,0,0,0,0,1,0,,0.04,0,function analysed as an entry point with unknown arguments x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/2/buggy.py,1,0,0,0,0,0,0,0,0,,0.042,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/2/fixed.py,1,0,0,0,0,0,0,0,0,,0.041,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/3/buggy.py,1,0,0,0,0,0,0,0,0,,0.063,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/3/fixed.py,1,0,0,0,0,0,0,0,0,,0.072,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/4/buggy.py,1,0,0,0,0,0,0,0,0,AttributeError: 'NoneType' object has no attribute 'find' @ statements,0.04,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/4/fixed.py,1,0,0,0,0,0,0,0,0,,0.043,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/5/buggy.py,1,0,0,0,0,0,0,0,0,,0.035,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/5/fixed.py,1,0,0,0,0,0,0,0,0,,0.039,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/6/buggy.py,1,0,0,0,0,0,0,0,0,,0.035,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/6/fixed.py,1,0,0,0,0,0,0,0,0,,0.041,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/7/buggy.py,1,0,0,0,0,0,0,5,0,,0.035,0,function analysed as an entry point with unknown arguments x4; class body x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Cirq/7/fixed.py,1,0,0,0,0,0,0,5,0,,0.034,0,function analysed as an entry point with unknown arguments x4; class body x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Program/1999.py,1,1,1,84000,20,84000,84000,3,1,,44.861,1,for with an unknown iteration count x1; unknown condition x1; circuit_to_dag x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Program/2009.py,1,1,1,15,2,15,15,3,0,,0.041,1,unknown condition x2; for with an unknown iteration count x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Program/2036.py,1,1,1,9,6,0,0,0,0,,0.039,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Program/2373.py,1,1,52,2940,2,0,0,0,0,,4.097,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Program/3410.py,1,1,0,0,0,0,0,1,0,,0.031,0,statement text not parseable x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Program/5839.py,1,1,1,7,3,0,0,0,0,,0.061,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/1/buggy.py,1,1,1,3,1,0,0,1,0,,0.038,1,statement text not parseable x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/1/fix.py,1,1,1,5,1,0,0,0,0,,0.035,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/1/mod.py,1,0,0,0,0,0,0,1,0,,0.033,0,statement text not parseable x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/10/buggy.py,1,1,1,8,3,0,0,0,0,,0.034,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/10/fix.py,1,1,1,8,3,0,0,0,0,,0.033,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/11/buggy.py,1,1,1,290,4,0,0,0,0,,0.074,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/12/buggy.py,1,1,2,6,4,0,0,2,0,,0.037,1,a qubit of a register not in this circuit x2
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/12/fix.py,1,1,2,6,4,0,0,2,0,,0.038,1,a qubit of a register not in this circuit x2
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/12/mod.py,1,0,0,0,0,0,0,0,0,,0.036,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/13/buggy.py,1,1,2,50,1,0,0,1,0,,0.063,1,try x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/13/fix.py,1,1,2,50,1,0,0,1,0,,0.063,1,try x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/14/buggy.py,1,1,6,3,1,0,0,0,0,,0.056,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/14/fix.py,1,1,6,3,1,0,0,0,0,,0.039,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/14/mod.py,1,0,0,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/15/buggy.py,1,1,1,17,4,0,0,0,0,,0.036,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/15/fix.py,1,1,1,16,4,0,0,0,0,,0.037,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/15/mod.py,1,0,0,0,0,0,0,7,0,,0.036,0,for with an unknown iteration count x5; function analysed as an entry point with unknown arguments x2
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/16/buggy.py,1,1,1,3,4,0,0,0,0,,0.037,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/16/fix.py,1,1,1,3,5,0,0,0,0,,0.033,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/16/mod.py,1,0,0,0,0,0,0,1,0,,0.031,0,unknown condition x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/17/buggy.py,1,1,1,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/17/fix.py,1,1,0,0,0,0,0,0,0,,0.03,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/17/mod.py,1,0,0,0,0,0,0,0,0,,0.033,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/18/buggy.py,1,1,1,1,3,0,0,0,0,,0.035,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/18/fix.py,1,1,1,1,3,1,1,1,0,,0.031,1,compose x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/19/buggy.py,1,1,1,1,3,0,0,0,0,,0.033,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/2/buggy/times.py,1,0,0,0,0,0,0,15,0,,0.046,0,for with an unknown iteration count x11; unknown condition x3; function analysed as an entry point with unknown arguments x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/2/buggy/times_shell.py,1,0,0,0,0,0,0,3,0,,0.036,0,statement text not parseable x1; unknown condition x1; while with an unknown iteration count x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/20/buggy.py,1,1,0,0,0,0,0,0,0,,0.046,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/20/fix.py,1,1,0,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/20/mod.py,1,0,0,0,0,0,0,1,0,,0.029,0,statement text not parseable x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/3/buggy.py,1,1,1,2,1,0,0,1,0,,0.032,1,QuantumCircuit.wait is not modelled x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/3/fix.py,1,1,1,3,1,0,0,0,0,,0.045,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/3/mod.py,1,0,0,0,0,0,0,0,0,,0.037,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/4/buggy.py,1,1,1,88,8,0,0,0,0,,0.046,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/4/fix.py,1,1,1,92,8,0,0,0,0,,0.046,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/4/mod.py,1,0,0,0,0,0,0,0,0,,0.041,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/5/buggy.py,1,1,1,7,2,0,0,0,0,,0.033,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/5/fix.py,1,1,1,7,2,0,0,0,0,,0.034,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/5/mod.py,1,0,0,0,0,0,0,0,0,,0.03,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/6/buggy.py,1,1,5,6,5,0,0,2,0,,10.548,1,unknown condition x1; while loop stopped at the iteration limit x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/6/fix.py,1,1,5,6,5,0,0,1,0,,0.035,1,for with an unknown iteration count x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/6/mod.py,1,1,0,0,0,0,0,4,0,,0.04,0,for with an unknown iteration count x2; while with an unknown iteration count x1; unknown condition x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/7/buggy.py,1,1,1,2,2,0,0,0,0,,0.036,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/7/fix.py,1,1,1,2,2,0,0,0,0,,0.038,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/7/mod.py,1,0,0,0,0,0,0,0,0,,0.048,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/8/buggy.py,1,1,1,6,2,0,0,0,0,,0.039,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/8/fix.py,1,1,1,6,2,0,0,0,0,,0.04,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/9/buggy.py,1,1,1,5,3,0,0,0,0,,0.037,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/9/fix.py,1,1,1,5,3,0,0,0,0,,0.034,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange/9/mod.py,1,0,0,0,0,0,0,0,0,,0.036,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_10/bug_version.py,1,0,0,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_13/bug_version.py,1,0,0,0,0,0,0,0,0,,0.033,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_14/bug_version.py,1,1,0,0,0,0,0,0,0,,0.038,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_15/bug_version.py,1,1,0,0,0,0,0,2,0,,0.038,0,statement text not parseable x2
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_17/bug_version.py,1,1,65,6,4,6,0,6,1,,0.223,1,for with an unknown iteration count x2; unknown condition x2; statement text not parseable x1; loop copies capped x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_18/bug_version.py,1,1,0,0,0,0,0,0,0,,0.049,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_19/bug_version.py,1,1,1,7,2,0,0,0,0,,0.036,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_20/bug_version.py,1,1,1,4,1,0,0,1,0,,0.034,1,QuantumCircuit.QFT is not modelled x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_21/bug_version.py,1,1,1,1,3,0,0,0,0,,0.031,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_5/bug_version.py,1,1,1,2,2,0,0,0,0,,0.03,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_6/bug_version.py,1,1,1,3,1,0,0,0,0,,0.039,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_7/bug_version.py,1,1,0,0,0,0,0,1,0,,0.035,0,function analysed as an entry point with unknown arguments x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Bug_9/bug_version.py,1,1,1,10,4,0,0,0,0,,0.035,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_10/fixed_version.py,1,0,0,0,0,0,0,0,0,,0.03,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_13/fixed_version.py,1,0,0,0,0,0,0,0,0,,0.032,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_14/fixed_version.py,1,1,0,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_15/fixed_version.py,1,0,0,0,0,0,0,0,0,,0.029,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_18/fixed_version.py,1,0,0,0,0,0,0,0,0,,0.033,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_19/fixed_version.py,1,1,1,7,2,0,0,0,0,,0.034,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_20/fixed_version.py,1,1,1,4,1,0,0,0,0,,0.038,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_21/fixed_version.py,1,1,1,1,3,0,0,0,0,,0.035,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_5/fixed_version.py,1,1,1,2,2,0,0,0,0,,0.034,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_6/fixed_version.py,1,1,2,4,1,0,0,0,0,,0.034,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_7/fixed_version.py,1,1,0,0,0,0,0,1,0,,0.036,0,function analysed as an entry point with unknown arguments x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/Fixed_9/fixed_version.py,1,1,1,14,4,0,0,0,0,,0.035,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/mod19/mod.py,1,0,0,0,0,0,0,0,0,,0.028,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/mod5/mod.py,1,1,0,0,0,0,0,0,0,,0.033,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange-page-1-25/mod9.py,1,0,0,0,0,0,0,0,0,,0.031,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange_2/bug_1/buggy.py,1,1,1,1,1,0,0,0,0,,0.03,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange_2/bug_1/fixed.py,1,1,1,1,1,0,0,0,0,,0.031,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange_2/bug_1/mod.py,1,0,0,0,0,0,0,0,0,,0.029,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange_2/bug_2/buggy.py,1,1,1,2,2,0,0,0,0,,0.032,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange_2/bug_2/fixed.py,1,1,1,2,2,0,0,0,0,,0.032,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/StackExchange_2/bug_2/mod.py,1,0,0,0,0,0,0,0,0,,0.031,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/1/Fixed.py,1,0,0,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/1/buggy.py,1,1,0,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/1/mod.py,1,0,0,0,0,0,0,0,0,,0.032,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/10/buggy.py,1,0,0,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/10/fix.py,1,1,1,15,5,0,0,0,0,,0.033,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/11/buggy.py,1,1,1,0,0,0,0,1,0,,0.03,0,QuantumCircuit.from_qasm_str is not modelled x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/11/fix.py,1,1,0,0,0,0,0,0,0,,0.03,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/11/modify.py,1,0,0,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/12/buggy.py,1,1,1,4,2,0,0,0,0,,0.034,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/13/buggy.py,1,0,0,0,0,0,0,0,0,,0.031,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/13/fix.py,1,1,0,0,0,0,0,0,0,,0.037,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/13/modify.py,1,0,0,0,0,0,0,0,0,,0.027,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/14/buggy.py,1,1,1,3,2,0,0,0,0,,0.032,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/15/buggy.py,1,1,1,3,2,0,0,0,0,,0.032,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/16/buggy.py,1,1,0,0,0,0,0,0,0,,0.032,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/16/fix.py,1,1,0,0,0,0,0,0,0,,0.031,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/17/buggy.py,1,1,2,1,1,0,0,0,0,,0.038,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/18/buggy.py,1,1,0,0,0,0,0,0,0,,0.032,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/19/buggy.py,1,1,1,1,1,0,0,0,0,,0.03,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/2/buggy.py,1,1,0,0,0,0,0,0,0,,0.032,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/20/buggy.py,1,1,1,5,2,0,0,0,0,,0.033,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/21/buggy.py,1,1,1,3,5,0,0,0,0,,0.035,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/22/buggy.py,1,1,2,3,3,0,0,5,1,,0.043,1,for with an unknown iteration count x3; circuit_to_dag x1; unknown condition x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/22/fix.py,1,1,2,3,3,0,0,5,1,,0.045,1,for with an unknown iteration count x3; circuit_to_dag x1; unknown condition x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/22/mod.py,1,0,0,0,0,0,0,0,0,,0.036,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/23/buggy.py,1,1,1,0,0,0,0,0,0,,0.044,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/24/buggy.py,1,1,1,1,3,0,0,0,0,,0.033,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/24/fix.py,1,1,1,1,3,0,0,1,0,,0.031,1,statement text not parseable x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/3/Fixed.py,1,1,1,2,3,0,0,0,0,,0.031,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/3/buggy.py,1,1,1,2,3,0,0,0,0,,0.027,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/3/modify.py,1,0,0,0,0,0,0,0,0,,0.031,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/4/buggy.py,1,1,1,4,3,0,0,2,1,,0.027,1,QuantumCircuit.add_calibration is not modelled x1; a circuit is passed to a function the tool cannot see x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/5/buggy.py,1,1,0,0,0,0,0,11,0,,0.03,0,"statement text not parseable x9; unknown condition x1; return, break or continue under an unknown condition x1"
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/6/Fixed.py,1,1,1,1002,16,0,0,0,0,,0.167,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/6/buggy.py,1,1,0,0,0,0,0,0,0,,0.072,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/6/modify.py,1,1,1,1002,16,0,0,0,0,,0.209,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/7/Fix.py,1,1,1,5,2,0,0,0,0,,0.029,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/7/buggy.py,1,1,1,5,2,0,0,0,0,,0.033,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/7/modify.py,1,0,0,0,0,0,0,0,0,,0.027,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/8/buggy.py,1,1,1,0,0,0,0,1,1,,0.029,0,a circuit is passed to a method the tool cannot see x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/8/fixed.py,1,1,1,1,1,0,0,0,0,,0.026,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/8/modify.py,1,0,0,0,0,0,0,0,0,,0.028,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-0-4000/9/buggy.py,1,0,0,0,0,0,0,0,0,,0.027,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_1/buggy.py,1,1,1,1,1,0,0,1,0,,0.025,1,QuantumCircuit.inverse x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_10/buggy.py,1,1,1,3,3,0,0,0,0,,0.026,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_11/buggy.py,1,1,1,1,1,0,0,0,0,,0.026,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_11/fixed.py,1,1,1,1,1,0,0,0,0,,0.026,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_11/modify.py,1,0,0,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_2/buggy.py,1,0,0,0,0,0,0,0,0,,0.034,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_3/buggy.py,1,1,0,0,0,0,0,0,0,,0.028,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_4/buggy.py,1,1,1,1,1,0,0,0,0,,0.032,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_5/buggy.py,1,1,2,2,3,0,0,0,0,,0.029,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_5/fixed.py,1,1,2,2,3,0,0,0,0,,0.029,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_5/modify.py,1,0,0,0,0,0,0,0,0,,0.027,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_6/buggy.py,1,0,0,0,0,0,0,0,0,,0.028,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_7/buggy.py,1,1,1,2,0,2,0,2,0,,0.027,1,QuantumRegister of unknown size x1; ClassicalRegister of unknown size x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_8/buggy.py,1,1,0,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_8/fixed.py,1,1,0,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_8/modify.py,1,0,0,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-4001-6000/Bug_9/buggy.py,1,1,1,3,2,2,2,0,0,,0.025,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6255_Bug/bug_version.py,1,1,1,4,2,0,0,0,0,,0.031,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6255_Fixed/fixed_version.py,1,1,1,4,2,0,0,0,0,,0.028,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6255_Mod/modify.py,1,1,0,0,0,0,0,0,0,,0.03,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6521_Bug/bug_version.py,1,0,0,0,0,0,0,0,0,,0.029,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6540_Bug/bug_version.py,1,1,3,1,3,0,0,1,0,,0.036,1,QuantumCircuit.control is not modelled x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6540_Fixed/fixed_version.py,1,1,3,1,3,0,0,1,0,,0.026,1,QuantumCircuit.control is not modelled x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6540_Mod/modify.py,1,0,0,0,0,0,0,0,0,,0.027,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6571_Bug/bug_version.py,1,1,1,4,2,0,0,0,0,,0.026,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6571_Fixed/fixed_version.py,1,1,1,4,2,0,0,0,0,,0.028,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6571_Mod/modify.py,1,0,0,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6604_Bug/bug_version.py,1,0,0,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6604_Fixed/fixed_version.py,1,0,0,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6777_Bug/bug_version.py,1,1,1,1,2,0,0,0,0,,0.029,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6860_Bug/bug_version.py,1,1,1,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6860_Fixed/fixed_version.py,1,1,1,1,1,0,0,1,0,,0.028,1,QuantumCircuit.transform_registers is not modelled x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6892_Bug/bug_version.py,1,1,0,0,0,0,0,0,0,,0.033,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6892_Fixed/fixed_version.py,1,1,0,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6892_Mod/modify.py,1,0,0,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6927_Bug/bug_version.py,1,1,2,4,3,0,0,0,0,,0.026,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/6927_Fixed/fixed_version.py,1,1,2,4,3,0,0,0,0,,0.028,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/7032_Bug/bug_version.py,1,1,0,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/7032_Fixed/fixed_version.py,1,1,0,0,0,0,0,0,0,,0.027,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/7032_Mod/mod.py,1,0,0,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/Terra-6000-7100/7069_Fixed/fixed_version.py,1,0,0,0,0,0,0,0,0,,0.027,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/1/Fix.py,1,1,1,10,3,0,0,0,0,,0.032,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/1/buggy.py,1,1,1,10,3,0,0,0,0,,0.03,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/1/mod.py,1,1,2,10,3,0,0,0,0,,0.042,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Bug_11/bug_version.py,1,1,1,1,2,1,1,1,0,,0.026,1,statement text not parseable x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Bug_2/bug_version.py,1,1,0,0,0,0,0,0,0,,0.024,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Bug_3/bug_version.py,1,1,1,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Bug_8/bug_version.py,1,1,1,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Fixed_11/fixed_version.py,1,1,1,1,2,0,0,1,0,,0.027,1,statement text not parseable x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Fixed_2/fixed_version.py,1,1,0,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Fixed_3/fixed_version.py,1,1,1,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Fixed_8/fixed_version.py,1,1,1,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Mod_2/mod.py,1,0,0,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Mod_3/mod.py,1,0,0,0,0,0,0,0,0,,0.025,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-1-5/Mod_4/mod.py,1,0,0,0,0,0,0,2,0,,0.027,0,statement text not parseable x2
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-6-10/bug_1/buggy.py,1,1,1,9,3,0,0,0,0,,0.028,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-6-10/bug_1/fixed.py,1,1,1,9,3,0,0,0,0,,0.032,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-6-10/bug_1/mod.py,1,0,0,0,0,0,0,0,0,,0.024,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-6-10/bug_2/buggy.py,1,1,1,5,2,0,0,0,0,,0.027,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-6-10/bug_2/fixed.py,1,1,1,5,2,0,0,0,0,,0.026,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-6-10/bug_2/mod.py,1,0,0,0,0,0,0,0,0,,0.026,0,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-6-10/bug_3/buggy.py,1,1,1,17,3,0,0,0,0,,0.031,1,
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-6-10/bug_3/fixed.py,1,1,2,11,3,1,1,2,0,,0.04,1,QuantumCircuit.inverse x1; compose x1
+/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc-data/bugs4q/Bugs4Q-7a719839662f94614872d65f9e9fbcd07408437c/stackoverflow-6-10/bug_3/mod.py,1,1,3,17,3,0,0,2,0,,0.036,1,QuantumCircuit.inverse x1; compose x1

@@ -1101,3 +1101,37 @@ These were found while implementing §6, from the API documentation. No LLM call
   textbook BV with the seeded line-25 slip (`programs/bv.py`, checked line by line against the textbook file);
   Proposition 3(i) now uses this program, whose q0 is pure after every operation in both versions; the Bugs4Q bug stays
   in Section II for the joint criterion and in Fig. 4. Numbers via `make_numbers.py` (Fd*, Prof*, Bv*).
+
+### Deviation I-18 (2026-10-26, AFTER all results; author decision): pre-submission review, tool-v6
+- **Why.** Four independent reviews (quantum semantics, slicing, empirical method, presentation) of the full
+  draft. Each issue was checked against the text, the code or the results before it was acted on.
+- **Tool-v6 (tag `tool-v6`).** Two soundness bugs in the static interpreter found by the slicing review and
+  reproduced on small programs: (1) the branches of an unknown condition ran one after another in one state, so
+  a variable assigned differently in them kept the last branch's value (`if UNK: k=0 else: k=1; qc.x(k)` acted on
+  one qubit, not as a may-operation); (2) a `return`/`break`/`continue` inside such a branch ended interpretation,
+  dropping later operations. Fixed by a join (each branch starts from the state before the `if`; a variable with
+  different values on different paths becomes unknown), by treating such exits as may-paths (the rest of the
+  function is interpreted as may-operations; return values are joined), by widening variables that change across
+  the copies of an unknown loop, and by counting bits as well as qubits in the loop bound. Also fixed: `len()` and
+  iteration of an unresolved external name (e.g. `sys.argv`) returned the length of its internal representation.
+  The forward pass now drops a reached bit that an unaffected measurement certainly overwrites, as the backward
+  pass does, so the duality holds for the implemented pair (new test program `t08_bit_overwrite.py`). The
+  circuit-level study slicers are unchanged; dev checks, nested check and T1/T2 equal tool-v5; coverage and
+  profiles are rerun on tool-v6.
+- **Tool-v7 (tag `tool-v7`).** The tool-v6 coverage rerun showed that the 60 s per-file limit of the corpus runs
+  was never enforced: SIGALRM cannot interrupt long C-level calls, and files ran for up to 8,191 s (53 files over
+  60 s already on tool-v4, none recorded as a timeout). On tool-v6 a few files grew sharply (e.g. a program that
+  allocates a register inside nested loops of unknown length reached the 200,000-operation cap), because each copy
+  of an unknown loop allocates fresh qubits and the loop bound grows to its cap. Tool-v7 enforces the limit: the
+  interpreter stops at a wall-clock deadline, the runners count a file that reaches it as a timeout (its partial
+  trace is not counted), and each file runs in its own process killed at the limit plus 15 s. The all-qubits set
+  is built only when needed. Slices without a limit are unchanged (dev checks, nested check, forward duality on
+  511 pairs). Acceptance, coverage and profiles are rerun on tool-v7, and the paper reports tool-v7; the tool-v6
+  results are kept.
+- **Paper changes.** Title "Foundations of Quantum Program Slicing" (author decision); the language-model task is
+  removed from the paper (author decision; its results stay in `results/llm/`); Definitions 1-3 trace out the
+  classical bits and state the pre-readout criterion; the readout-observable count of wrong classical-PDG slices is
+  reported; the Bugs4Q lesson is restated (single-qubit histograms, not single-qubit criteria); the QPDG is described
+  as sound by construction under our reading; RQ3 reports every slicer's containment and the 96 QDG misses the QPDG
+  contains; MBFL is reported paired; H1, H2, H5 are stated to hold by construction and H1/H2 to come from the
+  earlier run; all post-hoc additions are listed as exploratory; corpus-L soundness at |0...0> is reported.

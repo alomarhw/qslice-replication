@@ -1,1 +1,1 @@
-Quantum Program Slicing for Comprehension
+Foundations of Quantum Program Slicing

@@ -21,34 +21,85 @@
 \BIBdecl
 
 \bibitem{weiser1982programmers}
-M.~Weiser, ``Programmers use slices when debugging,'' \emph{CACM}, 1982.
+M.~Weiser, ``Programmers use slices when debugging,'' \emph{Communications of the ACM}, vol.~25, no.~7, pp. 446--452, 1982.
+
+\bibitem{svore2018qsharp}
+K.~Svore, A.~Geller, M.~Troyer, J.~Azariah, C.~Granade, B.~Heim, V.~Kliuchnikov, M.~Mykhailova, A.~Paz, and M.~Roetteler, ``{Q\#}: Enabling scalable quantum computing and development with a high-level {DSL},'' in \emph{Real World Domain Specific Languages Workshop (RWDSL)}, 2018, pp. 1--10.
 
 \bibitem{ali2022sequantum}
 S.~Ali, T.~Yue, and R.~Abreu, ``When software engineering meets quantum computing,'' \emph{Communications of the ACM}, vol.~65, no.~4, pp. 84--88, 2022.
 
 \bibitem{murillo2025roadmap}
-J.~M. Murillo, J.~Garcia-Alonso, E.~Moguel, J.~Barzen, F.~Leymann, S.~Ali, T.~Yue, P.~Arcaini, R.~P{\'e}rez-Castillo, I.~G.-R. de~Guzm{\'a}n, M.~Piattini, A.~Ruiz-Cort{\'e}s, A.~Brogi, J.~Zhao, A.~Miranskyy, and M.~Wimmer, ``Quantum software engineering: Roadmap and challenges ahead,'' \emph{ACM Transactions on Software Engineering and Methodology}, vol.~34, no.~5, 2025.
+J.~M. Murillo, J.~Garcia-Alonso, E.~Moguel, J.~Barzen, F.~Leymann, S.~Ali, T.~Yue, P.~Arcaini, R.~P{\'e}rez-Castillo, I.~{Garc{\'i}a-Rodr{\'i}guez de Guzm{\'a}n}, M.~Piattini, A.~Ruiz-Cort{\'e}s, A.~Brogi, J.~Zhao, A.~Miranskyy, and M.~Wimmer, ``Quantum software engineering: Roadmap and challenges ahead,'' \emph{ACM Transactions on Software Engineering and Methodology}, vol.~34, no.~5, pp. 154:1--154:48, 2025.
 
 \bibitem{daloisio2024llm}
-G.~d'Aloisio, S.~Fortz, C.~Hanna, D.~Fortunato, A.~Bensoussan, E.~M. Usandizaga, and F.~Sarro, ``Exploring {LLM}-driven explanations for quantum algorithms,'' in \emph{Proceedings of the 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)}, 2024, pp. 475--481.
+G.~d'Aloisio, S.~Fortz, C.~Hanna, D.~Fortunato, A.~Bensoussan, E.~{Mendiluze Usandizaga}, and F.~Sarro, ``Exploring {LLM}-driven explanations for quantum algorithms,'' in \emph{Proceedings of the 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)}, 2024, pp. 475--481.
+
+\bibitem{zhao2023qchecker}
+P.~Zhao, X.~Wu, Z.~Li, and J.~Zhao, ``{QChecker}: Detecting bugs in quantum programs via static analysis,'' in \emph{IEEE/ACM International Workshop on Quantum Software Engineering (Q-SE)}, 2023, pp. 50--57.
 
 \bibitem{yu2025qpdg}
 H.~Yu and J.~Zhao, ``The quantum program dependence graph and its uses in quantum software development,'' in \emph{IEEE/ACM International Workshop on Quantum Software Engineering (Q-SE)}, 2025, pp. 48--55.
 
 \bibitem{ferrante1987pdg}
-J.~Ferrante, K.~J. Ottenstein, and J.~D. Warren, ``The program dependence graph and its use in optimization,'' \emph{ACM Transactions on Programming Languages and Systems (TOPLAS)}, 1987.
+J.~Ferrante, K.~J. Ottenstein, and J.~D. Warren, ``The program dependence graph and its use in optimization,'' \emph{ACM Transactions on Programming Languages and Systems}, vol.~9, no.~3, pp. 319--349, 1987.
 
 \bibitem{ye2026llmqse}
-J.~Ye, Q.~Hu, F.~Zhang, S.~Xia, X.~Guo, X.~Wu, Y.~Lyu, and J.~Zhao, ``Large language models for quantum software engineering: Opportunities and challenges in modeling, generation, testing, and repair,'' \emph{ACM Transactions on Software Engineering and Methodology}, vol.~35, no.~9, 2026.
+J.~Ye, Q.~Hu, F.~Zhang, S.~Xia, X.~Guo, X.~Wu, Y.~Lyu, and J.~Zhao, ``Large language models for quantum software engineering: Opportunities and challenges in modeling, generation, testing, and repair,'' \emph{ACM Transactions on Software Engineering and Methodology}, vol.~35, no.~9, pp. 273:1--273:42, 2026.
 
 \bibitem{zhao2023bugs4q}
 P.~Zhao, Z.~Miao, S.~Lan, and J.~Zhao, ``{Bugs4Q}: A benchmark of existing bugs to enable controlled testing and debugging studies for quantum programs,'' \emph{Journal of Systems and Software}, vol. 205, p. 111805, 2023.
 
 \bibitem{javadi2024qiskit}
-A.~Javadi-Abhari, M.~Treinish, K.~Krsulich, C.~J. Wood, J.~Lishman, J.~Gacon, S.~Martiel, P.~D. Nation, L.~S. Bishop, A.~W. Cross, B.~R. Johnson, and J.~M. Gambetta, ``Quantum computing with {Qiskit},'' 2024.
+A.~Javadi-Abhari, M.~Treinish, K.~Krsulich, C.~J. Wood, J.~Lishman, J.~Gacon, S.~Martiel, P.~D. Nation, L.~S. Bishop, A.~W. Cross, B.~R. Johnson, and J.~M. Gambetta, ``Quantum computing with {Qiskit},'' arXiv:2405.08810, 2024.
+
+\bibitem{qiskittextbook}
+{Qiskit Community}, ``The {Qiskit} textbook,'' \url{https://github.com/qiskit-community/qiskit-textbook}, 2024, accessed 2026-10-26.
+
+\bibitem{bernstein1997qct}
+E.~Bernstein and U.~Vazirani, ``Quantum complexity theory,'' \emph{SIAM Journal on Computing}, vol.~26, no.~5, pp. 1411--1473, 1997.
+
+\bibitem{podgurski1990formal}
+A.~Podgurski and L.~A. Clarke, ``A formal model of program dependences and its implications for software testing, debugging, and maintenance,'' \emph{IEEE Transactions on Software Engineering}, vol.~16, no.~9, pp. 965--979, 1990.
+
+\bibitem{qiskit2025}
+{IBM Quantum}, ``{LightCone} transpiler pass, {Qiskit} {SDK} documentation,'' \url{https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.transpiler.passes.LightCone}, 2025, accessed 2026-10-26.
 
 \bibitem{nielsen2010quantum}
 M.~A. Nielsen and I.~L. Chuang, \emph{Quantum computation and quantum information}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge University Press, 2010.
+
+\bibitem{tip1994a}
+F.~Tip, ``A survey of program slicing techniques,'' \emph{Journal of Programming Languages}, vol.~3, no.~3, pp. 121--189, 1995.
+
+\bibitem{silva2012vocabulary}
+J.~Silva, ``A vocabulary of program slicing-based techniques,'' \emph{ACM Computing Surveys (CSUR)}, 2012.
+
+\bibitem{canfora1998conditioned}
+G.~Canfora, A.~Cimitile, and A.~De~Lucia, ``Conditioned program slicing,'' \emph{Information and Software Technology}, vol.~40, no. 11--12, pp. 595--607, 1998.
+
+\bibitem{korel1988dynamic}
+B.~Korel and J.~Laski, ``Dynamic program slicing,'' \emph{Information Processing Letters}, vol.~29, no.~3, pp. 155--163, 1988.
+
+\bibitem{binkley2014orbs}
+D.~Binkley, N.~Gold, M.~Harman, S.~S. Islam, J.~Krinke, and S.~Yoo, ``Orbs: language-independent program slicing,'' in \emph{SIGSOFT FSE}, 2014.
+
+\bibitem{venkatesh1991semantic}
+G.~A. Venkatesh, ``The semantic approach to program slicing,'' in \emph{Proceedings of the ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)}, 1991, pp. 107--119.
+
+\bibitem{alomari2014srcslice}
+H.~W. Alomari, M.~L. Collard, J.~I. Maletic, N.~Alhindawi, and O.~Meqdadi, ``srcslice: very efficient and scalable forward static slicing,'' \emph{Journal of Software: Evolution and Process}, 2014.
+
+\bibitem{collard2011lightweight}
+M.~L. Collard, M.~J. Decker, and J.~I. Maletic, ``Lightweight transformation and fact extraction with the {srcML} toolkit,'' in \emph{IEEE International Working Conference on Source Code Analysis and Manipulation (SCAM)}, 2011, pp. 173--184.
+
+\bibitem{collard2013srcml}
+------, ``{srcML}: An infrastructure for the exploration, analysis, and manipulation of source code: A tool demonstration,'' in \emph{IEEE International Conference on Software Maintenance (ICSM)}, 2013, pp. 516--519.
+
+\bibitem{behler2024supporting}
+J.~A.~C. Behler, A.~F. Al-Ramadan, B.~Baheri, Q.~Guan, and J.~I. Maletic, ``Supporting static program analysis and transformation of quantum-based languages,'' in \emph{IEEE International Conference on Quantum Computing and Engineering (QCE)}, 2024, pp. 836--842.
+
+\bibitem{paltenghi2024lintq}
+M.~Paltenghi and M.~Pradel, ``Analyzing quantum programs with {LintQ}: A static analysis framework for {Qiskit},'' \emph{Proceedings of the ACM on Software Engineering}, vol.~1, no. FSE, pp. 2144--2166, 2024.
 
 \bibitem{quetschlich2023mqt}
 N.~Quetschlich, L.~Burgholzer, and R.~Wille, ``{MQT Bench}: Benchmarking software and design automation tools for quantum computing,'' \emph{Quantum}, vol.~7, p. 1062, 2023.
@@ -57,7 +108,7 @@ N.~Quetschlich, L.~Burgholzer, and R.~Wille, ``{MQT Bench}: Benchmarking softwar
 A.~Li, S.~Stein, S.~Krishnamoorthy, and J.~Ang, ``{QASMBench}: A low-level quantum benchmark suite for {NISQ} evaluation and simulation,'' \emph{ACM Transactions on Quantum Computing}, vol.~4, no.~2, 2023.
 
 \bibitem{chen2022veriqbench}
-K.~Chen \emph{et~al.}, ``{VeriQBench}: A benchmark for multiple types of quantum circuits,'' \emph{arXiv preprint arXiv:2206.10880}, 2022.
+K.~Chen, W.~Fang, J.~Guan, X.~Hong, M.~Huang, J.~Liu, Q.~Wang, and M.~Ying, ``{VeriQBench}: A benchmark for multiple types of quantum circuits,'' arXiv:2206.10880, 2022.
 
 \bibitem{mendiluze2021muskit}
 E.~Mendiluze, S.~Ali, P.~Arcaini, and T.~Yue, ``Muskit: A mutation analysis tool for quantum software testing,'' in \emph{Proceedings of the 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)}, 2021, pp. 1266--1270.
@@ -66,9 +117,120 @@ E.~Mendiluze, S.~Ali, P.~Arcaini, and T.~Yue, ``Muskit: A mutation analysis tool
 D.~Fortunato, J.~Campos, and R.~Abreu, ``{QMutPy}: A mutation testing tool for quantum algorithms and applications in {Qiskit},'' in \emph{Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)}, 2022, pp. 797--800.
 
 \bibitem{garcia2022testing}
-A.~G. de~la Barrera, I.~G.-R. de~Guzm{\'a}n, M.~Polo, and J.~A. Cruz-Lemus, ``Quantum software testing: Current trends and emerging proposals,'' in \emph{Quantum Software Engineering}, M.~A. Serrano, R.~P{\'e}rez-Castillo, and M.~Piattini, Eds.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2022, pp. 167--191.
+A.~{Garc{\'i}a de la Barrera}, I.~{Garc{\'i}a-Rodr{\'i}guez de Guzm{\'a}n}, M.~Polo, and J.~A. Cruz-Lemus, ``Quantum software testing: Current trends and emerging proposals,'' in \emph{Quantum Software Engineering}, M.~A. Serrano, R.~P{\'e}rez-Castillo, and M.~Piattini, Eds.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2022, pp. 167--191.
 
 \bibitem{ishimoto2025mbfl}
 Y.~Ishimoto, M.~Kondo, N.~Ubayashi, Y.~Kamei, R.~Katsube, N.~Sato, and H.~Ogawa, ``Evaluating mutation-based fault localization for quantum programs,'' in \emph{Proceedings of the 29th International Conference on Evaluation and Assessment in Software Engineering (EASE)}, 2025, pp. 666--671.
+
+\bibitem{horwitz1990interprocedural}
+S.~Horwitz, T.~Reps, and D.~Binkley, ``Interprocedural slicing using dependence graphs,'' \emph{ACM Transactions on Programming Languages and Systems}, vol.~12, no.~1, pp. 26--60, 1990.
+
+\bibitem{jackson1994chopping}
+D.~Jackson and E.~J. Rollins, ``A new model of program dependences for reverse engineering,'' in \emph{Proceedings of the ACM SIGSOFT Symposium on Foundations of Software Engineering (FSE)}, 1994, pp. 2--10.
+
+\bibitem{lyle1987dicing}
+J.~R. Lyle and M.~Weiser, ``Automatic program bug location by program slicing,'' in \emph{Proceedings of the International Conference on Computers and Applications}, 1987, pp. 877--883.
+
+\bibitem{harman1997amorphous}
+M.~Harman and S.~Danicic, ``Amorphous program slicing,'' in \emph{Proceedings of the International Workshop on Program Comprehension (IWPC)}, 1997, pp. 70--79.
+
+\bibitem{behler2025static}
+J.~A.~C. Behler, A.~F. Al-Ramadan, B.~Baheri, M.~L. Collard, Q.~Guan, and J.~I. Maletic, ``Static analysis and transformation for quantum programming languages,'' \emph{IEEE Software}, vol.~42, no.~5, pp. 58--64, 2025.
+
+\bibitem{preskill2018nisq}
+J.~Preskill, ``Quantum computing in the {NISQ} era and beyond,'' \emph{Quantum}, vol.~2, p.~79, 2018.
+
+\bibitem{weiser1984program}
+M.~Weiser, ``Program slicing,'' \emph{IEEE Transactions on Software Engineering}, vol. SE-10, no.~4, pp. 352--357, 1984.
+
+\bibitem{ottenstein1984pdg}
+K.~J. Ottenstein and L.~M. Ottenstein, ``The program dependence graph in a software development environment,'' in \emph{Proceedings of the ACM SIGSOFT/SIGPLAN Software Engineering Symposium on Practical Software Development Environments}, 1984, pp. 177--184.
+
+\bibitem{agrawal1990dynamic}
+H.~Agrawal and J.~R. Horgan, ``Dynamic program slicing,'' in \emph{ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)}, 1990, pp. 246--256.
+
+\bibitem{harman2008program}
+K.~Gallagher and D.~Binkley, ``Program slicing,'' in \emph{Frontiers of Software Maintenance (FoSM)}, 2008, pp. 58--67.
+
+\bibitem{wala}
+{IBM Research}, ``{WALA}: {T.J.} {Watson} libraries for analysis,'' \url{https://github.com/wala/WALA}; Python front end: \url{https://github.com/wala/ML}, 2026, accessed 2026-10-26.
+
+\bibitem{gallagher2025program}
+K.~B. Gallagher and S.~J. Kozaitis, ``Program slicing: A brief retrospective,'' \emph{IEEE Transactions on Software Engineering}, vol.~51, no.~3, pp. 720--724, 2025.
+
+\bibitem{hur2014slicing}
+C.-K. Hur, A.~V. Nori, S.~K. Rajamani, and S.~Samuel, ``Slicing probabilistic programs,'' in \emph{ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)}, 2014, pp. 133--144.
+
+\bibitem{amtoft2020theory}
+T.~Amtoft and A.~Banerjee, ``A theory of slicing for imperative probabilistic programs,'' \emph{ACM Transactions on Programming Languages and Systems}, vol.~42, no.~2, pp. 1--71, 2020.
+
+\bibitem{olmedo2025slicing}
+F.~Olmedo, ``Slicing of probabilistic programs: A review of existing approaches,'' \emph{ACM Computing Surveys}, vol.~58, no.~3, pp. 1--40, 2025.
+
+\bibitem{kaul2023uniform}
+M.~Kaul, A.~K{\"u}chler, and C.~Banse, ``A uniform representation of classical and quantum source code for static code analysis,'' in \emph{IEEE International Conference on Quantum Computing and Engineering (QCE)}, 2023, pp. 1013--1019.
+
+\bibitem{chen2023smelly}
+Q.~Chen, R.~C{\^a}mara, J.~Campos, A.~Souto, and I.~Ahmed, ``The {Smelly Eight}: An empirical study on the prevalence of code smells in quantum computing,'' in \emph{IEEE/ACM International Conference on Software Engineering (ICSE)}, 2023, pp. 358--370.
+
+\bibitem{perdrix2007types}
+S.~Perdrix, ``Quantum patterns and types for entanglement and separability,'' \emph{Electronic Notes in Theoretical Computer Science}, vol. 170, pp. 125--138, 2007.
+
+\bibitem{prost2009reasoning}
+F.~Prost and C.~Zerrari, ``Reasoning about entanglement and separability in quantum higher-order functions,'' in \emph{Unconventional Computation (UC)}, ser. LNCS, vol. 5715, 2009, pp. 219--235.
+
+\bibitem{perdrix2008entanglement}
+S.~Perdrix, ``Quantum entanglement analysis based on abstract interpretation,'' in \emph{Static Analysis Symposium (SAS)}, ser. LNCS, vol. 5079, 2008, pp. 270--282.
+
+\bibitem{yu2021abstract}
+N.~Yu and J.~Palsberg, ``Quantum abstract interpretation,'' in \emph{ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)}, 2021, pp. 542--558.
+
+\bibitem{honda2015stabilizer}
+K.~Honda, ``Analysis of quantum entanglement in quantum programs using stabilizer formalism,'' \emph{Electronic Proceedings in Theoretical Computer Science}, vol. 195, pp. 262--272, 2015.
+
+\bibitem{yuan2022twist}
+C.~Yuan, C.~McNally, and M.~Carbin, ``Twist: Sound reasoning for purity and entanglement in quantum programs,'' \emph{Proceedings of the ACM on Programming Languages}, vol.~6, no. POPL, pp. 1--32, 2022.
+
+\bibitem{xia2025entanglement}
+S.~Xia and J.~Zhao, ``Static entanglement analysis of quantum programs,'' in \emph{IEEE/ACM International Workshop on Quantum Software Engineering (Q-SE)}, 2023, pp. 42--49.
+
+\bibitem{javadiabhari2015scaffcc}
+A.~JavadiAbhari, S.~Patil, D.~Kudrow, J.~Heckey, A.~Lvov, F.~T. Chong, and M.~Martonosi, ``{ScaffCC}: Scalable compilation and analysis of quantum programs,'' \emph{Parallel Computing}, vol.~45, pp. 2--17, 2015.
+
+\bibitem{heim2020quantum}
+B.~Heim, M.~Soeken, S.~Marshall, C.~Granade, M.~Roetteler, A.~Geller, M.~Troyer, and K.~Svore, ``Quantum programming languages,'' \emph{Nature Reviews Physics}, vol.~2, no.~12, pp. 709--722, 2020.
+
+\bibitem{murali2019triq}
+P.~Murali, N.~M. Linke, M.~Martonosi, A.~{Javadi-Abhari}, N.~H. Nguyen, and C.~H. Alderete, ``Full-stack, real-system quantum computer studies: Architectural comparisons and design insights,'' in \emph{International Symposium on Computer Architecture (ISCA)}, 2019, pp. 527--540.
+
+\bibitem{amy2020staq}
+M.~Amy and V.~Gheorghiu, ``{staq}---{A} full-stack quantum processing toolkit,'' \emph{Quantum Science and Technology}, vol.~5, no.~3, p. 034016, 2020.
+
+\bibitem{farhi2014qaoa}
+E.~Farhi, J.~Goldstone, and S.~Gutmann, ``A quantum approximate optimization algorithm,'' 2014.
+
+\bibitem{zhou2021qsl}
+L.~Zhou, G.~Barthe, J.~Hsu, M.~Ying, and N.~Yu, ``A quantum interpretation of bunched logic \& quantum separation logic,'' in \emph{Proceedings of the ACM/IEEE Symposium on Logic in Computer Science (LICS)}, 2021.
+
+\bibitem{le2022qsl}
+X.-B. Le, S.-W. Lin, J.~Sun, and D.~Sanan, ``A quantum interpretation of separating conjunction for local reasoning of quantum programs based on separation logic,'' \emph{Proceedings of the ACM on Programming Languages}, vol.~6, no. POPL, 2022.
+
+\bibitem{ramalho2025road}
+N.~C.~L. Ramalho, H.~A. de~Souza, and M.~L. Chaim, ``Testing and debugging quantum programs: The road to 2030,'' \emph{ACM Transactions on Software Engineering and Methodology}, vol.~34, no.~5, pp. 155:1--155:46, 2025.
+
+\bibitem{metwalli2022debugging}
+S.~A. Metwalli and R.~{Van Meter}, ``A tool for debugging quantum circuits,'' in \emph{IEEE International Conference on Quantum Computing and Engineering (QCE)}, 2022, pp. 624--634.
+
+\bibitem{metwalli2024testing}
+------, ``Testing and debugging quantum circuits,'' \emph{IEEE Transactions on Quantum Engineering}, vol.~5, p. 2500415, 2024.
+
+\bibitem{qiskitaddonutils}
+{IBM Quantum}, ``{Qiskit} addon utilities: \texttt{slicing} module,'' \url{https://quantum.cloud.ibm.com/docs/en/api/qiskit-addon-utils/slicing}, 2026, accessed 2026-10-26.
+
+\bibitem{zhao2021bugpatterns}
+P.~Zhao, J.~Zhao, and L.~Ma, ``Identifying bug patterns in quantum programs,'' in \emph{IEEE/ACM International Workshop on Quantum Software Engineering (Q-SE)}, 2021, pp. 16--21.
+
+\bibitem{nayak2023qpac}
+P.~K. Nayak, K.~V. Kher, M.~B. Chandra, M.~V.~P. Rao, and L.~Zhang, ``{Q-PAC}: Automated detection of quantum bug-fix patterns,'' arXiv:2311.17705, 2023.
 
 \end{thebibliography}

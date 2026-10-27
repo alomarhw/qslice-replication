@@ -6,7 +6,7 @@
   \caption{The Bernstein--Vazirani program of the Qiskit textbook~\cite{qiskittextbook}, with comments and
   blank lines omitted and the textbook's line numbers kept. Line~25 carries a seeded fault, \texttt{x(n)}
   where the textbook applies \texttt{z(n)}. The two columns mark the statements in the backward slice of
-  $q_0$ under the classical PDG and under the QDG. The classical PDG misses the orange lines, which are
+  $q_0$ under the classical PDG, CPDG, and under the QDG. The classical PDG misses the orange lines, which are
   dependences of $q_0$. Slices are computed by our tool statically, and outcomes and dependences by the
   study's code.}
   \label{fig:bv}
@@ -53,13 +53,15 @@ dependences of $q_0$, together with the statements that compute them, among them
 condition on lines~35 to~39. Its slice contains the fault. Entanglement plays no part here, since $q_0$ is in
 a pure state after every operation and so is never entangled with the auxiliary.
 
-Choosing a single qubit as the criterion was enough here, because the fault shows in $q_0$ alone. It is not
-always enough. In a real bug from Bugs4Q~\cite{zhao2023bugs4q}, posted on Stack Overflow, a two-qubit
-program meant to prepare $(\ket{01}+\ket{10})/\sqrt{2}$ applies \texttt{h(1)} where \texttt{x(1)} was
-needed, and returns all four bit strings equally often. Each qubit alone reads $1$ with probability
-\numMotPOne{}, in the buggy program and in the intended one alike, and the error lies only in the
-correlation between the two. A criterion that names a single qubit, as the classical criterion $(s, V)$
-does when $V$ is one qubit, cannot express this failure. The criterion must be the pair $\{q_0, q_1\}$.
+Here the fault shows in the measured outcomes of $q_0$. That is not always so. In a real bug from
+Bugs4Q~\cite{zhao2023bugs4q}, posted on Stack Overflow, a two-qubit program meant to prepare
+$(\ket{01}+\ket{10})/\sqrt{2}$ applies \texttt{h(1)} where \texttt{x(1)} was needed, and returns all four
+bit strings equally often. Each qubit alone reads $1$ with probability \numMotPOne{}, in the buggy program
+and in the intended one alike, so a check of the outcomes of either qubit cannot see the failure, and only
+their joint outcomes reveal it. The state of $q_0$ does change, from the pure $\ket{+}$ to a uniformly
+random bit, two states with fidelity \numMotFidelity{}. A slice judged by the outcome histogram of one
+qubit can therefore look right and miss the fault, while a slice judged by the state of the qubit cannot.
+Fig.~\ref{fig:overview} shows this program, and its QDG slice of $q_0$ contains the fault.
 
 The two lessons scale. Reading a gate as an assignment misses influence that flows into a control qubit,
-and a one-qubit criterion misses errors in correlations.
+and judging a slice by the outcomes of one qubit misses errors in phase and in correlations.

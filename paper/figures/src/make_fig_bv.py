@@ -136,7 +136,7 @@ def tex(ours: list, F: dict) -> str:
         r"\begin{document}\begin{varwidth}{8.7cm}",
         r"\renewcommand{\arraystretch}{0.86}",
         r"\begin{tabular}{@{}r@{\hspace{4pt}}c@{\hspace{3pt}}c@{\hspace{6pt}}l@{}}",
-        r"& {\tiny PDG} & {\tiny QDG} & {\footnotesize\textbf{Bernstein--Vazirani} (Qiskit textbook), slices of $q_0$} \\[1pt]",
+        r"& {\tiny CPDG} & {\tiny QDG} & {\footnotesize\textbf{Bernstein--Vazirani} (Qiskit textbook), slices of $q_0$} \\[1pt]",
         *rows,
         r"\end{tabular}\\[4pt]",
         rf"{{\scriptsize outcomes $q_2q_1q_0$: buggy {pb}; intended {pf}}}",

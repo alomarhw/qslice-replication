@@ -2,18 +2,17 @@
 Program slicing helps developers understand code by showing which statements can affect a value of
 interest. For quantum programs, slicing has been proposed over a quantum program dependence graph (QPDG),
 but no definition of quantum dependence has been checked against what quantum programs compute. We lay
-foundations for quantum program slicing. We define quantum dependence semantically, introduce the quantum
-dependence graph (QDG), in which every gate reads and writes all its qubits, prove its slices sound and
-dependence-complete, and carry forward slices, conditioned slices and slice profiles over to qubits. We then evaluate
-dependence definitions against this ground truth on \numNPairs{} circuit--qubit pairs and
-\numRqThreeUnits{} units from seeded faults. The classical program dependence graph gives wrong slices
-for \numCpdgUnsoundPct{} of the pairs, because it misses phase kickback. The QPDG is sound but keeps
-\numRqOneYzSize{} of a circuit, while QDG slices keep \numRqOneLcSize{}, within \numLcExcess{}
+foundations for quantum program slicing. We define quantum dependence and slice soundness semantically,
+over the joint state of a set of qubits, and show that the quantum dependence graph (QDG), the backward
+light cone in which every gate reads and writes all its qubits, gives sound and dependence-complete slices.
+We also carry forward slices, conditioned slices and slice profiles over to qubits. We evaluate dependence
+definitions against these semantics on \numNPairs{} circuit--qubit pairs and \numRqThreeUnits{} units from
+seeded faults. The classical program dependence graph, which reads the control of a gate as unchanged,
+gives wrong slices for \numCpdgUnsoundPct{} of the pairs. Our reimplementation of the QPDG is sound but
+keeps \numRqOneYzSize{} of a circuit, while QDG slices keep \numRqOneLcSize{}, within \numLcExcess{}
 percentage points of the dependences themselves. State-based pruning, which simulates one input, shrinks
-slices by \numHTwoRelative{}, but its slices hold only for that input, drop the faulty operation in
-\numCQFour{} units, and lower the fault-localization accuracy of three of four language models by up to
-\numTTwoMaxDrop{} percentage points. A criterion over a set of qubits recovers \numCQFourRecovered{} of
-these units. Our static slicer applies the QDG to Qiskit source, computes backward and forward slices and
-qubit profiles, and reports the lines and loop iterations a developer must read. We close with a roadmap of
-open problems.
+slices by \numHTwoRelative{}, but its slices hold only for that input and drop the faulty operation in
+\numCQFour{} units, of which a criterion over all wrong qubits recovers \numCQFourRecovered{}. Our static
+slicer applies the QDG to Qiskit source and computes backward and forward slices and qubit profiles. We
+close with a roadmap of open problems.
 \end{abstract}

@@ -1,7 +1,7 @@
 > **Anonymized replication package** for double-blind review. All author and affiliation identifiers
 > have been removed.
 
-# Quantum Program Slicing for Comprehension: replication package
+# Foundations of Quantum Program Slicing: replication package
 
 This repository contains everything behind the paper: the static slicer for Qiskit programs, the
 pre-registered study that compares quantum dependence definitions against a semantic ground truth, the

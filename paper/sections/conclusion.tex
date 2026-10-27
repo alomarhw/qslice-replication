@@ -2,9 +2,9 @@
 
 A slice of a quantum program is correct only if it follows data, control and quantum dependence. We
 defined quantum dependence by the semantics of quantum programs and measured dependence definitions
-against it. The classical PDG gives wrong slices for \numCpdgUnsoundPct{} of the pairs, because a
-two-qubit gate can change its control. Following entanglement is sound but imprecise, because
-entanglement is not sufficient for dependence, and it is not necessary either. Our quantum dependence graph
+against it. The classical PDG gives wrong slices for \numCpdgUnsoundPct{} of the pairs, because it reads the
+control of a gate as unchanged. Adding entanglement edges keeps a slice sound but makes it imprecise,
+because entanglement is not sufficient for dependence, and it is not necessary either. Our quantum dependence graph
 (QDG) is sound for every input, dependence-complete and cheap, and state-based pruning trades that guarantee for slices that
 hold for one input and can remove the fault. Our static slicer shows that the QDG works on Qiskit
 source, where it reports the lines and iterations a developer must read to understand a qubit's state,
@@ -14,5 +14,5 @@ Section~\ref{sec:discussion}.
 
 \section*{Data Availability}
 The replication package at \url{https://anonymous.4open.science/r/qslice-replication-5B21} contains the protocol and its
-deviations, the static slicer, the benchmark circuits, the logs of every run with the commit it used, and
+deviations, the Isabelle/HOL theory of Theorem~\ref{thm:sound}, the static slicer, the benchmark circuits, the logs of every run with the commit it used, and
 the scripts that regenerate every number, table and figure in this paper.

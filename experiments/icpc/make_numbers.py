@@ -103,6 +103,8 @@ def main() -> int:
     put("LcqNotApplicable", len(lq) - len(ap), cnt(len(lq) - len(ap)), src)
     meas = sum("contains measurements" in r["note"] for r in lq.values())
     put("LcqNaMeasurements", meas, cnt(meas), src)
+    put("LcqNaReorder", len(lq) - len(ap) - meas, cnt(len(lq) - len(ap) - meas), src)
+    assert all("in-order subsequence" in r["note"] for r in lq.values() if r["applicable"] != "1" and "contains measurements" not in r["note"])
     put("LcqUnsound", sum(lq[k]["sound"] != "1" for k in ap), cnt(sum(lq[k]["sound"] != "1" for k in ap)), src)
     sz = lambda k, s: int(lq[k]["size"]) if s == "lcq" else int(rq1[k][s]["size"])  # noqa: E731
     smaller = sum(sz(k, "lcq") < sz(k, "lc") for k in ap)
@@ -187,6 +189,11 @@ def main() -> int:
     for s, nm in (("du", "Du"), ("lc", "Lc"), ("yz", "Yz"), ("q", "Q"), ("random", "Random")):
         x = [float(r["contained"]) for r in rec if r["slicer"] == s]
         put(f"RqThreeContain{nm}", sum(x) / len(x), pct(sum(x) / len(x)), src)
+    byu = {}
+    for r in rec:
+        byu.setdefault((r["mutant"], r["target"]), {})[r["slicer"]] = r["contained"]
+    lmiss = [u for u, v in byu.items() if v["lc"] != "1"]
+    put("LcMissYzContained", sum(byu[u]["yz"] == "1" for u in lmiss), cnt(sum(byu[u]["yz"] == "1" for u in lmiss)), src)
     u = [r for r in rows(ICPC / "rq3" / "units.csv") if r["analysis"] == "primary"]
     put("CQFour", sum(r["cq4"] == "1" for r in u), cnt(sum(r["cq4"] == "1" for r in u)), "results/icpc/rq3/units.csv")
     put("CQFourRecovered", sum(r["cq4_remedy_contains"] == "1" for r in u), cnt(sum(r["cq4_remedy_contains"] == "1" for r in u)), "results/icpc/rq3/units.csv")
@@ -225,6 +232,11 @@ def main() -> int:
     for s, nm in (("all", "All"), ("q", "Q"), ("lc", "Lc")):
         x = [float(r[f"exam_{s}_avg"]) for r in mb if r.get(f"exam_{s}_avg")]
         put(f"MbflExam{nm}", st.mean(x), f"{st.mean(x):.3f}", src)
+    pb = [r for r in mb if r["fault_in_lc"] == "1" and r["fault_in_q"] == "1"]
+    put("MbflPairedN", len(pb), cnt(len(pb)), src)
+    for s, nm in (("all", "All"), ("q", "Q"), ("lc", "Lc")):
+        x = st.mean(float(r[f"exam_{s}_avg"]) for r in pb)
+        put(f"MbflPaired{nm}", x, f"{x:.3f}", src)
 
     # ---- RQ3: LLM fault localization (T2, §6.4): context prompt, temperature 0, run 0 --------------------
     src = "results/llm/t2_scores.csv"
@@ -267,6 +279,9 @@ def main() -> int:
         x = [r for r in dep if r["name"].startswith(d + "_")]
         put(f"CostDepth{nm}OverLimit", sum(r["limit"] == "wall" for r in x), cnt(sum(r["limit"] == "wall" for r in x)), src)
         put(f"CostBuildDepth{nm}", st.median(float(r["build_seconds"]) for r in x), f"{st.median(float(r['build_seconds']) for r in x):.1f}", src)
+    for d, nm in (("d40", "Forty"), ("d160", "OneSixty")):
+        md = st.median(int(r["depth"]) for r in dep if r["name"].startswith(d + "_"))
+        put(f"CostMeasuredDepth{nm}", md, f"{md:.0f}", src)
     put("CostWallLimit", 120, "120", "icpc/cost_run.py")
     w = [float(r["q_total"]) for r in co if r["kind"].startswith("width-") and r.get("q_total")]
     put("CostWidthQMax", max(w), f"{max(w):.1f}", src)
@@ -308,6 +323,8 @@ def main() -> int:
     cm = Counter(m["category"] for m in rows(ICPC / "cpdg" / "rq1_misses.csv"))
     put("CpdgMissKickback", cm["kickback"], cnt(cm["kickback"]), "results/icpc/cpdg/rq1_misses.csv")
     put("CpdgMissFeedback", cm["feedback"], cnt(cm["feedback"]), "results/icpc/cpdg/rq1_misses.csv")
+    put("CpdgMissSameWire", cm["same-wire"], cnt(cm["same-wire"]), "results/icpc/cpdg/rq1_misses.csv")
+    put("CpdgMissWritten", cm["written-operand"], cnt(cm["written-operand"]), "results/icpc/cpdg/rq1_misses.csv")
     put("CpdgMissTotal", sum(cm.values()), cnt(sum(cm.values())), "results/icpc/cpdg/rq1_misses.csv")
     c3 = [r for r in rows(ICPC / "cpdg" / "rq3_records.csv") if r["analysis"] == "primary"]
     put("RqThreeContainCpdg", sum(int(r["contained"]) for r in c3) / len(c3), pct(sum(int(r["contained"]) for r in c3) / len(c3)), "results/icpc/cpdg/rq3_records.csv")
@@ -457,6 +474,17 @@ def main() -> int:
     fw = fd["forward"]
     assert fw["complete"] == fw["ops"] and fw["dual_ok"] == fw["ops"]
     put("FdFwdOps", fw["ops"], cnt(fw["ops"]), src)
+    ob = fd["cpdg"]["unsound"] - fd["cpdg"]["unsound_but_z_matches"]
+    put("FdCpdgObservable", ob, cnt(ob), src)
+    put("FdCpdgObservablePct", ob / NUMS["NPairs"]["value"], pct(ob / NUMS["NPairs"]["value"]), src)
+    cl = rows(ICPC / "corpus_l" / "slices.csv")
+    src = "results/icpc/corpus_l/slices.csv"
+    chk = [r for r in cl if r["slicer"] == "lc" and r["sound"] != ""]
+    put("CorpusLSoundCircuits", len({r["path"] for r in chk}), cnt(len({r["path"] for r in chk})), src)
+    put("CorpusLSoundPairs", len(chk), cnt(len(chk)), src)
+    for s, nm in (("lc", "Lc"), ("yz", "Yz"), ("du", "Du")):
+        bad = sum(r["sound"] == "0" for r in cl if r["slicer"] == s)
+        put(f"CorpusLWrong{nm}", bad, cnt(bad), src)
     put("FdFwdPrecision", fw["precision"], f"{fw['precision']:.3f}", src)
 
     # ---- qubit slice profiles over the corpora (Deviation I-17, tool-v5; tool/corpus/profiles.py) ----------
@@ -480,10 +508,12 @@ def main() -> int:
     put("ProfTextAliasGenuine", sum(x["genuine"] == "1" for x in ac), cnt(sum(x["genuine"] == "1" for x in ac)),
         "results/icpc/profiles/alias_check_textbook.csv")
 
-    # ---- the static program slicer (Deviation I-15; tool-v4, the final version; earlier versions' results kept) --
+    # ---- the static program slicer (Deviation I-15, I-18; tool-v7, the final version; earlier versions' results kept) --
     sys.path.insert(0, str(HERE.parent))
     from tool.gates import GATES  # noqa: PLC0415
     put("ToolGateTable", len(GATES), cnt(len(GATES)), "tool/gates.py")
+    from tool.interp import MAX_UNKNOWN_COPIES  # noqa: PLC0415
+    put("ToolMaxCopies", MAX_UNKNOWN_COPIES, cnt(MAX_UNKNOWN_COPIES), "tool/interp.py")
     TA = ICPC / "tool_acceptance"
     dev = json.load(open(TA / "dev_checks.json"))
     src = "results/icpc/tool_acceptance/dev_checks.json"
@@ -492,8 +522,8 @@ def main() -> int:
     put("ToolDevSliceEqual", sum(r["slices_equal"] for r in dev), cnt(sum(r["slices_equal"] for r in dev)), src)
     put("ToolDevMaxOps", max(r["ops"] for r in dev), cnt(max(r["ops"] for r in dev)), src)
     assert all(r["nested_conditions"] for r in dev if not r["slices_equal"]), "a slice difference outside nested conditions"
-    ts = json.load(open(TA / "tool-v4" / "summary.json"))
-    src = "results/icpc/tool_acceptance/tool-v4/summary.json"
+    ts = json.load(open(TA / "tool-v7" / "summary.json"))
+    src = "results/icpc/tool_acceptance/tool-v7/summary.json"
     for k, nm in (("t1_bugs", "ToolTOneBugs"), ("t1_exact", "ToolTOneExact"), ("t1_ops_prepared", "ToolTOneOps"),
                   ("t1_ops_matched", "ToolTOneOpsMatched"), ("t2_units_mapped", "ToolTTwoUnits"), ("t2_equal_mapped", "ToolTTwoEqual")):
         put(nm, ts[k], cnt(ts[k]), src)
@@ -501,9 +531,9 @@ def main() -> int:
     put("ToolNestedDraws", nc["draws"], cnt(nc["draws"]), "results/icpc/tool_acceptance/nested_check.json")
     put("ToolNestedStudyWrong", nc["study_wrong_max"], cnt(nc["study_wrong_max"]), "results/icpc/tool_acceptance/nested_check.json")
     put("ToolNestedToolWrong", nc["tool_wrong_total"], cnt(nc["tool_wrong_total"]), "results/icpc/tool_acceptance/nested_check.json")
-    for path, nm, src in ((TA / "tool-v4" / "t3_bugs4q.csv", "Bugs", "results/icpc/tool_acceptance/tool-v4/t3_bugs4q.csv"),
-                          (ICPC / "tool_coverage" / "textbook_v4.csv", "Textbook", "results/icpc/tool_coverage/textbook_v4.csv"),
-                          (ICPC / "tool_coverage" / "lintq_v4.csv", "Lintq", "results/icpc/tool_coverage/lintq_v4.csv")):
+    for path, nm, src in ((TA / "tool-v7" / "t3_bugs4q.csv", "Bugs", "results/icpc/tool_acceptance/tool-v7/t3_bugs4q.csv"),
+                          (ICPC / "tool_coverage" / "textbook_v7.csv", "Textbook", "results/icpc/tool_coverage/textbook_v7.csv"),
+                          (ICPC / "tool_coverage" / "lintq_v7.csv", "Lintq", "results/icpc/tool_coverage/lintq_v7.csv")):
         cov = rows(path)
         q = [r for r in cov if r["uses_qiskit"] == "1"]
         put(f"Tool{nm}Files", len(cov), cnt(len(cov)), src)

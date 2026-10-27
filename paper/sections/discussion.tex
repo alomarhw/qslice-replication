@@ -1,20 +1,21 @@
 \section{A Roadmap for Quantum Program Slicing}\label{sec:discussion}
 
-\paragraph*{What is settled}
-The definitions and results settle how a slicer for quantum programs should be built. The base should be the QDG,
+\paragraph*{What the results support}
+The definitions and results suggest how a slicer for quantum programs should be built. The base should be the QDG,
 in which every gate reads and writes all its qubits. It is sound for every input, misses no dependence,
 and costs milliseconds. Reading a gate as a classical assignment is the pitfall to avoid, and adding
 control dependence does not remove it. Entanglement edges, as in the QPDG, should not be added to make a slice safer. They
-buy no soundness that the QDG lacks and costs precision, because a later operation on an entangled
-partner cannot change the criterion's state, as Proposition~\ref{prop:ent} shows. Precision beyond the
+buy no soundness that the QDG lacks and cost precision, because a later operation on an entangled partner
+cannot change the criterion's state, as Proposition~\ref{prop:ent} shows. They contain a few more faults of
+a faulty program only by keeping more of it. Precision beyond the
 QDG slice can come from commutation pruning, which stays correct on every random input but fails when the
-angles change. Treating every angle as a symbol before the pass keeps it correct under all three input
-regimes, so a slicer for variational programs should use the symbolic variant or recompute commutation
+angles change. Treating every angle as a symbol before the pass, an exploratory variant, kept it correct under all three
+input regimes, so a slicer for variational programs should use the symbolic variant or recompute commutation
 after each parameter update. State-based pruning should be offered, if at all, as a view of one input,
-labeled as such, and never as the slice of the program. Finally, a slicer should let the developer name a
-set of qubits. Many quantum bugs show only in the correlation between qubits, as in
-Section~\ref{sec:example}, and by Proposition~\ref{prop:joint} the joint QDG slice is the union of the
-single-qubit slices, so a joint criterion needs no extra analysis.
+labeled as such, and never as the slice of the program. Finally, a slicer should judge slices by states rather than by
+histograms, since \numFdCpdgZMatchPct{} of the wrong classical-PDG slices pass a histogram check, and it
+should let the developer name a set of qubits, whose joint state pruning must preserve. By
+Proposition~\ref{prop:joint}, the joint QDG slice needs no extra analysis.
 
 \paragraph*{What is open}
 Six problems remain, and each extends a classical line of work. The first is precision that holds for
@@ -25,9 +26,11 @@ quasi-static slicing~\cite{canfora1998conditioned, venkatesh1991semantic} sugges
 a stated class, such as basis states or product states, rather than for one input or for all. The third is
 hybrid programs. Variational algorithms loop between a classical optimizer and a circuit, and a slice that crosses
 this boundary needs interprocedural dependence through the measured results~\cite{horwitz1990interprocedural}.
-The fourth is the remaining kinds of slices. Chopping between two operations, amorphous slices that may rewrite
-gates, for instance by merging rotations, and criteria given by an observable rather than a reduced state
-all need definitions against the semantics of Section~\ref{sec:dependence}. The fifth is other languages and
+The fourth is the remaining kinds of slices and criteria. Chopping between two
+operations~\cite{jackson1994chopping}, dicing of a correct and a wrong criterion~\cite{lyle1987dicing},
+amorphous slices that may rewrite gates~\cite{harman1997amorphous}, for instance by merging rotations,
+criteria over classical bits, and criteria given by an observable rather than a reduced state all need
+definitions against the semantics of Section~\ref{sec:dependence}. The fifth is other languages and
 compiled code. srcML's markup for OpenQASM~\cite{behler2024supporting, behler2025static} gives a front end,
 and a slice of a transpiled circuit must be mapped back to the source through the compiler's layout.
 The sixth is evidence with developers. Our fault-localization results use seeded faults and the small programs of
@@ -43,13 +46,13 @@ $3\cdot10^{-2}$. We compare the criterion's noisy states by their trace distance
 states and $1$ for perfectly distinguishable ones. Under the QDG slice and under the whole circuit they
 differ by at most \numNoiseLcCrossExactMax{} where the simulation is exact, which is rounding error, and by
 at most \numNoiseLcCrossShotMax{} where mid-circuit measurements force sampling with \numNoiseShots{}
-shots. Theorem~\ref{thm:sound} predicts this, since depolarizing noise acts only on the qubits of its gate,
+shots, which is sampling noise. Theorem~\ref{thm:sound} predicts this, since depolarizing noise acts only on the qubits of its gate,
 so a removed gate and its noise lie outside the criterion's dependences alike. The state-based slice
 differs from the whole circuit in \numNoiseQCrossExactNonzero{} of \numNoiseQCrossExactN{} exact runs, by
 up to \numNoiseQCrossExactMax{}. It removes noisy gates that the whole program executes, and errors
 accumulate with the number of gates~\cite{preskill2018nisq}, so it can hide noise the developer is trying
-to diagnose. On IBM hardware, slices of \numHwCircuits{} circuits from a preliminary implementation of
-the QPDG matched the whole circuits' measured distributions within a total variation distance
+to diagnose. Noise that is not local to a gate, such as crosstalk, is outside this argument. On IBM
+hardware, slices of \numHwCircuits{} circuits from an earlier slicer of ours with typed dependence edges, matched the whole circuits' measured distributions within a total variation distance
 of 0.05 for \numHwWithin{}. The other \numHwOutside{} are QAOA circuits, whose distance is zero in
 noise-free simulation and is therefore due to the device, which ran the slice and the whole circuit on
 different physical qubits. A distance of measured distributions is blind to phase, so these runs show only

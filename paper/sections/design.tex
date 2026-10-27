@@ -5,22 +5,23 @@ We ask four research questions.
 \textbf{RQ2} asks how much smaller than the QDG slice a slice can safely be, and under which inputs the
 extra precision holds.
 \textbf{RQ3} asks what each definition does to fault localization, by whether the slice contains the
-fault, with mutation-based fault localization and with language models.
+fault and with mutation-based fault localization.
 \textbf{RQ4} asks what each definition costs in time and memory.
 
 \paragraph*{Pre-registration}
 The protocol, including the slicers, metrics, tests, thresholds and the decision rules for the
-paper's framing, was committed before any run. Every later change is recorded as a dated deviation
-with its reason, and those made after a result are marked as such. Four kinds of change affect this paper.
-The classical PDG and an order-preserving mapping for Qiskit's \texttt{LightCone} pass were added as
-baselines after the first runs. The parser for language-model answers was replaced after all model calls,
-because the pre-registered one read prose citations and qubit names as answers, and both parsers give
-every language-model finding the same direction. The dependence set as a reference for slice size and the
-symbolic-angle variant of commutation pruning were added after all results. The static slicer and its
-acceptance tests were added last, and the tests were fixed before any output of the slicer. None of these
-changes enters the five confirmatory tests, and no test in the code asserts an expected result. The
-replication package contains the protocol, the deviations, the logs of every run, and the commit each run
-used.
+paper's framing, was committed before the runs reported here. It extends the protocol of an earlier run of
+this study, whose results it reuses, so H1 and H2 below were known when it was written. Every later change
+is recorded as a dated deviation with its reason, and those made after a result are marked as such. The QDG
+is the protocol's light-cone baseline, and the paper's framing follows its decision rule for the case,
+which occurred, that state-based pruning is sound but fails the robustness or size condition. The classical
+PDG and an order-preserving mapping for Qiskit's \texttt{LightCone} pass were added as baselines after the
+first runs. The dependence set as a reference for slice size, the symbolic-angle variant of commutation
+pruning, the flow-sensitive QPDG, the static slicer and its forward slices and profiles, the measures of
+the foundations in Section~\ref{sec:results}, and the seeded scenario of Section~\ref{sec:example} were all
+added after the results, and all are exploratory. The acceptance tests of the slicer were fixed before any
+of its output. None of these changes enters the five confirmatory tests, and no test in the code asserts an
+expected study outcome.
 
 \paragraph*{Circuits}
 Corpus~A has \numNCircuits{} circuits of at most \numMaxQubits{} qubits from three benchmark suites,
@@ -38,7 +39,7 @@ All slices are judged by one independent oracle. It simulates the circuit's unco
 by branching over measurement outcomes, and shares no code with any slicer. It agrees with Qiskit's
 statevector simulation to within \numOracleErr{} on random circuits. A slice preserves the criterion when
 the Uhlmann fidelity of the criterion's reduced states, the standard similarity measure for such states,
-is at least $1 - 10^{-6}$. The dependences of
+in its squared form, is at least $1 - 10^{-6}$. The dependences of
 Definition~\ref{def:dep} are measured by inserting \numInfluencePerturbations{} random unitaries after
 every operation and comparing the criterion's state at \numInfluenceInputs{} inputs, $\ket{0\dots0}$ and
 ten random product states, in which each qubit has its own random state and none is entangled. A
@@ -71,7 +72,7 @@ for a deletion, the operations next to the deletion point, and how many operatio
 real bugs come from Bugs4Q~\cite{zhao2023bugs4q}. Of \numBugsFourQTriaged{} entries,
 \numBugsFourQIncluded{} are circuit-level faults whose buggy and fixed programs can be ported mechanically
 to the current Qiskit release. Of these, \numBugsFourQKilled{} change a qubit's measured distribution,
-\numBugsFourQInjured{} changes only a phase and \numBugsFourQAlive{} changes no qubit. The remaining
+\numBugsFourQInjured{} changes the state of a qubit but no measured distribution, and \numBugsFourQAlive{} changes no qubit. The remaining
 \numBugsFourQExcluded{} are excluded, one because its buggy and fixed programs differ in qubit count and
 one because it uses an initialization the oracle does not support. Each operation of the ported circuits
 is mapped to its line in the original program, and Section~\ref{sec:tool} shows that our tool computes the
@@ -82,18 +83,19 @@ Mutation-based fault localization mutates the operations of the faulty circuit a
 mutants change its observable behavior, scored with the Ochiai suspiciousness formula, as Ishimoto et al.\
 do for quantum programs~\cite{ishimoto2025mbfl}. We rank over the whole circuit and within each slice and report the EXAM
 score, the share of the ranked operations a developer examines before reaching the fault, where lower is
-better. In the language model task, a model sees a faulty circuit, or one of its slices, and the wrong
-qubit, and names up to three suspect operations. We score whether the fault site is among them, on
-\numTTwoItems{} units sampled across operators, with Claude Sonnet~5.5, Claude Haiku~5.5 and the
-open-weight Qwen2.5-Coder models of 32B and 1.5B parameters.
+better. Because a slice ranks a subset of the operations in the same order, the developer never examines
+more operations within a slice than in the whole circuit, but EXAM divides by the number ranked, so a
+smaller slice can raise it.
 
 \paragraph*{Statistics}
 Five confirmatory hypotheses compare state-based pruning with the other rules. H1 states that it is wrong
 on fewer pairs than def-use, H2 that its slices are smaller than QDG slices, and H3 that at least 95\% of
 pairs keep a correct slice under random product inputs. H4 states that it loses at most five percentage
 points of fault containment against the QDG slice, and H5 that its slices are smaller where both contain
-the fault. We test them with exact McNemar tests, which compare paired yes-or-no outcomes, and Wilcoxon
-signed-rank tests on paired sizes, and Holm's method corrects across the five. Effect sizes come first,
+the fault. State-based pruning starts from the QDG slice and checks every removal at $\ket{0\dots0}$, the
+input at which RQ1 judges it, so H1 and the directions of H2 and H5 hold by construction and only their
+effect sizes inform. H3 and H4 are the real tests. We test them with exact McNemar tests, which compare
+paired yes-or-no outcomes, and Wilcoxon signed-rank tests on paired sizes, and Holm's method corrects across
+the five. Effect sizes come first,
 with bootstrap 95\% confidence intervals (10{,}000 resamples) and Wilson intervals for proportions.
-Everything else is descriptive, including the exact McNemar tests of the language-model comparisons, which
-are not corrected for multiplicity.
+Everything else is descriptive.

@@ -19,7 +19,7 @@
 
 \begin{document}
 
-\title{Quantum Program Slicing for Comprehension}
+\title{Foundations of Quantum Program Slicing}
 \author{\IEEEauthorblockN{Anonymous Author(s)}}
 \maketitle
 
@@ -65,7 +65,7 @@ quantum programs, program comprehension, program slicing, program dependence, de
   \caption{The tool slices the Bugs4Q program of Section~\ref{sec:example} statically. srcML parses the
   program in stages 1 and 2, and the letters mark the elements the tool reads. Static interpretation yields
   the operation trace in stage 3, its quantum dependence graph (QDG) in stage 4, and the backward pass from
-  the criterion $\{q_0\}$ the slice in lines in stage 5. Because \texttt{cx} writes its control $q_0$, the
+  the criterion $\{q_0\}$ yields the slice in lines in stage 5. Because \texttt{cx} writes its control $q_0$, the
   faulty line~6 is in the slice. The classical PDG's last writer of $q_0$ is line~5, so it misses the fault.
   The tool computed the figure from the original Bugs4Q file.}
   \label{fig:overview}

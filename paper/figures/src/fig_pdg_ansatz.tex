@@ -28,7 +28,7 @@
   note/.style={font=\scriptsize, anchor=north, align=center},
 }
 \begin{document}
-\begin{minipage}{17.6cm}\begin{minipage}[t]{6.0cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=15,firstnumber=4]{programs/_display/ansatz.py}\par\vspace{10pt}{\scriptsize\raggedright \tikz\draw[dataE](0,0)--(0.45,0); data\par\vspace{2.5pt}\tikz\draw[controlE](0,0)--(0.45,0); control\par\vspace{2.5pt}\tikz\draw[quantumE](0,0)--(0.45,0); quantum\par\vspace{2.5pt}\tikz\draw[missingE](0,0)--(0.45,0); quantum edge missing from the classical PDG\par\vspace{2.5pt}\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice\par\vspace{2.5pt}\tikz\node[missdep,minimum width=4mm,minimum height=2.4mm]{}; dependence the slice misses\par\vspace{2.5pt}\tikz\node[entx,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence\par\vspace{2.5pt}\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion\par\vspace{2.5pt}\tikz\node[cl,minimum width=4mm,minimum height=2.4mm]{}; classical statement (shaded if in the slice)\par\vspace{2.5pt}\tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of a loop\par}\end{minipage}\hfill\begin{minipage}[t]{11.5cm}\vspace{0pt}\centering\begin{tikzpicture}
+\begin{minipage}{17.6cm}\begin{minipage}[t]{6.0cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=15,firstnumber=4]{programs/_display/ansatz.py}\par\vspace{10pt}{\scriptsize\raggedright \tikz\draw[dataE](0,0)--(0.45,0); data\par\vspace{2.5pt}\tikz\draw[controlE](0,0)--(0.45,0); control (measured bit or loop)\par\vspace{2.5pt}\tikz\draw[quantumE](0,0)--(0.45,0); quantum\par\vspace{2.5pt}\tikz\draw[missingE](0,0)--(0.45,0); quantum edge missing from the classical PDG\par\vspace{2.5pt}\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice\par\vspace{2.5pt}\tikz\node[missdep,minimum width=4mm,minimum height=2.4mm]{}; dependence the slice misses\par\vspace{2.5pt}\tikz\node[entx,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence\par\vspace{2.5pt}\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion\par\vspace{2.5pt}\tikz\node[cl,minimum width=4mm,minimum height=2.4mm]{}; classical statement (shaded if in the slice)\par\vspace{2.5pt}\tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of a loop\par}\end{minipage}\hfill\begin{minipage}[t]{11.5cm}\vspace{0pt}\centering\begin{tikzpicture}
 \begin{scope}[xshift=0.000cm]
 \node[insl] (m0) at (4.600,7.293) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 12, iter 0}};
 \node[insl] (m1) at (4.600,6.426) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 13, iter 0}};
@@ -67,12 +67,12 @@
 \draw[missingE] (m7) -- (m10);
 \draw[loopbox] (0.610,4.392) rectangle (5.260,8.013);
 \node[boxlbl, anchor=north west] at (0.630,7.993) {layer = 0};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (5.240,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 14}};
-\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.940,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 11}};
+\node[cl, anchor=north east, inner ysep=0.6pt] at (5.240,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.360,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
 \draw[loopbox] (0.610,0.472) rectangle (5.260,4.093);
 \node[boxlbl, anchor=north west] at (0.630,4.073) {layer = 1};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (5.240,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 14}};
-\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.940,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 11}};
+\node[cl, anchor=north east, inner ysep=0.6pt] at (5.240,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.360,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
 \node[clsl] (cn) at (1.107,9.443) {n = 3\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 4}};
 \node[clsl] (cly) at (2.478,9.443) {layers = 2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 5}};
 \node[clsl] (crng) at (4.306,9.443) {rng = default\_rng(7)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 6}};
@@ -125,12 +125,12 @@
 \draw[dataE] (m14) -- (m15);
 \draw[loopbox] (0.610,4.392) rectangle (5.260,8.013);
 \node[boxlbl, anchor=north west] at (0.630,7.993) {layer = 0};
-\node[clsl, anchor=north east, inner ysep=0.6pt] at (5.240,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 14}};
-\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.940,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 11}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (5.240,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.360,7.993) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
 \draw[loopbox] (0.610,0.472) rectangle (5.260,4.093);
 \node[boxlbl, anchor=north west] at (0.630,4.073) {layer = 1};
-\node[clsl, anchor=north east, inner ysep=0.6pt] at (5.240,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 14}};
-\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.940,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont 11}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (5.240,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
+\node[clsl, anchor=north east, inner ysep=0.6pt] at (3.360,4.073) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
 \node[clsl] (cn) at (1.107,9.443) {n = 3\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 4}};
 \node[clsl] (cly) at (2.478,9.443) {layers = 2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 5}};
 \node[clsl] (crng) at (4.306,9.443) {rng = default\_rng(7)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 6}};

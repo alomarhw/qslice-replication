@@ -122,6 +122,15 @@
   "nested_conditions": false
  },
  {
+  "program": "tool/tests/programs/t08_bit_overwrite.py",
+  "ops": 5,
+  "qubits": 3,
+  "trace_equal": true,
+  "slices_equal": true,
+  "differing_qubits": [],
+  "nested_conditions": false
+ },
+ {
   "program": "paper/figures/src/programs/ansatz.py",
   "ops": 19,
   "qubits": 3,

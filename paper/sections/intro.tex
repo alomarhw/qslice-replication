@@ -5,7 +5,7 @@ interest~\cite{weiser1982programmers}. A slice narrows the code a developer must
 value, and developers use slices when they debug. Quantum programs are hard to understand and debug. A
 quantum program builds a circuit, a sequence of gates that act on qubits, the quantum counterpart of
 bits, and measurements that read qubits into classical bits. Its intermediate states cannot be inspected
-without disturbing them, so assertions on a state work only in simulation~\cite{svore2018qsharp}. Its
+without disturbing them, so assertions on a state cost extra measurements, extra qubits or many runs~\cite{svore2018qsharp}. Its
 outcomes are probabilistic, and the effect of a gate on one qubit may show only in the outcomes of
 another~\cite{ali2022sequantum, murillo2025roadmap}. Understanding quantum code also requires knowledge of
 physics and mathematics that many software developers lack~\cite{daloisio2024llm}. Static checkers find
@@ -26,15 +26,16 @@ contain the operations a developer must inspect.
 
 Section~\ref{sec:example} shows where this matters, on the Bernstein--Vazirani program of the Qiskit
 textbook with a seeded fault. Reading a two-qubit gate as a classical assignment gives a slice that omits
-the faulty line and still reproduces the qubit's state. A real bug from Bugs4Q adds that a fault may show
-only in the correlation between two qubits, which a single-variable criterion cannot express.
+the faulty line and still reproduces the qubit's state. A real bug from Bugs4Q adds that a fault may leave
+the measured outcomes of each qubit unchanged, so a slice must be judged by states rather than by
+histograms.
 
 This paper defines quantum dependence semantically, as the set of operations where a change can alter
 the state of the criterion qubits for some input, and generalizes the criterion to a set of qubits whose
-joint state the slice must preserve. A slice is sound if running it gives the criterion qubits the same
-state as the whole program for every input, and dependence-complete if it contains every dependence. We
-measure how dependence definitions behave against this ground truth, in a study whose protocol we fixed
-before any run, on \numNPairs{} circuit--qubit pairs from three benchmark suites, \numFamCircuits{}
+joint state before readout the slice must preserve. A slice is sound if running it gives the criterion
+qubits the same state as the whole program for every input, and dependence-complete if it contains every
+dependence. We measure how dependence definitions behave against this ground truth, in a pre-registered
+study whose later changes are logged as dated deviations, on \numNPairs{} circuit--qubit pairs from three benchmark suites, \numFamCircuits{}
 circuits with known structure, \numRqThreeUnits{} fault--qubit units from \numMutantsKilled{} seeded
 faults, and real bugs from Bugs4Q~\cite{zhao2023bugs4q}. The definitions range from the classical PDG to
 state-based pruning, which removes operations by simulating the circuit at one input, and they include a
@@ -42,22 +43,24 @@ documented reimplementation of the QPDG as a baseline.
 
 A correct slice needs data, control and quantum dependence. The classical PDG has the first two and still
 gives wrong slices for \numCpdgUnsoundPct{} of the pairs. A two-qubit gate can change its control qubit,
-an effect called phase kickback, and no classical reading of the gate expresses this quantum dependence.
-Following entanglement, as the QPDG does, is sound but keeps \numRqOneYzSize{} of the circuit, and
-\numYzfSize{} when entanglement is tracked along the program. Our quantum dependence graph
-(QDG), in which every gate reads and writes all its qubits, keeps \numRqOneLcSize{}, only \numLcExcess{}
-percentage points above the dependences themselves. It misses no dependence and stays correct on every
-tested input, and its soundness proof is mechanized for an abstract model of local operations.
+for instance by phase kickback, and no classical reading of the gate expresses this quantum dependence. Our
+reimplementation of the QPDG, whose data edges already follow every qubit of a gate, is sound, but its
+entanglement edges make it keep \numRqOneYzSize{} of the circuit, and \numYzfSize{} when entanglement is
+tracked along the program. The quantum dependence graph (QDG), in which every gate reads and writes all its
+qubits, is the backward light cone, a relation that LintQ and Qiskit's \texttt{LightCone} pass already
+compute. We show that it is the right basis for slicing. It keeps \numRqOneLcSize{}, only \numLcExcess{}
+percentage points above the dependences themselves, misses no dependence and stays correct on every tested
+input. Its soundness proof is mechanized in Isabelle/HOL for an abstract model of local operations, and
+the quantum instance of that model is argued on paper.
 Entanglement turns out to be neither necessary nor sufficient for dependence. Commutation pruning shrinks
 the QDG slices further, and it stays correct when angles change only if it treats them as symbols.
 State-based pruning shrinks them by \numHTwoRelative{}, but only for the input it was computed on. It
-removes the faulty operation in \numCQFour{} units and lowers the fault-localization accuracy of three of
-the four language models we tested by up to \numTTwoMaxDrop{} percentage points. A joint criterion over
-all wrong qubits recovers \numCQFourRecovered{} of these units.
+removes the faulty operation in \numCQFour{} units, and a joint criterion over all wrong qubits recovers
+\numCQFourRecovered{} of these units.
 
 This paper lays foundations for quantum program slicing. Section~\ref{sec:dependence} defines quantum
-dependence and slice correctness semantically and introduces the QDG, to our knowledge the first
-dependence graph for quantum programs proved sound and dependence-complete. Section~\ref{sec:tool}
+dependence and slice correctness semantically and proves that the QDG gives sound and
+dependence-complete slices. Section~\ref{sec:tool}
 presents a static slicer for Qiskit programs~\cite{javadi2024qiskit}, Section~\ref{sec:results} gives the
 first comparison of quantum dependence definitions against a semantic ground truth, and
 Section~\ref{sec:discussion} lays out a roadmap of open problems. A replication package regenerates every

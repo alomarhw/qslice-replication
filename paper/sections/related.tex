@@ -1,8 +1,9 @@
 \section{Related Work}\label{sec:related}
 
 \paragraph*{Program slicing}
-Weiser introduced slicing as an aid to program comprehension during debugging~\cite{weiser1982programmers}.
-Ferrante et al.~\cite{ferrante1987pdg} and, across procedures, Horwitz et
+Weiser introduced slicing~\cite{weiser1984program} and showed that programmers use slices when they
+debug~\cite{weiser1982programmers}. Ottenstein and Ottenstein~\cite{ottenstein1984pdg}, Ferrante et
+al.~\cite{ferrante1987pdg} and, across procedures, Horwitz et
 al.~\cite{horwitz1990interprocedural} reduced it to reachability in a dependence graph, and dynamic
 slicing restricts a slice to one execution~\cite{korel1988dynamic, agrawal1990dynamic}, much as state-based
 pruning restricts it to one input. Surveys cover the many variants~\cite{tip1994a, harman2008program}.
@@ -57,7 +58,10 @@ that commute even when they act on the same qubits~\cite{heim2020quantum}. Qiski
 pass restricts a circuit to the gates that can reach an observable and drops gates that commute with
 it~\cite{qiskit2025}. Compilers build gate-dependence graphs to map and schedule circuits on
 hardware~\cite{murali2019triq} and cancel or merge gates while keeping the circuit
-equivalent~\cite{amy2020staq}. None of them selects the operations relevant to a criterion.
+equivalent~\cite{amy2020staq}. Light-cone arguments also bound which gates can affect an observable in the analysis of
+QAOA~\cite{farhi2014qaoa}, and the frame rules of quantum separation logics reason locally about the qubits
+a program touches~\cite{zhou2021qsl, le2022qsl}. None of them selects the operations relevant to a criterion
+of a program, and Theorem~\ref{thm:sound} states the light-cone fact as a property of slices.
 
 \paragraph*{Debugging quantum programs}
 A recent roadmap finds that debugging research for quantum programs is still in an initial phase,
@@ -73,5 +77,5 @@ Bugs4Q~\cite{zhao2023bugs4q} catalog real faults, and static checkers such as
 QChecker~\cite{zhao2023qchecker} and Q-PAC~\cite{nayak2023qpac} detect known bug and fix patterns. Mutation
 tools~\cite{mendiluze2021muskit, fortunato2022qmutpy} and fault models~\cite{garcia2022testing} supply the
 faults of our study, and mutation-based fault localization has been adapted to quantum programs by
-Ishimoto et al.~\cite{ishimoto2025mbfl}. Slicing is complementary to these tools, since it tells them
-where to look.
+Ishimoto et al.~\cite{ishimoto2025mbfl}. Slicing is complementary to these tools, since it restricts where
+they look, although RQ3 shows that a restriction alone does not improve their normalized ranking.

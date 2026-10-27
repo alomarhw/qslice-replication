@@ -25,10 +25,15 @@ Fig.~\ref{fig:loops} shows for the ansatz. Each value carries the lines that com
 the classical lines, the statements that compute an operation's qubits, angles and conditions. The QDG
  does not need angle values, so angles drawn at run time stay symbolic. Where a value cannot be
 resolved statically, the tool over-approximates. An unknown qubit index makes the operation act on every
-qubit it may denote, and an unknown condition runs every branch. A loop over an unknown range repeats its
-body once more than the number of qubits the body touches, which covers every chain of dependences through
-the loop. Because the QDG never removes a qubit from the needed set, these over-approximations can
-only enlarge a slice, and the tool reports each of them. When a circuit is passed to code the tool does not
+qubit it may denote. An unknown condition runs every branch from the state before it, and a variable that
+the branches leave with different values becomes unknown. A \texttt{return}, \texttt{break} or
+\texttt{continue} in such a branch does not end the analysis, and the rest of the function is read as
+may-operations. A loop over an unknown range repeats its body once more than the number of qubits and bits
+the body touches, at most \numToolMaxCopies{} times, which covers every chain of dependences through the
+loop, and a variable that changes between copies leaves the loop unknown. Because the QDG never removes a
+qubit from the needed set, these over-approximations can only enlarge a slice, and the tool reports each of
+them, including a loop whose copies reach the cap. The largest circuit a program builds is the one it
+slices. When a circuit is passed to code the tool does not
 model, such as a rewrite of its directed acyclic graph (DAG) representation, the tool reports it as not
 traced.
 
@@ -52,23 +57,27 @@ traced.
 \end{algorithm}
 
 \paragraph*{Slicing}
-Algorithm~\ref{alg:slice} is the backward pass of Theorem~\ref{thm:sound} on the trace. It skips barriers,
-which do not change the state, and terminal measurements, after which a qubit is not used. Because of
-over-approximation, an operation may act on several candidate qubits. It adds all of them to $N$, and it
-removes a bit from $N$ only when it certainly writes that bit. $\mathit{cond}(o_k)$ is the set of bits that
+Algorithm~\ref{alg:slice} is the backward pass of Theorem~\ref{thm:sound} on the trace, with one
+refinement. It skips barriers, which do not change the state, and terminal measurements, which come after
+the criterion. Because of over-approximation, an operation may act on several candidate qubits. It adds all
+of them to $N$, and it removes a bit from $N$ only when it certainly writes that bit. This is sound, because
+a measurement discards the earlier value of its bit, so no earlier operation reaches the criterion through
+that bit. $\mathit{cond}(o_k)$ is the set of bits that
 the condition of $o_k$ reads. The pass returns the operations of the slice, their lines and iterations, and
 the classical lines they depend on. Its cost is linear in the length of the trace for a fixed criterion.
 
 \paragraph*{Forward slices and profiles}
 The same trace gives the forward slices and qubit slice profiles of Section~\ref{sec:dependence}. A forward
 pass from the operations of a line marks every later operation that acts on a reached qubit or whose
-condition reads a reached bit, and returns their lines and the qubits and bits reached. On every operation
-and qubit of our test programs, the forward slices are dual to the backward ones. A profile combines one
-backward and one forward pass with the srcML of the gate calls on the qubit. Over the qubits of the Bugs4Q,
-textbook and sampled LintQ programs, \numProfBugsQubits{}, \numProfTextQubits{} and \numProfLintqQubits{}
-qubits from a sample of \numProfLintqSample{} LintQ files, the backward and forward slices of a qubit
-differ in their number of lines for \numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and
-\numProfLintqFwdNeBwd{} of the qubits, so neither direction stands in for the other. Of the qubits, \numProfBugsInFunction{},
+condition reads a reached bit, and a bit stops being reached when a measurement the start cannot affect
+certainly overwrites it, as in the backward pass. The pass returns the lines and the qubits and bits
+reached. On every operation and qubit of our test programs, one of which overwrites a bit before a
+condition reads it, the forward slices are dual to the backward ones. A profile combines one
+backward and one forward pass with the srcML of the gate calls on the qubit. We computed the profiles of
+the \numProfBugsQubits{} qubits of the Bugs4Q programs, the \numProfTextQubits{} of the textbook and the
+\numProfLintqQubits{} of a sample of \numProfLintqSample{} LintQ files. The backward and forward slices of a
+qubit differ in their number of lines for \numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and
+\numProfLintqFwdNeBwd{} of them, so neither direction stands in for the other. Of the qubits, \numProfBugsInFunction{},
 \numProfTextInFunction{} and \numProfLintqInFunction{} are acted on inside a function, where
 they go by the name of a parameter. In \numProfTextAliasGenuine{} textbook programs, checked by hand, a
 qubit has a second name, a function parameter or a loop variable over a register.
@@ -92,6 +101,6 @@ others build no circuit or are fragments. On the \numToolTextbookQiskit{} Qiskit
 textbook~\cite{qiskittextbook}, \numToolTextbookCircuit{} yield a circuit, and on the
 \numToolLintqQiskit{} Qiskit programs that the authors of the LintQ static analyzer collected from
 GitHub~\cite{paltenghi2024lintq},
-\numToolLintqCircuit{} yield a circuit, none crashes the tool, and \numToolLintqTimeouts{} exceeds
-the 60~s limit, because its nested loops of unknown length multiply the copies of their bodies. The tool takes \numToolBugsMedianMs{}~ms
+\numToolLintqCircuit{} yield a circuit and none crashes the tool. The per-file limit
+of 60~s stops \numToolLintqTimeouts{} programs, which count as not sliced. The tool takes \numToolBugsMedianMs{}~ms
 per Bugs4Q program and \numToolTextbookMedianMs{}~ms per textbook notebook in the median, srcML included.

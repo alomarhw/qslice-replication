@@ -170,8 +170,8 @@ def classical(pos, boxes, row, edges, slice_lines):
         out.append(rf"\node[boxlbl, anchor=north west] at ({min(bx) - 0.64:.3f},{max(by) + 0.70:.3f}) {{{lbl}}};")
         for i, (ln, txt) in enumerate(hdr):
             sty = "clsl" if ln in slice_lines else "cl"
-            out.append(rf"\node[{sty}, anchor=north east, inner ysep=0.6pt] at ({max(bx) + 0.64 - i * 1.30:.3f},{max(by) + 0.70:.3f}) "
-                       rf"{{{txt}\,{{\rmfamily\itshape\fontsize{{5}}{{5.5}}\selectfont {ln}}}}};")
+            out.append(rf"\node[{sty}, anchor=north east, inner ysep=0.6pt] at ({max(bx) + 0.64 - i * 1.88:.3f},{max(by) + 0.70:.3f}) "
+                       rf"{{{txt}\,{{\rmfamily\itshape\fontsize{{5}}{{5.5}}\selectfont (line {ln})}}}};")
     for key, ln, txt, (fx, fy) in row:
         sty = "clsl" if ln in slice_lines else "cl"
         out.append(rf"\node[{sty}] (c{key}) at ({x0 + fx * w:.3f},{ytop + fy:.3f}) {{{txt}\\[-1pt]{{\rmfamily\itshape\fontsize{{5}}{{5.5}}\selectfont line {ln}}}}};")
@@ -242,7 +242,7 @@ def listing(prog, first, last, width, tag, below=""):
 
 
 LEGEND = {"data": r"\tikz\draw[dataE](0,0)--(0.45,0); data",
-          "control": r"\tikz\draw[controlE](0,0)--(0.45,0); control",
+          "control": r"\tikz\draw[controlE](0,0)--(0.45,0); control (measured bit or loop)",
           "quantum": r"\tikz\draw[quantumE](0,0)--(0.45,0); quantum",
           "missing": r"\tikz\draw[missingE](0,0)--(0.45,0); quantum edge missing from the classical PDG",
           "slice": r"\tikz\node[insl,minimum width=4mm,minimum height=2.4mm]{}; in the slice",

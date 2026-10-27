@@ -8,18 +8,22 @@ soundness is judged by the oracle's fidelity, not by the measured dependences, a
 soundness for all inputs is proved. The other rules are judged at $\ket{0\dots0}$ and on \numRobDraws{}
 draws per input regime, so they could be wrong at inputs we did not draw. The fidelity threshold of
 $1 - 10^{-6}$ is far above the oracle's error of \numOracleErr{}. Whether the slice contains the fault site
-is a proxy for whether it helps a developer, so we add mutation-based ranking and language models, but we
-ran no study with developers. The language models saw one prompt at temperature~0.
+is a proxy for whether it helps a developer, so we add mutation-based ranking, but we ran no study with
+developers. Pairs and units are qubits of the same circuits and mutants, and several circuits implement one
+algorithm at different widths, so intervals that treat them as independent are too narrow. H3 and H4 fail
+by margins far wider than this effect.
 
 \paragraph*{Internal validity}
 Yu and Zhao's graph is described in prose, and we implemented our reading of it, with every interpretation
-choice recorded before the runs. A different reading could change its precision, but not its soundness,
-since its data edges alone already follow every qubit of a gate. The benchmark circuits may be in the language models' training data,
-which would favor the whole circuit and is the same for every slice.
+choice recorded before the runs. Under our reading its data edges already follow every qubit of a gate,
+so its slices contain the QDG slices and are sound by construction, and what we measure is the cost of its
+entanglement edges. A reading in which a gate only reads its control would be unsound wherever those
+edges do not reach.
 
 \paragraph*{External validity}
 Exact simulation limits corpus~A to \numMaxQubits{} qubits. Corpus~L extends the cost measurements to
-20 qubits but not the soundness checks, and Theorem~\ref{thm:sound} covers any width. The circuits come
+20 qubits and the soundness checks to its \numCorpusLSoundCircuits{} circuits that the simulator can check,
+and Theorem~\ref{thm:sound} covers any width. The circuits come
 from benchmark suites rather than applications, and the real bugs are few and small. All programs are
 Qiskit programs, and the dependence rules are stated on circuits, so they carry over to other languages
 once their programs are lowered to circuits. A program whose loops depend on measurement outcomes, such as
