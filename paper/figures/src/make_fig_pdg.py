@@ -336,7 +336,7 @@ def ansatz_side():
     qc, lines, sl, El, Er, iters, n = A["qc"], A["lines"], A["sl"], A["El"], A["Er"], A["iters"], A["n"]
     lay = {L: [k for k in range(n) if iters[k] == L] for L in range(2)}
     assert sorted(lay[0] + lay[1]) == [k for k in range(n) if lines[k] in (12, 13, 15)] and all(lines[k] != 21 for k in range(n))
-    pos = layout(n, El | Er, 1.42, 0.78, clusters=lay)
+    pos = layout(n, El | Er, 1.66, 0.86, clusters=lay)
     aux = [k for k in range(n) if iters[k] is None]
     lx = [pos[k][0] for k in lay[0] + lay[1]]
     ybot = min(pos[k][1] for k in lay[1]) - 1.2
@@ -347,8 +347,8 @@ def ansatz_side():
     for k in range(n):
         txt, sub = label(qc, lines, k, iters)
         sty = level.get(k, "op") + (",crit" if k == A["crit"] else "")
-        o.append(rf"\node[{sty}, font=\ttfamily\fontsize{{7}}{{7.8}}\selectfont] (m{k}) at ({pos[k][0]:.3f},{pos[k][1]:.3f}) "
-                 rf"{{{txt}\\[-1pt]{{\rmfamily\itshape\fontsize{{5.9}}{{6.4}}\selectfont {sub}}}}};")
+        o.append(rf"\node[{sty}, font=\ttfamily\fontsize{{7.8}}{{8.6}}\selectfont] (m{k}) at ({pos[k][0]:.3f},{pos[k][1]:.3f}) "
+                 rf"{{{txt}\\[-1pt]{{\rmfamily\itshape\fontsize{{6.5}}{{7}}\selectfont {sub}}}}};")
     for i, j, kind in sorted(Er):
         o.append(rf"\draw[{kind}E] (m{i}) -- (m{j});")
     for i, j in sorted(A["only_cp"]):
@@ -359,21 +359,21 @@ def ansatz_side():
     ce = [("n", "qc", "data"), ("ly", "for", "data"), ("for", 0, "control", "west"), ("for", 1, "control", "west"),
           ("rng", 0, "data", "east"), ("rng", 1, "data", "east"), ("qc", 0, "data", "east"), ("qc", 1, "data", "east")]
     assert set(A["T"]["wire"]["classical"]) >= {ln for _, ln, *_ in row} | {11, 14}, "a drawn classical statement is not in the QDG slice"
-    xc, _ = classical(pos, boxes, row, ce, set(), insty="cl", pad=0.98, hdrgap=2.2)
+    xc, _ = classical(pos, boxes, row, ce, set(), insty="cl", pad=1.12, hdrgap=2.5)
     o.append(xc)
     xs = [p[0] for p in pos.values()]
     o.append(rf"\node[font=\footnotesize, anchor=north, align=center] at ({(min(xs) + max(xs)) / 2:.3f},{ybot - 0.42:.3f}) {{{A['note']}}};")
-    leg = r"\par\vspace{3pt}".join(r"\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm " + LEGEND[i] + "}" for i in
+    leg = r"\par\vspace{3pt}".join(r"\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm " + LEGEND[i] + "}" for i in
                                    ["data", "control", "quantumq", "cpdgonly", "lvdu", "lvcp", "lvqd", "lvyzh", "crit",
                                     "classicalall", "loop"])
-    head = (TEX_HEAD.replace(r"basicstyle=\ttfamily\fontsize{5.6}{6.9}\selectfont", r"basicstyle=\ttfamily\fontsize{6.7}{8.3}\selectfont")
-            .replace(r"fill=black!4, font=\ttfamily\fontsize{5.6}{6.2}\selectfont}", r"fill=black!4, font=\ttfamily\fontsize{6.5}{7.2}\selectfont}")
-            .replace(r"boxlbl/.style={font=\ttfamily\fontsize{5.2}{5.6}\selectfont", r"boxlbl/.style={font=\ttfamily\fontsize{6.2}{6.8}\selectfont"))
-    assert head.count("6.5}{7.2}") == 1 and head.count("6.2}{6.8}") == 1 and head.count("6.7}{8.3}") == 1
+    head = (TEX_HEAD.replace(r"basicstyle=\ttfamily\fontsize{5.6}{6.9}\selectfont", r"basicstyle=\ttfamily\fontsize{7.2}{9}\selectfont")
+            .replace(r"fill=black!4, font=\ttfamily\fontsize{5.6}{6.2}\selectfont}", r"fill=black!4, font=\ttfamily\fontsize{7.2}{8}\selectfont}")
+            .replace(r"boxlbl/.style={font=\ttfamily\fontsize{5.2}{5.6}\selectfont", r"boxlbl/.style={font=\ttfamily\fontsize{6.8}{7.4}\selectfont"))
+    assert head.count("7.2}{8}") == 1 and head.count("6.8}{7.4}") == 1 and head.count("7.2}{9}") == 1
     tex = (head
-           + r"\begin{minipage}{17.8cm}" + listing("ansatz.py", 4, 20, "6.55cm", "(a) VQE ansatz",
+           + r"\begin{minipage}{17.8cm}" + listing("ansatz.py", 4, 20, "7.05cm", "(a) VQE ansatz",
                                                    r"\par\vspace{10pt}{\footnotesize " + leg + r"\par}") +
-           r"\hfill\begin{minipage}[t]{11.1cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]"
+           r"\hfill\begin{minipage}[t]{10.6cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]"
            r"\begin{tikzpicture}" + "\n" + "\n".join(o) + "\n" + r"\end{tikzpicture}\end{minipage}\end{minipage}\end{document}" + "\n")
     (SRC / "fig_pdg_ansatz.tex").write_text(tex)
     return {"layout": "side", "quantum": sorted((i, j) for i, j, k in Er if k == "quantum"),

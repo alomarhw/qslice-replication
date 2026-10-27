@@ -5,7 +5,7 @@
 \definecolor{cblue}{HTML}{0072B2}\definecolor{cver}{HTML}{D55E00}\definecolor{cgreen}{HTML}{009E73}
 \definecolor{cpurple}{HTML}{7E57C2}
 \definecolor{lvA}{HTML}{24527F}\definecolor{lvB}{HTML}{86B6DD}\definecolor{lvC}{HTML}{FFE27A}
-\lstdefinestyle{qiskit}{language=Python,basicstyle=\ttfamily\fontsize{6.7}{8.3}\selectfont,numbers=left,
+\lstdefinestyle{qiskit}{language=Python,basicstyle=\ttfamily\fontsize{7.2}{9}\selectfont,numbers=left,
   numberstyle=\fontsize{5}{6}\selectfont\color{black!55},numbersep=3pt,keywordstyle=\color{cblue}\bfseries,
   commentstyle=\color{black!55}\itshape,showstringspaces=false,frame=single,rulecolor=\color{black!25},
   xleftmargin=13pt,framexleftmargin=11pt,framerule=0.4pt,columns=flexible,keepspaces=true,aboveskip=0pt,belowskip=0pt}
@@ -28,33 +28,33 @@
   controlE/.style={-{Stealth[length=1.3mm]}, draw=cgreen, line width=0.85pt, dash pattern=on 2.2pt off 1.1pt},
   missingE/.style={-{Stealth[length=1.3mm]}, draw=cver, line width=0.85pt, dash pattern=on 1.8pt off 1.2pt},
   ttl/.style={font=\footnotesize\bfseries, anchor=south},
-  cl/.style={op, draw=black!45, fill=black!4, font=\ttfamily\fontsize{6.5}{7.2}\selectfont},
+  cl/.style={op, draw=black!45, fill=black!4, font=\ttfamily\fontsize{7.2}{8}\selectfont},
   clsl/.style={cl, fill=cblue!22, draw=black!60},
   loopbox/.style={draw=black!40, rounded corners=3pt, line width=0.5pt, dash pattern=on 2.5pt off 1.2pt},
-  boxlbl/.style={font=\ttfamily\fontsize{6.2}{6.8}\selectfont, text=black!65, inner sep=1pt},
+  boxlbl/.style={font=\ttfamily\fontsize{6.8}{7.4}\selectfont, text=black!65, inner sep=1pt},
   note/.style={font=\scriptsize, anchor=north, align=center},
 }
 \begin{document}
-\begin{minipage}{17.8cm}\begin{minipage}[t]{6.55cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=20,firstnumber=4]{programs/_display/ansatz.py}\par\vspace{10pt}{\footnotesize \parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\draw[dataE](0,0)--(0.45,0); data}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\draw[controlE](0,0)--(0.45,0); control (measured bit or loop)}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\draw[quantumE](0,0)--(0.45,0); quantum, not in the classical PDG}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\draw[cpdgE](0,0)--(0.45,0); classical PDG only, skips a CNOT}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\node[lvdu,minimum width=4mm,minimum height=2.4mm]{}; kept by every rule, def-use included}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\node[lvcp,minimum width=4mm,minimum height=2.4mm]{}; added by the classical PDG}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\node[lvqd,minimum width=4mm,minimum height=2.4mm]{}; added by the QDG}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\node[entxh,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\node[cl,minimum width=4mm,minimum height=2.4mm]{}; classical statement, all in the QDG slice}\par\vspace{3pt}\parbox[t]{6.3cm}{\raggedright\hangindent=0.66cm \tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of a loop}\par}\end{minipage}\hfill\begin{minipage}[t]{11.1cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]\begin{tikzpicture}
-\node[lvdu, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m0) at (8.165,7.110) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 12, iter 0}};
-\node[lvdu, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m1) at (8.165,6.265) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 13, iter 0}};
-\node[lvqd, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m2) at (5.210,7.110) {ry(2.44) q1\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 12, iter 0}};
-\node[lvqd, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m3) at (5.210,6.265) {rz(1.42) q1\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 13, iter 0}};
-\node[lvqd, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m4) at (2.254,6.265) {ry(0.94) q2\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 12, iter 0}};
-\node[lvqd, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m5) at (2.254,5.420) {rz(5.49) q2\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 13, iter 0}};
-\node[lvqd, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m6) at (5.210,5.420) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 15, iter 0}};
-\node[lvqd, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m7) at (3.356,4.574) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 15, iter 0}};
-\node[lvdu, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m8) at (8.165,3.289) {ry(0.02) q0\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 12, iter 1}};
-\node[lvdu, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m9) at (8.165,2.443) {rz(5.16) q0\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 13, iter 1}};
-\node[lvqd, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m10) at (5.210,3.289) {ry(2.50) q1\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 12, iter 1}};
-\node[lvqd, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m11) at (5.210,2.443) {rz(2.94) q1\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 13, iter 1}};
-\node[entxh, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m12) at (2.254,2.443) {ry(0.95) q2\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 12, iter 1}};
-\node[entxh, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m13) at (2.505,1.598) {rz(1.75) q2\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 13, iter 1}};
-\node[lvqd, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m14) at (6.662,1.598) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 15, iter 1}};
-\node[entxh, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m15) at (2.505,0.753) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 15, iter 1}};
-\node[lvcp, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m16) at (2.554,-0.447) {h q3\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 17}};
-\node[lvcp, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m17) at (5.360,-0.447) {measure q3\,\textrightarrow\,c3\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont line 18}};
-\node[lvdu,crit, font=\ttfamily\fontsize{7}{7.8}\selectfont] (m18) at (8.165,-0.447) {if c3:x q0\\[-1pt]{\rmfamily\itshape\fontsize{5.9}{6.4}\selectfont lines 19--20}};
+\begin{minipage}{17.8cm}\begin{minipage}[t]{7.05cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=20,firstnumber=4]{programs/_display/ansatz.py}\par\vspace{10pt}{\footnotesize \parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[dataE](0,0)--(0.45,0); data}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[controlE](0,0)--(0.45,0); control (measured bit or loop)}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[quantumE](0,0)--(0.45,0); quantum, not in the classical PDG}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[cpdgE](0,0)--(0.45,0); classical PDG only, skips a CNOT}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[lvdu,minimum width=4mm,minimum height=2.4mm]{}; kept by every rule, def-use included}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[lvcp,minimum width=4mm,minimum height=2.4mm]{}; added by the classical PDG}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[lvqd,minimum width=4mm,minimum height=2.4mm]{}; added by the QDG}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[entxh,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[cl,minimum width=4mm,minimum height=2.4mm]{}; classical statement, all in the QDG slice}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of a loop}\par}\end{minipage}\hfill\begin{minipage}[t]{10.6cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]\begin{tikzpicture}
+\node[lvdu, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m0) at (9.546,7.840) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 12, iter 0}};
+\node[lvdu, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m1) at (9.546,6.908) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 13, iter 0}};
+\node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m2) at (6.090,7.840) {ry(2.44) q1\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 12, iter 0}};
+\node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m3) at (6.090,6.908) {rz(1.42) q1\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 13, iter 0}};
+\node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m4) at (2.635,6.908) {ry(0.94) q2\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 12, iter 0}};
+\node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m5) at (2.635,5.976) {rz(5.49) q2\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 13, iter 0}};
+\node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m6) at (6.090,5.976) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 15, iter 0}};
+\node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m7) at (3.924,5.044) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 15, iter 0}};
+\node[lvdu, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m8) at (9.546,3.626) {ry(0.02) q0\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 12, iter 1}};
+\node[lvdu, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m9) at (9.546,2.694) {rz(5.16) q0\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 13, iter 1}};
+\node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m10) at (6.090,3.626) {ry(2.50) q1\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 12, iter 1}};
+\node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m11) at (6.090,2.694) {rz(2.94) q1\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 13, iter 1}};
+\node[entxh, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m12) at (2.635,2.694) {ry(0.95) q2\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 12, iter 1}};
+\node[entxh, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m13) at (2.928,1.762) {rz(1.75) q2\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 13, iter 1}};
+\node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m14) at (7.789,1.762) {cx q0,q1\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 15, iter 1}};
+\node[entxh, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m15) at (2.928,0.830) {cx q1,q2\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 15, iter 1}};
+\node[lvcp, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m16) at (2.935,-0.370) {h q3\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 17}};
+\node[lvcp, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m17) at (6.240,-0.370) {measure q3\,\textrightarrow\,c3\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 18}};
+\node[lvdu,crit, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m18) at (9.546,-0.370) {if c3:x q0\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont lines 19--20}};
 \draw[dataE] (m0) -- (m1);
 \draw[dataE] (m1) -- (m6);
 \draw[dataE] (m2) -- (m3);
@@ -78,26 +78,26 @@
 \draw[cpdgE] (m1) to[bend right=18] (m8);
 \draw[cpdgE] (m6) to[bend right=18] (m10);
 \draw[cpdgE] (m9) to[bend right=18] (m18);
-\draw[loopbox] (1.274,4.274) rectangle (9.145,7.830);
-\node[boxlbl, anchor=north west] at (1.294,7.810) {layer = 0};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (9.125,7.810) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (6.925,7.810) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
-\draw[loopbox] (1.274,0.453) rectangle (9.145,4.009);
-\node[boxlbl, anchor=north west] at (1.294,3.989) {layer = 1};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (9.125,3.989) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (6.925,3.989) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
-\node[cl] (cn) at (1.938,9.460) {n = 3\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 4}};
-\node[cl] (cly) at (4.119,9.460) {layers = 2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 5}};
-\node[cl] (crng) at (7.547,9.460) {rng = default\_rng(7)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 6}};
-\node[cl] (cqc) at (6.456,8.830) {qc = QuantumCircuit(n + 1, n + 1)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 8}};
-\node[cl] (cfor) at (3.262,8.280) {for layer in range(layers)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 10}};
+\draw[loopbox] (1.515,4.744) rectangle (10.666,8.560);
+\node[boxlbl, anchor=north west] at (1.535,8.540) {layer = 0};
+\node[cl, anchor=north east, inner ysep=0.6pt] at (10.646,8.540) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
+\node[cl, anchor=north east, inner ysep=0.6pt] at (8.146,8.540) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
+\draw[loopbox] (1.515,0.530) rectangle (10.666,4.346);
+\node[boxlbl, anchor=north west] at (1.535,4.326) {layer = 1};
+\node[cl, anchor=north east, inner ysep=0.6pt] at (10.646,4.326) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
+\node[cl, anchor=north east, inner ysep=0.6pt] at (8.146,4.326) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
+\node[cl] (cn) at (2.281,10.190) {n = 3\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 4}};
+\node[cl] (cly) at (4.821,10.190) {layers = 2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 5}};
+\node[cl] (crng) at (8.811,10.190) {rng = default\_rng(7)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 6}};
+\node[cl] (cqc) at (7.542,9.560) {qc = QuantumCircuit(n + 1, n + 1)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 8}};
+\node[cl] (cfor) at (3.823,9.010) {for layer in range(layers)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 10}};
 \draw[dataE] (cn) -- (cqc);
 \draw[dataE] (cly) -- (cfor);
-\draw[controlE] (cfor.west) -| (1.154,7.410) -- (1.274,7.410);
-\draw[controlE] (cfor.west) -| (1.064,3.589) -- (1.274,3.589);
-\draw[dataE] (crng.east) -| (9.265,7.410) -- (9.145,7.410);
-\draw[dataE] (crng.east) -| (9.355,3.589) -- (9.145,3.589);
-\draw[dataE] (cqc.east) -| (9.445,7.410) -- (9.145,7.410);
-\draw[dataE] (cqc.east) -| (9.535,3.589) -- (9.145,3.589);
-\node[font=\footnotesize, anchor=north, align=center] at (5.210,-0.867) {slices of $q_0$, of 19 operations:\\def-use 5, $F = 0.55$\enspace$\cdot$\enspace classical PDG 7, $F = 0.97$\\QDG 16, exactly the dependences, $F = 1.00$\enspace$\cdot$\enspace{}QPDG 19, $F = 1.00$};
+\draw[controlE] (cfor.west) -| (1.395,8.140) -- (1.515,8.140);
+\draw[controlE] (cfor.west) -| (1.305,3.926) -- (1.515,3.926);
+\draw[dataE] (crng.east) -| (10.786,8.140) -- (10.666,8.140);
+\draw[dataE] (crng.east) -| (10.876,3.926) -- (10.666,3.926);
+\draw[dataE] (cqc.east) -| (10.966,8.140) -- (10.666,8.140);
+\draw[dataE] (cqc.east) -| (11.056,3.926) -- (10.666,3.926);
+\node[font=\footnotesize, anchor=north, align=center] at (6.090,-0.790) {slices of $q_0$, of 19 operations:\\def-use 5, $F = 0.55$\enspace$\cdot$\enspace classical PDG 7, $F = 0.97$\\QDG 16, exactly the dependences, $F = 1.00$\enspace$\cdot$\enspace{}QPDG 19, $F = 1.00$};
 \end{tikzpicture}\end{minipage}\end{minipage}\end{document}
