@@ -17,9 +17,11 @@ algorithm at different widths, so intervals that treat them as independent are t
 whole families widens them but changes no conclusion.
 
 \paragraph*{Internal validity}
-Yu and Zhao's graph is described in prose, and every choice of our reading was recorded before the runs.
-Since the two readings of its data dependence differ in soundness, claims about the QPDG hold for the
-reading named. State-based
+Yu and Zhao's graph is described in prose, and we implemented our reading of it, with every interpretation
+choice recorded before the runs. Under our reading its data edges already follow every qubit of a gate,
+so its slices contain the QDG slices and are sound by construction, and what we measure is the cost of its
+entanglement edges. The reading in which a gate only reads its control, which we added after the
+results, is unsound on \numYzRoUnsound{} pairs, so claims about the QPDG hold for the reading named. State-based
 pruning compares quantities with $10^{-9}$, and on one Bugs4Q program rounding flips some of its decisions
 between runs. On corpus~A, three fresh runs reproduce all \numQRepeatPairs{} slices.
 

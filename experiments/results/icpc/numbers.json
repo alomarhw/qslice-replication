@@ -2212,68 +2212,6 @@
   "tex": "29, 40, 47 and 51",
   "source": "paper/figures/src/fig_bv_facts.json"
  },
- "BvProfDefsSet": {
-  "value": [
-   29,
-   40,
-   47,
-   51
-  ],
-  "tex": "\\{29, 40, 47, 51\\}",
-  "source": "paper/figures/src/fig_bv_facts.json"
- },
- "BvProfNameISet": {
-  "value": [
-   29,
-   47,
-   51
-  ],
-  "tex": "\\{29, 47, 51\\}",
-  "source": "paper/figures/src/fig_bv_facts.json"
- },
- "BvProfNameQSet": {
-  "value": [
-   40
-  ],
-  "tex": "\\{40\\}",
-  "source": "paper/figures/src/fig_bv_facts.json"
- },
- "BvProfDependentsSet": {
-  "value": [
-   1,
-   3
-  ],
-  "tex": "\\{q_1, q_3\\}",
-  "source": "paper/figures/src/fig_bv_facts.json"
- },
- "BvProfBitsSet": {
-  "value": [
-   0
-  ],
-  "tex": "\\{c_0\\}",
-  "source": "paper/figures/src/fig_bv_facts.json"
- },
- "BvProfBackwardSet": {
-  "value": [
-   24,
-   25,
-   29,
-   40,
-   47
-  ],
-  "tex": "\\{24, 25, 29, 40, 47\\}",
-  "source": "paper/figures/src/fig_bv_facts.json"
- },
- "BvProfForwardSet": {
-  "value": [
-   29,
-   40,
-   47,
-   51
-  ],
-  "tex": "\\{29, 40, 47, 51\\}",
-  "source": "paper/figures/src/fig_bv_facts.json"
- },
  "BvBuggyOut": {
   "value": "000",
   "tex": "000",

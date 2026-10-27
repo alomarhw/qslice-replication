@@ -4,9 +4,12 @@
 The definitions and results suggest how a slicer for quantum programs should be built. The base should be the QDG,
 in which every gate reads and writes all its qubits. It is sound for every input, misses no dependence,
 and costs milliseconds. Reading a gate as a classical assignment is the pitfall to avoid, and adding
-control dependence does not remove it. Entanglement edges, as in the QPDG, buy no soundness that the QDG
-lacks and cost precision, and they contain a few more faults only by keeping more of the program. A slicer
-should warn that no slice of a faulty program shows an omitted interaction. Precision beyond the
+control dependence does not remove it. Entanglement edges, as in the QPDG, should not be added to make a slice safer. They
+buy no soundness that the QDG lacks and cost precision, because a later operation on an entangled partner
+cannot change the criterion's state, as Proposition~\ref{prop:ent} shows. They contain a few more faults of
+a faulty program only by keeping more of it. No dependence slice of the faulty program can show an
+omitted interaction, and every fault the QDG slice misses is one, so a slicer should say so. Whether
+slices shorten debugging remains a hypothesis, since our localization results do not show it. Precision beyond the
 QDG slice can come from commutation pruning, which stays correct on every random input but fails when the
 angles change. Treating every angle as a symbol before the pass, an exploratory variant, kept it correct under all three
 input regimes, so a slicer for variational programs should use the symbolic variant or recompute commutation
