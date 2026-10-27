@@ -13,29 +13,28 @@
     \toprule
     Rule & Dependence & Wrong & Dyn. & Recall & Prec. & Size \\
     \midrule
-    Dependence set$^{b}$ & semantic            & --                     & --                       & 1.000                 & 1.000                    & \numDepFloor{} \\
+    Dependence set$^{a}$ & semantic            & --                     & --                       & 1.000                 & 1.000                    & \numDepFloor{} \\
     \midrule
     Def-use            & data                  & \numRqOneDuUnsound{}   & \numDuDynamicUnsound{}   & \numRqOneDuRecall{}   & \numRqOneDuPrecision{}   & \numRqOneDuSize{} \\
     Classical PDG      & data, control         & \numCpdgUnsound{}      & \numCpdgDynamicUnsound{} & \numCpdgRecall{}      & \numCpdgPrecision{}      & \numCpdgSize{} \\
     QDG          & + quantum             & \numRqOneLcUnsound{}   & \numLcDynamicUnsound{}   & \numRqOneLcRecall{}   & \numRqOneLcPrecision{}   & \numRqOneLcSize{} \\
     QPDG~\cite{yu2025qpdg} & QDG + entangl.       & \numRqOneYzUnsound{}   & \numYzDynamicUnsound{}   & \numRqOneYzRecall{}   & \numRqOneYzPrecision{}   & \numRqOneYzSize{} \\
-    QPDG, flow$^{c}$   & QDG + entangl.        & \numYzfUnsound{}      & \numYzfDynamicUnsound{}  & \numYzfRecall{}       & \numYzfPrecision{}       & \numYzfSize{} \\
+    QPDG, flow$^{b}$   & QDG + entangl.        & \numYzfUnsound{}      & \numYzfDynamicUnsound{}  & \numYzfRecall{}       & \numYzfPrecision{}       & \numYzfSize{} \\
     \midrule
-    Commutation$^{a}$  & QDG, pruned           & \numLcqUnsound{}       & \numLcqDynamicUnsound{}  & \numLcqRecall{}       & \numLcqPrecision{}       & \numLcqSize{} \\
-    Comm., symbolic$^{a}$ & QDG, pruned        & \numLcqsUnsound{}      & \numLcqsDynamicUnsound{} & \numLcqsRecall{}      & \numLcqsPrecision{}      & \numLcqsSize{} \\
+    Commutation$^{c}$  & QDG, pruned           & \numLcqUnsound{}       & \numLcqDynamicUnsound{}  & \numLcqRecall{}       & \numLcqPrecision{}       & \numLcqSize{} \\
+    Comm., symbolic$^{c}$ & QDG, pruned        & \numLcqsUnsound{}      & \numLcqsDynamicUnsound{} & \numLcqsRecall{}      & \numLcqsPrecision{}      & \numLcqsSize{} \\
     State-based        & QDG, pruned           & \numRqOneQUnsound{}    & \numQDynamicUnsound{}    & \numRqOneQRecall{}    & \numRqOneQPrecision{}    & \numRqOneQSize{} \\
     \bottomrule
   \end{tabular}
   \end{adjustbox}\\[2pt]
-  {\footnotesize $^{a}$\,On the \numLcqApplicable{} pairs where Qiskit's pass applies, of which
+  {\footnotesize $^{a}$\,The smallest dependence-complete slice. It is a reference, not a slicer, so it has no
+  soundness value. $^{b}$\,Exploratory, with two qubits entangled from the first gate that couples them
+  onward. $^{c}$\,On the \numLcqApplicable{} pairs where Qiskit's pass applies, of which
   \numLcqDynamicN{} are dynamic. The pass fails on \numLcqNaMeasurements{} pairs of circuits that measure, and on \numLcqNaReorder{} its
-output cannot be mapped back in order.
-  $^{b}$\,The smallest dependence-complete slice. It is a reference, not a slicer, so it has no
-  soundness value. $^{c}$\,Exploratory, with entanglement tracked from the gate that couples two qubits
-  on.}
+output cannot be mapped back in order.}
 \end{table}
 
-\subsection{RQ1: Which definitions give sound and complete slices?}
+\subsection{RQ1: Which rules give sound and complete slices?}
 
 Table~\ref{tab:rq1} shows that only the rules with quantum dependence are sound. The classical PDG gives a
 wrong slice for \numCpdgUnsound{} of the \numNPairs{} pairs, or \numCpdgUnsoundPct{}, with a 95\% interval of \numCcCpdgUnsound{} when the
@@ -58,9 +57,8 @@ which starts from the QDG slice, is wrong on fewer pairs than def-use, \numRqOne
 \numRqOneDuUnsound{} with exact McNemar and Holm \numHOnePHolm{}.
 
 The QDG is sound on every pair and recovers every measured dependence, as Theorem~\ref{thm:sound} and
-Proposition~\ref{prop:complete} predict. None of the study's circuits nests conditional blocks, which the
-circuit-level slicer reads only by their outer condition, so these pairs do not test that case. The static
-slicer handles it, and Section~\ref{sec:tool} checks it on nested programs. Our
+Proposition~\ref{prop:complete} predict. None of the study's circuits nests conditional blocks, a case that
+Section~\ref{sec:tool} checks on the static slicer. Our
 reimplementation of the QPDG is sound by construction, since its data edges already let every gate write
 all its qubits, so its slice contains the QDG slice. Its entanglement edges only bring in operations that
 are not dependences. Its precision falls from \numRqOneLcPrecision{} to
@@ -100,7 +98,7 @@ operation influences in the ground truth, the duality holds, and the precision o
   \includegraphics[width=\columnwidth]{figures/fig_size.pdf}
   \caption{Mean slice size by circuit width, for RQ1. The grey bars are the dependence set, the smallest
   size a dependence-complete slice can have. Corpus~L has no grey bar, because its ground truth would need
-  exact simulation of every perturbation at 15 to 20 qubits. Commutation is shown where Qiskit's pass
+  exact simulation of every perturbation at \numCorpusLMinQubits{} to \numCorpusLMaxQubits{} qubits. Commutation is shown where Qiskit's pass
   applies.}
   \label{fig:size}
 \end{figure}
@@ -111,11 +109,11 @@ of its circuit on average, so no dependence-complete slice can be smaller, and t
 \numNPairs{} pairs, and on \numPairsAllDep{} pairs every operation of the circuit is a dependence.
 The QPDG keeps \numYzExcess{} points more than the dependence set. The sizes are large because
 most benchmark circuits are small and densely coupled. As Fig.~\ref{fig:size} shows, slices shrink as
-circuits widen and less of a circuit can reach one qubit. At 11 to 14 qubits the QDG slice keeps
+circuits widen and less of a circuit can reach one qubit. At \numWElevenLo{} to \numWElevenHi{} qubits the QDG slice keeps
 \numWElevenLc{} of the circuit. On corpus~L, most of whose circuits come from VeriQBench, it keeps
 \numCorpusLSizeLc{}, so width alone does not set the size. The QPDG stays near
 \numCorpusLSizeYz{}, because it links the operations of a whole coupling component however wide the
-circuit is. Commutation pruning falls below the dependence set, to \numWElevenLcq{} at 11 to 14 qubits,
+circuit is. Commutation pruning falls below the dependence set, to \numWElevenLcq{} at \numWElevenLo{} to \numWElevenHi{} qubits,
 because it is sound at the tested inputs but not dependence-complete, as RQ2 explains.
 
 \subsection{RQ2: How much precision beyond the QDG slice is safe?}
@@ -150,7 +148,20 @@ angle rebinding, at a mean size of \numLcqsSize{} against \numLcqSize{}. State-b
 it drops a gate that commutes with the observables, although a different gate at that position could
 change the criterion.
 
-\subsection{RQ3: What does each definition do to fault localization?}
+\paragraph*{Noise}
+Noise cannot change which operations a slice contains, only whether running it shows what the whole
+program would. In a pre-registered descriptive analysis under depolarizing noise at two-qubit error rates
+of $10^{-3}$ to $3\cdot10^{-2}$, on the pairs of at most \numNoiseMaxQubits{} qubits, the criterion's noisy states under the
+QDG slice and the whole circuit differ in trace distance by at most \numNoiseLcCrossExactMax{} where the
+simulation is exact and by at most \numNoiseLcCrossShotMax{} where mid-circuit measurements force
+sampling, which is rounding and sampling error. Theorem~\ref{thm:sound} predicts this, since such noise
+acts only on the qubits of its gate. The state-based slice
+differs from the whole circuit in \numNoiseQCrossExactNonzero{} of \numNoiseQCrossExactN{} exact runs, by
+up to \numNoiseQCrossExactMax{}. It removes noisy gates that the whole program executes, and errors
+accumulate with the number of gates~\cite{preskill2018nisq}, so it can hide noise the developer is trying
+to diagnose. Noise that is not local to a gate, such as crosstalk, is outside this argument.
+
+\subsection{RQ3: What does each rule do to fault localization?}
 
 The QDG slice of the faulty circuit contains the fault site in \numRqThreeContainLc{} of the
 \numRqThreeUnits{} units, against \numRqThreeContainYz{} for the QPDG, \numRqThreeContainCpdg{} for the
@@ -177,7 +188,7 @@ correlation can make the faulty operation look irrelevant to the single criterio
 over all wrong qubits recovers \numCQFourRecovered{} of these units. Where both slices contain the fault,
 the state-based slice is smaller by \numHFiveSizeDiff{} operations on average, so H5 holds. With each
 slice ordered from its last operation backward, the fault is ranked no later there, because the state-based slice is a subset of the QDG slice, but its EXAM score is
-higher by \numHFiveExamQHigher{}, because EXAM divides by the smaller number of operations ranked. With
+higher by \numHFiveExamQHigher{}. With
 mutation-based fault localization on the \numMbflPairedN{} of \numMbflUnits{} units where both slices
 contain the fault, the mean EXAM score is \numMbflPairedAll{} over the whole circuit, \numMbflPairedLc{}
 within the QDG slice and \numMbflPairedQ{} within the state-based slice. Neither slice improves the
@@ -201,7 +212,7 @@ the faulty \texttt{h(1)}.
   \centering
   \includegraphics[width=\columnwidth]{figures/fig_cost.pdf}
   \caption{Median time to slice one criterion and to build the QPDG, for circuits
-  of width 8 and growing depth, for RQ4. At the two largest depths, only the criteria that finished within
+  of width \numCostDepthWidth{} and growing depth, for RQ4. At the two largest depths, only the criteria that finished within
   the per-circuit time limit are counted, so the state-based time is a lower bound.}
   \label{fig:cost}
 \end{figure}
@@ -209,10 +220,10 @@ the faulty \texttt{h(1)}.
 As Fig.~\ref{fig:cost} shows, the QDG slice costs milliseconds at every depth, at most
 \numCostLcMaxCritMs{}~ms per criterion. State-based pruning simulates the circuit for every candidate
 removal. Its time grows with depth and exceeds the per-circuit limit of \numCostWallLimit{}~s for
-\numCostDepthEightyOverLimit{} of the five circuits at the second-largest depth and for all
+\numCostDepthEightyOverLimit{} of the \numCostDepthCircuits{} circuits at the second-largest depth and for all
 \numCostDepthOneSixtyOverLimit{} at the largest. It also grows exponentially with width, reaching
-\numCostWidthQMax{}~s at 14 qubits. On corpus~L it completes on \numCorpusLCompleted{} of
-\numCorpusLCircuits{} circuits of 15 to 20 qubits. The QPDG is itself costly to build,
+\numCostWidthQMax{}~s at \numCostWidthMaxQubits{} qubits. On corpus~L it completes on \numCorpusLCompleted{} of
+\numCorpusLCircuits{} circuits of \numCorpusLMinQubits{} to \numCorpusLMaxQubits{} qubits. The QPDG is itself costly to build,
 taking \numCostBuildDepthForty{}~s at depth \numCostMeasuredDepthForty{} and \numCostBuildDepthOneSixty{}~s at depth \numCostMeasuredDepthOneSixty{} in
 the median, because the closure links every pair of operations on a coupling component, while the QDG
  needs only the per-qubit edges.

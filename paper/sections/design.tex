@@ -1,12 +1,12 @@
 \section{Study Design}\label{sec:design}
 
 We ask four research questions.
-\textbf{RQ1} asks which dependence definitions give sound and dependence-complete slices.
+\textbf{RQ1} asks which dependence rules give sound and dependence-complete slices.
 \textbf{RQ2} asks how much smaller than the QDG slice a slice can safely be, and under which inputs the
 extra precision holds.
-\textbf{RQ3} asks what each definition does to fault localization, measured by whether the slice contains
+\textbf{RQ3} asks what each rule does to fault localization, measured by whether the slice contains
 the fault and by mutation-based fault localization.
-\textbf{RQ4} asks what each definition costs in time.
+\textbf{RQ4} asks what each rule costs in time.
 
 \paragraph*{Pre-registration}
 The protocol, including the slicers, metrics, tests, thresholds and the decision rules for the
@@ -32,7 +32,7 @@ Every qubit of every circuit is a criterion, which gives \numNPairs{} circuit--q
 gates on measured bits. We also generate \numFamCircuits{} circuits with known structure. They cover depth
 sweeps at fixed width, multipartite states that are partly uncomputed by inverse gates, chains that
 entangle, disentangle and re-entangle, indirect entanglement through a third qubit, and inverse pairs
-$U \dots U^{\dagger}$. For scale, corpus~L has \numCorpusLCircuits{} larger circuits of 15 to 20 qubits.
+$U \dots U^{\dagger}$. For scale, corpus~L has \numCorpusLCircuits{} larger circuits of \numCorpusLMinQubits{} to \numCorpusLMaxQubits{} qubits.
 
 \paragraph*{Oracle and ground truth}
 All slices are judged by one independent oracle. It simulates the circuit's unconditional state exactly,
@@ -59,7 +59,7 @@ circuits with rotation angles, \numRobDraws{} random rebindings of every angle. 
 slice preserves the criterion in every draw.
 
 \paragraph*{Faults}
-We seed faults with \numMutOperators{} operators, nine taken from Muskit~\cite{mendiluze2021muskit},
+We seed faults with \numMutOperators{} operators, \numMutPublished{} taken from Muskit~\cite{mendiluze2021muskit},
 QMutPy~\cite{fortunato2022qmutpy} and the fault model of García de la Barrera et
 al.~\cite{garcia2022testing}, and an angle perturbation of our own. They insert, delete and replace gates,
 insert and delete mid-circuit measurements, swap a control with a target, remove a control, re-target an

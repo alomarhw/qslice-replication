@@ -34,10 +34,10 @@ This paper defines quantum dependence semantically, as the set of operations whe
 the state of the criterion qubits for some input, and generalizes the criterion to a set of qubits whose
 joint state before readout the slice must preserve. A slice is sound if running it gives the criterion
 qubits the same state as the whole program for every input, and dependence-complete if it contains every
-dependence. We measure how dependence definitions behave against this ground truth, in a pre-registered
+dependence. We measure how dependence rules behave against this ground truth, in a pre-registered
 study whose later changes are logged as dated deviations, on \numNPairs{} circuit--qubit pairs from three benchmark suites, \numFamCircuits{}
 circuits with known structure, \numRqThreeUnits{} fault--qubit units from \numMutantsKilled{} seeded
-faults, and real bugs from Bugs4Q~\cite{zhao2023bugs4q}. The definitions range from the classical PDG to
+faults, and real bugs from Bugs4Q~\cite{zhao2023bugs4q}. The rules range from the classical PDG to
 state-based pruning, which removes operations by simulating the circuit at one input, and they include a
 documented reimplementation of the QPDG as a baseline.
 
@@ -46,8 +46,8 @@ gives wrong slices for \numCpdgUnsoundPct{} of the pairs. A two-qubit gate can c
 for instance by phase kickback, and no classical reading of the gate expresses this quantum dependence. Our
 reimplementation of the QPDG, whose data edges already follow every qubit of a gate, is sound by
 construction, and under the reading in which a gate writes only its targets it is wrong on
-\numYzRoUnsound{} pairs. Its entanglement edges make it keep \numRqOneYzSize{} of the circuit, and \numYzfSize{} when entanglement is
-tracked along the program. The quantum dependence graph (QDG), in which every gate reads and writes all its
+\numYzRoUnsound{} pairs. Its entanglement edges make it keep \numRqOneYzSize{} of the circuit, and \numYzfSize{} under its
+flow-sensitive variant. The quantum dependence graph (QDG), in which every gate reads and writes all its
 qubits, is the backward light cone, the relation by which LintQ orders operations and from which Qiskit's
 \texttt{LightCone} pass starts before it prunes commuting gates. Its soundness follows from the locality of quantum operations, and what we add is the
 semantics that states it and the measurement of what it costs. It keeps \numRqOneLcSize{}, only \numLcExcess{}
@@ -63,7 +63,7 @@ removes the faulty operation in \numCQFour{} units, and a joint criterion over a
 This paper gives quantum program slicing a semantic basis. Section~\ref{sec:dependence} defines quantum
 dependence and slice correctness semantically and proves that the QDG gives sound and
 dependence-complete slices. Section~\ref{sec:tool}
-presents a static slicer for Qiskit programs~\cite{javadi2024qiskit}, Section~\ref{sec:results} gives the
-first comparison of quantum dependence definitions against a semantic ground truth, and
+presents a static slicer for Qiskit programs~\cite{javadi2024qiskit}, Section~\ref{sec:results} compares
+quantum dependence rules against a semantic ground truth, and
 Section~\ref{sec:discussion} lays out a roadmap of open problems. A replication package regenerates every
 number in the paper.

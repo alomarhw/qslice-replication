@@ -576,22 +576,22 @@
  },
  "BugsFourQKilled": {
   "value": 7,
-  "tex": "7",
+  "tex": "seven",
   "source": "results/icpc/rq3_bugs4q/bugs.csv"
  },
  "BugsFourQInjured": {
   "value": 1,
-  "tex": "1",
+  "tex": "one",
   "source": "results/icpc/rq3_bugs4q/bugs.csv"
  },
  "BugsFourQAlive": {
   "value": 1,
-  "tex": "1",
+  "tex": "one",
   "source": "results/icpc/rq3_bugs4q/bugs.csv"
  },
  "BugsFourQExcluded": {
   "value": 2,
-  "tex": "2",
+  "tex": "two",
   "source": "results/icpc/rq3_bugs4q/bugs.csv"
  },
  "BugsFourQTriaged": {
@@ -1000,7 +1000,7 @@
  },
  "CostDepthEightyOverLimit": {
   "value": 4,
-  "tex": "4",
+  "tex": "four",
   "source": "results/icpc/cost/circuits.csv"
  },
  "CostBuildDepthEighty": {
@@ -1010,7 +1010,7 @@
  },
  "CostDepthOneSixtyOverLimit": {
   "value": 5,
-  "tex": "5",
+  "tex": "five",
   "source": "results/icpc/cost/circuits.csv"
  },
  "CostBuildDepthOneSixty": {
@@ -1033,9 +1033,24 @@
   "tex": "120",
   "source": "icpc/cost_run.py"
  },
+ "CostDepthCircuits": {
+  "value": 5,
+  "tex": "five",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostDepthWidth": {
+  "value": 8,
+  "tex": "8",
+  "source": "results/icpc/cost/circuits.csv"
+ },
  "CostWidthQMax": {
   "value": 8.6855,
   "tex": "8.7",
+  "source": "results/icpc/cost/circuits.csv"
+ },
+ "CostWidthMaxQubits": {
+  "value": 14,
+  "tex": "14",
   "source": "results/icpc/cost/circuits.csv"
  },
  "CorpusLCircuits": {
@@ -1043,10 +1058,25 @@
   "tex": "55",
   "source": "results/icpc/corpus_l/circuits.csv"
  },
+ "CorpusLMinQubits": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/corpus_l/circuits.csv"
+ },
+ "CorpusLMaxQubits": {
+  "value": 20,
+  "tex": "20",
+  "source": "results/icpc/corpus_l/circuits.csv"
+ },
  "CorpusLCompleted": {
   "value": 39,
   "tex": "39",
   "source": "results/icpc/corpus_l/circuits.csv"
+ },
+ "NoiseMaxQubits": {
+  "value": 10,
+  "tex": "ten",
+  "source": "results/icpc/noise/pairs.csv"
  },
  "NoiseLcCrossExactMax": {
   "value": 4.249205154405189e-15,
@@ -1255,7 +1285,12 @@
  },
  "MutOperators": {
   "value": 10,
-  "tex": "10",
+  "tex": "ten",
+  "source": "results/icpc/rq3/mutants.csv"
+ },
+ "MutPublished": {
+  "value": 9,
+  "tex": "nine",
   "source": "results/icpc/rq3/mutants.csv"
  },
  "RqThreeSecondary": {
@@ -1275,7 +1310,7 @@
  },
  "InfluencePerturbations": {
   "value": 2,
-  "tex": "2",
+  "tex": "two",
   "source": "icpc/influence.py (N_PERTURBATIONS)"
  },
  "RobDraws": {
@@ -1423,6 +1458,16 @@
   "tex": "180",
   "source": "results/icpc/rq1/records.csv"
  },
+ "WTwoLo": {
+  "value": 2,
+  "tex": "2",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WTwoHi": {
+  "value": 3,
+  "tex": "3",
+  "source": "results/icpc/rq1/records.csv"
+ },
  "WTwoPairs": {
   "value": 110,
   "tex": "110",
@@ -1447,6 +1492,16 @@
   "value": 0.8259793492315083,
   "tex": "82.6\\%",
   "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "WFourLo": {
+  "value": 4,
+  "tex": "4",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WFourHi": {
+  "value": 6,
+  "tex": "6",
+  "source": "results/icpc/rq1/records.csv"
  },
  "WFourPairs": {
   "value": 377,
@@ -1473,6 +1528,16 @@
   "tex": "75.5\\%",
   "source": "results/icpc/rq1_lcq_remap/records.csv"
  },
+ "WSevenLo": {
+  "value": 7,
+  "tex": "7",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WSevenHi": {
+  "value": 10,
+  "tex": "10",
+  "source": "results/icpc/rq1/records.csv"
+ },
  "WSevenPairs": {
   "value": 150,
   "tex": "150",
@@ -1497,6 +1562,16 @@
   "value": 0.5014185801099952,
   "tex": "50.1\\%",
   "source": "results/icpc/rq1_lcq_remap/records.csv"
+ },
+ "WElevenLo": {
+  "value": 11,
+  "tex": "11",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "WElevenHi": {
+  "value": 14,
+  "tex": "14",
+  "source": "results/icpc/rq1/records.csv"
  },
  "WElevenPairs": {
   "value": 145,
@@ -2409,6 +2484,11 @@
   "tex": "51",
   "source": "icpc/gt_convergence.py (11 + 30 product + 10 entangled)"
  },
+ "GcEntangledInputs": {
+  "value": 10,
+  "tex": "ten",
+  "source": "icpc/gt_convergence.py (N_ENTANGLED)"
+ },
  "GcPerturbations": {
   "value": 8,
   "tex": "eight",
@@ -2730,6 +2810,16 @@
   "value": 784,
   "tex": "784",
   "source": "results/icpc/q_repeat/pairs.csv"
+ },
+ "ToolFileLimit": {
+  "value": 60,
+  "tex": "60",
+  "source": "tool/corpus/coverage.py (--timeout default)"
+ },
+ "QRepeatRuns": {
+  "value": 3,
+  "tex": "three",
+  "source": "icpc/q_repeat.py (REPEATS)"
  },
  "YzFigSliceProb": {
   "value": 0.5,

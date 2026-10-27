@@ -1,20 +1,17 @@
 \section{A Roadmap for Quantum Program Slicing}\label{sec:discussion}
 
 \paragraph*{What the results support}
-The definitions and results suggest how a slicer for quantum programs should be built. The base should be the QDG,
-in which every gate reads and writes all its qubits. It is sound for every input, misses no dependence,
+The definitions and results suggest how a slicer for quantum programs should be built. The base should be the QDG.
+It is sound for every input, misses no dependence,
 and costs milliseconds. Reading a gate as a classical assignment is the pitfall to avoid, and adding
 control dependence does not remove it. Entanglement edges, as in the QPDG, should not be added to make a slice safer. They
 buy no soundness that the QDG lacks and cost precision, because a later operation on an entangled partner
 cannot change the criterion's state, as Proposition~\ref{prop:ent} shows. They contain a few more faults of
 a faulty program only by keeping more of it. No dependence slice of the faulty program can show an
 omitted interaction, and every fault the QDG slice misses removes one, so a slicer should warn that a
-fault may be a missing gate or control that no slice can contain. Whether
-slices shorten debugging remains a hypothesis, since our localization results do not show it. Precision beyond the
-QDG slice can come from commutation pruning, which stays correct on every random input but fails when the
-angles change. Treating every angle as a symbol before the pass, an exploratory variant, kept it correct under all three
-input regimes, so a slicer for variational programs should use the symbolic variant or recompute commutation
-after each parameter update. State-based pruning should be offered, if at all, as a view of one input,
+fault may be a missing gate or control that no slice can contain. Precision beyond the
+QDG slice can come from commutation pruning, and a slicer for variational programs should use its symbolic
+variant, which stays correct when the angles change, or recompute commutation after each parameter update. State-based pruning should be offered, if at all, as a view of one input,
 labeled as such, and never as the slice of the program. Finally, a slicer should judge slices by states rather than by
 histograms, since \numFdCpdgZMatchPct{} of the wrong classical-PDG slices pass a histogram check, and it
 should let the developer name a set of qubits whose joint state pruning must preserve. By
@@ -39,17 +36,3 @@ and a slice of a transpiled circuit must be mapped back to the source through th
 The sixth is evidence with developers. Our fault-localization results use seeded faults and the small programs of
 Bugs4Q, and a study of developers debugging real quantum programs with slices is the next step, as it was
 for classical slicing~\cite{weiser1982programmers}.
-
-\paragraph*{Noise}
-Noise cannot change which operations a slice contains, only whether running it shows what the whole
-program would. In a pre-registered descriptive analysis under depolarizing noise at two-qubit error rates
-of $10^{-3}$ to $3\cdot10^{-2}$, on the pairs of at most ten qubits, the criterion's noisy states under the
-QDG slice and the whole circuit differ in trace distance by at most \numNoiseLcCrossExactMax{} where the
-simulation is exact and by at most \numNoiseLcCrossShotMax{} where mid-circuit measurements force
-sampling, which is rounding and sampling error. Theorem~\ref{thm:sound} predicts this, since such noise
-acts only on the qubits of its gate. The state-based slice
-differs from the whole circuit in \numNoiseQCrossExactNonzero{} of \numNoiseQCrossExactN{} exact runs, by
-up to \numNoiseQCrossExactMax{}. It removes noisy gates that the whole program executes, and errors
-accumulate with the number of gates~\cite{preskill2018nisq}, so it can hide noise the developer is trying
-to diagnose. Noise that is not local to a gate, such as crosstalk, is outside this argument.
-

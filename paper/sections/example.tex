@@ -6,7 +6,7 @@
   \caption{The Bernstein--Vazirani program of the Qiskit textbook~\cite{qiskittextbook}, with comments and
   blank lines omitted and the textbook's line numbers kept. Line~25 carries a seeded fault, \texttt{x(n)}
   where the textbook applies \texttt{z(n)}. The two columns mark the statements in the backward slice of
-  $q_0$ under the classical PDG, CPDG, and under the QDG. The classical PDG misses the orange lines, which are
+  $q_0$ under the classical PDG, in the column CPDG, and under the QDG. The classical PDG misses the orange lines, which are
   dependences of $q_0$. Slices are computed by our tool statically, and outcomes and dependences by the
   study's code.}
   \label{fig:bv}
@@ -50,8 +50,7 @@ These lines are nonetheless dependences of $q_0$. Restoring $Z$ on line~25 turns
 $\ket{1}$, two states with fidelity \numBvFixFidelity{}. A CNOT acts on its control as well as its target.
 The QDG, in which every gate reads and writes all its qubits, keeps lines~\numBvQdgLines{}, exactly the
 dependences of $q_0$, together with the statements that compute them, among them the oracle's loop and
-condition on lines~35 to~39. Its slice contains the fault. Entanglement plays no part here, since $q_0$ is in
-a pure state after every operation and so is never entangled with the auxiliary.
+condition on lines~35 to~39. Its slice contains the fault.
 
 Here the fault shows in the measured outcomes of $q_0$. That is not always so. In a real bug from
 Bugs4Q~\cite{zhao2023bugs4q}, posted on Stack Overflow, a two-qubit program meant to prepare

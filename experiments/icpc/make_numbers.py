@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import statistics as st
 import sys
 from collections import Counter, defaultdict
@@ -48,6 +49,22 @@ def sci(x: float) -> str:
 
 def cnt(n: int) -> str:
     return f"{n:,}".replace(",", "{,}")
+
+
+WORDS = "zero one two three four five six seven eight nine ten".split()
+
+
+def word(n: int, cap: bool = False) -> str:
+    """Counts up to ten as words, for running text; larger counts as numerals."""
+    w = WORDS[n] if 0 <= n <= 10 else cnt(n)
+    return w.capitalize() if cap else w
+
+
+def const(path: str, name: str):
+    """A module-level integer constant of one of the study's scripts, read from its source."""
+    m = re.search(rf"^{name}\s*=\s*(\d+)\s*$", (HERE / path).read_text(), re.M)
+    assert m, (path, name)
+    return int(m.group(1))
 
 
 def pval(p: float) -> str:
@@ -204,7 +221,7 @@ def main() -> int:
     # ---- RQ3: Bugs4Q, source map -------------------------------------------------------------------------
     b = Counter(r["outcome"] for r in rows(ICPC / "rq3_bugs4q" / "bugs.csv"))
     for o, nm in (("killed", "Killed"), ("injured", "Injured"), ("alive", "Alive"), ("excluded", "Excluded")):
-        put(f"BugsFourQ{nm}", b[o], cnt(b[o]), "results/icpc/rq3_bugs4q/bugs.csv")
+        put(f"BugsFourQ{nm}", b[o], word(b[o]), "results/icpc/rq3_bugs4q/bugs.csv")
     tri = rows(HERE / "bugs4q" / "triage.csv")
     put("BugsFourQTriaged", len(tri), cnt(len(tri)), "bugs4q/triage.csv")
     put("BugsFourQIncluded", sum(r["included"] == "1" for r in tri), cnt(sum(r["included"] == "1" for r in tri)), "bugs4q/triage.csv")
@@ -280,21 +297,33 @@ def main() -> int:
         put(f"CostBuildDepth{nm}", st.median(y), f"{st.median(y):.2f}", src)
     for d, nm in (("d80", "Eighty"), ("d160", "OneSixty")):
         x = [r for r in dep if r["name"].startswith(d + "_")]
-        put(f"CostDepth{nm}OverLimit", sum(r["limit"] == "wall" for r in x), cnt(sum(r["limit"] == "wall" for r in x)), src)
+        put(f"CostDepth{nm}OverLimit", sum(r["limit"] == "wall" for r in x), word(sum(r["limit"] == "wall" for r in x)), src)
         put(f"CostBuildDepth{nm}", st.median(float(r["build_seconds"]) for r in x), f"{st.median(float(r['build_seconds']) for r in x):.1f}", src)
     for d, nm in (("d40", "Forty"), ("d160", "OneSixty")):
         md = st.median(int(r["depth"]) for r in dep if r["name"].startswith(d + "_"))
         put(f"CostMeasuredDepth{nm}", md, f"{md:.0f}", src)
     put("CostWallLimit", 120, "120", "icpc/cost_run.py")
-    w = [float(r["q_total"]) for r in co if r["kind"].startswith("width-") and r.get("q_total")]
+    seeds = {r["name"].split("_s")[1] for r in dep}
+    assert all(len([r for r in dep if r["name"].startswith(d + "_")]) == len(seeds) for d in {r["name"].split("_")[0] for r in dep})
+    put("CostDepthCircuits", len(seeds), word(len(seeds)), src)
+    put("CostDepthWidth", int(dep[0]["n_qubits"]), dep[0]["n_qubits"], src)
+    assert {r["n_qubits"] for r in dep} == {dep[0]["n_qubits"]}
+    wid = [r for r in co if r["kind"].startswith("width-") and r.get("q_total")]
+    w = [float(r["q_total"]) for r in wid]
     put("CostWidthQMax", max(w), f"{max(w):.1f}", src)
+    wmax = max(int(r["n_qubits"]) for r in wid)
+    assert int(max(wid, key=lambda r: float(r["q_total"]))["n_qubits"]) == wmax, "the slowest width run is not the widest"
+    put("CostWidthMaxQubits", wmax, str(wmax), src)
     cl = rows(ICPC / "corpus_l" / "circuits.csv")
     put("CorpusLCircuits", len(cl), cnt(len(cl)), "results/icpc/corpus_l/circuits.csv")
+    put("CorpusLMinQubits", min(int(r["n_qubits"]) for r in cl), str(min(int(r["n_qubits"]) for r in cl)), "results/icpc/corpus_l/circuits.csv")
+    put("CorpusLMaxQubits", max(int(r["n_qubits"]) for r in cl), str(max(int(r["n_qubits"]) for r in cl)), "results/icpc/corpus_l/circuits.csv")
     put("CorpusLCompleted", sum(r["completed"] == "1" for r in cl), cnt(sum(r["completed"] == "1" for r in cl)), "results/icpc/corpus_l/circuits.csv")
 
     # ---- Discussion: noise and hardware ------------------------------------------------------------------
     src = "results/icpc/noise/pairs.csv"
     nz_ = rows(ICPC / "noise" / "pairs.csv")
+    put("NoiseMaxQubits", max(int(r["n_qubits"]) for r in nz_), word(max(int(r["n_qubits"]) for r in nz_)), src)
     for s, nm in (("lc", "Lc"), ("q", "Q")):
         ex_ = [float(r["D_cross"]) for r in nz_ if r["slicer"] == s and r["shots_full"] == "1"]
         dy = [float(r["D_cross"]) for r in nz_ if r["slicer"] == s and r["shots_full"] != "1"]
@@ -345,11 +374,14 @@ def main() -> int:
     for o, nm in (("killed", "Killed"), ("injured", "Injured"), ("alive", "Alive"), ("equivalent", "Equivalent")):
         put(f"Mutants{nm}", sum(m["outcome"] == o for m in mut), cnt(sum(m["outcome"] == o for m in mut)), "results/icpc/rq3/mutants.csv")
     put("MutantsExcluded", sum(m["outcome"] == "excluded" for m in mut), cnt(sum(m["outcome"] == "excluded" for m in mut)), "results/icpc/rq3/mutants.csv")
-    put("MutOperators", len({m["operator"] for m in mut}), cnt(len({m["operator"] for m in mut})), "results/icpc/rq3/mutants.csv")
+    ops_ = {m["operator"] for m in mut}
+    put("MutOperators", len(ops_), word(len(ops_)), "results/icpc/rq3/mutants.csv")
+    assert "M-par" in ops_  # the angle perturbation is the study's own operator; the others are published
+    put("MutPublished", len(ops_ - {"M-par"}), word(len(ops_ - {"M-par"})), "results/icpc/rq3/mutants.csv")
     put("RqThreeSecondary", sum(r["analysis"] == "secondary" for r in rows(ICPC / "rq3" / "units.csv")), cnt(sum(r["analysis"] == "secondary" for r in rows(ICPC / "rq3" / "units.csv"))), "results/icpc/rq3/units.csv")
     put("OracleErr", 2.2e-16, sci(2.2e-16), "experiments/logs/icpc/test_oracle_icpc.log (joint rho_W vs Statevector/partial_trace, random unitary circuits)")
     put("InfluenceInputs", 11, "11", "icpc/influence.py (|0...0> + N_INPUTS=10)")
-    put("InfluencePerturbations", 2, "2", "icpc/influence.py (N_PERTURBATIONS)")
+    put("InfluencePerturbations", 2, "two", "icpc/influence.py (N_PERTURBATIONS)")
     put("RobDraws", 100, "100", "icpc/rq2_robustness.py (N_DRAWS)")
     put("CostMemLimit", 4, "4", "icpc/cost_run.py (RSS_GIB)")
     put("LcqPrecision", st.mean(float(lq[k]["dep_precision"]) for k in ap), f"{st.mean(float(lq[k]['dep_precision']) for k in ap):.3f}", "results/icpc/rq1_lcq_remap/records.csv")
@@ -396,6 +428,8 @@ def main() -> int:
     put("PairsAllDep", alld, cnt(alld), src)
     assert NUMS["DepFloor"]["value"] <= NUMS["RqOneLcSize"]["value"]
     for lo, hi, nm in ((2, 3, "WTwo"), (4, 6, "WFour"), (7, 10, "WSeven"), (11, 14, "WEleven")):
+        put(f"{nm}Lo", lo, str(lo), src)
+        put(f"{nm}Hi", hi, str(hi), src)
         ks = [k for k, r in lcr.items() if lo <= int(r["n_qubits"]) <= hi]
         put(f"{nm}Pairs", len(ks), cnt(len(ks)), src)
         put(f"{nm}Floor", st.mean(dep[k] for k in ks), pct(st.mean(dep[k] for k in ks)), src)
@@ -633,6 +667,8 @@ def main() -> int:
     put("GcDepsNewEntangled", sum(x["stage"] == "3" for x in new), cnt(sum(x["stage"] == "3" for x in new)),
         "results/icpc/gt_convergence/new_deps.csv")
     put("GcInputs", 51, "51", "icpc/gt_convergence.py (11 + 30 product + 10 entangled)")
+    ne = int(re.search(r"EXTRA_PERT, EXTRA_PRODUCT, N_ENTANGLED = \d+, \d+, (\d+)", (HERE / "icpc" / "gt_convergence.py").read_text()).group(1))
+    put("GcEntangledInputs", ne, word(ne), "icpc/gt_convergence.py (N_ENTANGLED)")
     put("GcPerturbations", 8, "eight", "icpc/gt_convergence.py (2 + 6)")
     for sl, nm in (("lc", "Lc"), ("yz", "Yz"), ("cpdg", "Cpdg"), ("q", "Q")):
         x = [r for r in gc if r["slicer"] == sl]
@@ -697,6 +733,9 @@ def main() -> int:
     qr = rows(ICPC / "q_repeat" / "pairs.csv")
     assert all(r["all_equal_stored"] == "1" and r["all_sound"] == "1" for r in qr), "S-q not repeatable on corpus A"
     put("QRepeatPairs", len(qr), cnt(len(qr)), "results/icpc/q_repeat/pairs.csv")
+    tlim = int(re.search(r'add_argument\("--timeout", type=int, default=(\d+)\)', (HERE.parent / "tool" / "corpus" / "coverage.py").read_text()).group(1))
+    put("ToolFileLimit", tlim, str(tlim), "tool/corpus/coverage.py (--timeout default)")
+    put("QRepeatRuns", const("icpc/q_repeat.py", "REPEATS"), word(const("icpc/q_repeat.py", "REPEATS")), "icpc/q_repeat.py (REPEATS)")
 
     yf = json.load(open(ICPC / "yz_listings" / "fig1.json"))
     src = "results/icpc/yz_listings/fig1.json"

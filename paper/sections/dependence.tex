@@ -34,8 +34,8 @@ roadmap of Section~\ref{sec:discussion}.
 
 Yu and Zhao keep the classical criterion $(s, V)$ unchanged~\cite{yu2025qpdg}. A single qubit has no
 value of its own, however. Its state is determined only together with the qubits it is correlated with.
-We therefore let the criterion be a set of qubits and preserve their \emph{joint} state. $W = \{q\}$ is
-the single-qubit criterion.
+We therefore let the criterion be a set of qubits and preserve their \emph{joint} state. The single-qubit
+criterion is $W = \{q\}$.
 
 \begin{definition}[State preservation and soundness]\label{def:sound}
 A set of positions $S$ \emph{preserves} $W$ at input $\rho$ if
@@ -44,10 +44,7 @@ $\operatorname{Tr}_{\overline{W}}\llbracket P|_S \rrbracket(\rho) =
 it preserves $W$ at every input.
 \end{definition}
 
-Comparing reduced states is basis-independent. It detects phase errors that a measured distribution in
-one basis misses.
-
-Soundness says that the slice reproduces what the criterion qubits end up in. A developer localizing a
+Soundness says that the slice reproduces the final state of the criterion qubits. A developer localizing a
 fault needs a second guarantee, that the slice contains every place where a fault could change that
 outcome.
 
@@ -56,7 +53,7 @@ Operation $o_k$ is a \emph{dependence} of $W$ in $P$ if there exist an input $\r
 the qubits of $o_k$ such that inserting $U$ immediately after $o_k$ changes
 $\operatorname{Tr}_{\overline{W}}\llbracket P \rrbracket(\rho)$. For a measurement, inserting a classical
 negation of the bit it writes also counts as such a change.
-$\mathit{Dep}_W(P)$ is the set of dependences of $W$. A set $S$ is \emph{dependence-complete} for $W$ if
+The set $\mathit{Dep}_W(P)$ collects the dependences of $W$. A set $S$ is \emph{dependence-complete} for $W$ if
 $\mathit{Dep}_W(P) \subseteq S$.
 \end{definition}
 
@@ -98,6 +95,12 @@ backward reachability in the QDG from $W$. It is the backward light cone of $W$,
 a chain of shared qubits reaches $W$, extended along classical bits from measurements to the gates they
 condition.
 
+Fig.~\ref{fig:ansatz} applies the rules to one program that needs both control and quantum dependence.
+An ansatz is the parameterized circuit of a variational algorithm such as the variational quantum
+eigensolver (VQE), whose rotation angles a classical optimizer tunes. The ansatz of Fig.~\ref{fig:ansatz}a
+has layers of rotations and a chain of CNOTs, and after them an auxiliary qubit is measured mid-circuit and
+$q_0$ is flipped when the outcome is $1$, on lines~17 to~20.
+
 The \emph{QPDG} is our reimplementation of Yu and Zhao's graph~\cite{yu2025qpdg} as a baseline. Its
 dependences are given in prose, so we logged every choice of its primary reading before any run. Data and control dependence are
 implemented as in the QDG, with every gate writing all its qubits. Entanglement dependence needs a rule for
@@ -107,7 +110,7 @@ edge from every operation to every later one on qubits of the same such componen
 temporal dependences add no edge, as the end of this section explains. A flow-sensitive variant counts two
 qubits as entangled only from the first gate that couples them onward. Under either entanglement rule the
 QPDG is the QDG plus entanglement edges, so its slices contain those of the QDG, and the hatched operations
-of the ansatz in Fig.~\ref{fig:ansatz}b, discussed below, are what the extra edges cost. Yu and Zhao do not
+of the ansatz in Fig.~\ref{fig:ansatz}b are what the extra edges cost. Yu and Zhao do not
 say whether a gate writes its control, so we also run, as an exploratory addition, the reading in which it
 does not. Table~\ref{tab:rules} lists the rules.
 
@@ -177,11 +180,7 @@ $\operatorname{Tr}_{\overline{W}}\llbracket P' \rrbracket(\rho) =
 measurement outcome is the same.
 \end{IEEEproof}
 
-Fig.~\ref{fig:ansatz} shows where the other rules fail, on one program that needs both control and
-quantum dependence. An ansatz is the parameterized circuit of a variational algorithm such as the
-variational quantum eigensolver (VQE), whose rotation angles a classical optimizer tunes. The ansatz of
-Fig.~\ref{fig:ansatz}a has layers of rotations and a chain of CNOTs, and after them an auxiliary qubit is
-measured mid-circuit and $q_0$ is flipped when the outcome is $1$, on lines~17 to~20.
+On the ansatz of Fig.~\ref{fig:ansatz}, the other rules fail as follows.
 
 Control dependence is needed whenever measurement outcomes steer later gates. Def-use ignores the
 classical bits, so its slice of $q_0$ keeps only \numAnsDuOps{} of the \numAnsOps{} operations, with
@@ -193,18 +192,16 @@ There are circuits for which neither $B_{\mathrm{CPDG}}(W)$ nor $B_{\mathrm{DU}}
 at $\ket{0\dots0}$.
 \end{proposition}
 
-The ansatz of Fig.~\ref{fig:ansatz} is a witness for both, and so is the program of Fig.~\ref{fig:bv}, on
-which the two slices are equal, as they are on every unitary circuit.
+The ansatz of Fig.~\ref{fig:ansatz} is a witness for both. On unitary circuits the two slices are equal.
 
 Control dependence is not enough, however. Each \texttt{cx(qubit, qubit+1)} of the ansatz acts on its
 control as well as its target. A controlled operation acts coherently on a superposition of
 its controls~\cite{svore2018qsharp}, so its control is not a classical read. Through these gates the
-state of $q_0$ comes to depend on the rotations of $q_1$ and, from the second layer on, of $q_2$. This is
-the action of a controlled gate on its control, of which phase kickback is the simplest case.
+state of $q_0$ comes to depend on the rotations of $q_1$ and, from the second layer on, of $q_2$.
 The classical PDG treats a control as read-only, so its slice of $q_0$ keeps only the rotations on $q_0$
 itself and the dynamic step, the \numAnsCpdgOps{} dark- and mid-blue nodes of Fig.~\ref{fig:ansatz}b, and misses
 \numAnsCpdgMissed{} dependences, with fidelity \numAnsCpdgFidelity{}. Where the QDG has a blue quantum edge out
-of a CNOT, the classical PDG has a dotted edge that skips the CNOT. Control dependence cannot repair this, because the missing dependence is quantum.
+of a CNOT, the classical PDG has a dotted edge that skips the CNOT.
 The QDG slice keeps the \numAnsWireOps{} operations that are dependences of $q_0$, and no other.
 
 \begin{proposition}[Entanglement is neither necessary nor sufficient for dependence]\label{prop:ent}
@@ -299,12 +296,12 @@ executable circuit, while a slice of lines marks the code to read and is not mea
 \subsection{Qubit slice profiles}
 srcSlice computes for every variable a slice profile that collects its definitions, uses, aliases, the
 functions it is passed to, and the variables that depend on it~\cite{alomari2014srcslice}. We define the
-analogous profile of a qubit $q$. It lists the lines of the operations on $q$, each of which both uses and
-defines $q$ under the QDG, the source expressions that denote $q$ in gate calls, the call sites of the
-functions inside which $q$ is acted on, the other qubits that the first operation on $q$ reaches,
-transitively unlike the direct dependent variables of srcSlice, the bits
-measured from $q$ and the lines conditioned on them, and the lines of the backward slice of $q$ and of the
-forward slice of its first operation. In the program of Fig.~\ref{fig:bv}, the tool computes the profile of
+analogous profile of a qubit $q$. Its uses are the lines of the operations on $q$, each of which both uses
+and defines $q$ under the QDG. Its names are the source expressions that denote $q$ in gate calls, and its
+functions are the call sites of the functions inside which $q$ is acted on. Its dependents are the other
+qubits that the first operation on $q$ reaches, transitively, unlike the direct dependent variables of
+srcSlice. Its bits are those measured from $q$, with the lines conditioned on them, and its backward and
+forward entries are the lines of the backward slice of $q$ and of the forward slice of its first operation. In the program of Fig.~\ref{fig:bv}, the tool computes the profile of
 $q_0$ as $\mathsf{uses}(q_0) = \numBvProfDefsSet{}$, $\mathsf{functions}(q_0) = \emptyset$,
 $\mathsf{names}(q_0) = \{{\texttt{i} \mapsto \numBvProfNameISet{}}, {\texttt{q} \mapsto \numBvProfNameQSet{}}\}$,
 $\mathsf{dependents}(q_0) = \numBvProfDependentsSet{}$, $\mathsf{bits}(q_0) = \numBvProfBitsSet{}$ with no
