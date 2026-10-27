@@ -2,16 +2,16 @@
 
 Developers write Qiskit programs, not circuits, and a slice helps them only as lines of their program. We
 therefore built a tool that slices a Qiskit program statically, from its source, with the QDG
-of Section~\ref{sec:dependence}. Fig.~\ref{fig:overview} shows its steps on the Bugs4Q program of
-Section~\ref{sec:example}.
+of Section~\ref{sec:dependence}. Fig.~\ref{fig:tool} shows its steps on the ansatz of
+Fig.~\ref{fig:ansatz}, and the end of this section reports it on the Bugs4Q programs and the textbook.
 
 \paragraph*{Parsing}
 The tool parses the program with srcML~\cite{collard2011lightweight, collard2013srcml}, which turns source
 code into XML that keeps every character of the source and marks its syntax and the position of each
 element. srcML marks up Python syntax and knows nothing of quantum programs, so the quantum layer is ours.
 A table of \numToolGateTable{} Qiskit instruction methods records which arguments of each are qubits, bits
-and angles. With it, a \texttt{call} element such as \texttt{circuit.cx(0,1)} becomes a gate whose name
-gives its kind and whose arguments give its qubits, as stage~2 of Fig.~\ref{fig:overview} shows. The tool
+and angles. With it, a \texttt{call} element such as \texttt{qc.cx(qubit, qubit + 1)} becomes a gate whose name
+gives its kind and whose arguments give its qubits, as stage~1 of Fig.~\ref{fig:tool} shows. The tool
 takes the structure of the program and the position of every element from srcML, and reads the text of
 each expression with Python's own parser.
 
@@ -21,7 +21,7 @@ Behler et al.\ does for OpenQASM, the assembly-like language of quantum circuits
 It evaluates the program's expressions over an abstract domain of known values, registers, bits and
 circuits. It unrolls loops and records the iteration of each operation, inlines functions, and follows
 \texttt{if\_test} and \texttt{c\_if}, Qiskit's two constructs for gates conditioned on measured bits, as
-Fig.~\ref{fig:loops} shows for the ansatz. Each value carries the lines that computed it, so the tool knows
+stages 2 and 3 of Fig.~\ref{fig:tool} show. Each value carries the lines that computed it, so the tool knows
 the classical lines, the statements that compute an operation's qubits, angles and conditions. The QDG
  does not need angle values, so angles drawn at run time stay symbolic. Where a value cannot be
 resolved statically, the tool over-approximates. An unknown qubit index makes the operation act on every

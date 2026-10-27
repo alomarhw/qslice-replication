@@ -61,7 +61,8 @@ and in the intended one alike, so a check of the outcomes of either qubit cannot
 their joint outcomes reveal it. The state of $q_0$ does change, from the pure $\ket{+}$ to a uniformly
 random bit, two states with fidelity \numMotFidelity{}. A slice judged by the outcome histogram of one
 qubit can therefore look right and miss the fault, while a slice judged by the state of the qubit cannot.
-Fig.~\ref{fig:overview} shows this program, and its QDG slice of $q_0$ contains the fault.
+The program applies \texttt{h(0)}, \texttt{h(1)} and \texttt{cx(0,1)}. Because the CNOT writes its control,
+the QDG slice of $q_0$ contains the faulty \texttt{h(1)}, while the classical PDG keeps only \texttt{h(0)}.
 
 The two lessons scale. Reading a gate as an assignment misses influence that flows into a control qubit,
 and judging a slice by the outcomes of one qubit misses errors in phase and in correlations.

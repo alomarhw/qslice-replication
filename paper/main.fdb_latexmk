@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1793078573.71156 "main.aux" "main.bbl" "main" 1793078585.9941 0
+["bibtex main"] 1793079109.24467 "main.aux" "main.bbl" "main" 1793079110.10828 0
   "./references.bib" 1793047500.7851 42482 4bd5ed7746a4c37c402a001e85ac86c4 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "main.aux" 1793078585.72142 14200 6d24fed0625647420d787f03fe975840 "pdflatex"
+  "main.aux" 1793079109.82654 13462 5752fd2c499765f40ad80670d6e282f6 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1793078585.16013 "main.tex" "main.pdf" "main" 1793078585.9944 0
+["pdflatex"] 1793079109.31188 "main.tex" "main.pdf" "main" 1793079110.10863 0
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -144,25 +144,24 @@
   "abstract.tex" 1793063729.97706 1742 d958000b39aa7dc5278216234bcbdca1 ""
   "figures/fig_bv.pdf" 1793047539.63442 94541 f919b83bf74de76d62c76912e2ba0721 ""
   "figures/fig_cost.pdf" 1792996488.40162 37999 19f4a3d4311684067515eba1b598db2c ""
-  "figures/fig_overview.pdf" 1792996517.44102 156143 06fee9ae56849aa5479e27e4d1c2e6df ""
   "figures/fig_pdg_ansatz.pdf" 1793071829.09623 144897 07f95b0ba880b3ce7265d5dd7bf1b9fd ""
   "figures/fig_robust.pdf" 1792996486.65487 37756 b16205793b120054c238802e8b1e9f06 ""
   "figures/fig_size.pdf" 1792996489.29277 37949 cecf54359a4ef65a12ba764f58c68c22 ""
-  "figures/fig_srcml_loops.pdf" 1793071759.87594 145801 ef9fdca5fdd678ce1f08ae17e086bb4c ""
-  "main.aux" 1793078585.72142 14200 6d24fed0625647420d787f03fe975840 "pdflatex"
-  "main.bbl" 1793078573.77498 16892 7d02182b39ec772117bd448d0be0aeed "bibtex main"
-  "main.tex" 1793071917.79195 3545 7df8e680ca5be5e1de5d9d766f7280ca ""
+  "figures/fig_tool.pdf" 1793079108.13569 151429 6f17a9df928d74f4c4b81e690acd50e2 ""
+  "main.aux" 1793079109.82654 13462 5752fd2c499765f40ad80670d6e282f6 "pdflatex"
+  "main.bbl" 1793079109.30741 16892 7d02182b39ec772117bd448d0be0aeed "bibtex main"
+  "main.tex" 1793079097.32693 2796 78c0285d35bc821a9a5c025b34def236 ""
   "numbers.tex" 1793078572.37555 40650 0e7c4b6b696091aff0e5cd55f6e0aacb ""
   "sections/conclusion.tex" 1793071321.17592 1714 b5000a4f975becbe0a192296d7b128c5 ""
   "sections/dependence.tex" 1793078227.44764 21607 5a6b14404595031da4fae0e7996de410 ""
   "sections/design.tex" 1793071321.17691 8203 601e0bb68ba655cdee4e91fba09c194f ""
   "sections/discussion.tex" 1793071321.17747 4881 cf367c23bb90a1252217da40225fba14 ""
-  "sections/example.tex" 1793047534.12974 5247 487dc59aec056a07d097b55e72d34a86 ""
+  "sections/example.tex" 1793079097.32929 5372 c093be603ac79836c10903c3435bf626 ""
   "sections/intro.tex" 1793071321.17816 6025 c3583f1b703ddf01ac98e7f1285beebe ""
   "sections/related.tex" 1793078584.99741 7367 85f44306b75c1a5077ad8e567a960a50 ""
-  "sections/results.tex" 1793071321.17922 17352 fb1cc0a17deb6a26d243139ff9b3d7ab ""
+  "sections/results.tex" 1793079097.33015 17315 ba66200d71661e41018be752b6b15768 ""
   "sections/threats.tex" 1793071321.17967 3169 ed51a90036ae7c51f2c8be50b979d662 ""
-  "sections/tool.tex" 1793071321.18044 8206 b84758b0f10e5a71215177497c6acd33 ""
+  "sections/tool.tex" 1793079097.32792 8275 503f472bfe9423d5054dc58d7b5a711f ""
   (generated)
   "main.aux"
   "main.log"

@@ -53,24 +53,12 @@ quantum programs, program comprehension, program slicing, program dependence, de
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_overview.pdf}
-  \caption{The tool slices the Bugs4Q program of Section~\ref{sec:example} statically. srcML parses the
-  program in stages 1 and 2, and the letters mark the elements the tool reads. Static interpretation yields
-  the operation trace in stage 3, its quantum dependence graph (QDG) in stage 4, and the backward pass from
-  the criterion $\{q_0\}$ yields the slice in lines in stage 5. Because \texttt{cx} writes its control $q_0$, the
-  faulty line~6 is in the slice. The classical PDG's last writer of $q_0$ is line~5, so it misses the fault.
-  The tool computed the figure from the original Bugs4Q file.}
-  \label{fig:overview}
-\end{figure*}
-
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=\textwidth]{figures/fig_srcml_loops.pdf}
-  \caption{Stage 1 shows the srcML of lines 10 to 15 of the ansatz of Fig.~\ref{fig:ansatz}a, with the
-  elements the tool reads, and stage 2 its unrolled operations in the slice of $q_0$. Letters b and c mean
-  what they do in Fig.~\ref{fig:overview}, and the angle arguments are elided. Every operation keeps its
-  line and iteration, so the tool can report which iterations of a line matter.}
-  \label{fig:loops}
+  \includegraphics[width=\textwidth]{figures/fig_tool.pdf}
+  \caption{The tool on the ansatz of Fig.~\ref{fig:ansatz}a, statically. In stage 1, srcML marks up the CNOT
+  loop and the dynamic step, and the letters mark the elements the tool reads. Stage 2 is the operation
+  trace it yields, whose dependence graph is Fig.~\ref{fig:ansatz}c, and stage 3 is the slice of $q_0$ by
+  line and iteration. The tool computed the figure from the program file.}
+  \label{fig:tool}
 \end{figure*}
 
 \input{sections/tool}
