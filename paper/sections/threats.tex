@@ -2,8 +2,8 @@
 
 \paragraph*{Construct validity}
 We measure dependence by perturbing each operation at \numInfluenceInputs{} inputs. Finite sampling can
-miss a dependence that shows only at other inputs, which would understate the dependences every rule
-misses and overstate every rule's precision. It cannot make an unsound slice look sound, because
+miss a dependence that shows only at other inputs, which would overstate every rule's recall and
+understate its precision, so the QDG's measured excess over the dependences is an upper bound. It cannot make an unsound slice look sound, because
 soundness is judged by the oracle's fidelity, not by the measured dependences, and the QDG's
 soundness for all inputs is proved. The other rules are judged at $\ket{0\dots0}$ and on \numRobDraws{}
 draws per input regime, so they could be wrong at inputs we did not draw. The fidelity threshold of
