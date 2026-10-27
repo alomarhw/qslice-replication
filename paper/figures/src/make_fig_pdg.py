@@ -1,17 +1,18 @@
 """PDG-style dependence-graph figures of two real Qiskit programs, nodes placed by one shared layout.
 
-fig_pdg_ansatz.tex    figure*: (a) VQE ansatz code with a measurement-conditioned flip, (b) one dependence graph for
-                      def-use, the classical PDG, the QDG and the QPDG, criterion q0, laid out like the circuit
-                      (a row per qubit, a box per layer). The four slices are nested (asserted), so each node is
-                      shaded by the weakest rule that keeps it. Edges: the QDG's (data, control, quantum) and the
-                      classical PDG's own edges, each of which skips a CNOT (asserted).
+fig_pdg_ansatz.tex    (a) VQE ansatz code with a measurement-conditioned flip, (b) one dependence graph for
+                      def-use, the classical PDG, the QDG and the QPDG, criterion q0. The four slices are nested
+                      (asserted), so each node is shaded by the weakest rule that keeps it. Edges: the QDG's
+                      (data, control, quantum) and the classical PDG's own edges, each of which skips a CNOT
+                      (asserted). LAYOUT picks a single-column figure with Graphviz placement ("vertical") or a
+                      figure* laid out like the circuit, a row per qubit ("horizontal").
 fig_pdg_teleport.tex  single column: teleportation code and its classical PDG, criterion q2 -> control
                       dependence. Def-use is the same graph without the control edges; the operations its
                       slice loses are outlined.
 
 Nodes are the program's operations as they execute (gate, angle, qubits) with the creating source line and
-the loop iteration. Edges follow the read/write rules of Section 3 (reaching definitions). The teleport graph
-is laid out by Graphviz dot. Backward reachability on
+the loop iteration. Edges follow the read/write rules of Section 3 (reaching definitions). The vertical ansatz
+graph and the teleport graph are laid out by Graphviz dot. Backward reachability on
 each drawn graph is asserted equal to the study's slicer before anything is drawn. Facts come from
 make_fig_programs.py's fig_programs_facts.json (dependences: icpc/influence.py; fidelities: the oracle).
 Usage (from experiments/): python ../paper/figures/src/make_fig_pdg.py
@@ -160,7 +161,7 @@ def panel(qc, lines, iters, pos, edges, missing, style, crit, title, note, dx, e
     return "\n".join(out), max(xs) - min(xs)
 
 
-def classical(pos, boxes, row, edges, slice_lines):
+def classical(pos, boxes, row, edges, slice_lines, insty="clsl"):
     """The program's classical statements as nodes above the operations, and a box around each loop iteration.
     boxes: name -> (node indices, label, header statements [(line, text)]); row: [(key, line, text, (x, y))] with
     x as a fraction of the panel width and y above the top operation; edges: (from key, to key or box name,
@@ -176,11 +177,11 @@ def classical(pos, boxes, row, edges, slice_lines):
         side[b] = (min(bx) - 0.66, max(bx) + 0.66, max(by) + 0.30)
         out.append(rf"\node[boxlbl, anchor=north west] at ({min(bx) - 0.64:.3f},{max(by) + 0.70:.3f}) {{{lbl}}};")
         for i, (ln, txt) in enumerate(hdr):
-            sty = "clsl" if ln in slice_lines else "cl"
+            sty = insty if ln in slice_lines else "cl"
             out.append(rf"\node[{sty}, anchor=north east, inner ysep=0.6pt] at ({max(bx) + 0.64 - i * 1.88:.3f},{max(by) + 0.70:.3f}) "
                        rf"{{{txt}\,{{\rmfamily\itshape\fontsize{{5}}{{5.5}}\selectfont (line {ln})}}}};")
     for key, ln, txt, (fx, fy) in row:
-        sty = "clsl" if ln in slice_lines else "cl"
+        sty = insty if ln in slice_lines else "cl"
         out.append(rf"\node[{sty}] (c{key}) at ({x0 + fx * w:.3f},{ytop + fy:.3f}) {{{txt}\\[-1pt]{{\rmfamily\itshape\fontsize{{5}}{{5.5}}\selectfont line {ln}}}}};")
     used = {"west": 0, "east": 0}
     for a, b, kind, *how in edges:
@@ -277,11 +278,11 @@ def legend(items):
     return r"{\scriptsize " + r"\hspace{0.9em} ".join(r"\mbox{" + LEGEND[i] + "}" for i in items) + "}"
 
 
-def ansatz():
-    """One graph for all four rules on the ansatz, laid out like its circuit: time left to right, a row per
-    qubit, a box per layer of the outer loop. The slices are nested (asserted), so a node is shaded by the
-    weakest rule that keeps it. Edges are the QDG's (data shared with the classical PDG, quantum, control)
-    plus the classical PDG's own edges, each of which skips a CNOT whose control it reads as unchanged."""
+LAYOUT = "vertical"  # "vertical" (single column) or "horizontal" (figure*, a row per qubit)
+
+
+def ansatz_facts():
+    """Everything both layouts draw, with the checks against the study's slicers and the tool."""
     t = 0
     qc, lines, dep, sl, f = load("ansatz.py", "ansatz")
     El = rule_edges(qc, "cpdg")
@@ -307,6 +308,74 @@ def ansatz():
     T = tool_slices("ansatz.py", t)
     tl = lambda ks: {lines[k] + (qc.data[k].operation.name == "if_else") for k in ks}  # noqa: E731
     assert T["wire"]["ops_lines"] == tl(sl["wire"]) and T["cpdg"]["ops_lines"] == tl(sl["cpdg"])
+    level = ({k: "lvqd" for k in sl["wire"]} | {k: "lvcp" for k in sl["cpdg"]} | {k: "lvdu" for k in sl["du"]}
+             | {k: "entx" for k in ent})
+    crit = seed(qc, "wire", t)
+    assert crit == seed(qc, "cpdg", t) == seed(qc, "du", t)
+    note = (rf"slices of $q_{t}$, of {n} operations:\\def-use {len(sl['du'])}, $F = {f['du']:.2f}$\enspace"
+            rf"$\cdot$\enspace classical PDG {len(sl['cpdg'])}, $F = {f['cpdg']:.2f}$\\"
+            rf"QDG {len(sl['wire'])}, exactly the dependences, $F = {f['wire']:.2f}$\enspace$\cdot$\enspace{{}}"
+            rf"QPDG {len(sl['yz'])}, $F = {f['yz']:.2f}$")
+    return dict(t=t, qc=qc, lines=lines, dep=dep, sl=sl, f=f, El=El, Er=Er, ent=ent, only_cp=only_cp, iters=iters,
+                n=n, T=T, level=level, crit=crit, note=note)
+
+
+def ansatz():
+    return ansatz_vertical() if LAYOUT == "vertical" else ansatz_horizontal()
+
+
+def ansatz_vertical():
+    """Single column: code and legend on top, the combined graph below, nodes placed by Graphviz in program
+    order with the loop iterations boxed, as in the classical PDG figures of the literature."""
+    A = ansatz_facts()
+    qc, lines, sl, El, Er, iters, n, T = A["qc"], A["lines"], A["sl"], A["El"], A["Er"], A["iters"], A["n"], A["T"]
+    lay = {L: [k for k in range(n) if iters[k] == L] for L in range(2)}
+    assert sorted(lay[0] + lay[1]) == [k for k in range(n) if lines[k] in (12, 13, 15)] and all(lines[k] != 21 for k in range(n))
+    pos = layout(n, El | Er, 0.86, 0.70, clusters=lay)
+    aux = [k for k in range(n) if iters[k] is None]
+    lx = [pos[k][0] for k in lay[0] + lay[1]]
+    ybot = min(pos[k][1] for k in lay[1]) - 1.05
+    for i, k in enumerate(aux):
+        pos[k] = (min(lx) + 0.25 + i * (max(lx) - min(lx) - 0.25) / max(len(aux) - 1, 1), ybot)
+    o = []
+    for k in range(n):
+        txt, sub = label(qc, lines, k, iters)
+        sty = A["level"].get(k, "op") + (",crit" if k == A["crit"] else "")
+        o.append(rf"\node[{sty}] (m{k}) at ({pos[k][0]:.3f},{pos[k][1]:.3f}) {{{txt}\\[-1pt]{{\rmfamily\itshape\fontsize{{5}}{{5.5}}\selectfont {sub}}}}};")
+    for i, j, kind in sorted(Er):
+        o.append(rf"\draw[{kind}E] (m{i}) -- (m{j});")
+    for i, j in sorted(A["only_cp"]):
+        o.append(rf"\draw[cpdgE] (m{i}) to[bend right=18] (m{j});")
+    boxes = {L: (lay[L], rf"layer = {L}", [(14, "for qubit"), (11, "for qubit")]) for L in lay}
+    row = [("n", 4, "n = 3", (0.10, 2.15)), ("ly", 5, "layers = 2", (0.40, 2.15)), ("rng", 6, r"rng = default\_rng(7)", (0.80, 2.15)),
+           ("qc", 8, "qc = QuantumCircuit(n + 1, n + 1)", (0.70, 1.60)), ("for", 10, "for layer in range(layers)", (0.27, 1.13))]
+    ce = [("n", "qc", "data"), ("ly", "for", "data"), ("for", 0, "control", "west"), ("for", 1, "control", "west"),
+          ("rng", 0, "data", "east"), ("rng", 1, "data", "east"), ("qc", 0, "data", "east"), ("qc", 1, "data", "east")]
+    xc, _ = classical(pos, boxes, row, ce, T["wire"]["classical"], insty="clq")
+    o.append(xc)
+    leg = r"\par\vspace{2.5pt}".join(r"\parbox[t]{3.05cm}{\raggedright\hangindent=0.62cm " + LEGEND[i] + "}" for i in
+                                     ["data", "control", "quantumq", "cpdgonly", "lvdu", "lvcp", "lvqd", "lvyz", "crit", "classicalq", "loop"])
+    summary = (A["note"].replace(r"operations:\\", r"operations:\par\vspace{2pt}")
+               .replace(r"\enspace$\cdot$\enspace{}", r"\par ").replace(r"\enspace$\cdot$\enspace ", r"\par ").replace(r"\\", r"\par "))
+    tex = (TEX_HEAD + r"\begin{minipage}{8.8cm}" + listing("ansatz.py", 4, 20, "5.5cm", "(a) VQE ansatz") +
+           r"\hfill\begin{minipage}[t]{3.1cm}\vspace{16pt}{\scriptsize\raggedright " + summary + r"\par}\end{minipage}\\[6pt]"
+           r"{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]"
+           r"\begin{minipage}[t]{5.65cm}\vspace{0pt}\begin{tikzpicture}" + "\n" + "\n".join(o) + "\n" +
+           r"\end{tikzpicture}\end{minipage}\hfill\begin{minipage}[t]{3.05cm}\vspace{8pt}{\scriptsize " + leg +
+           r"}\end{minipage}\end{minipage}\end{document}" + "\n")
+    (SRC / "fig_pdg_ansatz.tex").write_text(tex)
+    return {"layout": "vertical", "quantum": sorted((i, j) for i, j, k in Er if k == "quantum"),
+            "cpdg_only": sorted(A["only_cp"]), "du": sorted(sl["du"]), "cpdg": sorted(sl["cpdg"])}
+
+
+def ansatz_horizontal():
+    """One graph for all four rules on the ansatz, laid out like its circuit: time left to right, a row per
+    qubit, a box per layer of the outer loop. The slices are nested (asserted), so a node is shaded by the
+    weakest rule that keeps it. Edges are the QDG's (data shared with the classical PDG, quantum, control)
+    plus the classical PDG's own edges, each of which skips a CNOT whose control it reads as unchanged."""
+    A = ansatz_facts()
+    t, qc, lines, dep, sl, f = A["t"], A["qc"], A["lines"], A["dep"], A["sl"], A["f"]
+    Er, ent, only_cp, iters, n, T = A["Er"], A["ent"], A["only_cp"], A["iters"], A["n"], A["T"]
 
     # ---- positions: circuit order, a row per qubit
     CW, RH, BOXGAP = 0.95, 0.62, 0.45
@@ -325,10 +394,7 @@ def ansatz():
     pos[aux[1]] = (XD + 1.25, -3 * RH)
     pos[aux[2]] = (XD + 2.3, 0.0)
 
-    level = ({k: "lvqd" for k in sl["wire"]} | {k: "lvcp" for k in sl["cpdg"]} | {k: "lvdu" for k in sl["du"]}
-             | {k: "entx" for k in ent})
-    crit = seed(qc, "wire", t)
-    assert crit == seed(qc, "cpdg", t) == seed(qc, "du", t)
+    level, crit = A["level"], A["crit"]
     o = []
     for k in range(n):
         inst = qc.data[k]
