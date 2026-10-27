@@ -270,7 +270,8 @@ LEGEND = {"cpdgonly": r"\tikz\draw[cpdgE](0,0)--(0.45,0); classical PDG only, sk
           "entx": r"\tikz\node[entx,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence",
           "crit": r"\tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion",
           "classical": r"\tikz\node[cl,minimum width=4mm,minimum height=2.4mm]{}; classical statement (shaded if in the slice)",
-          "loop": r"\tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of a loop"}
+          "loop": r"\tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of a loop",
+          "loopouter": r"\tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of the outer loop, with the inner loops of lines 11 and 14 unrolled"}
 
 
 def legend_column(items):
@@ -328,6 +329,33 @@ def ansatz():
     return {"side": ansatz_side, "vertical": ansatz_vertical, "horizontal": ansatz_horizontal}[LAYOUT]()
 
 
+def routed_edges(pos, edges):
+    """Each edge leaves its source through its own point on the bottom side and enters its target through its
+    own point on the top side, ordered by the other end's x, as a curve with vertical tangents. Edges between
+    nodes of one row run side to side. Classical-PDG-only edges bow sideways so they never run along another."""
+    outs, ins = {}, {}
+    for i, j, sty in edges:
+        outs.setdefault(i, []).append((pos[j][0], j))
+        ins.setdefault(j, []).append((pos[i][0], i))
+    def frac(lst, other):
+        lst = sorted(lst)
+        k = [o for _, o in lst].index(other)
+        return 0.22 + 0.56 * (k + 1) / (len(lst) + 1)
+    out = []
+    for i, j, sty in sorted(edges):
+        dy = pos[i][1] - pos[j][1]
+        if abs(dy) < 0.3:
+            a, b = ("east", "west") if pos[i][0] < pos[j][0] else ("west", "east")
+            out.append(rf"\draw[{sty}] (m{i}.{a}) -- (m{j}.{b});")
+            continue
+        fo, fi = frac(outs[i], j), frac(ins[j], i)
+        d = max(0.4, 0.42 * dy)
+        bx = -0.55 if sty == "cpdgE" else 0.0
+        out.append(rf"\draw[{sty}] ($(m{i}.south west)!{fo:.3f}!(m{i}.south east)$) .. controls +({bx},{-d:.3f}) "
+                   rf"and +({bx},{d:.3f}) .. ($(m{j}.north west)!{fi:.3f}!(m{j}.north east)$);")
+    return out
+
+
 def ansatz_side():
     """figure*: the code, enlarged, with the legend under it, beside the combined graph placed by Graphviz in
     program order. Fills differ in hue and in lightness and the QPDG's extras are hatched, so the four levels
@@ -349,11 +377,9 @@ def ansatz_side():
         sty = level.get(k, "op") + (",crit" if k == A["crit"] else "")
         o.append(rf"\node[{sty}, font=\ttfamily\fontsize{{7.8}}{{8.6}}\selectfont] (m{k}) at ({pos[k][0]:.3f},{pos[k][1]:.3f}) "
                  rf"{{{txt}\\[-1pt]{{\rmfamily\itshape\fontsize{{6.5}}{{7}}\selectfont {sub}}}}};")
-    for i, j, kind in sorted(Er):
-        o.append(rf"\draw[{kind}E] (m{i}) -- (m{j});")
-    for i, j in sorted(A["only_cp"]):
-        o.append(rf"\draw[cpdgE] (m{i}) to[bend right=18] (m{j});")
-    boxes = {L: (lay[L], rf"layer = {L}", [(14, "for qubit"), (11, "for qubit")]) for L in lay}
+    o += routed_edges(pos, [(i, j, f"{kind}E") for i, j, kind in Er] + [(i, j, "cpdgE") for i, j in A["only_cp"]])
+    # the inner loops (lines 11 and 14) are unrolled inside each box; the caption and legend say so
+    boxes = {L: (lay[L], rf"layer = {L}", []) for L in lay}
     row = [("n", 4, "n = 3", (0.08, 2.35)), ("ly", 5, "layers = 2", (0.36, 2.35)), ("rng", 6, r"rng = default\_rng(7)", (0.80, 2.35)),
            ("qc", 8, "qc = QuantumCircuit(n + 1, n + 1)", (0.66, 1.72)), ("for", 10, "for layer in range(layers)", (0.25, 1.17))]
     ce = [("n", "qc", "data"), ("ly", "for", "data"), ("for", 0, "control", "west"), ("for", 1, "control", "west"),
@@ -365,7 +391,7 @@ def ansatz_side():
     o.append(rf"\node[font=\footnotesize, anchor=north, align=center] at ({(min(xs) + max(xs)) / 2:.3f},{ybot - 0.42:.3f}) {{{A['note']}}};")
     leg = r"\par\vspace{3pt}".join(r"\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm " + LEGEND[i] + "}" for i in
                                    ["data", "control", "quantumq", "cpdgonly", "lvdu", "lvcp", "lvqd", "lvyzh", "crit",
-                                    "classicalall", "loop"])
+                                    "classicalall", "loopouter"])
     head = (TEX_HEAD.replace(r"basicstyle=\ttfamily\fontsize{5.6}{6.9}\selectfont", r"basicstyle=\ttfamily\fontsize{7.2}{9}\selectfont")
             .replace(r"fill=black!4, font=\ttfamily\fontsize{5.6}{6.2}\selectfont}", r"fill=black!4, font=\ttfamily\fontsize{7.2}{8}\selectfont}")
             .replace(r"boxlbl/.style={font=\ttfamily\fontsize{5.2}{5.6}\selectfont", r"boxlbl/.style={font=\ttfamily\fontsize{6.8}{7.4}\selectfont"))

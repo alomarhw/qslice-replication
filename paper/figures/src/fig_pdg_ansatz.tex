@@ -35,7 +35,7 @@
   note/.style={font=\scriptsize, anchor=north, align=center},
 }
 \begin{document}
-\begin{minipage}{17.8cm}\begin{minipage}[t]{7.05cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=20,firstnumber=4]{programs/_display/ansatz.py}\par\vspace{10pt}{\footnotesize \parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[dataE](0,0)--(0.45,0); data}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[controlE](0,0)--(0.45,0); control (measured bit or loop)}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[quantumE](0,0)--(0.45,0); quantum, not in the classical PDG}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[cpdgE](0,0)--(0.45,0); classical PDG only, skips a CNOT}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[lvdu,minimum width=4mm,minimum height=2.4mm]{}; kept by every rule, def-use included}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[lvcp,minimum width=4mm,minimum height=2.4mm]{}; added by the classical PDG}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[lvqd,minimum width=4mm,minimum height=2.4mm]{}; added by the QDG}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[entxh,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[cl,minimum width=4mm,minimum height=2.4mm]{}; classical statement, all in the QDG slice}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of a loop}\par}\end{minipage}\hfill\begin{minipage}[t]{10.6cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]\begin{tikzpicture}
+\begin{minipage}{17.8cm}\begin{minipage}[t]{7.05cm}\vspace{0pt}{\footnotesize\textbf{(a) VQE ansatz}}\\[3pt]\lstinputlisting[style=qiskit,firstline=4,lastline=20,firstnumber=4]{programs/_display/ansatz.py}\par\vspace{10pt}{\footnotesize \parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[dataE](0,0)--(0.45,0); data}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[controlE](0,0)--(0.45,0); control (measured bit or loop)}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[quantumE](0,0)--(0.45,0); quantum, not in the classical PDG}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[cpdgE](0,0)--(0.45,0); classical PDG only, skips a CNOT}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[lvdu,minimum width=4mm,minimum height=2.4mm]{}; kept by every rule, def-use included}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[lvcp,minimum width=4mm,minimum height=2.4mm]{}; added by the classical PDG}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[lvqd,minimum width=4mm,minimum height=2.4mm]{}; added by the QDG}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[entxh,minimum width=4mm,minimum height=2.4mm]{}; added by the QPDG, not a dependence}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[op,crit,minimum width=4mm,minimum height=2.4mm]{}; last write to the criterion}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\node[cl,minimum width=4mm,minimum height=2.4mm]{}; classical statement, all in the QDG slice}\par\vspace{3pt}\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm \tikz\draw[loopbox](0,0)rectangle(0.42,0.24); one iteration of the outer loop, with the inner loops of lines 11 and 14 unrolled}\par}\end{minipage}\hfill\begin{minipage}[t]{10.6cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]\begin{tikzpicture}
 \node[lvdu, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m0) at (9.546,7.840) {ry(1.96) q0\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 12, iter 0}};
 \node[lvdu, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m1) at (9.546,6.908) {rz(5.64) q0\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 13, iter 0}};
 \node[lvqd, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m2) at (6.090,7.840) {ry(2.44) q1\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 12, iter 0}};
@@ -55,37 +55,33 @@
 \node[lvcp, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m16) at (2.935,-0.370) {h q3\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 17}};
 \node[lvcp, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m17) at (6.240,-0.370) {measure q3\,\textrightarrow\,c3\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont line 18}};
 \node[lvdu,crit, font=\ttfamily\fontsize{7.8}{8.6}\selectfont] (m18) at (9.546,-0.370) {if c3:x q0\\[-1pt]{\rmfamily\itshape\fontsize{6.5}{7}\selectfont lines 19--20}};
-\draw[dataE] (m0) -- (m1);
-\draw[dataE] (m1) -- (m6);
-\draw[dataE] (m2) -- (m3);
-\draw[dataE] (m3) -- (m6);
-\draw[dataE] (m4) -- (m5);
-\draw[dataE] (m5) -- (m7);
-\draw[dataE] (m6) -- (m7);
-\draw[quantumE] (m6) -- (m8);
-\draw[quantumE] (m7) -- (m10);
-\draw[dataE] (m7) -- (m12);
-\draw[dataE] (m8) -- (m9);
-\draw[dataE] (m9) -- (m14);
-\draw[dataE] (m10) -- (m11);
-\draw[dataE] (m11) -- (m14);
-\draw[dataE] (m12) -- (m13);
-\draw[dataE] (m13) -- (m15);
-\draw[dataE] (m14) -- (m15);
-\draw[quantumE] (m14) -- (m18);
-\draw[dataE] (m16) -- (m17);
-\draw[controlE] (m17) -- (m18);
-\draw[cpdgE] (m1) to[bend right=18] (m8);
-\draw[cpdgE] (m6) to[bend right=18] (m10);
-\draw[cpdgE] (m9) to[bend right=18] (m18);
+\draw[dataE] ($(m0.south west)!0.500!(m0.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m1.north west)!0.500!(m1.north east)$);
+\draw[dataE] ($(m1.south west)!0.407!(m1.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m6.north west)!0.593!(m6.north east)$);
+\draw[cpdgE] ($(m1.south west)!0.593!(m1.south east)$) .. controls +(-0.55,-1.378) and +(-0.55,1.378) .. ($(m8.north west)!0.593!(m8.north east)$);
+\draw[dataE] ($(m2.south west)!0.500!(m2.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m3.north west)!0.500!(m3.north east)$);
+\draw[dataE] ($(m3.south west)!0.500!(m3.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m6.north west)!0.407!(m6.north east)$);
+\draw[dataE] ($(m4.south west)!0.500!(m4.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m5.north west)!0.500!(m5.north east)$);
+\draw[dataE] ($(m5.south west)!0.500!(m5.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m7.north west)!0.407!(m7.north east)$);
+\draw[dataE] ($(m6.south west)!0.360!(m6.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m7.north west)!0.593!(m7.north east)$);
+\draw[quantumE] ($(m6.south west)!0.640!(m6.south east)$) .. controls +(0.0,-0.987) and +(0.0,0.987) .. ($(m8.north west)!0.407!(m8.north east)$);
+\draw[cpdgE] ($(m6.south west)!0.500!(m6.south east)$) .. controls +(-0.55,-0.987) and +(-0.55,0.987) .. ($(m10.north west)!0.593!(m10.north east)$);
+\draw[quantumE] ($(m7.south west)!0.593!(m7.south east)$) .. controls +(0.0,-0.595) and +(0.0,0.595) .. ($(m10.north west)!0.407!(m10.north east)$);
+\draw[dataE] ($(m7.south west)!0.407!(m7.south east)$) .. controls +(0.0,-0.987) and +(0.0,0.987) .. ($(m12.north west)!0.500!(m12.north east)$);
+\draw[dataE] ($(m8.south west)!0.500!(m8.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m9.north west)!0.500!(m9.north east)$);
+\draw[dataE] ($(m9.south west)!0.407!(m9.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m14.north west)!0.593!(m14.north east)$);
+\draw[cpdgE] ($(m9.south west)!0.593!(m9.south east)$) .. controls +(-0.55,-1.287) and +(-0.55,1.287) .. ($(m18.north west)!0.640!(m18.north east)$);
+\draw[dataE] ($(m10.south west)!0.500!(m10.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m11.north west)!0.500!(m11.north east)$);
+\draw[dataE] ($(m11.south west)!0.500!(m11.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m14.north west)!0.407!(m14.north east)$);
+\draw[dataE] ($(m12.south west)!0.500!(m12.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m13.north west)!0.500!(m13.north east)$);
+\draw[dataE] ($(m13.south west)!0.500!(m13.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m15.north west)!0.407!(m15.north east)$);
+\draw[dataE] ($(m14.south west)!0.407!(m14.south east)$) .. controls +(0.0,-0.400) and +(0.0,0.400) .. ($(m15.north west)!0.593!(m15.north east)$);
+\draw[quantumE] ($(m14.south west)!0.593!(m14.south east)$) .. controls +(0.0,-0.895) and +(0.0,0.895) .. ($(m18.north west)!0.500!(m18.north east)$);
+\draw[dataE] (m16.east) -- (m17.west);
+\draw[controlE] (m17.east) -- (m18.west);
 \draw[loopbox] (1.515,4.744) rectangle (10.666,8.560);
 \node[boxlbl, anchor=north west] at (1.535,8.540) {layer = 0};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (10.646,8.540) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (8.146,8.540) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
 \draw[loopbox] (1.515,0.530) rectangle (10.666,4.346);
 \node[boxlbl, anchor=north west] at (1.535,4.326) {layer = 1};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (10.646,4.326) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 14)}};
-\node[cl, anchor=north east, inner ysep=0.6pt] at (8.146,4.326) {for qubit\,{\rmfamily\itshape\fontsize{5}{5.5}\selectfont (line 11)}};
 \node[cl] (cn) at (2.281,10.190) {n = 3\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 4}};
 \node[cl] (cly) at (4.821,10.190) {layers = 2\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 5}};
 \node[cl] (crng) at (8.811,10.190) {rng = default\_rng(7)\\[-1pt]{\rmfamily\itshape\fontsize{5}{5.5}\selectfont line 6}};
