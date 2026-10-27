@@ -302,26 +302,10 @@ defines $q$ under the QDG, the source expressions that denote $q$ in gate calls,
 functions inside which $q$ is acted on, the other qubits that the first operation on $q$ reaches,
 transitively unlike the direct dependent variables of srcSlice, the bits
 measured from $q$ and the lines conditioned on them, and the lines of the backward slice of $q$ and of the
-forward slice of its first operation. Table~\ref{tab:profile} shows the profile of $q_0$ in
-Fig.~\ref{fig:bv}. A profile gathers in one view what a developer first asks about a qubit, and it costs
-one backward and one forward pass.
-
-\begin{table}[t]
-  \centering
-  \caption{Slice profile of $q_0$ in the program of Fig.~\ref{fig:bv}, computed by the tool}
-  \label{tab:profile}
-  \footnotesize\setlength{\tabcolsep}{4pt}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.36\columnwidth} >{\raggedright\arraybackslash}p{0.56\columnwidth}@{}}
-    \toprule
-    Entry & Value \\
-    \midrule
-    Uses and definitions & lines \numBvProfDefs{} \\
-    Names & \texttt{i} on lines \numBvProfNameI{}, \texttt{q} on line \numBvProfNameQ{} \\
-    Functions & none \\
-    Dependent qubits & \numBvProfDependents{} \\
-    Bits & \numBvProfBits{}, no conditioned lines \\
-    Backward slice & operation lines \numBvQdgLines{} \\
-    Forward slice & lines \numBvProfForward{} \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+forward slice of its first operation. In the program of Fig.~\ref{fig:bv}, the tool computes the profile of
+$q_0$ as $\mathsf{uses}(q_0) = \numBvProfDefsSet{}$, $\mathsf{functions}(q_0) = \emptyset$,
+$\mathsf{names}(q_0) = \{{\texttt{i} \mapsto \numBvProfNameISet{}}, {\texttt{q} \mapsto \numBvProfNameQSet{}}\}$,
+$\mathsf{dependents}(q_0) = \numBvProfDependentsSet{}$, $\mathsf{bits}(q_0) = \numBvProfBitsSet{}$ with no
+conditioned lines, $\mathsf{backward}(q_0) = \numBvProfBackwardSet{}$ and $\mathsf{forward}(q_0) =
+\numBvProfForwardSet{}$, where every set except the qubits and bits holds line numbers. A profile gathers
+in one view what a developer first asks about a qubit, and it costs one backward and one forward pass.
