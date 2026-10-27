@@ -283,7 +283,8 @@ def legend(items):
     return r"{\scriptsize " + r"\hspace{0.9em} ".join(r"\mbox{" + LEGEND[i] + "}" for i in items) + "}"
 
 
-LAYOUT = "side"  # "side" (figure*, code beside a vertical graph), "vertical" (one column) or "horizontal"
+LAYOUT = "graphviz"  # "graphviz" (figure*, code beside a graph laid out and routed by Graphviz dot),
+#                      "side" (same, hand-routed), "vertical" (one column) or "horizontal"
 
 
 def ansatz_facts():
@@ -326,7 +327,69 @@ def ansatz_facts():
 
 
 def ansatz():
-    return {"side": ansatz_side, "vertical": ansatz_vertical, "horizontal": ansatz_horizontal}[LAYOUT]()
+    return {"graphviz": ansatz_graphviz, "side": ansatz_side, "vertical": ansatz_vertical,
+            "horizontal": ansatz_horizontal}[LAYOUT]()
+
+
+def side_head():
+    """The preamble of the side-by-side figures: larger code, classical statements and box labels."""
+    head = (TEX_HEAD.replace(r"basicstyle=\ttfamily\fontsize{5.6}{6.9}\selectfont", r"basicstyle=\ttfamily\fontsize{7.2}{9}\selectfont")
+            .replace(r"fill=black!4, font=\ttfamily\fontsize{5.6}{6.2}\selectfont}", r"fill=black!4, font=\ttfamily\fontsize{7.2}{8}\selectfont}")
+            .replace(r"boxlbl/.style={font=\ttfamily\fontsize{5.2}{5.6}\selectfont", r"boxlbl/.style={font=\ttfamily\fontsize{6.8}{7.4}\selectfont"))
+    assert head.count("7.2}{8}") == 1 and head.count("6.8}{7.4}") == 1 and head.count("7.2}{9}") == 1
+    return head
+
+
+def graphviz_spec(A):
+    """The graph as fig2_graphviz/make_graph.py reads it: operations with their slice level, the QDG's edges and
+    the classical PDG's own edges, the two loop iterations, and the classical statements above them."""
+    qc, lines, iters, n = A["qc"], A["lines"], A["iters"], A["n"]
+    level = {k: ("entxh" if v == "entx" else v) for k, v in A["level"].items()}
+    nodes = []
+    for k in range(n):
+        txt, sub = label(qc, lines, k, iters)
+        nodes.append({"id": f"m{k}", "label": txt.replace(r"\,\textrightarrow\,", " → "), "label_tex": txt,
+                      "sub": sub.replace("--", "–"), "sub_tex": sub, "style": level.get(k, "op"),
+                      "criterion_last_write": k == A["crit"], "layer": iters[k], "program_order": k})
+    edges = [{"src": f"m{i}", "dst": f"m{j}", "kind": kind} for i, j, kind in sorted(A["Er"])]
+    edges += [{"src": f"m{i}", "dst": f"m{j}", "kind": "cpdg_only"} for i, j in sorted(A["only_cp"])]
+    classical_nodes = [{"id": "cn", "label": "n = 3", "line": 4}, {"id": "cly", "label": "layers = 2", "line": 5},
+                       {"id": "crng", "label": "rng = default_rng(7)", "line": 6},
+                       {"id": "cqc", "label": "qc = QuantumCircuit(n + 1, n + 1)", "line": 8},
+                       {"id": "cfor", "label": "for layer in range(layers)", "line": 10}]
+    assert set(A["T"]["wire"]["classical"]) >= {c["line"] for c in classical_nodes} | {11, 14}, \
+        "a drawn classical statement is not in the QDG slice"
+    cedges = [{"src": "cn", "dst": "cqc", "kind": "data"}, {"src": "cly", "dst": "cfor", "kind": "data"}]
+    for L in (0, 1):
+        cedges += [{"src": "cfor", "dst": f"cluster_layer{L}", "kind": "control"},
+                   {"src": "crng", "dst": f"cluster_layer{L}", "kind": "data"},
+                   {"src": "cqc", "dst": f"cluster_layer{L}", "kind": "data"}]
+    return {"nodes": nodes, "edges": edges,
+            "clusters": {f"cluster_layer{L}": {"label": f"layer = {L}", "nodes": [f"m{k}" for k in range(n) if iters[k] == L]}
+                         for L in (0, 1)},
+            "after_loops_row": [f"m{k}" for k in range(n) if iters[k] is None],
+            "classical_nodes": classical_nodes, "classical_edges": cedges, "summary_note_tex": A["note"]}
+
+
+def ansatz_graphviz():
+    """figure*: the code and legend beside the combined graph, laid out and routed by Graphviz dot
+    (fig2_graphviz/make_graph.py, which checks the drawn nodes and edges against the spec written here)."""
+    A = ansatz_facts()
+    gv = SRC / "fig2_graphviz"
+    head = side_head()
+    (gv / "graph_spec.json").write_text(json.dumps(graphviz_spec(A), indent=1) + "\n")
+    (gv / "preamble.tex").write_text(head)
+    subprocess.run([sys.executable, str(gv / "make_graph.py"), "--no-compile"], check=True, cwd=gv)
+    leg = r"\par\vspace{3pt}".join(r"\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm " + LEGEND[i] + "}" for i in
+                                   ["data", "control", "quantumq", "cpdgonly", "lvdu", "lvcp", "lvqd", "lvyzh", "crit",
+                                    "classicalall", "loopouter"])
+    tex = (head + r"\begin{minipage}{17.8cm}" + listing("ansatz.py", 4, 20, "7.05cm", "(a) VQE ansatz",
+                                                    r"\par\vspace{10pt}{\footnotesize " + leg + r"\par}") +
+           r"\hfill\begin{minipage}[t]{10.6cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]"
+           r"\begin{tikzpicture}[line cap=round]\input{fig2_graphviz/graph_body.tikz}\end{tikzpicture}\end{minipage}\end{minipage}\end{document}" + "\n")
+    (SRC / "fig_pdg_ansatz.tex").write_text(tex)
+    sl = A["sl"]
+    return {"layout": "graphviz", "du": sorted(sl["du"]), "cpdg": sorted(sl["cpdg"]), "wire": sorted(sl["wire"])}
 
 
 def routed_edges(pos, edges):

@@ -1,0 +1,433 @@
+{
+ "nodes": [
+  {
+   "id": "m0",
+   "label": "ry(1.96) q0",
+   "label_tex": "ry(1.96) q0",
+   "sub": "line 12, iter 0",
+   "sub_tex": "line 12, iter 0",
+   "style": "lvdu",
+   "criterion_last_write": false,
+   "layer": 0,
+   "program_order": 0
+  },
+  {
+   "id": "m1",
+   "label": "rz(5.64) q0",
+   "label_tex": "rz(5.64) q0",
+   "sub": "line 13, iter 0",
+   "sub_tex": "line 13, iter 0",
+   "style": "lvdu",
+   "criterion_last_write": false,
+   "layer": 0,
+   "program_order": 1
+  },
+  {
+   "id": "m2",
+   "label": "ry(2.44) q1",
+   "label_tex": "ry(2.44) q1",
+   "sub": "line 12, iter 0",
+   "sub_tex": "line 12, iter 0",
+   "style": "lvqd",
+   "criterion_last_write": false,
+   "layer": 0,
+   "program_order": 2
+  },
+  {
+   "id": "m3",
+   "label": "rz(1.42) q1",
+   "label_tex": "rz(1.42) q1",
+   "sub": "line 13, iter 0",
+   "sub_tex": "line 13, iter 0",
+   "style": "lvqd",
+   "criterion_last_write": false,
+   "layer": 0,
+   "program_order": 3
+  },
+  {
+   "id": "m4",
+   "label": "ry(0.94) q2",
+   "label_tex": "ry(0.94) q2",
+   "sub": "line 12, iter 0",
+   "sub_tex": "line 12, iter 0",
+   "style": "lvqd",
+   "criterion_last_write": false,
+   "layer": 0,
+   "program_order": 4
+  },
+  {
+   "id": "m5",
+   "label": "rz(5.49) q2",
+   "label_tex": "rz(5.49) q2",
+   "sub": "line 13, iter 0",
+   "sub_tex": "line 13, iter 0",
+   "style": "lvqd",
+   "criterion_last_write": false,
+   "layer": 0,
+   "program_order": 5
+  },
+  {
+   "id": "m6",
+   "label": "cx q0,q1",
+   "label_tex": "cx q0,q1",
+   "sub": "line 15, iter 0",
+   "sub_tex": "line 15, iter 0",
+   "style": "lvqd",
+   "criterion_last_write": false,
+   "layer": 0,
+   "program_order": 6
+  },
+  {
+   "id": "m7",
+   "label": "cx q1,q2",
+   "label_tex": "cx q1,q2",
+   "sub": "line 15, iter 0",
+   "sub_tex": "line 15, iter 0",
+   "style": "lvqd",
+   "criterion_last_write": false,
+   "layer": 0,
+   "program_order": 7
+  },
+  {
+   "id": "m8",
+   "label": "ry(0.02) q0",
+   "label_tex": "ry(0.02) q0",
+   "sub": "line 12, iter 1",
+   "sub_tex": "line 12, iter 1",
+   "style": "lvdu",
+   "criterion_last_write": false,
+   "layer": 1,
+   "program_order": 8
+  },
+  {
+   "id": "m9",
+   "label": "rz(5.16) q0",
+   "label_tex": "rz(5.16) q0",
+   "sub": "line 13, iter 1",
+   "sub_tex": "line 13, iter 1",
+   "style": "lvdu",
+   "criterion_last_write": false,
+   "layer": 1,
+   "program_order": 9
+  },
+  {
+   "id": "m10",
+   "label": "ry(2.50) q1",
+   "label_tex": "ry(2.50) q1",
+   "sub": "line 12, iter 1",
+   "sub_tex": "line 12, iter 1",
+   "style": "lvqd",
+   "criterion_last_write": false,
+   "layer": 1,
+   "program_order": 10
+  },
+  {
+   "id": "m11",
+   "label": "rz(2.94) q1",
+   "label_tex": "rz(2.94) q1",
+   "sub": "line 13, iter 1",
+   "sub_tex": "line 13, iter 1",
+   "style": "lvqd",
+   "criterion_last_write": false,
+   "layer": 1,
+   "program_order": 11
+  },
+  {
+   "id": "m12",
+   "label": "ry(0.95) q2",
+   "label_tex": "ry(0.95) q2",
+   "sub": "line 12, iter 1",
+   "sub_tex": "line 12, iter 1",
+   "style": "entxh",
+   "criterion_last_write": false,
+   "layer": 1,
+   "program_order": 12
+  },
+  {
+   "id": "m13",
+   "label": "rz(1.75) q2",
+   "label_tex": "rz(1.75) q2",
+   "sub": "line 13, iter 1",
+   "sub_tex": "line 13, iter 1",
+   "style": "entxh",
+   "criterion_last_write": false,
+   "layer": 1,
+   "program_order": 13
+  },
+  {
+   "id": "m14",
+   "label": "cx q0,q1",
+   "label_tex": "cx q0,q1",
+   "sub": "line 15, iter 1",
+   "sub_tex": "line 15, iter 1",
+   "style": "lvqd",
+   "criterion_last_write": false,
+   "layer": 1,
+   "program_order": 14
+  },
+  {
+   "id": "m15",
+   "label": "cx q1,q2",
+   "label_tex": "cx q1,q2",
+   "sub": "line 15, iter 1",
+   "sub_tex": "line 15, iter 1",
+   "style": "entxh",
+   "criterion_last_write": false,
+   "layer": 1,
+   "program_order": 15
+  },
+  {
+   "id": "m16",
+   "label": "h q3",
+   "label_tex": "h q3",
+   "sub": "line 17",
+   "sub_tex": "line 17",
+   "style": "lvcp",
+   "criterion_last_write": false,
+   "layer": null,
+   "program_order": 16
+  },
+  {
+   "id": "m17",
+   "label": "measure q3 \u2192 c3",
+   "label_tex": "measure q3\\,\\textrightarrow\\,c3",
+   "sub": "line 18",
+   "sub_tex": "line 18",
+   "style": "lvcp",
+   "criterion_last_write": false,
+   "layer": null,
+   "program_order": 17
+  },
+  {
+   "id": "m18",
+   "label": "if c3:x q0",
+   "label_tex": "if c3:x q0",
+   "sub": "lines 19\u201320",
+   "sub_tex": "lines 19--20",
+   "style": "lvdu",
+   "criterion_last_write": true,
+   "layer": null,
+   "program_order": 18
+  }
+ ],
+ "edges": [
+  {
+   "src": "m0",
+   "dst": "m1",
+   "kind": "data"
+  },
+  {
+   "src": "m1",
+   "dst": "m6",
+   "kind": "data"
+  },
+  {
+   "src": "m2",
+   "dst": "m3",
+   "kind": "data"
+  },
+  {
+   "src": "m3",
+   "dst": "m6",
+   "kind": "data"
+  },
+  {
+   "src": "m4",
+   "dst": "m5",
+   "kind": "data"
+  },
+  {
+   "src": "m5",
+   "dst": "m7",
+   "kind": "data"
+  },
+  {
+   "src": "m6",
+   "dst": "m7",
+   "kind": "data"
+  },
+  {
+   "src": "m6",
+   "dst": "m8",
+   "kind": "quantum"
+  },
+  {
+   "src": "m7",
+   "dst": "m10",
+   "kind": "quantum"
+  },
+  {
+   "src": "m7",
+   "dst": "m12",
+   "kind": "data"
+  },
+  {
+   "src": "m8",
+   "dst": "m9",
+   "kind": "data"
+  },
+  {
+   "src": "m9",
+   "dst": "m14",
+   "kind": "data"
+  },
+  {
+   "src": "m10",
+   "dst": "m11",
+   "kind": "data"
+  },
+  {
+   "src": "m11",
+   "dst": "m14",
+   "kind": "data"
+  },
+  {
+   "src": "m12",
+   "dst": "m13",
+   "kind": "data"
+  },
+  {
+   "src": "m13",
+   "dst": "m15",
+   "kind": "data"
+  },
+  {
+   "src": "m14",
+   "dst": "m15",
+   "kind": "data"
+  },
+  {
+   "src": "m14",
+   "dst": "m18",
+   "kind": "quantum"
+  },
+  {
+   "src": "m16",
+   "dst": "m17",
+   "kind": "data"
+  },
+  {
+   "src": "m17",
+   "dst": "m18",
+   "kind": "control"
+  },
+  {
+   "src": "m1",
+   "dst": "m8",
+   "kind": "cpdg_only"
+  },
+  {
+   "src": "m6",
+   "dst": "m10",
+   "kind": "cpdg_only"
+  },
+  {
+   "src": "m9",
+   "dst": "m18",
+   "kind": "cpdg_only"
+  }
+ ],
+ "clusters": {
+  "cluster_layer0": {
+   "label": "layer = 0",
+   "nodes": [
+    "m0",
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "m7"
+   ]
+  },
+  "cluster_layer1": {
+   "label": "layer = 1",
+   "nodes": [
+    "m8",
+    "m9",
+    "m10",
+    "m11",
+    "m12",
+    "m13",
+    "m14",
+    "m15"
+   ]
+  }
+ },
+ "after_loops_row": [
+  "m16",
+  "m17",
+  "m18"
+ ],
+ "classical_nodes": [
+  {
+   "id": "cn",
+   "label": "n = 3",
+   "line": 4
+  },
+  {
+   "id": "cly",
+   "label": "layers = 2",
+   "line": 5
+  },
+  {
+   "id": "crng",
+   "label": "rng = default_rng(7)",
+   "line": 6
+  },
+  {
+   "id": "cqc",
+   "label": "qc = QuantumCircuit(n + 1, n + 1)",
+   "line": 8
+  },
+  {
+   "id": "cfor",
+   "label": "for layer in range(layers)",
+   "line": 10
+  }
+ ],
+ "classical_edges": [
+  {
+   "src": "cn",
+   "dst": "cqc",
+   "kind": "data"
+  },
+  {
+   "src": "cly",
+   "dst": "cfor",
+   "kind": "data"
+  },
+  {
+   "src": "cfor",
+   "dst": "cluster_layer0",
+   "kind": "control"
+  },
+  {
+   "src": "crng",
+   "dst": "cluster_layer0",
+   "kind": "data"
+  },
+  {
+   "src": "cqc",
+   "dst": "cluster_layer0",
+   "kind": "data"
+  },
+  {
+   "src": "cfor",
+   "dst": "cluster_layer1",
+   "kind": "control"
+  },
+  {
+   "src": "crng",
+   "dst": "cluster_layer1",
+   "kind": "data"
+  },
+  {
+   "src": "cqc",
+   "dst": "cluster_layer1",
+   "kind": "data"
+  }
+ ],
+ "summary_note_tex": "slices of $q_0$, of 19 operations:\\\\def-use 5, $F = 0.55$\\enspace$\\cdot$\\enspace classical PDG 7, $F = 0.97$\\\\QDG 16, exactly the dependences, $F = 1.00$\\enspace$\\cdot$\\enspace{}QPDG 19, $F = 1.00$"
+}
