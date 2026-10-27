@@ -1123,26 +1123,6 @@
   "tex": "1{,}024",
   "source": "icpc/noise_run.py"
  },
- "HwCircuits": {
-  "value": 18,
-  "tex": "18",
-  "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
- },
- "HwWithin": {
-  "value": 16,
-  "tex": "16",
-  "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
- },
- "HwOutside": {
-  "value": 2,
-  "tex": "two",
-  "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
- },
- "HwNoiseFreeZero": {
-  "value": 18,
-  "tex": "18",
-  "source": "results/icpc/hardware/hardware_tvd_corrected.csv"
- },
  "CpdgUnsound": {
   "value": 204,
   "tex": "204",
@@ -2370,7 +2350,7 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "TelDuFidelity": {
-  "value": 0.5000000047438758,
+  "value": 0.4999999999999999,
   "tex": "0.50",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
@@ -2390,7 +2370,7 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsCpdgFidelity": {
-  "value": 0.9726944017672796,
+  "value": 0.9726944017672795,
   "tex": "0.97",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
@@ -2405,7 +2385,7 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsDuFidelity": {
-  "value": 0.5457264953095518,
+  "value": 0.545726495309552,
   "tex": "0.55",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
@@ -2415,7 +2395,7 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsQdgFidelity": {
-  "value": 0.9999999999999997,
+  "value": 0.9999999999999999,
   "tex": "1.00",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
@@ -2425,7 +2405,7 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsYzFidelity": {
-  "value": 0.9999999999999996,
+  "value": 0.9999999999999997,
   "tex": "1.00",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
@@ -2435,7 +2415,7 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsYzroFidelity": {
-  "value": 0.9999999999999996,
+  "value": 0.9999999999999997,
   "tex": "1.00",
   "source": "paper/figures/src/fig_programs_facts.json"
  },

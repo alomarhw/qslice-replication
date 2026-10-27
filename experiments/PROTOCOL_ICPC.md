@@ -49,7 +49,7 @@ All slicers are judged only through `common/evaluate.py::materialise` and the ex
 | S-yz | Re-implementation of Yu & Zhao's QPDG slicing [27] | new `slicers/yuzhao.py`: backward reachability over entanglement, measurement and classical edges as [27] defines them. Every interpretation choice is logged at the top of the file before the run. No-cloning and temporal dependence are omitted, because [27] does not define them operationally. |
 | S-q | QSlice | `qdg.py::entanglement_pruned_slice` on `QDGControlFixed`, unchanged (`sep_eps` = 1e-9) |
 | S-qW | QSlice, set criterion | new: the same algorithm with criterion W (a set of qubits). Mutual information is I(W; x) and verification uses the joint reduced state ρ_W. It is identical to S-q when \|W\| = 1, and this is checked on all 784 pairs before the run. |
-| S-4e | Four-edge slicer (ablation) | `fouredge/src`. The measured-criterion fix of plan Phase 3 step 3: a criterion on a measured qubit is seeded from that qubit's last non-measurement operation. Results are reported **before and after** the fix. The unfixed results are the existing `results/rq4_ablation`. |
+| S-4e | Four-edge slicer (ablation) | `fouredge/src`. The measured-criterion fix: a criterion on a measured qubit is seeded from that qubit's last non-measurement operation. Results are reported **before and after** the fix. The unfixed results are the existing `results/rq4_ablation`. |
 
 The four-edge `CAUSAL_CONE` variant (UED+ED, no MD/CD) is **not** a light cone and is never reported
 under that name.
@@ -1174,3 +1174,11 @@ These were found while implementing §6, from the API documentation. No LLM call
   qualified for nested conditions; the threats' bias direction corrected (sampled dependences overstate recall and
   understate precision); the hardware paragraph removed (an earlier slicer, phase-blind metric); noise and profile
   text condensed; versions, hardware, seeds and archiving stated in Data Availability.
+
+### Package note (2026-10-27, after all results; no change to any rule, run or result)
+The anonymous replication package leaves out the material of the earlier version that this protocol
+cites but the paper does not use: `archive/` (the earlier artifact), `phase1_logs/` and `phase1_checks/`,
+`hardware/` with `results/icpc/hardware/` (the paper no longer reports hardware runs), and `figures/` (the
+earlier version's figures). Local paths in logs and result files are written as `<repo>` and `<data-root>`.
+`make_numbers.py` gives the same values without them; its four hardware macros, which the paper did not
+use, are removed.

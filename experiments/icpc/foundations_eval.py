@@ -3,11 +3,11 @@ seeding, histogram checks of unsound slices, forward slices and duality.
 
 Per corpus-A circuit and criterion qubit t, at |0...0>, scored as in icpc/rq1_run.py:
   lc        QDG backward slice (reproduces the committed RQ1 records)
-  4e        four-edge graph of the JAW draft, seeded at t's last operation (= committed 4e_fixed)
+  4e        four-edge graph, seeded at t's last operation (= committed 4e_fixed)
   4e_nocl   four-edge graph without the transitive entanglement closure                       (J1)
   lc_all    QDG backward slice seeded at every operation on t                                   (J3)
   und_qdg   undirected reachability in the QDG from every operation on t                        (J2)
-  und_4e    undirected reachability in the four-edge graph from every operation on t (the draft) (J2)
+  und_4e    undirected reachability in the four-edge graph from every operation on t  (J2)
 Per unsound du / cpdg slice: whether the criterion's Z-basis distribution still matches            (J5)
 Per operation k: forward QDG slice (final qubits reachable from k) vs influence(qc)[k] (forward ground
 truth), and duality: q in F(k)  <=>  k in lc(q)                                                      (S1)

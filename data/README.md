@@ -10,7 +10,7 @@
 
 **Corpus A** (experiments 1 and 2) is selected by `../selection/qasm_loader.py` (`load_corpora`) from `qasmbench/`, `mqtbench/` and `veriqbench/`. They keep circuits with at most
 14 qubits and 220 operations, sorted by (qubits, operations, name), and at most 80 per corpus. That
-gives QASMBench 39, MQT Bench 42 and VeriQBench 80, 161 circuits in all, the set of the submitted paper. Three are excluded by the experiments' protocol, leaving 158 (see `../experiments/README.md`). Every
+gives QASMBench 39, MQT Bench 42 and VeriQBench 80, 161 circuits in all. Three are excluded by the experiments' protocol, leaving 158 (see `../experiments/README.md`). Every
 QASMBench circuit within the caps is shipped, so experiments 1 and 2 need no download.
 
 **RQ5** (`../experiments/rq5_scalability/run.py`) selects the Table VII circuits by scanning `qasmbench/`, `QASMBench-master/`, `mqtbench/` and `veriqbench/`,

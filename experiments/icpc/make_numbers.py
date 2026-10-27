@@ -1,12 +1,12 @@
-"""Every number the ICPC paper states, from committed result files only (plan Phase 4; PROTOCOL_ICPC.md §9).
+"""Every number the ICPC paper states, from committed result files only (PROTOCOL_ICPC.md §9).
 
 Reads results/ and recomputes nothing about circuits. The only statistics computed here are the §6.4 T2
 comparisons (exact McNemar on top-3 hits, paired bootstrap CI of the difference), because no committed file
 holds them. The §9 confirmatory family is read from results/icpc/confirmatory/summary.json.
 Writes:
   ../paper/numbers.tex       one \\newcommand per number, each commented with its source file
-  results/icpc/numbers.json  the same values, raw and formatted, for PROVENANCE.md
-p-values below 1e-10 are written "10^{-10}" with a "<" (plan Phase 4 rule).
+  results/icpc/numbers.json  the same values, raw and formatted, with the source of each
+p-values below 1e-10 are written "10^{-10}" with a "<".
 Usage (from experiments/): python icpc/make_numbers.py
 """
 
@@ -320,7 +320,7 @@ def main() -> int:
     put("CorpusLMaxQubits", max(int(r["n_qubits"]) for r in cl), str(max(int(r["n_qubits"]) for r in cl)), "results/icpc/corpus_l/circuits.csv")
     put("CorpusLCompleted", sum(r["completed"] == "1" for r in cl), cnt(sum(r["completed"] == "1" for r in cl)), "results/icpc/corpus_l/circuits.csv")
 
-    # ---- Discussion: noise and hardware ------------------------------------------------------------------
+    # ---- RQ2: noise --------------------------------------------------------------------------------------
     src = "results/icpc/noise/pairs.csv"
     nz_ = rows(ICPC / "noise" / "pairs.csv")
     put("NoiseMaxQubits", max(int(r["n_qubits"]) for r in nz_), word(max(int(r["n_qubits"]) for r in nz_)), src)
@@ -332,11 +332,6 @@ def main() -> int:
         put(f"Noise{nm}CrossExactN", len(ex_), cnt(len(ex_)), src)
         put(f"Noise{nm}CrossShotMax", max(dy), f"{max(dy):.3f}", src)
     put("NoiseShots", 1024, cnt(1024), "icpc/noise_run.py")
-    hw = rows(ICPC / "hardware" / "hardware_tvd_corrected.csv")
-    put("HwCircuits", len(hw), cnt(len(hw)), "results/icpc/hardware/hardware_tvd_corrected.csv")
-    put("HwWithin", sum(r["within_delta"] == "True" for r in hw), cnt(sum(r["within_delta"] == "True" for r in hw)), "results/icpc/hardware/hardware_tvd_corrected.csv")
-    put("HwOutside", sum(r["within_delta"] != "True" for r in hw), ["zero", "one", "two", "three"][sum(r["within_delta"] != "True" for r in hw)], "results/icpc/hardware/hardware_tvd_corrected.csv")
-    put("HwNoiseFreeZero", sum(float(r["TVD_noise_free"]) == 0 for r in hw), cnt(sum(float(r["TVD_noise_free"]) == 0 for r in hw)), "results/icpc/hardware/hardware_tvd_corrected.csv")
 
     # ---- classical PDG baseline (Deviation I-12) -------------------------------------------------------------
     src = "results/icpc/cpdg/rq1_records.csv"

@@ -132,8 +132,8 @@
  },
  {
   "program": "paper/figures/src/programs/ansatz.py",
-  "ops": 19,
-  "qubits": 3,
+  "ops": 22,
+  "qubits": 4,
   "trace_equal": true,
   "slices_equal": true,
   "differing_qubits": [],

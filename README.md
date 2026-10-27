@@ -36,24 +36,26 @@ experiments/
   results/icpc/        every result file the paper reads (numbers.json maps each macro to its source)
   logs/icpc/           logs of every run
 isabelle/              mechanized soundness proof (Isabelle/HOL), see isabelle/README.md
-data/                  benchmark circuits (MQT Bench, QASMBench, VeriQBench); fetch_data.py
+data/                  benchmark circuits (MQT Bench, QASMBench, VeriQBench), their licenses in data/LICENSES/;
+                       fetch_data.py fetches and verifies them, DATA_SOURCES.md and MANIFEST.sha256.tsv describe them
 paper/                 LaTeX sources, numbers.tex, figures and the scripts that generate them
 ```
-Other top-level folders (`qslice/`, `fouredge/`, `selection/`, `hardware/`) hold the code of an earlier
-version of this study. The current study reuses `selection/` (corpus definition), and S-yz is built from the
-typed graph in `qslice/`.
+`selection/` defines corpus A, `qslice/qdg.py` is the typed graph that S-yz is built from, and `fouredge/`
+is a four-edge slicer that the protocol compares in its foundations measures. `experiments/README.md` also
+describes the earlier run of this study whose protocol `PROTOCOL_ICPC.md` extends.
 
 **Names in the code.** The paper's QDG is the slicer `lc` in `experiments/slicers/registry.py` (S-lc in the
 protocol) and the tool in `tool/`. The QPDG baseline is S-yz (`experiments/slicers/yuzhao.py`, whose header
-logs every interpretation choice) and its flow-sensitive variant S-yzf. The class named `QDG` in `qslice/`,
-and `experiments/method_eval/` is the earlier version's typed graph, which S-yz is built from; it
+logs every interpretation choice) and its flow-sensitive variant S-yzf. The class named `QDG` in `qslice/`
+and `experiments/method_eval/` is the earlier run's typed graph, which S-yz is built from; it
 is not the paper's QDG.
 
 ## Requirements
 - Python 3.12 with the pinned packages in `experiments/requirements.lock` (qiskit 2.3.0, numpy 1.26.4);
   the noise analysis uses `experiments/requirements_noise.lock`.
 - srcML 1.1 on the PATH for the static slicer.
-- `pdflatex` with `latexmk` to build the paper; Isabelle2025 to check the proof (optional).
+- Graphviz (`dot`) for the layout of Fig. 2, and `pdflatex` with `latexmk` to build the paper.
+- Isabelle2025 to check the proof (optional).
 
 ```bash
 python3.12 -m venv .venv && . .venv/bin/activate
@@ -62,7 +64,9 @@ pip install -r experiments/requirements.lock
 
 ## Reproduce
 
-**Numbers and figures from the committed results** (minutes):
+**Everything from the committed results** (minutes): `bash reproduce.sh` checks the corpora, the oracle
+and the static slicer, regenerates every figure and number, checks that `paper/numbers.tex` equals the
+committed copy, builds the paper and checks the Isabelle proof. Step by step:
 ```bash
 cd experiments
 python icpc/make_numbers.py          # writes paper/numbers.tex and results/icpc/numbers.json
