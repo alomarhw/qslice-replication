@@ -1083,4 +1083,8 @@ benchmark corpus (see data/README.md)	data/qasmbench/small/vqe_n4.qasm	f6777e4fd
 benchmark corpus (see data/README.md)	data/qasmbench/small/vqe_uccsd_n4.qasm	be59c8aa33b7cc3b997187e09c24e5f59223cfe79a0c38016d3615d828fed1dd	byte-identical
 benchmark corpus (see data/README.md)	data/qasmbench/small/wstate_n3.qasm	9077432a88fea0f3da2c3b24558333c1a329261b20836ba82b253418d8c7b0dd	byte-identical
 written for the provenance package	data/qasmbench_layout.tsv	160e5be191daefc8f9211431153018f16ec04b77c791ec1beb8ea2f66bb22193	layout map
-written for this repository	data/README.md	44d76eefb2576d08d14dc6caa9b5eb100d3cc08ad3a0e40b7a1df1dc7737f60d	new
+written for this repository	data/README.md	e0911092048145d0152c2a1037d1a6a6a01394b7e73a223feb411fd11f0eeca2	edited for the anonymous package
+upstream license text	data/LICENSES/MQTBench_LICENSE.txt	42c32f77c8dcde761998d41ff3c05384dc468dee388866c5876a94966a5f9236	new
+upstream license text	data/LICENSES/QASMBench_LICENSE.txt	3ba843379e9d16d4cc80e971f530c20053afbbb8da94de3c5e945d3212d91cd3	new
+written for this repository	data/LICENSES/README.md	f483cab5a098ca59e01cfc149e1973381b4c6012909c97b0079d5194601c18af	new
+upstream license text	data/LICENSES/VeriQBench_LICENSE.txt	0a917bc26100dccf6a95a560226a9f2f1f761f162899e8a075a14bd9066083ce	new
