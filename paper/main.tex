@@ -38,14 +38,14 @@ quantum programs, program comprehension, program slicing, program dependence, de
   \centering
   \includegraphics[width=\textwidth]{figures/fig_pdg_ansatz.pdf}
   \caption{Control and quantum dependence in a variational (VQE) ansatz, criterion $q_0$. After the loops,
-  an auxiliary qubit is measured mid-circuit and conditions a flip of $q_0$. Each node is an operation as
-  it executes, with the source line and loop iteration that created it, and both graphs place every node at
-  the same position. (b)~The classical PDG reaches the auxiliary through the green, dashed control edge.
-  Def-use ignores classical bits, so its graph is (b) without that edge, and its slice also loses the
-  shaded, outlined operations. The classical PDG treats the control of a CNOT as read only. It lacks the
-  orange, dashed edges, so its shaded slice of $q_0$ misses the outlined dependences. (c)~The QDG has these edges as quantum edges, and its slice is exactly the dependences
-  of $q_0$. The QPDG would also add the purple operations, which are not dependences. Graphs,
-  slices and fidelities at $\ket{0\dots0}$ are computed by the study's code from the program shown.}
+  an auxiliary qubit is measured mid-circuit and conditions a flip of $q_0$. (b)~One graph for the rules of
+  Table~\ref{tab:rules}. Each node is an operation as it executes, in a row for its qubits and a box for its
+  iteration of the outer loop. Grey data edges belong to every rule, and def-use lacks the green control
+  edges. The classical PDG lacks the blue quantum edges and has the dotted edges instead, each of which skips
+  a CNOT whose control it reads as unchanged. The slices are nested, so a node is shaded by the weakest rule
+  that keeps it, and each rule keeps its shade and every darker one. The QDG keeps exactly the dependences of
+  $q_0$, and the QPDG adds the purple operations, which are not dependences. Graphs, slices and fidelities at
+  $\ket{0\dots0}$ are computed by the study's code from the program shown.}
   \label{fig:ansatz}
 \end{figure*}
 
@@ -56,7 +56,7 @@ quantum programs, program comprehension, program slicing, program dependence, de
   \includegraphics[width=\textwidth]{figures/fig_tool.pdf}
   \caption{The tool on the ansatz of Fig.~\ref{fig:ansatz}a, statically. In stage 1, srcML marks up the CNOT
   loop and the dynamic step, and the letters mark the elements the tool reads. Stage 2 is the operation
-  trace it yields, whose dependence graph is Fig.~\ref{fig:ansatz}c, and stage 3 is the slice of $q_0$ by
+  trace it yields, whose dependence graph is Fig.~\ref{fig:ansatz}b, and stage 3 is the slice of $q_0$ by
   line and iteration. The tool computed the figure from the program file.}
   \label{fig:tool}
 \end{figure*}

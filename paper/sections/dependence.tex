@@ -107,7 +107,7 @@ edge from every operation to every later one on qubits of the same such componen
 temporal dependences add no edge, as the end of this section explains. A flow-sensitive variant counts two
 qubits as entangled only from the gate that couples them on. Under this reading the QPDG is the QDG plus
 entanglement edges, so its slices contain those of the QDG, and the purple operations of
-Fig.~\ref{fig:ansatz}c are what the extra edges cost. Yu and Zhao do not say whether a gate writes its
+Fig.~\ref{fig:ansatz}b are what the extra edges cost. Yu and Zhao do not say whether a gate writes its
 control, so we also run the reading in which it does not. Table~\ref{tab:rules} lists the rules.
 
 \begin{table}[t]
@@ -186,7 +186,7 @@ measured mid-circuit and $q_0$ is flipped when the outcome is $1$, on lines~17 t
 Control dependence is needed whenever measurement outcomes steer later gates. Def-use ignores the
 classical bits, so its slice of $q_0$ keeps only \numAnsDuOps{} of the \numAnsOps{} operations, with
 fidelity \numAnsDuFidelity{}, and loses the auxiliary's gate and measurement, which the classical PDG
-reaches through the control edge of Fig.~\ref{fig:ansatz}b.
+reaches through the green control edges of Fig.~\ref{fig:ansatz}b.
 
 \begin{proposition}[The classical PDG is unsound]\label{prop:du}
 There are circuits for which $B_{\mathrm{CPDG}}(W)$, and $B_{\mathrm{DU}}(W)$, which equals it on unitary circuits, do not preserve $W$
@@ -199,9 +199,9 @@ its controls~\cite{svore2018qsharp}, so its control is not a classical read. Thr
 state of $q_0$ comes to depend on the rotations of $q_1$ and, from the second layer on, of $q_2$. This is
 the action of a controlled gate on its control, of which phase kickback is the simplest case.
 The classical PDG treats a control as read only, so its slice of $q_0$ keeps only the rotations on $q_0$
-itself and the dynamic step, the \numAnsCpdgOps{} shaded nodes of Fig.~\ref{fig:ansatz}b, and misses
-\numAnsCpdgMissed{} dependences, with fidelity \numAnsCpdgFidelity{}. The edges it lacks, drawn in orange, are exactly the quantum edges of
-Fig.~\ref{fig:ansatz}c. Control dependence cannot repair this, because the missing dependence is quantum.
+itself and the dynamic step, the \numAnsCpdgOps{} darker nodes of Fig.~\ref{fig:ansatz}b, and misses
+\numAnsCpdgMissed{} dependences, with fidelity \numAnsCpdgFidelity{}. Where the QDG has a blue quantum edge out
+of a CNOT, the classical PDG has a dotted edge that skips the CNOT. Control dependence cannot repair this, because the missing dependence is quantum.
 The QDG slice keeps the \numAnsWireOps{} operations that are dependences of $q_0$, and no other.
 
 \begin{proposition}[Entanglement is neither necessary nor sufficient for dependence]\label{prop:ent}
@@ -218,7 +218,7 @@ $\mathrm{H}(q_0)\,\mathrm{CX}(q_0, q_1)\,\mathrm{X}(q_1)$ the two qubits are max
 $\mathrm{X}(q_1)$ is not a dependence of $q_0$. By no-signaling, no operation on other qubits can change
 $\rho_{q_0}$. By Proposition~\ref{prop:complete}, the entanglement edges of the QPDG add no dependence
 that the QDG misses, and (ii) shows that they can add operations that are not dependences. In
-Fig.~\ref{fig:ansatz}c the QPDG adds the \numAnsYzExtra{} purple
+Fig.~\ref{fig:ansatz}b the QPDG adds the \numAnsYzExtra{} purple
 operations of $q_2$ in the second layer, which run after the last gate that carries information from $q_2$
 to $q_0$.
 
