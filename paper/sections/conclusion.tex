@@ -1,19 +1,18 @@
 \section{Conclusion}\label{sec:conclusion}
 
-A slice of a quantum program is correct only if it follows data, control and quantum dependence. We
-defined quantum dependence by the semantics of quantum programs and measured dependence rules
-against it. The classical PDG gives wrong slices for \numCpdgUnsoundPct{} of the pairs, because it reads the
-control of a gate as unchanged. Adding entanglement edges keeps a slice sound but makes it imprecise,
-because entanglement is not sufficient for dependence, and it is not necessary either. The QDG is sound for every input, dependence-complete and cheap, and state-based pruning trades that guarantee for slices that
-hold for one input and can remove the fault. Our static slicer shows that the QDG works on Qiskit
-source, where it reports the lines and iterations a developer must read to understand a qubit's state,
-and that forward slices and qubit profiles follow from the same graph. Whether such slices improve
-comprehension needs a study with developers, the last item of the roadmap of
-Section~\ref{sec:discussion}.
+A quantum slice supports comprehension only if it keeps every operation that can change the state of the
+qubits the developer asks about, a requirement we defined semantically and measured dependence rules
+against. Reading the control of a gate as unchanged gives wrong
+slices that can look right, and entanglement edges add code that cannot matter. The QDG is sound for every
+input, dependence-complete and cheap, and our static slicer shows it on Qiskit source as the lines,
+iterations and qubit profiles a developer reads, and a study with developers is the next step.
 
 \section*{Data Availability}
-The replication package at \url{https://anonymous.4open.science/r/qslice-replication-5B21} contains the protocol and its
-deviations, the Isabelle/HOL theory of Theorem~\ref{thm:sound}, the static slicer, the benchmark circuits, the logs of every run with the commit it used, and
-the scripts that regenerate every number, table and figure in this paper. Every random draw has a fixed
-seed. The runs used Python~3.12.2 and Qiskit~2.3.0 on an Intel Xeon W-2140B workstation, with every
-package version pinned in a lock file, and the package will be archived with a DOI on acceptance.
+The replication package at \url{https://anonymous.4open.science/r/qslice-replication-5B21} contains the
+protocol, the Isabelle/HOL theory, the slicer, the circuits, the run logs and the scripts that regenerate
+every number and figure, which its \texttt{reproduce.sh} checks. Seeds and package versions (Python~3.12.2,
+Qiskit~2.3.0) are fixed, and the package will be archived with a DOI on acceptance.
+
+\section*{Acknowledgment}
+A large language model assisted with drafting the text and the analysis scripts. The authors verified all
+content and take full responsibility for it.

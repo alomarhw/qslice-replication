@@ -1,105 +1,47 @@
 \section{A Static Slicer for Qiskit Programs}\label{sec:tool}
 
-Developers write Qiskit programs, not circuits, and a slice helps them only as lines of their program. We
-therefore built a tool that slices a Qiskit program statically, from its source, with the QDG
-of Section~\ref{sec:dependence}. Fig.~\ref{fig:tool} shows its steps on the ansatz of
-Fig.~\ref{fig:ansatz}, and the end of this section evaluates it on Bugs4Q, the Qiskit textbook and LintQ's corpus.
+A slice helps developers only as lines of their program, so we built a tool that slices a Qiskit program
+statically with the QDG of Section~\ref{sec:dependence}. Fig.~\ref{fig:tool} shows its steps on the ansatz of
+Fig.~\ref{fig:ansatz}.
 
 \paragraph*{Parsing}
-The tool parses the program with srcML~\cite{collard2011lightweight, collard2013srcml}, which turns source
-code into XML that keeps every character of the source and marks its syntax and the position of each
-element. srcML marks up Python syntax and knows nothing of quantum programs, so the quantum layer is ours.
-A table of \numToolGateTable{} Qiskit instruction methods records which arguments of each are qubits, bits
-and angles. With it, a \texttt{call} element such as \texttt{qc.cx(qubit, qubit + 1)} becomes a gate whose name
-gives its kind and whose arguments give its qubits, as stage~1 of Fig.~\ref{fig:tool} shows. The tool
-takes the structure of the program and the position of every element from srcML, and reads the text of
-each expression with Python's own parser.
+The tool parses the program with srcML~\cite{collard2011lightweight, collard2013srcml}, which marks up its
+syntax and the position of every element. A table of \numToolGateTable{} Qiskit instruction methods records
+which arguments of each are qubits, bits and angles, so that a \texttt{call} element such as
+\texttt{qc.cx(qubit, qubit + 1)} becomes a gate on its qubits, as stage~1 of Fig.~\ref{fig:tool} shows.
 
 \paragraph*{Static interpretation}
-The tool walks the srcML tree and turns it into an operation trace, as the execution-order analysis of
-Behler et al.\ does for OpenQASM, the assembly-like language of quantum circuits~\cite{behler2024supporting}.
-It evaluates the program's expressions over an abstract domain of known values, registers, bits and
-circuits. It unrolls loops and records the iteration of each operation, inlines functions, and follows
-\texttt{if\_test} and \texttt{c\_if}, Qiskit's two constructs for gates conditioned on measured bits, as
-stages 2 and 3 of Fig.~\ref{fig:tool} show. Each value carries the lines that computed it, so the tool knows
-the classical lines, that is, the statements that compute an operation's qubits, angles and conditions. The QDG
- does not need angle values, so angles drawn at run time stay symbolic. Where a value cannot be
-resolved statically, the tool over-approximates. An unknown qubit index makes the operation act on every
-qubit it may denote. An unknown condition runs every branch from the state before it, and a variable that
-the branches leave with different values becomes unknown. A \texttt{return}, \texttt{break} or
-\texttt{continue} in such a branch does not end the analysis, and the rest of the function is read as
-may-operations. A loop over an unknown range repeats its body once more than the number of qubits and bits
-the body touches, at most \numToolMaxCopies{} times, which below the cap covers every chain of dependences through the
-loop, and a variable that changes between copies leaves the loop unknown. Because the QDG never removes a
-qubit from the needed set, these over-approximations can only enlarge a slice, and the tool reports each of
-them, including a loop whose copies reach the cap. When a program builds several circuits, the tool slices
-the largest. When a circuit is passed to code the tool does not
-model, such as a rewrite of its directed acyclic graph (DAG) representation, the tool reports it as not
-traced.
-
-\begin{algorithm}[t]
-\caption{QDG slice of a static operation trace}\label{alg:slice}
-\footnotesize
-\begin{algorithmic}[1]
-\Require trace $o_0 \dots o_{L-1}$, criterion $W$, a set of qubits
-\State $N \gets W$; \ $S \gets \emptyset$ \Comment{needed locations, slice}
-\For{$k \gets L-1$ \textbf{down to} $0$}
-  \If{$o_k$ is a barrier or a terminal measurement} \textbf{continue} \EndIf
-  \State $Q_k \gets$ every qubit $o_k$ may act on; $C_k \gets$ the bits $o_k$ measures into
-  \If{$(Q_k \cup C_k) \cap N \neq \emptyset$}
-    \State $S \gets S \cup \{k\}$
-    \If{$o_k$ certainly writes a bit $b \in C_k$} $N \gets N \setminus \{b\}$ \EndIf
-    \State $N \gets N \cup Q_k \cup \mathit{cond}(o_k)$ \Comment{reads all its qubits}
-  \EndIf
-\EndFor
-\State \Return $S$, the lines and iterations of $S$, and their classical lines
-\end{algorithmic}
-\end{algorithm}
+The tool turns the srcML tree into an operation trace, as Behler et al.\ do for
+OpenQASM~\cite{behler2024supporting}. It unrolls loops and records the iteration of each operation, inlines
+functions, and follows \texttt{if\_test} and \texttt{c\_if}, Qiskit's constructs for gates conditioned on
+measured bits, as stages 2 and 3 of Fig.~\ref{fig:tool} show. Each value carries the lines that computed it,
+which gives the classical lines of each operation. Where a
+value cannot be resolved statically, the tool over-approximates. An unknown qubit index acts on every qubit
+it may denote, an unknown condition runs every branch, and a loop over an unknown range repeats its body
+once more than the number of qubits and bits it touches, at most \numToolMaxCopies{} times. Since the needed set never loses a qubit, these over-approximations
+only enlarge a slice, and the tool reports each. A circuit passed to code the tool does not model is reported as not traced.
 
 \paragraph*{Slicing}
-Algorithm~\ref{alg:slice} is the backward pass of Theorem~\ref{thm:sound} on the trace, where
-$\mathit{cond}(o_k)$ is the set of bits that the condition of $o_k$ reads, with three refinements. It skips barriers, which do not change the state, and terminal measurements, which come after
-the criterion. Because of over-approximation, an operation may act on several candidate qubits. It adds all
-of them to $N$, and it removes a bit from $N$ only when it certainly writes that bit. This is sound, because
-a measurement discards the earlier value of its bit, so no earlier operation reaches the criterion through
-that bit. An operation joins the slice through its qubits and the bits it writes, and the bits its condition
-reads then join $N$. The pass returns the operations of the slice, their lines and iterations, and
-the classical lines they depend on. Its cost is linear in the length of the trace for a fixed criterion.
+The slice is the backward pass of Theorem~\ref{thm:sound} on the trace, which skips barriers and terminal
+measurements. An operation that may act on several qubits adds all of them to the needed set, and a bit
+leaves the needed set only when an operation certainly writes it. The pass returns the operations of the
+slice, their lines and iterations, and the classical lines they depend on, in time linear in the trace.
 
 \paragraph*{Forward slices and profiles}
-The same trace gives the forward slices and qubit slice profiles of Section~\ref{sec:dependence}. A forward
-pass from the operations of a line marks every later operation that acts on a reached qubit or whose
-condition reads a reached bit, and a bit stops being reached when a measurement that the starting operations cannot
-affect certainly overwrites it, as in the backward pass. The pass returns the lines and the qubits and bits
-reached. On every operation and qubit of our test programs, one of which overwrites a bit before a
-condition reads it, the forward slices are dual to the backward ones. A profile combines one
-backward and one forward pass with the srcML of the gate calls on the qubit. Over the
+A forward pass over the same trace gives forward slices, dual to the backward ones on our test programs,
+and a qubit slice profile combines one pass of each. Over the
 \numProfBugsQubits{}, \numProfTextQubits{} and \numProfLintqQubits{} qubits of the Bugs4Q programs, the
 textbook and \numProfLintqSample{} sampled LintQ files, the two slices of a qubit differ in length for
-\numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and \numProfLintqFwdNeBwd{} of them, and
-\numProfBugsInFunction{}, \numProfTextInFunction{} and \numProfLintqInFunction{} are acted on inside a
-function that the program calls. In \numProfTextAliasGenuine{} textbook programs, checked by hand, a
-qubit has a second name, a function parameter or a loop variable over a register.
+\numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and \numProfLintqFwdNeBwd{} of them.
 
 \paragraph*{Validation}
-On \numToolDevPrograms{} programs that we wrote and can run, of up to \numToolDevMaxOps{} operations,
-including Shor's order finding, Grover search, phase estimation, an adder, the Quantum Approximate
-Optimization Algorithm (QAOA) and a repetition code, the static trace equals the circuit Qiskit builds. On
-\numToolDevSliceEqual{} of them, the slice of every qubit equals the circuit-level QDG slice that the study
-uses. The remaining program nests conditional blocks, which the circuit-level slicer reads only by their
-outer condition. On \numToolNestedDraws{} random product inputs, the oracle of
-Section~\ref{sec:design} finds the circuit-level slice wrong \numToolNestedStudyWrong{} times and the
-tool's slice never. On the Bugs4Q programs of our study, read without being run, the trace equals the
-prepared circuit for \numToolTOneExact{} of \numToolTOneBugs{} bugs. The remaining bug rewrites its circuit
-as a DAG, which the tool reports. The tool's line slices equal those of the study on all
-\numToolTTwoUnits{} units whose lines the study maps, which include the \numLinesUnits{} units of
-Section~\ref{sec:results}, so the line-level results there are those of the tool. On all
-\numToolBugsQiskit{} Qiskit program files of Bugs4Q, buggy and fixed versions of every entry, every program parses, \numToolBugsCircuit{} yield a
-circuit, \numToolBugsResolved{} of them without any over-approximation, and none crashes the tool. The
-others build no circuit or are fragments. On the \numToolTextbookQiskit{} Qiskit notebooks of the Qiskit
-textbook~\cite{qiskittextbook}, \numToolTextbookCircuit{} yield a circuit, and on the
-\numToolLintqQiskit{} Qiskit programs that the authors of the LintQ static analyzer collected from
-GitHub~\cite{paltenghi2024lintq},
-\numToolLintqCircuit{} yield a circuit and none crashes the tool. The per-file limit
-of \numToolFileLimit{}~s stops \numToolLintqTimeouts{} programs, which count as not sliced. The tool takes \numToolBugsMedianMs{}~ms
-per Bugs4Q program and \numToolTextbookMedianMs{}~ms per textbook notebook in the median, srcML included.
+On \numToolDevPrograms{} runnable programs that we wrote, the static trace equals the circuit Qiskit builds. On \numToolDevSliceEqual{} of them, every slice equals
+the circuit-level QDG slice of the study. The remaining program nests conditional blocks, and on
+\numToolNestedDraws{} random product inputs the oracle of Section~\ref{sec:design} finds the circuit-level slice
+wrong \numToolNestedStudyWrong{} times and the tool's slice never. The tool's line slices equal those of the
+study on all \numToolTTwoUnits{} units whose lines the study maps, which include the \numLinesUnits{} units of
+Section~\ref{sec:results}. Of the \numToolBugsQiskit{} Qiskit files of Bugs4Q, the \numToolTextbookQiskit{} notebooks of the Qiskit
+textbook~\cite{qiskittextbook} and the \numToolLintqQiskit{} programs of LintQ's
+corpus~\cite{paltenghi2024lintq}, \numToolBugsCircuit{}, \numToolTextbookCircuit{} and
+\numToolLintqCircuit{} yield a circuit, \numToolBugsResolved{} of the Bugs4Q ones without over-approximation.
+No Bugs4Q or LintQ program crashes the tool, which takes \numToolBugsMedianMs{}~ms per Bugs4Q program in the median.

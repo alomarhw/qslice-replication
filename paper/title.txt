@@ -1,1 +1,1 @@
-Quantum Program Slicing on a Semantic Basis
+Slicing Quantum Programs for Comprehension: What a Quantum Slice Should Look Like

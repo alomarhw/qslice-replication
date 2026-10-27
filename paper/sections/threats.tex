@@ -1,37 +1,27 @@
 \section{Threats to Validity}\label{sec:threats}
 
 \paragraph*{Construct validity}
-We measure dependence by perturbing each operation at \numInfluenceInputs{} inputs. Finite sampling can
-miss a dependence that shows only at other inputs, which would overstate every rule's recall and
-understate its precision. Rerun with \numGcInputs{} inputs, \numGcEntangledInputs{} of them entangled, and \numGcPerturbations{}
-perturbations, the procedure finds \numGcDepsNew{} dependences beyond the \numGcDepsBefore{} already measured
-(\numGcDepsNewPct{}), all inside QDG slices. No rule's mean recall moves by more than
-\numGcRecallShiftQ{}, and the precision of the QDG rises only to \numGcPrecisionLc{}. Missed dependences cannot make an unsound slice look sound, because
-soundness is judged by the oracle's fidelity, not by the measured dependences, and the QDG's
-soundness for all inputs is proved. The other rules are judged at $\ket{0\dots0}$ and on \numRobDraws{}
-draws per input regime, so they could be wrong at inputs we did not draw. The fidelity threshold of
-$1 - 10^{-6}$ is far above the oracle's error of \numOracleErr{}. Whether the slice contains the fault site
-is a proxy for whether it helps a developer, so we add mutation-based ranking, but we ran no study with
-developers. Pairs and units are qubits of the same circuits and mutants, and several circuits implement one
-algorithm at different widths, so intervals that treat them as independent are too narrow. Resampling
-whole families widens them but changes no conclusion.
+We measure dependence by perturbing each operation at \numInfluenceInputs{} inputs, which can miss a
+dependence that shows only at other inputs. Rerun with \numGcInputs{} inputs and \numGcPerturbations{}
+perturbations, the procedure finds \numGcDepsNew{} dependences
+beyond the \numGcDepsBefore{} already measured (\numGcDepsNewPct{}), all inside QDG slices, and no rule's
+mean recall moves by more than \numGcRecallShiftQ{}. Missed dependences cannot affect soundness, which is judged by the oracle's
+fidelity at a threshold of $1 - 10^{-6}$, far above its error of \numOracleErr{}, and the QDG's soundness
+for all inputs is proved. The other rules are judged
+at $\ket{0\dots0}$ and on \numRobDraws{} draws per input regime, so they could be wrong at other inputs.
+Containing the fault site is a proxy for helping a developer, and we ran no study with developers.
 
 \paragraph*{Internal validity}
-Yu and Zhao's graph is described in prose, and we implemented our reading of it, with every interpretation
-choice of the primary reading recorded before the runs. Under our reading its slices contain the QDG
-slices, so what we measure is the cost of its entanglement edges. The reading in which a gate only reads its control, which we added after the
-results, is unsound on \numYzRoUnsound{} pairs, so claims about the QPDG hold for the reading named. State-based
-pruning compares quantities with $10^{-9}$, and on one Bugs4Q program rounding flips some of its decisions
-between runs. On corpus~A, \numQRepeatRuns{} fresh runs reproduce all \numQRepeatPairs{} slices.
+We recorded every choice of our primary reading of Yu and Zhao's prose before the runs. The reading in which a gate only reads its control, added after the results, is unsound on \numYzRoUnsound{} pairs, so claims
+about the QPDG hold for the reading named. Rounding at the $10^{-9}$ thresholds of state-based pruning
+flips some decisions on one Bugs4Q program, while \numQRepeatRuns{} fresh runs reproduce all
+\numQRepeatPairs{} slices of corpus~A.
 
 \paragraph*{External validity}
-Exact simulation limits corpus~A to \numMaxQubits{} qubits. Corpus~L extends the cost measurements to
-\numCorpusLMaxQubits{} qubits and the soundness checks to its \numCorpusLSoundCircuits{} circuits that the simulator can check,
-and Theorem~\ref{thm:sound} covers any width. The circuits come
-from benchmark suites rather than applications, and the real bugs are few and small. All programs are
-Qiskit programs, and the dependence rules are stated on circuits, so they carry over to other languages
-once their programs are lowered to circuits. A program whose loops depend on measurement outcomes, such as
-a repeat-until-success loop in Microsoft's language Q\#~\cite{svore2018qsharp}, which repeats a subcircuit
-until a measurement succeeds, has no single circuit, and a static slicer must over-approximate its
-iterations. Seeded faults may differ from real ones. Of our \numMutOperators{} operators, \numMutPublished{} come
-from two published mutation tools and a published fault model.
+Exact simulation limits corpus~A to \numMaxQubits{} qubits, corpus~L reaches
+\numCorpusLMaxQubits{} qubits, and Theorem~\ref{thm:sound} covers any width. The circuits come from
+benchmarks, and the real bugs are few and small. The rules are stated on circuits and carry over to
+other languages, except that a repeat-until-success loop in Q\#~\cite{svore2018qsharp} has no single
+circuit and a static slicer must over-approximate its iterations. Seeded faults may differ from
+real ones, although \numMutPublished{} of our \numMutOperators{} operators come from published tools and
+fault models.
