@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1793080296.01277 "main.aux" "main.bbl" "main" 1793080296.86216 0
+["bibtex main"] 1793080733.12669 "main.aux" "main.bbl" "main" 1793080733.96437 0
   "./references.bib" 1793047500.7851 42482 4bd5ed7746a4c37c402a001e85ac86c4 ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "main.aux" 1793080296.58487 13408 e07ab06e9b9e0088b5aef09c3d38d3f9 "pdflatex"
+  "main.aux" 1793080733.68965 13427 f409e29e0cd5981dee7a516bad87f262 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1793080296.07841 "main.tex" "main.pdf" "main" 1793080296.86248 0
+["pdflatex"] 1793080733.19103 "main.tex" "main.pdf" "main" 1793080733.9647 0
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
   "/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -145,16 +145,16 @@
   "abstract.tex" 1793063729.97706 1742 d958000b39aa7dc5278216234bcbdca1 ""
   "figures/fig_bv.pdf" 1793047539.63442 94541 f919b83bf74de76d62c76912e2ba0721 ""
   "figures/fig_cost.pdf" 1792996488.40162 37999 19f4a3d4311684067515eba1b598db2c ""
-  "figures/fig_pdg_ansatz.pdf" 1793080294.92251 154597 d4b5f90a6698e4cc67b31042684e8c72 ""
+  "figures/fig_pdg_ansatz.pdf" 1793080712.05833 162975 be8faf5397d522c0a25e462480384658 ""
   "figures/fig_robust.pdf" 1792996486.65487 37756 b16205793b120054c238802e8b1e9f06 ""
   "figures/fig_size.pdf" 1792996489.29277 37949 cecf54359a4ef65a12ba764f58c68c22 ""
   "figures/fig_tool.pdf" 1793079108.13569 151429 6f17a9df928d74f4c4b81e690acd50e2 ""
-  "main.aux" 1793080296.58487 13408 e07ab06e9b9e0088b5aef09c3d38d3f9 "pdflatex"
-  "main.bbl" 1793080296.07398 16892 7d02182b39ec772117bd448d0be0aeed "bibtex main"
-  "main.tex" 1793080294.96274 1662 06ddc668e85a63466dedc417277bf136 ""
+  "main.aux" 1793080733.68965 13427 f409e29e0cd5981dee7a516bad87f262 "pdflatex"
+  "main.bbl" 1793080733.18678 16892 7d02182b39ec772117bd448d0be0aeed "bibtex main"
+  "main.tex" 1793080732.11186 2760 ed367a6836e4d88d75e129c093364d19 ""
   "numbers.tex" 1793078572.37555 40650 0e7c4b6b696091aff0e5cd55f6e0aacb ""
   "sections/conclusion.tex" 1793071321.17592 1714 b5000a4f975becbe0a192296d7b128c5 ""
-  "sections/dependence.tex" 1793080294.96371 22727 9e0bc44a31de1da57f3dab15c61c25eb ""
+  "sections/dependence.tex" 1793080732.12167 21632 7b104492de9128c580681f49821c7f23 ""
   "sections/design.tex" 1793071321.17691 8203 601e0bb68ba655cdee4e91fba09c194f ""
   "sections/discussion.tex" 1793071321.17747 4881 cf367c23bb90a1252217da40225fba14 ""
   "sections/example.tex" 1793079097.32929 5372 c093be603ac79836c10903c3435bf626 ""

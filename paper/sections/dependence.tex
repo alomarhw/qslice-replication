@@ -106,7 +106,7 @@ analysis, under which qubits joined by a two-qubit gate anywhere in the circuit 
 edge from every operation to every later one on qubits of the same such component. Its no-cloning and
 temporal dependences add no edge, as the end of this section explains. A flow-sensitive variant counts two
 qubits as entangled only from the gate that couples them on. Under this reading the QPDG is the QDG plus
-entanglement edges, so its slices contain those of the QDG, and the purple operations of
+entanglement edges, so its slices contain those of the QDG, and the hatched operations of
 Fig.~\ref{fig:ansatz}b are what the extra edges cost. Yu and Zhao do not say whether a gate writes its
 control, so we also run the reading in which it does not. Table~\ref{tab:rules} lists the rules.
 
@@ -177,21 +177,6 @@ $\operatorname{Tr}_{\overline{W}}\llbracket P' \rrbracket(\rho) =
 measurement outcome is the same.
 \end{IEEEproof}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\columnwidth]{figures/fig_pdg_ansatz.pdf}
-  \caption{Control and quantum dependence in a variational (VQE) ansatz, criterion $q_0$. After the loops,
-  an auxiliary qubit is measured mid-circuit and conditions a flip of $q_0$. (b)~One graph for the rules of
-  Table~\ref{tab:rules}. Each node is an operation as it executes, with its source line and loop iteration,
-  and a box holds each iteration of the outer loop. Grey data edges belong to every rule, and def-use lacks the green control
-  edges. The classical PDG lacks the blue quantum edges and has the dotted edges instead, each of which skips
-  a CNOT whose control it reads as unchanged. The slices are nested, so a node is shaded by the weakest rule
-  that keeps it, and each rule keeps its shade and every darker one. The QDG keeps exactly the dependences of
-  $q_0$, and the QPDG adds the purple operations, which are not dependences. Graphs, slices and fidelities at
-  $\ket{0\dots0}$ are computed by the study's code from the program shown.}
-  \label{fig:ansatz}
-\end{figure}
-
 Fig.~\ref{fig:ansatz} shows where the other rules fail, on one program that needs both control and
 quantum dependence. An ansatz is the parameterized circuit of a variational algorithm such as the
 variational quantum eigensolver (VQE), whose rotation angles a classical optimizer tunes. The ansatz of
@@ -233,7 +218,7 @@ $\mathrm{H}(q_0)\,\mathrm{CX}(q_0, q_1)\,\mathrm{X}(q_1)$ the two qubits are max
 $\mathrm{X}(q_1)$ is not a dependence of $q_0$. By no-signaling, no operation on other qubits can change
 $\rho_{q_0}$. By Proposition~\ref{prop:complete}, the entanglement edges of the QPDG add no dependence
 that the QDG misses, and (ii) shows that they can add operations that are not dependences. In
-Fig.~\ref{fig:ansatz}b the QPDG adds the \numAnsYzExtra{} purple
+Fig.~\ref{fig:ansatz}b the QPDG adds the \numAnsYzExtra{} hatched
 operations of $q_2$ in the second layer, which run after the last gate that carries information from $q_2$
 to $q_0$.
 

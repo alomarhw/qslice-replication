@@ -34,6 +34,21 @@ quantum programs, program comprehension, program slicing, program dependence, de
 \input{sections/example}
 
 
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_pdg_ansatz.pdf}
+  \caption{Control and quantum dependence in a variational (VQE) ansatz, criterion $q_0$. After the loops,
+  an auxiliary qubit is measured mid-circuit and conditions a flip of $q_0$. (b)~One graph for the rules of
+  Table~\ref{tab:rules}. Each node is an operation as it executes, with its source line and loop iteration,
+  and a box holds each iteration of the outer loop. Grey data edges belong to every rule, and def-use lacks the green control
+  edges. The classical PDG lacks the blue quantum edges and has the dotted edges instead, each of which skips
+  a CNOT whose control it reads as unchanged. The slices are nested, so a node is shaded by the weakest rule
+  that keeps it, and each rule keeps its shade and every darker one. The QDG keeps exactly the dependences of
+  $q_0$, and the QPDG adds the hatched operations, which are not dependences. Graphs, slices and fidelities at
+  $\ket{0\dots0}$ are computed by the study's code from the program shown.}
+  \label{fig:ansatz}
+\end{figure*}
+
 \input{sections/dependence}
 
 \begin{figure*}[t]
