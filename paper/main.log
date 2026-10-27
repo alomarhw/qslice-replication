@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.3)  26 OCT 2026 23:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.3)  26 OCT 2026 23:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -493,13 +493,10 @@ File: figures/fig_cost.pdf Graphic file (type pdf)
 <use figures/fig_cost.pdf>
 Package pdftex.def Info: figures/fig_cost.pdf  used on input line 199.
 (pdftex.def)             Requested size: 252.0pt x 142.33255pt.
-[11 <./figures/fig_robust.pdf>]) (./sections/discussion.tex) (./sections/threats.tex [12 <./figures/fig_cost.pdf>]) (./sections/related.tex [13]) (./sections/conclusion.tex)
+[11 <./figures/fig_robust.pdf>]) (./sections/discussion.tex) (./sections/related.tex [12 <./figures/fig_cost.pdf>]) (./sections/threats.tex [13]) (./sections/conclusion.tex)
 Underfull \hbox (badness 10000) in paragraph at lines 16--97
 []\OT1/ptm/m/n/10 The repli-ca-tion pack-age at $https : / / anonymous . 4open .
  []
-
-
-Underfull \vbox (badness 1845) has occurred while \output is active []
 
 (./main.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 57--58
@@ -529,13 +526,13 @@ L3 programming layer <2026-05-26>
 Here is how much of TeX's memory you used:
  8695 strings out of 469157
  142314 string characters out of 5459492
- 572098 words of memory out of 5000000
+ 572056 words of memory out of 5000000
  37518 multiletter control sequences out of 15000+600000
  670756 words of font info for 127 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  59i,10n,67p,842b,341s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/txsys.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (16 pages, 559687 bytes).
+Output written on main.pdf (16 pages, 559678 bytes).
 PDF statistics:
  394 PDF objects out of 1000 (max. 8388607)
  267 compressed objects within 3 object streams
