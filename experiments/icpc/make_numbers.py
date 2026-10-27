@@ -141,6 +141,8 @@ def main() -> int:
     put("HFourContainQ", c["H4"]["containment_q"], pct(c["H4"]["containment_q"]), src)
     put("HFourContainLc", c["H4"]["containment_lc"], pct(c["H4"]["containment_lc"]), src)
     put("HFourDiff", c["H4"]["difference"], f"{100 * c['H4']['difference']:.1f}", src)
+    assert c["H4"]["difference"] < 0, "H4 text says pruning lowers containment"
+    put("HFourDiffAbs", -c["H4"]["difference"], f"{-100 * c['H4']['difference']:.1f}", src)
     put("HFourCILow", c["H4"]["ci95_difference"][0], f"{100 * c['H4']['ci95_difference'][0]:.1f}", src)
     put("HFourCIHigh", c["H4"]["ci95_difference"][1], f"{100 * c['H4']['ci95_difference'][1]:.1f}", src)
     put("HFiveSizeDiff", c["H5"]["mean_difference"], f"{c['H5']['mean_difference']:.1f}", src)
@@ -475,6 +477,7 @@ def main() -> int:
     fw = fd["forward"]
     assert fw["complete"] == fw["ops"] and fw["dual_ok"] == fw["ops"]
     put("FdFwdOps", fw["ops"], cnt(fw["ops"]), src)
+    put("FdFwdPrecision", fw["precision"], f"{fw['precision']:.3f}", src)
     ob = fd["cpdg"]["unsound"] - fd["cpdg"]["unsound_but_z_matches"]
     put("FdCpdgObservable", ob, cnt(ob), src)
     put("FdCpdgObservablePct", ob / NUMS["NPairs"]["value"], pct(ob / NUMS["NPairs"]["value"]), src)
@@ -486,7 +489,6 @@ def main() -> int:
     for s, nm in (("lc", "Lc"), ("yz", "Yz"), ("du", "Du")):
         bad = sum(r["sound"] == "0" for r in cl if r["slicer"] == s)
         put(f"CorpusLWrong{nm}", bad, cnt(bad), src)
-    put("FdFwdPrecision", fw["precision"], f"{fw['precision']:.3f}", src)
 
     # ---- qubit slice profiles over the corpora (Deviation I-17, tool-v5; tool/corpus/profiles.py) ----------
     PR = ICPC / "profiles"

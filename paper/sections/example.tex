@@ -16,11 +16,11 @@
 The state of a qubit is a
 superposition $\alpha\ket{0} + \beta\ket{1}$ of the two basis states, and measuring it yields $0$ or $1$
 with probabilities $|\alpha|^2$ and $|\beta|^2$ and leaves the qubit in the state observed. Gates are
-reversible operations on one or more qubits. A controlled gate such as the CNOT applies an operation to
+reversible operations on one or more qubits. A controlled gate such as the controlled-NOT (CNOT) applies an operation to
 its target depending on its control, but it can also change the control. When the target is in a suitable
-superposition, a phase is kicked back onto the control, which is called phase kickback. Two qubits are
-entangled when their joint state is not a state of each qubit alone, and then the outcomes of measuring
-them are correlated. A reset returns a qubit to $\ket{0}$, and a measurement writes a classical bit that
+superposition, a phase is kicked back onto the control, an effect called phase kickback. Two qubits are
+entangled when their joint state cannot be written as a state of each qubit alone, and then the outcomes
+of measuring them are correlated in a suitable basis. A reset returns a qubit to $\ket{0}$, and a measurement writes a classical bit that
 later gates may read as a condition. Qiskit programs build circuits in Python, with loops, functions and
 conditions that compute which gates act on which qubits.
 
@@ -55,14 +55,15 @@ a pure state after every operation and so is never entangled with the auxiliary.
 
 Here the fault shows in the measured outcomes of $q_0$. That is not always so. In a real bug from
 Bugs4Q~\cite{zhao2023bugs4q}, posted on Stack Overflow, a two-qubit program meant to prepare
-$(\ket{01}+\ket{10})/\sqrt{2}$ applies \texttt{h(1)} where \texttt{x(1)} was needed, and returns all four
-bit strings equally often. Each qubit alone reads $1$ with probability \numMotPOne{}, in the buggy program
+$(\ket{01}+\ket{10})/\sqrt{2}$ applies \texttt{h(0)}, \texttt{h(1)} and \texttt{cx(0,1)}, with \texttt{h(1)}
+where \texttt{x(1)} was needed, and returns all four bit strings equally often. Each qubit alone reads $1$ with probability \numMotPOne{}, in the buggy program
 and in the intended one alike, so a check of the outcomes of either qubit cannot see the failure, and only
-their joint outcomes reveal it. The state of $q_0$ does change, from the pure $\ket{+}$ to a uniformly
-random bit, two states with fidelity \numMotFidelity{}. A slice judged by the outcome histogram of one
+their joint outcomes reveal it. The fault does change the state of $q_0$, which is a uniformly random bit
+in the intended program and the pure $\ket{+}$ in the buggy one, two states with fidelity
+\numMotFidelity{}. A slice judged by the outcome histogram of one
 qubit can therefore look right and miss the fault, while a slice judged by the state of the qubit cannot.
-The program applies \texttt{h(0)}, \texttt{h(1)} and \texttt{cx(0,1)}. Because the CNOT writes its control,
+Because the CNOT writes its control,
 the QDG slice of $q_0$ contains the faulty \texttt{h(1)}, while the classical PDG keeps only \texttt{h(0)}.
 
-The two lessons scale. Reading a gate as an assignment misses influence that flows into a control qubit,
+Both lessons hold beyond these examples, as Section~\ref{sec:results} shows. Reading a gate as an assignment misses influence that flows into a control qubit,
 and judging a slice by the outcomes of one qubit misses errors in phase and in correlations.

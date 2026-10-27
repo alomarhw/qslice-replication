@@ -48,8 +48,8 @@ reimplementation of the QPDG, whose data edges already follow every qubit of a g
 construction, and under the reading in which a gate writes only its targets it is wrong on
 \numYzRoUnsound{} pairs. Its entanglement edges make it keep \numRqOneYzSize{} of the circuit, and \numYzfSize{} when entanglement is
 tracked along the program. The quantum dependence graph (QDG), in which every gate reads and writes all its
-qubits, is the backward light cone, a relation that LintQ and Qiskit's \texttt{LightCone} pass already
-compute. Its soundness follows from the locality of quantum operations, and what we add is the
+qubits, is the backward light cone, the relation by which LintQ orders operations and from which Qiskit's
+\texttt{LightCone} pass starts before it prunes commuting gates. Its soundness follows from the locality of quantum operations, and what we add is the
 semantics that states it and the measurement of what it costs. It keeps \numRqOneLcSize{}, only \numLcExcess{}
 percentage points above the dependences themselves, misses no dependence and stays correct on every tested
 input. Its soundness proof is mechanized in Isabelle/HOL for an abstract model of local operations, and

@@ -251,7 +251,7 @@ def listing(prog, first, last, width, tag, below=""):
             rf"\lstinputlisting[style=qiskit,firstline={first},lastline={last},firstnumber={first}]{{programs/{prog}}}{below}\end{{minipage}}")
 
 
-LEGEND = {"cpdgonly": r"\tikz\draw[cpdgE](0,0)--(0.45,0); classical PDG only, skips a CNOT",
+LEGEND = {"cpdgonly": r"\tikz\draw[cpdgE](0,0)--(0.45,0); classical PDG and def-use only, skips a CNOT",
           "quantumq": r"\tikz\draw[quantumE](0,0)--(0.45,0); quantum, not in the classical PDG",
           "lvdu": r"\tikz\node[lvdu,minimum width=4mm,minimum height=2.4mm]{}; kept by every rule, def-use included",
           "lvcp": r"\tikz\node[lvcp,minimum width=4mm,minimum height=2.4mm]{}; added by the classical PDG",

@@ -115,14 +115,16 @@ def marked_tokens(shown: str):
                 callee = word
             if word and not t.isspace():
                 nxt = toks[i + 1:i + 4]
-                if word in GATES + ("if_test",) and nxt[:2] == ["</name>", "</name>"] and nxt[2] == "<argument_list>":
+                if word == "for" and toks[i - 1].startswith("<for"):
+                    m = "a"  # the <for> tag carries the position (g), so the keyword carries a
+                elif word in GATES + ("if_test",) and nxt[:2] == ["</name>", "</name>"] and nxt[2] == "<argument_list>":
                     m = "c" if word in GATES else "f"
                 elif lists:
                     top = lists[-1]
                     if top["callee"] == "range":
                         m = "b"
                     elif top["callee"] == "if_test":
-                        m = "e"
+                        m = "e" if word == "clbits" or in_index else None  # the bit, not qc or the value
                     elif top["callee"] == "measure":
                         m = "d" if top["arg"] == 0 else "e"
                     elif top["callee"] in GATES:

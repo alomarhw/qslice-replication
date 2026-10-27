@@ -28,7 +28,7 @@
   \end{tabular}
   \end{adjustbox}\\[2pt]
   {\footnotesize $^{a}$\,On the \numLcqApplicable{} pairs where Qiskit's pass applies, of which
-  \numLcqDynamicN{} are dynamic. The pass raises on \numLcqNaMeasurements{} pairs of circuits that measure, and on \numLcqNaReorder{} its
+  \numLcqDynamicN{} are dynamic. The pass fails on \numLcqNaMeasurements{} pairs of circuits that measure, and on \numLcqNaReorder{} its
 output cannot be mapped back in order.
   $^{b}$\,The smallest dependence-complete slice. It is a reference, not a slicer, so it has no
   soundness value. $^{c}$\,Exploratory, with entanglement tracked from the gate that couples two qubits
@@ -38,21 +38,22 @@ output cannot be mapped back in order.
 \subsection{RQ1: Which definitions give sound and complete slices?}
 
 Table~\ref{tab:rq1} shows that only the rules with quantum dependence are sound. The classical PDG gives a
-wrong slice for \numCpdgUnsound{} of the \numNPairs{} pairs, or \numCpdgUnsoundPct{}, and from
-\numCcCpdgUnsound{} when the \numCcFamilies{} algorithm families are resampled as clusters. Its control
+wrong slice for \numCpdgUnsound{} of the \numNPairs{} pairs, or \numCpdgUnsoundPct{}, with a 95\% interval of \numCcCpdgUnsound{} when the
+\numCcFamilies{} algorithm families are resampled as clusters. Its control
 dependence matters on dynamic circuits, where it is wrong on \numCpdgDynamicUnsound{} pair against
 \numDuDynamicUnsound{} for def-use, which ignores classical bits. On the unitary circuits the two rules
 are identical, and both are wrong on \numCpdgUnitaryUnsound{} pairs. Of the \numCpdgMissTotal{}
-dependences the classical PDG misses, \numCpdgMissKickback{} reach the criterion only through a gate on
-which the criterion qubit is a control, as in Proposition~\ref{prop:du}, \numCpdgMissSameWire{} are such
-gates on the criterion qubit itself, \numCpdgMissWritten{} reach it through such a control further along
-the chain, and only \numCpdgMissFeedback{} reach it through classical feedback. Every miss but these
+dependences the classical PDG misses, \numCpdgMissSameWire{} are controlled gates whose control is the
+criterion qubit, \numCpdgMissKickback{} reach the criterion only through such a gate,
+\numCpdgMissWritten{} reach it through a control further along the chain, and only \numCpdgMissFeedback{}
+reach it through classical feedback. Every miss but these
 \numCpdgMissFeedback{} follows from reading a control as unchanged. Not every wrong slice is wrong in what
-a measurement shows. \numFdCpdgZMatch{} of the \numCpdgUnsound{} wrong slices give the criterion the same
-distribution of outcomes in the computational basis as the whole circuit, so \numFdCpdgObservable{} pairs,
-or \numFdCpdgObservablePct{}, are wrong in what a terminal measurement of the criterion reads. The others
+a measurement shows. Of the \numCpdgUnsound{} wrong slices, \numFdCpdgZMatch{} give the criterion the same
+distribution of outcomes in the computational basis as the whole circuit, so \numFdCpdgObservable{} of the \numNPairs{}
+pairs, or \numFdCpdgObservablePct{}, are wrong in what a terminal measurement of the criterion reads. The others
 are wrong in phase, which a histogram check would accept but which changes the outcome once the slice is
-composed with later gates or measured in another basis. As H1 expects by construction, state-based pruning,
+composed with later gates or measured in another basis. The same check would accept \numFdDuZMatch{} of
+the \numFdDuUnsound{} wrong def-use slices. As H1 expects by construction, state-based pruning,
 which starts from the QDG slice, is wrong on fewer pairs than def-use, \numRqOneQUnsound{} against
 \numRqOneDuUnsound{} with exact McNemar and Holm \numHOnePHolm{}.
 
@@ -67,7 +68,8 @@ are not dependences. Its precision falls from \numRqOneLcPrecision{} to
 QPDG is equally sound and keeps \numYzfSize{}, still \numYzfExcess{} percentage points above the dependence set, so the imprecision comes
 from the entanglement edges themselves and not from our reading of them. Under the other reading of
 Yu and Zhao's data dependence, in which a controlled gate writes only its targets, the QPDG is wrong on
-\numYzRoUnsound{} pairs from \numYzRoUnsoundCircuits{} circuits, statically and flow-sensitively alike. Its
+\numYzRoUnsound{} pairs from \numYzRoUnsoundCircuits{} circuits, under the flow-insensitive and the
+flow-sensitive entanglement rule alike. Its
 entanglement edges recover most of what read-only controls lose, but it still misses \numYzRoMissed{}
 dependences, \numYzRoMissedKick{} of them by kickback, and keeps \numYzRoSize{} of the circuit. Its
 soundness therefore depends on the reading, and only the first is sound by construction. On
@@ -80,10 +82,10 @@ pruning, and commutation pruning is sound and within the QDG slice on every case
 applies.
 
 Further measures, exploratory and added after all results, test the foundations of
-Section~\ref{sec:dependence} on the \numFdPairs{} pairs whose criterion qubit some operation acts on. A
-graph that types its edges as data, control, measurement and entanglement edges, as the dependence kinds
-of the QPDG suggest, with an entanglement edge between the qubits of each two-qubit gate, gives exactly the
-QDG slice on all \numFdFourEdgeNoClosureEqual{} pairs. Only when its entanglement edges are closed
+Section~\ref{sec:dependence} on the \numFdPairs{} pairs whose criterion qubit some operation acts on.
+Following the dependence kinds of the QPDG, we built a graph with typed data, control, measurement and
+entanglement edges and one entanglement edge between the qubits of each two-qubit gate. It gives exactly
+the QDG slice on all \numFdFourEdgeNoClosureEqual{} pairs. Only when its entanglement edges are closed
 transitively over coupled qubits does it differ, keeping \numFdFourEdgeSize{} of the circuit and equaling
 the QDG slice on \numFdFourEdgeEqual{} pairs. The per-gate edge is therefore the part of entanglement
 dependence that matters, and it is the quantum dependence of the QDG. Undirected slices keep \numFdUndSize{}
@@ -91,8 +93,7 @@ of the circuit at precision \numFdUndPrecision{}, against \numFdLcPrecision{} fo
 slice on only \numFdUndEqual{} pairs. Forward slices behave as Proposition~\ref{prop:dual} predicts. For
 every one of the \numFdFwdOps{} operations of corpus~A, the forward slice reaches every qubit that the
 operation influences in the ground truth, the duality holds, and the precision of the reached qubits is
-\numFdFwdPrecision{}. The histogram check would also accept \numFdDuZMatch{} of the \numFdDuUnsound{}
-wrong def-use slices.
+\numFdFwdPrecision{}.
 
 \begin{figure}[t]
   \centering
@@ -156,26 +157,26 @@ The QDG slice of the faulty circuit contains the fault site in \numRqThreeContai
 classical PDG, \numRqThreeContainDu{} for def-use, \numRqThreeContainQ{} for state-based pruning, and
 \numRqThreeContainRandom{} for a random set of the state-based slice's size. Containment grows with size,
 and the QDG and QPDG slices keep \numRqThreeSizeLc{} and \numRqThreeSizeYz{} of the faulty circuits. Against
-a random set of its own size on each unit, whose chance of holding the fault is exact, every rule contains
+a random set of its own size on each unit, whose chance of holding the fault we compute exactly, every rule contains
 the fault more often, the QDG by \numSizeCtlLcGain{} points (family CI \numSizeCtlLcGainCi{}), the classical
 PDG by \numSizeCtlCpdgGain{}, the QPDG by \numSizeCtlYzGain{} and state-based pruning by
-\numSizeCtlQGain{}, so containment is not only a matter of size. The QPDG's lead over the QDG is, since a
-random set of its size already holds the fault in \numSizeCtlYzRandom{} of the units. All
+\numSizeCtlQGain{}, so containment is not only a matter of size. The QPDG's lead over the QDG, however, is
+a matter of size, since a random set of its size already holds the fault in \numSizeCtlYzRandom{} of the units. All
 \numLcMissTotal{} units the QDG slice misses are omission faults, a removed control (\numLcMissCrm{}), a
 re-targeted operand (\numLcMissQsw{}), a removed preparation of an entangling gate (\numLcMissEnt{}) or a
 deleted gate (\numLcMissDel{}). These faults delete the interaction that the QDG slice of the faulty program
 would follow. The QPDG contains \numLcMissYzContained{} of them, mostly removed preparations, because its
 closure still links operations that the faulty program no longer connects.
 
-State-based pruning changes containment by \numHFourDiff{} percentage points against the QDG slice
+State-based pruning lowers containment by \numHFourDiffAbs{} percentage points against the QDG slice
 (95\% CI \numHFourCILow{} to \numHFourCIHigh{}, and \numCcHFour{} with families as clusters), so H4,
 which allowed a loss of at most five points, fails.
 In \numCQFour{} units the QDG slice contains the fault and the state-based slice does not. Pruning removes
 an operation when the criterion is uncorrelated with its qubits at the input, so a fault that breaks a
 correlation can make the faulty operation look irrelevant to the single criterion qubit. A joint criterion
 over all wrong qubits recovers \numCQFourRecovered{} of these units. Where both slices contain the fault,
-the state-based slice is smaller by \numHFiveSizeDiff{} operations on average, so H5 holds. The fault is
-ranked no later there, because the state-based slice is a subset of the QDG slice, but its EXAM score is
+the state-based slice is smaller by \numHFiveSizeDiff{} operations on average, so H5 holds. With each
+slice ordered from its last operation backward, the fault is ranked no later there, because the state-based slice is a subset of the QDG slice, but its EXAM score is
 higher by \numHFiveExamQHigher{}, because EXAM divides by the smaller number of operations ranked. With
 mutation-based fault localization on the \numMbflPairedN{} of \numMbflUnits{} units where both slices
 contain the fault, the mean EXAM score is \numMbflPairedAll{} over the whole circuit, \numMbflPairedLc{}
@@ -183,14 +184,16 @@ within the QDG slice and \numMbflPairedQ{} within the state-based slice. Neither
 normalized ranking, although neither makes the developer examine more operations. On the
 \numMbflAllN{} units whose fault every rule's slice contains, mutation-based ranking reaches the fault after
 \numMbflAllExaminedMin{} to \numMbflAllExaminedMax{} operations on average, whichever slice it ranks, so no
-rule saves effort over ranking the whole circuit. The slices narrow where a developer looks, but these
+rule saves more than a fraction of an operation over ranking the whole circuit. The slices narrow where a developer looks, but these
 results do not show that they shorten debugging, a hypothesis that needs a study with developers.
 
 On the real Bugs4Q programs, the QDG slices keep every faulty line and \numLinesLcMean{} of
-\numLinesFullMean{} lines on average over \numLinesUnits{} units, so on these small programs slicing barely
-reduces what there is to read. Def-use loses the faulty line in \numLinesDuMissed{} of these units, and also
-in the unit of the Bugs4Q bug of Section~\ref{sec:example}, which changes no qubit's measured distribution,
-where its slice of $q_0$ omits the faulty \texttt{h(1)}.
+\numLinesFullMean{} lines on average over the \numLinesUnits{} units whose faulty lines map to the original
+program, so on these small programs slicing barely
+reduces what there is to read. Def-use, which equals the classical PDG on these unitary programs, loses the
+faulty line in \numLinesDuMissed{} of these units. It also loses it in the Bugs4Q bug of
+Section~\ref{sec:example}, which changes no qubit's measured distribution, where its slice of $q_0$ omits
+the faulty \texttt{h(1)}.
 
 \subsection{RQ4: What does it cost?}
 
@@ -199,13 +202,13 @@ where its slice of $q_0$ omits the faulty \texttt{h(1)}.
   \includegraphics[width=\columnwidth]{figures/fig_cost.pdf}
   \caption{Median time to slice one criterion and to build the QPDG, for circuits
   of width 8 and growing depth, for RQ4. At the two largest depths, only the criteria that finished within
-  the limit are counted, so the state-based time is a lower bound.}
+  the per-circuit time limit are counted, so the state-based time is a lower bound.}
   \label{fig:cost}
 \end{figure}
 
 As Fig.~\ref{fig:cost} shows, the QDG slice costs milliseconds at every depth, at most
 \numCostLcMaxCritMs{}~ms per criterion. State-based pruning simulates the circuit for every candidate
-removal. Its time grows with depth and exceeds the \numCostWallLimit{}~s limit for
+removal. Its time grows with depth and exceeds the per-circuit limit of \numCostWallLimit{}~s for
 \numCostDepthEightyOverLimit{} of the five circuits at the second-largest depth and for all
 \numCostDepthOneSixtyOverLimit{} at the largest. It also grows exponentially with width, reaching
 \numCostWidthQMax{}~s at 14 qubits. On corpus~L it completes on \numCorpusLCompleted{} of

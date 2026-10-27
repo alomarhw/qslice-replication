@@ -4,9 +4,9 @@
 We measure dependence by perturbing each operation at \numInfluenceInputs{} inputs. Finite sampling can
 miss a dependence that shows only at other inputs, which would overstate every rule's recall and
 understate its precision. Rerun with \numGcInputs{} inputs, ten of them entangled, and \numGcPerturbations{}
-perturbations, the procedure adds \numGcDepsNew{} of \numGcDepsBefore{} dependences
+perturbations, the procedure finds \numGcDepsNew{} dependences beyond the \numGcDepsBefore{} already measured
 (\numGcDepsNewPct{}), all inside QDG slices. No rule's mean recall moves by more than
-\numGcRecallShiftQ{}, and the precision of the QDG rises only to \numGcPrecisionLc{}. It cannot make an unsound slice look sound, because
+\numGcRecallShiftQ{}, and the precision of the QDG rises only to \numGcPrecisionLc{}. Missed dependences cannot make an unsound slice look sound, because
 soundness is judged by the oracle's fidelity, not by the measured dependences, and the QDG's
 soundness for all inputs is proved. The other rules are judged at $\ket{0\dots0}$ and on \numRobDraws{}
 draws per input regime, so they could be wrong at inputs we did not draw. The fidelity threshold of
@@ -18,7 +18,7 @@ whole families widens them but changes no conclusion.
 
 \paragraph*{Internal validity}
 Yu and Zhao's graph is described in prose, and we implemented our reading of it, with every interpretation
-choice recorded before the runs. Under our reading its data edges already follow every qubit of a gate,
+choice of the primary reading recorded before the runs. Under our reading its data edges already follow every qubit of a gate,
 so its slices contain the QDG slices and are sound by construction, and what we measure is the cost of its
 entanglement edges. The reading in which a gate only reads its control, which we added after the
 results, is unsound on \numYzRoUnsound{} pairs, so claims about the QPDG hold for the reading named. State-based
@@ -34,5 +34,5 @@ Qiskit programs, and the dependence rules are stated on circuits, so they carry 
 once their programs are lowered to circuits. A program whose loops depend on measurement outcomes, such as
 a repeat-until-success loop in Microsoft's language Q\#~\cite{svore2018qsharp}, which repeats a subcircuit
 until a measurement succeeds, has no single circuit, and a static slicer must over-approximate its
-iterations. Seeded faults may differ from real ones. Nine of our ten operators come from three published
-fault models.
+iterations. Seeded faults may differ from real ones. Nine of our ten operators come from two published
+mutation tools and a published fault model.

@@ -72,7 +72,7 @@ M.~A. Nielsen and I.~L. Chuang, \emph{Quantum computation and quantum informatio
 F.~Tip, ``A survey of program slicing techniques,'' \emph{Journal of Programming Languages}, vol.~3, no.~3, pp. 121--189, 1995.
 
 \bibitem{silva2012vocabulary}
-J.~Silva, ``A vocabulary of program slicing-based techniques,'' \emph{ACM Computing Surveys (CSUR)}, 2012.
+J.~Silva, ``A vocabulary of program slicing-based techniques,'' \emph{ACM Computing Surveys (CSUR)}, vol.~44, no.~3, pp. 1--41, 2012.
 
 \bibitem{canfora1998conditioned}
 G.~Canfora, A.~Cimitile, and A.~De~Lucia, ``Conditioned program slicing,'' \emph{Information and Software Technology}, vol.~40, no. 11--12, pp. 595--607, 1998.
@@ -81,13 +81,13 @@ G.~Canfora, A.~Cimitile, and A.~De~Lucia, ``Conditioned program slicing,'' \emph
 B.~Korel and J.~Laski, ``Dynamic program slicing,'' \emph{Information Processing Letters}, vol.~29, no.~3, pp. 155--163, 1988.
 
 \bibitem{binkley2014orbs}
-D.~Binkley, N.~Gold, M.~Harman, S.~S. Islam, J.~Krinke, and S.~Yoo, ``Orbs: language-independent program slicing,'' in \emph{SIGSOFT FSE}, 2014.
+D.~Binkley, N.~Gold, M.~Harman, S.~S. Islam, J.~Krinke, and S.~Yoo, ``{ORBS}: language-independent program slicing,'' in \emph{Proceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)}, 2014, pp. 109--120.
 
 \bibitem{venkatesh1991semantic}
 G.~A. Venkatesh, ``The semantic approach to program slicing,'' in \emph{Proceedings of the ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)}, 1991, pp. 107--119.
 
 \bibitem{alomari2014srcslice}
-H.~W. Alomari, M.~L. Collard, J.~I. Maletic, N.~Alhindawi, and O.~Meqdadi, ``srcslice: very efficient and scalable forward static slicing,'' \emph{Journal of Software: Evolution and Process}, 2014.
+H.~W. Alomari, M.~L. Collard, J.~I. Maletic, N.~Alhindawi, and O.~Meqdadi, ``{srcSlice}: very efficient and scalable forward static slicing,'' \emph{Journal of Software: Evolution and Process}, vol.~26, no.~11, pp. 931--961, 2014.
 
 \bibitem{collard2011lightweight}
 M.~L. Collard, M.~J. Decker, and J.~I. Maletic, ``Lightweight transformation and fact extraction with the {srcML} toolkit,'' in \emph{IEEE International Working Conference on Source Code Analysis and Manipulation (SCAM)}, 2011, pp. 173--184.
@@ -105,7 +105,7 @@ M.~Paltenghi and M.~Pradel, ``Analyzing quantum programs with {LintQ}: A static 
 N.~Quetschlich, L.~Burgholzer, and R.~Wille, ``{MQT Bench}: Benchmarking software and design automation tools for quantum computing,'' \emph{Quantum}, vol.~7, p. 1062, 2023.
 
 \bibitem{li2023qasmbench}
-A.~Li, S.~Stein, S.~Krishnamoorthy, and J.~Ang, ``{QASMBench}: A low-level quantum benchmark suite for {NISQ} evaluation and simulation,'' \emph{ACM Transactions on Quantum Computing}, vol.~4, no.~2, 2023.
+A.~Li, S.~Stein, S.~Krishnamoorthy, and J.~Ang, ``{QASMBench}: A low-level quantum benchmark suite for {NISQ} evaluation and simulation,'' \emph{ACM Transactions on Quantum Computing}, vol.~4, no.~2, pp. 1--26, 2023.
 
 \bibitem{chen2022veriqbench}
 K.~Chen, W.~Fang, J.~Guan, X.~Hong, M.~Huang, J.~Liu, Q.~Wang, and M.~Ying, ``{VeriQBench}: A benchmark for multiple types of quantum circuits,'' arXiv:2206.10880, 2022.
@@ -207,13 +207,13 @@ P.~Murali, N.~M. Linke, M.~Martonosi, A.~{Javadi-Abhari}, N.~H. Nguyen, and C.~H
 M.~Amy and V.~Gheorghiu, ``{staq}---{A} full-stack quantum processing toolkit,'' \emph{Quantum Science and Technology}, vol.~5, no.~3, p. 034016, 2020.
 
 \bibitem{farhi2014qaoa}
-E.~Farhi, J.~Goldstone, and S.~Gutmann, ``A quantum approximate optimization algorithm,'' 2014.
+E.~Farhi, J.~Goldstone, and S.~Gutmann, ``A quantum approximate optimization algorithm,'' arXiv:1411.4028, 2014.
 
 \bibitem{zhou2021qsl}
-L.~Zhou, G.~Barthe, J.~Hsu, M.~Ying, and N.~Yu, ``A quantum interpretation of bunched logic \& quantum separation logic,'' in \emph{Proceedings of the ACM/IEEE Symposium on Logic in Computer Science (LICS)}, 2021.
+L.~Zhou, G.~Barthe, J.~Hsu, M.~Ying, and N.~Yu, ``A quantum interpretation of bunched logic \& quantum separation logic,'' in \emph{Proceedings of the ACM/IEEE Symposium on Logic in Computer Science (LICS)}, 2021, pp. 1--14.
 
 \bibitem{le2022qsl}
-X.-B. Le, S.-W. Lin, J.~Sun, and D.~Sanan, ``A quantum interpretation of separating conjunction for local reasoning of quantum programs based on separation logic,'' \emph{Proceedings of the ACM on Programming Languages}, vol.~6, no. POPL, 2022.
+X.-B. Le, S.-W. Lin, J.~Sun, and D.~Sanan, ``A quantum interpretation of separating conjunction for local reasoning of quantum programs based on separation logic,'' \emph{Proceedings of the ACM on Programming Languages}, vol.~6, no. POPL, pp. 1--27, 2022.
 
 \bibitem{ramalho2025road}
 N.~C.~L. Ramalho, H.~A. de~Souza, and M.~L. Chaim, ``Testing and debugging quantum programs: The road to 2030,'' \emph{ACM Transactions on Software Engineering and Methodology}, vol.~34, no.~5, pp. 155:1--155:46, 2025.

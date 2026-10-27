@@ -344,6 +344,11 @@
   "tex": "\\ensuremath{-}13.5",
   "source": "results/icpc/confirmatory/summary.json"
  },
+ "HFourDiffAbs": {
+  "value": 0.13519690576652602,
+  "tex": "13.5",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
  "HFourCILow": {
   "value": -0.1439873417721519,
   "tex": "\\ensuremath{-}14.4",
@@ -1753,6 +1758,11 @@
   "tex": "3{,}156",
   "source": "results/icpc/foundations/summary.json"
  },
+ "FdFwdPrecision": {
+  "value": 0.9303472509746274,
+  "tex": "0.930",
+  "source": "results/icpc/foundations/summary.json"
+ },
  "FdCpdgObservable": {
   "value": 116,
   "tex": "116",
@@ -1786,11 +1796,6 @@
  "CorpusLWrongDu": {
   "value": 205,
   "tex": "205",
-  "source": "results/icpc/corpus_l/slices.csv"
- },
- "FdFwdPrecision": {
-  "value": 0.9303472509746274,
-  "tex": "0.930",
   "source": "results/icpc/corpus_l/slices.csv"
  },
  "ProfBugsFiles": {

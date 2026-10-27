@@ -10,8 +10,8 @@ dependence-complete slices. The QDG is the known backward light cone, so what is
 justifies it and the measurement of what the alternatives cost. On \numNPairs{} circuit--qubit pairs, the
 classical program dependence graph, which reads the control of a gate as unchanged, gives wrong slices for
 \numCpdgUnsoundPct{} of them. Entanglement edges, as in the quantum program dependence graph (QPDG), keep
-\numRqOneYzSize{} of a circuit, against \numRqOneLcSize{} for the QDG, which is within \numLcExcess{}
-percentage points of the dependences themselves. Pruning by simulating one input shrinks slices by a further
+\numRqOneYzSize{} of a circuit on average, against \numRqOneLcSize{} for the QDG, only \numLcExcess{}
+percentage points above the dependences themselves. Pruning by simulating one input shrinks slices by a further
 \numHTwoRelative{}, but its slices hold only for that input, and in \numCQFour{} of \numRqThreeUnits{} units
 from seeded faults they lose a fault that the QDG slice keeps. Slices narrow where a developer looks, but they do not improve
 mutation-based fault ranking. We implement the QDG in a static slicer for Qiskit source code and close with

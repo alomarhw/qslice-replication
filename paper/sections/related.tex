@@ -19,7 +19,7 @@ preserves the distribution of the criterion variables, and conditioning adds dep
 own~\cite{hur2014slicing, amtoft2020theory, olmedo2025slicing}. Our criterion is stronger. Preserving
 $\rho_W$ preserves the outcome distribution of every measurement of $W$, so our slices are also
 probabilistic slices of the measured program. The converse fails, because a distribution in one basis does
-not see phase or the phase kickback that Proposition~\ref{prop:du} illustrates.
+not see phase or the phase kickback that Section~\ref{sec:example} illustrates.
 
 \paragraph*{Dependence in quantum programs}
 To our knowledge, Yu and Zhao's QPDG~\cite{yu2025qpdg} is the only prior proposal of dependence-based
@@ -27,15 +27,15 @@ slicing for quantum programs. Its dependences are defined in prose. For example,
 holds when the qubits of two statements are entangled, and the paper leaves an implementation and its
 evaluation to future work. Its no-cloning example, \texttt{x(0)} followed by \texttt{cx(0,1)}, is described as
 entangling the two qubits, although it produces the product state $\ket{11}$. The dependence is real but
-the entanglement is not, which is case~(i) of Proposition~\ref{prop:ent}. Reachability in the graph that
-Yu and Zhao draw for their Listing~1 reaches neither \texttt{x(1)} nor the second CNOT from the measurement
-of $q_1$, although together they make that measurement return 1 with certainty, while the slice returns 1
+the entanglement is not, which is case~(i) of Proposition~\ref{prop:ent}. In the graph that Yu and Zhao
+draw for their Listing~1, the measurement of $q_1$ reaches neither \texttt{x(1)} nor the second CNOT.
+Together these gates make the measurement return 1 with certainty, while the slice they imply returns 1
 with probability \numYzFigSliceProb{}. We implement the graph as a
 documented baseline and evaluate it against the semantics. Other program
 representations model qubits without a dependence semantics. The quantum code property graph of Kaul et
 al.~\cite{kaul2023uniform} adds a data-flow edge from the control of a CNOT to its target and treats the
 control as unchanged. This is the classical reading that phase kickback breaks, as
-Proposition~\ref{prop:du} shows. LintQ, a static analyzer for Qiskit programs~\cite{paltenghi2024lintq},
+Fig.~\ref{fig:bv} and Proposition~\ref{prop:du} show. LintQ, a static analyzer for Qiskit programs~\cite{paltenghi2024lintq},
 orders two operations exactly when they act on a common qubit, which is the relation of the QDG, and
 uses it to find bug patterns, aiming by design at neither full soundness nor full precision. We show that
 this relation gives sound and dependence-complete slices. Behler et al.\ extend srcML to OpenQASM and
@@ -63,8 +63,9 @@ it~\cite{qiskit2025}. Compilers build gate-dependence graphs to map and schedule
 hardware~\cite{murali2019triq} and cancel or merge gates while keeping the circuit
 equivalent~\cite{amy2020staq}. Light-cone arguments also bound which gates can affect an observable in the analysis of
 QAOA~\cite{farhi2014qaoa}, and the frame rules of quantum separation logics reason locally about the qubits
-a program touches~\cite{zhou2021qsl, le2022qsl}. None of them selects the operations relevant to a criterion
-of a program, and Theorem~\ref{thm:sound} states the light-cone fact as a property of slices.
+a program touches~\cite{zhou2021qsl, le2022qsl}. None of them defines which operations a slice must keep
+or proves that keeping them is sound, and Theorem~\ref{thm:sound} states the light-cone fact as a property
+of slices.
 
 \paragraph*{Debugging quantum programs}
 A recent roadmap finds that debugging research for quantum programs is still in an initial phase,

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.3)  27 OCT 2026 10:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.3)  27 OCT 2026 11:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -413,21 +413,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 19.
 (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 51.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 52.
 (/Users/alomarhw/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [1{/Users/alomarhw/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]) (./sections/example.tex
-<figures/fig_bv.pdf, id=12, 211.23317pt x 224.64728pt>
+<figures/fig_bv.pdf, id=11, 211.23317pt x 224.64728pt>
 File: figures/fig_bv.pdf Graphic file (type pdf)
 <use figures/fig_bv.pdf>
 Package pdftex.def Info: figures/fig_bv.pdf  used on input line 5.
 (pdftex.def)             Requested size: 252.0pt x 268.01912pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 [2 <./figures/fig_bv.pdf>])
 <figures/fig_pdg_ansatz.pdf, id=61, 510.45908pt x 341.21677pt>
 File: figures/fig_pdg_ansatz.pdf Graphic file (type pdf)
@@ -439,11 +436,13 @@ Underfull \hbox (badness 1694) in paragraph at lines 35--39
 []\OT1/ptm/m/n/10 Yu and Zhao keep the clas-si-cal cri-te-rion $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s; V\OT1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 un-
  []
 
+
+Underfull \hbox (badness 5064) in paragraph at lines 66--71
+[]\OT1/ptm/m/n/10 Soundness and dependence-completeness are dis-tinct.
+ []
+
 [3]
-Underfull \vbox (badness 1838) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3219) has occurred while \output is active []
 
 [4 <./figures/fig_pdg_ansatz.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 166--168
@@ -451,43 +450,59 @@ Underfull \hbox (badness 10000) in paragraph at lines 166--168
  []
 
 
-Underfull \hbox (badness 6461) in paragraph at lines 196--206
+Underfull \hbox (badness 6461) in paragraph at lines 199--209
 []\OT1/ptm/m/n/10 Control de-pen-dence is not enough, how-ever. Each
  []
 
-
-Underfull \hbox (badness 4872) in paragraph at lines 225--227
+[5]
+Underfull \hbox (badness 4872) in paragraph at lines 228--230
 [][]\OT1/ptm/m/it/10 Proposition 4 (The QDG dis-tributes over cri-te-ria):
  []
 
-[5])
+)
 <figures/fig_tool.pdf, id=129, 508.21368pt x 313.45306pt>
 File: figures/fig_tool.pdf Graphic file (type pdf)
 <use figures/fig_tool.pdf>
-Package pdftex.def Info: figures/fig_tool.pdf  used on input line 56.
+Package pdftex.def Info: figures/fig_tool.pdf  used on input line 57.
 (pdftex.def)             Requested size: 516.0pt x 318.26866pt.
 (./sections/tool.tex [6]
+Underfull \vbox (badness 7907) has occurred while \output is active []
+
+
+Underfull \vbox (badness 7907) has occurred while \output is active []
+
+[7 <./figures/fig_tool.pdf>]) (./sections/design.tex [8]
+Underfull \hbox (badness 10000) in paragraph at lines 56--60
+\OT1/ptm/m/n/10 with its op-er-a-tions un-changed, un-der 100 ran-dom
+ []
+
+
+Underfull \hbox (badness 3354) in paragraph at lines 56--60
+\OT1/ptm/m/n/10 computational-basis in-puts, that is, ran-dom bit strings,
+ []
+
+) (./sections/results.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[7 <./figures/fig_tool.pdf>]) (./sections/design.tex [8]) (./sections/results.tex [9]
+[9]
 <figures/fig_size.pdf, id=178, 244.17523pt x 137.48564pt>
 File: figures/fig_size.pdf Graphic file (type pdf)
 <use figures/fig_size.pdf>
-Package pdftex.def Info: figures/fig_size.pdf  used on input line 99.
+Package pdftex.def Info: figures/fig_size.pdf  used on input line 100.
 (pdftex.def)             Requested size: 252.0pt x 141.8929pt.
-<figures/fig_robust.pdf, id=179, 240.73036pt x 122.03693pt>
+[10 <./figures/fig_size.pdf>]
+<figures/fig_robust.pdf, id=192, 240.73036pt x 122.03693pt>
 File: figures/fig_robust.pdf Graphic file (type pdf)
 <use figures/fig_robust.pdf>
-Package pdftex.def Info: figures/fig_robust.pdf  used on input line 124.
+Package pdftex.def Info: figures/fig_robust.pdf  used on input line 125.
 (pdftex.def)             Requested size: 252.0pt x 127.7552pt.
-[10 <./figures/fig_size.pdf> <./figures/fig_robust.pdf>]
-<figures/fig_cost.pdf, id=202, 241.18808pt x 136.21791pt>
+<figures/fig_cost.pdf, id=193, 241.18808pt x 136.21791pt>
 File: figures/fig_cost.pdf Graphic file (type pdf)
 <use figures/fig_cost.pdf>
-Package pdftex.def Info: figures/fig_cost.pdf  used on input line 199.
+Package pdftex.def Info: figures/fig_cost.pdf  used on input line 202.
 (pdftex.def)             Requested size: 252.0pt x 142.33255pt.
-) (./sections/discussion.tex [11 <./figures/fig_cost.pdf>]) (./sections/related.tex [12]) (./sections/threats.tex) [13] (./sections/conclusion.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 16--77
+) [11 <./figures/fig_robust.pdf>] (./sections/discussion.tex) (./sections/related.tex [12 <./figures/fig_cost.pdf>]) (./sections/threats.tex [13]) (./sections/conclusion.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 15--78
 []\OT1/ptm/m/n/10 The repli-ca-tion pack-age at $https : / / anonymous . 4open .
  []
 
@@ -496,7 +511,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 57--58
 []\OT1/ptm/m/n/8 Qiskit Com-mu-nity, ``The Qiskit text-book,'' $https : / / github . com /
  []
 
-[14])
+[14] [15])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -508,25 +523,27 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[15] (./main.aux)
+[16
+
+] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8703 strings out of 469157
- 142087 string characters out of 5459492
- 563658 words of memory out of 5000000
- 37524 multiletter control sequences out of 15000+600000
+ 8704 strings out of 469157
+ 142102 string characters out of 5459492
+ 570666 words of memory out of 5000000
+ 37525 multiletter control sequences out of 15000+600000
  672693 words of font info for 134 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 59i,10n,67p,1114b,341s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 59i,10n,67p,1174b,341s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/txsys.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (15 pages, 532979 bytes).
+Output written on main.pdf (16 pages, 534852 bytes).
 PDF statistics:
- 326 PDF objects out of 1000 (max. 8388607)
- 216 compressed objects within 3 object streams
+ 329 PDF objects out of 1000 (max. 8388607)
+ 218 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

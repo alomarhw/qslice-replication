@@ -4,23 +4,23 @@ We ask four research questions.
 \textbf{RQ1} asks which dependence definitions give sound and dependence-complete slices.
 \textbf{RQ2} asks how much smaller than the QDG slice a slice can safely be, and under which inputs the
 extra precision holds.
-\textbf{RQ3} asks what each definition does to fault localization, by whether the slice contains the
-fault and with mutation-based fault localization.
-\textbf{RQ4} asks what each definition costs in time and memory.
+\textbf{RQ3} asks what each definition does to fault localization, measured by whether the slice contains
+the fault and by mutation-based fault localization.
+\textbf{RQ4} asks what each definition costs in time.
 
 \paragraph*{Pre-registration}
 The protocol, including the slicers, metrics, tests, thresholds and the decision rules for the
 paper's framing, was committed before the runs reported here. It extends the protocol of an earlier run of
 this study, whose results it reuses, so H1 and H2 below were known when it was written. Every later change
 is recorded as a dated deviation with its reason, and those made after a result are marked as such. The QDG
-is the protocol's light-cone baseline, and the paper's framing follows its decision rule for the case,
-which occurred, that state-based pruning is sound but fails the robustness or size condition. The classical
+is the protocol's light-cone baseline. State-based pruning turned out sound but failed the robustness
+condition, and the paper's framing follows the protocol's decision rule for that case. The classical
 PDG and an order-preserving mapping for Qiskit's \texttt{LightCone} pass were added as baselines after the
 first runs. The dependence set as a reference for slice size, the symbolic-angle variant of commutation
-pruning, the flow-sensitive QPDG, the static slicer and its forward slices and profiles, the measures of
+pruning, the flow-sensitive QPDG, the read-only reading of the QPDG, the static slicer and its forward slices and profiles, the measures of
 the foundations in Section~\ref{sec:results}, and the seeded scenario of Section~\ref{sec:example} were all
 added after the results, and all are exploratory. The acceptance tests of the slicer were fixed before any
-of its output. None of these changes enters the five confirmatory tests, and no test in the code asserts an
+of its output. None of these changes enters the five confirmatory tests, and no unit test in the code asserts an
 expected study outcome.
 
 \paragraph*{Circuits}
@@ -38,8 +38,8 @@ $U \dots U^{\dagger}$. For scale, corpus~L has \numCorpusLCircuits{} larger circ
 All slices are judged by one independent oracle. It simulates the circuit's unconditional state exactly,
 by branching over measurement outcomes, and shares no code with any slicer. It agrees with Qiskit's
 statevector simulation to within \numOracleErr{} on random circuits. A slice preserves the criterion when
-the Uhlmann fidelity of the criterion's reduced states, the standard similarity measure for such states,
-in its squared form, is at least $1 - 10^{-6}$. The dependences of
+the squared Uhlmann fidelity, the standard similarity measure for quantum states, between the criterion's
+reduced states under the slice and under the whole circuit is at least $1 - 10^{-6}$. The dependences of
 Definition~\ref{def:dep} are measured by inserting \numInfluencePerturbations{} random unitaries after
 every operation and comparing the criterion's state at \numInfluenceInputs{} inputs, $\ket{0\dots0}$ and
 ten random product states, in which each qubit has its own random state and none is entangled. A
@@ -53,7 +53,7 @@ before Qiskit's pass, so that commutation must hold for all angles, and a varian
 takes a joint criterion.
 
 \paragraph*{Robustness}
-A slice computed at $\ket{0\dots0}$ is rechecked, positions fixed, under \numRobDraws{} random
+A slice computed at $\ket{0\dots0}$ is rechecked, with its operations unchanged, under \numRobDraws{} random
 computational-basis inputs, that is, random bit strings, \numRobDraws{} random product inputs and, for
 circuits with rotation angles, \numRobDraws{} random rebindings of every angle. A pair is robust if the
 slice preserves the criterion in every draw.
@@ -66,7 +66,7 @@ insert and delete mid-circuit measurements, swap a control with a target, remove
 operand, corrupt the preparation of an entangling gate, and perturb an angle. Of the \numMutants{}
 mutants, \numMutantsExcluded{} with an empty fault site are excluded, and \numMutantsKilled{} change the
 measured distribution of at least one qubit. Each such qubit forms a unit with its mutant, which gives
-\numRqThreeUnits{} units whose criterion is a qubit whose measured distribution is wrong. For each unit we
+\numRqThreeUnits{} units, each with a criterion qubit whose measured distribution is wrong. For each unit we
 record whether the slice of the faulty circuit contains the fault site, which is the mutated operation or,
 for a deletion, the operations next to the deletion point, and how many operations the slice keeps. The
 real bugs come from Bugs4Q~\cite{zhao2023bugs4q}. Of \numBugsFourQTriaged{} entries,
@@ -81,9 +81,11 @@ same line slices from the original programs.
 \paragraph*{Fault localization}
 Mutation-based fault localization mutates the operations of the faulty circuit and ranks them by how their
 mutants change its observable behavior, scored with the Ochiai suspiciousness formula, as Ishimoto et al.\
-do for quantum programs~\cite{ishimoto2025mbfl}. We rank over the whole circuit and within each slice and report the EXAM
-score, the share of the ranked operations a developer examines before reaching the fault, where lower is
-better. Because a slice ranks a subset of the operations in the same order, the developer never examines
+do for quantum programs~\cite{ishimoto2025mbfl}. Because it simulates many mutants per unit, it runs on a sample of \numMbflUnits{} units, stratified by
+fault operator and including every Bugs4Q unit. We rank over the whole circuit and within each slice and
+report the EXAM score, the share of the ranked operations a developer examines before reaching the fault,
+where lower is better. Without fault localization, we also order each slice from its last operation
+backward and score the fault's rank the same way. Because a slice ranks a subset of the operations in the same order, the developer never examines
 more operations within a slice than in the whole circuit, but EXAM divides by the number ranked, so a
 smaller slice can raise it.
 
@@ -94,7 +96,7 @@ pairs keep a correct slice under random product inputs. H4 states that it loses 
 points of fault containment against the QDG slice, and H5 that its slices are smaller where both contain
 the fault. State-based pruning starts from the QDG slice and checks every removal at $\ket{0\dots0}$, the
 input at which RQ1 judges it, so H1 and the directions of H2 and H5 hold by construction and only their
-effect sizes inform. H3 and H4 are the real tests. We test them with exact McNemar tests, which compare
+effect sizes are informative. H3 and H4 are the real tests. We test them with exact McNemar tests, which compare
 paired yes-or-no outcomes, and Wilcoxon signed-rank tests on paired sizes, and Holm's method corrects across
 the five. Effect sizes come first,
 with bootstrap 95\% confidence intervals (10{,}000 resamples) and Wilson intervals for proportions. Since

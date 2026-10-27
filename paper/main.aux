@@ -19,10 +19,10 @@
 \citation{bernstein1997qct}
 \citation{qiskittextbook}
 \citation{zhao2023bugs4q}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The Bernstein--Vazirani program of the Qiskit textbook~\cite  {qiskittextbook}, with comments and blank lines omitted and the textbook's line numbers kept. Line~25 carries a seeded fault, \texttt  {x(n)} where the textbook applies \texttt  {z(n)}. The two columns mark the statements in the backward slice of $q_0$ under the classical PDG, CPDG, and under the QDG. The classical PDG misses the orange lines, which are dependences of $q_0$. Slices are computed by our tool statically, and outcomes and dependences by the study's code.}}{2}{}\protected@file@percent }
-\newlabel{fig:bv}{{1}{2}{}{figure.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}A Debugging Scenario}{2}{}\protected@file@percent }
 \newlabel{sec:example}{{II}{2}{}{section.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The Bernstein--Vazirani program of the Qiskit textbook~\cite  {qiskittextbook}, with comments and blank lines omitted and the textbook's line numbers kept. Line~25 carries a seeded fault, \texttt  {x(n)} where the textbook applies \texttt  {z(n)}. The two columns mark the statements in the backward slice of $q_0$ under the classical PDG, CPDG, and under the QDG. The classical PDG misses the orange lines, which are dependences of $q_0$. Slices are computed by our tool statically, and outcomes and dependences by the study's code.}}{2}{}\protected@file@percent }
+\newlabel{fig:bv}{{1}{2}{}{figure.1}{}}
 \citation{yu2025qpdg}
 \citation{podgurski1990formal}
 \citation{ferrante1987pdg}
@@ -37,10 +37,9 @@
 \citation{yu2025qpdg}
 \citation{yu2025qpdg}
 \citation{qiskit2025}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Control and quantum dependence in a variational (VQE) ansatz, criterion $q_0$. After the loops, an auxiliary qubit is measured mid-circuit and conditions a flip of $q_0$. (b)~One graph for the rules of Table~\ref {tab:rules}. Each node is an operation as it executes, with its source line and loop iteration, and a box holds each iteration of the outer loop, with the inner loops unrolled. Grey data edges belong to every rule, and def-use lacks the green control edges. The classical PDG lacks the blue quantum edges and has the dotted edges instead, each of which skips a CNOT whose control it reads as unchanged. The slices are nested, so a node is shaded by the weakest rule that keeps it, and each rule keeps its shade and every darker one. The QDG keeps exactly the dependences of $q_0$, and the QPDG adds the hatched operations, which are not dependences. Graphs, slices and fidelities at $\lvert 0\dots  0\rangle $ are computed by the study's code from the program shown.}}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Control and quantum dependence in a variational (VQE) ansatz, criterion $q_0$. (a)~The program. After the loops, an auxiliary qubit is measured mid-circuit and conditions a flip of $q_0$. (b)~One graph for the first four rules of Table~\ref {tab:rules}. Each node is an operation as it executes, with its source line and loop iteration, and a box holds each iteration of the outer loop, with the inner loops unrolled. Grey data edges belong to every rule, and def-use lacks the green control edge from the measurement. The classical PDG and def-use lack the blue quantum edges and have the dotted edges instead, each of which skips a CNOT whose control it reads as unchanged. The slices are nested, so a node is shaded by the weakest rule that keeps it, and each rule keeps its shade and every darker one. The QDG keeps exactly the dependences of $q_0$, and the QPDG adds the hatched operations, which are not dependences. Graphs, slices and fidelities at $\lvert 0\dots  0\rangle $ are computed by the study's code from the program shown.}}{4}{}\protected@file@percent }
 \newlabel{fig:ansatz}{{2}{4}{}{figure.2}{}}
 \citation{svore2018qsharp}
-\citation{nielsen2010quantum}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces The dependence rules, by what a CNOT with control $c$ and target $t$ writes. Every rule reads $\{c, t\}$, and complete means dependence-complete. The last columns give the slice of $q_0$ in Fig.~\ref {fig:ansatz}, as the operations it keeps of 19{} and its fidelity at $\lvert 0\dots  0\rangle $.}}{5}{}\protected@file@percent }
 \newlabel{tab:rules}{{I}{5}{}{table.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Properties}{5}{}\protected@file@percent }
@@ -48,7 +47,7 @@
 \newlabel{prop:complete}{{1}{5}{}{subsection.3.4}{}}
 \newlabel{prop:du}{{2}{5}{}{subsection.3.4}{}}
 \newlabel{prop:ent}{{3}{5}{}{subsection.3.4}{}}
-\newlabel{prop:joint}{{4}{5}{}{subsection.3.4}{}}
+\citation{nielsen2010quantum}
 \citation{tip1994a}
 \citation{silva2012vocabulary}
 \citation{canfora1998conditioned}
@@ -58,21 +57,22 @@
 \citation{alomari2014srcslice}
 \citation{collard2011lightweight}
 \citation{collard2013srcml}
-\citation{behler2024supporting}
+\newlabel{prop:joint}{{4}{6}{}{subsection.3.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Kinds of slices}{6}{}\protected@file@percent }
 \newlabel{prop:dual}{{5}{6}{}{subsection.3.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Qubit slice profiles}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {IV}A Static Slicer for Qiskit Programs}{6}{}\protected@file@percent }
 \newlabel{sec:tool}{{IV}{6}{}{section.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The tool on the ansatz of Fig.~\ref {fig:ansatz}a, statically. In stage 1, srcML marks up the CNOT loop and the dynamic step, and the letters mark the elements the tool reads. Stage 2 is the operation trace it yields, whose dependence graph is Fig.~\ref {fig:ansatz}b, and stage 3 is the slice of $q_0$ by line and iteration. The tool computed the figure from the program file.}}{7}{}\protected@file@percent }
+\citation{behler2024supporting}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The tool on the ansatz of Fig.~\ref {fig:ansatz}a, statically. In stage 1, srcML marks up the CNOT loop and the measured, conditioned flip of lines 18 to 20, and the letters mark the elements the tool reads. Stage 2 is the operation trace it yields, whose dependence graph is Fig.~\ref {fig:ansatz}b, and stage 3 is the slice of $q_0$ by line and iteration. The tool computed the figure from the program file.}}{7}{}\protected@file@percent }
 \newlabel{fig:tool}{{3}{7}{}{figure.3}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces QDG slice of a static operation trace}}{7}{}\protected@file@percent }
-\newlabel{alg:slice}{{1}{7}{}{algorithm.1}{}}
 \citation{qiskittextbook}
 \citation{paltenghi2024lintq}
 \citation{quetschlich2023mqt}
 \citation{li2023qasmbench}
 \citation{chen2022veriqbench}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces QDG slice of a static operation trace}}{8}{}\protected@file@percent }
+\newlabel{alg:slice}{{1}{8}{}{algorithm.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Study Design}{8}{}\protected@file@percent }
 \newlabel{sec:design}{{V}{8}{}{section.5}{}}
 \citation{mendiluze2021muskit}
@@ -83,20 +83,16 @@
 \citation{yu2025qpdg}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Slices of the 784{} corpus-A pairs at $\lvert 0\dots  0\rangle $ for RQ1. Wrong counts the slices that do not preserve the criterion, and Dyn.\ counts those among the 80{} pairs in dynamic circuits. Recall and precision are against the dependence set, and size is the mean share of the circuit.}}{9}{}\protected@file@percent }
 \newlabel{tab:rq1}{{II}{9}{}{table.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Results}{9}{}\protected@file@percent }
-\newlabel{sec:results}{{VI}{9}{}{section.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}RQ1: Which definitions give sound and complete slices?}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Results}{10}{}\protected@file@percent }
+\newlabel{sec:results}{{VI}{10}{}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}RQ1: Which definitions give sound and complete slices?}{10}{}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Mean slice size by circuit width, for RQ1. The grey bars are the dependence set, the smallest size a dependence-complete slice can have. Corpus~L has no grey bar, because its ground truth would need exact simulation of every perturbation at 15 to 20 qubits. Commutation is shown where Qiskit's pass applies.}}{10}{}\protected@file@percent }
 \newlabel{fig:size}{{4}{10}{}{figure.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Share of pairs whose slice, computed at $\lvert 0\dots  0\rangle $, stays correct in all 100{} draws of each input regime, for RQ2. Commutation is shown on the 732{} pairs where Qiskit's pass applies, state-based pruning on the 477{} pairs it prunes, and angle rebinding on the pairs of circuits with rotation angles.}}{10}{}\protected@file@percent }
-\newlabel{fig:robust}{{5}{10}{}{figure.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}RQ2: How much precision beyond the QDG slice is safe?}{10}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Share of pairs whose slice, computed at $\lvert 0\dots  0\rangle $, stays correct in all 100{} draws of each input regime, for RQ2. Commutation is shown on the 732{} pairs where Qiskit's pass applies, state-based pruning on the 477{} pairs it prunes, and angle rebinding on the pairs of circuits with rotation angles.}}{11}{}\protected@file@percent }
+\newlabel{fig:robust}{{5}{11}{}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}RQ2: How much precision beyond the QDG slice is safe?}{11}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}RQ3: What does each definition do to fault localization?}{11}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Median time to slice one criterion and to build the QPDG, for circuits of width 8 and growing depth, for RQ4. At the two largest depths, only the criteria that finished within the limit are counted, so the state-based time is a lower bound.}}{11}{}\protected@file@percent }
-\newlabel{fig:cost}{{6}{11}{}{figure.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}RQ4: What does it cost?}{11}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VII}A Roadmap for Quantum Program Slicing}{11}{}\protected@file@percent }
-\newlabel{sec:discussion}{{VII}{11}{}{section.7}{}}
 \citation{canfora1998conditioned}
 \citation{venkatesh1991semantic}
 \citation{horwitz1990interprocedural}
@@ -122,14 +118,18 @@
 \citation{hur2014slicing}
 \citation{amtoft2020theory}
 \citation{olmedo2025slicing}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Median time to slice one criterion and to build the QPDG, for circuits of width 8 and growing depth, for RQ4. At the two largest depths, only the criteria that finished within the per-circuit time limit are counted, so the state-based time is a lower bound.}}{12}{}\protected@file@percent }
+\newlabel{fig:cost}{{6}{12}{}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}A Roadmap for Quantum Program Slicing}{12}{}\protected@file@percent }
+\newlabel{sec:discussion}{{VII}{12}{}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Related Work}{12}{}\protected@file@percent }
+\newlabel{sec:related}{{VIII}{12}{}{section.8}{}}
 \citation{yu2025qpdg}
 \citation{kaul2023uniform}
 \citation{paltenghi2024lintq}
 \citation{behler2024supporting}
 \citation{behler2025static}
 \citation{chen2023smelly}
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Related Work}{12}{}\protected@file@percent }
-\newlabel{sec:related}{{VIII}{12}{}{section.8}{}}
 \citation{perdrix2007types}
 \citation{prost2009reasoning}
 \citation{perdrix2008entanglement}
@@ -158,9 +158,9 @@
 \citation{fortunato2022qmutpy}
 \citation{garcia2022testing}
 \citation{ishimoto2025mbfl}
-\citation{svore2018qsharp}
 \@writefile{toc}{\contentsline {section}{\numberline {IX}Threats to Validity}{13}{}\protected@file@percent }
 \newlabel{sec:threats}{{IX}{13}{}{section.9}{}}
+\citation{svore2018qsharp}
 \bibstyle{IEEEtran}
 \bibdata{references}
 \bibcite{weiser1982programmers}{1}
@@ -180,6 +180,9 @@
 \bibcite{qiskit2025}{15}
 \bibcite{nielsen2010quantum}{16}
 \bibcite{tip1994a}{17}
+\@writefile{toc}{\contentsline {section}{\numberline {X}Conclusion}{14}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{X}{14}{}{section.10}{}}
+\@writefile{toc}{\contentsline {section}{References}{14}{}\protected@file@percent }
 \bibcite{silva2012vocabulary}{18}
 \bibcite{canfora1998conditioned}{19}
 \bibcite{korel1988dynamic}{20}
@@ -194,9 +197,6 @@
 \bibcite{li2023qasmbench}{29}
 \bibcite{chen2022veriqbench}{30}
 \bibcite{mendiluze2021muskit}{31}
-\@writefile{toc}{\contentsline {section}{\numberline {X}Conclusion}{14}{}\protected@file@percent }
-\newlabel{sec:conclusion}{{X}{14}{}{section.10}{}}
-\@writefile{toc}{\contentsline {section}{References}{14}{}\protected@file@percent }
 \bibcite{fortunato2022qmutpy}{32}
 \bibcite{garcia2022testing}{33}
 \bibcite{ishimoto2025mbfl}{34}
@@ -237,4 +237,4 @@
 \bibcite{qiskitaddonutils}{69}
 \bibcite{zhao2021bugpatterns}{70}
 \bibcite{nayak2023qpac}{71}
-\gdef \@abspage@last{15}
+\gdef \@abspage@last{16}

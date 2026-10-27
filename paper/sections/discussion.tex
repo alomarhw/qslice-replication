@@ -8,7 +8,8 @@ control dependence does not remove it. Entanglement edges, as in the QPDG, shoul
 buy no soundness that the QDG lacks and cost precision, because a later operation on an entangled partner
 cannot change the criterion's state, as Proposition~\ref{prop:ent} shows. They contain a few more faults of
 a faulty program only by keeping more of it. No dependence slice of the faulty program can show an
-omitted interaction, and every fault the QDG slice misses is one, so a slicer should say so. Whether
+omitted interaction, and every fault the QDG slice misses removes one, so a slicer should warn that a
+fault may be a missing gate or control that no slice can contain. Whether
 slices shorten debugging remains a hypothesis, since our localization results do not show it. Precision beyond the
 QDG slice can come from commutation pruning, which stays correct on every random input but fails when the
 angles change. Treating every angle as a symbol before the pass, an exploratory variant, kept it correct under all three
@@ -16,7 +17,7 @@ input regimes, so a slicer for variational programs should use the symbolic vari
 after each parameter update. State-based pruning should be offered, if at all, as a view of one input,
 labeled as such, and never as the slice of the program. Finally, a slicer should judge slices by states rather than by
 histograms, since \numFdCpdgZMatchPct{} of the wrong classical-PDG slices pass a histogram check, and it
-should let the developer name a set of qubits, whose joint state pruning must preserve. By
+should let the developer name a set of qubits whose joint state pruning must preserve. By
 Proposition~\ref{prop:joint}, the joint QDG slice needs no extra analysis.
 
 \paragraph*{What is open}

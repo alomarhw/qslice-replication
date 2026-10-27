@@ -3,7 +3,7 @@
 Developers write Qiskit programs, not circuits, and a slice helps them only as lines of their program. We
 therefore built a tool that slices a Qiskit program statically, from its source, with the QDG
 of Section~\ref{sec:dependence}. Fig.~\ref{fig:tool} shows its steps on the ansatz of
-Fig.~\ref{fig:ansatz}, and the end of this section reports it on the Bugs4Q programs and the textbook.
+Fig.~\ref{fig:ansatz}, and the end of this section evaluates it on Bugs4Q, the Qiskit textbook and LintQ's corpus.
 
 \paragraph*{Parsing}
 The tool parses the program with srcML~\cite{collard2011lightweight, collard2013srcml}, which turns source
@@ -22,18 +22,18 @@ It evaluates the program's expressions over an abstract domain of known values, 
 circuits. It unrolls loops and records the iteration of each operation, inlines functions, and follows
 \texttt{if\_test} and \texttt{c\_if}, Qiskit's two constructs for gates conditioned on measured bits, as
 stages 2 and 3 of Fig.~\ref{fig:tool} show. Each value carries the lines that computed it, so the tool knows
-the classical lines, the statements that compute an operation's qubits, angles and conditions. The QDG
+the classical lines, that is, the statements that compute an operation's qubits, angles and conditions. The QDG
  does not need angle values, so angles drawn at run time stay symbolic. Where a value cannot be
 resolved statically, the tool over-approximates. An unknown qubit index makes the operation act on every
 qubit it may denote. An unknown condition runs every branch from the state before it, and a variable that
 the branches leave with different values becomes unknown. A \texttt{return}, \texttt{break} or
 \texttt{continue} in such a branch does not end the analysis, and the rest of the function is read as
 may-operations. A loop over an unknown range repeats its body once more than the number of qubits and bits
-the body touches, at most \numToolMaxCopies{} times, which covers every chain of dependences through the
+the body touches, at most \numToolMaxCopies{} times, which below the cap covers every chain of dependences through the
 loop, and a variable that changes between copies leaves the loop unknown. Because the QDG never removes a
 qubit from the needed set, these over-approximations can only enlarge a slice, and the tool reports each of
-them, including a loop whose copies reach the cap. The largest circuit a program builds is the one it
-slices. When a circuit is passed to code the tool does not
+them, including a loop whose copies reach the cap. When a program builds several circuits, the tool slices
+the largest. When a circuit is passed to code the tool does not
 model, such as a rewrite of its directed acyclic graph (DAG) representation, the tool reports it as not
 traced.
 
@@ -57,20 +57,20 @@ traced.
 \end{algorithm}
 
 \paragraph*{Slicing}
-Algorithm~\ref{alg:slice} is the backward pass of Theorem~\ref{thm:sound} on the trace, with one
-refinement. It skips barriers, which do not change the state, and terminal measurements, which come after
+Algorithm~\ref{alg:slice} is the backward pass of Theorem~\ref{thm:sound} on the trace, where
+$\mathit{cond}(o_k)$ is the set of bits that the condition of $o_k$ reads, with three refinements. It skips barriers, which do not change the state, and terminal measurements, which come after
 the criterion. Because of over-approximation, an operation may act on several candidate qubits. It adds all
 of them to $N$, and it removes a bit from $N$ only when it certainly writes that bit. This is sound, because
 a measurement discards the earlier value of its bit, so no earlier operation reaches the criterion through
-that bit. $\mathit{cond}(o_k)$ is the set of bits that
-the condition of $o_k$ reads. The pass returns the operations of the slice, their lines and iterations, and
+that bit. An operation joins the slice through its qubits and the bits it writes, and the bits its condition
+reads then join $N$. The pass returns the operations of the slice, their lines and iterations, and
 the classical lines they depend on. Its cost is linear in the length of the trace for a fixed criterion.
 
 \paragraph*{Forward slices and profiles}
 The same trace gives the forward slices and qubit slice profiles of Section~\ref{sec:dependence}. A forward
 pass from the operations of a line marks every later operation that acts on a reached qubit or whose
-condition reads a reached bit, and a bit stops being reached when a measurement the start cannot affect
-certainly overwrites it, as in the backward pass. The pass returns the lines and the qubits and bits
+condition reads a reached bit, and a bit stops being reached when a measurement that the starting operations cannot
+affect certainly overwrites it, as in the backward pass. The pass returns the lines and the qubits and bits
 reached. On every operation and qubit of our test programs, one of which overwrites a bit before a
 condition reads it, the forward slices are dual to the backward ones. A profile combines one
 backward and one forward pass with the srcML of the gate calls on the qubit. Over the
@@ -78,23 +78,23 @@ backward and one forward pass with the srcML of the gate calls on the qubit. Ove
 textbook and \numProfLintqSample{} sampled LintQ files, the two slices of a qubit differ in length for
 \numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and \numProfLintqFwdNeBwd{} of them, and
 \numProfBugsInFunction{}, \numProfTextInFunction{} and \numProfLintqInFunction{} are acted on inside a
-function under a parameter's name. In \numProfTextAliasGenuine{} textbook programs, checked by hand, a
+function that the program calls. In \numProfTextAliasGenuine{} textbook programs, checked by hand, a
 qubit has a second name, a function parameter or a loop variable over a register.
 
 \paragraph*{Validation}
 On \numToolDevPrograms{} programs that we wrote and can run, of up to \numToolDevMaxOps{} operations,
 including Shor's order finding, Grover search, phase estimation, an adder, the Quantum Approximate
-Optimization Algorithm (QAOA) and a repetition code, the static trace equals the circuit Qiskit builds. The
-slice of every qubit equals the circuit-level QDG slice that the study uses on \numToolDevSliceEqual{} of
-them. The remaining program nests conditional blocks, which the circuit-level slicer reads only by their
-outer condition. On \numToolNestedDraws{} random product inputs, the state simulator of
+Optimization Algorithm (QAOA) and a repetition code, the static trace equals the circuit Qiskit builds. On
+\numToolDevSliceEqual{} of them, the slice of every qubit equals the circuit-level QDG slice that the study
+uses. The remaining program nests conditional blocks, which the circuit-level slicer reads only by their
+outer condition. On \numToolNestedDraws{} random product inputs, the oracle of
 Section~\ref{sec:design} finds the circuit-level slice wrong \numToolNestedStudyWrong{} times and the
 tool's slice never. On the Bugs4Q programs of our study, read without being run, the trace equals the
 prepared circuit for \numToolTOneExact{} of \numToolTOneBugs{} bugs. The remaining bug rewrites its circuit
 as a DAG, which the tool reports. The tool's line slices equal those of the study on all
 \numToolTTwoUnits{} units whose lines the study maps, which include the \numLinesUnits{} units of
 Section~\ref{sec:results}, so the line-level results there are those of the tool. On all
-\numToolBugsQiskit{} Qiskit programs of Bugs4Q, every program parses, \numToolBugsCircuit{} yield a
+\numToolBugsQiskit{} Qiskit program files of Bugs4Q, buggy and fixed versions of every entry, every program parses, \numToolBugsCircuit{} yield a
 circuit, \numToolBugsResolved{} of them without any over-approximation, and none crashes the tool. The
 others build no circuit or are fragments. On the \numToolTextbookQiskit{} Qiskit notebooks of the Qiskit
 textbook~\cite{qiskittextbook}, \numToolTextbookCircuit{} yield a circuit, and on the
