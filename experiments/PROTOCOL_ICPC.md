@@ -1128,7 +1128,7 @@ These were found while implementing §6, from the API documentation. No LLM call
   is built only when needed. Slices without a limit are unchanged (dev checks, nested check, forward duality on
   511 pairs). Acceptance, coverage and profiles are rerun on tool-v7, and the paper reports tool-v7; the tool-v6
   results are kept.
-- **Paper changes.** Title "Foundations of Quantum Program Slicing" (author decision); the language-model task is
+- **Paper changes.** New title (author decision); the language-model task is
   removed from the paper (author decision; its results stay in `results/llm/`); Definitions 1-3 trace out the
   classical bits and state the pre-readout criterion; the readout-observable count of wrong classical-PDG slices is
   reported; the Bugs4Q lesson is restated (single-qubit histograms, not single-qubit criteria); the QPDG is described
