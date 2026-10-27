@@ -2725,5 +2725,10 @@
   "value": 784,
   "tex": "784",
   "source": "results/icpc/q_repeat/pairs.csv"
+ },
+ "YzFigSliceProb": {
+  "value": 0.5,
+  "tex": "1/2",
+  "source": "results/icpc/yz_listings/fig1.json"
  }
 }

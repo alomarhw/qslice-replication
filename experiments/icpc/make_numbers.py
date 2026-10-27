@@ -17,6 +17,7 @@ import json
 import statistics as st
 import sys
 from collections import Counter, defaultdict
+from fractions import Fraction
 from pathlib import Path
 
 import numpy as np
@@ -694,6 +695,14 @@ def main() -> int:
     qr = rows(ICPC / "q_repeat" / "pairs.csv")
     assert all(r["all_equal_stored"] == "1" and r["all_sound"] == "1" for r in qr), "S-q not repeatable on corpus A"
     put("QRepeatPairs", len(qr), cnt(len(qr)), "results/icpc/q_repeat/pairs.csv")
+
+    yf = json.load(open(ICPC / "yz_listings" / "fig1.json"))
+    src = "results/icpc/yz_listings/fig1.json"
+    assert yf["missing"] == ["x(1)", "cx(0,1)"] and yf["p_q1_one"]["program"] == 1.0, "Yu-Zhao Fig. 1 facts changed"
+    fr = Fraction(yf["p_q1_one"]["slice"]).limit_denominator(16)
+    put("YzFigSliceProb", yf["p_q1_one"]["slice"], f"{fr.numerator}/{fr.denominator}", src)
+    yl = json.load(open(ICPC / "yz_listings" / "listings.json"))
+    assert all(v[q]["yz"]["slice"] == v[q]["lc"]["slice"] for v in yl.values() for q in v if q.startswith("q"))
 
     # ---- write ----------------------------------------------------------------------------------------------
     TEX.parent.mkdir(parents=True, exist_ok=True)

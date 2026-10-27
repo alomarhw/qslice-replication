@@ -1,0 +1,401 @@
+{
+ "listing1": {
+  "ops": [
+   "h[0]",
+   "cx[0, 1]",
+   "delay[0]",
+   "delay[1]",
+   "x[1]",
+   "cx[0, 1]"
+  ],
+  "q0": {
+   "dep": [
+    0,
+    1,
+    4,
+    5
+   ],
+   "du": {
+    "slice": [
+     0,
+     2
+    ],
+    "fidelity": 1.0
+   },
+   "cpdg": {
+    "slice": [
+     0,
+     2
+    ],
+    "fidelity": 1.0
+   },
+   "lc": {
+    "slice": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "fidelity": 1.0
+   },
+   "yz": {
+    "slice": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "fidelity": 1.0
+   },
+   "yzro": {
+    "slice": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "fidelity": 1.0
+   }
+  },
+  "q1": {
+   "dep": [
+    1,
+    4,
+    5
+   ],
+   "du": {
+    "slice": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "fidelity": 1.0
+   },
+   "cpdg": {
+    "slice": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "fidelity": 1.0
+   },
+   "lc": {
+    "slice": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "fidelity": 1.0
+   },
+   "yz": {
+    "slice": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "fidelity": 1.0
+   },
+   "yzro": {
+    "slice": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "fidelity": 1.0
+   }
+  }
+ },
+ "listing2": {
+  "ops": [
+   "h[0]",
+   "cx[0, 1]"
+  ],
+  "q0": {
+   "dep": [
+    0,
+    1
+   ],
+   "du": {
+    "slice": [
+     0
+    ],
+    "fidelity": 0.5
+   },
+   "cpdg": {
+    "slice": [
+     0
+    ],
+    "fidelity": 0.5
+   },
+   "lc": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yz": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yzro": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   }
+  },
+  "q1": {
+   "dep": [
+    0,
+    1
+   ],
+   "du": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "cpdg": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "lc": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yz": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yzro": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   }
+  }
+ },
+ "listing3": {
+  "ops": [
+   "x[0]",
+   "cx[0, 1]"
+  ],
+  "q0": {
+   "dep": [
+    0,
+    1
+   ],
+   "du": {
+    "slice": [
+     0
+    ],
+    "fidelity": 1.0
+   },
+   "cpdg": {
+    "slice": [
+     0
+    ],
+    "fidelity": 1.0
+   },
+   "lc": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yz": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yzro": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   }
+  },
+  "q1": {
+   "dep": [
+    0,
+    1
+   ],
+   "du": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "cpdg": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "lc": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yz": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yzro": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   }
+  }
+ },
+ "listing4": {
+  "ops": [
+   "h[0]",
+   "x[0]"
+  ],
+  "q0": {
+   "dep": [
+    0,
+    1
+   ],
+   "du": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "cpdg": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "lc": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yz": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   },
+   "yzro": {
+    "slice": [
+     0,
+     1
+    ],
+    "fidelity": 1.0
+   }
+  }
+ },
+ "listing5": {
+  "ops": [
+   "h[0]",
+   "measure[0]",
+   "if_else[0]"
+  ],
+  "q0": {
+   "dep": [
+    1,
+    2
+   ],
+   "du": {
+    "slice": [
+     0,
+     1,
+     2
+    ],
+    "fidelity": 1.0
+   },
+   "cpdg": {
+    "slice": [
+     0,
+     1,
+     2
+    ],
+    "fidelity": 1.0
+   },
+   "lc": {
+    "slice": [
+     0,
+     1,
+     2
+    ],
+    "fidelity": 1.0
+   },
+   "yz": {
+    "slice": [
+     0,
+     1,
+     2
+    ],
+    "fidelity": 1.0
+   },
+   "yzro": {
+    "slice": [
+     0,
+     1,
+     2
+    ],
+    "fidelity": 1.0
+   }
+  }
+ }
+}

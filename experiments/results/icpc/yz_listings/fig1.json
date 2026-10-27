@@ -1,0 +1,16 @@
+{
+ "slice": [
+  "h(0)",
+  "cx(0,1)",
+  "measure(0,0)",
+  "measure(1,1)"
+ ],
+ "missing": [
+  "x(1)",
+  "cx(0,1)"
+ ],
+ "p_q1_one": {
+  "program": 1.0,
+  "slice": 0.5
+ }
+}

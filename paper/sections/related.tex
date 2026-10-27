@@ -27,7 +27,10 @@ slicing for quantum programs. Its dependences are defined in prose. For example,
 holds when the qubits of two statements are entangled, and the paper leaves an implementation and its
 evaluation to future work. Its no-cloning example, \texttt{x(0)} followed by \texttt{cx(0,1)}, is described as
 entangling the two qubits, although it produces the product state $\ket{11}$. The dependence is real but
-the entanglement is not, which is case~(i) of Proposition~\ref{prop:ent}. We implement the graph as a
+the entanglement is not, which is case~(i) of Proposition~\ref{prop:ent}. Reachability in the graph that
+Yu and Zhao draw for their Listing~1 reaches neither \texttt{x(1)} nor the second CNOT from the measurement
+of $q_1$, although together they make that measurement return 1 with certainty, while the slice returns 1
+with probability \numYzFigSliceProb{}. We implement the graph as a
 documented baseline and evaluate it against the semantics. Other program
 representations model qubits without a dependence semantics. The quantum code property graph of Kaul et
 al.~\cite{kaul2023uniform} adds a data-flow edge from the control of a CNOT to its target and treats the

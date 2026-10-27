@@ -1162,6 +1162,11 @@ These were found while implementing §6, from the API documentation. No LLM call
   2 of 293 MBFL units get a different S-q slice when recomputed (`q_recomputed_differs`); `icpc/mbfl_all.py` uses
   the slices stored by `icpc/mbfl.py`. `icpc/q_repeat.py` recomputes S-q three times on every corpus-A pair: all
   784 equal the stored RQ1 slices and are sound. S-yzro/S-yzrof are sound on all structure families.
+- **Yu and Zhao's examples (exploratory, added 2026-10-27).** `icpc/yz_listings.py` transcribes Listings 1-5 of
+  [27] as circuits and runs every rule on them: S-yz equals S-lc on every qubit of every listing. It also transcribes
+  the edges of [27]'s Fig. 1 (the QPDG of Listing 1) as drawn. Backward reachability from `measure(1,1)` over them
+  misses `x(1)` and the second CNOT; q1 measures 1 with probability 1 in the program and 1/2 in that slice.
+  Output `results/icpc/yz_listings/`.
 - **Paper changes.** Claims reframed (the QDG is the known light cone; the semantics and the measurement are the
   contribution); Theorem 1's step for resets, measurements and conditioned gates stated; the RQ1 soundness sentence
   qualified for nested conditions; the threats' bias direction corrected (sampled dependences overstate recall and
