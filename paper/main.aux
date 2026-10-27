@@ -40,15 +40,15 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Control and quantum dependence in a variational (VQE) ansatz, criterion $q_0$. After the loops, an auxiliary qubit is measured mid-circuit and conditions a flip of $q_0$. Each node is an operation as it executes, with the source line and loop iteration that created it, and both graphs place every node at the same position. (b)~The classical PDG reaches the auxiliary through the green, dashed control edge. Def-use ignores classical bits, so its graph is (b) without that edge, and its slice also loses the shaded, outlined operations. The classical PDG treats the control of a CNOT as read only. It lacks the orange, dashed edges, so its shaded slice of $q_0$ misses the outlined dependences. (c)~The QDG has these edges as quantum edges, and its slice is exactly the dependences of $q_0$. The QPDG would also add the purple operations, which are not dependences. Graphs, slices and fidelities at $\lvert 0\dots  0\rangle $ are computed by the study's code from the program shown.}}{4}{}\protected@file@percent }
 \newlabel{fig:ansatz}{{2}{4}{}{figure.2}{}}
 \citation{svore2018qsharp}
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Yu and Zhao's QPDG and our QDG}}{5}{}\protected@file@percent }
-\newlabel{tab:qdg}{{I}{5}{}{table.1}{}}
+\citation{nielsen2010quantum}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces The dependence rules, by what a CNOT with control $c$ and target $t$ writes. Every rule reads $\{c, t\}$, and complete means dependence-complete. The last columns give the slice of $q_0$ in Fig.~\ref {fig:ansatz}, as the operations it keeps of 19{} and its fidelity at $\lvert 0\dots  0\rangle $.}}{5}{}\protected@file@percent }
+\newlabel{tab:rules}{{I}{5}{}{table.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Properties}{5}{}\protected@file@percent }
 \newlabel{thm:sound}{{1}{5}{}{subsection.3.4}{}}
 \newlabel{prop:complete}{{1}{5}{}{subsection.3.4}{}}
 \newlabel{prop:du}{{2}{5}{}{subsection.3.4}{}}
 \newlabel{prop:ent}{{3}{5}{}{subsection.3.4}{}}
 \newlabel{prop:joint}{{4}{5}{}{subsection.3.4}{}}
-\citation{nielsen2010quantum}
 \citation{tip1994a}
 \citation{silva2012vocabulary}
 \citation{canfora1998conditioned}
@@ -68,13 +68,13 @@
 \newlabel{fig:overview}{{3}{7}{}{figure.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Stage 1 shows the srcML of lines 10 to 15 of the ansatz of Fig.~\ref {fig:ansatz}a, with the elements the tool reads, and stage 2 its unrolled operations in the slice of $q_0$. Letters b and c mean what they do in Fig.~\ref {fig:overview}, and the angle arguments are elided. Every operation keeps its line and iteration, so the tool can report which iterations of a line matter.}}{7}{}\protected@file@percent }
 \newlabel{fig:loops}{{4}{7}{}{figure.4}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces QDG slice of a static operation trace}}{7}{}\protected@file@percent }
+\newlabel{alg:slice}{{1}{7}{}{algorithm.1}{}}
 \citation{qiskittextbook}
 \citation{paltenghi2024lintq}
 \citation{quetschlich2023mqt}
 \citation{li2023qasmbench}
 \citation{chen2022veriqbench}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces QDG slice of a static operation trace}}{8}{}\protected@file@percent }
-\newlabel{alg:slice}{{1}{8}{}{algorithm.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Study Design}{8}{}\protected@file@percent }
 \newlabel{sec:design}{{V}{8}{}{section.5}{}}
 \citation{mendiluze2021muskit}
@@ -194,11 +194,11 @@
 \bibcite{paltenghi2024lintq}{27}
 \bibcite{quetschlich2023mqt}{28}
 \bibcite{li2023qasmbench}{29}
+\bibcite{chen2022veriqbench}{30}
+\bibcite{mendiluze2021muskit}{31}
 \@writefile{toc}{\contentsline {section}{\numberline {X}Conclusion}{14}{}\protected@file@percent }
 \newlabel{sec:conclusion}{{X}{14}{}{section.10}{}}
 \@writefile{toc}{\contentsline {section}{References}{14}{}\protected@file@percent }
-\bibcite{chen2022veriqbench}{30}
-\bibcite{mendiluze2021muskit}{31}
 \bibcite{fortunato2022qmutpy}{32}
 \bibcite{garcia2022testing}{33}
 \bibcite{ishimoto2025mbfl}{34}

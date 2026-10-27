@@ -2290,7 +2290,7 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "TelDuFidelity": {
-  "value": 0.4999999999999999,
+  "value": 0.5000000047438758,
   "tex": "0.50",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
@@ -2310,7 +2310,7 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsCpdgFidelity": {
-  "value": 0.9726944017672795,
+  "value": 0.9726944017672796,
   "tex": "0.97",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
@@ -2325,13 +2325,38 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsDuFidelity": {
-  "value": 0.545726495309552,
+  "value": 0.5457264953095518,
   "tex": "0.55",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsCpdgMissed": {
   "value": 9,
   "tex": "9",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsQdgFidelity": {
+  "value": 0.9999999999999997,
+  "tex": "1.00",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsYzOps": {
+  "value": 19,
+  "tex": "19",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsYzFidelity": {
+  "value": 0.9999999999999996,
+  "tex": "1.00",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsYzroOps": {
+  "value": 19,
+  "tex": "19",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsYzroFidelity": {
+  "value": 0.9999999999999996,
+  "tex": "1.00",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsYzExtra": {

@@ -606,6 +606,11 @@ def main() -> int:
     put("AnsDuOps", len(B_["slices"]["du"]), cnt(len(B_["slices"]["du"])), src)
     put("AnsDuFidelity", B_["fidelity"]["du"], f"{B_['fidelity']['du']:.2f}", src)
     put("AnsCpdgMissed", len(set(B_["dep"]) - set(B_["slices"]["cpdg"])), cnt(len(set(B_["dep"]) - set(B_["slices"]["cpdg"]))), src)
+    put("AnsQdgFidelity", B_["fidelity"]["lc"], f"{B_['fidelity']['lc']:.2f}", src)
+    put("AnsYzOps", len(B_["slices"]["yz"]), cnt(len(B_["slices"]["yz"])), src)
+    put("AnsYzFidelity", B_["fidelity"]["yz"], f"{B_['fidelity']['yz']:.2f}", src)
+    put("AnsYzroOps", len(B_["slices"]["yzro"]), cnt(len(B_["slices"]["yzro"])), src)
+    put("AnsYzroFidelity", B_["fidelity"]["yzro"], f"{B_['fidelity']['yzro']:.2f}", src)
     assert set(B_["slices"]["du"]) < set(B_["slices"]["cpdg"]) < set(B_["dep"]) == set(B_["slices"]["lc"]), "ansatz: du < cpdg < QDG = dependences"
     put("AnsYzExtra", len(set(B_["slices"]["yz"]) - set(B_["dep"])), "zero one two three four five six seven eight nine".split()[len(set(B_["slices"]["yz"]) - set(B_["dep"]))], "paper/figures/src/fig_programs_facts.json")
     put("ExRandomInputs", 20, "20", "paper/figures/src/make_fig_example.py (N_RANDOM)")

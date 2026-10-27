@@ -114,13 +114,15 @@ def facts_for(name, t):
     from icpc import oracle_icpc as oi
     from icpc.cpdg import cpdg_slice
     from icpc.influence import influence, influence_sets
+    from icpc.qpdg_ro import yzro_slice
     from slicers.registry import Slicers
     qc, lines = build(name)
     n = qc.num_qubits
     s = Slicers(qc, name)
     base = oi.reduced_states(qc, range(n))
     dep = sorted(influence_sets(influence(qc), n)[t])
-    slices = {"du": sorted(s.du(t)), "cpdg": sorted(cpdg_slice(qc, t)), "yz": sorted(s.yz(t)), "lc": sorted(s.lc(t)), "q": sorted(s.q(t))}
+    slices = {"du": sorted(s.du(t)), "cpdg": sorted(cpdg_slice(qc, t)), "yz": sorted(s.yz(t)), "lc": sorted(s.lc(t)), "q": sorted(s.q(t)),
+              "yzro": sorted(yzro_slice(qc, t))}
     fid = {m: float(oi.uhlmann_fidelity(base[t], oi.reduced_states(materialise(qc, set(v)), range(n))[t])) for m, v in slices.items()}
     Ew, Ec = edges(qc, "wire"), edges(qc, "cpdg")
     on_t = [k for k, inst in enumerate(qc.data) if t in [qc.find_bit(x).index for x in inst.qubits]]

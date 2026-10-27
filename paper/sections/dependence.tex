@@ -96,7 +96,7 @@ $r_{\mathrm{QDG}}(o) = w_{\mathrm{QDG}}(o) = \mathit{loc}(o)$, so a controlled g
 controls. Its edges are the resulting data, control and quantum dependences. The QDG slice $\Bw(W)$ is
 backward reachability in the QDG from $W$. It is the backward light cone of $W$, the operations from which
 a chain of shared qubits reaches $W$, extended along classical bits from measurements to the gates they
-condition. Table~\ref{tab:qdg} contrasts the QDG with Yu and Zhao's QPDG.
+condition.
 
 The \emph{QPDG} is our reimplementation of Yu and Zhao's graph~\cite{yu2025qpdg} as a baseline. Its
 dependences are given in prose, so we logged every choice before any run. Data and control dependence are
@@ -105,28 +105,27 @@ when two qubits are entangled, which the QPDG does not give. We use the flow-ins
 analysis, under which qubits joined by a two-qubit gate anywhere in the circuit are entangled, and add an
 edge from every operation to every later one on qubits of the same such component. Its no-cloning and
 temporal dependences add no edge, as the end of this section explains. A flow-sensitive variant counts two
-qubits as entangled only from the gate that couples them on.
+qubits as entangled only from the gate that couples them on. Under this reading the QPDG is the QDG plus
+entanglement edges, so its slices contain those of the QDG, and the purple operations of
+Fig.~\ref{fig:ansatz}c are what the extra edges cost. Yu and Zhao do not say whether a gate writes its
+control, so we also run the reading in which it does not. Table~\ref{tab:rules} lists the rules.
 
 \begin{table}[t]
   \centering
-  \caption{Yu and Zhao's QPDG and our QDG}
-  \label{tab:qdg}
-  \footnotesize\setlength{\tabcolsep}{3pt}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.21\columnwidth} >{\raggedright\arraybackslash}p{0.38\columnwidth} >{\raggedright\arraybackslash}p{0.35\columnwidth}@{}}
+  \caption{The dependence rules, by what a CNOT with control $c$ and target $t$ writes. Every rule reads
+  $\{c, t\}$, and complete means dependence-complete. The last columns give the slice of $q_0$ in
+  Fig.~\ref{fig:ansatz}, as the operations it keeps of \numAnsOps{} and its fidelity at $\ket{0\dots0}$.}
+  \label{tab:rules}
+  \footnotesize\setlength{\tabcolsep}{2.6pt}
+  \begin{tabular}{@{}l c l l r r@{}}
     \toprule
-    & QPDG~\cite{yu2025qpdg} & QDG \\
+    Rule & $w(\mathit{cx}_{c,t})$ & Dependence & Guarantee & Ops & $F$ \\
     \midrule
-    Criterion & statement and variables $(s, V)$ & set of qubits, joint state \\
-    Dependences & data, control, entanglement, no-cloning, temporal, measurement & data, control,
-      quantum \\
-    Quantum dependence & not separate, whether a gate writes its control is not stated & a gate writes every qubit it
-      acts on, controls included (phase kickback) \\
-    Defined by & prose & read and write sets, and the semantics of Definition~\ref{def:dep} \\
-    Entanglement & edges between all operations on entangled qubits & no edge, neither necessary nor
-      sufficient by Proposition~\ref{prop:ent} \\
-    Superposition & not tracked & no edge, changes amplitudes, not which qubits are acted on \\
-    Guarantee & none stated & sound, dependence-complete \\
-    Implementation & future work & circuits and Qiskit source \\
+    Def-use & $\{t\}$ & data & none & \numAnsDuOps{} & \numAnsDuFidelity{} \\
+    Classical PDG & $\{t\}$ & data, control & none & \numAnsCpdgOps{} & \numAnsCpdgFidelity{} \\
+    QDG & $\{c, t\}$ & + quantum & sound, complete & \numAnsWireOps{} & \numAnsQdgFidelity{} \\
+    QPDG~\cite{yu2025qpdg} & $\{c, t\}$ & QDG + entangl. & sound & \numAnsYzOps{} & \numAnsYzFidelity{} \\
+    QPDG, read-only & $\{t\}$ & CPDG + entangl. & none & \numAnsYzroOps{} & \numAnsYzroFidelity{} \\
     \bottomrule
   \end{tabular}
 \end{table}
