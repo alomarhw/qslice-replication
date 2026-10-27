@@ -42,23 +42,16 @@ state-based pruning, which removes operations by simulating the circuit at one i
 documented reimplementation of the QPDG as a baseline.
 
 A correct slice needs data, control and quantum dependence. The classical PDG has the first two and still
-gives wrong slices for \numCpdgUnsoundPct{} of the pairs. A two-qubit gate can change its control qubit,
-for instance by phase kickback, and no classical reading of the gate expresses this quantum dependence. Our
-reimplementation of the QPDG, whose data edges already follow every qubit of a gate, is sound by
-construction, and under the reading in which a gate writes only its targets it is wrong on
-\numYzRoUnsound{} pairs. Its entanglement edges make it keep \numRqOneYzSize{} of the circuit, and \numYzfSize{} when entanglement is
-tracked along the program. The quantum dependence graph (QDG), in which every gate reads and writes all its
-qubits, is the backward light cone, a relation that LintQ and Qiskit's \texttt{LightCone} pass already
-compute. Its soundness follows from the locality of quantum operations, and what we add is the
-semantics that states it and the measurement of what it costs. It keeps \numRqOneLcSize{}, only \numLcExcess{}
-percentage points above the dependences themselves, misses no dependence and stays correct on every tested
-input. Its soundness proof is mechanized in Isabelle/HOL for an abstract model of local operations, and
-the quantum instance of that model is argued on paper.
-Entanglement turns out to be neither necessary nor sufficient for dependence. Commutation pruning shrinks
-the QDG slices further, and it stays correct when angles change only if it treats them as symbols.
-State-based pruning shrinks them by \numHTwoRelative{}, but only for the input it was computed on. It
-removes the faulty operation in \numCQFour{} units, and a joint criterion over all wrong qubits recovers
-\numCQFourRecovered{} of these units.
+gives wrong slices for \numCpdgUnsoundPct{} of the pairs, because a two-qubit gate can change its control
+qubit, for instance by phase kickback. Our reimplementation of the QPDG is sound by construction but keeps
+\numRqOneYzSize{} of the circuit, and under the reading in which a gate writes only its targets it is wrong
+on \numYzRoUnsound{} pairs. The quantum dependence graph (QDG), in which every gate reads and writes all its
+qubits, is the backward light cone that LintQ and Qiskit's \texttt{LightCone} pass already compute. Its
+soundness follows from the locality of quantum operations, and what we add is the semantics that states it
+and the measurement of what it costs. It keeps \numRqOneLcSize{}, only \numLcExcess{} percentage points
+above the dependences themselves. Entanglement turns out to be neither necessary nor sufficient for
+dependence. State-based pruning shrinks QDG slices by \numHTwoRelative{}, but only for the input it was
+computed on, and it removes the faulty operation in \numCQFour{} units.
 
 This paper gives quantum program slicing a semantic basis. Section~\ref{sec:dependence} defines quantum
 dependence and slice correctness semantically and proves that the QDG gives sound and

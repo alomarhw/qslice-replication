@@ -1,9 +1,7 @@
 \section{Quantum Dependence and Slicing}\label{sec:dependence}
 
-This section defines what a slice of a quantum circuit must preserve, what an operation's dependence
-on a qubit is, the dependence rules we compare, the kinds of slices that follow from them, and the slice
-profile of a qubit. The definitions are independent of any slicer, and the evaluation in
-Section~\ref{sec:results} measures each rule against them.
+The definitions are independent of any slicer, and Section~\ref{sec:results} measures each rule against
+them.
 
 \subsection{Circuits and their semantics}
 A circuit $P = o_0 \dots o_{L-1}$ is a sequence of operations over qubits $Q = \{0, \dots, n-1\}$ and
@@ -43,9 +41,6 @@ $\operatorname{Tr}_{\overline{W}}\llbracket P|_S \rrbracket(\rho) =
 \operatorname{Tr}_{\overline{W}}\llbracket P \rrbracket(\rho)$. $S$ is a \emph{sound} slice for $W$ if
 it preserves $W$ at every input.
 \end{definition}
-
-Comparing reduced states is basis-independent. It detects phase errors that a measured distribution in
-one basis misses.
 
 Soundness says that the slice reproduces what the criterion qubits end up in. A developer localizing a
 fault needs a second guarantee, that the slice contains every place where a fault could change that
@@ -96,7 +91,7 @@ $r_{\mathrm{QDG}}(o) = w_{\mathrm{QDG}}(o) = \mathit{loc}(o)$, so a controlled g
 controls. Its edges are the resulting data, control and quantum dependences. The QDG slice $\Bw(W)$ is
 backward reachability in the QDG from $W$. It is the backward light cone of $W$, the operations from which
 a chain of shared qubits reaches $W$, extended along classical bits from measurements to the gates they
-condition. Table~\ref{tab:qdg} contrasts the QDG with Yu and Zhao's QPDG.
+condition.
 
 The \emph{QPDG} is our reimplementation of Yu and Zhao's graph~\cite{yu2025qpdg} as a baseline. Its
 dependences are given in prose, so we logged every choice before any run. Data and control dependence are
@@ -107,29 +102,6 @@ edge from every operation to every later one on qubits of the same such componen
 temporal dependences add no edge, as the end of this section explains. A flow-sensitive variant counts two
 qubits as entangled only from the gate that couples them on.
 
-\begin{table}[t]
-  \centering
-  \caption{Yu and Zhao's QPDG and our QDG}
-  \label{tab:qdg}
-  \footnotesize\setlength{\tabcolsep}{3pt}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.21\columnwidth} >{\raggedright\arraybackslash}p{0.38\columnwidth} >{\raggedright\arraybackslash}p{0.35\columnwidth}@{}}
-    \toprule
-    & QPDG~\cite{yu2025qpdg} & QDG \\
-    \midrule
-    Criterion & statement and variables $(s, V)$ & set of qubits, joint state \\
-    Dependences & data, control, entanglement, no-cloning, temporal, measurement & data, control,
-      quantum \\
-    Quantum dependence & not separate, whether a gate writes its control is not stated & a gate writes every qubit it
-      acts on, controls included (phase kickback) \\
-    Defined by & prose & read and write sets, and the semantics of Definition~\ref{def:dep} \\
-    Entanglement & edges between all operations on entangled qubits & no edge, neither necessary nor
-      sufficient by Proposition~\ref{prop:ent} \\
-    Superposition & not tracked & no edge, changes amplitudes, not which qubits are acted on \\
-    Guarantee & none stated & sound, dependence-complete \\
-    Implementation & future work & circuits and Qiskit source \\
-    \bottomrule
-  \end{tabular}
-\end{table}
 
 \emph{Commutation pruning} removes an operation of $\Bw(W)$ that commutes with all of the Pauli
 observables $X$, $Y$ and $Z$ of all criterion qubits, propagated backward through the circuit, and keeps
@@ -178,14 +150,11 @@ $\operatorname{Tr}_{\overline{W}}\llbracket P' \rrbracket(\rho) =
 measurement outcome is the same.
 \end{IEEEproof}
 
-Figs.~\ref{fig:teleport} and~\ref{fig:ansatz} show where the other rules fail.
-
 Control dependence is needed whenever measurement outcomes steer later gates. Teleportation moves the
 state of $q_0$ to $q_2$ by measuring $q_0$ and $q_1$ and correcting $q_2$ with gates conditioned on the
-outcomes. In the program of Fig.~\ref{fig:teleport}, the corrections run only if the measurements return
-$1$. Def-use ignores the classical bits. Its slice of $q_2$ keeps \numTelDuOps{} of the \numTelOps{}
-operations, and its fidelity is \numTelDuFidelity{}. The classical PDG follows the control edges from the
-measurements to the conditioned gates, and its slice equals the QDG slice.
+outcomes. Def-use ignores the classical bits, so its slice of $q_2$ keeps \numTelDuOps{} of the
+\numTelOps{} operations, at fidelity \numTelDuFidelity{}, while the classical PDG follows the control
+edges and its slice equals the QDG slice. Control dependence is not enough, however.
 
 \begin{proposition}[The classical PDG is unsound]\label{prop:du}
 There are circuits for which $B_{\mathrm{CPDG}}(W)$, and $B_{\mathrm{DU}}(W)$, which equals it on unitary circuits, do not preserve $W$
@@ -233,8 +202,8 @@ the union of the needed sets for $W_1$ and $W_2$ at every position.
 \end{IEEEproof}
 
 \paragraph*{What is not a dependence}
-Entanglement does not decide dependence, by Proposition~\ref{prop:ent}. Nor do the other quantum
-phenomena that have been proposed as sources of dependence. No-cloning forbids copying an unknown state,
+Besides entanglement, the other quantum phenomena proposed as sources of dependence do not decide it
+either. No-cloning forbids copying an unknown state,
 and a CNOT that copies a basis state is a gate on two qubits, whose edges data dependence already has.
 Timing and scheduling decide when an operation runs on hardware, not which operations a state depends on,
 and they are not part of a circuit. None of the rules depends on amplitudes either. Superposition changes amplitudes, not which qubits an operation
@@ -302,26 +271,12 @@ defines $q$ under the QDG, the source expressions that denote $q$ in gate calls,
 functions inside which $q$ is acted on, the other qubits that the first operation on $q$ reaches,
 transitively unlike the direct dependent variables of srcSlice, the bits
 measured from $q$ and the lines conditioned on them, and the lines of the backward slice of $q$ and of the
-forward slice of its first operation. Table~\ref{tab:profile} shows the profile of $q_0$ in
-Fig.~\ref{fig:bv}. A profile gathers in one view what a developer first asks about a qubit, and it costs
+forward slice of its first operation. For $q_0$ in Fig.~\ref{fig:bv}, the tool computes
+$\mathsf{uses}(q_0) = \numBvProfDefsSet{}$, $\mathsf{names}(q_0) = \{\texttt{i} \mapsto \numBvProfNameISet{},
+\texttt{q} \mapsto \numBvProfNameQSet{}\}$, $\mathsf{functions}(q_0) = \emptyset$,
+$\mathsf{dependents}(q_0) = \numBvProfDependentsSet{}$, $\mathsf{bits}(q_0) = \numBvProfBitsSet{}$ with no
+conditioned lines, $\mathsf{backward}(q_0) = \numBvProfBackwardSet{}$ and
+$\mathsf{forward}(q_0) = \numBvProfForwardSet{}$, all sets of lines unless noted. A profile gathers in one view what a developer first asks about a qubit, and it costs
 one backward and one forward pass.
 
-\begin{table}[t]
-  \centering
-  \caption{Slice profile of $q_0$ in the program of Fig.~\ref{fig:bv}, computed by the tool}
-  \label{tab:profile}
-  \footnotesize\setlength{\tabcolsep}{4pt}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.36\columnwidth} >{\raggedright\arraybackslash}p{0.56\columnwidth}@{}}
-    \toprule
-    Entry & Value \\
-    \midrule
-    Uses and definitions & lines \numBvProfDefs{} \\
-    Names & \texttt{i} on lines \numBvProfNameI{}, \texttt{q} on line \numBvProfNameQ{} \\
-    Functions & none \\
-    Dependent qubits & \numBvProfDependents{} \\
-    Bits & \numBvProfBits{}, no conditioned lines \\
-    Backward slice & operation lines \numBvQdgLines{} \\
-    Forward slice & lines \numBvProfForward{} \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+

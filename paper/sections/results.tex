@@ -57,9 +57,8 @@ which starts from the QDG slice, is wrong on fewer pairs than def-use, \numRqOne
 \numRqOneDuUnsound{} with exact McNemar and Holm \numHOnePHolm{}.
 
 The QDG is sound on every pair and recovers every measured dependence, as Theorem~\ref{thm:sound} and
-Proposition~\ref{prop:complete} predict. None of the study's circuits nests conditional blocks, which the
-circuit-level slicer reads only by their outer condition, so these pairs do not test that case. The static
-slicer handles it, and Section~\ref{sec:tool} checks it on nested programs. Our
+Proposition~\ref{prop:complete} predict, on circuits that nest no conditional blocks, a case
+Section~\ref{sec:tool} checks separately. Our
 reimplementation of the QPDG is sound by construction, since its data edges already let every gate write
 all its qubits, so its slice contains the QDG slice. Its entanglement edges only bring in operations that
 are not dependences. Its precision falls from \numRqOneLcPrecision{} to
@@ -174,17 +173,11 @@ In \numCQFour{} units the QDG slice contains the fault and the state-based slice
 an operation when the criterion is uncorrelated with its qubits at the input, so a fault that breaks a
 correlation can make the faulty operation look irrelevant to the single criterion qubit. A joint criterion
 over all wrong qubits recovers \numCQFourRecovered{} of these units. Where both slices contain the fault,
-the state-based slice is smaller by \numHFiveSizeDiff{} operations on average, so H5 holds. The fault is
-ranked no later there, because the state-based slice is a subset of the QDG slice, but its EXAM score is
-higher by \numHFiveExamQHigher{}, because EXAM divides by the smaller number of operations ranked. With
-mutation-based fault localization on the \numMbflPairedN{} of \numMbflUnits{} units where both slices
-contain the fault, the mean EXAM score is \numMbflPairedAll{} over the whole circuit, \numMbflPairedLc{}
-within the QDG slice and \numMbflPairedQ{} within the state-based slice. Neither slice improves the
-normalized ranking, although neither makes the developer examine more operations. On the
-\numMbflAllN{} units whose fault every rule's slice contains, mutation-based ranking reaches the fault after
-\numMbflAllExaminedMin{} to \numMbflAllExaminedMax{} operations on average, whichever slice it ranks, so no
-rule saves effort over ranking the whole circuit. The slices narrow where a developer looks, but these
-results do not show that they shorten debugging, a hypothesis that needs a study with developers.
+the state-based slice is smaller by \numHFiveSizeDiff{} operations on average, so H5 holds, although its
+EXAM score is higher by \numHFiveExamQHigher{}, as Section~\ref{sec:design} explains. On the
+\numMbflAllN{} of \numMbflUnits{} mutation-based units whose fault every rule's slice contains, the ranking
+reaches the fault after \numMbflAllExaminedMin{} to \numMbflAllExaminedMax{} operations on average,
+whichever slice it ranks, so no rule saves effort over ranking the whole circuit.
 
 On the real Bugs4Q programs, the QDG slices keep every faulty line and \numLinesLcMean{} of
 \numLinesFullMean{} lines on average over \numLinesUnits{} units, so on these small programs slicing barely

@@ -33,16 +33,6 @@ quantum programs, program comprehension, program slicing, program dependence, de
 
 \input{sections/example}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\columnwidth]{figures/fig_pdg_teleport.pdf}
-  \caption{Control dependence in teleportation, criterion $q_2$. (a)~The program, with line comments
-  omitted. (b)~Its classical PDG. The corrections depend on the measurements only through the green, dashed
-  control edges. Def-use ignores classical bits, so its graph is (b) without these edges, and its slice of
-  $q_2$ misses the outlined operations. A conditioned gate is labeled with the lines of its
-  \texttt{if\_test} and its gate. $F$ is the fidelity of $q_2$ at $\ket{0\dots0}$.}
-  \label{fig:teleport}
-\end{figure}
 
 \begin{figure*}[t]
   \centering
@@ -71,15 +61,6 @@ quantum programs, program comprehension, program slicing, program dependence, de
   \label{fig:overview}
 \end{figure*}
 
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=\textwidth]{figures/fig_srcml_loops.pdf}
-  \caption{Stage 1 shows the srcML of lines 10 to 15 of the ansatz of Fig.~\ref{fig:ansatz}a, with the
-  elements the tool reads, and stage 2 its unrolled operations in the slice of $q_0$. Letters b and c mean
-  what they do in Fig.~\ref{fig:overview}, and the angle arguments are elided. Every operation keeps its
-  line and iteration, so the tool can report which iterations of a line matter.}
-  \label{fig:loops}
-\end{figure*}
 
 \input{sections/tool}
 
