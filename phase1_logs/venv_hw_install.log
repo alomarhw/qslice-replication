@@ -1,5 +1,0 @@
-WARNING: The candidate selected for download or install is a yanked version: 'matplotlib' candidate (version 3.9.1 at https://files.pythonhosted.org/packages/7f/7d/c919b41320f901ad1d0924fb045950925af8d367b0690b32fbdd970282ee/matplotlib-3.9.1-cp312-cp312-macosx_10_12_x86_64.whl (from https://pypi.org/simple/matplotlib/) (requires-python:>=3.9))
-Reason for being yanked: The Windows wheels, under some conditions, caused segfaults in unrelated user code.  Due to this we deleted the Windows wheels to prevent these segfaults, however this caused greater disruption as pip then began to try (and fail) to build 3.9.1 from the sdist on Windows which impacted far more users.  Yanking the whole release is the only tool available to eliminate these failures without changes to on the user side.  The sdist, OSX wheel, and manylinux wheels are all functional and there are no critical bugs in the release.   Downstream packagers should not yank their builds of Matplotlib 3.9.1.  See https://github.com/matplotlib/matplotlib/issues/28551 for details.
-
-[notice] A new release of pip is available: 24.0 -> 26.2.2
-[notice] To update, run: python3.12 -m pip install --upgrade pip

@@ -24,4 +24,4 @@ Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Benc
   QDG-no-CD       SVR 0.0665  dSVR 0.0665  (n=962 pairs)
   Classical PDG   SVR 0.6476  dSVR   (n=962 pairs)
   Causal-cone     SVR 0.1424  dSVR   (n=962 pairs)
-excluded circuits: 4; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/ablation_fixed
+excluded circuits: 4; wrote <repo>/experiments/results/icpc/ablation_fixed

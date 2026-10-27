@@ -1207,5 +1207,3 @@ written for this repository	PROVENANCE.md	2edd1b5bdfb78b34913b1a9d2d6714376a05e0
 written for this repository	reproduce.sh	cc3e17f5cb889a07e64b65cae32f80fe5927db0ff84b2892681e136d1e1fff6a	new
 written for this repository	fetch_data.py	e70982f66667a564619322cb158503b682c3f13d023caa43afd760b1fa163f83	new
 written for this repository	.gitignore	ae51d58d672ad99a42c0fa6000863eae9b0724bacec6041dab0b713f20443b1d	new
-written for this repository	archive/README.md	bccc28af8b7a1820cf253ad195792ae4db35c23e3ec9ec6eef0e2708e4f3a93b	new
-provenance package (self-contained)	archive/submitted_artifact/	see archive/submitted_artifact/MANIFEST.sha256.tsv	byte-identical copy

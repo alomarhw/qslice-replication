@@ -15,4 +15,4 @@ Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Benc
   140/158 circuits, 332s
   150/158 circuits, 335s
   158/158 circuits, 637s
-lcqs applicable 732/784; unsound 0; excess ops 1548; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/rq1_lcq_symbolic
+lcqs applicable 732/784; unsound 0; excess ops 1548; wrote <repo>/experiments/results/icpc/rq1_lcq_symbolic

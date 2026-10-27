@@ -15,4 +15,4 @@ Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Benc
   140/158 circuits, 413s
   150/158 circuits, 413s
   158/158 circuits, 413s
-rows: 3510; excluded: 3; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/rq2_robustness_lcq
+rows: 3510; excluded: 3; wrote <repo>/experiments/results/icpc/rq2_robustness_lcq

@@ -14,4 +14,4 @@ Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Benc
   130/147 circuits, 905s
   140/147 circuits, 905s
   147/147 circuits, 905s
-rows 3834; circuits run 147; excluded 14; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/noise
+rows 3834; circuits run 147; excluded 14; wrote <repo>/experiments/results/icpc/noise

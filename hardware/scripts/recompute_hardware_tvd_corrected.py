@@ -1,7 +1,7 @@
-"""Rebuttal Correction 4 (PROTOCOL_ICPC.md section 7.1): recompute the ibm_cleveland TVDs from the
+"""Correction 4 (PROTOCOL_ICPC.md section 7.1): recompute the ibm_cleveland TVDs from the
 captured jobs, comparing the classical bits the slice actually measures.
 
-recompute_hardware_tvd.py (kept unchanged, it reproduces the ICSE table) has two defects:
+recompute_hardware_tvd.py (kept unchanged, it reproduces the earlier table) has two defects:
   1. it reads only the first classical register of each pub, although some circuits have several
      one-bit registers (m2, m0, m1);
   2. it does not know the criterion: it guesses the slice bit whose marginal is closest to 1/2 and
@@ -13,7 +13,7 @@ simulated without noise, which separates slice unsoundness from hardware noise. 
 criterion. Each bit of B is checked to measure the same virtual qubit in both pubs (via the
 transpiler's initial layout and the measured physical qubit).
 
-This is a Z-basis comparison and blind to phase (rebuttal). Output:
+This is a Z-basis comparison and blind to phase. Output:
 experiments/results/icpc/hardware/hardware_tvd_corrected.csv. Needs qiskit-ibm-runtime.
 Usage: ~/venvs/qslice-icpc-hw/bin/python hardware/scripts/recompute_hardware_tvd_corrected.py
 """

@@ -8,8 +8,8 @@ checks were made:
 
 The run is executed once, and all outputs are reported.
 
-Why: the submitted RQ5 timed graph construction of the simplified implementation, not the method of
-Sec. III. Reviewer B also asked for end-to-end runtime and peak memory including the
+Why: the earlier RQ5 timed graph construction of the simplified implementation, not the method of
+Sec. III. It also lacked end-to-end runtime and peak memory including the
 mutual-information pruning and verification.
 
 ## 5.1 Part S: structural scalability (replaces Table VII and Fig. 3)
@@ -33,7 +33,7 @@ mutual-information pruning and verification.
   - time of the causal backward slice from qubit 0;
   - peak resident memory.
 
-## 5.2 Part E: end-to-end cost (new; answers Reviewer B)
+## 5.2 Part E: end-to-end cost (new)
 - **Circuits:** corpus A, the 158 circuits of experiment 2.
 - **Measured per circuit, in a fresh process:**
   - QDG construction;

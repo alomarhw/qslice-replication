@@ -41,9 +41,9 @@ was known.
 | RQ6 | "7 obligations machine-checked" from unsound axioms | causal-cone soundness from two true locale assumptions; pruning covered by the runtime check |
 | RQ7 | 16/18 circuits TVD < 0.05 | unchanged (same captured jobs) |
 
-## What the submitted artifact contained, and why it is not at the top level
-The submitted artifact itself, and the code that produced each submitted number, are kept unchanged in
-`archive/submitted_artifact/` (see its `PROVENANCE.md` for discrepancies D1-D5 in detail).
+## What the submitted artifact contained, and why it is not included
+The submitted artifact itself, and the code that produced each submitted number, are not part of this
+anonymous package.
 - **The simplified evaluation implementation.** It produced the submitted Tables III-V and VII: a
   two-edge graph, greedy delete-and-resimulate, and a parser that silently dropped measurement, reset
   and conditioned operations. It is not the method of Sec. III. Only its corpus loader is kept, in

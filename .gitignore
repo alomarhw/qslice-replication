@@ -10,7 +10,28 @@ data/qasmbench/large/
 experiments/results/icpc/rq3/partial/
 paper/main.pdf
 
-# local only: personal tooling and the earlier submission (not part of the anonymous package)
+# local only, not part of the anonymous package: personal tooling, working notes and earlier material
 tools/save_to_rp.py
-paper/QSlice_31399_ICSE_final.tex
-paper/QSlice_31399_ICSE_final.bib
+tools/rp_project_id.txt
+paper/QSlice_*
+CHECKPOINT_B.md
+FOUNDATIONS_REVIEW.md
+JOURNAL.md
+PAPER_BLUEPRINT.md
+PAPER_OUTLINE.md
+REVIEW_CHECKLIST.md
+TOOL_PLAN.md
+VERIFY_CORRECTED.md
+archive/
+phase1_checks/
+phase1_logs/
+
+# LaTeX build files (they record local paths)
+*.aux
+*.log
+!experiments/logs/**/*.log
+*.fls
+*.fdb_latexmk
+*.blg
+*.bbl
+*.synctex.gz

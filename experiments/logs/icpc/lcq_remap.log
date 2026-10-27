@@ -7,4 +7,4 @@ Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Benc
   120/158 circuits, 54s
   140/158 circuits, 58s
   158/158 circuits, 192s
-lcq applicable 732/784; unsound 0; wrote /Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/results/icpc/rq1_lcq_remap
+lcq applicable 732/784; unsound 0; wrote <repo>/experiments/results/icpc/rq1_lcq_remap

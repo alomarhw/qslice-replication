@@ -22,10 +22,10 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/process.py", line 212, in _process_chunk
     return [fn(*args) for args in chunk]
             ^^^^^^^^^
-  File "/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/icpc/rq3_run.py", line 117, in _worker
+  File "<repo>/experiments/icpc/rq3_run.py", line 117, in _worker
     ex_s, ex_g = exam_scores(sl, fault, nops)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/icpc/rq3_run.py", line 60, in exam_scores
+  File "<repo>/experiments/icpc/rq3_run.py", line 60, in exam_scores
     grank = next(i + 1 for i, p in enumerate(order_all) if p in fault)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 StopIteration
@@ -50,10 +50,10 @@ StopIteration
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/icpc/rq3_run.py", line 179, in <module>
+  File "<repo>/experiments/icpc/rq3_run.py", line 179, in <module>
     sys.exit(main())
              ^^^^^^
-  File "/Users/alomarhw/Projects/RP/projects/_workspaces/qslice-icpc/experiments/icpc/rq3_run.py", line 163, in main
+  File "<repo>/experiments/icpc/rq3_run.py", line 163, in main
     for i, res in enumerate(ex.map(_worker, jobs, chunksize=1), 1):
   File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/process.py", line 642, in _chain_from_iterable_of_lists
     for element in iterable:

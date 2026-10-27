@@ -46,7 +46,7 @@ All slicers are judged only through `common/evaluate.py::materialise` and the ex
 | S-du | Genuine def-use port | `qdg.py::naive_classical_backward_slice`, unchanged. A controlled gate reads its controls and targets and writes its targets. |
 | S-lc | Wire light cone with classical control | the corrected run's causal slicer: `QDGControlFixed` without ENTANGLEMENT edges, `backward_slice`, unchanged |
 | S-lcq | Qiskit `LightCone` | `qiskit.transpiler.passes.LightCone` (qiskit 2.3.0): the union, over P ∈ {X, Y, Z}, of the instructions kept by `LightCone(bit_terms=P, indices=[t])`. Mapped back to instruction positions. The union over the three Paulis is what preserves the full reduced state. The Z-only cone is reported descriptively. |
-| S-yz | Re-implementation of Yu & Zhao's QPDG slicing [27] | new `slicers/yuzhao.py`: backward reachability over entanglement, measurement and classical edges as [27] defines them. Every interpretation choice is logged at the top of the file before the run. No-cloning and temporal dependence are omitted, because [27] does not define them operationally (as the rebuttal states). |
+| S-yz | Re-implementation of Yu & Zhao's QPDG slicing [27] | new `slicers/yuzhao.py`: backward reachability over entanglement, measurement and classical edges as [27] defines them. Every interpretation choice is logged at the top of the file before the run. No-cloning and temporal dependence are omitted, because [27] does not define them operationally. |
 | S-q | QSlice | `qdg.py::entanglement_pruned_slice` on `QDGControlFixed`, unchanged (`sep_eps` = 1e-9) |
 | S-qW | QSlice, set criterion | new: the same algorithm with criterion W (a set of qubits). Mutual information is I(W; x) and verification uses the joint reduced state ρ_W. It is identical to S-q when \|W\| = 1, and this is checked on all 784 pairs before the run. |
 | S-4e | Four-edge slicer (ablation) | `fouredge/src`. The measured-criterion fix of plan Phase 3 step 3: a criterion on a measured qubit is seeded from that qubit's last non-measurement operation. Results are reported **before and after** the fix. The unfixed results are the existing `results/rq4_ablation`. |
@@ -107,9 +107,9 @@ truth that no slicer computes.
     3. **written-operand:** some path enters q through a gate that *writes* q under def-use (q is a
        target, or an operand of a non-controlled multi-qubit gate such as SWAP or RZZ);
     4. **kickback:** every path enters q only through controlled gates in which q is a *control*.
-       This is the quantum dependence that a def-use port cannot represent (Reviewer C).
+       This is the quantum dependence that a def-use port cannot represent.
 
-  Report a table of missed dependences per slicer × category. This is the evidence for Reviewer C's
+  Report a table of missed dependences per slicer × category. This is the evidence for the
   framing: which dependence definition misses which kind of dependence.
 - **Expected by theory, checked, not assumed:**
   - S-lc and S-lcq have dependence recall 1 on every pair (no-signalling: influence needs a causal
@@ -162,7 +162,7 @@ post-selects on a partner's outcome sees a conditional state that does depend on
 That is outside this criterion, and the paper says so.
 
 Report one table: kinds × slicers, each cell = sound / misses the dependence / over-includes. This
-table is the paper's comparison of dependence definitions (Reviewer C, Q3; Reviewer B, point 1).
+table is the paper's comparison of dependence definitions.
 
 **Scope of classical control.** The corpora are OpenQASM 2, so classical control is `if` on bits and
 registers. Qiskit control flow beyond `if_else` (`while_loop`, `for_loop`, `switch_case`) is out of
@@ -183,7 +183,7 @@ index arithmetic, parameter computation) are the source-level layer of the srcSl
   - the number of pairs where S-q is strictly smaller.
 - **Also:** the same against S-yz on pairs sound under both.
 - **H2:** S-q is smaller than S-lc. Effect sizes and CIs are the primary report.
-- **Fallback (rebuttal limit R5):** the number and fraction of corpus-A pairs where S-q returns the
+- **Fallback (limit R5):** the number and fraction of corpus-A pairs where S-q returns the
   light cone unpruned because the circuit is non-unitary (mid-circuit measurement, reset, feedback),
   per corpus. Size results are also reported with those pairs excluded.
 
@@ -258,7 +258,7 @@ unitary circuits before the run, in the same way as `tests/test_oracle.py`.
 
 Report: invalid rate, size relative to S-lc, and how much of S-q's reduction remains as \|W\| grows.
 
-### 3.5 Beyond the exact-evaluation caps: corpus L (descriptive; Reviewer B, point 2)
+### 3.5 Beyond the exact-evaluation caps: corpus L (descriptive)
 Corpus A stops at 14 qubits and 220 instructions. Corpus L tests soundness, size and cost on larger
 real circuits.
 
@@ -288,7 +288,7 @@ real circuits.
 
 ## 4. RQ3: fault localization (the comprehension RQ)
 
-No user study or debugging-task study with people is run. The paper says so (rebuttal promise R11).
+No user study or debugging-task study with people is run. The paper says so (commitment R11).
 
 ### 4.1 Faults
 - **Seeded mutants** (new `faults/mutate.py`). Every operator is cited to the tool that defines it,
@@ -468,10 +468,10 @@ Two tasks with **objective** answers. Neither is in the confirmatory family.
 - **Logging:** every prompt, raw output, model id, timestamp and token count goes to
   `results/llm/*.jsonl`.
 
-## 7. Noise and hardware (Reviewer A, Q2)
+## 7. Noise and hardware
 
 ### 7.1 Hardware (old RQ7)
-Rebuttal Correction 4 is computed in Phase 3. The two QAOA circuits are recomputed from the captured
+Correction 4 is computed in Phase 3. The two QAOA circuits are recomputed from the captured
 jobs, comparing the register the slice actually measures. The author then decides between:
 - one Discussion paragraph, stating that TVD is phase-blind;
 - dropping hardware.
@@ -517,7 +517,7 @@ can change is whether running the slice tells a developer the same thing as runn
   process per circuit). The machine is recorded in `machine.json`.
 - **Reported:** median, 95th percentile and maximum times; peak memory against width and against
   depth; and completion rates.
-- **Graph size (Reviewer A, Q1):** QDG nodes and edges by type (DATA, CONTROL, ENTANGLEMENT), against
+- **Graph size:** QDG nodes and edges by type (DATA, CONTROL, ENTANGLEMENT), against
   operation count, width and depth, on the same inputs and on corpus A. This measures the claim that
   the graph grows with the operations, not with superposition or amplitudes. The exponential cost is
   only in the pruning check, which is reported separately above.
@@ -620,7 +620,7 @@ run, and no ICPC result existed.
      irrelevant, because q0's last operation precedes it.
    - **K20:** a measured-then-corrected criterion qubit (H q0; measure q0 → c; if c = 1: X q0). This
      is the pattern behind the four-edge slicer's 5 unsound pairs.
-   - **K8:** an X on q2 is prepended as a preparation. The ICSE worked example prunes CX(q0, q2),
+   - **K8:** an X on q2 is prepended as a preparation. The earlier version's worked example prunes CX(q0, q2),
      which touches the criterion, but Sec. III's algorithm prunes only operations that do not touch
      the criterion qubit. With the X q2 preparation, K8 exercises the algorithm as specified. The
      paper's worked example is rewritten to match.
@@ -731,7 +731,7 @@ These were found while implementing §6, from the API documentation. No LLM call
 - **Smoke test.** It was run on the same 3 debug circuits as before; its output was deleted.
 
 ### Author decision on §7.1 (2026-10-21)
-- **Decision.** Hardware is kept as **one Discussion paragraph**, answering Reviewer A on noise.
+- **Decision.** Hardware is kept as **one Discussion paragraph**.
 - **Numbers.** It reports only the Correction 4 numbers from
   `results/icpc/hardware/hardware_tvd_corrected.csv`:
   - 16/18 within δ = 0.05;
@@ -1034,7 +1034,7 @@ These were found while implementing §6, from the API documentation. No LLM call
   versions' results are kept.
 
 ### Deviation I-16 (2026-10-26, AFTER all results; author decision; exploratory): a flow-sensitive QPDG reading, and naming
-- **Why.** An ICSE reviewer asked for Yu & Zhao's QPDG [27] as a baseline. S-yz (`slicers/yuzhao.py`) is
+- **Why.** Yu & Zhao's QPDG [27] is the published baseline. S-yz (`slicers/yuzhao.py`) is
   that baseline and was pre-registered, but its entanglement rule (D-yz-5) is the static, flow-insensitive
   one: two qubits count as entangled if a two-qubit gate joins them anywhere in the circuit. A reader can
   object that this reading is weaker than [27] intends. D-yz-5 already names the alternative.
@@ -1136,8 +1136,8 @@ These were found while implementing §6, from the API documentation. No LLM call
   contains; MBFL is reported paired; H1, H2, H5 are stated to hold by construction and H1/H2 to come from the
   earlier run; all post-hoc additions are listed as exploratory; corpus-L soundness at |0...0> is reported.
 
-### Deviation I-19 (2026-10-27, AFTER all results; author decision): RP review panel, exploratory analyses
-- **Why.** The Research Pilot review panel (five reviewers, Sonnet 5.5, on the I-18 draft) recommended major revision
+### Deviation I-19 (2026-10-27, AFTER all results; author decision): review panel, exploratory analyses
+- **Why.** A review of the I-18 draft by five language-model reviewers recommended major revision
   and listed seven must-fix items. The author approved all of them. Every analysis below is exploratory, added after
   all results, and reported as such; no RQ, hypothesis, threshold or corpus changes.
 - **Ground-truth convergence (`icpc/gt_convergence.py`).** The section 2.1 procedure rerun on corpus A in four
