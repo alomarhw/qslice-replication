@@ -1,1 +1,1 @@
-Foundations of Quantum Program Slicing
+Quantum Program Slicing on a Semantic Basis

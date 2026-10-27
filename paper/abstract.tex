@@ -1,19 +1,19 @@
 \begin{abstract}
-Program slicing helps developers understand code by showing which statements can affect a value of
-interest. For quantum programs, slicing has been proposed over a quantum program dependence graph (QPDG),
-but no definition of quantum dependence has been checked against what quantum programs compute. We define
-quantum dependence and slice soundness semantically, over the joint state of a set of qubits, and prove
-that the quantum dependence graph (QDG), in which every gate reads and writes all its qubits, gives sound
-and dependence-complete slices. The QDG is the known backward light cone, and its soundness follows from
-the locality of quantum operations; what is new is the semantics it is measured against.
-We also carry forward slices, conditioned slices and slice profiles over to qubits. We evaluate dependence
-definitions against these semantics on \numNPairs{} circuit--qubit pairs and \numRqThreeUnits{} units from
-seeded faults. The classical program dependence graph, which reads the control of a gate as unchanged,
-gives wrong slices for \numCpdgUnsoundPct{} of the pairs. Our reimplementation of the QPDG is sound by construction but
-keeps \numRqOneYzSize{} of a circuit, while QDG slices keep \numRqOneLcSize{}, within \numLcExcess{}
-percentage points of the dependences themselves. State-based pruning, which simulates one input, shrinks
-slices by \numHTwoRelative{}, but its slices hold only for that input and drop the faulty operation in
-\numCQFour{} units, of which a criterion over all wrong qubits recovers \numCQFourRecovered{}. Our static
-slicer applies the QDG to Qiskit source and computes backward and forward slices and qubit profiles. We
-close with a roadmap of open problems.
+Program slicing shows a developer the statements that can affect a value of interest. Slicing has been
+proposed for quantum programs, but the dependence rules behind it have never been checked against what a
+quantum program computes, so it is not known whether their slices keep the code a developer must inspect.
+We give quantum program slicing a semantic basis. The slicing criterion is a set of qubits, an operation is
+a dependence when changing it can change the joint state of those qubits for some input, and a slice is
+sound when it leaves them in the same state as the whole program for every input. Under these definitions,
+the quantum dependence graph (QDG), in which every gate reads and writes all of its qubits, gives sound and
+dependence-complete slices. The QDG is the known backward light cone, so what is new is the semantics that
+justifies it and the measurement of what the alternatives cost. On \numNPairs{} circuit--qubit pairs, the
+classical program dependence graph, which reads the control of a gate as unchanged, gives wrong slices for
+\numCpdgUnsoundPct{} of them. Entanglement edges, as in the quantum program dependence graph (QPDG), keep
+\numRqOneYzSize{} of a circuit, against \numRqOneLcSize{} for the QDG, which is within \numLcExcess{}
+percentage points of the dependences themselves. Pruning by simulating one input shrinks slices by a further
+\numHTwoRelative{}, but its slices hold only for that input, and in \numCQFour{} of \numRqThreeUnits{} units
+from seeded faults they lose a fault that the QDG slice keeps. Slices narrow where a developer looks, but they do not improve
+mutation-based fault ranking. We implement the QDG in a static slicer for Qiskit source code and close with
+a roadmap of open problems.
 \end{abstract}
