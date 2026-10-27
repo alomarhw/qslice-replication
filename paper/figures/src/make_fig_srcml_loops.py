@@ -193,8 +193,9 @@ def main():
         for ci, qs in enumerate(cols):
             lab = (r"$q_{%d%d}$" % qs) if len(qs) > 1 else (r"$q_{%d}$" % qs[0])
             o.append(rf"\node[font=\fontsize{{5.6}}{{6}}\selectfont, text=mute, anchor=north] at ({x0 + ci * cell + (cell - 0.04) / 2},{-0.72 - len(layers) * cell - 0.02}) {{{lab}}};")
-    tot = len(keep)
-    allops = len(circ.ops) - len(term)
+    in_loop = [k for k, op in enumerate(circ.ops) if op.line in (12, 13, 15) and k not in term]
+    tot = sum(k in keep for k in in_loop)
+    allops = len(in_loop)
     o.append(rf"\node[note, anchor=north west, align=left, text width={WR - 0.1}cm] at ({X + 0.05},{-1.85}) "
              rf"{{Filled squares are in the QDG slice of $q_0$, {tot} of {allops} operations. The lines are the same in every "
              r"iteration, but in the second layer the rotations of $q_2$ and its \texttt{cx} are not dependences of $q_0$; "

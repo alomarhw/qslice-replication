@@ -249,11 +249,6 @@ INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/vf/adobe/courier/pcrr7t.v
 INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
-INPUT ./figures/fig_pdg_teleport.pdf
-INPUT ./figures/fig_pdg_teleport.pdf
-INPUT ./figures/fig_pdg_teleport.pdf
-INPUT ./figures/fig_pdg_teleport.pdf
-INPUT ./figures/fig_pdg_teleport.pdf
 INPUT ./figures/fig_pdg_ansatz.pdf
 INPUT ./figures/fig_pdg_ansatz.pdf
 INPUT ./figures/fig_pdg_ansatz.pdf
@@ -363,7 +358,6 @@ INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/
 INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb
 INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb
 INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb
-INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb
 INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/public/newtx/txsys.pfb
 INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb
 INPUT /Users/alomarhw/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb

@@ -594,6 +594,11 @@ def main() -> int:
     put("AnsCpdgOps", len(B_["slices"]["cpdg"]), cnt(len(B_["slices"]["cpdg"])), "paper/figures/src/fig_programs_facts.json")
     put("AnsCpdgFidelity", B_["fidelity"]["cpdg"], f"{B_['fidelity']['cpdg']:.2f}", "paper/figures/src/fig_programs_facts.json")
     put("AnsWireOps", len(B_["slices"]["lc"]), cnt(len(B_["slices"]["lc"])), "paper/figures/src/fig_programs_facts.json")
+    src = "paper/figures/src/fig_programs_facts.json"
+    put("AnsDuOps", len(B_["slices"]["du"]), cnt(len(B_["slices"]["du"])), src)
+    put("AnsDuFidelity", B_["fidelity"]["du"], f"{B_['fidelity']['du']:.2f}", src)
+    put("AnsCpdgMissed", len(set(B_["dep"]) - set(B_["slices"]["cpdg"])), cnt(len(set(B_["dep"]) - set(B_["slices"]["cpdg"]))), src)
+    assert set(B_["slices"]["du"]) < set(B_["slices"]["cpdg"]) < set(B_["dep"]) == set(B_["slices"]["lc"]), "ansatz: du < cpdg < QDG = dependences"
     put("AnsYzExtra", len(set(B_["slices"]["yz"]) - set(B_["dep"])), "zero one two three four five six seven eight nine".split()[len(set(B_["slices"]["yz"]) - set(B_["dep"]))], "paper/figures/src/fig_programs_facts.json")
     put("ExRandomInputs", 20, "20", "paper/figures/src/make_fig_example.py (N_RANDOM)")
     put("ExQSliceWrong", ex["facts"]["2"]["q"]["unsound_random"], cnt(ex["facts"]["2"]["q"]["unsound_random"]), "paper/figures/src/fig_example_facts.json")

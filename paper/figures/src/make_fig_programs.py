@@ -1,7 +1,8 @@
 """Generate the dependence-graph figure from two realistic Qiskit programs and the study's code.
 
 programs/teleport.py  teleportation with if_test corrections (needs control dependence), criterion q2
-programs/ansatz.py    hardware-efficient VQE ansatz built in loops (needs quantum dependence), criterion q0
+programs/ansatz.py    hardware-efficient VQE ansatz built in loops, with a flip conditioned on a mid-circuit
+                      measurement (needs control and quantum dependence), criterion q0
 
 Each program is executed with QuantumCircuit._append wrapped to record the creating source line of every
 instruction, then prepared as the study prepares circuits (common.corpus.prepare: terminal measurements
@@ -210,7 +211,7 @@ def main():
         r"\end{tikzpicture}\\[1pt]\scriptsize "
         + verdict(A, "du", "def-use") + r"\quad " + verdict(A, "cpdg", "classical PDG = wire"),
         r"\end{minipage}\\[8pt]",
-        r"\begin{minipage}[t]{0.27\linewidth}\vspace{0pt}{\footnotesize\textbf{(c) VQE ansatz}}\\[2pt]" + code("ansatz.py", 5, 17) + r"\end{minipage}\hfill",
+        r"\begin{minipage}[t]{0.27\linewidth}\vspace{0pt}{\footnotesize\textbf{(c) VQE ansatz}}\\[2pt]" + code("ansatz.py", 5, 21) + r"\end{minipage}\hfill",
         r"\begin{minipage}[t]{0.71\linewidth}\vspace{0pt}\begin{tikzpicture}",
         graph_tikz(B, r"(d) Wire-rule dependence graph, criterion $q_0$", 0.0, 0.70, 0.82, extra, "b"),
         r"\end{tikzpicture}\\[1pt]\scriptsize "

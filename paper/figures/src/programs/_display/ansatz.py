@@ -5,7 +5,7 @@ n = 3
 layers = 2
 rng = np.random.default_rng(7)
 
-qc = QuantumCircuit(n, n)
+qc = QuantumCircuit(n + 1, n + 1)
 
 for layer in range(layers):
     for qubit in range(n):
@@ -14,4 +14,8 @@ for layer in range(layers):
     for qubit in range(n - 1):
         qc.cx(qubit, qubit + 1)
 
+qc.h(n)
+qc.measure(n, n)
+with qc.if_test((qc.clbits[n], 1)):
+    qc.x(0)
 qc.measure(range(n), range(n))

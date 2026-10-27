@@ -33,26 +33,18 @@ quantum programs, program comprehension, program slicing, program dependence, de
 
 \input{sections/example}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\columnwidth]{figures/fig_pdg_teleport.pdf}
-  \caption{Control dependence in teleportation, criterion $q_2$. (a)~The program, with line comments
-  omitted. (b)~Its classical PDG. The corrections depend on the measurements only through the green, dashed
-  control edges. Def-use ignores classical bits, so its graph is (b) without these edges, and its slice of
-  $q_2$ misses the outlined operations. A conditioned gate is labeled with the lines of its
-  \texttt{if\_test} and its gate. $F$ is the fidelity of $q_2$ at $\ket{0\dots0}$.}
-  \label{fig:teleport}
-\end{figure}
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig_pdg_ansatz.pdf}
-  \caption{Quantum dependence in a variational (VQE) ansatz, criterion $q_0$. Each node is an operation as
+  \caption{Control and quantum dependence in a variational (VQE) ansatz, criterion $q_0$. After the loops,
+  an auxiliary qubit is measured mid-circuit and conditions a flip of $q_0$. Each node is an operation as
   it executes, with the source line and loop iteration that created it, and both graphs place every node at
-  the same position. (b)~The classical PDG treats the control of a CNOT as read only. It lacks the orange,
-  dashed edges, so its shaded slice of $q_0$ keeps only the rotations of $q_0$ and misses the outlined
-  dependences. (c)~The QDG has these edges as quantum edges, and its slice is exactly the dependences
-  of $q_0$. The QPDG would also add the purple rotations, which are not dependences. Graphs,
+  the same position. (b)~The classical PDG reaches the auxiliary through the green, dashed control edge.
+  Def-use ignores classical bits, so its graph is (b) without that edge, and its slice also loses the
+  shaded, outlined operations. The classical PDG treats the control of a CNOT as read only. It lacks the
+  orange, dashed edges, so its shaded slice of $q_0$ misses the outlined dependences. (c)~The QDG has these edges as quantum edges, and its slice is exactly the dependences
+  of $q_0$. The QPDG would also add the purple operations, which are not dependences. Graphs,
   slices and fidelities at $\ket{0\dots0}$ are computed by the study's code from the program shown.}
   \label{fig:ansatz}
 \end{figure*}

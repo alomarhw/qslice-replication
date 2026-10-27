@@ -2238,28 +2238,43 @@
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsOps": {
+  "value": 19,
+  "tex": "19",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsCpdgOps": {
+  "value": 7,
+  "tex": "7",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsCpdgFidelity": {
+  "value": 0.9726944017672795,
+  "tex": "0.97",
+  "source": "paper/figures/src/fig_programs_facts.json"
+ },
+ "AnsWireOps": {
   "value": 16,
   "tex": "16",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
- "AnsCpdgOps": {
-  "value": 4,
-  "tex": "4",
+ "AnsDuOps": {
+  "value": 5,
+  "tex": "5",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
- "AnsCpdgFidelity": {
-  "value": 0.7682780166514009,
-  "tex": "0.77",
+ "AnsDuFidelity": {
+  "value": 0.545726495309552,
+  "tex": "0.55",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
- "AnsWireOps": {
-  "value": 13,
-  "tex": "13",
+ "AnsCpdgMissed": {
+  "value": 9,
+  "tex": "9",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "AnsYzExtra": {
-  "value": 2,
-  "tex": "two",
+  "value": 3,
+  "tex": "three",
   "source": "paper/figures/src/fig_programs_facts.json"
  },
  "ExRandomInputs": {

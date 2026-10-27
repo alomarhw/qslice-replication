@@ -43,45 +43,52 @@
 \end{scope}
 \end{tikzpicture}\\[1pt]\scriptsize def-use: 4 ops, lines 8, 9, 14, 16, $F=0.50$\quad classical PDG = wire: 9 ops, lines 7, 8, 9, 10, 11, 12, 13, 14, 16, $F=1.00$
 \end{minipage}\\[8pt]
-\begin{minipage}[t]{0.27\linewidth}\vspace{0pt}{\footnotesize\textbf{(c) VQE ansatz}}\\[2pt]\lstinputlisting[style=qiskit,firstline=5,lastline=17,firstnumber=5]{programs/ansatz.py}\end{minipage}\hfill
+\begin{minipage}[t]{0.27\linewidth}\vspace{0pt}{\footnotesize\textbf{(c) VQE ansatz}}\\[2pt]\lstinputlisting[style=qiskit,firstline=5,lastline=21,firstnumber=5]{programs/ansatz.py}\end{minipage}\hfill
 \begin{minipage}[t]{0.71\linewidth}\vspace{0pt}\begin{tikzpicture}
 \begin{scope}[xshift=0.0cm]
-\node[anchor=west, font=\footnotesize\bfseries] at (-0.55,2.26) {(d) Wire-rule dependence graph, criterion $q_0$};
-\draw[black!12, line width=2.4pt] (0.1,1.64) -- (11.339999999999998,1.64); \node[anchor=east, font=\scriptsize] at (0.1,1.64) {$q_0$};
-\draw[black!12, line width=2.4pt] (0.1,0.82) -- (11.339999999999998,0.82); \node[anchor=east, font=\scriptsize] at (0.1,0.82) {$q_1$};
-\draw[black!12, line width=2.4pt] (0.1,0.0) -- (11.339999999999998,0.0); \node[anchor=east, font=\scriptsize] at (0.1,0.0) {$q_2$};
-\node[sl,cp] (nb0) at (0.490,1.640) {$R_y$};
-\node[lin] at (0.490,1.250) {12};
-\node[sl,cp] (nb1) at (1.190,1.640) {$R_z$};
-\node[lin] at (1.190,1.250) {13};
-\node[sl] (nb2) at (1.890,0.820) {$R_y$};
-\node[lin] at (1.890,0.430) {12};
-\node[sl] (nb3) at (2.590,0.820) {$R_z$};
-\node[lin] at (2.590,0.430) {13};
-\node[sl] (nb4) at (3.290,0.000) {$R_y$};
-\node[lin] at (3.290,-0.390) {12};
-\node[sl] (nb5) at (3.990,0.000) {$R_z$};
-\node[lin] at (3.990,-0.390) {13};
-\node[sl] (nb6) at (4.690,1.230) {$\oplus$};
-\node[lin] at (4.690,0.840) {15};
-\node[sl] (nb7) at (5.390,0.410) {$\oplus$};
-\node[lin] at (5.390,0.020) {15};
-\node[sl,cp] (nb8) at (6.090,1.640) {$R_y$};
-\node[lin] at (6.090,1.250) {12};
-\node[sl,cp] (nb9) at (6.790,1.640) {$R_z$};
-\node[lin] at (6.790,1.250) {13};
-\node[sl] (nb10) at (7.490,0.820) {$R_y$};
-\node[lin] at (7.490,0.430) {12};
-\node[sl] (nb11) at (8.190,0.820) {$R_z$};
-\node[lin] at (8.190,0.430) {13};
-\node[spur] (nb12) at (8.890,0.000) {$R_y$};
-\node[lin] at (8.890,-0.390) {12};
-\node[spur] (nb13) at (9.590,0.000) {$R_z$};
-\node[lin] at (9.590,-0.390) {13};
-\node[sl] (nb14) at (10.290,1.230) {$\oplus$};
-\node[lin] at (10.290,0.840) {15};
-\node[gn] (nb15) at (10.990,0.410) {$\oplus$};
-\node[lin] at (10.990,0.020) {15};
+\node[anchor=west, font=\footnotesize\bfseries] at (-0.55,3.08) {(d) Wire-rule dependence graph, criterion $q_0$};
+\draw[black!12, line width=2.4pt] (0.1,2.46) -- (13.44,2.46); \node[anchor=east, font=\scriptsize] at (0.1,2.46) {$q_0$};
+\draw[black!12, line width=2.4pt] (0.1,1.64) -- (13.44,1.64); \node[anchor=east, font=\scriptsize] at (0.1,1.64) {$q_1$};
+\draw[black!12, line width=2.4pt] (0.1,0.82) -- (13.44,0.82); \node[anchor=east, font=\scriptsize] at (0.1,0.82) {$q_2$};
+\draw[black!12, line width=2.4pt] (0.1,0.0) -- (13.44,0.0); \node[anchor=east, font=\scriptsize] at (0.1,0.0) {$q_3$};
+\node[sl,cp] (nb0) at (0.490,2.460) {$R_y$};
+\node[lin] at (0.490,2.070) {12};
+\node[sl,cp] (nb1) at (1.190,2.460) {$R_z$};
+\node[lin] at (1.190,2.070) {13};
+\node[sl] (nb2) at (1.890,1.640) {$R_y$};
+\node[lin] at (1.890,1.250) {12};
+\node[sl] (nb3) at (2.590,1.640) {$R_z$};
+\node[lin] at (2.590,1.250) {13};
+\node[sl] (nb4) at (3.290,0.820) {$R_y$};
+\node[lin] at (3.290,0.430) {12};
+\node[sl] (nb5) at (3.990,0.820) {$R_z$};
+\node[lin] at (3.990,0.430) {13};
+\node[sl] (nb6) at (4.690,2.050) {$\oplus$};
+\node[lin] at (4.690,1.660) {15};
+\node[sl] (nb7) at (5.390,1.230) {$\oplus$};
+\node[lin] at (5.390,0.840) {15};
+\node[sl,cp] (nb8) at (6.090,2.460) {$R_y$};
+\node[lin] at (6.090,2.070) {12};
+\node[sl,cp] (nb9) at (6.790,2.460) {$R_z$};
+\node[lin] at (6.790,2.070) {13};
+\node[sl] (nb10) at (7.490,1.640) {$R_y$};
+\node[lin] at (7.490,1.250) {12};
+\node[sl] (nb11) at (8.190,1.640) {$R_z$};
+\node[lin] at (8.190,1.250) {13};
+\node[spur] (nb12) at (8.890,0.820) {$R_y$};
+\node[lin] at (8.890,0.430) {12};
+\node[spur] (nb13) at (9.590,0.820) {$R_z$};
+\node[lin] at (9.590,0.430) {13};
+\node[sl] (nb14) at (10.290,2.050) {$\oplus$};
+\node[lin] at (10.290,1.660) {15};
+\node[spur] (nb15) at (10.990,1.230) {$\oplus$};
+\node[lin] at (10.990,0.840) {15};
+\node[sl,cp] (nb16) at (11.690,0.000) {$H$};
+\node[lin] at (11.690,-0.390) {17};
+\node[sl,cp] (nb17) at (12.390,0.000) {$M$};
+\node[lin] at (12.390,-0.390) {18};
+\node[sl,cp] (nb18) at (13.090,2.460) {$\mathit{if}$};
+\node[lin] at (13.090,2.070) {19};
 \draw[dataE] (nb0) to (nb1);
 \draw[dataE] (nb1) to (nb6);
 \draw[dataE] (nb2) to (nb3);
@@ -99,10 +106,14 @@
 \draw[dataE] (nb12) to (nb13);
 \draw[dataE] (nb13) to (nb15);
 \draw[dataE] (nb14) to (nb15);
-\draw[entE] (nb12) to[bend left=18] (nb14);
-\draw[entE] (nb13) to[bend left=18] (nb14);
+\draw[quantumE] (nb14) to (nb18);
+\draw[dataE] (nb16) to (nb17);
+\draw[controlE] (nb17) to (nb18);
+\draw[entE] (nb12) to[bend left=18] (nb18);
+\draw[entE] (nb13) to[bend left=18] (nb18);
+\draw[entE] (nb15) to[bend left=18] (nb18);
 \end{scope}
-\end{tikzpicture}\\[1pt]\scriptsize classical PDG: 4 ops, lines 12, 13, $F=0.77$\quad QPDG: +2 non-dependences\quad wire: 13 ops $=$ dependences, $F=1.00$
+\end{tikzpicture}\\[1pt]\scriptsize classical PDG: 7 ops, lines 12, 13, 17, 18, 19, $F=0.97$\quad QPDG: +3 non-dependences\quad wire: 16 ops $=$ dependences, $F=1.00$
 \end{minipage}\\[6pt]
 \centering\scriptsize\tikz\draw[dataE](0,0)--(0.5,0); data\quad \tikz\draw[controlE](0,0)--(0.5,0); control\quad\tikz\draw[quantumE](0,0)--(0.5,0); quantum, missing from the classical PDG\quad\tikz\draw[entE](0,0)--(0.5,0); entanglement closure (QPDG)\\\tikz\node[sl,minimum size=3mm]{}; wire slice\quad \tikz\node[gn,cp,minimum size=3mm]{}; classical PDG slice\quad\tikz\node[spur,minimum size=3mm]{}; added by QPDG, not a dependence\quad small numbers: source line
 \end{varwidth}\end{document}

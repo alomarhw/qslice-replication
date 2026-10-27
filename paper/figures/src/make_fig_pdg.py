@@ -1,8 +1,10 @@
 """PDG-style dependence-graph figures of two real Qiskit programs, nodes placed by one shared layout.
 
-fig_pdg_ansatz.tex    figure*: (a) VQE ansatz code, (b) its classical PDG, (c) its wire-rule graph; criterion q0
-                      -> quantum dependence. (b) draws the edges it lacks as "missing" edges; (c) marks the
-                      operations entanglement closure adds although they are not dependences.
+fig_pdg_ansatz.tex    figure*: (a) VQE ansatz code with a measurement-conditioned flip, (b) its classical PDG,
+                      (c) its wire-rule graph; criterion q0 -> control and quantum dependence. Def-use is (b)
+                      without the control edges, and the operations its slice loses are outlined; (b) draws the
+                      quantum edges it lacks as "missing" edges; (c) marks the operations entanglement closure
+                      adds although they are not dependences.
 fig_pdg_teleport.tex  single column: teleportation code and its classical PDG, criterion q2 -> control
                       dependence. Def-use is the same graph without the control edges; the operations its
                       slice loses are outlined.
@@ -267,6 +269,9 @@ def ansatz():
     t = 0
     qc, lines, dep, sl, f = load("ansatz.py", "ansatz")
     El = rule_edges(qc, "cpdg")
+    Edu = {e for e in El if e[2] != "control"}
+    assert rule_edges(qc, "du") == Edu, "def-use should be the classical PDG without control edges"
+    check(qc, t, "du", Edu, sl)
     cp = {(i, j) for i, j, _ in El}
     Er = {(i, j, k if k == "control" or (i, j) in cp else "quantum") for i, j, k in rule_edges(qc, "wire")}
     check(qc, t, "cpdg", El, sl)
@@ -278,25 +283,36 @@ def ansatz():
     iters = iterations(qc, lines, {12, 13, 15})
     n = len(qc.data)
     lay = {L: [k for k in range(n) if iters[k] == L] for L in range(2)}
-    assert sorted(lay[0] + lay[1]) == [k for k in range(n) if lines[k] in (12, 13, 15)] and all(lines[k] != 17 for k in range(n))
+    assert sorted(lay[0] + lay[1]) == [k for k in range(n) if lines[k] in (12, 13, 15)] and all(lines[k] != 21 for k in range(n))
     pos = layout(n, El | Er, 0.80, 0.80, clusters=lay)
+    # the operations after the loops (auxiliary, its measurement, the conditioned flip) in one row under the
+    # loop boxes, spread over their width, so the panel keeps the width of the loops
+    aux = [k for k in range(n) if iters[k] is None]
+    lx = [pos[k][0] for k in lay[0] + lay[1]]
+    ybot = min(pos[k][1] for k in lay[1]) - 1.05
+    for i, k in enumerate(aux):
+        pos[k] = (min(lx) + 0.25 + i * (max(lx) - min(lx) - 0.25) / max(len(aux) - 1, 1), ybot)
     T = tool_slices("ansatz.py", t)
-    assert T["wire"]["ops_lines"] == {lines[k] for k in sl["wire"]} and T["cpdg"]["ops_lines"] == {lines[k] for k in sl["cpdg"]}
+    # the tool gives a conditioned gate its own line (20); the figure names the if_test header above it (19)
+    tl = lambda ks: {lines[k] + (qc.data[k].operation.name == "if_else") for k in ks}  # noqa: E731
+    assert T["wire"]["ops_lines"] == tl(sl["wire"]) and T["cpdg"]["ops_lines"] == tl(sl["cpdg"])
     boxes = {L: (lay[L], rf"layer = {L}", [(14, "for qubit"), (11, "for qubit")]) for L in lay}
     row = [("n", 4, "n = 3", (0.10, 2.15)), ("ly", 5, "layers = 2", (0.40, 2.15)), ("rng", 6, r"rng = default\_rng(7)", (0.80, 2.15)),
-           ("qc", 8, "qc = QuantumCircuit(n, n)", (0.70, 1.60)), ("for", 10, "for layer in range(layers)", (0.27, 1.13))]
+           ("qc", 8, "qc = QuantumCircuit(n + 1, n + 1)", (0.70, 1.60)), ("for", 10, "for layer in range(layers)", (0.27, 1.13))]
     ce = [("n", "qc", "data"), ("ly", "for", "data"), ("for", 0, "control", "west"), ("for", 1, "control", "west"),
           ("rng", 0, "data", "east"), ("rng", 1, "data", "east"), ("qc", 0, "data", "east"), ("qc", 1, "data", "east")]
     xb = classical(pos, boxes, row, ce, T["cpdg"]["classical"])
     xr = classical(pos, boxes, row, ce, T["wire"]["classical"])
-    sty_l = {k: "insl" for k in sl["cpdg"]} | {k: "missdep" for k in dep - sl["cpdg"]}
+    sty_l = ({k: "insl" for k in sl["cpdg"]} | {k: "missdepsl" for k in sl["cpdg"] - sl["du"]}
+             | {k: "missdep" for k in dep - sl["cpdg"]})
     sty_r = {k: "insl" for k in sl["wire"]} | {k: "entx" for k in ent}
-    nl = rf"slice of $q_{t}$: {len(sl['cpdg'])} of {n} operations\\fidelity {f['cpdg']:.2f}, misses {len(dep - sl['cpdg'])} dependences"
+    nl = (rf"slice of $q_{t}$: {len(sl['cpdg'])} of {n} operations\\fidelity {f['cpdg']:.2f}, misses {len(dep - sl['cpdg'])} dependences\\"
+          rf"def-use: {len(sl['du'])} of {n}, fidelity {f['du']:.2f}")
     nr = rf"slice of $q_{t}$: {len(sl['wire'])} of {n} operations\\fidelity {f['wire']:.2f}, exactly the dependences"
     pl, w = panel(qc, lines, iters, pos, El, missing, sty_l, seed(qc, "cpdg", t), r"(b) Classical PDG", nl, 0.0, xb)
     pr, _ = panel(qc, lines, iters, pos, Er, set(), sty_r, seed(qc, "wire", t), r"(c) QDG", nr, w + 2.75, xr)
-    tex = (TEX_HEAD + r"\begin{minipage}{17.6cm}" + listing("ansatz.py", 4, 15, "6.0cm", "(a) VQE ansatz",
-                                      legend_column(["data", "control", "quantum", "missing", "slice", "missed", "entx", "crit", "classical", "loop"])) +
+    tex = (TEX_HEAD + r"\begin{minipage}{17.6cm}" + listing("ansatz.py", 4, 20, "6.0cm", "(a) VQE ansatz",
+                                      legend_column(["data", "control", "quantum", "missing", "slice", "missed_du", "missed", "entx", "crit", "classical", "loop"])) +
            r"\hfill\begin{minipage}[t]{11.5cm}\vspace{0pt}\centering\begin{tikzpicture}" + "\n" + pl + "\n" + pr + "\n" +
            r"\end{tikzpicture}\end{minipage}\end{minipage}\end{document}" + "\n")
     (SRC / "fig_pdg_ansatz.tex").write_text(tex)

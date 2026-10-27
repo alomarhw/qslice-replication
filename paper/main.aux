@@ -25,8 +25,7 @@
 \newlabel{sec:example}{{II}{2}{}{section.2}{}}
 \citation{yu2025qpdg}
 \citation{podgurski1990formal}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Control dependence in teleportation, criterion $q_2$. (a)~The program, with line comments omitted. (b)~Its classical PDG. The corrections depend on the measurements only through the green, dashed control edges. Def-use ignores classical bits, so its graph is (b) without these edges, and its slice of $q_2$ misses the outlined operations. A conditioned gate is labeled with the lines of its \texttt  {if\_test} and its gate. $F$ is the fidelity of $q_2$ at $\lvert 0\dots  0\rangle $.}}{3}{}\protected@file@percent }
-\newlabel{fig:teleport}{{2}{3}{}{figure.2}{}}
+\citation{ferrante1987pdg}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Quantum Dependence and Slicing}{3}{}\protected@file@percent }
 \newlabel{sec:dependence}{{III}{3}{}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Circuits and their semantics}{3}{}\protected@file@percent }
@@ -34,13 +33,12 @@
 \newlabel{def:criterion}{{1}{3}{}{subsection.3.2}{}}
 \newlabel{def:sound}{{2}{3}{}{subsection.3.2}{}}
 \newlabel{def:dep}{{3}{3}{}{subsection.3.2}{}}
-\citation{ferrante1987pdg}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Dependence rules}{3}{}\protected@file@percent }
 \citation{yu2025qpdg}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Quantum dependence in a variational (VQE) ansatz, criterion $q_0$. Each node is an operation as it executes, with the source line and loop iteration that created it, and both graphs place every node at the same position. (b)~The classical PDG treats the control of a CNOT as read only. It lacks the orange, dashed edges, so its shaded slice of $q_0$ keeps only the rotations of $q_0$ and misses the outlined dependences. (c)~The QDG has these edges as quantum edges, and its slice is exactly the dependences of $q_0$. The QPDG would also add the purple rotations, which are not dependences. Graphs, slices and fidelities at $\lvert 0\dots  0\rangle $ are computed by the study's code from the program shown.}}{4}{}\protected@file@percent }
-\newlabel{fig:ansatz}{{3}{4}{}{figure.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Dependence rules}{4}{}\protected@file@percent }
 \citation{yu2025qpdg}
 \citation{qiskit2025}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Control and quantum dependence in a variational (VQE) ansatz, criterion $q_0$. After the loops, an auxiliary qubit is measured mid-circuit and conditions a flip of $q_0$. Each node is an operation as it executes, with the source line and loop iteration that created it, and both graphs place every node at the same position. (b)~The classical PDG reaches the auxiliary through the green, dashed control edge. Def-use ignores classical bits, so its graph is (b) without that edge, and its slice also loses the shaded, outlined operations. The classical PDG treats the control of a CNOT as read only. It lacks the orange, dashed edges, so its shaded slice of $q_0$ misses the outlined dependences. (c)~The QDG has these edges as quantum edges, and its slice is exactly the dependences of $q_0$. The QPDG would also add the purple operations, which are not dependences. Graphs, slices and fidelities at $\lvert 0\dots  0\rangle $ are computed by the study's code from the program shown.}}{4}{}\protected@file@percent }
+\newlabel{fig:ansatz}{{2}{4}{}{figure.2}{}}
 \citation{svore2018qsharp}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Yu and Zhao's QPDG and our QDG}}{5}{}\protected@file@percent }
 \newlabel{tab:qdg}{{I}{5}{}{table.1}{}}
@@ -49,6 +47,7 @@
 \newlabel{prop:complete}{{1}{5}{}{subsection.3.4}{}}
 \newlabel{prop:du}{{2}{5}{}{subsection.3.4}{}}
 \newlabel{prop:ent}{{3}{5}{}{subsection.3.4}{}}
+\newlabel{prop:joint}{{4}{5}{}{subsection.3.4}{}}
 \citation{nielsen2010quantum}
 \citation{tip1994a}
 \citation{silva2012vocabulary}
@@ -59,45 +58,46 @@
 \citation{alomari2014srcslice}
 \citation{collard2011lightweight}
 \citation{collard2013srcml}
-\newlabel{prop:joint}{{4}{6}{}{subsection.3.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Kinds of slices}{6}{}\protected@file@percent }
 \newlabel{prop:dual}{{5}{6}{}{subsection.3.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Slice profile of $q_0$ in the program of Fig.~\ref {fig:bv}, computed by the tool}}{6}{}\protected@file@percent }
+\newlabel{tab:profile}{{II}{6}{}{table.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Qubit slice profiles}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {IV}A Static Slicer for Qiskit Programs}{6}{}\protected@file@percent }
 \newlabel{sec:tool}{{IV}{6}{}{section.4}{}}
 \citation{behler2024supporting}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The tool slices the Bugs4Q program of Section~\ref {sec:example} statically. srcML parses the program in stages 1 and 2, and the letters mark the elements the tool reads. Static interpretation yields the operation trace in stage 3, its quantum dependence graph (QDG) in stage 4, and the backward pass from the criterion $\{q_0\}$ yields the slice in lines in stage 5. Because \texttt  {cx} writes its control $q_0$, the faulty line~6 is in the slice. The classical PDG's last writer of $q_0$ is line~5, so it misses the fault. The tool computed the figure from the original Bugs4Q file.}}{7}{}\protected@file@percent }
-\newlabel{fig:overview}{{4}{7}{}{figure.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Stage 1 shows the srcML of lines 10 to 15 of the ansatz of Fig.~\ref {fig:ansatz}a, with the elements the tool reads, and stage 2 its unrolled operations in the slice of $q_0$. Letters b and c mean what they do in Fig.~\ref {fig:overview}, and the angle arguments are elided. Every operation keeps its line and iteration, so the tool can report which iterations of a line matter.}}{7}{}\protected@file@percent }
-\newlabel{fig:loops}{{5}{7}{}{figure.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Slice profile of $q_0$ in the program of Fig.~\ref {fig:bv}, computed by the tool}}{7}{}\protected@file@percent }
-\newlabel{tab:profile}{{II}{7}{}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The tool slices the Bugs4Q program of Section~\ref {sec:example} statically. srcML parses the program in stages 1 and 2, and the letters mark the elements the tool reads. Static interpretation yields the operation trace in stage 3, its quantum dependence graph (QDG) in stage 4, and the backward pass from the criterion $\{q_0\}$ yields the slice in lines in stage 5. Because \texttt  {cx} writes its control $q_0$, the faulty line~6 is in the slice. The classical PDG's last writer of $q_0$ is line~5, so it misses the fault. The tool computed the figure from the original Bugs4Q file.}}{7}{}\protected@file@percent }
+\newlabel{fig:overview}{{3}{7}{}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Stage 1 shows the srcML of lines 10 to 15 of the ansatz of Fig.~\ref {fig:ansatz}a, with the elements the tool reads, and stage 2 its unrolled operations in the slice of $q_0$. Letters b and c mean what they do in Fig.~\ref {fig:overview}, and the angle arguments are elided. Every operation keeps its line and iteration, so the tool can report which iterations of a line matter.}}{7}{}\protected@file@percent }
+\newlabel{fig:loops}{{4}{7}{}{figure.4}{}}
 \citation{qiskittextbook}
 \citation{paltenghi2024lintq}
+\citation{quetschlich2023mqt}
+\citation{li2023qasmbench}
+\citation{chen2022veriqbench}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces QDG slice of a static operation trace}}{8}{}\protected@file@percent }
 \newlabel{alg:slice}{{1}{8}{}{algorithm.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Study Design}{8}{}\protected@file@percent }
 \newlabel{sec:design}{{V}{8}{}{section.5}{}}
-\citation{quetschlich2023mqt}
-\citation{li2023qasmbench}
-\citation{chen2022veriqbench}
 \citation{mendiluze2021muskit}
 \citation{fortunato2022qmutpy}
 \citation{garcia2022testing}
 \citation{zhao2023bugs4q}
 \citation{ishimoto2025mbfl}
 \citation{yu2025qpdg}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Slices of the 784{} corpus-A pairs at $\lvert 0\dots  0\rangle $ for RQ1. Wrong counts the slices that do not preserve the criterion, and Dyn.\ counts those among the 80{} pairs in dynamic circuits. Recall and precision are against the dependence set, and size is the mean share of the circuit.}}{9}{}\protected@file@percent }
+\newlabel{tab:rq1}{{III}{9}{}{table.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Results}{9}{}\protected@file@percent }
 \newlabel{sec:results}{{VI}{9}{}{section.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}RQ1: Which definitions give sound and complete slices?}{9}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Slices of the 784{} corpus-A pairs at $\lvert 0\dots  0\rangle $ for RQ1. Wrong counts the slices that do not preserve the criterion, and Dyn.\ counts those among the 80{} pairs in dynamic circuits. Recall and precision are against the dependence set, and size is the mean share of the circuit.}}{10}{}\protected@file@percent }
-\newlabel{tab:rq1}{{III}{10}{}{table.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Mean slice size by circuit width, for RQ1. The grey bars are the dependence set, the smallest size a dependence-complete slice can have. Corpus~L has no grey bar, because its ground truth would need exact simulation of every perturbation at 15 to 20 qubits. Commutation is shown where Qiskit's pass applies.}}{10}{}\protected@file@percent }
-\newlabel{fig:size}{{6}{10}{}{figure.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Share of pairs whose slice, computed at $\lvert 0\dots  0\rangle $, stays correct in all 100{} draws of each input regime, for RQ2. Commutation is shown on the 732{} pairs where Qiskit's pass applies, state-based pruning on the 477{} pairs it prunes, and angle rebinding on the pairs of circuits with rotation angles.}}{11}{}\protected@file@percent }
-\newlabel{fig:robust}{{7}{11}{}{figure.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}RQ2: How much precision beyond the QDG slice is safe?}{11}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Mean slice size by circuit width, for RQ1. The grey bars are the dependence set, the smallest size a dependence-complete slice can have. Corpus~L has no grey bar, because its ground truth would need exact simulation of every perturbation at 15 to 20 qubits. Commutation is shown where Qiskit's pass applies.}}{10}{}\protected@file@percent }
+\newlabel{fig:size}{{5}{10}{}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}RQ2: How much precision beyond the QDG slice is safe?}{10}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Share of pairs whose slice, computed at $\lvert 0\dots  0\rangle $, stays correct in all 100{} draws of each input regime, for RQ2. Commutation is shown on the 732{} pairs where Qiskit's pass applies, state-based pruning on the 477{} pairs it prunes, and angle rebinding on the pairs of circuits with rotation angles.}}{11}{}\protected@file@percent }
+\newlabel{fig:robust}{{6}{11}{}{figure.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}RQ3: What does each definition do to fault localization?}{11}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Median time to slice one criterion and to build the QPDG, for circuits of width 8 and growing depth, for RQ4. At the two largest depths, only the criteria that finished within the limit are counted, so the state-based time is a lower bound.}}{11}{}\protected@file@percent }
+\newlabel{fig:cost}{{7}{11}{}{figure.7}{}}
 \citation{canfora1998conditioned}
 \citation{venkatesh1991semantic}
 \citation{horwitz1990interprocedural}
@@ -123,8 +123,6 @@
 \citation{hur2014slicing}
 \citation{amtoft2020theory}
 \citation{olmedo2025slicing}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Median time to slice one criterion and to build the QPDG, for circuits of width 8 and growing depth, for RQ4. At the two largest depths, only the criteria that finished within the limit are counted, so the state-based time is a lower bound.}}{12}{}\protected@file@percent }
-\newlabel{fig:cost}{{8}{12}{}{figure.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}RQ4: What does it cost?}{12}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {VII}A Roadmap for Quantum Program Slicing}{12}{}\protected@file@percent }
 \newlabel{sec:discussion}{{VII}{12}{}{section.7}{}}
@@ -188,9 +186,6 @@
 \bibcite{tip1994a}{17}
 \bibcite{silva2012vocabulary}{18}
 \bibcite{canfora1998conditioned}{19}
-\@writefile{toc}{\contentsline {section}{\numberline {X}Conclusion}{14}{}\protected@file@percent }
-\newlabel{sec:conclusion}{{X}{14}{}{section.10}{}}
-\@writefile{toc}{\contentsline {section}{References}{14}{}\protected@file@percent }
 \bibcite{korel1988dynamic}{20}
 \bibcite{binkley2014orbs}{21}
 \bibcite{venkatesh1991semantic}{22}
@@ -198,6 +193,9 @@
 \bibcite{collard2011lightweight}{24}
 \bibcite{collard2013srcml}{25}
 \bibcite{behler2024supporting}{26}
+\@writefile{toc}{\contentsline {section}{\numberline {X}Conclusion}{14}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{X}{14}{}{section.10}{}}
+\@writefile{toc}{\contentsline {section}{References}{14}{}\protected@file@percent }
 \bibcite{paltenghi2024lintq}{27}
 \bibcite{quetschlich2023mqt}{28}
 \bibcite{li2023qasmbench}{29}
@@ -243,4 +241,4 @@
 \bibcite{qiskitaddonutils}{69}
 \bibcite{zhao2021bugpatterns}{70}
 \bibcite{nayak2023qpac}{71}
-\gdef \@abspage@last{16}
+\gdef \@abspage@last{15}
