@@ -7,7 +7,9 @@ and costs milliseconds. Reading a gate as a classical assignment is the pitfall 
 control dependence does not remove it. Entanglement edges, as in the QPDG, should not be added to make a slice safer. They
 buy no soundness that the QDG lacks and cost precision, because a later operation on an entangled partner
 cannot change the criterion's state, as Proposition~\ref{prop:ent} shows. They contain a few more faults of
-a faulty program only by keeping more of it. Precision beyond the
+a faulty program only by keeping more of it. No dependence slice of the faulty program can show an
+omitted interaction, and every fault the QDG slice misses is one, so a slicer should say so. Whether
+slices shorten debugging remains a hypothesis, since our localization results do not show it. Precision beyond the
 QDG slice can come from commutation pruning, which stays correct on every random input but fails when the
 angles change. Treating every angle as a symbol before the pass, an exploratory variant, kept it correct under all three
 input regimes, so a slicer for variational programs should use the symbolic variant or recompute commutation
@@ -37,24 +39,16 @@ The sixth is evidence with developers. Our fault-localization results use seeded
 Bugs4Q, and a study of developers debugging real quantum programs with slices is the next step, as it was
 for classical slicing~\cite{weiser1982programmers}.
 
-\paragraph*{Noise and hardware}
-A slice is computed statically, so noise cannot change which operations it contains, only whether running
-it shows the developer what the whole program would. As a pre-registered descriptive analysis, we
-simulated the pairs of at most ten qubits under depolarizing noise, which replaces a gate's qubits by a
-random state with a small probability, at two-qubit error rates of $10^{-3}$, $10^{-2}$ and
-$3\cdot10^{-2}$. We compare the criterion's noisy states by their trace distance, which is $0$ for equal
-states and $1$ for perfectly distinguishable ones. Under the QDG slice and under the whole circuit they
-differ by at most \numNoiseLcCrossExactMax{} where the simulation is exact, which is rounding error, and by
-at most \numNoiseLcCrossShotMax{} where mid-circuit measurements force sampling with \numNoiseShots{}
-shots, which is sampling noise. Theorem~\ref{thm:sound} predicts this, since depolarizing noise acts only on the qubits of its gate,
-so a removed gate and its noise lie outside the criterion's dependences alike. The state-based slice
+\paragraph*{Noise}
+Noise cannot change which operations a slice contains, only whether running it shows what the whole
+program would. In a pre-registered descriptive analysis under depolarizing noise at two-qubit error rates
+of $10^{-3}$ to $3\cdot10^{-2}$, on the pairs of at most ten qubits, the criterion's noisy states under the
+QDG slice and the whole circuit differ in trace distance by at most \numNoiseLcCrossExactMax{} where the
+simulation is exact and by at most \numNoiseLcCrossShotMax{} where mid-circuit measurements force
+sampling, which is rounding and sampling error. Theorem~\ref{thm:sound} predicts this, since such noise
+acts only on the qubits of its gate. The state-based slice
 differs from the whole circuit in \numNoiseQCrossExactNonzero{} of \numNoiseQCrossExactN{} exact runs, by
 up to \numNoiseQCrossExactMax{}. It removes noisy gates that the whole program executes, and errors
 accumulate with the number of gates~\cite{preskill2018nisq}, so it can hide noise the developer is trying
-to diagnose. Noise that is not local to a gate, such as crosstalk, is outside this argument. On IBM
-hardware, slices of \numHwCircuits{} circuits from an earlier slicer of ours with typed dependence edges, matched the whole circuits' measured distributions within a total variation distance
-of 0.05 for \numHwWithin{}. The other \numHwOutside{} are QAOA circuits, whose distance is zero in
-noise-free simulation and is therefore due to the device, which ran the slice and the whole circuit on
-different physical qubits. A distance of measured distributions is blind to phase, so these runs show only
-that slicing does not break execution on hardware.
+to diagnose. Noise that is not local to a gate, such as crosstalk, is outside this argument.
 

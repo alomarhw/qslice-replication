@@ -2276,5 +2276,352 @@
   "value": 0.0,
   "tex": "0.00",
   "source": "paper/figures/src/fig_example_facts.json"
+ },
+ "GcDepsBefore": {
+  "value": 11959,
+  "tex": "11{,}959",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcDepsNew": {
+  "value": 42,
+  "tex": "42",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcDepsNewPct": {
+  "value": 0.0035119993310477465,
+  "tex": "0.35\\%",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcDepsNewEntangled": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/gt_convergence/new_deps.csv"
+ },
+ "GcInputs": {
+  "value": 51,
+  "tex": "51",
+  "source": "icpc/gt_convergence.py (11 + 30 product + 10 entangled)"
+ },
+ "GcPerturbations": {
+  "value": 8,
+  "tex": "eight",
+  "source": "icpc/gt_convergence.py (2 + 6)"
+ },
+ "GcPrecisionLc": {
+  "value": 0.9255284117172364,
+  "tex": "0.926",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcRecallShiftLc": {
+  "value": 0.0,
+  "tex": "0.000",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcPrecisionYz": {
+  "value": 0.8369185977170046,
+  "tex": "0.837",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcRecallShiftYz": {
+  "value": 0.0,
+  "tex": "0.000",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcPrecisionCpdg": {
+  "value": 0.9642974642000806,
+  "tex": "0.964",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcRecallShiftCpdg": {
+  "value": 1.5330651491396452e-05,
+  "tex": "0.000",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcPrecisionQ": {
+  "value": 0.9729261868229325,
+  "tex": "0.973",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "GcRecallShiftQ": {
+  "value": 0.001533649173955376,
+  "tex": "0.002",
+  "source": "results/icpc/gt_convergence/pairs.csv"
+ },
+ "YzRoUnsound": {
+  "value": 10,
+  "tex": "10",
+  "source": "results/icpc/qpdg_ro/rq1_records.csv"
+ },
+ "YzRoUnsoundCircuits": {
+  "value": 3,
+  "tex": "3",
+  "source": "results/icpc/qpdg_ro/rq1_records.csv"
+ },
+ "YzRoSize": {
+  "value": 0.7723149515265244,
+  "tex": "77.2\\%",
+  "source": "results/icpc/qpdg_ro/rq1_records.csv"
+ },
+ "YzRoRecall": {
+  "value": 0.9819672084489849,
+  "tex": "0.982",
+  "source": "results/icpc/qpdg_ro/rq1_records.csv"
+ },
+ "YzRoMissed": {
+  "value": 502,
+  "tex": "502",
+  "source": "results/icpc/qpdg_ro/rq1_misses.csv"
+ },
+ "YzRoMissedKick": {
+  "value": 314,
+  "tex": "314",
+  "source": "results/icpc/qpdg_ro/rq1_misses.csv"
+ },
+ "YzRofUnsound": {
+  "value": 10,
+  "tex": "10",
+  "source": "results/icpc/qpdg_ro/rq1_records.csv"
+ },
+ "YzRofUnsoundCircuits": {
+  "value": 3,
+  "tex": "3",
+  "source": "results/icpc/qpdg_ro/rq1_records.csv"
+ },
+ "YzRofSize": {
+  "value": 0.7618662427892549,
+  "tex": "76.2\\%",
+  "source": "results/icpc/qpdg_ro/rq1_records.csv"
+ },
+ "YzRofRecall": {
+  "value": 0.9819672084489849,
+  "tex": "0.982",
+  "source": "results/icpc/qpdg_ro/rq1_records.csv"
+ },
+ "YzRofMissed": {
+  "value": 502,
+  "tex": "502",
+  "source": "results/icpc/qpdg_ro/rq1_misses.csv"
+ },
+ "YzRofMissedKick": {
+  "value": 314,
+  "tex": "314",
+  "source": "results/icpc/qpdg_ro/rq1_misses.csv"
+ },
+ "YzRoContain": {
+  "value": 0.94901547116737,
+  "tex": "94.9\\%",
+  "source": "results/icpc/qpdg_ro/rq3_records.csv"
+ },
+ "CcFamilies": {
+  "value": 93,
+  "tex": "93",
+  "source": "results/icpc/cluster_ci/summary.json"
+ },
+ "CcCpdgUnsound": {
+  "value": [
+   0.16797304106827915,
+   0.3513520979543079
+  ],
+  "tex": "17\\% to 35\\%",
+  "source": "results/icpc/cluster_ci/summary.json"
+ },
+ "CcLcSize": {
+  "value": [
+   0.6314958659453839,
+   0.7751571693277465
+  ],
+  "tex": "63\\% to 78\\%",
+  "source": "results/icpc/cluster_ci/summary.json"
+ },
+ "CcHThree": {
+  "value": [
+   0.40797833547833545,
+   0.6805978568436215
+  ],
+  "tex": "41\\% to 68\\%",
+  "source": "results/icpc/cluster_ci/summary.json"
+ },
+ "CcHFour": {
+  "value": [
+   -0.1988546105277272,
+   -0.07545556899222323
+  ],
+  "tex": "\\ensuremath{-}19.9 to \\ensuremath{-}7.5",
+  "source": "results/icpc/cluster_ci/summary.json"
+ },
+ "SizeCtlCpdgRandom": {
+  "value": 0.6071286056354468,
+  "tex": "60.7\\%",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlCpdgGain": {
+  "value": 0.18119769534908203,
+  "tex": "18.1",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlCpdgGainCi": {
+  "value": [
+   0.13587635962941969,
+   0.22561920154109283
+  ],
+  "tex": "13.6 to 22.6",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlLcRandom": {
+  "value": 0.7820290305184898,
+  "tex": "78.2\\%",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlLcGain": {
+  "value": 0.1748978330539432,
+  "tex": "17.5",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlLcGainCi": {
+  "value": [
+   0.1323437695205447,
+   0.2180877954625059
+  ],
+  "tex": "13.2 to 21.8",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlYzRandom": {
+  "value": 0.8400960047715653,
+  "tex": "84.0\\%",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlYzGain": {
+  "value": 0.13370849593166956,
+  "tex": "13.4",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlYzGainCi": {
+  "value": [
+   0.08607395259926794,
+   0.18708872174959876
+  ],
+  "tex": "8.6 to 18.7",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlQRandom": {
+  "value": 0.6239335252556545,
+  "tex": "62.4\\%",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlQGain": {
+  "value": 0.19779643255025262,
+  "tex": "19.8",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlQGainCi": {
+  "value": [
+   0.15320578178659816,
+   0.2534915056646878
+  ],
+  "tex": "15.3 to 25.3",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlDuRandom": {
+  "value": 0.5918883569549419,
+  "tex": "59.2\\%",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlDuGain": {
+  "value": 0.18114258537979788,
+  "tex": "18.1",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "SizeCtlDuGainCi": {
+  "value": [
+   0.13503233300352602,
+   0.2255487969522506
+  ],
+  "tex": "13.5 to 22.6",
+  "source": "results/icpc/rq3_size_control/summary.json"
+ },
+ "MbflAllN": {
+  "value": 223,
+  "tex": "223",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExamAll": {
+  "value": 0.320464780241878,
+  "tex": "0.320",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExaminedAll": {
+  "value": 1.8878923766816142,
+  "tex": "1.9",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExamDu": {
+  "value": 0.47106419545999784,
+  "tex": "0.471",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExaminedDu": {
+  "value": 1.8295964125560538,
+  "tex": "1.8",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExamCpdg": {
+  "value": 0.46970935094961874,
+  "tex": "0.470",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExaminedCpdg": {
+  "value": 1.8295964125560538,
+  "tex": "1.8",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExamLc": {
+  "value": 0.3938589157169063,
+  "tex": "0.394",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExaminedLc": {
+  "value": 1.8878923766816142,
+  "tex": "1.9",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExamYz": {
+  "value": 0.36863469824724027,
+  "tex": "0.369",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExaminedYz": {
+  "value": 1.8878923766816142,
+  "tex": "1.9",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExamQ": {
+  "value": 0.440424703201119,
+  "tex": "0.440",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExaminedQ": {
+  "value": 1.7802690582959642,
+  "tex": "1.8",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExaminedMin": {
+  "value": 1.7802690582959642,
+  "tex": "1.8",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflAllExaminedMax": {
+  "value": 1.8878923766816142,
+  "tex": "1.9",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "MbflQRecomputedDiffers": {
+  "value": 2,
+  "tex": "2",
+  "source": "results/icpc/mbfl/units_all_rules.csv"
+ },
+ "QRepeatPairs": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/q_repeat/pairs.csv"
  }
 }

@@ -599,6 +599,84 @@ def main() -> int:
     put("ExQSliceWrong", ex["facts"]["2"]["q"]["unsound_random"], cnt(ex["facts"]["2"]["q"]["unsound_random"]), "paper/figures/src/fig_example_facts.json")
     put("ExDuFidelity", ex["facts"]["0"]["du"]["F0"], f"{ex['facts']['0']['du']['F0']:.2f}", "paper/figures/src/fig_example_facts.json")
 
+    # ---- review analyses (Deviation I-19; exploratory) ---------------------------------------------------------
+    src = "results/icpc/gt_convergence/pairs.csv"
+    gc = rows(ICPC / "gt_convergence" / "pairs.csv")
+    new = rows(ICPC / "gt_convergence" / "new_deps.csv")
+    glc = [r for r in gc if r["slicer"] == "lc"]
+    assert len(glc) == 784 and all(x["in_qdg"] == "1" for x in new), "convergence: a new dependence outside the QDG"
+    d0, d3 = sum(int(r["n_dep0"]) for r in glc), sum(int(r["n_dep3"]) for r in glc)
+    put("GcDepsBefore", d0, cnt(d0), src)
+    put("GcDepsNew", d3 - d0, cnt(d3 - d0), src)
+    put("GcDepsNewPct", (d3 - d0) / d0, pct((d3 - d0) / d0, 2), src)
+    put("GcDepsNewEntangled", sum(x["stage"] == "3" for x in new), cnt(sum(x["stage"] == "3" for x in new)),
+        "results/icpc/gt_convergence/new_deps.csv")
+    put("GcInputs", 51, "51", "icpc/gt_convergence.py (11 + 30 product + 10 entangled)")
+    put("GcPerturbations", 8, "eight", "icpc/gt_convergence.py (2 + 6)")
+    for sl, nm in (("lc", "Lc"), ("yz", "Yz"), ("cpdg", "Cpdg"), ("q", "Q")):
+        x = [r for r in gc if r["slicer"] == sl]
+        put(f"GcPrecision{nm}", st.mean(float(r["precision3"]) for r in x), f"{st.mean(float(r['precision3']) for r in x):.3f}", src)
+        dm = abs(st.mean(float(r["recall3"]) for r in x) - st.mean(float(r["recall0"]) for r in x))
+        put(f"GcRecallShift{nm}", dm, f"{dm:.3f}", src)
+
+    src = "results/icpc/qpdg_ro/rq1_records.csv"
+    ro = rows(ICPC / "qpdg_ro" / "rq1_records.csv")
+    for sl, nm in (("yzro", "Ro"), ("yzrof", "Rof")):
+        x = [r for r in ro if r["slicer"] == sl]
+        assert len(x) == 784
+        bad = sum(r["sound"] != "1" for r in x)
+        put(f"Yz{nm}Unsound", bad, cnt(bad), src)
+        put(f"Yz{nm}UnsoundCircuits", len({r["path"] for r in x if r["sound"] != "1"}),
+            cnt(len({r["path"] for r in x if r["sound"] != "1"})), src)
+        put(f"Yz{nm}Size", st.mean(float(r["size_fraction"]) for r in x), pct(st.mean(float(r["size_fraction"]) for r in x)), src)
+        put(f"Yz{nm}Recall", st.mean(float(r["dep_recall"]) for r in x), f"{st.mean(float(r['dep_recall']) for r in x):.3f}", src)
+        miss = [m for m in rows(ICPC / "qpdg_ro" / "rq1_misses.csv") if m["slicer"] == sl]
+        put(f"Yz{nm}Missed", len(miss), cnt(len(miss)), "results/icpc/qpdg_ro/rq1_misses.csv")
+        put(f"Yz{nm}MissedKick", sum(m["category"] == "kickback" for m in miss), cnt(sum(m["category"] == "kickback" for m in miss)),
+            "results/icpc/qpdg_ro/rq1_misses.csv")
+    r3 = [r for r in rows(ICPC / "qpdg_ro" / "rq3_records.csv") if r["analysis"] == "primary" and r["slicer"] == "yzro"]
+    put("YzRoContain", st.mean(int(r["contained"]) for r in r3), pct(st.mean(int(r["contained"]) for r in r3)),
+        "results/icpc/qpdg_ro/rq3_records.csv")
+
+    cc = json.load(open(ICPC / "cluster_ci" / "summary.json"))
+    src = "results/icpc/cluster_ci/summary.json"
+    ci = lambda k, f: f"{f(cc[k]['ci_families'][0])} to {f(cc[k]['ci_families'][1])}"  # noqa: E731
+    p1 = lambda x: f"{100 * x:.0f}\\%"  # noqa: E731
+    put("CcFamilies", cc["rq1_unsound_cpdg"]["n_families"], cnt(cc["rq1_unsound_cpdg"]["n_families"]), src)
+    put("CcCpdgUnsound", cc["rq1_unsound_cpdg"]["ci_families"], ci("rq1_unsound_cpdg", p1), src)
+    put("CcLcSize", cc["rq1_size_lc"]["ci_families"], ci("rq1_size_lc", p1), src)
+    put("CcHThree", cc["h3_robust_q"]["ci_families"], ci("h3_robust_q", p1), src)
+    put("CcHFour", cc["h4_contained_q_minus_lc"]["ci_families"],
+        ci("h4_contained_q_minus_lc", lambda x: f"{100 * x:.1f}"), src)
+    assert cc["h3_robust_q"]["ci_families"][1] < 0.95 and cc["h4_contained_q_minus_lc"]["ci_families"][1] < -0.05, \
+        "a cluster interval changes the H3 or H4 decision"
+
+    sc = json.load(open(ICPC / "rq3_size_control" / "summary.json"))
+    src = "results/icpc/rq3_size_control/summary.json"
+    for sl, nm in (("cpdg", "Cpdg"), ("lc", "Lc"), ("yz", "Yz"), ("q", "Q"), ("du", "Du")):
+        d = sc[sl]["difference"]
+        put(f"SizeCtl{nm}Random", sc[sl]["random_same_size"]["point"], pct(sc[sl]["random_same_size"]["point"]), src)
+        put(f"SizeCtl{nm}Gain", d["point"], f"{100 * d['point']:.1f}", src)
+        put(f"SizeCtl{nm}GainCi", d["ci_families"], f"{100 * d['ci_families'][0]:.1f} to {100 * d['ci_families'][1]:.1f}", src)
+        assert d["ci_families"][0] > 0, f"size control: {sl} not above chance"
+
+    src = "results/icpc/mbfl/units_all_rules.csv"
+    ma = [r for r in rows(ICPC / "mbfl" / "units_all_rules.csv") if not r.get("excluded")]
+    rules = ("du", "cpdg", "lc", "yz", "q")
+    pa = [r for r in ma if all(r[f"fault_in_{s}"] == "1" for s in rules) and r["exam_all_avg"]]
+    put("MbflAllN", len(pa), cnt(len(pa)), src)
+    for s, nm in (("all", "All"), ("du", "Du"), ("cpdg", "Cpdg"), ("lc", "Lc"), ("yz", "Yz"), ("q", "Q")):
+        put(f"MbflAllExam{nm}", st.mean(float(r[f"exam_{s}_avg"]) for r in pa), f"{st.mean(float(r[f'exam_{s}_avg']) for r in pa):.3f}", src)
+        put(f"MbflAllExamined{nm}", st.mean(int(r[f"examined_{s}"]) for r in pa), f"{st.mean(int(r[f'examined_{s}']) for r in pa):.1f}", src)
+    ex = [st.mean(int(r[f"examined_{s}"]) for r in pa) for s in ("all",) + rules]
+    put("MbflAllExaminedMin", min(ex), f"{min(ex):.1f}", src)
+    put("MbflAllExaminedMax", max(ex), f"{max(ex):.1f}", src)
+    put("MbflQRecomputedDiffers", sum(r["q_recomputed_differs"] == "1" for r in ma), cnt(sum(r["q_recomputed_differs"] == "1" for r in ma)), src)
+
+    qr = rows(ICPC / "q_repeat" / "pairs.csv")
+    assert all(r["all_equal_stored"] == "1" and r["all_sound"] == "1" for r in qr), "S-q not repeatable on corpus A"
+    put("QRepeatPairs", len(qr), cnt(len(qr)), "results/icpc/q_repeat/pairs.csv")
+
     # ---- write ----------------------------------------------------------------------------------------------
     TEX.parent.mkdir(parents=True, exist_ok=True)
     out = ["% Generated by experiments/icpc/make_numbers.py from committed results. Do not edit by hand.", ""]

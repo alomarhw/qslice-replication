@@ -73,13 +73,12 @@ condition reads a reached bit, and a bit stops being reached when a measurement 
 certainly overwrites it, as in the backward pass. The pass returns the lines and the qubits and bits
 reached. On every operation and qubit of our test programs, one of which overwrites a bit before a
 condition reads it, the forward slices are dual to the backward ones. A profile combines one
-backward and one forward pass with the srcML of the gate calls on the qubit. We computed the profiles of
-the \numProfBugsQubits{} qubits of the Bugs4Q programs, the \numProfTextQubits{} of the textbook and the
-\numProfLintqQubits{} of a sample of \numProfLintqSample{} LintQ files. The backward and forward slices of a
-qubit differ in their number of lines for \numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and
-\numProfLintqFwdNeBwd{} of them, so neither direction stands in for the other. Of the qubits, \numProfBugsInFunction{},
-\numProfTextInFunction{} and \numProfLintqInFunction{} are acted on inside a function, where
-they go by the name of a parameter. In \numProfTextAliasGenuine{} textbook programs, checked by hand, a
+backward and one forward pass with the srcML of the gate calls on the qubit. Over the
+\numProfBugsQubits{}, \numProfTextQubits{} and \numProfLintqQubits{} qubits of the Bugs4Q programs, the
+textbook and \numProfLintqSample{} sampled LintQ files, the two slices of a qubit differ in length for
+\numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and \numProfLintqFwdNeBwd{} of them, and
+\numProfBugsInFunction{}, \numProfTextInFunction{} and \numProfLintqInFunction{} are acted on inside a
+function under a parameter's name. In \numProfTextAliasGenuine{} textbook programs, checked by hand, a
 qubit has a second name, a function parameter or a loop variable over a register.
 
 \paragraph*{Validation}

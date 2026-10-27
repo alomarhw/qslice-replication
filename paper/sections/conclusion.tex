@@ -15,4 +15,6 @@ Section~\ref{sec:discussion}.
 \section*{Data Availability}
 The replication package at \url{https://anonymous.4open.science/r/qslice-replication-5B21} contains the protocol and its
 deviations, the Isabelle/HOL theory of Theorem~\ref{thm:sound}, the static slicer, the benchmark circuits, the logs of every run with the commit it used, and
-the scripts that regenerate every number, table and figure in this paper.
+the scripts that regenerate every number, table and figure in this paper. Every random draw has a fixed
+seed. The runs used Python~3.12.2 and Qiskit~2.3.0 on an Intel Xeon W-2140B workstation, with every
+package version pinned in a lock file, and the package will be archived with a DOI on acceptance.

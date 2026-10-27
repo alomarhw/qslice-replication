@@ -44,11 +44,13 @@ documented reimplementation of the QPDG as a baseline.
 A correct slice needs data, control and quantum dependence. The classical PDG has the first two and still
 gives wrong slices for \numCpdgUnsoundPct{} of the pairs. A two-qubit gate can change its control qubit,
 for instance by phase kickback, and no classical reading of the gate expresses this quantum dependence. Our
-reimplementation of the QPDG, whose data edges already follow every qubit of a gate, is sound, but its
-entanglement edges make it keep \numRqOneYzSize{} of the circuit, and \numYzfSize{} when entanglement is
+reimplementation of the QPDG, whose data edges already follow every qubit of a gate, is sound by
+construction, and under the reading in which a gate writes only its targets it is wrong on
+\numYzRoUnsound{} pairs. Its entanglement edges make it keep \numRqOneYzSize{} of the circuit, and \numYzfSize{} when entanglement is
 tracked along the program. The quantum dependence graph (QDG), in which every gate reads and writes all its
 qubits, is the backward light cone, a relation that LintQ and Qiskit's \texttt{LightCone} pass already
-compute. We show that it is the right basis for slicing. It keeps \numRqOneLcSize{}, only \numLcExcess{}
+compute. Its soundness follows from the locality of quantum operations, and what we add is the
+semantics that states it and the measurement of what it costs. It keeps \numRqOneLcSize{}, only \numLcExcess{}
 percentage points above the dependences themselves, misses no dependence and stays correct on every tested
 input. Its soundness proof is mechanized in Isabelle/HOL for an abstract model of local operations, and
 the quantum instance of that model is argued on paper.
@@ -58,7 +60,7 @@ State-based pruning shrinks them by \numHTwoRelative{}, but only for the input i
 removes the faulty operation in \numCQFour{} units, and a joint criterion over all wrong qubits recovers
 \numCQFourRecovered{} of these units.
 
-This paper lays foundations for quantum program slicing. Section~\ref{sec:dependence} defines quantum
+This paper gives quantum program slicing a semantic basis. Section~\ref{sec:dependence} defines quantum
 dependence and slice correctness semantically and proves that the QDG gives sound and
 dependence-complete slices. Section~\ref{sec:tool}
 presents a static slicer for Qiskit programs~\cite{javadi2024qiskit}, Section~\ref{sec:results} gives the

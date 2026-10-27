@@ -1135,3 +1135,35 @@ These were found while implementing §6, from the API documentation. No LLM call
   as sound by construction under our reading; RQ3 reports every slicer's containment and the 96 QDG misses the QPDG
   contains; MBFL is reported paired; H1, H2, H5 are stated to hold by construction and H1/H2 to come from the
   earlier run; all post-hoc additions are listed as exploratory; corpus-L soundness at |0...0> is reported.
+
+### Deviation I-19 (2026-10-27, AFTER all results; author decision): RP review panel, exploratory analyses
+- **Why.** The Research Pilot review panel (five reviewers, Sonnet 5.5, on the I-18 draft) recommended major revision
+  and listed seven must-fix items. The author approved all of them. Every analysis below is exploratory, added after
+  all results, and reported as such; no RQ, hypothesis, threshold or corpus changes.
+- **Ground-truth convergence (`icpc/gt_convergence.py`).** The section 2.1 procedure rerun on corpus A in four
+  cumulative stages: the original inputs and perturbations (asserted to reproduce `influence()` exactly), 6 more
+  perturbations per instruction, 30 more Haar product inputs, and 10 entangled inputs prepared by n-layer brickwork
+  circuits of Haar two-qubit gates. Reports the dependences each stage adds, every slicer's recall and precision
+  against the stage-3 set, and any dependence outside the QDG slice (Theorem 1 predicts none).
+- **QPDG under the read-only-control reading (`icpc/qpdg_ro.py`, `icpc/qpdg_ro_run.py`).** S-yzro and S-yzrof
+  change only D-yz-3 of the S-yz design log: data dependence follows S-cpdg's rule (a controlled gate writes only its
+  targets); static (S-yz) or flow-sensitive (S-yzf) entanglement closure; seed at the last instruction on the
+  criterion. Scored exactly as `icpc/cpdg_run.py` scores S-cpdg (RQ1, RQ3, families).
+- **Cluster-aware intervals (`icpc/cluster_ci.py`).** For the headline RQ1, H2, H3, RQ3 and H4 quantities: percentile
+  bootstrap intervals resampling units, circuits and algorithm families (names without size suffixes), plus
+  per-corpus point estimates.
+- **Size-matched random control (`icpc/rq3_size_control.py`).** Every rule's RQ3 containment against the exact
+  chance that a random set of its own size contains a fault-site instruction, 1 - C(n-f,k)/C(n,k).
+- **MBFL for every rule (`icpc/mbfl_all.py`).** The MBFL units, tests, mutants, Ochiai and EXAM of `icpc/mbfl.py`,
+  imported unchanged, filtered by S-du, S-cpdg, S-lc, S-yz and S-q, with operations examined and a random-order
+  baseline of the same slice.
+- **Findings during these runs.** S-q is not bitwise repeatable on Bugs4Q StackExchange #4 (84 operations, 8 qubits):
+  pruning decisions at its 1e-9 thresholds flip between calls in one process, single-threaded BLAS included, so
+  2 of 293 MBFL units get a different S-q slice when recomputed (`q_recomputed_differs`); `icpc/mbfl_all.py` uses
+  the slices stored by `icpc/mbfl.py`. `icpc/q_repeat.py` recomputes S-q three times on every corpus-A pair: all
+  784 equal the stored RQ1 slices and are sound. S-yzro/S-yzrof are sound on all structure families.
+- **Paper changes.** Claims reframed (the QDG is the known light cone; the semantics and the measurement are the
+  contribution); Theorem 1's step for resets, measurements and conditioned gates stated; the RQ1 soundness sentence
+  qualified for nested conditions; the threats' bias direction corrected (sampled dependences overstate recall and
+  understate precision); the hardware paragraph removed (an earlier slicer, phase-blind metric); noise and profile
+  text condensed; versions, hardware, seeds and archiving stated in Data Availability.

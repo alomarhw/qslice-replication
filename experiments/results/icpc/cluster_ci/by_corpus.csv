@@ -1,0 +1,97 @@
+quantity,corpus,n,point
+rq1_unsound_du,MQT Bench,284,0.4154929577464789
+rq1_unsound_du,QASMBench,202,0.3712871287128713
+rq1_unsound_du,VeriQBench,298,0.07718120805369127
+rq1_size_du,MQT Bench,284,0.48708692289271255
+rq1_size_du,QASMBench,202,0.3924662238168791
+rq1_size_du,VeriQBench,298,0.6165947037371884
+rq1_recall_du,MQT Bench,284,0.751288740598569
+rq1_recall_du,QASMBench,202,0.6331749102166985
+rq1_recall_du,VeriQBench,298,0.7427408852893916
+rq1_precision_du,MQT Bench,284,0.9539300879089613
+rq1_precision_du,QASMBench,202,0.9590702121243354
+rq1_precision_du,VeriQBench,298,0.9934327100995499
+rq1_unsound_cpdg,MQT Bench,284,0.4154929577464789
+rq1_unsound_cpdg,QASMBench,202,0.31683168316831684
+rq1_unsound_cpdg,VeriQBench,298,0.0738255033557047
+rq1_size_cpdg,MQT Bench,284,0.48708692289271255
+rq1_size_cpdg,QASMBench,202,0.4258057972700227
+rq1_size_cpdg,VeriQBench,298,0.6425900774321383
+rq1_recall_cpdg,MQT Bench,284,0.751288740598569
+rq1_recall_cpdg,QASMBench,202,0.67754669306402
+rq1_recall_cpdg,VeriQBench,298,0.7742501936642069
+rq1_precision_cpdg,MQT Bench,284,0.9539300879089613
+rq1_precision_cpdg,QASMBench,202,0.9271890240055236
+rq1_precision_cpdg,VeriQBench,298,0.9934327100995499
+rq1_unsound_lc,MQT Bench,284,0.0
+rq1_unsound_lc,QASMBench,202,0.0
+rq1_unsound_lc,VeriQBench,298,0.0
+rq1_size_lc,MQT Bench,284,0.6309207630071811
+rq1_size_lc,QASMBench,202,0.6442401970941554
+rq1_size_lc,VeriQBench,298,0.8133515436168981
+rq1_recall_lc,MQT Bench,284,1.0
+rq1_recall_lc,QASMBench,202,1.0
+rq1_recall_lc,VeriQBench,298,1.0
+rq1_precision_lc,MQT Bench,284,0.8855095354917246
+rq1_precision_lc,QASMBench,202,0.8858564514956261
+rq1_precision_lc,VeriQBench,298,0.9846303861301544
+rq1_unsound_yz,MQT Bench,284,0.0
+rq1_unsound_yz,QASMBench,202,0.0
+rq1_unsound_yz,VeriQBench,298,0.0
+rq1_size_yz,MQT Bench,284,0.7439537994995062
+rq1_size_yz,QASMBench,202,0.7489896437465245
+rq1_size_yz,VeriQBench,298,0.8504265903125048
+rq1_recall_yz,MQT Bench,284,1.0
+rq1_recall_yz,QASMBench,202,1.0
+rq1_recall_yz,VeriQBench,298,1.0
+rq1_precision_yz,MQT Bench,284,0.7602224740394696
+rq1_precision_yz,QASMBench,202,0.7801942883637645
+rq1_precision_yz,VeriQBench,298,0.9434120919641704
+rq1_unsound_q,MQT Bench,284,0.0
+rq1_unsound_q,QASMBench,202,0.0
+rq1_unsound_q,VeriQBench,298,0.0
+rq1_size_q,MQT Bench,284,0.5297135335769185
+rq1_size_q,QASMBench,202,0.4823376453065227
+rq1_size_q,VeriQBench,298,0.5894700255335443
+rq1_recall_q,MQT Bench,284,0.8790197745847083
+rq1_recall_q,QASMBench,202,0.792469274915031
+rq1_recall_q,VeriQBench,298,0.7469810449885845
+rq1_precision_q,MQT Bench,284,0.981736969455541
+rq1_precision_q,QASMBench,202,0.9330596432234954
+rq1_precision_q,VeriQBench,298,0.9899388894651431
+rq1_unsound_lcq,MQT Bench,224,0.0
+rq1_unsound_lcq,QASMBench,173,0.0
+rq1_unsound_lcq,VeriQBench,203,0.0
+rq1_size_lcq,MQT Bench,224,0.463696169680394
+rq1_size_lcq,QASMBench,173,0.5379400289161871
+rq1_size_lcq,VeriQBench,203,0.7633579903758729
+rq1_recall_lcq,MQT Bench,224,0.8858866619987223
+rq1_recall_lcq,QASMBench,173,0.9084142047937047
+rq1_recall_lcq,VeriQBench,203,0.9615283397339321
+rq1_precision_lcq,MQT Bench,224,0.9768831669246991
+rq1_precision_lcq,QASMBench,173,0.9424615193118481
+rq1_precision_lcq,VeriQBench,203,0.990675754266018
+h2_size_lc_minus_q,MQT Bench,284,0.10120722943026261
+h2_size_lc_minus_q,QASMBench,202,0.16190255178763271
+h2_size_lc_minus_q,VeriQBench,298,0.2238815180833536
+h3_robust_q,MQT Bench,284,0.7887323943661971
+h3_robust_q,QASMBench,202,0.5643564356435643
+h3_robust_q,VeriQBench,298,0.3221476510067114
+rq3_contained_du,MQT Bench,2079,0.796055796055796
+rq3_contained_du,QASMBench,1779,0.6683530073074762
+rq3_contained_du,VeriQBench,1830,0.8486338797814208
+rq3_contained_cpdg,MQT Bench,2079,0.796055796055796
+rq3_contained_cpdg,QASMBench,1779,0.6919617762788083
+rq3_contained_cpdg,VeriQBench,1830,0.8732240437158469
+rq3_contained_lc,MQT Bench,2079,0.9403559403559404
+rq3_contained_lc,QASMBench,1779,0.955593029792018
+rq3_contained_lc,VeriQBench,1830,0.9770491803278688
+rq3_contained_yz,MQT Bench,2079,0.962000962000962
+rq3_contained_yz,QASMBench,1779,0.9786396852164138
+rq3_contained_yz,VeriQBench,1830,0.9825136612021858
+rq3_contained_q,MQT Bench,2079,0.7142857142857143
+rq3_contained_q,QASMBench,1779,0.8684654300168634
+rq3_contained_q,VeriQBench,1830,0.898360655737705
+h4_contained_q_minus_lc,MQT Bench,2079,-0.22607022607022606
+h4_contained_q_minus_lc,QASMBench,1779,-0.08712759977515458
+h4_contained_q_minus_lc,VeriQBench,1830,-0.07868852459016394

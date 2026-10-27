@@ -1,0 +1,9 @@
+Loaded 161 in-range OpenQASM circuits across corpora {'QASMBench': 39, 'MQT Bench': 42, 'VeriQBench': 80} (max_qubits=14, max_ops=220, max_per_corpus=80).
+  20/158 circuits, 47s
+  40/158 circuits, 130s
+  60/158 circuits, 282s
+  80/158 circuits, 451s
+  100/158 circuits, 490s
+  120/158 circuits, 523s
+  140/158 circuits, 611s
+pairs 784; excluded 0; deps stage0 11959, stage3 12001; new 42 (outside QDG 0); all deps outside QDG 0; 3144s

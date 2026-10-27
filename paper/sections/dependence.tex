@@ -151,8 +151,10 @@ For every circuit $P$ and criterion $W$, $\Bw(W)$ is a sound slice for $W$.
 \begin{IEEEproof}
 Process $P$ backward with a set of needed locations $N$, initially $W$. Operation $o_k$ joins the slice,
 and $N$ grows by $\mathit{loc}(o_k)$, exactly when $\mathit{loc}(o_k) \cap N \neq \emptyset$. This
-computes $\Bw(W)$. Every operation, a measurement or a conditioned gate included, is a channel on the
-qubits and bits it acts on. An operation outside the slice acts only on locations outside the current $N$,
+computes $\Bw(W)$. Every operation is a channel on the qubits and bits it acts on. A gate is a unitary
+channel on its qubits, a reset replaces the state of its qubit, a measurement dephases its qubit and writes
+the outcome into its bit, and a gate conditioned on bits applies a channel controlled by their classical
+value, so each acts only on $\mathit{loc}(o)$. An operation outside the slice acts only on locations outside the current $N$,
 and by locality of the partial trace, the no-signaling principle, it cannot change the reduced state of the
 others, so removing it preserves the reduced state of the needed locations at that point, for every input.
 An operation in the slice acts within the needed set it leaves behind, so the reduced state of that set

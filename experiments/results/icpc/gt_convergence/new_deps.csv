@@ -1,0 +1,43 @@
+corpus,circuit,path,target,position,gate,stage,in_qdg
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,11,1,h,1,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,11,2,h,1,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,11,4,h,1,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,11,5,h,1,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,11,8,h,1,1
+QASMBench,cc_n12,qasmbench/medium/cc_n12.qasm,11,9,h,1,1
+VeriQBench,dqc_pe_2,veriqbench/dynamic/pe/dqc_pe_2.qasm,2,1,h,1,1
+VeriQBench,pe_2,veriqbench/combinational/pe/pe_2.qasm,2,1,h,1,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,6,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,10,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,0,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,1,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,2,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,3,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,5,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,7,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,8,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,9,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,11,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,12,h,2,1
+QASMBench,bv_n14,qasmbench/medium/bv_n14.qasm,13,4,h,3,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,0,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,1,x,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,2,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,3,x,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,4,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,5,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,6,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,7,x,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,8,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,9,x,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,10,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,11,x,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,12,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,13,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,14,x,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,15,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,16,x,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,17,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,18,h,2,1
+MQT Bench,dj_n14,mqtbench/dj_n14.qasm,13,19,h,2,1
+MQT Bench,qftentangled_n14,mqtbench/qftentangled_n14.qasm,3,105,cp,1,1
