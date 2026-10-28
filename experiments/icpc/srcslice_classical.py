@@ -94,7 +94,8 @@ def summarize(rows):
                        "recall": round(hit / ref, 4) if ref else 1.0, "precision": round(hit / got, 4) if got else 1.0,
                        "median_srcslice_ms": round(1000 * med, 1),
                        "errors": sum(1 for r in rows if r["corpus"] == corpus and r["error"] not in ("", "no circuit", "no qubit acted on"))}
-    dv = [r for r in rows if r["corpus"] in ("dev", "bugs4q") and not r["error"]]
+    dv = [r for r in rows if r["corpus"] in ("dev", "bugs4q") and not r["error"]] or \
+        [r for r in rows if not r["error"]]  # held-out run: LintQ files only
     share = sum(lines(r["interp"]) <= lines(r["srcslice"]) for r in dv) / len(dv)
     out["decision"] = {"dev_bugs4q_contain_share": round(share, 4), "threshold": 0.95,
                        "adopt_srcslice_lines": share >= 0.95}
@@ -105,13 +106,26 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data-root", required=True)
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--heldout", type=int, default=0,
+                    help="Deviation I-23: N LintQ-corpus files with a circuit (S1), outside the I-17 sample, instead")
+    ap.add_argument("--seed", type=int, default=20261028)
     a = ap.parse_args()
+    global OUT
     data = Path(a.data_root)
-    jobs = [("dev", p, str(p.relative_to(ROOT))) for p in DEV]
-    for corpus, (sub, lst) in CORPORA.items():
-        with open(RES / "profiles" / lst) as fh:
-            files = sorted({r["file"] for r in csv.DictReader(fh) if not r["error"]})
-        jobs += [(corpus, data / sub / f, f) for f in files]
+    if a.heldout:
+        import random
+        OUT = RES / "srcslice_heldout"
+        used = {r["file"] for r in csv.DictReader(open(RES / "profiles" / "lintq500.csv"))}
+        pool = sorted({r["file"] for r in csv.DictReader(open(RES / "scale" / "s1_lintq.csv"))
+                       if not r["error"] and r["file"] not in used})
+        pick = sorted(random.Random(a.seed).sample(pool, a.heldout))
+        jobs = [("lintq", data / CORPORA["lintq"][0] / f, f) for f in pick]
+    else:
+        jobs = [("dev", p, str(p.relative_to(ROOT))) for p in DEV]
+        for corpus, (sub, lst) in CORPORA.items():
+            with open(RES / "profiles" / lst) as fh:
+                files = sorted({r["file"] for r in csv.DictReader(fh) if not r["error"]})
+            jobs += [(corpus, data / sub / f, f) for f in files]
     t0 = time.time()
     rows = []
     for r in run_all(one, jobs, TIMEOUT, timed_out, a.workers):

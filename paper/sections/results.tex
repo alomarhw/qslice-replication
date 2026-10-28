@@ -3,7 +3,8 @@
 \begin{table}[t]
   \centering
   \caption{Slices of the \numNPairs{} corpus-A pairs at $\ket{0\dots0}$ for RQ1. Wrong counts slices
-  that do not preserve the criterion, Dyn.\ those among the \numNDynamicPairs{} pairs in dynamic
+  that do not preserve the criterion at that input, a lower bound for every rule but the QDG, which is sound
+  for all inputs, Dyn.\ those among the \numNDynamicPairs{} pairs in dynamic
   circuits. Recall and precision are against the dependence set, and size is the mean share of the
   circuit.}
   \label{tab:rq1}
@@ -147,6 +148,21 @@ slice, so neither slice improves the normalized ranking. On the \numMbflAllN{} u
 after \numMbflAllExaminedMin{} to \numMbflAllExaminedMax{} operations on average, whichever slice it ranks,
 so no rule saves more than a fraction of an operation.
 
+\paragraph*{Language models}
+The two pre-registered tasks for language models ask what a slice offers a model that reads the circuit,
+on items sampled from corpus~A and RQ3 and given as OpenQASM with the index of every operation. In the first,
+a model lists the operations that can affect a qubit, for \numTOneItems{} items. Claude Sonnet~5.5 and
+Haiku~5.5 recall \numTOneSonnetRecall{} and \numTOneHaikuRecall{} of the dependences at precision
+\numTOneSonnetPrec{} and \numTOneHaikuPrec{}, and Qwen2.5-Coder-32B recalls \numTOneQwenMidRecall{}, where the
+QDG slice recalls them all. The dependences through kickback are the hardest, with recall
+\numTOneSonnetKick{} for Sonnet and \numTOneQwenMidKick{} for Qwen. In the second, a model names the likely
+faulty operation of \numTTwoItems{} units, given the whole circuit or a slice. Sonnet has the fault in its top
+three for \numTTwoSonnetFull{} of the units with the whole circuit, \numTTwoSonnetLc{} with the QDG slice and
+\numTTwoSonnetQ{} with the state-based slice, \numTTwoSonnetQVsLcLoss{} points below the QDG slice (95\% CI
+\numTTwoSonnetQVsLcCI{}, exact McNemar \numTTwoSonnetQVsLcP{}). Haiku shows the same order, and no slice beats
+the whole circuit for any model. A model thus misses the dependences a slicer finds by rule, but a slice does
+not help it localize a fault, and a pruned slice hurts it.
+
 On the \numLinesUnits{} real Bugs4Q units whose faulty lines map to the program, the QDG slices keep every
 faulty line and \numLinesLcMean{} of \numLinesFullMean{} lines on average, so on these small programs
 slicing barely reduces what there is to read. Def-use, which equals the
@@ -188,7 +204,9 @@ size. On the \numScaleQbRead{} circuits of QASMBench's medium and large sets tha
 \numScaleQbMaxOps{} operations and \numScaleQbMaxQubits{} qubits, the one-pass slice of every qubit takes at most
 \numScaleQbAllS{}~s, on the largest circuit. Qiskit's DAG slices one of its \numScaleQbMaxOpsQubits{} qubits in
 \numScaleQbDagOneS{}~s after \numScaleQbDagLoadS{}~s of loading, which is about \numScaleQbDagAllMin{} minutes for
-all of them. Reading the file is \tool{}'s larger cost there, \numScaleQbReadS{}~s with a reader written in Python.
+all of them. Qubit for qubit, the two are close, since \tool{}'s single slice takes \numScaleOneRatio{} times
+Qiskit's in the median and \numScaleOneRatioBig{} times on circuits of 100{,}000 operations or more. \tool{}'s
+advantage is the one pass over every qubit. Reading the file is \tool{}'s larger cost there, \numScaleQbReadS{}~s with a reader written in Python.
 The QPDG reimplementation builds its graph within the 600~s limit for circuits of up to \numScaleQpdgMaxOps{}
 operations, in \numScaleQpdgMaxS{}~s, where \tool{} reads and slices the circuit in \numScaleQpdgSqS{}~s. It reaches the
 limit on the next circuits by size, and the \numScaleQpdgOver{} larger ones are beyond it. Qiskit's \texttt{LightCone} pass, which also prunes commuting gates, slices one qubit of the circuit of

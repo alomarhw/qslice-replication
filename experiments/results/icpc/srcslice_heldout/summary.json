@@ -1,0 +1,18 @@
+{
+ "lintq": {
+  "files": 404,
+  "qubits": 1831,
+  "contain": 1576,
+  "equal": 672,
+  "recall": 0.9407,
+  "precision": 0.4589,
+  "median_srcslice_ms": 53.4,
+  "errors": 0
+ },
+ "decision": {
+  "dev_bugs4q_contain_share": 0.8607,
+  "threshold": 0.95,
+  "adopt_srcslice_lines": false
+ },
+ "srcslice_version": "upstream ce86ef8 + tools/srcslice/srcslice-python.diff"
+}

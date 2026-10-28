@@ -192,8 +192,12 @@ First, five of LintQ's ten analyses concern qubits and bits, operation after mea
 oversized circuit, conditional without measurement and unmeasurable qubits. Of the \numLqQubitTp{} warnings of
 these analyses that LintQ's authors confirmed as bugs on LintQ's corpus, \tool{} traces \numLqQubitTraced{}, and on
 \numLqQubitExposed{} of them a predicate on its qubit profiles, fixed before the comparison, holds at the warned
-line. A developer who reads the slices of the qubits on a warned line reads \numLqReadMedian{} lines in the median,
-against \numLqCodeMedian{} code lines in the file. The other five analyses concern API use, such as a deprecated
+line. The predicates also hold on \numLqFpFires{} of the \numLqFpTraced{} traced warnings that LintQ's authors
+rejected as false, and on \numLqSarifFires{} of the \numLqSarifTraced{} traced warnings of these analyses in
+all, so the profiles contain what these analyses check, with their false alarms, and are not a more precise
+detector. What a profile adds is the context of a warning. LintQ points to one line, and the slices of the
+qubits on that line give the \numLqReadMedian{} lines in the median that determine their state, out of
+\numLqCodeMedian{} code lines in the file. The other five analyses concern API use, such as a deprecated
 gate, and are outside a slice. Second, LintQ's ten-iteration bound matters. In \numLqBeyondTenFiles{} of the
 \numScaleSOneSliced{} files of its corpus that \tool{} traces, operations are created after the tenth iteration of a
 loop, \numLqBeyondTenOpsPct{} of all their operations. Third, on the examples of both papers, transcribed as
@@ -201,22 +205,29 @@ programs, \tool{}'s slices show each bug. In LintQ's Fig.~1, the slice of $q_3$ 
 and the slice of $q_0$ holds the \texttt{ry} after its measurement. In QChecker's Fig.~5, the slice of $q_2$ holds
 the measurement of $q_1$ and the \texttt{cx} that follows it on $q_1$. QChecker's authors report that it cannot detect the Bugs4Q bugs that show only as wrong
 outputs~\cite{zhao2023qchecker}. Every Bugs4Q unit of Section~\ref{sec:results} changes an
-output, and on all \numLinesUnits{} of them the QDG slice keeps the faulty line, so slices reach the class of bugs
-that pattern detectors report they cannot.
+output, and on all \numLinesUnits{} of them the QDG slice keeps the faulty line, although these programs are so
+small that the slice holds most of their lines.
 
 \subsection{Validation}
 On \numToolDevPrograms{} runnable programs that we wrote, of up to \numToolDevMaxOps{} operations, the static
 trace equals the circuit Qiskit builds. On \numToolDevSliceEqual{} of them, every slice equals the
 circuit-level QDG slice of the study. The remaining program nests conditional blocks, and on
 \numToolNestedDraws{} random product inputs the oracle of Section~\ref{sec:design} finds the circuit-level slice
-wrong \numToolNestedStudyWrong{} times and \tool{}'s slice never. \tool{}'s line slices equal those of the
+wrong \numToolNestedStudyWrong{} times and \tool{}'s slice never. The study's circuit-level slicer reads a
+nested condition only by its outer condition, so it misses the bit that the inner condition reads. This is a
+limit of that implementation, not of Theorem~\ref{thm:sound}, and no circuit of the study nests conditions,
+since OpenQASM~2 cannot express them. \tool{}'s line slices equal those of the
 study on all \numToolTTwoUnits{} units whose lines the study maps, which include the \numLinesUnits{} units of
 Section~\ref{sec:results}. On the Bugs4Q programs of the study, read without being run, the trace equals the
 prepared circuit for \numToolTOneExact{} of \numToolTOneBugs{} bugs, and the remaining bug rewrites its
 circuit as a DAG, which \tool{} reports. Of the \numToolBugsQiskit{} Qiskit files of Bugs4Q, the
-\numToolTextbookQiskit{} notebooks of the Qiskit textbook~\cite{qiskittextbook} and the \numToolLintqQiskit{}
+\numToolTextbookQiskit{} notebooks of the Qiskit textbook~\cite{qiskittextbook} and the \numScaleSOneFiles{}
 programs of LintQ's corpus~\cite{paltenghi2024lintq}, \numToolBugsCircuit{}, \numToolTextbookCircuit{} and
-\numToolLintqCircuit{} yield a circuit, \numToolBugsResolved{} of the Bugs4Q ones without over-approximation.
+\numScaleSOneSliced{} yield a circuit, \numToolBugsResolved{} of the Bugs4Q ones without over-approximation. Of the
+\numCovNoCircuit{} LintQ programs that yield none, \numCovNoConstruction{} never construct a circuit, such as
+helpers and scripts that read results, \numCovFromFile{} load their circuits from a file or a library, and the
+other \numCovOther{} build them in code the interpreter does not follow, such as class attributes set
+elsewhere or sizes read at run time.
 No Bugs4Q or LintQ program crashes \tool{}, which takes \numToolBugsMedianMs{}~ms per Bugs4Q program in the
 median.
 
@@ -230,5 +241,8 @@ Before the subscript and module-variable fixes of E4, containment was \numSsBefo
 the threshold of 95\% that we fixed before the comparison, and the fixes were made after that result. The
 remaining misses lie mostly in functions that build a circuit or a value and return it, and in containers
 filled by method calls, whose effect srcSlice's forward slicing does not link to the use. Its extra lines are those of a flow-insensitive slicer, such as a definition of an index in
-another loop or the header of a function whose parameter carries a qubit. \tool{} reports srcSlice's lines,
-and the interpreter's are an option.
+another loop or the header of a function whose parameter carries a qubit. On a held-out sample of
+\numSsHeldFiles{} LintQ programs that played no part in finding the gaps, containment is \numSsHeldContainPct{}
+over \numSsHeldQubits{} qubits, as on the LintQ sample before, \numSsLintqContainPct{}, so the fixes did not fit
+the files that exposed the gaps, and the 95\% that our programs and Bugs4Q reach is not reached on code from
+GitHub. \tool{} reports srcSlice's lines and the interpreter's beside them.

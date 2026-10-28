@@ -15,7 +15,10 @@ The protocol was committed before the runs reported here. It extends an earlier 
 reuses, so H1 and H2 below were known. Later changes are dated deviations, marked when made after a result.
 The PDG and \texttt{LightCone} baselines came after the first runs. The dependence set as a size reference, the symbolic-angle variant, the
 flow-sensitive and read-only QPDG, the static slicer, the measures of the foundations and the scenario of Section~\ref{sec:example} were
-added after the results, are exploratory and enter none of the confirmatory tests.
+added after the results, are exploratory and enter none of the confirmatory tests. The five confirmatory
+tests below concern state-based pruning. Every other result, including the classical PDG's share of wrong
+slices, is exploratory or descriptive. The protocol also pre-registered two descriptive tasks for language
+models, which we ran and report briefly in RQ3.
 
 \paragraph*{Circuits}
 Corpus~A has \numNCircuits{} circuits of at most \numMaxQubits{} qubits from MQT~Bench
@@ -29,7 +32,7 @@ mid-circuit measurement, reset or conditioned gates. We also generate
 \paragraph*{Programs for \tool{}}
 \tool{} is evaluated in Section~\ref{sec:tool} and RQ4 on programs, not circuits. They are the Qiskit
 programs of Bugs4Q, the \numToolTextbookQiskit{} notebooks of the Qiskit textbook~\cite{qiskittextbook}, the
-\numToolLintqQiskit{} programs that LintQ's authors collected from GitHub~\cite{paltenghi2024lintq}, all read and
+\numScaleSOneFiles{} programs that LintQ's authors collected from GitHub~\cite{paltenghi2024lintq}, all read and
 never executed, and QASMBench's medium and large circuits, of up to millions of operations. LintQ's public
 warnings on its corpus, with the \numLqTp{} that its authors confirmed as bugs, are the data of the comparison
 with LintQ.

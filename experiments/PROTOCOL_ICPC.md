@@ -1278,3 +1278,18 @@ use, are removed.
   note, and a cut sequence is noted. No study circuit, dev program, Bugs4Q or textbook file reaches the limit. S1 and
   S3 are rerun. (2) The LightCone baseline was first run on circuits with terminal measurements, which the pass
   rejects; it is rerun on circuits prepared as in RQ2 (barriers and terminal measurements dropped).
+
+### Deviation I-23 (2026-10-28, AFTER all results; author decision after an internal review; exploratory; recorded before any output below)
+- **Why.** A review of the draft raised the circularity of the LintQ comparison, the reuse of the files that exposed
+  the srcSlice gaps, unlike-for-like timing baselines and unexplained coverage. No RQ, hypothesis or threshold changes.
+- **LintQ predicates on warnings LintQ's authors rejected.** The I-22 predicates are evaluated, unchanged, on the
+  warnings of the five qubit rules that the inspection labels FP, and on every SARIF warning of those rules. A
+  predicate that fires on a rejected warning is a false alarm of the profile view.
+- **Held-out srcSlice comparison.** `icpc/srcslice_classical.py` unchanged, on a held-out sample of 500 LintQ-corpus
+  files (seed 20261028) that are neither in the I-17 sample nor among the files whose misses were inspected for
+  I-21. Reported against the same 95% threshold, as a check of the I-21 fixes.
+- **Like-for-like timing.** On the S2 circuits, srcSlice-Q's one-qubit slice against Qiskit's one-qubit DAG
+  ancestors, each without reading; srcSlice-Q's all-qubit slice against n one-qubit Qiskit slices.
+- **Coverage.** The S1 files that yield no circuit, classified by a fixed rule on the file text: no circuit
+  construction (`QuantumCircuit(` absent), a circuit built only from a file or library call (`from_qasm`, `qasm2.load`,
+  `QuantumCircuit.from`, `transpile(` without gate calls), or other.

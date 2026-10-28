@@ -52,8 +52,9 @@ Bugs4Q programs the QDG slice keeps every faulty line, while def-use loses it in
 
 \tool{} slices a program of LintQ's corpus in \numScaleSOneMedianMs{}~ms in the median, and a qubit's
 slice holds \numScaleReadMedianPct{} of a program's code lines in the median, while on the small Bugs4Q
-programs it holds almost all of them. Where LintQ warns about a qubit bug, the slices on the
-warned line hold \numLqReadMedian{} lines in the median, against \numLqCodeMedian{} code lines in the file.
+programs it holds almost all of them. Where LintQ warns about a qubit bug, the slices of the qubits on the
+warned line add the \numLqReadMedian{} lines in the median that determine their state, out of \numLqCodeMedian{}
+code lines in the file.
 
 The contributions of this paper are the following.
 \begin{itemize}
@@ -68,7 +69,7 @@ Section~\ref{sec:tool}. Its quantum extensions give srcSlice a quantum dependenc
 these programs and, beyond the OpenQASM work on srcML, compute the qubits and execution order of programs whose
 qubits are computed, and it shows a slice as source lines, loop iterations,
 classical lines and qubit profiles.
-\item An evaluation of \tool{} on Bugs4Q, the Qiskit textbook, LintQ's \numToolLintqQiskit{} programs from
+\item An evaluation of \tool{} on Bugs4Q, the Qiskit textbook, LintQ's \numScaleSOneFiles{} programs from
 GitHub and QASMBench, which measures its scalability to circuits of millions of operations and compares it with
 LintQ on LintQ's confirmed bugs and with both LintQ and QChecker on the examples of their papers.
 \item The implications for comprehension tools that Section~\ref{sec:discussion} draws, and a replication

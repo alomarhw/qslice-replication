@@ -963,6 +963,71 @@
   "tex": "14.5",
   "source": "results/llm/t2_scores.csv"
  },
+ "TOneSonnetRecall": {
+  "value": 0.8367837099395669,
+  "tex": "0.84",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneSonnetPrec": {
+  "value": 0.9305069598005433,
+  "tex": "0.93",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneSonnetKick": {
+  "value": 0.6124293530543531,
+  "tex": "0.61",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneHaikuRecall": {
+  "value": 0.8437474422273857,
+  "tex": "0.84",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneHaikuPrec": {
+  "value": 0.9392372664484244,
+  "tex": "0.94",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneHaikuKick": {
+  "value": 0.8302118406285073,
+  "tex": "0.83",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneQwenMidRecall": {
+  "value": 0.5944070584844481,
+  "tex": "0.59",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneQwenMidPrec": {
+  "value": 0.9104938147777816,
+  "tex": "0.91",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneQwenMidKick": {
+  "value": 0.15507444431786538,
+  "tex": "0.16",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneQwenSmallRecall": {
+  "value": 0.5895383447506357,
+  "tex": "0.59",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneQwenSmallPrec": {
+  "value": 0.71131098100109,
+  "tex": "0.71",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneQwenSmallKick": {
+  "value": 0.5751644103946736,
+  "tex": "0.58",
+  "source": "results/llm/t1_scores.csv"
+ },
+ "TOneItems": {
+  "value": 171,
+  "tex": "171",
+  "source": "results/llm/t1_scores.csv"
+ },
  "CostLcMaxMs": {
   "value": 0.0162,
   "tex": "16",
@@ -2043,6 +2108,36 @@
   "tex": "88",
   "source": "results/icpc/lintq_compare/c1.csv"
  },
+ "LqFpWarnings": {
+  "value": 42,
+  "tex": "42",
+  "source": "results/icpc/lintq_compare/c1_fp.csv"
+ },
+ "LqFpTraced": {
+  "value": 37,
+  "tex": "37",
+  "source": "results/icpc/lintq_compare/c1_fp.csv"
+ },
+ "LqFpFires": {
+  "value": 30,
+  "tex": "30",
+  "source": "results/icpc/lintq_compare/c1_fp.csv"
+ },
+ "LqSarifWarnings": {
+  "value": 4079,
+  "tex": "4{,}079",
+  "source": "results/icpc/lintq_compare/c1_sarif.csv"
+ },
+ "LqSarifTraced": {
+  "value": 3496,
+  "tex": "3{,}496",
+  "source": "results/icpc/lintq_compare/c1_sarif.csv"
+ },
+ "LqSarifFires": {
+  "value": 3359,
+  "tex": "3{,}359",
+  "source": "results/icpc/lintq_compare/c1_sarif.csv"
+ },
  "ScaleSOneFiles": {
   "value": 7568,
   "tex": "7{,}568",
@@ -2252,6 +2347,56 @@
   "value": 11,
   "tex": "11",
   "source": "results/icpc/scale/s3_parametric.csv"
+ },
+ "SsHeldFiles": {
+  "value": 404,
+  "tex": "404",
+  "source": "results/icpc/srcslice_heldout/qubits.csv"
+ },
+ "SsHeldQubits": {
+  "value": 1831,
+  "tex": "1{,}831",
+  "source": "results/icpc/srcslice_heldout/qubits.csv"
+ },
+ "SsHeldContainPct": {
+  "value": 0.8607318405243036,
+  "tex": "86\\%",
+  "source": "results/icpc/srcslice_heldout/qubits.csv"
+ },
+ "SsLintqContainPct": {
+  "value": 0.8769685039370079,
+  "tex": "88\\%",
+  "source": "results/icpc/srcslice/qubits.csv"
+ },
+ "CovNoCircuit": {
+  "value": 3381,
+  "tex": "3{,}381",
+  "source": "results/icpc/scale/coverage_reasons.json"
+ },
+ "CovNoConstruction": {
+  "value": 2765,
+  "tex": "2{,}765",
+  "source": "results/icpc/scale/coverage_reasons.json"
+ },
+ "CovFromFile": {
+  "value": 58,
+  "tex": "58",
+  "source": "results/icpc/scale/coverage_reasons.json"
+ },
+ "CovOther": {
+  "value": 558,
+  "tex": "558",
+  "source": "results/icpc/scale/coverage_reasons.json"
+ },
+ "ScaleOneRatio": {
+  "value": 1.2105263157894737,
+  "tex": "1.2",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleOneRatioBig": {
+  "value": 1.4354421604695418,
+  "tex": "1.4",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
  },
  "ToolGateTable": {
   "value": 73,

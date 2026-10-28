@@ -128,11 +128,36 @@ def c1_one(path: Path, rows):
         signal.alarm(0)
 
 
-def tp_rows():
+def tp_rows(label="TP"):
     lines = list(csv.reader(open(ART / "Inspection_LintQ_on_LintQ_dataset.csv")))
     hdr = lines[1]
     rs = [dict(zip(hdr, x)) for x in lines[2:] if len(x) >= 6]
-    return [r for r in rs if r["label_resolution"] == "TP"]
+    return [r for r in rs if r["label_resolution"] == label]
+
+
+def sarif_rows():
+    """Every SARIF warning of the five qubit rules (Deviation I-23)."""
+    d = json.load(open(ART / "data.sarif"))
+    out = []
+    for r in d["runs"][0]["results"]:
+        if r["ruleId"] not in RULES:
+            continue
+        loc = r["locations"][0]["physicalLocation"]
+        out.append({"rule_id": r["ruleId"], "file": loc["artifactLocation"]["uri"],
+                    "line": str(loc["region"]["startLine"])})
+    return out
+
+
+def run_set(rows_in, corpus, workers):
+    by_file = {}
+    for r in rows_in:
+        by_file.setdefault(r["file"], []).append(r)
+    rows = []
+    for res in run_all(c1_one, [(corpus / f, rs) for f, rs in sorted(by_file.items()) if (corpus / f).exists()], LIMIT,
+                       lambda p, rs: [{"file": r["file"], "line": r["line"], "rule_id": r["rule_id"], "traced": 0,
+                                       "error": "timeout"} for r in rs], workers):
+        rows.extend(res)
+    return rows
 
 
 def c3():
@@ -154,8 +179,26 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data-root", required=True)
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--set", choices=["tp", "fp-and-sarif"], default="tp",
+                    help="fp-and-sarif (Deviation I-23): the predicates on LintQ's rejected warnings and on all its warnings")
     a = ap.parse_args()
     corpus = Path(a.data_root) / "lintq" / "exp_v08" / "files_selected"
+    if a.set == "fp-and-sarif":
+        OUT.mkdir(parents=True, exist_ok=True)
+        summ = {}
+        for name, rs in (("fp", [r for r in tp_rows("FP") if r["rule_id"] in RULES]), ("sarif", sarif_rows())):
+            got = run_set(rs, corpus, a.workers)
+            keys = ["file", "line", "rule_id", "code_lines", "traced", "exposed", "slice_lines", "warned_line_in_slice", "error"]
+            with open(OUT / f"c1_{name}.csv", "w", newline="") as fh:
+                w = csv.DictWriter(fh, fieldnames=keys, extrasaction="ignore")
+                w.writeheader()
+                w.writerows(got)
+            summ[name] = {rule: {"warnings": sum(r["rule_id"] == rule for r in got),
+                                 "traced": sum(r["rule_id"] == rule and r.get("traced") == 1 for r in got),
+                                 "fires": sum(r["rule_id"] == rule and r.get("exposed") == 1 for r in got)} for rule in RULES}
+        (OUT / "summary_fp_sarif.json").write_text(json.dumps(summ, indent=1) + "\n")
+        print(json.dumps(summ, indent=1))
+        return
     tps = tp_rows()
     assert len(tps) == 216, len(tps)
     by_file = {}

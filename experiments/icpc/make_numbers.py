@@ -285,6 +285,16 @@ def main() -> int:
     drops = [-NUMS[f"TTwo{nm}QVsFullDiff"]["value"] for nm in ("Sonnet", "Haiku", "QwenMid")]
     put("TTwoMaxDrop", max(drops), f"{100 * max(drops):.1f}", src)
 
+    # ---- RQ3: LLM T1 (§6.3): which operations affect a qubit, temperature 0, run 0 ------------------------
+    src = "results/llm/t1_scores.csv"
+    t1 = [r for r in rows(RES / "llm" / "t1_scores.csv") if r["split"] == "score" and r["run"] == "0" and r["consistency"] == "0"]
+    for arm, nm in arms.items():
+        x = [r for r in t1 if r["arm"] == arm]
+        for k, knm in (("recall", "Recall"), ("precision", "Prec"), ("recall_kickback", "Kick")):
+            v = [float(r[k]) for r in x if r[k] != ""]
+            put(f"TOne{nm}{knm}", st.mean(v), f"{st.mean(v):.2f}", src)
+    put("TOneItems", len([r for r in t1 if r["arm"] == "claude-sonnet-5-5"]), cnt(len([r for r in t1 if r["arm"] == "claude-sonnet-5-5"])), src)
+
     # ---- RQ4: cost ---------------------------------------------------------------------------------------
     src = "results/icpc/cost/circuits.csv"
     co = rows(ICPC / "cost" / "circuits.csv")
@@ -595,6 +605,12 @@ def main() -> int:
     put("LqReadMedian", rd[len(rd) // 2], cnt(rd[len(rd) // 2]), src)
     put("LqCodeMedian", cd[len(cd) // 2], cnt(cd[len(cd) // 2]), src)
     put("LqReadN", len(rd), cnt(len(rd)), src)
+    for nm, f in (("Fp", "c1_fp.csv"), ("Sarif", "c1_sarif.csv")):
+        x = rows(ICPC / "lintq_compare" / f)
+        t = [r for r in x if r["traced"] == "1"]
+        put(f"Lq{nm}Warnings", len(x), cnt(len(x)), "results/icpc/lintq_compare/" + f)
+        put(f"Lq{nm}Traced", len(t), cnt(len(t)), "results/icpc/lintq_compare/" + f)
+        put(f"Lq{nm}Fires", sum(r["exposed"] == "1" for r in t), cnt(sum(r["exposed"] == "1" for r in t)), "results/icpc/lintq_compare/" + f)
 
     # ---- scalability (Deviation I-22) ----
     sc = ICPC / "scale"
@@ -667,6 +683,30 @@ def main() -> int:
     r600 = next(r for r in s3 if r["program"] == "qft" and r["size"] == "600" and r["tool"] == "qiskit-run-dag")
     put("ScaleQftRunS", tf(r600, ["t_load", "t_build", "t_one"]), f"{tf(r600, ['t_load', 't_build', 't_one']):.1f}", src)
     put("ScaleQftLines", int(q600["code_lines"]), cnt(int(q600["code_lines"])), src)
+
+    # ---- Deviation I-23: held-out srcSlice, coverage reasons, like-for-like timing ----
+    src = "results/icpc/srcslice_heldout/qubits.csv"
+    hz = [x for x in rows(ICPC / "srcslice_heldout" / "qubits.csv") if not x["error"]]
+    put("SsHeldFiles", len({x["file"] for x in hz}), cnt(len({x["file"] for x in hz})), src)
+    put("SsHeldQubits", len(hz), cnt(len(hz)), src)
+    hc = sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in hz) / len(hz)
+    put("SsHeldContainPct", hc, pct(hc, 0), src)
+    lq = [x for x in ss if x["corpus"] == "lintq"]
+    lc_ = sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in lq) / len(lq)
+    put("SsLintqContainPct", lc_, pct(lc_, 0), "results/icpc/srcslice/qubits.csv")
+    src = "results/icpc/scale/coverage_reasons.json"
+    cr = json.load(open(ICPC / "scale" / "coverage_reasons.json"))
+    for k, nm in (("no_circuit_files", "NoCircuit"), ("no-construction", "NoConstruction"), ("from-file-or-lib", "FromFile"), ("other", "Other")):
+        put(f"Cov{nm}", cr[k], cnt(cr[k]), src)
+    src = "results/icpc/scale/s2_qasmbench.csv"
+    s2r = rows(ICPC / "scale" / "s2_qasmbench.csv")
+    sqr = {r["path"]: r for r in s2r if r["tool"] == "srcSlice-Q" and not r["error"]}
+    dgr = {r["path"]: r for r in s2r if r["tool"] == "qiskit-dag" and not r["error"]}
+    one = lambda r, ks: sum(float(r[k]) for k in ks)  # noqa: E731
+    rat = [one(sqr[p], ["t_terminal", "t_one"]) / one(dgr[p], ["t_build", "t_one"]) for p in sqr if p in dgr and one(dgr[p], ["t_build", "t_one"]) > 0]
+    put("ScaleOneRatio", st.median(rat), f"{st.median(rat):.1f}", src)
+    rb = [one(sqr[p], ["t_terminal", "t_one"]) / one(dgr[p], ["t_build", "t_one"]) for p in sqr if p in dgr and int(sqr[p]["ops"]) >= 100000]
+    put("ScaleOneRatioBig", st.median(rb), f"{st.median(rb):.1f}", src)
 
     # ---- the static program slicer (Deviation I-15, I-18; tool-v7, the final version; earlier versions' results kept) --
     sys.path.insert(0, str(HERE.parent))
