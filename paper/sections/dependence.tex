@@ -251,7 +251,7 @@ Fig.~\ref{fig:ansatz}, the rotations of $q_2$ are not dependences of $q_0$, yet 
 the slice because their first-layer iterations are, so \tool{} also reports the iterations of each line.
 A slice of operations is executable, and a slice of lines marks the code to read.
 
-\subsection{Qubit slice profiles}
+\subsection{Qubit slice profiles}\label{sec:profiles}
 We define the analogue for a qubit $q$ of the variable slice profile of srcSlice~\cite{alomari2014srcslice}. Its uses are the lines of the operations on $q$, each of which both uses and
 defines $q$ under the QDG. Its names are the source expressions that denote $q$ in gate calls, and its
 functions are the call sites of the functions inside which $q$ is acted on. Its dependents are the other

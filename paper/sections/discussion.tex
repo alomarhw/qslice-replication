@@ -21,7 +21,8 @@
 \end{table}
 
 \paragraph*{What a quantum slice should look like}
-A slicer for a developer who asks which lines determine a qubit should show the QDG slice, which is sound for every input, misses no dependence and costs milliseconds. Reading a
+Table~\ref{tab:tasks} pairs the questions a developer asks about a quantum program with what \tool{} shows for
+each. A slicer for a developer who asks which lines determine a qubit should show the QDG slice, which is sound for every input, misses no dependence and costs milliseconds. Reading a
 gate as a classical assignment is the pitfall to avoid, because its slices can look right and hide the
 fault, and adding control dependence does not remove it. Entanglement edges buy no soundness that the QDG lacks
 and add code that cannot change the criterion's state, as Proposition~\ref{prop:ent} shows. The slice
@@ -43,8 +44,8 @@ programs, where a slice across the loop of a variational algorithm needs interpr
 measured results~\cite{horwitz1990interprocedural}.
 The fourth is chopping~\cite{jackson1994chopping},
 dicing~\cite{lyle1987dicing}, amorphous slices~\cite{harman1997amorphous} and criteria over classical
-bits or observables, which need definitions against the semantics of Section~\ref{sec:dependence}. The fifth is other languages and compiled code, for which srcML's markup for
-OpenQASM~\cite{behler2024supporting, behler2025static} gives a front end. The sixth is evidence with
+bits or observables, which need definitions against the semantics of Section~\ref{sec:dependence}. The fifth is OpenQASM~3, other languages and compiled code, which \tool{} can read once srcML parses
+them~\cite{behler2024supporting}. The sixth is evidence with
 developers. Our localization results use seeded faults and the small programs of Bugs4Q, and a study of
 developers comprehending and debugging quantum programs with slices is the next step, as it was for
 classical slicing~\cite{weiser1982programmers}.

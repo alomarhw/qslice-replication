@@ -9,7 +9,9 @@ mean recall moves by more than \numGcRecallShiftQ{}. Missed dependences cannot a
 fidelity at a threshold of $1 - 10^{-6}$, far above its error of \numOracleErr{}, and the QDG's soundness
 for all inputs is proved. The other rules are judged
 at $\ket{0\dots0}$ and on \numRobDraws{} draws per input regime, so they could be wrong at other inputs.
-Containing the fault site is a proxy for helping a developer, and we ran no study with developers.
+Containing the fault site is a proxy for helping a developer, and we ran no study with developers. The
+profile predicates of the LintQ comparison are ours, fixed before the comparison, and show that a profile
+exposes a confirmed bug, not that a developer would see it.
 
 \paragraph*{Internal validity}
 We recorded every choice of our primary reading of Yu and Zhao's prose before the runs. The reading in which a gate only reads its control, added after the results, is unsound on \numYzRoUnsound{} pairs, so claims
@@ -24,4 +26,6 @@ benchmarks, and the real bugs are few and small. The rules are stated on circuit
 other languages, except that a repeat-until-success loop in Q\#~\cite{svore2018qsharp} has no single
 circuit and a static slicer must over-approximate its iterations. Seeded faults may differ from
 real ones, although \numMutPublished{} of our \numMutOperators{} operators come from published tools and
-fault models.
+fault models. Times are measured on one machine, and LintQ's and QChecker's are those their papers report on
+theirs, so the comparison of times is indicative. \tool{}'s OpenQASM reader is written in Python and dominates its
+time on the largest circuits.

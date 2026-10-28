@@ -178,9 +178,10 @@ while the QDG needs only the edges of each qubit.
 
 \paragraph*{Scalability of \tool{}}
 On the \numScaleSOneFiles{} programs of LintQ's corpus, read without being run, \tool{} slices the
-\numScaleSOneSliced{} that build a circuit, every qubit up to 64 of them, in \numScaleSOneMedianMs{}~ms per program
+\numScaleSOneSliced{} that build a circuit, every qubit up to 64 of them, as in the profile runs of Section~\ref{sec:tool}, in \numScaleSOneMedianMs{}~ms per program
 in the median and within \numScaleSOneNinetyNine{}~s for 99\% of them, and \numScaleSOneTimeouts{} programs reach
-the limit of 120~s. srcML and srcSlice take most of the median, \numScaleSOneSrcmlMs{} and
+the per-file limit of 120~s used for the corpora of Section~\ref{sec:tool}. The circuits and programs below
+have a limit of 600~s. srcML and srcSlice take most of the median, \numScaleSOneSrcmlMs{} and
 \numScaleSOneSrcsliceMs{}~ms, and the slices themselves \numScaleSOneSliceMs{}~ms. The largest trace, of
 \numScaleSOneMaxOps{} operations, takes \numScaleSOneMaxOpsS{}~s. Fig.~\ref{fig:scale} shows the time against the
 size. On the \numScaleQbRead{} circuits of QASMBench's medium and large sets that are valid OpenQASM~2, of up to
@@ -195,5 +196,5 @@ limit on the next circuits by size, and the \numScaleQpdgOver{} larger ones are 
 qubits in \numScaleLcSqS{}~s, and exceeds the limit on \numScaleLcOver{} circuits. On our parametric programs the source stays at
 about a dozen lines while the trace grows. The QFT on 600 qubits unrolls \numScaleQftOps{} operations from
 \numScaleQftLines{} code lines in \numScaleQftS{}~s, where running the program with Qiskit and slicing one qubit
-takes \numScaleQftRunS{}~s, which a static slicer gives up in order never to execute the program. Two of these programs loop beyond the interpreter's limit of 10{,}000 iterations, and \tool{} reads those loops
+takes \numScaleQftRunS{}~s, a speed that a static slicer gives up so that it never executes the program. Two of these programs loop beyond the interpreter's limit of 10{,}000 iterations, and \tool{} reads those loops
 as loops of unknown length, as it does a loop whose bound it cannot compute.

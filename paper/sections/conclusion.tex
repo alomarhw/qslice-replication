@@ -4,13 +4,15 @@ A quantum slice supports comprehension only if it keeps every operation that can
 qubits the developer asks about. We defined this requirement semantically and measured dependence rules
 against it. Reading the control of a gate as unchanged gives wrong slices that look right, entanglement
 edges add code that cannot matter, and pruning at one input gives slices of that input only. The QDG is
-sound for every input, dependence-complete and cheap, and our srcML-based slicer shows it on Qiskit source
-as the lines, iterations and qubit profiles a developer reads.
+sound for every input, dependence-complete and cheap. Slices narrow where a developer looks but do not improve mutation-based
+fault ranking. \tool{}, built on srcML and srcSlice, shows the QDG slice on Qiskit and OpenQASM~2 source as the
+lines, iterations and qubit profiles a developer reads, scales to circuits of millions of operations, and
+exposes in its profiles the qubit bugs that LintQ's authors confirmed.
 
 \section*{Data Availability}
 The replication package at \url{https://anonymous.4open.science/r/qslice-replication-5B21} contains the
-protocol, the Isabelle/HOL theory, the slicer, the circuits, the run logs and the scripts that regenerate
-every number and figure, which its \texttt{reproduce.sh} checks. Seeds and package versions (Python~3.12.2,
+protocol, the Isabelle/HOL theory, \tool{} with its srcSlice patch, the circuits, LintQ's public warnings, the
+run logs and the scripts that regenerate every number and figure, which its \texttt{reproduce.sh} checks. Seeds and package versions (Python~3.12.2,
 Qiskit~2.3.0) are fixed, and the package will be archived with a DOI on acceptance.
 
 \section*{Acknowledgment}

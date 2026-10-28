@@ -1,7 +1,7 @@
 \section{\tool: Quantum Slicing on srcML and srcSlice}\label{sec:tool}
 
 A slice helps developers only as lines of their program. \tool{} slices a Qiskit
-program~\cite{javadi2024qiskit} statically with the QDG of Section~\ref{sec:dependence}. It is built on
+program~\cite{javadi2024qiskit} or an OpenQASM~2 circuit statically with the QDG of Section~\ref{sec:dependence}. It is built on
 srcML~\cite{collard2011lightweight, collard2013srcml} and srcSlice~\cite{alomari2014srcslice}, which
 computes its classical lines, and it adds the quantum layer that neither has. Fig.~\ref{fig:tool} shows its steps on the ansatz of
 Fig.~\ref{fig:ansatz}.
@@ -32,22 +32,9 @@ expressions. srcSlice sees the same program as variables. Its profile of \texttt
 because each gate is a call on the one circuit object, and its profile of \texttt{qubit} records that the
 variable is passed as the first and the second argument of \texttt{cx}. srcSlice therefore knows which
 variables reach which argument of which call, but not which qubits a gate acts on, so its slice of
-\texttt{qc} is the whole circuit and it has no slice of a qubit at all. \tool{} adds the quantum layer in
-five extensions.
-
-\subsection{Two front ends, Qiskit and OpenQASM}
-\tool{} reads Qiskit programs, the language of the Bugs4Q and LintQ corpora~\cite{zhao2023bugs4q,
-paltenghi2024lintq}, and OpenQASM~2 circuits, the interchange format that Qiskit
-exports and that the benchmark suites of Section~\ref{sec:design} ship in. The two need different amounts of
-work. In Qiskit the qubits of a gate are computed by Python, so \tool{} needs all of E1 and E2 below. In
-OpenQASM~2 the qubit arguments are explicit and the statements run in order, so E1 is given by the syntax and E2
-reduces to reading the statements. srcML 1.1 has no OpenQASM language, and the markup Behler et al.\ specified
-has no released parser, which is why QStatic runs on hand-marked-up files~\cite{behler2024supporting,
-behler2025static}. \tool{} therefore reads OpenQASM~2 with a line-mapped reader that builds the same operation
-trace, and E3 to E5 apply unchanged. When srcML parses OpenQASM, the reader becomes a srcML front end, and
-OpenQASM~3, with its loops and subroutines, then gets E2 as Qiskit does. On all \numQasmCircuitsChecked{}
-circuits of corpus~A, the reader's trace equals the circuit Qiskit loads and every qubit's slice equals the
-study's.
+\texttt{qc} is the whole circuit and it has no slice of a qubit at all. Table~\ref{tab:flaws} lists what
+srcSlice lacks for quantum programs and where \tool{} supplies it. \tool{} adds the quantum layer in five
+extensions.
 
 \begin{table}[t]
   \centering
@@ -72,25 +59,26 @@ study's.
   \end{tabular}
 \end{table}
 
+
+
 \subsection{The quantum extensions}
 
 \paragraph*{E1, quantum roles of calls}
 A table of \numToolGateTable{} Qiskit instruction methods, including those of earlier releases, records
 which arguments of each are qubits, classical bits and angles, and which leading qubits are controls. It
 turns a srcML \texttt{call} element into a gate on qubit operands, as the letters of stage~1 mark. It plays
-the part of the quantum argument lists of Behler et al.'s OpenQASM markup~\cite{behler2024supporting}, for
-a language in which the roles are not in the syntax.
+the part of the quantum argument lists of the OpenQASM markup, for a language in which the roles are not in
+the syntax.
 
 \paragraph*{E2, qubits and execution order}
-\tool{} turns the srcML tree into an operation trace, as Behler et al.'s execution-order analysis does for
-OpenQASM~\cite{behler2024supporting} and as their QStatic tool does on hand-marked-up
-OpenQASM~\cite{behler2025static}. Because Qiskit computes its qubits with Python, \tool{} evaluates the
-program's expressions over known values, registers, bits and circuits. It unrolls loops and records the
+\tool{} turns the srcML tree into an operation trace, as the execution-order analysis of QStatic does for
+OpenQASM. Because Qiskit computes its qubits with Python, \tool{} evaluates the
+program's expressions over known values, registers, bits and circuits. It unrolls loops of up to 10{,}000 iterations and records the
 iteration of each operation, inlines functions, and follows \texttt{if\_test} and \texttt{c\_if}, Qiskit's
 constructs for gates conditioned on measured bits, as stage~2 of Fig.~\ref{fig:tool} shows. Where a value
 cannot be resolved statically, it over-approximates. An unknown qubit index acts on every qubit it may
-denote, an unknown condition runs every branch, and a loop over an unknown range repeats its body once more
-than the number of qubits and bits it touches, at most \numToolMaxCopies{} times. A circuit passed to code
+denote, an unknown condition runs every branch, and a loop over an unknown or longer range repeats its body once
+more than the number of qubits and bits it touches, at most \numToolMaxCopies{} times. A circuit passed to code
 \tool{} does not model is reported as not traced.
 
 \paragraph*{E3, quantum dependence}
@@ -110,7 +98,9 @@ The lines that compute the qubits, angles, conditions and loop ranges of a slice
 profiles. The start lines are the slice's quantum lines and the headers of the loops, conditions and
 \texttt{with} blocks that enclose them. A profile whose uses hold a start line is seeded, and the closure
 adds its definition lines, every profile whose dependent variables hold its name, and, for a parameter at
-position $k$ of a function $f$, every profile passed to $f$ at position~$k$. \tool{} runs srcSlice with an
+position $k$ of a function $f$, every profile passed to $f$ at position~$k$. srcSlice's profiles record
+forward facts, which variables a variable reaches and where it is passed, and the closure follows them
+backward from the start lines. \tool{} runs srcSlice with an
 extension for Python, covering keyword arguments, the receiver offset of methods, loop, \texttt{with}, tuple
 and comprehension targets, nested scopes and f-strings, and with fixes that apply to every language
 srcSlice supports. Two of these fixes came from building \tool{}. srcSlice recorded no use of a variable
@@ -119,13 +109,14 @@ recorded no use of a module variable inside a function. The replication package 
 a patch to the public srcSlice, with regression tests.
 
 \paragraph*{E5, qubit slice profiles}
-srcSlice's profile of a variable lists where it is defined and used, what depends on it, its aliases and the
-functions it is passed to~\cite{alomari2014srcslice}. \tool{} gives each qubit the analogue that
-Table~\ref{tab:profile} lists, from one backward and one forward pass over the trace and the srcML of the
-gate calls on the qubit. The forward pass marks every later operation that acts on a reached qubit or reads
-a reached bit, and its slices are dual to the backward ones on our test programs. Over the
+\tool{} computes the qubit slice profile of Section~\ref{sec:profiles} from one backward and one forward pass
+over the trace and the srcML of the gate calls on the qubit, and Table~\ref{tab:profile} sets it beside
+srcSlice's profile of a variable~\cite{alomari2014srcslice}. The forward pass marks every later operation that
+acts on a reached qubit or reads a reached bit, and on our test programs it agrees with the backward pass as
+Proposition~\ref{prop:dual} requires. The forward slice of a qubit's first operation and the backward slice of
+the qubit are different slices, and over the
 \numProfBugsQubits{}, \numProfTextQubits{} and \numProfLintqQubits{} qubits of the Bugs4Q programs, the
-textbook and \numProfLintqSample{} sampled LintQ files, the two slices of a qubit differ in length for
+textbook and \numProfLintqSample{} sampled LintQ files, they differ in length for
 \numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and \numProfLintqFwdNeBwd{} of them.
 
 \begin{table}[t]
@@ -147,9 +138,22 @@ textbook and \numProfLintqSample{} sampled LintQ files, the two slices of a qubi
   \end{tabular}
 \end{table}
 
+\subsection{Two front ends, Qiskit and OpenQASM}
+\tool{} reads Qiskit programs, the language of the Bugs4Q and LintQ corpora~\cite{zhao2023bugs4q,
+paltenghi2024lintq}, and OpenQASM~2 circuits, the interchange format that Qiskit
+exports and that the benchmark suites of Section~\ref{sec:design} ship in. The two need different amounts of
+work. In Qiskit the qubits of a gate are computed by Python, so \tool{} needs all of E1 and E2. In
+OpenQASM~2 the qubit arguments are explicit and the statements run in order, so E1 is given by the syntax and E2
+reduces to reading the statements. srcML 1.1 has no OpenQASM language, and the OpenQASM markup has no released parser yet, so
+QStatic runs on hand-marked-up files~\cite{behler2025static}. \tool{} therefore reads OpenQASM~2 with a line-mapped reader that builds the same operation
+trace, and E3 to E5 apply unchanged. When srcML parses OpenQASM, the reader becomes a srcML front end, and
+OpenQASM~3, with its loops and subroutines, then gets E2 as Qiskit does. On all \numQasmCircuitsChecked{}
+circuits of corpus~A, the reader's trace equals the circuit Qiskit loads and every qubit's slice equals the
+study's.
+
 \begin{table*}[t]
   \centering
-  \caption{srcSlice-Q against the tools it builds on and the static analyzers for Qiskit. Times are as each
+  \caption{\tool{} against the tools it builds on and the static analyzers for Qiskit. Times are as each
   paper reports them, on its own corpus and machine.}
   \label{tab:tools}
   \footnotesize\setlength{\tabcolsep}{3.2pt}
@@ -195,8 +199,8 @@ gate, and are outside a slice. Second, LintQ's ten-iteration bound matters. In \
 loop, \numLqBeyondTenOpsPct{} of all their operations. Third, on the examples of both papers, transcribed as
 programs, \tool{}'s slices show each bug. In LintQ's Fig.~1, the slice of $q_3$ is empty, the oversized circuit,
 and the slice of $q_0$ holds the \texttt{ry} after its measurement. In QChecker's Fig.~5, the slice of $q_2$ holds
-the measurement of $q_1$ and the \texttt{cx} that follows it on $q_1$. QChecker cannot detect the 22 Bugs4Q
-bugs that change outputs~\cite{zhao2023qchecker}. Every Bugs4Q unit of Section~\ref{sec:results} changes an
+the measurement of $q_1$ and the \texttt{cx} that follows it on $q_1$. QChecker's authors report that it cannot detect the Bugs4Q bugs that show only as wrong
+outputs~\cite{zhao2023qchecker}. Every Bugs4Q unit of Section~\ref{sec:results} changes an
 output, and on all \numLinesUnits{} of them the QDG slice keeps the faulty line, so slices reach the class of bugs
 that pattern detectors report they cannot.
 
@@ -222,7 +226,7 @@ carries with every value the lines that computed it, along the one path the trac
 srcSlice's lines contain the interpreter's for \numSsContainPct{} of the qubits, \numSsDevBugsContainPct{}
 over our programs and Bugs4Q and \numSsBugsContain{} of \numSsBugsQubits{} on Bugs4Q alone, with recall
 \numSsRecall{} and precision \numSsPrecision{} against them, in \numSsMedianMs{}~ms per file in the median.
-Before the two fixes, containment was \numSsBeforeContainPct{} and \numSsBeforeDevBugsContainPct{}, below
+Before the subscript and module-variable fixes of E4, containment was \numSsBeforeContainPct{} and \numSsBeforeDevBugsContainPct{}, below
 the threshold of 95\% that we fixed before the comparison, and the fixes were made after that result. The
 remaining misses lie mostly in functions that build a circuit or a value and return it, and in containers
 filled by method calls, whose effect srcSlice's forward slicing does not link to the use. Its extra lines are those of a flow-insensitive slicer, such as a definition of an index in

@@ -11,12 +11,15 @@ gives sound and dependence-complete slices, and we measure every alternative aga
 gate as unchanged, gives wrong slices for \numCpdgUnsoundPct{} of them, and \numFdCpdgZMatchPct{} of these
 reproduce the measured outcomes, so a histogram check would accept them. Entanglement edges, as in the
 quantum program dependence graph, keep \numRqOneYzSize{} of a circuit on average, against
-\numRqOneLcSize{} for the QDG, only \numLcExcess{} percentage points above the dependences themselves.
+\numRqOneLcSize{} for the QDG. The QDG keeps only \numLcExcess{} percentage points more than the dependences
+themselves.
 Pruning by simulating one input shrinks slices by a further \numHTwoRelative{}, but its slices hold only
 for that input and lose a fault that the QDG slice keeps in \numCQFour{} of \numRqThreeUnits{}
-seeded-fault units. Slices narrow where a developer looks, but they do not improve mutation-based fault
-ranking. Our static slicer for Qiskit, \tool{}, extends srcML and srcSlice with quantum roles, execution order
-and the QDG, reads a program without running it, and shows the slice on the developer's own source
-as lines, loop iterations and qubit profiles, and we close with
-what comprehension tools should show.
+seeded-fault units. On the programs of LintQ's corpus a qubit's slice holds \numScaleReadMedianPct{} of the
+code lines in the median, while on the small Bugs4Q programs it holds almost all of them, and slices do not
+improve mutation-based fault ranking. Our static slicer, \tool{}, extends srcML and srcSlice with quantum roles, execution order and the
+QDG, reads Qiskit programs and OpenQASM~2 circuits without running them, and shows the slice on the developer's own
+source as lines, loop iterations and qubit profiles. It reads a circuit of \numScaleQbMaxOps{} operations in
+\numScaleQbReadS{}~s and slices all its qubits in \numScaleQbAllS{}~s, and its profiles expose \numLqQubitExposed{} of the \numLqQubitTp{} qubit bugs
+that LintQ's authors confirmed on their corpus. We close with what comprehension tools should show.
 \end{abstract}

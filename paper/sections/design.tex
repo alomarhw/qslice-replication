@@ -1,12 +1,14 @@
 \section{Study Design}\label{sec:design}
 
-We ask four research questions.
+We ask four research questions, each about a question a developer has of a slice, whether it can be
+trusted, how small it can safely be, whether it holds the fault and what it costs.
 \textbf{RQ1} asks which dependence rules give sound and dependence-complete slices.
 \textbf{RQ2} asks how much smaller than the QDG slice a slice can safely be, and under which inputs the
 extra precision holds.
 \textbf{RQ3} asks what each rule does to fault localization, measured by whether the slice contains
 the fault and by mutation-based fault localization.
-\textbf{RQ4} asks what each rule costs in time.
+\textbf{RQ4} asks what each rule costs in time, and, as an exploratory addition, how \tool{} scales on
+LintQ's corpus, QASMBench's medium and large circuits and parametric programs of our own.
 
 \paragraph*{Pre-registration}
 The protocol was committed before the runs reported here. It extends an earlier run whose results it
@@ -23,6 +25,14 @@ which gives \numNPairs{} circuit--qubit pairs, \numNDynamicPairs{} of them in dy
 mid-circuit measurement, reset or conditioned gates. We also generate
 \numFamCircuits{} circuits with known structure. Corpus~L has
 \numCorpusLCircuits{} circuits of \numCorpusLMinQubits{} to \numCorpusLMaxQubits{} qubits.
+
+\paragraph*{Programs for \tool{}}
+\tool{} is evaluated in Section~\ref{sec:tool} and RQ4 on programs, not circuits. They are the Qiskit
+programs of Bugs4Q, the \numToolTextbookQiskit{} notebooks of the Qiskit textbook~\cite{qiskittextbook}, the
+\numToolLintqQiskit{} programs that LintQ's authors collected from GitHub~\cite{paltenghi2024lintq}, all read and
+never executed, and QASMBench's medium and large circuits, of up to millions of operations. LintQ's public
+warnings on its corpus, with the \numLqTp{} that its authors confirmed as bugs, are the data of the comparison
+with LintQ.
 
 \paragraph*{Oracle and ground truth}
 An independent oracle simulates each circuit exactly, branching over measurement outcomes, and agrees with
@@ -51,8 +61,7 @@ perturbation of our own. Of the \numMutants{} mutants, \numMutantsExcluded{} wit
 excluded, and \numMutantsKilled{} change the measured distribution of at least one qubit. Each such qubit
 and its mutant form a unit, which gives \numRqThreeUnits{} units. For each we record the slice's size and whether it contains the fault site. Of the \numBugsFourQTriaged{} entries of Bugs4Q~\cite{zhao2023bugs4q},
 \numBugsFourQIncluded{} are circuit-level faults that port mechanically to the current Qiskit release, and
-\numBugsFourQKilled{} of them change a qubit's measured distribution. Their operations map to lines of the original programs, on which the tool of
-Section~\ref{sec:tool} computes the same line slices.
+\numBugsFourQKilled{} of them change a qubit's measured distribution. Their operations map to lines of the original programs, on which \tool{} computes the same line slices.
 
 \paragraph*{Fault localization}
 Mutation-based fault localization ranks the operations of the faulty circuit by how their mutants

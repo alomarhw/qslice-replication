@@ -20,14 +20,9 @@ slicing for quantum programs. Its dependences are defined in prose and were not 
 although it produces the product state $\ket{11}$, which is case~(i) of Proposition~\ref{prop:ent}. In their
 graph for Listing~1, the measurement of $q_1$ misses \texttt{x(1)} and the second CNOT, which make it
 return 1 with certainty, while the implied slice does so with probability \numYzFigSliceProb{}. We implement it as a documented baseline. The quantum code property graph of Kaul et al.~\cite{kaul2023uniform} treats the control of a CNOT as
-unchanged, the reading that phase kickback breaks, as Proposition~\ref{prop:du} shows. LintQ orders
-two operations exactly when they share a qubit~\cite{paltenghi2024lintq}, the relation of the QDG, to find
-bug patterns without aiming at full soundness, and we show that this relation gives sound and
-dependence-complete slices. Behler et al.\ extend srcML to OpenQASM~\cite{behler2024supporting}. Their QStatic tool orders the
-operations of each qubit in hand-marked-up OpenQASM and uses that order to find patterns and
-refactorings, and they name qubit slicing with srcML's slicer as future work~\cite{behler2025static}.
-QStatic has no dependence rule and does not read Qiskit, and \tool{} realizes that future work with a
-dependence rule that is proved sound.
+unchanged, the reading that phase kickback breaks, as Proposition~\ref{prop:du} shows. Behler et al.\ extend srcML to OpenQASM~\cite{behler2024supporting}, and their
+QStatic tool orders the operations of each qubit to find patterns and refactorings~\cite{behler2025static}.
+Section~\ref{sec:tool} compares \tool{} with LintQ and QChecker, and Table~\ref{tab:tools} with QStatic.
 
 \paragraph*{Entanglement analysis}
 Static analyses approximate which qubits may be entangled with type
