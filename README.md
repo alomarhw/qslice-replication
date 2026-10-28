@@ -53,8 +53,8 @@ is not the paper's QDG.
 ## Requirements
 - Python 3.12 with the pinned packages in `experiments/requirements.lock` (qiskit 2.3.0, numpy 1.26.4);
   the noise analysis uses `experiments/requirements_noise.lock`.
-- srcML 1.1 on the PATH for the static slicer, and srcSlice with the patch in `tools/srcslice/` for its
-  optional classical lines (Deviation I-20).
+- srcML 1.1 on the PATH for the static slicer (srcSlice-Q), and srcSlice with the patch in `tools/srcslice/`
+  for its classical lines (Deviations I-20 and I-21); without srcSlice, classical lines come from the interpreter.
 - Graphviz (`dot`) for the layout of Fig. 2, and `pdflatex` with `latexmk` to build the paper.
 - Isabelle2025 to check the proof (optional).
 

@@ -560,6 +560,19 @@ def main() -> int:
     put("SsPrecision", prec, f"{prec:.2f}", src)
     ft = sorted({(x["corpus"], x["file"]): float(x["srcslice_s"]) for x in ss}.values())
     put("SsMedianMs", ft[len(ft) // 2], f"{1000 * ft[len(ft) // 2]:.0f}", src)
+    # the run before the two srcSlice fixes of Deviation I-21
+    src = "results/icpc/srcslice_i20/qubits.csv"
+    s0 = [x for x in rows(ICPC / "srcslice_i20" / "qubits.csv") if not x["error"]]
+    c0 = sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in s0) / len(s0)
+    put("SsBeforeContainPct", c0, pct(c0, 0), src)
+    d0 = [x for x in s0 if x["corpus"] in ("dev", "bugs4q")]
+    dc0 = sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in d0) / len(d0)
+    put("SsBeforeDevBugsContainPct", dc0, pct(dc0, 0), src)
+    h0 = sum(len(lset(x["interp"]) & lset(x["srcslice"])) for x in s0) / sum(len(lset(x["interp"])) for x in s0)
+    put("SsBeforeRecall", h0, f"{h0:.2f}", src)
+    bq = [x for x in ss if x["corpus"] == "bugs4q"]
+    put("SsBugsContain", sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in bq), cnt(sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in bq)), "results/icpc/srcslice/qubits.csv")
+    put("SsBugsQubits", len(bq), cnt(len(bq)), "results/icpc/srcslice/qubits.csv")
 
     # ---- the static program slicer (Deviation I-15, I-18; tool-v7, the final version; earlier versions' results kept) --
     sys.path.insert(0, str(HERE.parent))

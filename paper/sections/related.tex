@@ -8,8 +8,8 @@ restricts a slice to one execution~\cite{korel1988dynamic, agrawal1990dynamic}, 
 to one input. Frameworks such as WALA provide dependence-graph slicers for Java, JavaScript
 and Python~\cite{wala}, but on a Qiskit program they see each gate as a call on one circuit object and cannot
 tell which qubits an operation depends on. srcSlice computes lightweight forward slices and slice profiles of every variable from srcML without
-building a dependence graph~\cite{alomari2014srcslice}. \tool{} follows its design, can take a slice's classical lines
-from it, and exposes three gaps in it, but srcSlice alone has no notion of qubits. Gallagher names quantum programs as a direction for semantically
+building a dependence graph~\cite{alomari2014srcslice}. \tool{} extends it to quantum programs and takes a slice's
+classical lines from it, but srcSlice alone has no notion of qubits. Gallagher names quantum programs as a direction for semantically
 defined slicing~\cite{gallagher2025program}, and we define the slice by the reduced state of the criterion. Probabilistic slicing preserves the distribution of the criterion
 variables~\cite{hur2014slicing, amtoft2020theory, olmedo2025slicing}. Our criterion is stronger, since a
 distribution in one basis does not see phase or the kickback of Section~\ref{sec:example}.

@@ -2,9 +2,8 @@
 
 A slice helps developers only as lines of their program. \tool{} slices a Qiskit
 program~\cite{javadi2024qiskit} statically with the QDG of Section~\ref{sec:dependence}. It is built on
-srcML~\cite{collard2011lightweight, collard2013srcml} and on the design of
-srcSlice~\cite{alomari2014srcslice}, which it also runs for classical lines, and it adds the quantum layer
-that neither has. Fig.~\ref{fig:tool} shows its steps on the ansatz of
+srcML~\cite{collard2011lightweight, collard2013srcml} and srcSlice~\cite{alomari2014srcslice}, which
+computes its classical lines, and it adds the quantum layer that neither has. Fig.~\ref{fig:tool} shows its steps on the ansatz of
 Fig.~\ref{fig:ansatz}.
 
 \subsection{Why srcML and srcSlice}
@@ -69,17 +68,18 @@ each. Like srcSlice, \tool{} computes these dependences while it slices instead 
 time linear in the trace. The pass returns the operations of the slice, their lines and iterations, as
 stage~3 of Fig.~\ref{fig:tool} shows.
 
-\paragraph*{E4, classical lines}
-The lines that compute the qubits, angles, conditions and loop ranges of a slice come from the interpreter
-of E2, which carries with every value the lines that computed it, along the one path the trace follows.
-\tool{} can also take them from srcSlice. Its start lines are then the slice's quantum lines and the headers
-of the loops, conditions and \texttt{with} blocks that enclose them, a profile whose uses hold a start line
-is seeded, and the closure adds its definition lines, every profile whose dependent variables hold its name,
-and, for a parameter at position $k$ of a function $f$, every profile passed to $f$ at position~$k$. For this
-\tool{} runs srcSlice with an extension for Python, covering keyword arguments, the receiver offset of
-methods, loop, \texttt{with}, tuple and comprehension targets, nested scopes and f-strings, with fixes to
-call-site linking that apply to every language srcSlice supports. The replication package contains the
-extension as a patch to the public srcSlice.
+\paragraph*{E4, classical lines from srcSlice}
+The lines that compute the qubits, angles, conditions and loop ranges of a slice come from srcSlice's
+profiles. The start lines are the slice's quantum lines and the headers of the loops, conditions and
+\texttt{with} blocks that enclose them. A profile whose uses hold a start line is seeded, and the closure
+adds its definition lines, every profile whose dependent variables hold its name, and, for a parameter at
+position $k$ of a function $f$, every profile passed to $f$ at position~$k$. \tool{} runs srcSlice with an
+extension for Python, covering keyword arguments, the receiver offset of methods, loop, \texttt{with}, tuple
+and comprehension targets, nested scopes and f-strings, and with fixes that apply to every language
+srcSlice supports. Two of these fixes came from building \tool{}. srcSlice recorded no use of a variable
+inside a subscript, as in \texttt{q[a]}, which is how Qiskit names qubits and how C indexes arrays, and it
+recorded no use of a module variable inside a function. The replication package contains the extension as
+a patch to the public srcSlice, with regression tests.
 
 \paragraph*{E5, qubit slice profiles}
 srcSlice's profile of a variable lists where it is defined and used, what depends on it, its aliases and the
@@ -126,14 +126,15 @@ programs of LintQ's corpus~\cite{paltenghi2024lintq}, \numToolBugsCircuit{}, \nu
 No Bugs4Q or LintQ program crashes \tool{}, which takes \numToolBugsMedianMs{}~ms per Bugs4Q program in the
 median.
 
-The two sources of classical lines agree in part. Over the \numSsQubits{} qubits of \numSsFiles{} files of
-our programs, Bugs4Q, the textbook and the LintQ sample, srcSlice's lines contain the interpreter's for
-\numSsContainPct{} of the qubits and equal them for \numSsEqualPct{}, with recall \numSsRecall{} and
-precision \numSsPrecision{} against them, in \numSsMedianMs{}~ms per file in the median. Its extra lines are
-those of a flow-insensitive slicer, such as a definition of an index in another loop or the header of a
-function whose parameter carries a qubit. Its missed lines come from three gaps that the comparison exposed.
-srcSlice records no use of a variable inside a subscript, as in \texttt{q[a]}, which is how Qiskit names
-qubits and how C indexes arrays. It links no value a function returns to the call, and it records no use of
-a module variable inside a function. Containment over our programs and Bugs4Q,
-\numSsDevBugsContainPct{}, is below the threshold of 95\% fixed before the comparison, so \tool{} reports the
-interpreter's lines, and srcSlice's are an option.
+The classical lines of E4 are checked against a second, flow-sensitive computation. The interpreter of E2
+carries with every value the lines that computed it, along the one path the trace follows. Over the
+\numSsQubits{} qubits of \numSsFiles{} files of our programs, Bugs4Q, the textbook and the LintQ sample,
+srcSlice's lines contain the interpreter's for \numSsContainPct{} of the qubits, \numSsDevBugsContainPct{}
+over our programs and Bugs4Q and \numSsBugsContain{} of \numSsBugsQubits{} on Bugs4Q alone, with recall
+\numSsRecall{} and precision \numSsPrecision{} against them, in \numSsMedianMs{}~ms per file in the median.
+Before the two fixes, containment was \numSsBeforeContainPct{} and \numSsBeforeDevBugsContainPct{}, below
+the threshold of 95\% that we fixed before the comparison, and the fixes were made after that result. The
+remaining misses lie mostly in functions that build a circuit or a value and return it, and in containers
+filled by method calls, whose effect srcSlice's forward slicing does not link to the use. Its extra lines are those of a flow-insensitive slicer, such as a definition of an index in
+another loop or the header of a function whose parameter carries a qubit. \tool{} reports srcSlice's lines,
+and the interpreter's are an option.

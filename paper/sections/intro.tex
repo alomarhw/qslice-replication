@@ -31,7 +31,7 @@ on \numNPairs{} circuit--qubit pairs, \numFamCircuits{} circuits with known stru
 fault--qubit units and real bugs from Bugs4Q~\cite{zhao2023bugs4q}, from the classical PDG to state-based
 pruning, which simulates one input, with a documented reimplementation of the QPDG. How a slice is shown to
 a developer is answered by \tool{}, a static slicer for Qiskit programs~\cite{javadi2024qiskit}. It is
-built on srcML and on the design of srcSlice, so it reads a program without running it and keeps every character and
+built on srcML and srcSlice, so it reads a program without running it and keeps every character and
 position of the source, and it adds the quantum layer they lack, the roles of gate arguments, the qubits
 and order of operations, and the QDG. It reports source lines, loop iterations, the classical lines that
 compute them and a profile of every qubit.
@@ -58,8 +58,8 @@ dependence-complete, given in Section~\ref{sec:dependence}.
 \item A pre-registered comparison of dependence rules, from the classical PDG to state-based pruning,
 against this ground truth, which explains why classical slices fail and what entanglement edges and
 pruning cost, designed in Section~\ref{sec:design} and reported in Section~\ref{sec:results}.
-\item \tool{}, a static slicer for Qiskit built on srcML and on the design of srcSlice, whose quantum
-extensions give srcSlice's classical slicing a quantum dependence rule, and which shows a slice as source lines, loop
+\item \tool{}, a static slicer for Qiskit built on srcML and srcSlice, whose quantum extensions give
+srcSlice's classical slicing a quantum dependence rule, and which shows a slice as source lines, loop
 iterations, classical lines and qubit profiles, validated on Bugs4Q, the Qiskit textbook and \numToolLintqQiskit{}
 programs from GitHub, presented in Section~\ref{sec:tool}.
 \item The implications for comprehension tools that Section~\ref{sec:discussion} draws, and a replication

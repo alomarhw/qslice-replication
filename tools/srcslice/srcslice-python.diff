@@ -125,7 +125,7 @@ index 30b42d3..5aef74e 100644
    std::cerr<<"Time is: "<<((float)t)/CLOCKS_PER_SEC<<std::endl;
    //std::string filename = handler.sysDict->find("stack.cpp.xml");
 diff --git a/src/cpp/srcSliceHandler.cpp b/src/cpp/srcSliceHandler.cpp
-index 6732063..a07610c 100644
+index 6732063..4e10bf8 100644
 --- a/src/cpp/srcSliceHandler.cpp
 +++ b/src/cpp/srcSliceHandler.cpp
 @@ -20,6 +20,8 @@
@@ -137,7 +137,43 @@ index 6732063..a07610c 100644
  /**
   *Find
   *Find function takes a variable name and searches first the local table to the function it was in
-@@ -71,6 +73,7 @@ void srcSliceHandler::ProcessDeclStmt(){
+@@ -28,7 +30,7 @@
+  *@param varName - Name of the variable whose slice profile we want.
+  *@return Pointer to Slice Profile or null.
+  */
+-SliceProfile* srcSliceHandler::Find(const std::string& varName){    
++SliceProfile* srcSliceHandler::FindLocal(const std::string& varName){
+     auto sp = FunctionIt->second.find(varName);
+     if(sp != FunctionIt->second.end()){
+         return &(sp->second);
+@@ -40,6 +42,26 @@ SliceProfile* srcSliceHandler::Find(const std::string& varName){
+     }
+     return nullptr;
+ }
++
++/**
++ * Find
++ * The profile a read of varName refers to: the current function's, a global declaration's, or else the
++ * file-scope variable of that name (a module variable read inside a Python function). A definition uses
++ * FindLocal instead, so an assignment inside a function still makes a local.
++ */
++SliceProfile* srcSliceHandler::Find(const std::string& varName){
++    if(SliceProfile* sp = FindLocal(varName)){
++        return sp;
++    }
++    auto file = FileIt->second.find("GLOBAL");
++    if(file != FileIt->second.end() && &(file->second) != &(FunctionIt->second)){
++        auto sp = file->second.find(varName);
++        if(sp != file->second.end()){
++            return &(sp->second);
++        }
++    }
++    return nullptr;
++}
+ /**
+  *ProcessConstructorDecl
+  *Processes decls of the form object(arg,arg)
+@@ -71,6 +93,7 @@ void srcSliceHandler::ProcessDeclStmt(){
          }
      }else{ //Inits in for loops screw with typical decl statement handling. This will grab decls I miss due to weird init usage
          if(!inFor) return; //This really is only for for loop inits. TODO: Possibly, write a separate function for these.
@@ -145,7 +181,7 @@ index 6732063..a07610c 100644
          varIt = FunctionIt->second.insert(std::make_pair(currentDeclInit.first, std::move(currentSliceProfile))).first;
          varIt->second.def.insert(currentDeclInit.second);    
      } 
-@@ -86,14 +89,20 @@ void srcSliceHandler::ProcessDeclStmt(){
+@@ -86,14 +109,20 @@ void srcSliceHandler::ProcessDeclStmt(){
  void srcSliceHandler::GetCallData(){
      //Get function arguments
      if(triggerField[argument_list] && triggerField[argument] && 
@@ -171,7 +207,7 @@ index 6732063..a07610c 100644
              }
          }
      }
-@@ -105,7 +114,10 @@ void srcSliceHandler::GetParamType(){
+@@ -105,7 +134,10 @@ void srcSliceHandler::GetParamType(){
  }
  
  void srcSliceHandler::GetParamName(){
@@ -183,7 +219,7 @@ index 6732063..a07610c 100644
      currentSliceProfile.file = fileName;
      currentSliceProfile.function = functionTmplt.functionName;
      currentSliceProfile.variableName = currentParam.first;
-@@ -138,9 +150,6 @@ void srcSliceHandler::GetFunctionDeclData(){
+@@ -138,9 +170,6 @@ void srcSliceHandler::GetFunctionDeclData(){
      functionTmplt.params.push_back(currentParamType.first);
  }
  void srcSliceHandler::AssignProfile(){
@@ -193,7 +229,7 @@ index 6732063..a07610c 100644
      if(currentSliceProfile.file.empty()){
          currentSliceProfile.file = fileName;
      }
-@@ -165,7 +174,7 @@ void srcSliceHandler::AssignProfile(){
+@@ -165,7 +194,7 @@ void srcSliceHandler::AssignProfile(){
  */
  void srcSliceHandler::GetDeclStmtData(){
      if(currentDecl.first.empty()) return;
@@ -202,16 +238,19 @@ index 6732063..a07610c 100644
      currentSliceProfile.file = fileName;
      currentSliceProfile.function = functionTmplt.functionName;
      currentSliceProfile.variableName = currentDecl.first;
-@@ -191,7 +200,7 @@ void srcSliceHandler::ProcessExprStmtPreAssign(){
+@@ -189,9 +218,9 @@ void srcSliceHandler::GetDeclStmtData(){
+  */
+ void srcSliceHandler::ProcessExprStmtPreAssign(){
      if(!lhsExprStmt.first.empty()){
-         SliceProfile* lhs = Find(lhsExprStmt.first);
+-        SliceProfile* lhs = Find(lhsExprStmt.first);
++        SliceProfile* lhs = FindLocal(lhsExprStmt.first);
          if(!lhs){
 -            currentSliceProfile.index = -1;
 +            currentSliceProfile.index = 0;
              currentSliceProfile.file = fileName;
              currentSliceProfile.function = functionTmplt.functionName;
              currentSliceProfile.variableName = lhsExprStmt.first;
-@@ -213,7 +222,14 @@ void srcSliceHandler::ProcessExprStmtPreAssign(){
+@@ -213,7 +242,14 @@ void srcSliceHandler::ProcessExprStmtPreAssign(){
   * process the rhs for any aliases, dvars, or function calls.
   */
  void srcSliceHandler::ProcessExprStmtPostAssign(){
@@ -227,7 +266,7 @@ index 6732063..a07610c 100644
      if(!lhs){return;}
  
      auto sprIt = Find(currentExprStmt.first);//find the sp for the rhs
-@@ -303,12 +319,16 @@ void srcSliceHandler::ComputeInterprocedural(const std::string& f){
+@@ -303,12 +339,16 @@ void srcSliceHandler::ComputeInterprocedural(const std::string& f){
  */
  SliceProfile srcSliceHandler::ArgumentProfile(std::string fname, unsigned int parameterIndex, VarMap::iterator vIt){ //TODO varIt is a hack here. Fix. We shouldn't need to pass an extra param to do this.
      SliceProfile Spi;
@@ -247,7 +286,7 @@ index 6732063..a07610c 100644
          VarMap::iterator v = funcIt->second.begin();    
          for(VarMap::iterator it = v; it != funcIt->second.end(); ++it){
          
-@@ -347,4 +367,255 @@ SliceProfile srcSliceHandler::ArgumentProfile(std::string fname, unsigned int pa
+@@ -347,4 +387,271 @@ SliceProfile srcSliceHandler::ArgumentProfile(std::string fname, unsigned int pa
          //std::cout<<"ERROR IN ARGUMENT PROFILE WHEN ACCESSING: "<<fname<<std::endl;
      }
      return Spi;
@@ -282,7 +321,7 @@ index 6732063..a07610c 100644
 + * Slice profile of a variable bound by a binding form, created on first binding (Python has no declarations).
 + */
 +SliceProfile* srcSliceHandler::FindOrDefine(const std::string& varName, unsigned int line){
-+    SliceProfile* sp = Find(varName);
++    SliceProfile* sp = FindLocal(varName);
 +    if(!sp){
 +        SliceProfile profile(0, fileName, functionTmplt.functionName, line, varName, false, inGlobalScope);
 +        sp = &(FunctionIt->second.insert(std::make_pair(varName, std::move(profile))).first->second);
@@ -298,6 +337,22 @@ index 6732063..a07610c 100644
 +void srcSliceHandler::OnBaseName(const std::string& varName, unsigned int line){
 +    if(IsCalleeName() || LastIndexOf("type") >= 0 || LastIndexOf("annotation") >= 0 || LastIndexOf("parameter_list") >= 0){
 +        return;
++    }
++    long declAt = LastIndexOf("decl");
++    bool inInit = declAt >= 0 && LastIndexOf("init", declAt) >= 0;
++    if(LastIndexOf("index") >= 0 && (declAt < 0 || inInit)){ //a subscript reads its index: q[a], x = v[i], int y = r[k]
++        if(SliceProfile* sp = Find(varName)){
++            sp->use.insert(line);
++            if(inInit && varIt->second.variableName != varName){ //int y = r[k]: y depends on k
++                sp->dvars.insert(varIt->second.variableName);
++            }
++            if(exprassign){ //on the right of an assignment, the targets depend on the index
++                for(const std::string& target : lhsNames){
++                    if(target != varName) sp->dvars.insert(target);
++                }
++                if(!lhsName.empty() && lhsName != varName) sp->dvars.insert(lhsName);
++            }
++        }
 +    }
 +    for(auto ctx = forBindings.rbegin(); ctx != forBindings.rend(); ++ctx){
 +        long control = LastIndexOf("control", ctx->depth);
@@ -506,7 +561,7 @@ index 6732063..a07610c 100644
 +    }
 +}
 diff --git a/src/headers/srcSliceHandler.hpp b/src/headers/srcSliceHandler.hpp
-index 639e1d0..a42290b 100644
+index 639e1d0..3b6d938 100644
 --- a/src/headers/srcSliceHandler.hpp
 +++ b/src/headers/srcSliceHandler.hpp
 @@ -29,6 +29,7 @@
@@ -584,10 +639,11 @@ index 639e1d0..a42290b 100644
  
      //for expr_stmts    
      bool exprassign;
-@@ -150,14 +196,26 @@ private:
+@@ -150,14 +196,27 @@ private:
  
      SliceProfile ArgumentProfile(std::string, unsigned int, VarMap::iterator);
      SliceProfile* Find(const std::string& varName);
++    SliceProfile* FindLocal(const std::string& varName);
 +
 +    long LastIndexOf(const std::string& element, std::size_t from = 0) const;
 +    bool IsCalleeName() const;
@@ -611,7 +667,7 @@ index 639e1d0..a42290b 100644
  
          constructorNum = 0;
          lineNum = 0;
-@@ -169,6 +227,11 @@ public:
+@@ -169,6 +228,11 @@ public:
          sawinit = false;
          sawgeneric = false;
          memberAccess = false;
@@ -623,7 +679,7 @@ index 639e1d0..a42290b 100644
  
          exprassign = false;
          exprop = false;
-@@ -207,6 +270,9 @@ public:
+@@ -207,6 +271,9 @@ public:
                          GetFunctionDeclData();
                      }
                  }
@@ -633,7 +689,7 @@ index 639e1d0..a42290b 100644
                  ++triggerField[parameter_list];
              } },
  
-@@ -216,6 +282,7 @@ public:
+@@ -216,6 +283,7 @@ public:
              } },
  
              { "for", [this](){
@@ -641,7 +697,7 @@ index 639e1d0..a42290b 100644
                  ++triggerField[forloop];
                  inFor = true;
                  //controlFlowLineNum.push(lineNum);
-@@ -238,6 +305,9 @@ public:
+@@ -238,6 +306,9 @@ public:
                  if(triggerField[call]){
                      if(isACallName){
                          isACallName = false;
@@ -651,7 +707,7 @@ index 639e1d0..a42290b 100644
                          nameOfCurrentClldFcn.push(calledFunctionName);
                          calledFunctionName.clear();
                      }
-@@ -245,14 +315,67 @@ public:
+@@ -245,14 +316,67 @@ public:
              } },
  
              { "call", [this](){
@@ -722,7 +778,7 @@ index 639e1d0..a42290b 100644
                  inGlobalScope = false;
                  functionTmplt.fileName = fileName;
                  ++triggerField[function];
-@@ -291,6 +414,9 @@ public:
+@@ -291,6 +415,9 @@ public:
              { "parameter", [this](){
                      ++triggerField[param];
                      ++declIndex;
@@ -732,7 +788,7 @@ index 639e1d0..a42290b 100644
              } },    
              { "member_list", [this](){
                  ++triggerField[member_list];
-@@ -339,6 +465,8 @@ public:
+@@ -339,6 +466,8 @@ public:
                  ++triggerField[init];
              } },    
              { "argument", [this](){
@@ -741,7 +797,7 @@ index 639e1d0..a42290b 100644
                  ++numArgs;
                  currentCallArgData.first.clear();
                  calledFunctionName.clear();
-@@ -360,6 +488,9 @@ public:
+@@ -360,6 +489,9 @@ public:
                  ++triggerField[expr];
              } },    
              { "name", [this](){
@@ -751,7 +807,7 @@ index 639e1d0..a42290b 100644
                  ++triggerField[name];
                  functionTmplt.functionLineNumber = useExprStmt.second = lhsExprStmt.second = currentCallArgData.second = currentParam.second = currentParamType.second = 
                  currentFunctionBody.second = currentDecl.second =  currentExprStmt.second = currentFunctionDecl.second = currentDeclInit.second = lineNum;
-@@ -374,6 +505,7 @@ public:
+@@ -374,6 +506,7 @@ public:
          process_map3 = {
  
              {"decl_stmt", [this](){
@@ -759,7 +815,7 @@ index 639e1d0..a42290b 100644
                  currentCallArgData.first.clear();
                  currentDeclArg.first.clear();
                  currentDeclCtor.first.clear();
-@@ -384,6 +516,10 @@ public:
+@@ -384,6 +517,10 @@ public:
              } }, 
  
              { "expr_stmt", [this](){
@@ -770,7 +826,7 @@ index 639e1d0..a42290b 100644
                  --triggerField[expr_stmt];
                  
                  //for decl_stmts
-@@ -417,6 +553,9 @@ public:
+@@ -417,6 +554,9 @@ public:
              } },
  
              { "for", [this](){
@@ -780,7 +836,7 @@ index 639e1d0..a42290b 100644
                  --triggerField[forloop];
              } },
  
-@@ -425,6 +564,7 @@ public:
+@@ -425,6 +565,7 @@ public:
              } },
  
              { "condition", [this](){
@@ -788,7 +844,7 @@ index 639e1d0..a42290b 100644
                  --triggerField[condition];
                  //for expr_stmts
                  foundexprlhs = false;
-@@ -456,14 +596,70 @@ public:
+@@ -456,14 +597,70 @@ public:
              { "call", [this](){
                  if(!nameOfCurrentClldFcn.empty()){
                      nameOfCurrentClldFcn.pop();
@@ -861,7 +917,7 @@ index 639e1d0..a42290b 100644
                  declIndex = 0;
                  inGlobalScope = true;
                  
-@@ -476,6 +672,25 @@ public:
+@@ -476,6 +673,25 @@ public:
                  }
                  
                  --triggerField[function];
@@ -887,7 +943,7 @@ index 639e1d0..a42290b 100644
              } },
              { "constructor", [this](){
                  isConstructor = false;
-@@ -512,7 +727,10 @@ public:
+@@ -512,7 +728,10 @@ public:
              { "parameter", [this](){
                      if(triggerField[parameter_list] && triggerField[param] && !(triggerField[type] || triggerField[functionblock] || triggerField[templates])){
                          GetParamName();
@@ -898,7 +954,7 @@ index 639e1d0..a42290b 100644
                      potentialAlias = false;
                      --triggerField[param];
              } },    
-@@ -520,11 +738,33 @@ public:
+@@ -520,11 +739,33 @@ public:
                  --triggerField[member_list];
              } },
              { "return", [this](){
@@ -932,7 +988,7 @@ index 639e1d0..a42290b 100644
                  inFor = false;
                  --triggerField[control];
              } },
-@@ -532,10 +772,16 @@ public:
+@@ -532,10 +773,16 @@ public:
                  --triggerField[index];
              } },    
              { "operator", [this](){
@@ -949,7 +1005,7 @@ index 639e1d0..a42290b 100644
                  if(currentDeclInit.first == "new"){
                       //separate new operator because we kinda need to know when we see it.
                      sawnew = true;
-@@ -552,6 +798,21 @@ public:
+@@ -552,6 +799,21 @@ public:
                          if(!lhsExprStmt.first.empty()){
                              lhsName = lhsExprStmt.first;
                          }
@@ -971,7 +1027,7 @@ index 639e1d0..a42290b 100644
                          lhsExprStmt.first.clear();
                          exprop = false;
                          //foundexprlhs = true;
-@@ -583,6 +844,9 @@ public:
+@@ -583,6 +845,9 @@ public:
                  --triggerField[init];
              } },    
              { "argument", [this](){
@@ -981,7 +1037,7 @@ index 639e1d0..a42290b 100644
                  currentDeclArg.first.clear(); //get rid of the name of the var that came before it for ctor calls like: object(InitVarable)
                  currentCallArgData.first.clear();
                  calledFunctionName.clear();
-@@ -638,11 +902,39 @@ public:
+@@ -638,11 +903,39 @@ public:
                  --triggerField[type];
              } },    
              { "expr", [this](){
@@ -1023,7 +1079,7 @@ index 639e1d0..a42290b 100644
                  }
                  //Get function arguments
                  if(triggerField[call] || (triggerField[decl_stmt] && triggerField[argument_list])){
-@@ -775,6 +1067,22 @@ public:
+@@ -775,6 +1068,22 @@ public:
          if(name == "generic"){
              sawgeneric = true;
          }
@@ -1046,7 +1102,7 @@ index 639e1d0..a42290b 100644
          
          std::unordered_map<std::string, std::function<void()>>::const_iterator process = process_map.find(lname);
          if (process != process_map.end()) {
-@@ -789,16 +1097,34 @@ public:
+@@ -789,16 +1098,34 @@ public:
       * SAX handler function for character handling within a unit.
       * Overide for desired behaviour.
       */
@@ -1083,7 +1139,7 @@ index 639e1d0..a42290b 100644
              currentFunctionBody.first.append(ch, len);
              //std::cerr<<currentFunctionBody.first<<std::endl;
          }
-@@ -816,7 +1142,7 @@ public:
+@@ -816,7 +1143,7 @@ public:
              currentFunctionDecl.first.append(ch,len);
          }
          if((triggerField[param] && (triggerField[function] || triggerField[functiondecl] || triggerField[constructor]) && triggerField[name])
@@ -1092,7 +1148,7 @@ index 639e1d0..a42290b 100644
              currentParam.first.append(ch, len);
          }
          if((triggerField[param] && (triggerField[function] || triggerField[functiondecl] || triggerField[constructor])) && triggerField[name] &&  triggerField[type]
-@@ -853,12 +1179,13 @@ public:
+@@ -853,12 +1180,13 @@ public:
              currentOperator.append(ch, len);
          }
          //This only handles expr statments of the form a = b. Anything without = in it is skipped here -- Not entirely true anymore
@@ -1108,7 +1164,7 @@ index 639e1d0..a42290b 100644
                  exprassign = true;
                  exprop = false; //assumed above in "operator" that I wouldn't see =. This takes care of when I assume wrong.
                  str.clear(); //don't read the =, just want to know it was there.
-@@ -918,14 +1245,22 @@ public:
+@@ -918,14 +1246,22 @@ public:
              currentDecl.first.clear();
              --triggerField[preproc];
          }
@@ -1588,3 +1644,57 @@ index 0000000..6064783
 +    echo "$result" | grep '^FAIL' && failed=1
 +done
 +exit $failed
+diff --git a/tests/regression/subscripts_globals/expected.tsv b/tests/regression/subscripts_globals/expected.tsv
+new file mode 100644
+index 0000000..68d1e56
+--- /dev/null
++++ b/tests/regression/subscripts_globals/expected.tsv
+@@ -0,0 +1,12 @@
++# a subscript reads its index (Python and C); a module variable read inside a function
++GLOBAL	a	use	6
++GLOBAL	k	use	9
++GLOBAL	k	dv	x
++GLOBAL	EDGES	use	14;16
++GLOBAL	EDGES	dv	u;v;local
++layer	u	use	15
++layer	v	use	15
++layer	EDGES2	def	17
++GLOBAL	EDGES2	absent
++pick	i	use	3;5
++pick	i	dv	y;z
+diff --git a/tests/regression/subscripts_globals/src/c.c b/tests/regression/subscripts_globals/src/c.c
+new file mode 100644
+index 0000000..7f1b03d
+--- /dev/null
++++ b/tests/regression/subscripts_globals/src/c.c
+@@ -0,0 +1,7 @@
++int pick(int *v, int n) {
++    int i = n - 1;
++    int y = v[i];
++    int z;
++    z = v[i];
++    return y + z;
++}
+diff --git a/tests/regression/subscripts_globals/src/s.py b/tests/regression/subscripts_globals/src/s.py
+new file mode 100644
+index 0000000..089cacf
+--- /dev/null
++++ b/tests/regression/subscripts_globals/src/s.py
+@@ -0,0 +1,17 @@
++from qiskit import QuantumCircuit, QuantumRegister
++
++q = QuantumRegister(4)
++qc = QuantumCircuit(q)
++a = 1
++qc.h(q[a])
++theta = [0.1, 0.2]
++k = 0
++x = theta[k]
++EDGES = [(0, 1), (1, 2)]
++
++
++def layer(circ):
++    for u, v in EDGES:
++        circ.cx(q[u], q[v])
++    local = EDGES
++    EDGES2 = 3

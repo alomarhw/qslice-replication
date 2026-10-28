@@ -1208,3 +1208,22 @@ use, are removed.
   are an option. The misses come from three srcSlice gaps: no use is recorded inside a subscript (`q[a]`, in
   Python and in C), returned values are not linked to the call, and a module variable used inside a function is
   not recorded. `results/icpc/srcslice/`.
+
+### Deviation I-21 (2026-10-27, AFTER the I-20 result; author decision; exploratory): two srcSlice gaps fixed, comparison rerun
+- **Why.** I-20 found srcSlice's classical lines below the 95% threshold and traced the misses to three gaps. The
+  author asked that the two that are defects be fixed: uses inside subscripts and module variables read inside
+  functions. The third, values returned by a function, is outside srcSlice's forward design and is left as it is.
+- **Change.** srcSlice records a name inside a subscript as a use of that variable, and on the right of an
+  assignment or in an initializer makes the assigned variable depend on it (Python and C). A read inside a function
+  falls back to the file-scope variable of that name, while a definition still looks up locally. A regression case
+  (`subscripts_globals`, 11 checks) is added, and all 122 checks pass. `tools/srcslice/srcslice-python.diff` now
+  holds both patches against upstream ce86ef8.
+- **Rerun.** `icpc/srcslice_classical.py` is unchanged and rerun on the same files, and the I-20 decision rule is
+  applied unchanged. Because the fix was made after the I-20 result was known, the paper reports both runs and says
+  so.
+- **Outcome (recorded after the rerun).** srcSlice's lines contain the interpreter's for 90% of the 1,610 qubits
+  and for 97% over the dev programs and Bugs4Q (273 of 276 on Bugs4Q), recall 0.92 and precision 0.52. Above the
+  threshold, so srcSlice-Q (the tool's name from 2026-10-27, author decision) reports srcSlice's classical lines
+  by default (`tool/cli.py --classical srcslice`), and the interpreter's lines remain an option. The remaining 142
+  missed lines lie mostly in functions that build and return a circuit or a value, and in containers filled by
+  method calls. The I-20 run is kept in `results/icpc/srcslice_i20/`.

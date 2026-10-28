@@ -1,0 +1,48 @@
+{
+ "dev": {
+  "files": 16,
+  "qubits": 132,
+  "contain": 96,
+  "equal": 19,
+  "recall": 0.9417,
+  "precision": 0.8668,
+  "median_srcslice_ms": 52.7,
+  "errors": 0
+ },
+ "bugs4q": {
+  "files": 110,
+  "qubits": 276,
+  "contain": 251,
+  "equal": 213,
+  "recall": 0.9186,
+  "precision": 0.8967,
+  "median_srcslice_ms": 51.3,
+  "errors": 0
+ },
+ "textbook": {
+  "files": 58,
+  "qubits": 186,
+  "contain": 153,
+  "equal": 34,
+  "recall": 0.9197,
+  "precision": 0.5055,
+  "median_srcslice_ms": 60.1,
+  "errors": 0
+ },
+ "lintq": {
+  "files": 217,
+  "qubits": 1016,
+  "contain": 819,
+  "equal": 376,
+  "recall": 0.8641,
+  "precision": 0.4599,
+  "median_srcslice_ms": 56.6,
+  "errors": 0
+ },
+ "decision": {
+  "dev_bugs4q_contain_share": 0.8505,
+  "threshold": 0.95,
+  "adopt_srcslice_lines": false
+ },
+ "srcslice_version": "upstream ce86ef8 + tools/srcslice/srcslice-python.diff"
+}

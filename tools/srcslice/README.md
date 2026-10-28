@@ -1,6 +1,6 @@
-# srcSlice as QSlice uses it
+# srcSlice as srcSlice-Q uses it
 
-QSlice takes the classical lines of a slice from srcSlice (`tool/srcslice.py`, Deviation I-20 of
+srcSlice-Q takes the classical lines of a slice from srcSlice (`tool/srcslice.py`, Deviations I-20 and I-21 of
 `experiments/PROTOCOL_ICPC.md`). It uses upstream srcSlice at commit `ce86ef8` with the patch in this
 folder, `srcslice-python.diff`.
 
@@ -16,7 +16,9 @@ The accuracy fixes apply to every language srcSlice supports:
 - `int r = f(x)` makes `r` depend on `x`;
 - a compound assignment also uses its left-hand side;
 - names are printed on one line;
-- `--help` and `--version` work.
+- `--help` and `--version` work;
+- a variable inside a subscript is used (`q[a]`, `v[i]`), and the assigned variable depends on it;
+- a module variable read inside a function is found (definitions stay local).
 
 It also adds Python support:
 - keyword arguments;

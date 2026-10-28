@@ -1944,33 +1944,58 @@
   "source": "results/icpc/srcslice/qubits.csv"
  },
  "SsContainPct": {
-  "value": 0.8192546583850931,
-  "tex": "82\\%",
+  "value": 0.9037267080745341,
+  "tex": "90\\%",
   "source": "results/icpc/srcslice/qubits.csv"
  },
  "SsDevBugsContainPct": {
-  "value": 0.8504901960784313,
-  "tex": "85\\%",
+  "value": 0.9705882352941176,
+  "tex": "97\\%",
   "source": "results/icpc/srcslice/qubits.csv"
  },
  "SsEqualPct": {
-  "value": 0.3987577639751553,
-  "tex": "40\\%",
+  "value": 0.4080745341614907,
+  "tex": "41\\%",
   "source": "results/icpc/srcslice/qubits.csv"
  },
  "SsRecall": {
-  "value": 0.8848902715883292,
-  "tex": "0.88",
+  "value": 0.9192802488858993,
+  "tex": "0.92",
   "source": "results/icpc/srcslice/qubits.csv"
  },
  "SsPrecision": {
-  "value": 0.5207838479809976,
+  "value": 0.5187416967166445,
   "tex": "0.52",
   "source": "results/icpc/srcslice/qubits.csv"
  },
  "SsMedianMs": {
-  "value": 0.0552,
-  "tex": "55",
+  "value": 0.0533,
+  "tex": "53",
+  "source": "results/icpc/srcslice/qubits.csv"
+ },
+ "SsBeforeContainPct": {
+  "value": 0.8192546583850931,
+  "tex": "82\\%",
+  "source": "results/icpc/srcslice_i20/qubits.csv"
+ },
+ "SsBeforeDevBugsContainPct": {
+  "value": 0.8504901960784313,
+  "tex": "85\\%",
+  "source": "results/icpc/srcslice_i20/qubits.csv"
+ },
+ "SsBeforeRecall": {
+  "value": 0.8848902715883292,
+  "tex": "0.88",
+  "source": "results/icpc/srcslice_i20/qubits.csv"
+ },
+ "SsBugsContain": {
+  "value": 273,
+  "tex": "273",
+  "source": "results/icpc/srcslice/qubits.csv"
+ },
+ "SsBugsQubits": {
+  "value": 276,
+  "tex": "276",
   "source": "results/icpc/srcslice/qubits.csv"
  },
  "ToolGateTable": {

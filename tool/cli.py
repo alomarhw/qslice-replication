@@ -5,7 +5,9 @@
   python -m tool.cli PROGRAM.py --qubits all --json   one slice per qubit, as JSON
   python -m tool.cli PROGRAM.py --trace               print the operation trace
 Options: --circuit NAME (variable name of the circuit to slice; default: the circuit with most operations),
-         --annotate (print the source with the slice marked: Q quantum line, C classical line).
+         --annotate (print the source with the slice marked: Q quantum line, C classical line),
+         --classical srcslice|interp (where classical lines come from: srcSlice's profiles, the default since
+         Deviation I-21, or the interpreter's provenance; srcSlice falls back to the interpreter if it is missing).
 """
 
 from __future__ import annotations
@@ -13,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import sys
 import time
 from pathlib import Path
@@ -59,6 +62,7 @@ def main(argv=None) -> int:
     ap.add_argument("--forward", type=int, metavar="LINE",
                     help="forward slice from the operations created at source line LINE")
     ap.add_argument("--profile", action="store_true", help="slice profile of each criterion qubit")
+    ap.add_argument("--classical", choices=["srcslice", "interp"], default="srcslice")
     a = ap.parse_args(argv)
     t0 = time.perf_counter()
     unit = X.parse_file(Path(a.program))
@@ -75,10 +79,19 @@ def main(argv=None) -> int:
             qs = ",".join("q" + ("".join(map(str, sorted(s))) if len(s) == 1 else "{" + ",".join(map(str, sorted(s))) + "}") for s in op.qubits)
             print(f"{k:4d} L{op.line:<4d} {op.name:10s} {qs:20s} {'may ' if op.may else ''}{'if c' + str(sorted(op.cond)) if op.cond else ''}")
     res = []
+    prof = None
+    if a.classical == "srcslice":
+        from tool import srcslice as SS  # noqa: PLC0415
+        if shutil.which(SS.SRCSLICE):
+            prof, _ = SS.profiles(Path(a.program))
+        else:
+            trace.notes.append((0, "srcslice not found: classical lines from the interpreter"))
     for crit in parse_criterion(circ, a.qubits):
         s = wire_slice(circ, crit)
+        cl = SS.classical_lines(Path(a.program), s.quantum_lines, prof, unit) if prof is not None else s.classical_lines
         res.append({"criterion": crit, "operations": len(s.ops), "of": len(circ.ops), "may_operations": s.may,
-                    "quantum_lines": sorted(s.quantum_lines), "classical_lines": sorted(s.classical_lines),
+                    "quantum_lines": sorted(s.quantum_lines), "classical_lines": sorted(cl),
+                    "classical_lines_interpreter": sorted(s.classical_lines),
                     "iterations": {str(l): sorted(map(list, v)) for l, v in s.iterations.items() if any(v)}})
     if a.forward is not None:
         from tool.slicer import forward_slice  # noqa: PLC0415
