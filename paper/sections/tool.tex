@@ -26,7 +26,11 @@ that is proved sound.
 
 \paragraph*{Parsing}
 The tool parses the program with srcML~\cite{collard2011lightweight, collard2013srcml}, which marks up its
-syntax and the position of every element. A table of \numToolGateTable{} Qiskit instruction methods records
+syntax and the position of every element. srcML marks up Qiskit programs as Python and knows nothing of
+quantum programs, so the quantum layer is ours. Behler et al.\ needed a new markup for OpenQASM, whose
+syntax srcML could not parse~\cite{behler2024supporting}. Qiskit is ordinary Python, so its syntax needs no
+new markup, but its quantum meaning lies in library calls that no markup captures, and supplying that
+meaning is what the tool adds. A table of \numToolGateTable{} Qiskit instruction methods records
 which arguments of each are qubits, bits and angles, so that a \texttt{call} element such as
 \texttt{qc.cx(qubit, qubit + 1)} becomes a gate on its qubits, as stage~1 of Fig.~\ref{fig:tool} shows.
 
