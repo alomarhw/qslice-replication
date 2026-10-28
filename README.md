@@ -86,6 +86,9 @@ python -m tool.tests.dev_summary                     # trace and slice checks on
 python -m tool.tests.nested_check                    # nested conditional blocks against the oracle
 (cd experiments && python icpc/tool_acceptance.py --bugs4q-root BUGS4Q_ROOT --tag tool-v7)   # T1 and T2
 python experiments/icpc/srcslice_classical.py --data-root DATA_ROOT   # srcSlice's classical lines against the interpreter's
+python -m tool.tests.check_qasm                                   # OpenQASM 2 front end and one-pass slice against the study
+python experiments/icpc/scale_run.py s1 --data-root DATA_ROOT      # scalability on LintQ's corpus (s2: QASMBench, s3: parametric)
+python experiments/icpc/lintq_compare.py --data-root DATA_ROOT     # srcSlice-Q on LintQ's confirmed bugs and both papers' examples
 python -m tool.corpus.coverage CORPUS_DIR OUT.csv    # T3 coverage on a corpus of Qiskit programs
 ```
 The tool reads programs and never runs them. The Bugs4Q, Qiskit textbook and LintQ corpora are not

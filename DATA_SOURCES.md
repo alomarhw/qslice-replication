@@ -8,7 +8,7 @@ Per-file SHA-256s are in `MANIFEST.sha256.tsv` (shipped files) and `data/qasmben
 
 | Corpus | Upstream | Version used | License (upstream) | In this package | Used by |
 |---|---|---|---|---|---|
-| **QASMBench** | https://github.com/pnnl/QASMBench | commit `357b942396d5c2b7cbc1c229c585a6ef5ccaebac` (2025-01-20), pinned in `fetch_data.py` | BSD-style license of Battelle Memorial Institute (© 2020). Redistribution in source or binary form is allowed, with or without modification, if the copyright notice, the conditions and the disclaimer are kept. The Battelle name may not be used otherwise. | 39 circuits shipped in `data/qasmbench/` (all within ≤14 qubits / ≤220 operations). `fetch_data.py` downloads the full suite at the pinned commit into `data/QASMBench-master/`, and flattens 134 circuits into `data/qasmbench/`. | Corpus A (39 circuits); corpus L; the earlier run's RQ5 |
+| **QASMBench** | https://github.com/pnnl/QASMBench | commit `357b942396d5c2b7cbc1c229c585a6ef5ccaebac` (2025-01-20), pinned in `fetch_data.py` | BSD-style license of Battelle Memorial Institute (© 2020). Redistribution in source or binary form is allowed, with or without modification, if the copyright notice, the conditions and the disclaimer are kept. The Battelle name may not be used otherwise. | 39 circuits shipped in `data/qasmbench/` (all within ≤14 qubits / ≤220 operations). `fetch_data.py` downloads the full suite at the pinned commit into `data/QASMBench-master/`, and flattens 134 circuits into `data/qasmbench/`. | Corpus A (39 circuits); corpus L; the earlier run's RQ5; the scalability study S2 (medium and large sets, Deviation I-22) |
 | **MQT Bench** | https://github.com/cda-tum/mqt-bench (now `munich-quantum-toolkit/bench`) | the 78 files as exported. The generator on disk was at commit `a10a74b4926826d5ac8250393dfe7bd895fc5ecd` (v2.2.2-26, 2026-06-17). Export options were not recorded, so regeneration may not be byte-identical. | MIT. Redistribution requires the copyright notice and the license text. | all 78 shipped in `data/mqtbench/` | Corpus A (42 circuits); the earlier run's RQ5 |
 | **VeriQBench** | https://github.com/Veri-Q/Benchmark | the 966 files as used. The upstream commit was not recorded at the time. **Identified on 2026-10-20:** all 966 files are byte-identical (same paths) to upstream at every commit from `dc2651cacf01367ae8ffa54e4e81c0afdcc11c71` (2025-04-11) to the current HEAD `9be1083`, including `1c03e45371e5701f62c123943dec1cace4d46767` (2026-05-14, adds the LICENSE). The parent of `dc2651c` matches only 960/966. | MIT. Redistribution requires the copyright notice and the license text. | all 966 shipped in `data/veriqbench/` (combinational, dynamic, sequential, variational) | Corpus A (80 circuits); Corpus B = `veriqbench/dynamic/` (ablation); the earlier run's RQ5 |
 
@@ -34,3 +34,11 @@ for that folder. A change to any file changes it.
   That is 19 circuits and 178 pairs; `dqc_qft_14` is excluded because it needs more than 4096 branches.
 - **RQ5 of the earlier run**: 1,124 circuits, reselected by the earlier protocol's rules and checked row
   by row (`experiments/rq5_scalability/`).
+
+## LintQ's public data (Deviation I-22)
+`data/lintq_artifact/` holds the inspection CSVs and the SARIF warnings of LintQ (https://github.com/sola-st/LintQ,
+commit in `data/lintq_artifact/COMMIT`, MIT licence in `data/lintq_artifact/LICENSE`), read as data by
+`experiments/icpc/lintq_compare.py`; LintQ itself is never run. The corpus they refer to is LintQ's
+`exp_v08/files_selected` (7,568 files), downloaded from LintQ's Zenodo record and read, never executed, by the
+static slicer.
+

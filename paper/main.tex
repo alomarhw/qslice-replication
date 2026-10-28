@@ -29,6 +29,17 @@
 quantum programs, program comprehension, program slicing, program dependence, debugging, fault localization
 \end{IEEEkeywords}
 
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_overview.pdf}
+  \caption{Overview. The top row is the method of the paper, from what a quantum slice must keep to the
+  implications for comprehension tools, and the study selects the rule that \tool{} runs. The bottom row is
+  \tool{}. A Qiskit program reaches the quantum extensions E1 to E5 through srcML and srcSlice, and an OpenQASM~2
+  circuit through a line-mapped reader. White parts are taken unchanged, light grey parts are extended and fixed,
+  and dark parts are new.}
+  \label{fig:overview}
+\end{figure*}
+
 \input{sections/intro}
 
 \input{sections/example}

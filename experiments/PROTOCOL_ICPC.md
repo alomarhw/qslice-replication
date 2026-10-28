@@ -1227,3 +1227,54 @@ use, are removed.
   by default (`tool/cli.py --classical srcslice`), and the interpreter's lines remain an option. The remaining 142
   missed lines lie mostly in functions that build and return a circuit or a value, and in containers filled by
   method calls. The I-20 run is kept in `results/icpc/srcslice_i20/`.
+
+### Deviation I-22 (2026-10-28, AFTER all results; author decision; exploratory; recorded before any output of the analyses below): OpenQASM front end, scalability, LintQ/QChecker comparison, comprehension measures
+- **Why.** The author asked for coverage of OpenQASM as well as Qiskit, a scalability study on large programs, a
+  comparison with LintQ and QChecker on their own data and examples, and an explicit comprehension account. No RQ,
+  hypothesis, threshold or corpus of RQ1–RQ4 changes. Scalability is reported under RQ4 as descriptive; the
+  comparisons and comprehension measures go in Sections IV and VII as exploratory.
+- **OpenQASM 2 front end (`tool/qasm.py`).** A line-mapped reader of OpenQASM 2 that builds srcSlice-Q's operation
+  trace; srcML 1.1 has no OpenQASM language, and Behler et al.'s markup parser is unreleased. Acceptance test (fixed
+  now): on every corpus-A circuit, the trace equals the circuit the study loads, and every qubit's QDG slice equals
+  the study's circuit-level slice.
+- **One-pass slicing of every qubit.** One backward pass carrying, per location, the set of criterion qubits it
+  reaches. Acceptance test: equal to separate passes on corpus A and on the QASMBench circuits small enough to slice
+  qubit by qubit.
+- **Scalability (`icpc/scale_run.py`).** S1, every LintQ-corpus file, with per-stage times (srcML, interpretation,
+  slicing every qubit, srcSlice, profiles). S2, QASMBench medium and large through the front end: parse, one slice,
+  and all qubits in one pass. S3, our own parametric programs (QFT, GHZ, QAOA ring, repetition code) at n = 10 to
+  1,000. Baselines on the same inputs: srcSlice alone; Qiskit's DAG ancestors of the last operation on a qubit after
+  `qasm2.load`; Qiskit's `LightCone` pass; building the QPDG reimplementation. LintQ's and QChecker's reported times
+  are quoted with their hardware, not rerun. A per-input wall-clock limit of 600 s.
+- **LintQ/QChecker comparison (`icpc/lintq_compare.py`).** Data only, neither tool is run. LintQ's public
+  manual-inspection CSVs and SARIF (github.com/sola-st/LintQ) are downloaded as data. C1: for each LintQ true
+  positive on its own corpus that srcSlice-Q traces, whether the warned line is in the warned qubit's profile, whether
+  a profile predicate exposes the pattern, and the lines a developer reads. Predicates fixed now: OpAfterMeas (a
+  non-measure operation on q after a measurement of q), DoubleMeas (two measurements of q with no operation on q
+  between), OversizedCircuit (a qubit no operation acts on), CondWoMeas (a condition on a bit no measurement writes),
+  InsuffClasReg (more measured qubits than classical bits). C2: operations created in loop iterations beyond the
+  10th, and over-approximated operations, in our traces of LintQ's corpus. C3: LintQ Figs. 1, 5, 6, 11b and
+  QChecker Fig. 5 transcribed as our own programs and sliced. C4: the 22 Bugs4Q output bugs QChecker cannot detect,
+  crossed with the Bugs4Q units whose lines the study maps.
+- **Comprehension measures.** Per qubit, the lines of its slice over the program's code lines (non-blank,
+  non-comment), on the LintQ corpus, Bugs4Q and the textbook.
+- **Correction (2026-10-28, before any C1 output).** LintQ's rule for InsuffClasReg is `ql-unmeasurable-qubits`, a
+  circuit with more qubits than classical bits, so the predicate is "the circuit has more qubits than classical bits",
+  not "more measured qubits than bits". Rules mapped to predicates: `ql-operation-after-measurement`,
+  `ql-double-measurement`, `ql-oversized-circuit`, `ql-conditional-without-measurement`, `ql-unmeasurable-qubits`.
+  The other five rules (ghost composition, constant classical bit, deprecated identity, measure-all abuse, operation
+  after transpilation) concern API use, not qubit dependence, and are reported as outside the profile.
+- **LintQ data.** `data/lintq_artifact/`, from github.com/sola-st/LintQ at the commit in `COMMIT` (MIT licence):
+  the inspection CSVs of `bug_reports/` and `data.sarif` of `data/analysis_results/exp_v08/codeql_2024-03-01_08-43-53`.
+- **Script fix (2026-10-28, after the first C1 run).** The first run counted a circuit with no operation as "no
+  circuit", so the 29 OversizedCircuit warnings, whose circuits are built on the warned line and never used, were
+  untraced. A circuit built on the warned line now counts with or without operations. No predicate changed.
+- **Run note (2026-10-28, before S2 started).** S2's baselines run by file size in batches of four, and a baseline is
+  not run on circuits larger than a batch in which every circuit hit the 600 s limit; those are recorded as skipped.
+  srcSlice-Q runs on every circuit. This bounds the run time; the limit is unchanged.
+- **Findings during the runs (2026-10-28).** (1) The interpreter cut a known `for` loop at 10,000 iterations without a
+  note, so two LintQ-corpus files (`circuituse_0c5a5d.py`, `qaoa_def_82b4c7.py`) and the largest S3 sizes were traced
+  incompletely. A longer loop is now read as a loop of unknown length (the sound over-approximation of I-15) with a
+  note, and a cut sequence is noted. No study circuit, dev program, Bugs4Q or textbook file reaches the limit. S1 and
+  S3 are rerun. (2) The LightCone baseline was first run on circuits with terminal measurements, which the pass
+  rejects; it is rerun on circuits prepared as in RQ2 (barriers and terminal measurements dropped).

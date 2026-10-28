@@ -4,6 +4,7 @@
   python -m tool.cli PROGRAM.py --qubits q[1],anc[0]  criterion: register bits
   python -m tool.cli PROGRAM.py --qubits all --json   one slice per qubit, as JSON
   python -m tool.cli PROGRAM.py --trace               print the operation trace
+  python -m tool.cli CIRCUIT.qasm --qubits 0          an OpenQASM 2 file, through the front end of tool.qasm
 Options: --circuit NAME (variable name of the circuit to slice; default: the circuit with most operations),
          --annotate (print the source with the slice marked: Q quantum line, C classical line),
          --classical srcslice|interp (where classical lines come from: srcSlice's profiles, the default since
@@ -65,12 +66,20 @@ def main(argv=None) -> int:
     ap.add_argument("--classical", choices=["srcslice", "interp"], default="srcslice")
     a = ap.parse_args(argv)
     t0 = time.perf_counter()
-    unit = X.parse_file(Path(a.program))
-    t1 = time.perf_counter()
-    interp = Interpreter(a.program)
-    trace = interp.run(unit)
+    is_qasm = a.program.endswith(".qasm")
+    if is_qasm:
+        from tool import qasm  # noqa: PLC0415
+        unit, t1 = None, time.perf_counter()
+        trace = qasm.read(a.program)
+        circ = trace.main_circuit()
+        a.classical = "interp"  # an OpenQASM operation's classical lines are its register declarations
+    else:
+        unit = X.parse_file(Path(a.program))
+        t1 = time.perf_counter()
+        interp = Interpreter(a.program)
+        trace = interp.run(unit)
+        circ = pick_circuit(interp, trace, a.circuit)
     t2 = time.perf_counter()
-    circ = pick_circuit(interp, trace, a.circuit)
     if circ is None:
         print(json.dumps({"program": a.program, "error": "no circuit found", "notes": trace.notes}))
         return 1
@@ -101,7 +110,7 @@ def main(argv=None) -> int:
                     "qubits": sorted(f.qubits), "bits": sorted(f.bits)})
     if a.profile:
         from tool.profile import qubit_arg_texts, slice_profile  # noqa: PLC0415
-        args = qubit_arg_texts(Path(a.program))
+        args = {} if is_qasm else qubit_arg_texts(Path(a.program))
         for crit in parse_criterion(circ, a.qubits):
             for q in crit:
                 p = slice_profile(circ, q, args)

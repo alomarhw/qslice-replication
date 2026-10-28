@@ -1,5 +1,25 @@
 \section{Implications for Comprehension Tools}\label{sec:discussion}
 
+\begin{table}[t]
+  \centering
+  \caption{Questions a developer asks about a quantum program, and what \tool{} shows for each.}
+  \label{tab:tasks}
+  \footnotesize\setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}p{0.4\columnwidth} p{0.56\columnwidth}@{}}
+    \toprule
+    Question & \tool{} \\
+    \midrule
+    Which lines determine the state of $q$? & the backward slice of $q$, its quantum and classical lines \\
+    Which iterations of a loop matter? & the iterations of each line in the slice \\
+    What can this line affect? & the forward slice, the qubits and bits it reaches \\
+    Where is $q$ named, measured or conditioned on? & the profile of $q$ \\
+    Is a slice right because its histogram matches? & no, \numFdCpdgZMatchPct{} of wrong classical slices match \\
+    Which lines must I read to find a fault on $q$? & the slice, \numScaleReadMedianPct{} of a program's code
+    lines in the median on LintQ's corpus \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 \paragraph*{What a quantum slice should look like}
 A slicer for a developer who asks which lines determine a qubit should show the QDG slice, which is sound for every input, misses no dependence and costs milliseconds. Reading a
 gate as a classical assignment is the pitfall to avoid, because its slices can look right and hide the

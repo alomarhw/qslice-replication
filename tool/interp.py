@@ -456,7 +456,12 @@ class Interpreter:
             self.note(ln, "for target not parseable")
             return
         seq, sl = self.eval_text(it, ln, env)
-        items = self.iterate(seq)
+        if isinstance(seq, (list, tuple, range)) and len(seq) > MAX_ITER:
+            self.note(ln, f"for loop of {len(seq)} iterations, beyond the limit of {MAX_ITER}: read as a loop of "
+                          "unknown length, as may-operations")
+            items = None
+        else:
+            items = self.iterate(seq)
         if items is None:
             def body(i):
                 self.assign(target, (UNK, sl), ln, env)
@@ -515,6 +520,8 @@ class Interpreter:
         if _is_name(seq):
             return None  # an unresolved external name (e.g. sys.argv) is not a known sequence
         if isinstance(seq, (list, tuple, range)):
+            if len(seq) > MAX_ITER:
+                self.note(0, f"a sequence of {len(seq)} elements was cut at the limit of {MAX_ITER}")
             return list(seq)[:MAX_ITER]
         if isinstance(seq, Reg):
             return [Bit(seq, i) for i in range(seq.size)] if seq.size is not None else None

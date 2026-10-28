@@ -110,3 +110,105 @@ def forward_slice(circ: Circuit, start: Iterable[int]) -> ForwardSlice:
     for k in keep:
         it.setdefault(circ.ops[k].line, set()).add(circ.ops[k].iters)
     return ForwardSlice(keep, {circ.ops[k].line for k in keep}, it, frozenset(aff_q), frozenset(aff_c))
+
+
+# ---- compact traces (tool.qasm.Compact): the same rule on flat arrays, for circuits with millions of operations ----
+
+def compact_terminal(c) -> Set[int]:
+    """As terminal(): measurements whose qubit no later operation acts on and whose bit no later condition reads."""
+    out, touched, read = set(), set(), set()
+    for k in range(len(c) - 1, -1, -1):
+        qs = c.qs[c.qoff[k]:c.qoff[k + 1]]
+        if c.kind[k] == 1 and not (set(qs) & touched) and c.mbit[k] not in read:
+            out.add(k)
+        if c.kind[k] != 3:
+            touched.update(qs)
+            read.update(c.cs[c.coff[k]:c.coff[k + 1]])
+    return out
+
+
+def compact_slice(c, criterion: Iterable[int], term: Set[int] = None) -> List[int]:
+    """wire_slice on a compact trace: positions of the QDG slice of the criterion qubits, terminal measurements left
+    out."""
+    nq, nb = set(criterion), set()
+    term = compact_terminal(c) if term is None else term
+    keep = []
+    for k in range(len(c) - 1, -1, -1):
+        if c.kind[k] == 3 or k in term:
+            continue
+        qs = c.qs[c.qoff[k]:c.qoff[k + 1]]
+        mb = c.mbit[k]
+        if any(q in nq for q in qs) or (mb >= 0 and mb in nb):
+            keep.append(k)
+            cond = c.cs[c.coff[k]:c.coff[k + 1]]
+            if mb >= 0 and not cond:
+                nb.discard(mb)  # a measurement that certainly writes its bit
+            nq.update(qs)
+            nb.update(cond)
+    keep.reverse()
+    return keep
+
+
+def compact_all_qubits(c, term: Set[int] = None, members: bool = False):
+    """The QDG slice of every qubit in one backward pass. Each location carries the set of criterion qubits whose
+    slice needs it (an integer used as a bit set). Operation k is in the slice of exactly the criteria in S, the union
+    of the sets on the locations it writes. It then adds S to the qubits it acts on and the bits its condition reads,
+    and a measurement that certainly writes its bit clears that bit's set. This is n runs of compact_slice at once.
+    Returns the total number of (criterion, operation) memberships, and with members=True the slice of each qubit."""
+    term = compact_terminal(c) if term is None else term
+    rq = [1 << q for q in range(c.n_qubits)]
+    rb = [0] * c.n_bits
+    total = 0
+    sl = [[] for _ in range(c.n_qubits)] if members else None
+    qoff, qsa, kind, mbit, coff, csa = c.qoff, c.qs, c.kind, c.mbit, c.coff, c.cs
+    for k in range(len(c) - 1, -1, -1):
+        if kind[k] == 3 or k in term:
+            continue
+        a, b = qoff[k], qoff[k + 1]
+        s = 0
+        for i in range(a, b):
+            s |= rq[qsa[i]]
+        mb = mbit[k]
+        if mb >= 0:
+            s |= rb[mb]
+        if not s:
+            continue
+        total += s.bit_count()
+        if members:
+            t = s
+            while t:
+                low = t & -t
+                sl[low.bit_length() - 1].append(k)
+                t ^= low
+        ca, cb = coff[k], coff[k + 1]
+        if mb >= 0 and ca == cb:
+            rb[mb] &= ~s
+        for i in range(a, b):
+            rq[qsa[i]] |= s
+        for i in range(ca, cb):
+            rb[csa[i]] |= s
+    if members:
+        for x in sl:
+            x.reverse()
+    return total, sl
+
+
+def compact_from_circuit(circ: Circuit):
+    """The compact form of an Op trace whose operations are all resolved (one qubit per argument, at most one bit per
+    measurement, no may-operation). Raises ValueError otherwise; such traces stay on wire_slice."""
+    from tool.qasm import Compact  # noqa: PLC0415
+    c = Compact(circ.n("q"), circ.n("c"))
+    names = {}
+    for op in circ.ops:
+        if op.may or any(len(s) != 1 for s in op.qubits) or any(len(s) != 1 for s in op.clbits) or len(op.clbits) > 1:
+            raise ValueError("trace has over-approximated operations")
+        c.kind.append(1 if op.name == "measure" else 2 if op.name == "reset" else 3 if op.name in NOT_SLICED else 0)
+        c.qs.extend(next(iter(s)) for s in op.qubits)
+        c.qoff.append(len(c.qs))
+        c.mbit.append(next(iter(op.clbits[0])) if op.name == "measure" and op.clbits else -1)
+        c.cs.extend(sorted(op.cond))
+        c.coff.append(len(c.cs))
+        c.line.append(op.line)
+        c.name_of.append(names.setdefault(op.name, len(names)))
+    c.names = list(names)
+    return c

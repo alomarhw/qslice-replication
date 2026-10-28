@@ -165,3 +165,35 @@ the QPDG takes \numCostBuildDepthForty{}~s at depth \numCostMeasuredDepthForty{}
 \numCostBuildDepthOneSixty{}~s at depth \numCostMeasuredDepthOneSixty{} in the median, against
 milliseconds for the QDG slice, because its closure links every pair of operations on a coupling component
 while the QDG needs only the edges of each qubit.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig_scale.pdf}
+  \caption{Time of \tool{} against the operations of a trace, for RQ4. Grey points are the programs of LintQ's
+  corpus, with every stage of \tool{}. The QASMBench points slice every qubit in one pass, reading included. The
+  baselines slice one qubit of the same circuits, Qiskit's loading included. Runs beyond the 600~s limit are left
+  out.}
+  \label{fig:scale}
+\end{figure}
+
+\paragraph*{Scalability of \tool{}}
+On the \numScaleSOneFiles{} programs of LintQ's corpus, read without being run, \tool{} slices the
+\numScaleSOneSliced{} that build a circuit, every qubit up to 64 of them, in \numScaleSOneMedianMs{}~ms per program
+in the median and within \numScaleSOneNinetyNine{}~s for 99\% of them, and \numScaleSOneTimeouts{} programs reach
+the limit of 120~s. srcML and srcSlice take most of the median, \numScaleSOneSrcmlMs{} and
+\numScaleSOneSrcsliceMs{}~ms, and the slices themselves \numScaleSOneSliceMs{}~ms. The largest trace, of
+\numScaleSOneMaxOps{} operations, takes \numScaleSOneMaxOpsS{}~s. Fig.~\ref{fig:scale} shows the time against the
+size. On the \numScaleQbRead{} circuits of QASMBench's medium and large sets that are valid OpenQASM~2, of up to
+\numScaleQbMaxOps{} operations and \numScaleQbMaxQubits{} qubits, the one-pass slice of every qubit takes at most
+\numScaleQbAllS{}~s, on the largest circuit. Qiskit's DAG slices one of its \numScaleQbMaxOpsQubits{} qubits in
+\numScaleQbDagOneS{}~s after \numScaleQbDagLoadS{}~s of loading, which is about \numScaleQbDagAllMin{} minutes for
+all of them. Reading the file is \tool{}'s larger cost there, \numScaleQbReadS{}~s with a reader written in Python.
+The QPDG reimplementation builds its graph within the 600~s limit for circuits of up to \numScaleQpdgMaxOps{}
+operations, in \numScaleQpdgMaxS{}~s, where \tool{} reads and slices the circuit in \numScaleQpdgSqS{}~s. It reaches the
+limit on the next circuits by size, and the \numScaleQpdgOver{} larger ones are beyond it. Qiskit's \texttt{LightCone} pass, which also prunes commuting gates, slices one qubit of the circuit of
+\numScaleLcMaxOps{} operations in \numScaleLcMaxS{}~s, where \tool{} slices all \numScaleLcQubits{} of its
+qubits in \numScaleLcSqS{}~s, and exceeds the limit on \numScaleLcOver{} circuits. On our parametric programs the source stays at
+about a dozen lines while the trace grows. The QFT on 600 qubits unrolls \numScaleQftOps{} operations from
+\numScaleQftLines{} code lines in \numScaleQftS{}~s, where running the program with Qiskit and slicing one qubit
+takes \numScaleQftRunS{}~s, which a static slicer gives up in order never to execute the program. Two of these programs loop beyond the interpreter's limit of 10{,}000 iterations, and \tool{} reads those loops
+as loops of unknown length, as it does a loop whose bound it cannot compute.

@@ -5,6 +5,8 @@
   fig_llm.tex     RQ3: top-3 fault-localization accuracy per model and input (results/llm/t2_scores.csv,
                   context prompt, temperature 0)
   fig_cost.tex    RQ4: median time per depth at width 8 (results/icpc/cost/circuits.csv)
+  fig_scale.tex   RQ4: srcSlice-Q's time against operations on LintQ's corpus, QASMBench and our parametric
+                  programs, with Qiskit and QPDG baselines (results/icpc/scale; Deviation I-22)
   fig_size.tex    RQ1: mean slice size by circuit width against the dependence floor (results/icpc/numbers.json,
                   written by icpc/make_numbers.py from rq1, rq1_lcq_remap and corpus_l; Deviation I-13)
 Writes the .tex files to ../paper/figures/src/; compile each with pdflatex.
@@ -141,9 +143,41 @@ def size():
     return HEAD + "\n".join(body) + "\n\\end{document}\n"
 
 
+def scale():
+    """Time against operations. LintQ's corpus (S1, every stage), QASMBench (S2, every qubit in one pass, reading
+    included), our parametric programs (S3, every stage), and on the S2 circuits the baselines, each with Qiskit's
+    loading included. Runs that hit the 600 s limit are left out and counted in the text."""
+    sc = RES / "icpc" / "scale"
+    f = lambda r, ks: sum(float(r[k]) for k in ks if r.get(k))  # noqa: E731
+    s1 = [r for r in rows(sc / "s1_lintq.csv") if not r["error"] and r.get("ops")]
+    s2 = rows(sc / "s2_qasmbench.csv")
+    ops = {r["path"]: int(r["ops"]) for r in s2 if r["tool"] == "srcSlice-Q" and not r["error"]}
+    s3 = rows(sc / "s3_parametric.csv")
+    series = [
+        ("srcSlice-Q, LintQ corpus", "cgrey!70", "*", [(int(r["ops"]), f(r, ["t_srcml", "t_interp", "t_slice", "t_srcslice", "t_profile"])) for r in s1]),
+        ("srcSlice-Q, QASMBench, all qubits", "cblue", "*", [(ops[r["path"]], f(r, ["t_read", "t_terminal", "t_all"])) for r in s2 if r["tool"] == "srcSlice-Q" and not r["error"]]),
+        ("srcSlice-Q, parametric programs", "cgreen", "diamond*", [(int(r["ops"]), f(r, ["t_srcml", "t_interp", "t_all", "t_srcslice"])) for r in s3 if r["tool"] == "srcSlice-Q" and not r["error"]]),
+        ("Qiskit DAG ancestors, one qubit", "cora", "square*", [(ops[r["path"]], f(r, ["t_load", "t_build", "t_one"])) for r in s2 if r["tool"] == "qiskit-dag" and not r["error"] and r["path"] in ops]),
+        ("Qiskit LightCone, one qubit", "cver", "triangle*", [(ops[r["path"]], f(r, ["t_load", "t_build", "t_one"])) for r in s2 if r["tool"] == "qiskit-lightcone" and not r["error"] and r["path"] in ops]),
+        ("QPDG, build and one slice", "cpurple", "pentagon*", [(ops[r["path"]], f(r, ["t_load", "t_build", "t_one"])) for r in s2 if r["tool"] == "qpdg" and not r["error"] and r["path"] in ops]),
+    ]
+    body = [r"\begin{tikzpicture}\begin{axis}[width=8.6cm, height=5.2cm, xmode=log, ymode=log, xmin=1, xmax=2e7,",
+            r" ymin=1e-3, ymax=2000, xlabel={operations}, ylabel={time}, ytick={1e-3,1e-1,10,1000},",
+            r" yticklabels={1\,ms,0.1\,s,10\,s,1000\,s},",
+            r" legend style={at={(0.5,1.02)}, anchor=south, legend columns=2, /tikz/every even column/.append style={column sep=6pt}}, legend cell align=left]"]
+    for lab, col, mk, pts in series:
+        size = "0.6pt" if "LintQ" in lab else "1.6pt"
+        body.append(rf"\addplot[only marks, {col}, mark={mk}, mark size={size}] coordinates {{" +
+                    " ".join(f"({x},{max(y, 1e-3):.5f})" for x, y in pts if x > 0) + "};")
+    body.append(r"\addplot[black!45, dashed, domain=1:2e7] {600};")
+    body.append(r"\legend{" + ",".join("{" + l + "}" for l, _, _, _ in series) + r",{600 s limit}}")
+    body.append(r"\end{axis}\end{tikzpicture}")
+    return HEAD + "\n".join(body) + "\n\\end{document}\n"
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("fig_robust", robust), ("fig_llm", llm), ("fig_cost", cost), ("fig_size", size)):
+    for name, fn in (("fig_robust", robust), ("fig_llm", llm), ("fig_cost", cost), ("fig_size", size), ("fig_scale", scale)):
         (OUT / f"{name}.tex").write_text(fn())
         print("wrote", OUT / f"{name}.tex")
 

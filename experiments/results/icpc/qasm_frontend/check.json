@@ -1,0 +1,2178 @@
+{
+ "summary": {
+  "corpus_a_circuits": 158,
+  "trace_equal": 158,
+  "slice_equal": 158,
+  "onepass_equal": 158,
+  "qasmbench_checked": 118,
+  "qasmbench_onepass_equal": 118,
+  "qasmbench_errors": [
+   {
+    "path": "QASMBench-master/QASMBench-master/medium/hhl_n14/hhl_n14.qasm",
+    "error": "QasmError: data/QASMBench-master/QASMBench-master/medium/hhl_n14/hhl_n14.qasm: unknown argument 'q[0]'"
+   },
+   {
+    "path": "QASMBench-master/QASMBench-master/small/hhl_n10/hhl_n10.qasm",
+    "error": "QasmError: data/QASMBench-master/QASMBench-master/small/hhl_n10/hhl_n10.qasm: unknown argument 'q[0]'"
+   },
+   {
+    "path": "QASMBench-master/QASMBench-master/small/hhl_n10/hhl_n10_transpiled.qasm",
+    "error": "QasmError: data/QASMBench-master/QASMBench-master/small/hhl_n10/hhl_n10_transpiled.qasm: unknown argument 'q[0]'"
+   },
+   {
+    "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n4/vqe_uccsd_n4.qasm",
+    "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n4/vqe_uccsd_n4.qasm: unknown argument 'q[0]'"
+   },
+   {
+    "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n4/vqe_uccsd_n4_transpiled.qasm",
+    "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n4/vqe_uccsd_n4_transpiled.qasm: unknown argument 'q[0]'"
+   },
+   {
+    "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n6/vqe_uccsd_n6.qasm",
+    "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n6/vqe_uccsd_n6.qasm: unknown argument 'q[0]'"
+   },
+   {
+    "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n6/vqe_uccsd_n6_transpiled.qasm",
+    "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n6/vqe_uccsd_n6_transpiled.qasm: unknown argument 'q[0]'"
+   },
+   {
+    "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n8/vqe_uccsd_n8.qasm",
+    "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n8/vqe_uccsd_n8.qasm: unknown argument 'q[0]'"
+   },
+   {
+    "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n8/vqe_uccsd_n8_transpiled.qasm",
+    "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n8/vqe_uccsd_n8_transpiled.qasm: unknown argument 'q[0]'"
+   }
+  ]
+ },
+ "corpus_a": [
+  {
+   "path": "mqtbench/bv_n10.qasm",
+   "ops": 32,
+   "qubits": 10,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/bv_n14.qasm",
+   "ops": 46,
+   "qubits": 14,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/bv_n3.qasm",
+   "ops": 8,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/bv_n4.qasm",
+   "ops": 11,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/bv_n5.qasm",
+   "ops": 15,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/bv_n8.qasm",
+   "ops": 25,
+   "qubits": 8,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/dj_n10.qasm",
+   "ops": 31,
+   "qubits": 10,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/dj_n14.qasm",
+   "ops": 43,
+   "qubits": 14,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/dj_n3.qasm",
+   "ops": 10,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/dj_n4.qasm",
+   "ops": 13,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/dj_n5.qasm",
+   "ops": 16,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/dj_n8.qasm",
+   "ops": 25,
+   "qubits": 8,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/ghz_n10.qasm",
+   "ops": 21,
+   "qubits": 10,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/ghz_n14.qasm",
+   "ops": 29,
+   "qubits": 14,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/ghz_n3.qasm",
+   "ops": 7,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/ghz_n4.qasm",
+   "ops": 9,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/ghz_n5.qasm",
+   "ops": 11,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/ghz_n8.qasm",
+   "ops": 17,
+   "qubits": 8,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/graphstate_n10.qasm",
+   "ops": 31,
+   "qubits": 10,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/graphstate_n14.qasm",
+   "ops": 43,
+   "qubits": 14,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/graphstate_n3.qasm",
+   "ops": 10,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/graphstate_n4.qasm",
+   "ops": 13,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/graphstate_n5.qasm",
+   "ops": 16,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/graphstate_n8.qasm",
+   "ops": 25,
+   "qubits": 8,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/grover_n3.qasm",
+   "ops": 8,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/grover_n4.qasm",
+   "ops": 11,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/grover_n5.qasm",
+   "ops": 14,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/grover_n8.qasm",
+   "ops": 25,
+   "qubits": 8,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/qftentangled_n10.qasm",
+   "ops": 22,
+   "qubits": 10,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/qftentangled_n14.qasm",
+   "ops": 30,
+   "qubits": 14,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/qftentangled_n3.qasm",
+   "ops": 8,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/qftentangled_n4.qasm",
+   "ops": 10,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/qftentangled_n5.qasm",
+   "ops": 12,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/qftentangled_n8.qasm",
+   "ops": 18,
+   "qubits": 8,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/wstate_n10.qasm",
+   "ops": 48,
+   "qubits": 10,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/wstate_n14.qasm",
+   "ops": 68,
+   "qubits": 14,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/wstate_n3.qasm",
+   "ops": 13,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/wstate_n4.qasm",
+   "ops": 18,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/wstate_n5.qasm",
+   "ops": 23,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "mqtbench/wstate_n8.qasm",
+   "ops": 38,
+   "qubits": 8,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/medium/bv_n14.qasm",
+   "ops": 56,
+   "qubits": 14,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/medium/cc_n12.qasm",
+   "ops": 61,
+   "qubits": 12,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/medium/multiply_n13.qasm",
+   "ops": 21,
+   "qubits": 13,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/medium/sat_n11.qasm",
+   "ops": 95,
+   "qubits": 11,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/medium/seca_n11.qasm",
+   "ops": 80,
+   "qubits": 11,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/adder_n10.qasm",
+   "ops": 19,
+   "qubits": 10,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/adder_n4.qasm",
+   "ops": 27,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/basis_change_n3.qasm",
+   "ops": 36,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/basis_test_n4.qasm",
+   "ops": 102,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/bb84_n8.qasm",
+   "ops": 43,
+   "qubits": 8,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/bell_n4.qasm",
+   "ops": 37,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/cat_state_n4.qasm",
+   "ops": 8,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/deutsch_n2.qasm",
+   "ops": 7,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/error_correctiond3_n5.qasm",
+   "ops": 119,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/fredkin_n3.qasm",
+   "ops": 22,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/grover_n2.qasm",
+   "ops": 18,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/hs4_n4.qasm",
+   "ops": 32,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/inverseqft_n4.qasm",
+   "ops": 19,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/ipea_n2.qasm",
+   "ops": 41,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/iswap_n2.qasm",
+   "ops": 11,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/linearsolver_n3.qasm",
+   "ops": 22,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/lpn_n5.qasm",
+   "ops": 16,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/pea_n5.qasm",
+   "ops": 33,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/qaoa_n3.qasm",
+   "ops": 18,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/qec_en_n5.qasm",
+   "ops": 30,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/qec_sm_n5.qasm",
+   "ops": 11,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/qft_n4.qasm",
+   "ops": 17,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/qpe_n9.qasm",
+   "ops": 42,
+   "qubits": 9,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/qrng_n4.qasm",
+   "ops": 8,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/quantumwalks_n2.qasm",
+   "ops": 13,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/sat_n7.qasm",
+   "ops": 42,
+   "qubits": 7,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/shor_n5.qasm",
+   "ops": 25,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/simon_n6.qasm",
+   "ops": 24,
+   "qubits": 6,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/teleportation_n3.qasm",
+   "ops": 11,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/toffoli_n3.qasm",
+   "ops": 21,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/variational_n4.qasm",
+   "ops": 58,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/vqe_n4.qasm",
+   "ops": 94,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "qasmbench/small/wstate_n3.qasm",
+   "ops": 9,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/adder/adder_n4.qasm",
+   "ops": 4,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/bv/bv_2.qasm",
+   "ops": 6,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/bv/bv_3.qasm",
+   "ops": 9,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/bv/bv_4.qasm",
+   "ops": 12,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/bv/bv_5.qasm",
+   "ops": 15,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/grover/grover_3.qasm",
+   "ops": 16,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/pe/pe_2.qasm",
+   "ops": 7,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/pe/pe_3.qasm",
+   "ops": 12,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/pe/pe_4.qasm",
+   "ops": 18,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qft/qft_2.qasm",
+   "ops": 3,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qft/qft_3.qasm",
+   "ops": 6,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qft/qft_4.qasm",
+   "ops": 10,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qft/qft_5.qasm",
+   "ops": 15,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qubit_mapping/Ourense/5QBT_16CYC_16GN_1.0P2_0.qasm",
+   "ops": 16,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qubit_mapping/Ourense/5QBT_4CYC_4GN_1.0P2_0.qasm",
+   "ops": 4,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qubit_mapping/Ourense/5QBT_8CYC_8GN_1.0P2_0.qasm",
+   "ops": 8,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qv/quantum_volume_n2_d5_i0.qasm",
+   "ops": 50,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qv/quantum_volume_n3_d5_i0.qasm",
+   "ops": 50,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/qv/quantum_volume_n4_d5_i0.qasm",
+   "ops": 100,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_1_AG.qasm",
+   "ops": 3,
+   "qubits": 1,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_1_GD.qasm",
+   "ops": 3,
+   "qubits": 1,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_2_AG.qasm",
+   "ops": 11,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_2_GD.qasm",
+   "ops": 9,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_3_AG.qasm",
+   "ops": 17,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_3_GD.qasm",
+   "ops": 11,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_4_AG.qasm",
+   "ops": 25,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rand_cliff/rand_cliff_4_GD.qasm",
+   "ops": 23,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/3_17tc.qasm",
+   "ops": 6,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/4_49_fc.qasm",
+   "ops": 23,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/4_49tc1.qasm",
+   "ops": 16,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/4b15g_1.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/4b15g_2.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/4b15g_3.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/4b15g_4.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/4b15g_5.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/ham3_fc.qasm",
+   "ops": 6,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/ham3tc.qasm",
+   "ops": 5,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/hwb4-11-21.qasm",
+   "ops": 11,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/hwb4tc.qasm",
+   "ops": 17,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/hwb5-24-102.qasm",
+   "ops": 24,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mod5d1.qasm",
+   "ops": 8,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mod5d2.qasm",
+   "ops": 9,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mod5d4.qasm",
+   "ops": 5,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mod_4mod5-n5-gc4-qc13.qasm",
+   "ops": 4,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_4_49_12.qasm",
+   "ops": 12,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_4_49_13.qasm",
+   "ops": 13,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_4_49_14.qasm",
+   "ops": 14,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_4b15g_1.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_4b15g_2.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_4b15g_3.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_4b15g_4.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_4b15g_5.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_hwb4_12.qasm",
+   "ops": 12,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_hwb4_13.qasm",
+   "ops": 13,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_nth_primes4_11.qasm",
+   "ops": 11,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_nth_primes4_12.qasm",
+   "ops": 12,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_nth_primes4_13.qasm",
+   "ops": 13,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/mspk_nth_primes4_14.qasm",
+   "ops": 14,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/nth_prime3_inc.qasm",
+   "ops": 4,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/nth_prime4_inc_15_51.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/nth_prime4_inc_d1.qasm",
+   "ops": 12,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/nth_prime4_inc_d2.qasm",
+   "ops": 11,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/nth_prime5_inc_25_103.qasm",
+   "ops": 25,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/combinational/rev_circuit/rd32.qasm",
+   "ops": 4,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/dqc_state_injection_S.qasm",
+   "ops": 5,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/dqc_state_injection_T.qasm",
+   "ops": 5,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/dqc_teleportation.qasm",
+   "ops": 8,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/pe/dqc_pe_2.qasm",
+   "ops": 9,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/pe/dqc_pe_3.qasm",
+   "ops": 15,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/pe/dqc_pe_4.qasm",
+   "ops": 22,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/qft/dqc_qft_2.qasm",
+   "ops": 5,
+   "qubits": 2,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/qft/dqc_qft_3.qasm",
+   "ops": 9,
+   "qubits": 3,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/qft/dqc_qft_4.qasm",
+   "ops": 14,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/dynamic/qft/dqc_qft_5.qasm",
+   "ops": 20,
+   "qubits": 5,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/variational/EfficientSU2/eff_1_4.qasm",
+   "ops": 19,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/variational/EfficientSU2/eff_2_4.qasm",
+   "ops": 23,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/variational/EfficientSU2/eff_3_4.qasm",
+   "ops": 23,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/variational/EfficientSU2/eff_4_4.qasm",
+   "ops": 23,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/variational/EfficientSU2/eff_5_4.qasm",
+   "ops": 23,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  },
+  {
+   "path": "veriqbench/variational/QCNN/qcnn_4.qasm",
+   "ops": 76,
+   "qubits": 4,
+   "trace_equal": true,
+   "slice_diff_qubits": [],
+   "onepass_equal": true
+  }
+ ],
+ "qasmbench": [
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/bigadder_n18/bigadder_n18.qasm",
+   "ops": 21,
+   "qubits": 18,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/bigadder_n18/bigadder_n18_transpiled.qasm",
+   "ops": 339,
+   "qubits": 18,
+   "onepass_equal": true,
+   "seconds": 0.015
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/bv_n14/bv_n14.qasm",
+   "ops": 56,
+   "qubits": 14,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/bv_n14/bv_n14_transpiled.qasm",
+   "ops": 109,
+   "qubits": 14,
+   "onepass_equal": true,
+   "seconds": 0.004
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/bv_n19/bv_n19.qasm",
+   "ops": 76,
+   "qubits": 19,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/bv_n19/bv_n19_transpiled.qasm",
+   "ops": 149,
+   "qubits": 19,
+   "onepass_equal": true,
+   "seconds": 0.006
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/cat_state_n22/cat_state_n22.qasm",
+   "ops": 45,
+   "qubits": 22,
+   "onepass_equal": true,
+   "seconds": 0.004
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/cat_state_n22/cat_state_n22_transpiled.qasm",
+   "ops": 47,
+   "qubits": 22,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/cc_n12/cc_n12.qasm",
+   "ops": 61,
+   "qubits": 12,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/cc_n12/cc_n12_transpiled.qasm",
+   "ops": 129,
+   "qubits": 12,
+   "onepass_equal": true,
+   "seconds": 0.005
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/dnn_n16/dnn_n16.qasm",
+   "ops": 2032,
+   "qubits": 16,
+   "onepass_equal": true,
+   "seconds": 0.074
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/dnn_n16/dnn_n16_transpiled.qasm",
+   "ops": 2848,
+   "qubits": 16,
+   "onepass_equal": true,
+   "seconds": 0.128
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/gcm_n13/gcm_h6.qasm",
+   "ops": 3149,
+   "qubits": 13,
+   "onepass_equal": true,
+   "seconds": 0.122
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/ghz_state_n23/ghz_state_n23.qasm",
+   "ops": 47,
+   "qubits": 23,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/ghz_state_n23/ghz_state_n23_transpiled.qasm",
+   "ops": 49,
+   "qubits": 23,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/hhl_n14/hhl_n14.qasm",
+   "error": "QasmError: data/QASMBench-master/QASMBench-master/medium/hhl_n14/hhl_n14.qasm: unknown argument 'q[0]'"
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/ising_n26/ising_n26.qasm",
+   "ops": 307,
+   "qubits": 26,
+   "onepass_equal": true,
+   "seconds": 0.012
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/ising_n26/ising_n26_transpiled.qasm",
+   "ops": 204,
+   "qubits": 26,
+   "onepass_equal": true,
+   "seconds": 0.008
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/knn_n25/knn_n25.qasm",
+   "ops": 39,
+   "qubits": 25,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/knn_n25/knn_n25_transpiled.qasm",
+   "ops": 343,
+   "qubits": 25,
+   "onepass_equal": true,
+   "seconds": 0.016
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/multiplier_n15/multiplier_n15.qasm",
+   "ops": 73,
+   "qubits": 15,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/multiplier_n15/multiplier_n15_transpiled.qasm",
+   "ops": 563,
+   "qubits": 15,
+   "onepass_equal": true,
+   "seconds": 0.023
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/multiply_n13/multiply_n13.qasm",
+   "ops": 21,
+   "qubits": 13,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/multiply_n13/multiply_n13_transpiled.qasm",
+   "ops": 123,
+   "qubits": 13,
+   "onepass_equal": true,
+   "seconds": 0.005
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/qec9xz_n17/qec9xz_n17.qasm",
+   "ops": 61,
+   "qubits": 17,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/qec9xz_n17/qec9xz_n17_transpiled.qasm",
+   "ops": 103,
+   "qubits": 17,
+   "onepass_equal": true,
+   "seconds": 0.004
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/qf21_n15/qf21_n15.qasm",
+   "ops": 79,
+   "qubits": 15,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/qf21_n15/qf21_n15_transpiled.qasm",
+   "ops": 365,
+   "qubits": 15,
+   "onepass_equal": true,
+   "seconds": 0.014
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/qft_n18/qft_n18.qasm",
+   "ops": 802,
+   "qubits": 18,
+   "onepass_equal": true,
+   "seconds": 0.035
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/qft_n18/qft_n18_transpiled.qasm",
+   "ops": 838,
+   "qubits": 18,
+   "onepass_equal": true,
+   "seconds": 0.037
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/qram_n20/qram_n20.qasm",
+   "ops": 45,
+   "qubits": 20,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/qram_n20/qram_n20_transpiled.qasm",
+   "ops": 350,
+   "qubits": 20,
+   "onepass_equal": true,
+   "seconds": 0.016
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/sat_n11/sat_n11.qasm",
+   "ops": 95,
+   "qubits": 11,
+   "onepass_equal": true,
+   "seconds": 0.004
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/sat_n11/sat_n11_transpiled.qasm",
+   "ops": 735,
+   "qubits": 11,
+   "onepass_equal": true,
+   "seconds": 0.026
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/seca_n11/seca_n11.qasm",
+   "ops": 80,
+   "qubits": 11,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/seca_n11/seca_n11_transpiled.qasm",
+   "ops": 292,
+   "qubits": 11,
+   "onepass_equal": true,
+   "seconds": 0.01
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/square_root_n18/square_root_n18.qasm",
+   "ops": 558,
+   "qubits": 18,
+   "onepass_equal": true,
+   "seconds": 0.027
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/square_root_n18/square_root_n18_transpiled.qasm",
+   "ops": 2787,
+   "qubits": 18,
+   "onepass_equal": true,
+   "seconds": 0.132
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/swap_test_n25/swap_test_n25.qasm",
+   "ops": 39,
+   "qubits": 25,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/swap_test_n25/swap_test_n25_transpiled.qasm",
+   "ops": 367,
+   "qubits": 25,
+   "onepass_equal": true,
+   "seconds": 0.018
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/wstate_n27/wstate_n27.qasm",
+   "ops": 133,
+   "qubits": 27,
+   "onepass_equal": true,
+   "seconds": 0.012
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/medium/wstate_n27/wstate_n27_transpiled.qasm",
+   "ops": 237,
+   "qubits": 27,
+   "onepass_equal": true,
+   "seconds": 0.011
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/adder_n10/adder_n10.qasm",
+   "ops": 19,
+   "qubits": 10,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/adder_n10/adder_n10_transpiled.qasm",
+   "ops": 171,
+   "qubits": 10,
+   "onepass_equal": true,
+   "seconds": 0.006
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/adder_n4/adder_n4.qasm",
+   "ops": 27,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/adder_n4/adder_n4_transpiled.qasm",
+   "ops": 31,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/basis_change_n3/basis_change_n3.qasm",
+   "ops": 36,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/basis_change_n3/basis_change_n3_transpiled.qasm",
+   "ops": 88,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/basis_trotter_n4/basis_test_n4.qasm",
+   "ops": 102,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/basis_trotter_n4/basis_test_n4_transpiled.qasm",
+   "ops": 117,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.004
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/basis_trotter_n4/basis_trotter_n4.qasm",
+   "ops": 1510,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.04
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/basis_trotter_n4/basis_trotter_n4_transpiled.qasm",
+   "ops": 2357,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.06
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/bb84_n8/bb84_n8.qasm",
+   "ops": 43,
+   "qubits": 8,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/bb84_n8/bb84_n8_transpiled.qasm",
+   "ops": 39,
+   "qubits": 8,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/bell_n4/bell_n4.qasm",
+   "ops": 37,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/bell_n4/bell_n4_transpiled.qasm",
+   "ops": 57,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/cat_state_n4/cat_state_n4.qasm",
+   "ops": 8,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/cat_state_n4/cat_state_n4_transpiled.qasm",
+   "ops": 10,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/deutsch_n2/deutsch_n2.qasm",
+   "ops": 7,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/deutsch_n2/deutsch_n2_transpiled.qasm",
+   "ops": 12,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/dnn_n2/dnn_n2.qasm",
+   "ops": 228,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.006
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/dnn_n2/dnn_n2_transpiled.qasm",
+   "ops": 308,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.007
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/dnn_n8/dnn_n8.qasm",
+   "ops": 1016,
+   "qubits": 8,
+   "onepass_equal": true,
+   "seconds": 0.031
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/dnn_n8/dnn_n8_transpiled.qasm",
+   "ops": 1424,
+   "qubits": 8,
+   "onepass_equal": true,
+   "seconds": 0.042
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/error_correctiond3_n5/error_correctiond3_n5.qasm",
+   "ops": 119,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.004
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/error_correctiond3_n5/error_correctiond3_n5_transpiled.qasm",
+   "ops": 242,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.007
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/fredkin_n3/fredkin_n3.qasm",
+   "ops": 22,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/fredkin_n3/fredkin_n3_transpiled.qasm",
+   "ops": 25,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/grover_n2/grover_n2.qasm",
+   "ops": 18,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/grover_n2/grover_n2_transpiled.qasm",
+   "ops": 17,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/hhl_n10/hhl_n10.qasm",
+   "error": "QasmError: data/QASMBench-master/QASMBench-master/small/hhl_n10/hhl_n10.qasm: unknown argument 'q[0]'"
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/hhl_n10/hhl_n10_transpiled.qasm",
+   "error": "QasmError: data/QASMBench-master/QASMBench-master/small/hhl_n10/hhl_n10_transpiled.qasm: unknown argument 'q[0]'"
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/hhl_n7/hhl_n7.qasm",
+   "ops": 697,
+   "qubits": 7,
+   "onepass_equal": true,
+   "seconds": 0.022
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/hhl_n7/hhl_n7_transpiled.qasm",
+   "ops": 998,
+   "qubits": 7,
+   "onepass_equal": true,
+   "seconds": 0.029
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/hs4_n4/hs4_n4.qasm",
+   "ops": 32,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/hs4_n4/hs4_n4_transpiled.qasm",
+   "ops": 32,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/inverseqft_n4/inverseqft_n4.qasm",
+   "ops": 19,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/inverseqft_n4/inverseqft_n4_transpiled.qasm",
+   "ops": 35,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/ipea_n2/ipea_n2.qasm",
+   "ops": 41,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/ipea_n2/ipea_n2_transpiled.qasm",
+   "ops": 102,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/ising_n10/ising_n10.qasm",
+   "ops": 490,
+   "qubits": 10,
+   "onepass_equal": true,
+   "seconds": 0.016
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/ising_n10/ising_n10_transpiled.qasm",
+   "ops": 425,
+   "qubits": 10,
+   "onepass_equal": true,
+   "seconds": 0.014
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/iswap_n2/iswap_n2.qasm",
+   "ops": 11,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/iswap_n2/iswap_n2_transpiled.qasm",
+   "ops": 16,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/linearsolver_n3/linearsolver_n3.qasm",
+   "ops": 22,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/linearsolver_n3/linearsolver_n3_transpiled.qasm",
+   "ops": 29,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/lpn_n5/lpn_n5.qasm",
+   "ops": 16,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/lpn_n5/lpn_n5_transpiled.qasm",
+   "ops": 22,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/pea_n5/pea_n5.qasm",
+   "ops": 33,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/pea_n5/pea_n5_transpiled.qasm",
+   "ops": 112,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qaoa_n3/qaoa_n3.qasm",
+   "ops": 18,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qaoa_n3/qaoa_n3_transpiled.qasm",
+   "ops": 35,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qaoa_n6/qaoa_n6.qasm",
+   "ops": 276,
+   "qubits": 6,
+   "onepass_equal": true,
+   "seconds": 0.008
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qaoa_n6/qaoa_n6_transpiled.qasm",
+   "ops": 384,
+   "qubits": 6,
+   "onepass_equal": true,
+   "seconds": 0.011
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qec_en_n5/qec_en_n5.qasm",
+   "ops": 30,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qec_en_n5/qec_en_n5_transpiled.qasm",
+   "ops": 51,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qec_sm_n5/qec_sm_n5.qasm",
+   "ops": 11,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qec_sm_n5/qec_sm_n5_transpiled.qasm",
+   "ops": 14,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qft_n4/qft_n4.qasm",
+   "ops": 17,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qft_n4/qft_n4_transpiled.qasm",
+   "ops": 49,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qpe_n9/qpe_n9.qasm",
+   "ops": 42,
+   "qubits": 9,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qpe_n9/qpe_n9_transpiled.qasm",
+   "ops": 162,
+   "qubits": 9,
+   "onepass_equal": true,
+   "seconds": 0.006
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qrng_n4/qrng_n4.qasm",
+   "ops": 8,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/qrng_n4/qrng_n4_transpiled.qasm",
+   "ops": 16,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/quantumwalks_n2/quantumwalks_n2.qasm",
+   "ops": 13,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/quantumwalks_n2/quantumwalks_n2_transpiled.qasm",
+   "ops": 40,
+   "qubits": 2,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/sat_n7/sat_n7.qasm",
+   "ops": 42,
+   "qubits": 7,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/shor_n5/shor_n5.qasm",
+   "ops": 25,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/shor_n5/shor_n5_transpiled.qasm",
+   "ops": 88,
+   "qubits": 5,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/simon_n6/simon_n6.qasm",
+   "ops": 24,
+   "qubits": 6,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/simon_n6/simon_n6_transpiled.qasm",
+   "ops": 64,
+   "qubits": 6,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/teleportation_n3/teleportation_n3.qasm",
+   "ops": 11,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/teleportation_n3/teleportation_n3_transpiled.qasm",
+   "ops": 15,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/toffoli_n3/toffoli_n3.qasm",
+   "ops": 21,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/toffoli_n3/toffoli_n3_transpiled.qasm",
+   "ops": 24,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/variational_n4/variational_n4.qasm",
+   "ops": 58,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/variational_n4/variational_n4_transpiled.qasm",
+   "ops": 62,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/vqe_n4/vqe_n4.qasm",
+   "ops": 94,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.003
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/vqe_n4/vqe_n4_transpiled.qasm",
+   "ops": 78,
+   "qubits": 4,
+   "onepass_equal": true,
+   "seconds": 0.002
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n4/vqe_uccsd_n4.qasm",
+   "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n4/vqe_uccsd_n4.qasm: unknown argument 'q[0]'"
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n4/vqe_uccsd_n4_transpiled.qasm",
+   "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n4/vqe_uccsd_n4_transpiled.qasm: unknown argument 'q[0]'"
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n6/vqe_uccsd_n6.qasm",
+   "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n6/vqe_uccsd_n6.qasm: unknown argument 'q[0]'"
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n6/vqe_uccsd_n6_transpiled.qasm",
+   "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n6/vqe_uccsd_n6_transpiled.qasm: unknown argument 'q[0]'"
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n8/vqe_uccsd_n8.qasm",
+   "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n8/vqe_uccsd_n8.qasm: unknown argument 'q[0]'"
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/vqe_uccsd_n8/vqe_uccsd_n8_transpiled.qasm",
+   "error": "QasmError: data/QASMBench-master/QASMBench-master/small/vqe_uccsd_n8/vqe_uccsd_n8_transpiled.qasm: unknown argument 'q[0]'"
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/wstate_n3/wstate_n3.qasm",
+   "ops": 9,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  },
+  {
+   "path": "QASMBench-master/QASMBench-master/small/wstate_n3/wstate_n3_transpiled.qasm",
+   "ops": 38,
+   "qubits": 3,
+   "onepass_equal": true,
+   "seconds": 0.001
+  }
+ ]
+}

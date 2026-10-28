@@ -574,6 +574,100 @@ def main() -> int:
     put("SsBugsContain", sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in bq), cnt(sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in bq)), "results/icpc/srcslice/qubits.csv")
     put("SsBugsQubits", len(bq), cnt(len(bq)), "results/icpc/srcslice/qubits.csv")
 
+    # ---- OpenQASM front end, LintQ comparison (Deviation I-22) ----
+    src = "results/icpc/qasm_frontend/check.json"
+    qc = json.load(open(ICPC / "qasm_frontend" / "check.json"))["summary"]
+    assert qc["trace_equal"] == qc["slice_equal"] == qc["onepass_equal"] == qc["corpus_a_circuits"]
+    assert qc["qasmbench_onepass_equal"] == qc["qasmbench_checked"]
+    put("QasmCircuitsChecked", qc["corpus_a_circuits"], cnt(qc["corpus_a_circuits"]), src)
+    put("QasmOnepassChecked", qc["qasmbench_checked"], cnt(qc["qasmbench_checked"]), src)
+    src = "results/icpc/lintq_compare/c1.csv"
+    c1 = rows(ICPC / "lintq_compare" / "c1.csv")
+    qrules = {"ql-operation-after-measurement", "ql-double-measurement", "ql-oversized-circuit",
+              "ql-conditional-without-measurement", "ql-unmeasurable-qubits"}
+    qr = [x for x in c1 if x["rule_id"] in qrules]
+    put("LqTp", len(c1), cnt(len(c1)), src)
+    put("LqQubitTp", len(qr), cnt(len(qr)), src)
+    put("LqQubitTraced", sum(x["traced"] == "1" for x in qr), cnt(sum(x["traced"] == "1" for x in qr)), src)
+    put("LqQubitExposed", sum(x["exposed"] == "1" for x in qr), cnt(sum(x["exposed"] == "1" for x in qr)), src)
+    rd = sorted(int(x["slice_lines"]) for x in qr if x["slice_lines"])
+    cd = sorted(int(x["code_lines"]) for x in qr if x["slice_lines"])
+    put("LqReadMedian", rd[len(rd) // 2], cnt(rd[len(rd) // 2]), src)
+    put("LqCodeMedian", cd[len(cd) // 2], cnt(cd[len(cd) // 2]), src)
+    put("LqReadN", len(rd), cnt(len(rd)), src)
+
+    # ---- scalability (Deviation I-22) ----
+    sc = ICPC / "scale"
+    tf = lambda r, ks: sum(float(r[k]) for k in ks if r.get(k))  # noqa: E731
+    src = "results/icpc/scale/s1_lintq.csv"
+    s1 = rows(sc / "s1_lintq.csv")
+    ok1 = [r for r in s1 if not r["error"]]
+    put("ScaleSOneFiles", len(s1), cnt(len(s1)), src)
+    put("ScaleSOneSliced", len(ok1), cnt(len(ok1)), src)
+    put("ScaleSOneTimeouts", sum(r["error"] == "timeout" for r in s1), cnt(sum(r["error"] == "timeout" for r in s1)), src)
+    tot = sorted(tf(r, ["t_srcml", "t_interp", "t_slice", "t_srcslice", "t_profile"]) for r in ok1)
+    put("ScaleSOneMedianMs", st.median(tot), f"{1000 * st.median(tot):.0f}", src)
+    put("ScaleSOneNinetyNine", tot[int(0.99 * len(tot))], f"{tot[int(0.99 * len(tot))]:.0f}", src)
+    for k, nm in (("t_srcml", "Srcml"), ("t_interp", "Interp"), ("t_slice", "Slice"), ("t_srcslice", "Srcslice"), ("t_profile", "Profile")):
+        v = st.median(float(r[k]) for r in ok1)
+        put(f"ScaleSOne{nm}Ms", v, f"{1000 * v:.1f}" if v < 0.01 else f"{1000 * v:.0f}", src)
+    big = max(ok1, key=lambda r: int(r["ops"]))
+    put("ScaleSOneMaxOps", int(big["ops"]), cnt(int(big["ops"])), src)
+    put("ScaleSOneMaxOpsS", tf(big, ["t_srcml", "t_interp", "t_slice", "t_srcslice", "t_profile"]),
+        f"{tf(big, ['t_srcml', 't_interp', 't_slice', 't_srcslice', 't_profile']):.0f}", src)
+    b10 = [r for r in ok1 if int(r["ops_beyond_10th_iteration"]) > 0]
+    put("LqBeyondTenFiles", len(b10), cnt(len(b10)), src)
+    v = sum(int(r["ops_beyond_10th_iteration"]) for r in b10) / sum(int(r["ops"]) for r in b10)
+    put("LqBeyondTenOpsPct", v, pct(v, 0), src)
+    share = [int(x) / int(r["code_lines"]) for r in ok1 if int(r["code_lines"]) for x in r["slice_lines"].split(";") if x]
+    put("ScaleReadMedianPct", st.median(share), pct(st.median(share), 0), src)
+    put("ScaleReadQubits", len(share), cnt(len(share)), src)
+    src = "results/icpc/scale/s2_qasmbench.csv"
+    s2 = rows(sc / "s2_qasmbench.csv")
+    sq = {r["path"]: r for r in s2 if r["tool"] == "srcSlice-Q" and not r["error"]}
+    put("ScaleQbFiles", len({r["path"] for r in s2}), cnt(len({r["path"] for r in s2})), src)
+    put("ScaleQbRead", len(sq), cnt(len(sq)), src)
+    put("ScaleQbMillion", sum(int(r["ops"]) >= 1_000_000 for r in sq.values()), cnt(sum(int(r["ops"]) >= 1_000_000 for r in sq.values())), src)
+    put("ScaleQbMaxQubits", max(int(r["qubits"]) for r in sq.values()), cnt(max(int(r["qubits"]) for r in sq.values())), src)
+    bp = max(sq, key=lambda p: int(sq[p]["ops"]))
+    b = sq[bp]
+    put("ScaleQbMaxOps", int(b["ops"]), f"{int(b['ops']) / 1e6:.1f}~million", src)
+    put("ScaleQbMaxOpsQubits", int(b["qubits"]), cnt(int(b["qubits"])), src)
+    put("ScaleQbReadS", float(b["t_read"]), f"{float(b['t_read']):.0f}", src)
+    put("ScaleQbAllS", tf(b, ["t_terminal", "t_all"]), f"{tf(b, ['t_terminal', 't_all']):.0f}", src)
+    put("ScaleQbOneS", tf(b, ["t_terminal", "t_one"]), f"{tf(b, ['t_terminal', 't_one']):.0f}", src)
+    dag = {r["path"]: r for r in s2 if r["tool"] == "qiskit-dag" and not r["error"]}
+    d = dag[bp]
+    put("ScaleQbDagLoadS", float(d["t_load"]), f"{float(d['t_load']):.0f}", src)
+    put("ScaleQbDagOneS", tf(d, ["t_build", "t_one"]), f"{tf(d, ['t_build', 't_one']):.0f}", src)
+    put("ScaleQbDagAllMin", int(b["qubits"]) * tf(d, ["t_build", "t_one"]) / 60, f"{int(b['qubits']) * tf(d, ['t_build', 't_one']) / 60:.0f}", src)
+    qp = {r["path"]: r for r in s2 if r["tool"] == "qpdg"}
+    okq = [(int(sq[p]["ops"]), p) for p in qp if p in sq and not qp[p]["error"]]
+    mo, mp = max(okq)
+    put("ScaleQpdgMaxOps", mo, cnt(mo), src)
+    put("ScaleQpdgMaxS", tf(qp[mp], ["t_build", "t_one"]), f"{tf(qp[mp], ['t_build', 't_one']):.0f}", src)
+    put("ScaleQpdgSqS", tf(sq[mp], ["t_read", "t_terminal", "t_all"]), f"{tf(sq[mp], ['t_read', 't_terminal', 't_all']):.2f}", src)
+    put("ScaleQpdgOver", sum(qp[p]["error"] != "" and p in sq for p in qp), cnt(sum(qp[p]["error"] != "" and p in sq for p in qp)), src)
+    lc = {r["path"]: r for r in s2 if r["tool"] == "qiskit-lightcone"}
+    lok = [p for p in lc if p in sq and not lc[p]["error"]]
+    put("ScaleLcOk", len(lok), cnt(len(lok)), src)
+    if lok:
+        lm = max(lok, key=lambda p: int(sq[p]["ops"]))
+        put("ScaleLcMaxOps", int(sq[lm]["ops"]), cnt(int(sq[lm]["ops"])), src)
+        put("ScaleLcMaxS", tf(lc[lm], ["t_build", "t_one"]), f"{tf(lc[lm], ['t_build', 't_one']):.0f}", src)
+        put("ScaleLcSqS", tf(sq[lm], ["t_terminal", "t_all"]), f"{tf(sq[lm], ['t_terminal', 't_all']):.1f}", src)
+        put("ScaleLcQubits", int(sq[lm]["qubits"]), cnt(int(sq[lm]["qubits"])), src)
+    put("ScaleLcOver", sum(lc[p]["error"] in ("timeout",) or lc[p]["error"].startswith("skipped") for p in lc if p in sq),
+        cnt(sum(lc[p]["error"] in ("timeout",) or lc[p]["error"].startswith("skipped") for p in lc if p in sq)), src)
+    src = "results/icpc/scale/s3_parametric.csv"
+    s3 = rows(sc / "s3_parametric.csv")
+    q600 = next(r for r in s3 if r["program"] == "qft" and r["size"] == "600" and r["tool"] == "srcSlice-Q")
+    put("ScaleQftOps", int(q600["ops"]), cnt(int(q600["ops"])), src)
+    put("ScaleQftS", tf(q600, ["t_srcml", "t_interp", "t_all", "t_srcslice"]), f"{tf(q600, ['t_srcml', 't_interp', 't_all', 't_srcslice']):.0f}", src)
+    r600 = next(r for r in s3 if r["program"] == "qft" and r["size"] == "600" and r["tool"] == "qiskit-run-dag")
+    put("ScaleQftRunS", tf(r600, ["t_load", "t_build", "t_one"]), f"{tf(r600, ['t_load', 't_build', 't_one']):.1f}", src)
+    put("ScaleQftLines", int(q600["code_lines"]), cnt(int(q600["code_lines"])), src)
+
     # ---- the static program slicer (Deviation I-15, I-18; tool-v7, the final version; earlier versions' results kept) --
     sys.path.insert(0, str(HERE.parent))
     from tool.gates import GATES  # noqa: PLC0415

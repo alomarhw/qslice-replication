@@ -1998,6 +1998,261 @@
   "tex": "276",
   "source": "results/icpc/srcslice/qubits.csv"
  },
+ "QasmCircuitsChecked": {
+  "value": 158,
+  "tex": "158",
+  "source": "results/icpc/qasm_frontend/check.json"
+ },
+ "QasmOnepassChecked": {
+  "value": 118,
+  "tex": "118",
+  "source": "results/icpc/qasm_frontend/check.json"
+ },
+ "LqTp": {
+  "value": 216,
+  "tex": "216",
+  "source": "results/icpc/lintq_compare/c1.csv"
+ },
+ "LqQubitTp": {
+  "value": 142,
+  "tex": "142",
+  "source": "results/icpc/lintq_compare/c1.csv"
+ },
+ "LqQubitTraced": {
+  "value": 139,
+  "tex": "139",
+  "source": "results/icpc/lintq_compare/c1.csv"
+ },
+ "LqQubitExposed": {
+  "value": 139,
+  "tex": "139",
+  "source": "results/icpc/lintq_compare/c1.csv"
+ },
+ "LqReadMedian": {
+  "value": 8,
+  "tex": "8",
+  "source": "results/icpc/lintq_compare/c1.csv"
+ },
+ "LqCodeMedian": {
+  "value": 62,
+  "tex": "62",
+  "source": "results/icpc/lintq_compare/c1.csv"
+ },
+ "LqReadN": {
+  "value": 88,
+  "tex": "88",
+  "source": "results/icpc/lintq_compare/c1.csv"
+ },
+ "ScaleSOneFiles": {
+  "value": 7568,
+  "tex": "7{,}568",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneSliced": {
+  "value": 4182,
+  "tex": "4{,}182",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneTimeouts": {
+  "value": 5,
+  "tex": "5",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneMedianMs": {
+  "value": 0.130975,
+  "tex": "131",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneNinetyNine": {
+  "value": 100.61618,
+  "tex": "101",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneSrcmlMs": {
+  "value": 0.031744999999999995,
+  "tex": "32",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneInterpMs": {
+  "value": 0.004055,
+  "tex": "4.1",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneSliceMs": {
+  "value": 8e-05,
+  "tex": "0.1",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneSrcsliceMs": {
+  "value": 0.05677,
+  "tex": "57",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneProfileMs": {
+  "value": 0.032630000000000006,
+  "tex": "33",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneMaxOps": {
+  "value": 200000,
+  "tex": "200{,}000",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleSOneMaxOpsS": {
+  "value": 45.35508,
+  "tex": "45",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "LqBeyondTenFiles": {
+  "value": 251,
+  "tex": "251",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "LqBeyondTenOpsPct": {
+  "value": 0.6936519066869343,
+  "tex": "69\\%",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleReadMedianPct": {
+  "value": 0.23529411764705882,
+  "tex": "24\\%",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleReadQubits": {
+  "value": 14781,
+  "tex": "14{,}781",
+  "source": "results/icpc/scale/s1_lintq.csv"
+ },
+ "ScaleQbFiles": {
+  "value": 169,
+  "tex": "169",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbRead": {
+  "value": 164,
+  "tex": "164",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbMillion": {
+  "value": 8,
+  "tex": "8",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbMaxQubits": {
+  "value": 10000,
+  "tex": "10{,}000",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbMaxOps": {
+  "value": 5843491,
+  "tex": "5.8~million",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbMaxOpsQubits": {
+  "value": 97,
+  "tex": "97",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbReadS": {
+  "value": 59.44261,
+  "tex": "59",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbAllS": {
+  "value": 10.00988,
+  "tex": "10",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbOneS": {
+  "value": 13.203470000000001,
+  "tex": "13",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbDagLoadS": {
+  "value": 25.77071,
+  "tex": "26",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbDagOneS": {
+  "value": 11.0956,
+  "tex": "11",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQbDagAllMin": {
+  "value": 17.937886666666664,
+  "tex": "18",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQpdgMaxOps": {
+  "value": 8355,
+  "tex": "8{,}355",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQpdgMaxS": {
+  "value": 530.5953499999999,
+  "tex": "531",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQpdgSqS": {
+  "value": 0.11626,
+  "tex": "0.12",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQpdgOver": {
+  "value": 32,
+  "tex": "32",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleLcOk": {
+  "value": 143,
+  "tex": "143",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleLcMaxOps": {
+  "value": 610484,
+  "tex": "610{,}484",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleLcMaxS": {
+  "value": 294.22792000000004,
+  "tex": "294",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleLcSqS": {
+  "value": 1.1472,
+  "tex": "1.1",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleLcQubits": {
+  "value": 57,
+  "tex": "57",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleLcOver": {
+  "value": 3,
+  "tex": "3",
+  "source": "results/icpc/scale/s2_qasmbench.csv"
+ },
+ "ScaleQftOps": {
+  "value": 181200,
+  "tex": "181{,}200",
+  "source": "results/icpc/scale/s3_parametric.csv"
+ },
+ "ScaleQftS": {
+  "value": 16.60736,
+  "tex": "17",
+  "source": "results/icpc/scale/s3_parametric.csv"
+ },
+ "ScaleQftRunS": {
+  "value": 1.48963,
+  "tex": "1.5",
+  "source": "results/icpc/scale/s3_parametric.csv"
+ },
+ "ScaleQftLines": {
+  "value": 11,
+  "tex": "11",
+  "source": "results/icpc/scale/s3_parametric.csv"
+ },
  "ToolGateTable": {
   "value": 73,
   "tex": "73",

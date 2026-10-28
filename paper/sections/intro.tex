@@ -23,7 +23,8 @@ programs compute, so a developer cannot know whether a slice shows the code that
 can look right and hide the fault. Section~\ref{sec:example} shows a classical reading of a
 two-qubit gate giving a slice that omits the faulty line and still reproduces the qubit's state.
 
-This paper asks what a quantum slice should look like to support comprehension, on three levels. What a
+This paper asks what a quantum slice should look like to support comprehension, on three levels, which
+Fig.~\ref{fig:overview} lays out. What a
 slice must keep is defined semantically. An operation is a dependence when changing it can alter the joint
 state of the criterion qubits for some input, and a slice is sound if it gives these qubits the same state
 as the whole program for every input. Which rules produce such slices is measured in a pre-registered study
@@ -34,7 +35,9 @@ a developer is answered by \tool{}, a static slicer for Qiskit programs~\cite{ja
 built on srcML and srcSlice, so it reads a program without running it and keeps every character and
 position of the source, and it adds the quantum layer they lack, the roles of gate arguments, the qubits
 and order of operations, and the QDG. It reports source lines, loop iterations, the classical lines that
-compute them and a profile of every qubit.
+compute them and a profile of every qubit, which answer the questions a developer asks, which lines determine a
+qubit, which iterations matter and what a line can affect. It reads OpenQASM~2 as well, and slices every qubit of a
+circuit of \numScaleQbMaxOps{} operations in \numScaleQbAllS{}~s.
 
 The classical PDG gives wrong slices for \numCpdgUnsoundPct{} of the pairs, because a two-qubit gate can
 change its control qubit, as in phase kickback, which no classical reading of the gate expresses. Of these
@@ -58,9 +61,11 @@ dependence-complete, given in Section~\ref{sec:dependence}.
 \item A pre-registered comparison of dependence rules, from the classical PDG to state-based pruning,
 against this ground truth, which explains why classical slices fail and what entanglement edges and
 pruning cost, designed in Section~\ref{sec:design} and reported in Section~\ref{sec:results}.
-\item \tool{}, a static slicer for Qiskit built on srcML and srcSlice, whose quantum extensions give
-srcSlice's classical slicing a quantum dependence rule, and which shows a slice as source lines, loop
-iterations, classical lines and qubit profiles, validated on Bugs4Q, the Qiskit textbook and \numToolLintqQiskit{}
+\item \tool{}, a static slicer for Qiskit and OpenQASM built on srcML and srcSlice, whose quantum extensions
+give srcSlice's classical slicing a quantum dependence rule, fix its gaps for these programs and go beyond the
+OpenQASM work on srcML, and which shows a slice as source lines, loop iterations, classical lines and qubit
+profiles, scales to circuits of millions of operations, and exposes \numLqQubitExposed{} of the \numLqQubitTp{} qubit
+bugs that LintQ's authors confirmed on its corpus, validated on Bugs4Q, the Qiskit textbook and \numToolLintqQiskit{}
 programs from GitHub, presented in Section~\ref{sec:tool}.
 \item The implications for comprehension tools that Section~\ref{sec:discussion} draws, and a replication
 package that regenerates every number in the paper.
