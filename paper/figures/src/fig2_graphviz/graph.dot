@@ -4,22 +4,22 @@ digraph G {
   edge [arrowsize=0.34, arrowhead=normal, penwidth=0.6];
   { rank=same; cn; cly; crng; }
   { rank=same; cqc; cfor; }
-  cn [width=0.3367, height=0.2477];
-  cly [width=0.5812, height=0.2477];
-  crng [width=1.1291, height=0.2477];
-  cqc [width=1.7269, height=0.2477];
-  cfor [width=1.3782, height=0.2477];
+  cn [width=0.3523, height=0.2588];
+  cly [width=0.6088, height=0.2588];
+  crng [width=1.1872, height=0.2588];
+  cqc [width=1.8182, height=0.2588];
+  cfor [width=1.4501, height=0.2588];
   subgraph cluster_layer0 {
     graph [label="", margin=4.00, style=dashed];
-    m0 [width=0.7171, height=0.2477, group=q0];
-    m1 [width=0.7171, height=0.2477, group=q0];
-    m2 [width=0.7171, height=0.2477, group=q1];
-    m3 [width=0.7171, height=0.2477, group=q1];
-    m4 [width=0.7171, height=0.2477, group=q2];
-    m5 [width=0.7171, height=0.2477, group=q2];
-    m6 [width=0.7171, height=0.2477, group=q0];
-    m7 [width=0.7171, height=0.2477, group=g12];
-    lbl_cluster_layer0 [style=invis, group=q2, width=0.7171, height=0.2477];
+    m0 [width=0.7561, height=0.2588, group=q0];
+    m1 [width=0.7561, height=0.2588, group=q0];
+    m2 [width=0.7561, height=0.2588, group=q1];
+    m3 [width=0.7561, height=0.2588, group=q1];
+    m4 [width=0.7561, height=0.2588, group=q2];
+    m5 [width=0.7561, height=0.2588, group=q2];
+    m6 [width=0.7561, height=0.2588, group=q0];
+    m7 [width=0.7561, height=0.2588, group=g12];
+    lbl_cluster_layer0 [style=invis, group=q2, width=0.7561, height=0.2588];
     { rank=same; lbl_cluster_layer0; m2; m0; }
     lbl_cluster_layer0 -> m2 [style=invis];
     m2 -> m0 [style=invis];
@@ -34,15 +34,15 @@ digraph G {
   }
   subgraph cluster_layer1 {
     graph [label="", margin=4.00, style=dashed];
-    m8 [width=0.7171, height=0.2477, group=q0];
-    m9 [width=0.7171, height=0.2477, group=q0];
-    m10 [width=0.7171, height=0.2477, group=q1];
-    m11 [width=0.7171, height=0.2477, group=q1];
-    m12 [width=0.7171, height=0.2477, group=q2];
-    m13 [width=0.7171, height=0.2477, group=q2];
-    m14 [width=0.7171, height=0.2477, group=q0];
-    m15 [width=0.7171, height=0.2477, group=g12];
-    lbl_cluster_layer1 [style=invis, group=q2, width=0.7171, height=0.2477];
+    m8 [width=0.7561, height=0.2588, group=q0];
+    m9 [width=0.7561, height=0.2588, group=q0];
+    m10 [width=0.7561, height=0.2588, group=q1];
+    m11 [width=0.7561, height=0.2588, group=q1];
+    m12 [width=0.7561, height=0.2588, group=q2];
+    m13 [width=0.7561, height=0.2588, group=q2];
+    m14 [width=0.7561, height=0.2588, group=q0];
+    m15 [width=0.7561, height=0.2588, group=g12];
+    lbl_cluster_layer1 [style=invis, group=q2, width=0.7561, height=0.2588];
     { rank=same; lbl_cluster_layer1; m10; m8; }
     lbl_cluster_layer1 -> m10 [style=invis];
     m10 -> m8 [style=invis];
@@ -54,9 +54,9 @@ digraph G {
     lbl_cluster_layer1 -> m12 [style=invis, weight=20];
   }
   { rank=same; m16; m17; m18; }
-  m16 [width=0.3789, height=0.2477];
-  m17 [width=0.8925, height=0.2477];
-  m18 [width=0.6227, height=0.2477, group=q0];
+  m16 [width=0.3971, height=0.2588];
+  m17 [width=0.9340, height=0.2588];
+  m18 [width=0.6503, height=0.2588, group=q0];
   m15 -> m16 [style=invis, weight=0];
   cn -> cly [style=invis]; cly -> crng [style=invis];
   cqc -> cfor [style=invis];

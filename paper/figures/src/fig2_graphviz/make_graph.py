@@ -26,9 +26,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # ---------------------------------------------------------------- geometry
 TT_EM = 0.5            # monospace char width in em
 SUB_EM = 0.47          # Times italic average char width in em (digits are 0.5)
-LBL_PT, LBL_BL = 7.8, 8.2
-SUB_PT, SUB_BL = 6.5, 6.9
-CL_PT = 7.2            # the preamble's cl style sets classical statements at 7.2pt
+LBL_PT, LBL_BL = 8.2, 8.6
+SUB_PT, SUB_BL = 6.9, 7.3
+CL_PT = 7.6            # the preamble's cl style sets classical statements at 7.6pt
 PADX, PADY = 3.0, 1.4  # inner padding, TeX pt
 TEXPT_PER_IN = 72.27
 BP_PER_IN = 72.0

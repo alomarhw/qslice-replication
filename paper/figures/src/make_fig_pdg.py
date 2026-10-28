@@ -332,11 +332,12 @@ def ansatz():
 
 
 def side_head():
-    """The preamble of the side-by-side figures: larger code, classical statements and box labels."""
-    head = (TEX_HEAD.replace(r"basicstyle=\ttfamily\fontsize{5.6}{6.9}\selectfont", r"basicstyle=\ttfamily\fontsize{7.2}{9}\selectfont")
-            .replace(r"fill=black!4, font=\ttfamily\fontsize{5.6}{6.2}\selectfont}", r"fill=black!4, font=\ttfamily\fontsize{7.2}{8}\selectfont}")
-            .replace(r"boxlbl/.style={font=\ttfamily\fontsize{5.2}{5.6}\selectfont", r"boxlbl/.style={font=\ttfamily\fontsize{6.8}{7.4}\selectfont"))
-    assert head.count("7.2}{8}") == 1 and head.count("6.8}{7.4}") == 1 and head.count("7.2}{9}") == 1
+    """The preamble of the side-by-side figures: larger code, line numbers, classical statements and box labels."""
+    head = (TEX_HEAD.replace(r"basicstyle=\ttfamily\fontsize{5.6}{6.9}\selectfont", r"basicstyle=\ttfamily\fontsize{7.6}{9.4}\selectfont")
+            .replace(r"numberstyle=\fontsize{5}{6}\selectfont", r"numberstyle=\fontsize{6}{7}\selectfont")
+            .replace(r"fill=black!4, font=\ttfamily\fontsize{5.6}{6.2}\selectfont}", r"fill=black!4, font=\ttfamily\fontsize{7.6}{8.4}\selectfont}")
+            .replace(r"boxlbl/.style={font=\ttfamily\fontsize{5.2}{5.6}\selectfont", r"boxlbl/.style={font=\ttfamily\fontsize{7.2}{7.8}\selectfont"))
+    assert head.count("7.6}{8.4}") == 1 and head.count("7.2}{7.8}") == 1 and head.count("7.6}{9.4}") == 1 and head.count("6}{7}") == 1
     return head
 
 
@@ -380,12 +381,12 @@ def ansatz_graphviz():
     (gv / "graph_spec.json").write_text(json.dumps(graphviz_spec(A), indent=1) + "\n")
     (gv / "preamble.tex").write_text(head)
     subprocess.run([sys.executable, str(gv / "make_graph.py"), "--no-compile"], check=True, cwd=gv)
-    leg = r"\par\vspace{3pt}".join(r"\parbox[t]{6.9cm}{\raggedright\hangindent=0.66cm " + LEGEND[i] + "}" for i in
+    leg = r"\par\vspace{3pt}".join(r"\parbox[t]{7.2cm}{\raggedright\hangindent=0.66cm " + LEGEND[i] + "}" for i in
                                    ["data", "control", "quantumq", "cpdgonly", "lvdu", "lvcp", "lvqd", "lvyzh", "crit",
                                     "classicalall", "loopouter"])
-    tex = (head + r"\begin{minipage}{17.8cm}" + listing("ansatz.py", 4, 20, "7.05cm", "(a) VQE ansatz",
+    tex = (head + r"\begin{minipage}{18.45cm}" + listing("ansatz.py", 4, 20, "7.4cm", "(a) VQE ansatz",
                                                     r"\par\vspace{10pt}{\footnotesize " + leg + r"\par}") +
-           r"\hfill\begin{minipage}[t]{10.6cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]"
+           r"\hfill\begin{minipage}[t]{10.95cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]"
            r"\begin{tikzpicture}[line cap=round]\input{fig2_graphviz/graph_body.tikz}\end{tikzpicture}\end{minipage}\end{minipage}\end{document}" + "\n")
     (SRC / "fig_pdg_ansatz.tex").write_text(tex)
     sl = A["sl"]
