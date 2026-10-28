@@ -1,73 +1,139 @@
-\section{A Static Slicer for Qiskit Programs}\label{sec:tool}
+\section{\tool: Quantum Slicing on srcML and srcSlice}\label{sec:tool}
 
-A slice helps developers only as lines of their program, so we built a tool that slices a Qiskit program
-statically with the QDG of Section~\ref{sec:dependence}. Fig.~\ref{fig:tool} shows its steps on the ansatz of
+A slice helps developers only as lines of their program. \tool{} slices a Qiskit
+program~\cite{javadi2024qiskit} statically with the QDG of Section~\ref{sec:dependence}. It is built on
+srcML~\cite{collard2011lightweight, collard2013srcml} and on the design of
+srcSlice~\cite{alomari2014srcslice}, which it also runs for classical lines, and it adds the quantum layer
+that neither has. Fig.~\ref{fig:tool} shows its steps on the ansatz of
 Fig.~\ref{fig:ansatz}.
 
-\paragraph*{Why srcML}
-Four properties of srcML matter for a slicer whose output a developer reads. First, srcML parses a file
-without compiling or running it. The tool therefore slices programs that cannot be run, such as fragments,
-programs written for earlier Qiskit releases, as the Bugs4Q programs are, and programs from untrusted
-sources, and it needs neither a simulator nor quantum hardware. Second, srcML keeps every character of the
-source, including whitespace and comments, and the position of every element, and converts back to source
-without loss~\cite{collard2011lightweight, behler2024supporting}. A slice is therefore shown on the
-developer's own text, line by line, and its source can be recovered from the markup. Third, srcML marks up
-its languages with one vocabulary of elements~\cite{collard2013srcml}, and a markup for OpenQASM has been
-specified~\cite{behler2024supporting}. A front end for another language then needs only the quantum layer
-described below, and the classical and quantum parts of a polyglot program share one
-representation~\cite{behler2025static}. Fourth, slicing on srcML scales. srcSlice computes dependences as
-needed while it slices, without building a dependence graph, and gives the lines, dependent variables,
-aliases and calls of every variable of the Linux kernel in about 20 minutes, with accuracy comparable to
-CodeSurfer~\cite{alomari2014srcslice}. Our tool follows this design for qubits. It computes the QDG's
-dependences on the trace while it slices instead of building the graph, and its qubit slice profile is the
-analogue of srcSlice's variable profile. Behler et al.\ proposed adapting srcML's slicer to find every line
-that affects a qubit~\cite{behler2025static}, and the tool realizes that proposal with a dependence rule
-that is proved sound.
+\subsection{Why srcML and srcSlice}
+Four properties matter for a slicer whose output a developer reads. First, srcML parses a file without
+compiling or running it. \tool{} therefore slices programs that cannot be run, such as fragments, programs
+written for earlier Qiskit releases, as the Bugs4Q programs are, and programs from untrusted sources, and
+it needs neither a simulator nor quantum hardware. Second, srcML keeps every character of the source,
+including whitespace and comments, and the position of every element, and converts back to source without
+loss~\cite{collard2011lightweight, behler2024supporting}. A slice is therefore shown on the developer's own
+text, line by line. Third, srcML marks up its languages with one vocabulary of
+elements~\cite{collard2013srcml}, and a markup for OpenQASM has been
+specified~\cite{behler2024supporting}, so a front end for another language needs only the quantum layer,
+and the classical and quantum parts of a polyglot program share one representation~\cite{behler2025static}.
+Fourth, slicing on srcML scales. srcSlice computes dependences as needed while it slices, without building
+a dependence graph, and gives the lines, dependent variables, aliases and calls of every variable of the
+Linux kernel in about 20 minutes, with accuracy comparable to CodeSurfer~\cite{alomari2014srcslice}.
+Behler et al.\ proposed adapting srcML's slicer to find every line that affects a
+qubit~\cite{behler2025static}, and \tool{} realizes that proposal.
 
-\paragraph*{Parsing}
-The tool parses the program with srcML~\cite{collard2011lightweight, collard2013srcml}, which marks up its
-syntax and the position of every element. srcML marks up Qiskit programs as Python and knows nothing of
-quantum programs, so the quantum layer is ours. Behler et al.\ needed a new markup for OpenQASM, whose
-syntax srcML could not parse~\cite{behler2024supporting}. Qiskit is ordinary Python, so its syntax needs no
-new markup, but its quantum meaning lies in library calls that no markup captures, and supplying that
-meaning is what the tool adds. A table of \numToolGateTable{} Qiskit instruction methods records
-which arguments of each are qubits, bits and angles, so that a \texttt{call} element such as
-\texttt{qc.cx(qubit, qubit + 1)} becomes a gate on its qubits, as stage~1 of Fig.~\ref{fig:tool} shows.
+\subsection{What srcML and srcSlice see in a Qiskit program}
+srcML marks up a Qiskit program as Python. Behler et al.\ needed a new markup for OpenQASM, whose syntax
+srcML could not parse~\cite{behler2024supporting}. Qiskit is ordinary Python, so its syntax needs no new
+markup, but its quantum meaning lies in library calls that no markup captures. In stage~1 of
+Fig.~\ref{fig:tool}, \texttt{qc.cx(qubit, qubit + 1)} is a \texttt{call} whose arguments are two
+expressions. srcSlice sees the same program as variables. Its profile of \texttt{qc} uses every gate line,
+because each gate is a call on the one circuit object, and its profile of \texttt{qubit} records that the
+variable is passed as the first and the second argument of \texttt{cx}. srcSlice therefore knows which
+variables reach which argument of which call, but not which qubits a gate acts on, so its slice of
+\texttt{qc} is the whole circuit and it has no slice of a qubit at all. \tool{} adds the quantum layer in
+five extensions.
 
-\paragraph*{Static interpretation}
-The tool turns the srcML tree into an operation trace, as Behler et al.\ do for
-OpenQASM~\cite{behler2024supporting}. It unrolls loops and records the iteration of each operation, inlines
-functions, and follows \texttt{if\_test} and \texttt{c\_if}, Qiskit's constructs for gates conditioned on
-measured bits, as stages 2 and 3 of Fig.~\ref{fig:tool} show. Each value carries the lines that computed it,
-which gives the classical lines of each operation. Where a
-value cannot be resolved statically, the tool over-approximates. An unknown qubit index acts on every qubit
-it may denote, an unknown condition runs every branch, and a loop over an unknown range repeats its body
-once more than the number of qubits and bits it touches, at most \numToolMaxCopies{} times. Since the needed set never loses a qubit, these over-approximations
-only enlarge a slice, and the tool reports each. A circuit passed to code the tool does not model is reported as not traced.
+\subsection{The quantum extensions}
 
-\paragraph*{Slicing}
-The slice is the backward pass of Theorem~\ref{thm:sound} on the trace, which skips barriers and terminal
-measurements. An operation that may act on several qubits adds all of them to the needed set, and a bit
-leaves the needed set only when an operation certainly writes it. The pass returns the operations of the
-slice, their lines and iterations, and the classical lines they depend on, in time linear in the trace.
+\paragraph*{E1, quantum roles of calls}
+A table of \numToolGateTable{} Qiskit instruction methods, including those of earlier releases, records
+which arguments of each are qubits, classical bits and angles, and which leading qubits are controls. It
+turns a srcML \texttt{call} element into a gate on qubit operands, as the letters of stage~1 mark. It plays
+the part of the quantum argument lists of Behler et al.'s OpenQASM markup~\cite{behler2024supporting}, for
+a language in which the roles are not in the syntax.
 
-\paragraph*{Forward slices and profiles}
-A forward pass over the same trace gives forward slices, dual to the backward ones on our test programs,
-and a qubit slice profile combines one pass of each. Over the
+\paragraph*{E2, qubits and execution order}
+\tool{} turns the srcML tree into an operation trace, as Behler et al.'s execution-order analysis does for
+OpenQASM~\cite{behler2024supporting} and as their QStatic tool does on hand-marked-up
+OpenQASM~\cite{behler2025static}. Because Qiskit computes its qubits with Python, \tool{} evaluates the
+program's expressions over known values, registers, bits and circuits. It unrolls loops and records the
+iteration of each operation, inlines functions, and follows \texttt{if\_test} and \texttt{c\_if}, Qiskit's
+constructs for gates conditioned on measured bits, as stage~2 of Fig.~\ref{fig:tool} shows. Where a value
+cannot be resolved statically, it over-approximates. An unknown qubit index acts on every qubit it may
+denote, an unknown condition runs every branch, and a loop over an unknown range repeats its body once more
+than the number of qubits and bits it touches, at most \numToolMaxCopies{} times. A circuit passed to code
+\tool{} does not model is reported as not traced.
+
+\paragraph*{E3, quantum dependence}
+srcSlice's rule for a statement is that it defines the variables it assigns and uses the others, so
+\texttt{qc.cx(a, b)} defines nothing and uses \texttt{qc}, \texttt{a} and \texttt{b}. \tool{} replaces this
+rule for qubits with the QDG. A gate defines and uses all its qubits, a measurement defines its bit, and a
+conditioned gate uses the bits its condition tests. The slice is the backward pass of
+Theorem~\ref{thm:sound} on the trace, which skips barriers and terminal measurements. An operation that
+may act on several qubits adds all of them to the needed set, and a bit leaves the needed set only when an
+operation certainly writes it, so the over-approximations of E2 only enlarge a slice, and \tool{} reports
+each. Like srcSlice, \tool{} computes these dependences while it slices instead of building the graph, in
+time linear in the trace. The pass returns the operations of the slice, their lines and iterations, as
+stage~3 of Fig.~\ref{fig:tool} shows.
+
+\paragraph*{E4, classical lines}
+The lines that compute the qubits, angles, conditions and loop ranges of a slice come from the interpreter
+of E2, which carries with every value the lines that computed it, along the one path the trace follows.
+\tool{} can also take them from srcSlice. Its start lines are then the slice's quantum lines and the headers
+of the loops, conditions and \texttt{with} blocks that enclose them, a profile whose uses hold a start line
+is seeded, and the closure adds its definition lines, every profile whose dependent variables hold its name,
+and, for a parameter at position $k$ of a function $f$, every profile passed to $f$ at position~$k$. For this
+\tool{} runs srcSlice with an extension for Python, covering keyword arguments, the receiver offset of
+methods, loop, \texttt{with}, tuple and comprehension targets, nested scopes and f-strings, with fixes to
+call-site linking that apply to every language srcSlice supports. The replication package contains the
+extension as a patch to the public srcSlice.
+
+\paragraph*{E5, qubit slice profiles}
+srcSlice's profile of a variable lists where it is defined and used, what depends on it, its aliases and the
+functions it is passed to~\cite{alomari2014srcslice}. \tool{} gives each qubit the analogue that
+Table~\ref{tab:profile} lists, from one backward and one forward pass over the trace and the srcML of the
+gate calls on the qubit. The forward pass marks every later operation that acts on a reached qubit or reads
+a reached bit, and its slices are dual to the backward ones on our test programs. Over the
 \numProfBugsQubits{}, \numProfTextQubits{} and \numProfLintqQubits{} qubits of the Bugs4Q programs, the
 textbook and \numProfLintqSample{} sampled LintQ files, the two slices of a qubit differ in length for
 \numProfBugsFwdNeBwd{}, \numProfTextFwdNeBwd{} and \numProfLintqFwdNeBwd{} of them.
 
-\paragraph*{Validation}
-On \numToolDevPrograms{} runnable programs that we wrote, the static trace equals the circuit Qiskit builds. On \numToolDevSliceEqual{} of them, every slice equals
-the circuit-level QDG slice of the study. The remaining program nests conditional blocks, and on
+\begin{table}[t]
+  \centering
+  \caption{The slice profile of a variable in srcSlice and of a qubit in \tool{}.}
+  \label{tab:profile}
+  \footnotesize\setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}p{0.43\columnwidth} p{0.53\columnwidth}@{}}
+    \toprule
+    srcSlice, variable $v$ & \tool{}, qubit $q$ \\
+    \midrule
+    definition and use lines & lines of the operations on $q$, each of which defines and uses $q$ \\
+    dependent variables & dependent qubits, whose final state the first operation on $q$ can affect \\
+    aliases & names, the source expressions that denote $q$, such as \texttt{qr[0]} or a loop variable \\
+    functions $v$ is passed to & call sites of the functions inside which $q$ is acted on \\
+    -- & bits measured from $q$, and the lines conditioned on them \\
+    -- & loop iterations of each line, and the backward and forward slices \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Validation}
+On \numToolDevPrograms{} runnable programs that we wrote, of up to \numToolDevMaxOps{} operations, the static
+trace equals the circuit Qiskit builds. On \numToolDevSliceEqual{} of them, every slice equals the
+circuit-level QDG slice of the study. The remaining program nests conditional blocks, and on
 \numToolNestedDraws{} random product inputs the oracle of Section~\ref{sec:design} finds the circuit-level slice
-wrong \numToolNestedStudyWrong{} times and the tool's slice never. The tool's line slices equal those of the
+wrong \numToolNestedStudyWrong{} times and \tool{}'s slice never. \tool{}'s line slices equal those of the
 study on all \numToolTTwoUnits{} units whose lines the study maps, which include the \numLinesUnits{} units of
 Section~\ref{sec:results}. On the Bugs4Q programs of the study, read without being run, the trace equals the
 prepared circuit for \numToolTOneExact{} of \numToolTOneBugs{} bugs, and the remaining bug rewrites its
-circuit as a DAG, which the tool reports. Of the \numToolBugsQiskit{} Qiskit files of Bugs4Q, the \numToolTextbookQiskit{} notebooks of the Qiskit
-textbook~\cite{qiskittextbook} and the \numToolLintqQiskit{} programs of LintQ's
-corpus~\cite{paltenghi2024lintq}, \numToolBugsCircuit{}, \numToolTextbookCircuit{} and
+circuit as a DAG, which \tool{} reports. Of the \numToolBugsQiskit{} Qiskit files of Bugs4Q, the
+\numToolTextbookQiskit{} notebooks of the Qiskit textbook~\cite{qiskittextbook} and the \numToolLintqQiskit{}
+programs of LintQ's corpus~\cite{paltenghi2024lintq}, \numToolBugsCircuit{}, \numToolTextbookCircuit{} and
 \numToolLintqCircuit{} yield a circuit, \numToolBugsResolved{} of the Bugs4Q ones without over-approximation.
-No Bugs4Q or LintQ program crashes the tool, which takes \numToolBugsMedianMs{}~ms per Bugs4Q program in the median.
+No Bugs4Q or LintQ program crashes \tool{}, which takes \numToolBugsMedianMs{}~ms per Bugs4Q program in the
+median.
+
+The two sources of classical lines agree in part. Over the \numSsQubits{} qubits of \numSsFiles{} files of
+our programs, Bugs4Q, the textbook and the LintQ sample, srcSlice's lines contain the interpreter's for
+\numSsContainPct{} of the qubits and equal them for \numSsEqualPct{}, with recall \numSsRecall{} and
+precision \numSsPrecision{} against them, in \numSsMedianMs{}~ms per file in the median. Its extra lines are
+those of a flow-insensitive slicer, such as a definition of an index in another loop or the header of a
+function whose parameter carries a qubit. Its missed lines come from three gaps that the comparison exposed.
+srcSlice records no use of a variable inside a subscript, as in \texttt{q[a]}, which is how Qiskit names
+qubits and how C indexes arrays. It links no value a function returns to the call, and it records no use of
+a module variable inside a function. Containment over our programs and Bugs4Q,
+\numSsDevBugsContainPct{}, is below the threshold of 95\% fixed before the comparison, so \tool{} reports the
+interpreter's lines, and srcSlice's are an option.

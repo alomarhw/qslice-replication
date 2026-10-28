@@ -53,7 +53,8 @@ is not the paper's QDG.
 ## Requirements
 - Python 3.12 with the pinned packages in `experiments/requirements.lock` (qiskit 2.3.0, numpy 1.26.4);
   the noise analysis uses `experiments/requirements_noise.lock`.
-- srcML 1.1 on the PATH for the static slicer.
+- srcML 1.1 on the PATH for the static slicer, and srcSlice with the patch in `tools/srcslice/` for its
+  optional classical lines (Deviation I-20).
 - Graphviz (`dot`) for the layout of Fig. 2, and `pdflatex` with `latexmk` to build the paper.
 - Isabelle2025 to check the proof (optional).
 
@@ -84,6 +85,7 @@ python -m tool.corpus.profiles CORPUS_DIR OUT.csv    # profiles of every qubit o
 python -m tool.tests.dev_summary                     # trace and slice checks on tool/tests/programs and tool/tests/big
 python -m tool.tests.nested_check                    # nested conditional blocks against the oracle
 (cd experiments && python icpc/tool_acceptance.py --bugs4q-root BUGS4Q_ROOT --tag tool-v7)   # T1 and T2
+python experiments/icpc/srcslice_classical.py --data-root DATA_ROOT   # srcSlice's classical lines against the interpreter's
 python -m tool.corpus.coverage CORPUS_DIR OUT.csv    # T3 coverage on a corpus of Qiskit programs
 ```
 The tool reads programs and never runs them. The Bugs4Q, Qiskit textbook and LintQ corpora are not

@@ -248,7 +248,7 @@ A slice can be reported as operations, loop iterations, or source lines. Operati
 definitions and lines the unit of the developer. A line is in the slice if one of its operations is, so a
 line-level slice can keep code that no operation-level slice needs. In the second layer of the ansatz of
 Fig.~\ref{fig:ansatz}, the rotations of $q_2$ are not dependences of $q_0$, yet lines 12 and 13 are in
-the slice because their first-layer iterations are, so the tool also reports the iterations of each line.
+the slice because their first-layer iterations are, so \tool{} also reports the iterations of each line.
 A slice of operations is executable, and a slice of lines marks the code to read.
 
 \subsection{Qubit slice profiles}
@@ -258,7 +258,7 @@ functions are the call sites of the functions inside which $q$ is acted on. Its 
 qubits that the first operation on $q$ reaches, transitively.
 Its bits are those measured from $q$, with the lines conditioned on them, and its backward and forward
 entries are the lines of the backward slice of $q$ and of the forward slice of its first operation. In
-the program of Fig.~\ref{fig:bv}, the tool computes the profile of
+the program of Fig.~\ref{fig:bv}, \tool{} computes the profile of
 $q_0$ as $\mathsf{uses}(q_0) = \numBvProfDefsSet{}$, $\mathsf{functions}(q_0) = \emptyset$,
 $\mathsf{names}(q_0) = \{{\texttt{i} \mapsto \numBvProfNameISet{}}, {\texttt{q} \mapsto \numBvProfNameQSet{}}\}$,
 $\mathsf{dependents}(q_0) = \numBvProfDependentsSet{}$, $\mathsf{bits}(q_0) = \numBvProfBitsSet{}$ with no

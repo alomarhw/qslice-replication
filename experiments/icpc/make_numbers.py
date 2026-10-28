@@ -540,6 +540,27 @@ def main() -> int:
     put("ProfTextAliasGenuine", sum(x["genuine"] == "1" for x in ac), cnt(sum(x["genuine"] == "1" for x in ac)),
         "results/icpc/profiles/alias_check_textbook.csv")
 
+    # ---- classical lines from srcSlice against the interpreter's (Deviation I-20) ----
+    src = "results/icpc/srcslice/qubits.csv"
+    ss = [x for x in rows(ICPC / "srcslice" / "qubits.csv") if not x["error"]]
+    lset = lambda t: {int(v) for v in t.split(";") if v}  # noqa: E731
+    put("SsFiles", len({(x["corpus"], x["file"]) for x in ss}), cnt(len({(x["corpus"], x["file"]) for x in ss})), src)
+    put("SsQubits", len(ss), cnt(len(ss)), src)
+    cont = sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in ss) / len(ss)
+    put("SsContainPct", cont, pct(cont, 0), src)
+    db = [x for x in ss if x["corpus"] in ("dev", "bugs4q")]
+    dbc = sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in db) / len(db)
+    put("SsDevBugsContainPct", dbc, pct(dbc, 0), src)
+    eq = sum(lset(x["interp"]) == lset(x["srcslice"]) for x in ss) / len(ss)
+    put("SsEqualPct", eq, pct(eq, 0), src)
+    hit = sum(len(lset(x["interp"]) & lset(x["srcslice"])) for x in ss)
+    rec = hit / sum(len(lset(x["interp"])) for x in ss)
+    prec = hit / sum(len(lset(x["srcslice"])) for x in ss)
+    put("SsRecall", rec, f"{rec:.2f}", src)
+    put("SsPrecision", prec, f"{prec:.2f}", src)
+    ft = sorted({(x["corpus"], x["file"]): float(x["srcslice_s"]) for x in ss}.values())
+    put("SsMedianMs", ft[len(ft) // 2], f"{1000 * ft[len(ft) // 2]:.0f}", src)
+
     # ---- the static program slicer (Deviation I-15, I-18; tool-v7, the final version; earlier versions' results kept) --
     sys.path.insert(0, str(HERE.parent))
     from tool.gates import GATES  # noqa: PLC0415

@@ -10,6 +10,7 @@
 \providecommand{\ket}[1]{\lvert #1\rangle}
 \newcommand{\Bw}{B_{\mathrm{QDG}}}
 \newcommand{\Fw}{F_{\mathrm{QDG}}}
+\newcommand{\tool}{QSlice}% the slicer's name, in one place
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}{Proposition}
@@ -54,13 +55,13 @@ quantum programs, program comprehension, program slicing, program dependence, de
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig_tool.pdf}
-  \caption{The tool on the ansatz of Fig.~\ref{fig:ansatz}a, statically. In stage 1, srcML marks up the CNOT
-  loop and the measured, conditioned flip of lines 18 to 20, and the letters mark the elements the tool reads. Stage 2 is the operation
+  \caption{\tool{} on the ansatz of Fig.~\ref{fig:ansatz}a, statically. In stage 1, srcML marks up the CNOT
+  loop and the measured, conditioned flip of lines 18 to 20, and the letters mark the elements \tool{} reads. Stage 2 is the operation
   trace it yields, whose dependence graph is Fig.~\ref{fig:ansatz}b, and stage 3 is the slice of $q_0$ by
   line and iteration. An iteration lists the values of \texttt{layer} and \texttt{qubit}, and the terminal
   measurements of line 21 are not shown. Filled squares are the operations in the QDG slice of $q_0$. Every
   iteration runs the same lines, but in the second layer the rotations of $q_2$ and its \texttt{cx} are not
-  dependences of $q_0$, and a slice of lines keeps lines 12, 13 and 15 anyway. The tool computed the figure
+  dependences of $q_0$, and a slice of lines keeps lines 12, 13 and 15 anyway. \tool{} computed the figure
   from the program file.}
   \label{fig:tool}
 \end{figure*}

@@ -1,0 +1,1590 @@
+diff --git a/README.md b/README.md
+index 4456117..cd5efa7 100644
+--- a/README.md
++++ b/README.md
+@@ -12,3 +12,28 @@ To build srcSlice:
+ 4. After cmake runs, simply type 'make' and all files should be built.  
+ 
+ 5. Once everything is built, go into the 'bin' folder and that's where the executable will be.
++
++## Usage
++
++Slice a whole project. srcSlice is forward and whole-system, so give it an archive rather than a single function:
++
++    srcml --position <project-dir> -o project.xml
++    srcSlice project.xml > slices.csv
++
++Each output line is the slice profile of one variable:
++
++    file,function,variable,def{lines},use{lines},dvars{variables},pointers{variables},cfuncs{function{argument position}}
++
++An entry `f{k}` in `cfuncs` means the variable is passed as the k-th argument of `f`. Interprocedural slices are
++built by following it into the slice of `f`'s k-th parameter.
++
++`srcSlice --help` and `srcSlice --version` print usage and version. Unreadable or malformed input exits with status 1.
++
++## Languages
++
++C, C++, C#, Java and Python (srcML 1.1.0 or later). The Python support covers:
++- keyword arguments, mapped to the named parameter of a callee defined in the archive;
++- method calls `obj.m(x)`, where the receiver fills `self`/`cls`;
++- `for ... in`, comprehensions, `with ... as` and tuple targets;
++- augmented assignment, annotations, decorators, nested functions, lambdas, `raise`/`yield`, and the
++  variables and simple calls inside f-strings.
+diff --git a/src/cpp/output.cpp b/src/cpp/output.cpp
+index 30b42d3..5aef74e 100644
+--- a/src/cpp/output.cpp
++++ b/src/cpp/output.cpp
+@@ -23,6 +23,10 @@
+ #include <time.h> 
+ #include <map>
+ #include <iostream>
++#include <algorithm>
++#include <cctype>
++
++#define SRCSLICE_VERSION "1.1.0"
+ 
+ void TestSlice2(const VarMap& mp){
+ 	for(VarMap::const_iterator vmIt = mp.begin(); vmIt != mp.end(); ++vmIt){
+@@ -96,6 +100,12 @@ void TestSlice(const FileFunctionVarMap& mp, srcSliceHandler handler){
+ 	}
+ }
+ 
++//one profile per line: names spanning lines (multi-line declarators, split qualified names) must not break the record
++static std::string OneLine(std::string name){
++	name.erase(std::remove_if(name.begin(), name.end(), ::isspace), name.end());
++	return name;
++}
++
+ void srcSliceToCsv(const srcSlice& handler){
+ 	std::string str;
+ 	for(FileFunctionVarMap::const_iterator ffvmIt = handler.dictionary.ffvMap.begin(); ffvmIt != handler.dictionary.ffvMap.end(); ++ffvmIt){
+@@ -104,7 +114,7 @@ void srcSliceToCsv(const srcSlice& handler){
+ 		for(FunctionVarMap::const_iterator fvmIt = ffvmIt->second.begin(); fvmIt != ffvmIt->second.end(); ++fvmIt){
+ 			//auto functionNameIt = handler.dictionary.functionTable.find();
+ 			for(VarMap::const_iterator vmIt = fvmIt->second.begin(); vmIt != fvmIt->second.end(); ++vmIt){
+-				str.append(ffvmIt->first).append(",").append(fvmIt->first).append(",").append(vmIt->first);
++				str.append(ffvmIt->first).append(",").append(OneLine(fvmIt->first)).append(",").append(OneLine(vmIt->first));
+ 				str.append(",def{");
+ 				for(unsigned int def : vmIt->second.def){
+             		std::stringstream ststrm;
+@@ -125,14 +135,14 @@ void srcSliceToCsv(const srcSlice& handler){
+                 str.append("},");
+ 				str.append("dvars{");
+ 				for(std::string dv : vmIt->second.dvars){
+-					str.append(dv.append(","));
++					str.append(OneLine(dv).append(","));
+ 				}
+ 				if(str.at(str.length()-1) == ',')
+ 					str.erase(str.length()-1);
+ 				str.append("},");
+ 				str.append("pointers{");
+ 				for(std::string al : vmIt->second.aliases){
+-					str.append(al.append(","));
++					str.append(OneLine(al).append(","));
+ 				}
+ 				if(str.at(str.length()-1) == ',')
+ 					str.erase(str.length()-1);
+@@ -168,16 +178,34 @@ void srcSliceToCsv(const srcSlice& handler){
+   */
+ int main(int argc, char * argv[]) {
+ 
++  const std::string usage = "Usage: srcSlice input_file.xml\n"
++    "  Reads a srcML archive (srcml --position <dir> -o input_file.xml) and prints one slice profile per variable:\n"
++    "  file,function,variable,def{lines},use{lines},dvars{vars},pointers{vars},cfuncs{function{argument position}}\n";
+   if(argc < 2) {
+-
+-    std::cerr << "Useage: srcSlice input_file.xml\n";
++    std::cerr << usage;
+     exit(1);
+-
++  }
++  const std::string arg(argv[1]);
++  if(arg == "-h" || arg == "--help") {
++    std::cout << usage;
++    return 0;
++  }
++  if(arg == "-v" || arg == "--version") {
++    std::cout << "srcSlice " << SRCSLICE_VERSION << "\n";
++    return 0;
+   }
+   clock_t t;
+   t = clock();
+   srcSlice sslice;
+-  sslice.ReadArchiveFile(argv[1]);
++  try {
++    sslice.ReadArchiveFile(argv[1]);
++  } catch(const std::string& error) { //srcSAX reports bad input by throwing strings
++    std::cerr << "srcSlice: cannot read '" << arg << "': " << error << "\n";
++    return 1;
++  } catch(const SAXError& error) { //malformed or non-srcML XML
++    std::cerr << "srcSlice: cannot parse '" << arg << "': " << error.message << "\n";
++    return 1;
++  }
+   t = clock() - t;
+   std::cerr<<"Time is: "<<((float)t)/CLOCKS_PER_SEC<<std::endl;
+   //std::string filename = handler.sysDict->find("stack.cpp.xml");
+diff --git a/src/cpp/srcSliceHandler.cpp b/src/cpp/srcSliceHandler.cpp
+index 6732063..a07610c 100644
+--- a/src/cpp/srcSliceHandler.cpp
++++ b/src/cpp/srcSliceHandler.cpp
+@@ -20,6 +20,8 @@
+ 
+ #include <srcSliceHandler.hpp>
+ #include <Utility.hpp>
++#include <algorithm>
++#include <cctype>
+ /**
+  *Find
+  *Find function takes a variable name and searches first the local table to the function it was in
+@@ -71,6 +73,7 @@ void srcSliceHandler::ProcessDeclStmt(){
+         }
+     }else{ //Inits in for loops screw with typical decl statement handling. This will grab decls I miss due to weird init usage
+         if(!inFor) return; //This really is only for for loop inits. TODO: Possibly, write a separate function for these.
++        currentSliceProfile.index = 0;
+         varIt = FunctionIt->second.insert(std::make_pair(currentDeclInit.first, std::move(currentSliceProfile))).first;
+         varIt->second.def.insert(currentDeclInit.second);    
+     } 
+@@ -86,14 +89,20 @@ void srcSliceHandler::ProcessDeclStmt(){
+ void srcSliceHandler::GetCallData(){
+     //Get function arguments
+     if(triggerField[argument_list] && triggerField[argument] && 
+-        triggerField[expr] && triggerField[name] && !nameOfCurrentClldFcn.empty()){
++        triggerField[expr] && triggerField[name] && !nameOfCurrentClldFcn.empty() && !triggerField[sizeofop]){
+         if(!callArgData.empty()){
++            const std::string keyword = argKeyword.empty() ? std::string() : argKeyword.top();
++            const bool method = !calleeIsMethod.empty() && calleeIsMethod.top();
+             auto sp = Find(callArgData.top().first); //check to find sp for the variable being called on fcn
+             if(sp){
+-                sp->slines.insert(callArgData.top().second);
+-                sp->use.insert(callArgData.top().second);
+-                sp->index = numArgs;
+-                sp->cfunctions.insert(std::make_pair(nameOfCurrentClldFcn.top(), numArgs));
++                LinkCallArg(sp, callArgData.top().second, nameOfCurrentClldFcn.top(), numArgs, keyword, method);
++                //int r = f(x); makes r depend on x, the same as r = f(x); already does
++                if(triggerField[decl_stmt] && triggerField[init] && !inGlobalScope && sp->variableName != varIt->second.variableName){
++                    sp->dvars.insert(varIt->second.variableName);
++                }
++            }else if(!callArgData.top().first.empty()){
++                //may be bound later in the same statement: [f(e) for e in xs]
++                pendingArgs.push_back(PendingArg{callArgData.top(), nameOfCurrentClldFcn.top(), numArgs, keyword, method});
+             }
+         }
+     }
+@@ -105,7 +114,10 @@ void srcSliceHandler::GetParamType(){
+ }
+ 
+ void srcSliceHandler::GetParamName(){
+-    currentSliceProfile.index = declIndex;
++    if(currentParam.first.empty()){ //def f(a, *, b) / def f(a, /, b): the marker binds nothing
++        return;
++    }
++    currentSliceProfile.index = triggerField[parameter_list] == 1 ? paramIndex : 0;
+     currentSliceProfile.file = fileName;
+     currentSliceProfile.function = functionTmplt.functionName;
+     currentSliceProfile.variableName = currentParam.first;
+@@ -138,9 +150,6 @@ void srcSliceHandler::GetFunctionDeclData(){
+     functionTmplt.params.push_back(currentParamType.first);
+ }
+ void srcSliceHandler::AssignProfile(){
+-    if(currentSliceProfile.index == 0){
+-        currentSliceProfile.index = declIndex;
+-    }
+     if(currentSliceProfile.file.empty()){
+         currentSliceProfile.file = fileName;
+     }
+@@ -165,7 +174,7 @@ void srcSliceHandler::AssignProfile(){
+ */
+ void srcSliceHandler::GetDeclStmtData(){
+     if(currentDecl.first.empty()) return;
+-    currentSliceProfile.index = declIndex;
++    currentSliceProfile.index = 0; //only parameters carry an index
+     currentSliceProfile.file = fileName;
+     currentSliceProfile.function = functionTmplt.functionName;
+     currentSliceProfile.variableName = currentDecl.first;
+@@ -191,7 +200,7 @@ void srcSliceHandler::ProcessExprStmtPreAssign(){
+     if(!lhsExprStmt.first.empty()){
+         SliceProfile* lhs = Find(lhsExprStmt.first);
+         if(!lhs){
+-            currentSliceProfile.index = -1;
++            currentSliceProfile.index = 0;
+             currentSliceProfile.file = fileName;
+             currentSliceProfile.function = functionTmplt.functionName;
+             currentSliceProfile.variableName = lhsExprStmt.first;
+@@ -213,7 +222,14 @@ void srcSliceHandler::ProcessExprStmtPreAssign(){
+  * process the rhs for any aliases, dvars, or function calls.
+  */
+ void srcSliceHandler::ProcessExprStmtPostAssign(){
+-    SliceProfile* lhs = Find(lhsName);
++    ProcessExprStmtPostAssignTo(lhsName);
++    for(const std::string& target : lhsNames){ //a, b = x: x reaches every target
++        ProcessExprStmtPostAssignTo(target);
++    }
++}
++
++void srcSliceHandler::ProcessExprStmtPostAssignTo(const std::string& lhsVar){
++    SliceProfile* lhs = Find(lhsVar);
+     if(!lhs){return;}
+ 
+     auto sprIt = Find(currentExprStmt.first);//find the sp for the rhs
+@@ -303,12 +319,16 @@ void srcSliceHandler::ComputeInterprocedural(const std::string& f){
+ */
+ SliceProfile srcSliceHandler::ArgumentProfile(std::string fname, unsigned int parameterIndex, VarMap::iterator vIt){ //TODO varIt is a hack here. Fix. We shouldn't need to pass an extra param to do this.
+     SliceProfile Spi;
++    if(parameterIndex == 0){return Spi;}
++    //look the callee up without moving FileIt, which ComputeInterprocedural is still iterating over
++    FileFunctionVarMap::iterator calleeFileIt = FileIt;
+     auto gFuncIt = sysDict->fileFunctionTable.find(fname);
+     if(gFuncIt != sysDict->fileFunctionTable.end()){
+-        FileIt = sysDict->ffvMap.find(gFuncIt->second.fileName);
++        calleeFileIt = sysDict->ffvMap.find(gFuncIt->second.fileName);
++        if(calleeFileIt == sysDict->ffvMap.end()){return Spi;}
+     }
+-    auto funcIt = FileIt->second.find(fname);
+-    if(funcIt != FileIt->second.end()){
++    auto funcIt = calleeFileIt->second.find(fname);
++    if(funcIt != calleeFileIt->second.end()){
+         VarMap::iterator v = funcIt->second.begin();    
+         for(VarMap::iterator it = v; it != funcIt->second.end(); ++it){
+         
+@@ -347,4 +367,255 @@ SliceProfile srcSliceHandler::ArgumentProfile(std::string fname, unsigned int pa
+         //std::cout<<"ERROR IN ARGUMENT PROFILE WHEN ACCESSING: "<<fname<<std::endl;
+     }
+     return Spi;
+-}
+\ No newline at end of file
++}
++
++/**
++ * LastIndexOf
++ * Position of the innermost open element named element at or after from, or -1.
++ */
++long srcSliceHandler::LastIndexOf(const std::string& element, std::size_t from) const {
++    for(std::size_t i = elementPath.size(); i > from; --i){
++        if(elementPath[i - 1] == element){
++            return static_cast<long>(i - 1);
++        }
++    }
++    return -1;
++}
++
++/**
++ * IsCalleeName
++ * The <name> being closed names the function of a call (f or obj.m in obj.m(x)), not a variable.
++ */
++bool srcSliceHandler::IsCalleeName() const {
++    long callPos = LastIndexOf("call");
++    return callPos >= 0 && LastIndexOf("argument_list", callPos) < 0;
++}
++
++/**
++ * FindOrDefine
++ * Slice profile of a variable bound by a binding form, created on first binding (Python has no declarations).
++ */
++SliceProfile* srcSliceHandler::FindOrDefine(const std::string& varName, unsigned int line){
++    SliceProfile* sp = Find(varName);
++    if(!sp){
++        SliceProfile profile(0, fileName, functionTmplt.functionName, line, varName, false, inGlobalScope);
++        sp = &(FunctionIt->second.insert(std::make_pair(varName, std::move(profile))).first->second);
++    }
++    sp->def.insert(line);
++    return sp;
++}
++
++/**
++ * OnBaseName
++ * A variable read or written by a binding form: for-in targets and iterables, with ... as aliases and their sources.
++ */
++void srcSliceHandler::OnBaseName(const std::string& varName, unsigned int line){
++    if(IsCalleeName() || LastIndexOf("type") >= 0 || LastIndexOf("annotation") >= 0 || LastIndexOf("parameter_list") >= 0){
++        return;
++    }
++    for(auto ctx = forBindings.rbegin(); ctx != forBindings.rend(); ++ctx){
++        long control = LastIndexOf("control", ctx->depth);
++        if(control < 0 || LastIndexOf("block", ctx->depth) >= 0){
++            continue;
++        }
++        if(LastIndexOf("range", control) >= 0){
++            ctx->sources.push_back(std::make_pair(varName, line));
++        }else if(LastIndexOf("call", control) < 0 && LastIndexOf("index", control) < 0){
++            ctx->targets.push_back(std::make_pair(varName, line));
++        }
++        return;
++    }
++    if(!withBindings.empty() && LastIndexOf("block", withBindings.back().depth) < 0){
++        BindingContext& ctx = withBindings.back();
++        if(LastIndexOf("alias", ctx.depth) >= 0){
++            ctx.targets.push_back(std::make_pair(varName, line));
++        }else{
++            ctx.sources.push_back(std::make_pair(varName, line)); //with open(path) as fh: fh comes from path, as in fh = open(path)
++        }
++    }
++}
++
++/**
++ * ApplyBinding
++ * Define every target and make it depend on every source.
++ */
++void srcSliceHandler::ApplyBinding(BindingContext& ctx){
++    std::vector<std::string> targets;
++    for(const NameLineNumberPair& target : ctx.targets){
++        FindOrDefine(target.first, target.second);
++        targets.push_back(target.first);
++    }
++    for(const NameLineNumberPair& source : ctx.sources){
++        SliceProfile* sp = Find(source.first);
++        if(!sp){
++            continue;
++        }
++        sp->use.insert(source.second);
++        for(const std::string& target : targets){
++            if(target != sp->variableName){
++                sp->dvars.insert(target);
++            }
++        }
++    }
++}
++
++/**
++ * LinkCallArg
++ * Record that sp is passed to callee at argument position pos (or as keyword argument keyword).
++ */
++void srcSliceHandler::LinkCallArg(SliceProfile* sp, unsigned int line, const std::string& callee, unsigned int pos, const std::string& keyword, bool method){
++    sp->slines.insert(line);
++    sp->use.insert(line);
++    if(pos == 0 && keyword.empty()){ //receiver of a call inside an argument (f(x.read())): read, not passed to f
++        return;
++    }
++    if(keyword.empty() && !method){
++        sp->cfunctions.insert(std::make_pair(callee, pos));
++    }else{
++        pendingCalls.push_back(PendingCall{sp, callee, pos, keyword, method});
++    }
++}
++
++/**
++ * RetryPendingArgs
++ * Link call arguments whose variable was only bound later in the statement.
++ */
++void srcSliceHandler::RetryPendingArgs(){
++    for(const PendingArg& arg : pendingArgs){
++        if(SliceProfile* sp = Find(arg.arg.first)){
++            LinkCallArg(sp, arg.arg.second, arg.callee, arg.pos, arg.keyword, arg.method);
++        }
++    }
++    pendingArgs.clear();
++}
++
++/**
++ * ResolvePendingCalls
++ * After parsing: keyword arguments take the position of the callee parameter with that name, and in a method
++ * call obj.m(x) the receiver fills self/cls, so argument k is parameter k+1. Callees outside the archive keep the
++ * call position; their keyword arguments cannot be placed and only count as uses.
++ */
++void srcSliceHandler::ResolvePendingCalls(){
++    for(const PendingCall& call : pendingCalls){
++        const VarMap* callee = nullptr;
++        auto fn = sysDict->fileFunctionTable.find(call.callee);
++        if(fn != sysDict->fileFunctionTable.end()){
++            auto file = sysDict->ffvMap.find(fn->second.fileName);
++            if(file != sysDict->ffvMap.end()){
++                auto vars = file->second.find(call.callee);
++                if(vars != file->second.end()){
++                    callee = &vars->second;
++                }
++            }
++        }
++        if(!call.keyword.empty()){
++            if(callee){
++                auto param = callee->find(call.keyword);
++                if(param != callee->end() && param->second.index > 0){
++                    call.sp->cfunctions.insert(std::make_pair(call.callee, param->second.index));
++                }
++            }
++            continue;
++        }
++        unsigned int pos = call.pos;
++        if(call.method && callee){
++            for(const auto& param : *callee){
++                if(param.second.index == 1 && (param.first == "self" || param.first == "cls")){
++                    ++pos;
++                    break;
++                }
++            }
++        }
++        call.sp->cfunctions.insert(std::make_pair(call.callee, pos));
++    }
++    pendingCalls.clear();
++}
++
++/**
++ * ProcessFString
++ * srcML keeps an f-string as one literal, so read the variables and simple calls in its {...} fields.
++ */
++void srcSliceHandler::ProcessFString(const std::string& text, unsigned int line){
++    std::size_t quote = text.find_first_of("\"'");
++    if(quote == std::string::npos || text.substr(0, quote).find_first_of("fF") == std::string::npos){
++        return;
++    }
++    auto isStart = [](char c){ return std::isalpha(static_cast<unsigned char>(c)) || c == '_'; };
++    auto isPart = [](char c){ return std::isalnum(static_cast<unsigned char>(c)) || c == '_'; };
++    auto lineAt = [&](std::size_t pos){ return line + static_cast<unsigned int>(std::count(text.begin(), text.begin() + pos, '\n')); };
++    auto use = [&](const std::string& var, unsigned int at){
++        SliceProfile* sp = Find(var);
++        if(!sp){
++            return static_cast<SliceProfile*>(nullptr);
++        }
++        sp->use.insert(at);
++        if(exprassign){
++            for(const std::string& target : lhsNames){
++                if(target != var) sp->dvars.insert(target);
++            }
++            if(!lhsName.empty() && lhsName != var) sp->dvars.insert(lhsName);
++        }
++        return sp;
++    };
++    for(std::size_t i = quote; i < text.size(); ++i){
++        if(text[i] != '{'){
++            continue;
++        }
++        if(i + 1 < text.size() && text[i + 1] == '{'){ //{{ is a literal brace
++            ++i;
++            continue;
++        }
++        //the field runs to the matching } (format spec after : or ! at depth 0 is not code)
++        std::size_t end = i + 1;
++        int depth = 0;
++        for(; end < text.size(); ++end){
++            char c = text[end];
++            if(c == '(' || c == '[' || c == '{') ++depth;
++            else if(c == ')' || c == ']') --depth;
++            else if(c == '}'){ if(depth == 0) break; --depth; }
++            else if((c == ':' || c == '!') && depth == 0 && !(c == '!' && end + 1 < text.size() && text[end + 1] == '=')) break;
++        }
++        std::string field = text.substr(i + 1, end - i - 1);
++        unsigned int at = lineAt(i);
++        for(std::size_t k = 0; k < field.size();){
++            if(!isStart(field[k]) || (k > 0 && (isPart(field[k - 1]) || field[k - 1] == '.'))){
++                ++k;
++                continue;
++            }
++            std::size_t e = k;
++            while(e < field.size() && isPart(field[e])) ++e;
++            std::string ident = field.substr(k, e - k);
++            std::size_t next = field.find_first_not_of(" \t", e);
++            if(next != std::string::npos && field[next] == '('){
++                //simple call: link the variables that start each argument
++                bool method = k > 0 && field[k - 1] == '.';
++                unsigned int argPos = 1;
++                int d = 0;
++                bool atArgStart = true;
++                std::size_t a = next + 1;
++                for(; a < field.size(); ++a){
++                    char c = field[a];
++                    if(c == '(' || c == '[' || c == '{'){ ++d; atArgStart = false; }
++                    else if(c == ')' || c == ']' || c == '}'){ if(d == 0) break; --d; }
++                    else if(c == ',' && d == 0){ ++argPos; atArgStart = true; }
++                    else if(atArgStart && d == 0 && isStart(c)){
++                        std::size_t ae = a;
++                        while(ae < field.size() && isPart(field[ae])) ++ae;
++                        if(SliceProfile* sp = use(field.substr(a, ae - a), at)){
++                            LinkCallArg(sp, at, ident, argPos, std::string(), method);
++                        }
++                        atArgStart = false;
++                        a = ae - 1;
++                    }else if(c != ' ' && c != '\t'){
++                        atArgStart = false;
++                    }
++                }
++                k = a;
++                continue;
++            }
++            use(ident, at);
++            k = e;
++        }
++        i = end;
++    }
++}
+diff --git a/src/headers/srcSliceHandler.hpp b/src/headers/srcSliceHandler.hpp
+index 639e1d0..a42290b 100644
+--- a/src/headers/srcSliceHandler.hpp
++++ b/src/headers/srcSliceHandler.hpp
+@@ -29,6 +29,7 @@
+ #include <vector>
+ #include <list>
+ #include <algorithm>
++#include <cctype>
+ #include <sstream>
+ #include <stack>
+ class srcSliceHandler : public srcSAXHandler {
+@@ -41,13 +42,15 @@ private:
+         name, function, functiondecl, constructor, constructordecl, destructordecl, destructor,
+         argument, return_stmt, control, index, block, type, init, op, literal, modifier, member_list, classn,
+         preproc, whileloop, forloop, ifcond, nonterminal, macro, classblock, functionblock,
+-        specifier, empty, MAXENUMVALUE = empty};
++        specifier, sizeofop, withstmt, lambdaexpr, annotation, attributeelem, empty, MAXENUMVALUE = empty};
+ 
+     std::unordered_map<std::string, std::function<void()>> process_map;
+     std::unordered_map<std::string, std::function<void()>> process_map3;
+ 
+     unsigned int numArgs;
++    std::stack<unsigned int> numArgsStack; //argument position of each enclosing call
+     unsigned int declIndex;
++    unsigned int paramIndex; //1-based position of the parameter in the function's own parameter list
+ 
+     int constructorNum;
+ 
+@@ -87,6 +90,49 @@ private:
+     bool sawinit;
+     bool sawgeneric;
+     bool memberAccess;
++    bool argMemberAccess; //the next name in a call argument is a member (s.ws, p->ws), not a variable
++
++    /*Binding forms that the trigger counts cannot tell apart are found from the path of open elements:
++     *for-in targets (for x in xs, comprehensions, range-for), with ... as aliases, and tuple targets (a, b = ...)*/
++    std::vector<std::string> elementPath;
++    struct BindingContext {
++        std::size_t depth; //position of the for/with element in elementPath
++        bool sawRange;
++        std::vector<NameLineNumberPair> targets, sources;
++    };
++    std::vector<BindingContext> forBindings;
++    std::vector<BindingContext> withBindings;
++    struct BaseName { std::string text; bool done; unsigned int line; };
++    std::vector<BaseName> baseNames; //base variable of each open outermost <name> (s in s.x, a in a[i])
++    std::vector<NameLineNumberPair> lhsTargets; //earlier targets of a tuple lhs
++    std::vector<std::string> lhsNames; //all targets of the current assignment besides lhsName
++    bool compoundAssign; //x += y also uses x
++
++    /*keyword arguments f(a=x) and method calls obj.m(x) need the callee's parameters, so they are resolved after parsing*/
++    struct PendingCall { SliceProfile* sp; std::string callee; unsigned int pos; std::string keyword; bool method; };
++    std::vector<PendingCall> pendingCalls;
++    struct PendingArg { NameLineNumberPair arg; std::string callee; unsigned int pos; std::string keyword; bool method; };
++    std::vector<PendingArg> pendingArgs; //arguments not yet defined at the call ([f(e) for e in xs]); retried at statement end
++    std::stack<std::string> argKeyword; //keyword of each open argument ("" if positional)
++    std::stack<bool> calleeIsMethod; //callee of each open call was reached through "." (obj.m)
++    bool calleeHasDot;
++
++    bool inStringLiteral;
++    std::string literalText;
++    unsigned int literalLine;
++    std::string elementTypeAttr; //type="..." of the element being started
++
++    /*a function defined inside another (Python closures, methods of local classes) is its own scope;
++     *the enclosing function's state is restored when it ends*/
++    struct EnclosingFunction {
++        FunctionVarMap::iterator functionIt;
++        FunctionData tmplt;
++        unsigned int declIndex, paramIndex;
++        unsigned short functionblock;
++        std::vector<PendingArg> pendingArgs;
++    };
++    std::vector<EnclosingFunction> enclosingFunctions;
++    std::vector<bool> functionNested;
+ 
+     //for expr_stmts    
+     bool exprassign;
+@@ -150,14 +196,26 @@ private:
+ 
+     SliceProfile ArgumentProfile(std::string, unsigned int, VarMap::iterator);
+     SliceProfile* Find(const std::string& varName);
++
++    long LastIndexOf(const std::string& element, std::size_t from = 0) const;
++    bool IsCalleeName() const;
++    SliceProfile* FindOrDefine(const std::string& varName, unsigned int line);
++    void OnBaseName(const std::string& varName, unsigned int line);
++    void ApplyBinding(BindingContext& ctx);
++    void LinkCallArg(SliceProfile* sp, unsigned int line, const std::string& callee, unsigned int pos, const std::string& keyword, bool method);
++    void RetryPendingArgs();
++    void ProcessFString(const std::string& text, unsigned int line);
++    void ProcessExprStmtPostAssignTo(const std::string& lhsVar);
+ public:
+     void ComputeInterprocedural(const std::string&);
++    void ResolvePendingCalls();
+     SliceDictionary* sysDict;
+     unsigned int lineNum;
+     srcSliceHandler(SliceDictionary* dict){
+         sysDict = dict;
+         numArgs = 0;
+         declIndex = 0;
++        paramIndex = 0;
+ 
+         constructorNum = 0;
+         lineNum = 0;
+@@ -169,6 +227,11 @@ public:
+         sawinit = false;
+         sawgeneric = false;
+         memberAccess = false;
++        argMemberAccess = false;
++        compoundAssign = false;
++        calleeHasDot = false;
++        inStringLiteral = false;
++        literalLine = 0;
+ 
+         exprassign = false;
+         exprop = false;
+@@ -207,6 +270,9 @@ public:
+                         GetFunctionDeclData();
+                     }
+                 }
++                if(!triggerField[parameter_list]){
++                    paramIndex = 0;
++                }
+                 ++triggerField[parameter_list];
+             } },
+ 
+@@ -216,6 +282,7 @@ public:
+             } },
+ 
+             { "for", [this](){
++                forBindings.push_back(BindingContext{elementPath.size() - 1, false, {}, {}});
+                 ++triggerField[forloop];
+                 inFor = true;
+                 //controlFlowLineNum.push(lineNum);
+@@ -238,6 +305,9 @@ public:
+                 if(triggerField[call]){
+                     if(isACallName){
+                         isACallName = false;
++                        calledFunctionName.erase(std::remove_if(calledFunctionName.begin(), calledFunctionName.end(), ::isspace), calledFunctionName.end());
++                        calleeIsMethod.push(calleeHasDot);
++                        calleeHasDot = false;
+                         nameOfCurrentClldFcn.push(calledFunctionName);
+                         calledFunctionName.clear();
+                     }
+@@ -245,14 +315,67 @@ public:
+             } },
+ 
+             { "call", [this](){
+-                if(triggerField[call]){//for nested calls
+-                    --numArgs; //already in some sort of a call. Decrement counter to make up for the argument slot the function call took up.
+-                }
++                //nested calls count their own arguments from 0; the enclosing call's position is restored on exit
++                numArgsStack.push(numArgs);
++                numArgs = 0;
+                 isACallName = true;
++                calleeHasDot = false;
++                calledFunctionName.clear(); //f(options=g(x)): the callee is g, not "options=g"
+                 ++triggerField[call];
+             } },
+ 
++            { "sizeof", [this](){ //also alignof/typeof/decltype below
++                numArgsStack.push(numArgs);
++                numArgs = 0;
++                ++triggerField[sizeofop];
++            } },
++            { "alignof", [this](){
++                numArgsStack.push(numArgs);
++                numArgs = 0;
++                ++triggerField[sizeofop];
++            } },
++            { "typeof", [this](){
++                numArgsStack.push(numArgs);
++                numArgs = 0;
++                ++triggerField[sizeofop];
++            } },
++            { "decltype", [this](){
++                numArgsStack.push(numArgs);
++                numArgs = 0;
++                ++triggerField[sizeofop];
++            } },
++
++            { "with", [this](){
++                withBindings.push_back(BindingContext{elementPath.size() - 1, false, {}, {}});
++                ++triggerField[withstmt];
++            } },
++            { "lambda", [this](){
++                ++triggerField[lambdaexpr];
++            } },
++            { "annotation", [this](){ //x: int -- the type is not part of the name and not a use
++                ++triggerField[annotation];
++            } },
++            { "attribute", [this](){ //@decorator, __attribute__((..)), [[..]]: never part of the function name
++                ++triggerField[attributeelem];
++            } },
++            { "range", [this](){
++                if(!forBindings.empty()){
++                    forBindings.back().sawRange = true;
++                }
++            } },
++
+             { "function", [this](){
++                bool nested = triggerField[function] > 0;
++                functionNested.push_back(nested);
++                if(nested){
++                    enclosingFunctions.push_back(EnclosingFunction{FunctionIt, functionTmplt, declIndex, paramIndex, triggerField[functionblock], pendingArgs});
++                    functionTmplt = FunctionData();
++                    declIndex = 0;
++                    paramIndex = 0;
++                    triggerField[functionblock] = 0; //its header is read like any function header
++                    currentFunctionBody.first.clear();
++                }
++                pendingArgs.clear();
+                 inGlobalScope = false;
+                 functionTmplt.fileName = fileName;
+                 ++triggerField[function];
+@@ -291,6 +414,9 @@ public:
+             { "parameter", [this](){
+                     ++triggerField[param];
+                     ++declIndex;
++                    if(triggerField[parameter_list] == 1 && elementTypeAttr != "modifier"){ //skip params of function-pointer params and the * / markers
++                        ++paramIndex;
++                    }
+             } },    
+             { "member_list", [this](){
+                 ++triggerField[member_list];
+@@ -339,6 +465,8 @@ public:
+                 ++triggerField[init];
+             } },    
+             { "argument", [this](){
++                argMemberAccess = false;
++                argKeyword.push(std::string());
+                 ++numArgs;
+                 currentCallArgData.first.clear();
+                 calledFunctionName.clear();
+@@ -360,6 +488,9 @@ public:
+                 ++triggerField[expr];
+             } },    
+             { "name", [this](){
++                if(elementPath.size() < 2 || elementPath[elementPath.size() - 2] != "name"){
++                    baseNames.push_back(BaseName{std::string(), false, lineNum});
++                }
+                 ++triggerField[name];
+                 functionTmplt.functionLineNumber = useExprStmt.second = lhsExprStmt.second = currentCallArgData.second = currentParam.second = currentParamType.second = 
+                 currentFunctionBody.second = currentDecl.second =  currentExprStmt.second = currentFunctionDecl.second = currentDeclInit.second = lineNum;
+@@ -374,6 +505,7 @@ public:
+         process_map3 = {
+ 
+             {"decl_stmt", [this](){
++                RetryPendingArgs();
+                 currentCallArgData.first.clear();
+                 currentDeclArg.first.clear();
+                 currentDeclCtor.first.clear();
+@@ -384,6 +516,10 @@ public:
+             } }, 
+ 
+             { "expr_stmt", [this](){
++                RetryPendingArgs();
++                lhsTargets.clear();
++                lhsNames.clear();
++                compoundAssign = false;
+                 --triggerField[expr_stmt];
+                 
+                 //for decl_stmts
+@@ -417,6 +553,9 @@ public:
+             } },
+ 
+             { "for", [this](){
++                if(!forBindings.empty()){
++                    forBindings.pop_back();
++                }
+                 --triggerField[forloop];
+             } },
+ 
+@@ -425,6 +564,7 @@ public:
+             } },
+ 
+             { "condition", [this](){
++                RetryPendingArgs();
+                 --triggerField[condition];
+                 //for expr_stmts
+                 foundexprlhs = false;
+@@ -456,14 +596,70 @@ public:
+             { "call", [this](){
+                 if(!nameOfCurrentClldFcn.empty()){
+                     nameOfCurrentClldFcn.pop();
++                    if(!calleeIsMethod.empty()){
++                        calleeIsMethod.pop();
++                    }
+                 }
+                 --triggerField[call];
+-                if(triggerField[call]){
+-                    ++numArgs; //we exited a call but we're still in another call. Increment to make up for decrementing when we entered the second call.
++                if(!numArgsStack.empty()){
++                    numArgs = numArgsStack.top();
++                    numArgsStack.pop();
+                 }
+             } },
+ 
++            { "sizeof", [this](){
++                --triggerField[sizeofop];
++                if(!numArgsStack.empty()){
++                    numArgs = numArgsStack.top();
++                    numArgsStack.pop();
++                }
++            } },
++            { "alignof", [this](){
++                --triggerField[sizeofop];
++                if(!numArgsStack.empty()){
++                    numArgs = numArgsStack.top();
++                    numArgsStack.pop();
++                }
++            } },
++            { "typeof", [this](){
++                --triggerField[sizeofop];
++                if(!numArgsStack.empty()){
++                    numArgs = numArgsStack.top();
++                    numArgsStack.pop();
++                }
++            } },
++            { "decltype", [this](){
++                --triggerField[sizeofop];
++                if(!numArgsStack.empty()){
++                    numArgs = numArgsStack.top();
++                    numArgsStack.pop();
++                }
++            } },
++
++            { "with", [this](){
++                if(!withBindings.empty()){
++                    withBindings.pop_back();
++                }
++                --triggerField[withstmt];
++            } },
++            { "alias", [this](){ //with x as y: y is bound to x
++                if(!withBindings.empty()){
++                    ApplyBinding(withBindings.back());
++                    withBindings.back().targets.clear();
++                }
++            } },
++            { "lambda", [this](){
++                --triggerField[lambdaexpr];
++            } },
++            { "annotation", [this](){
++                --triggerField[annotation];
++            } },
++            { "attribute", [this](){
++                --triggerField[attributeelem];
++            } },
++
+             { "function", [this](){
++                pendingArgs.clear();
+                 declIndex = 0;
+                 inGlobalScope = true;
+                 
+@@ -476,6 +672,25 @@ public:
+                 }
+                 
+                 --triggerField[function];
++
++                bool nested = !functionNested.empty() && functionNested.back();
++                if(!functionNested.empty()){
++                    functionNested.pop_back();
++                }
++                if(nested && !enclosingFunctions.empty()){
++                    EnclosingFunction& outer = enclosingFunctions.back();
++                    FunctionIt = outer.functionIt;
++                    functionTmplt = outer.tmplt;
++                    declIndex = outer.declIndex;
++                    paramIndex = outer.paramIndex;
++                    triggerField[functionblock] = outer.functionblock;
++                    pendingArgs = outer.pendingArgs;
++                    enclosingFunctions.pop_back();
++                    inGlobalScope = false;
++                }else{
++                    //statements after a top-level function belong to the file (Python module code), not to that function
++                    FunctionIt = FileIt->second.insert(std::make_pair("GLOBAL", VarMap())).first;
++                }
+             } },
+             { "constructor", [this](){
+                 isConstructor = false;
+@@ -512,7 +727,10 @@ public:
+             { "parameter", [this](){
+                     if(triggerField[parameter_list] && triggerField[param] && !(triggerField[type] || triggerField[functionblock] || triggerField[templates])){
+                         GetParamName();
++                    }else if(triggerField[lambdaexpr] && !inGlobalScope && !currentParam.first.empty()){
++                        GetParamName(); //lambda k: ... binds k (index 0: never matched to a call position)
+                     }
++                    currentParam.first.clear(); //never carry a name into the next parameter
+                     potentialAlias = false;
+                     --triggerField[param];
+             } },    
+@@ -520,11 +738,33 @@ public:
+                 --triggerField[member_list];
+             } },
+             { "return", [this](){
++                RetryPendingArgs();
+                 ProcessExprStmtNoAssign();
+                 useExprStack.clear();//to catch expressions in return statements
+                 --triggerField[return_stmt];
++
++                //reset like expr_stmt does; otherwise "return r;" leaks "r" into the lhs of the next assignment (r = ... -> "rr")
++                exprassign = false;
++                exprop = false;
++                foundexprlhs = false;
++                lhsLine = 0;
++                lhsName.clear();
++                currentExprStmt.first.clear();
++                lhsExprStmt.first.clear();
++                useExprStmt.first.clear();
++                currentCallArgData.first.clear();
++                lhsTargets.clear();
++                lhsNames.clear();
++                compoundAssign = false;
+             } },
+             { "control", [this](){
++                //for x in xs / for (auto x : xs): bind the targets once the header is complete
++                if(!forBindings.empty() && forBindings.back().sawRange && elementPath.size() - 1 > forBindings.back().depth){
++                    ApplyBinding(forBindings.back());
++                    forBindings.back().targets.clear();
++                    forBindings.back().sources.clear();
++                    forBindings.back().sawRange = false;
++                }
+                 inFor = false;
+                 --triggerField[control];
+             } },
+@@ -532,10 +772,16 @@ public:
+                 --triggerField[index];
+             } },    
+             { "operator", [this](){
++                if(isACallName && triggerField[call] && currentOperator == "."){
++                    calleeHasDot = true;
++                }
+                 calledFunctionName.clear();
+                 if(triggerField[decl_stmt] && (currentOperator == "." || currentOperator == "->")){
+                     memberAccess = true;
+                 }
++                if(triggerField[call] && triggerField[argument] && (currentOperator == "." || currentOperator == "->")){
++                    argMemberAccess = true;
++                }
+                 if(currentDeclInit.first == "new"){
+                      //separate new operator because we kinda need to know when we see it.
+                     sawnew = true;
+@@ -552,6 +798,21 @@ public:
+                         if(!lhsExprStmt.first.empty()){
+                             lhsName = lhsExprStmt.first;
+                         }
++                        //a, b = ...: the other targets were set aside as each tuple element ended
++                        NameLineNumberPair lastTarget = lhsExprStmt;
++                        for(const NameLineNumberPair& target : lhsTargets){
++                            lhsExprStmt = target;
++                            ProcessExprStmtPreAssign();
++                            lhsNames.push_back(target.first);
++                        }
++                        lhsTargets.clear();
++                        lhsExprStmt = lastTarget;
++                        if(compoundAssign){ //x += y reads x as well
++                            if(SliceProfile* lhs = Find(lhsName)){
++                                lhs->use.insert(lhsExprStmt.second);
++                            }
++                            compoundAssign = false;
++                        }
+                         lhsExprStmt.first.clear();
+                         exprop = false;
+                         //foundexprlhs = true;
+@@ -583,6 +844,9 @@ public:
+                 --triggerField[init];
+             } },    
+             { "argument", [this](){
++                if(!argKeyword.empty()){
++                    argKeyword.pop();
++                }
+                 currentDeclArg.first.clear(); //get rid of the name of the var that came before it for ctor calls like: object(InitVarable)
+                 currentCallArgData.first.clear();
+                 calledFunctionName.clear();
+@@ -638,11 +902,39 @@ public:
+                 --triggerField[type];
+             } },    
+             { "expr", [this](){
++                //a, b = ...: each tuple element before the = is its own target
++                if(triggerField[expr_stmt] && !exprassign && !triggerField[call] && elementPath.size() >= 2
++                    && elementPath[elementPath.size() - 2] == "tuple" && !lhsExprStmt.first.empty()){
++                    lhsTargets.push_back(lhsExprStmt);
++                    lhsExprStmt.first.clear();
++                }
+                 --triggerField[expr];
+             } },    
+             { "name", [this](){
+-                if(triggerField[call] && triggerField[argument]){
+-                    callArgData.push(currentCallArgData);
++                bool outermost = elementPath.size() < 2 || elementPath[elementPath.size() - 2] != "name";
++                if(outermost){
++                    if(!baseNames.empty()){
++                        BaseName base = baseNames.back();
++                        baseNames.pop_back();
++                        if(!base.text.empty()){
++                            OnBaseName(base.text, base.line);
++                        }
++                    }
++                }else if(!baseNames.empty() && !baseNames.back().text.empty()){
++                    baseNames.back().done = true; //only the first part of s.x / a[i] is the variable
++                }
++                bool keyword = triggerField[call] && triggerField[argument] && elementPath.size() >= 2
++                    && elementPath[elementPath.size() - 2] == "argument" && !argKeyword.empty();
++                if(keyword){ //f(a=x): a names the callee's parameter, it is not a variable here
++                    argKeyword.top() = currentCallArgData.first;
++                    currentCallArgData.first.clear();
++                }else if(triggerField[call] && triggerField[argument]){
++                    if(argMemberAccess){ //f(s.ws): ws is a member of s, never the local ws
++                        argMemberAccess = false;
++                        currentCallArgData.first.clear();
++                    }else{
++                        callArgData.push(currentCallArgData);
++                    }
+                 }
+                 //Get function arguments
+                 if(triggerField[call] || (triggerField[decl_stmt] && triggerField[argument_list])){
+@@ -775,6 +1067,22 @@ public:
+         if(name == "generic"){
+             sawgeneric = true;
+         }
++        elementPath.push_back(lnspace == "cpp" ? "cpp:" + lname : lname);
++        elementTypeAttr.clear();
++        for(int i = 0; i < num_attributes; ++i){
++            if(std::string(attributes[i].localname) == "type"){
++                elementTypeAttr = attributes[i].value;
++            }
++        }
++        if(lname == "literal"){
++            for(int i = 0; i < num_attributes; ++i){
++                if(std::string(attributes[i].localname) == "type" && std::string(attributes[i].value) == "string"){
++                    inStringLiteral = true;
++                    literalText.clear();
++                    literalLine = lineNum;
++                }
++            }
++        }
+         
+         std::unordered_map<std::string, std::function<void()>>::const_iterator process = process_map.find(lname);
+         if (process != process_map.end()) {
+@@ -789,16 +1097,34 @@ public:
+      * SAX handler function for character handling within a unit.
+      * Overide for desired behaviour.
+      */
++    static bool IsAssignOperator(const std::string& op){
++        if(op.empty() || op.back() != '=') return false;
++        return op != "==" && op != "!=" && op != "<=" && op != ">=" && op != "===" && op != "!==";
++    }
++
+     virtual void charactersUnit(const char * ch, int len) {
++        if(!elementPath.empty() && elementPath.back() == "name" && !baseNames.empty() && !baseNames.back().done){
++            //the outermost <name>, or the first <name> directly inside it
++            std::size_t n = elementPath.size();
++            bool outermost = n < 2 || elementPath[n - 2] != "name";
++            bool firstPart = !outermost && (n < 3 || elementPath[n - 3] != "name");
++            if(outermost || firstPart){
++                baseNames.back().text.append(ch, len);
++            }
++        }
++        if(inStringLiteral){
++            literalText.append(ch, len);
++        }
+ 
+-        if((triggerField[decl_stmt] || triggerField[expr_stmt]) && triggerField[call] && 
++        //call arguments can appear in any statement (return, if/while/for headers, throw/raise, yield, assert, ...)
++        if(!triggerField[parameter_list] && triggerField[call] &&
+             (triggerField[name]) && triggerField[argument_list] &&
+             !(triggerField[index] || triggerField[op] || triggerField[preproc])){
+             currentCallArgData.first.append(ch, len);
+         }
+         if(((triggerField[function] || triggerField[constructor] || triggerField[destructor]) && triggerField[name]) 
+         && !(triggerField[functionblock] || triggerField[parameter_list]|| triggerField[argument_list] || triggerField[argument_list_template] || triggerField[type]
+-         || triggerField[index] || triggerField[preproc] || triggerField[op]|| triggerField[macro])){                
++         || triggerField[index] || triggerField[preproc] || triggerField[op]|| triggerField[macro] || triggerField[attributeelem])){
+             currentFunctionBody.first.append(ch, len);
+             //std::cerr<<currentFunctionBody.first<<std::endl;
+         }
+@@ -816,7 +1142,7 @@ public:
+             currentFunctionDecl.first.append(ch,len);
+         }
+         if((triggerField[param] && (triggerField[function] || triggerField[functiondecl] || triggerField[constructor]) && triggerField[name])
+-            && !(triggerField[type] || triggerField[argument_list] || triggerField[templates]|| triggerField[macro] || triggerField[preproc])){
++            && !(triggerField[type] || triggerField[init] || triggerField[annotation] || triggerField[argument_list] || triggerField[templates]|| triggerField[macro] || triggerField[preproc])){
+             currentParam.first.append(ch, len);
+         }
+         if((triggerField[param] && (triggerField[function] || triggerField[functiondecl] || triggerField[constructor])) && triggerField[name] &&  triggerField[type]
+@@ -853,12 +1179,13 @@ public:
+             currentOperator.append(ch, len);
+         }
+         //This only handles expr statments of the form a = b. Anything without = in it is skipped here -- Not entirely true anymore
+-        if((triggerField[name] || triggerField[op]) && triggerField[expr] && (triggerField[expr_stmt] || triggerField[condition] || triggerField[return_stmt]) && !(triggerField[index] || triggerField[preproc])){
++        if((triggerField[name] || triggerField[op]) && triggerField[expr] && (triggerField[expr_stmt] || triggerField[condition] || triggerField[return_stmt]) && !(triggerField[index] || triggerField[preproc] || triggerField[annotation])){
+             std::string str = std::string(ch, len);
+             //std::cerr<<"str: "<<str<<currentExprStmt.second<<std::endl;
+             //kind of a hack here; currentOperator basically tells me if the operator was actually assignment
+             //or some kinda compare operator like <=. Important to know which one I just saw since I need to assign to use or def.
+-            if(str.back() == '=' && currentOperator.size() < 2){ 
++            if(str.back() == '=' && IsAssignOperator(currentOperator)){
++                compoundAssign = currentOperator != "=" && currentOperator != ":=";
+                 exprassign = true;
+                 exprop = false; //assumed above in "operator" that I wouldn't see =. This takes care of when I assume wrong.
+                 str.clear(); //don't read the =, just want to know it was there.
+@@ -918,14 +1245,22 @@ public:
+             currentDecl.first.clear();
+             --triggerField[preproc];
+         }
++        if(lname == "literal" && inStringLiteral){
++            inStringLiteral = false;
++            ProcessFString(literalText, literalLine);
++        }
+         std::unordered_map<std::string, std::function<void()>>::const_iterator process3 = process_map3.find(lname);
+         if (process3 != process_map3.end()) {
+             process3->second();
+         }
++        if(!elementPath.empty()){
++            elementPath.pop_back();
++        }
+ #pragma GCC diagnostic pop
+     }
+ };
+ inline void DoComputation(srcSliceHandler& h, const FileFunctionVarMap& mp){
++    h.ResolvePendingCalls();
+     for(FileFunctionVarMap::const_iterator ffvmIt = mp.begin(); ffvmIt != mp.end(); ++ffvmIt){
+         h.ComputeInterprocedural(ffvmIt->first);
+     }
+diff --git a/tests/regression/calls/expected.tsv b/tests/regression/calls/expected.tsv
+new file mode 100644
+index 0000000..c23b2c2
+--- /dev/null
++++ b/tests/regression/calls/expected.tsv
+@@ -0,0 +1,26 @@
++t_decl	x	cf	f1{1}
++t_expr	x	cf	f1{1}
++t_assign	x	cf	f1{1}
++t_return	x	cf	f1{1}
++t_return2	x	cf	f2{1}
++t_return2	y	cf	f2{2}
++t_if	x	cf	f1{1}
++t_while	x	cf	f1{1}
++t_nested	x	cf	f1{1}
++t_nested	y	cf	f2{2}
++t_retnested	y	cf	f2{1}
++t_retnested	x	cf	f1{1}
++t_retexpr	x	cf	f1{1}
++t_ifexpr	x	cf	f1{1}
++t_for	x	cf	f1{1}
++j_decl	x	cf	g1{1}
++j_return	x	cf	g1{1}
++j_if	x	cf	g1{1}
++t_declnested2	y	cf	f2{1}
++t_declnested2	x	cf	f1{1}
++t_deep	y	cf	f2{1}
++t_deep	x	cf	f1{1}
++t_deep	z	cf	f2{2}
++t_after	x	cf	f1{1}
++t_after	y	cf	f2{1}
++t_after	z	cf	f2{2}
+diff --git a/tests/regression/calls/src/Calls.java b/tests/regression/calls/src/Calls.java
+new file mode 100644
+index 0000000..96392cb
+--- /dev/null
++++ b/tests/regression/calls/src/Calls.java
+@@ -0,0 +1,6 @@
++class Calls {
++  int g1(int a){ return a; }
++  int j_decl(){ int x = 1; int r = g1(x); return r; }
++  int j_return(){ int x = 1; return g1(x); }
++  int j_if(){ int x = 1; if (g1(x) > 0) { return 1; } return 0; }
++}
+diff --git a/tests/regression/calls/src/calls.c b/tests/regression/calls/src/calls.c
+new file mode 100644
+index 0000000..19905db
+--- /dev/null
++++ b/tests/regression/calls/src/calls.c
+@@ -0,0 +1,17 @@
++int f1(int a){ return a; }
++int f2(int a, int b){ return a + b; }
++int t_decl(){ int x = 1; int r = f1(x); return r; }
++int t_expr(){ int x = 1; f1(x); return 0; }
++int t_assign(){ int x = 1; int r; r = f1(x); return r; }
++int t_return(){ int x = 1; return f1(x); }
++int t_return2(){ int x = 1; int y = 2; return f2(x, y); }
++int t_if(){ int x = 1; if (f1(x)) { return 1; } return 0; }
++int t_while(){ int x = 1; while (f1(x)) { x = 0; } return 0; }
++int t_nested(){ int x = 1; int y = 2; int r = f2(f1(x), y); return r; }
++int t_retnested(){ int x = 1; int y = 2; return f2(y, f1(x)); }
++int t_retexpr(){ int x = 1; return f1(x) + 1; }
++int t_ifexpr(){ int x = 1; if (f1(x) > 0) { return 1; } return 0; }
++int t_for(){ int x = 3; int i; for (i = 0; i < f1(x); i++) { } return i; }
++int t_declnested2(){ int x = 1; int y = 2; int r = f2(y, f1(x)); return r; }
++int t_deep(){ int x = 1; int y = 2; int z = 3; int r = f2(f2(y, f1(x)), z); return r; }
++int t_after(){ int x = 1; int y = 2; int z = 3; int r = f2(f1(x), f2(y, z)); return r; }
+diff --git a/tests/regression/check.py b/tests/regression/check.py
+new file mode 100644
+index 0000000..57d4ee1
+--- /dev/null
++++ b/tests/regression/check.py
+@@ -0,0 +1,26 @@
++"""Check srcSlice output against expectations: function<TAB>var<TAB>kind<TAB>values(;-separated)
++kinds: cf = exact cfuncs set, dv = dvars must include, nodv = dvars must not include,
++       def = def lines must include, use = use lines must include, absent = profile must not exist."""
++import re, subprocess, sys
++binary, archive, oracle = sys.argv[1:4]
++prof = {}
++for line in subprocess.run([binary, archive], capture_output=True, text=True).stdout.splitlines():
++    m = re.match(r'(.*?),([^,]*),([^,]*),def\{(.*?)\},use\{(.*?)\},dvars\{(.*?)\},pointers\{(.*?)\},cfuncs\{(.*)\}$', line)
++    if m:
++        sp = lambda s: set(filter(None, s.split(',')))
++        prof[(m[2], m[3])] = dict(defs=sp(m[4]), use=sp(m[5]), dv=sp(m[6]), cf=set(re.findall(r'[^,{}]+\{\d+\}', m[8])))
++ok = n = 0
++for row in open(oracle):
++    if not row.strip() or row.startswith('#'): continue
++    fn, v, kind, *vals = row.rstrip('\n').split('\t'); want = set(filter(None, (vals[0] if vals else '').split(';')))
++    p = prof.get((fn, v)); n += 1
++    if kind == 'absent': good = p is None
++    elif p is None: good = False
++    elif kind == 'cf': good = p['cf'] == want
++    elif kind == 'dv': good = want <= p['dv']
++    elif kind == 'nodv': good = not (want & p['dv'])
++    elif kind == 'def': good = want <= p['defs']
++    elif kind == 'use': good = want <= p['use']
++    ok += good
++    if not good: print('FAIL', fn, v, kind, sorted(want), '| got', p and {k: sorted(x) for k, x in p.items()})
++print(f'{ok}/{n} checks pass')
+diff --git a/tests/regression/cpp_calls/expected.tsv b/tests/regression/cpp_calls/expected.tsv
+new file mode 100644
+index 0000000..d24400a
+--- /dev/null
++++ b/tests/regression/cpp_calls/expected.tsv
+@@ -0,0 +1,9 @@
++u_method	x	cf	m{1}
++u_ptr	x	cf	h2{1}
++u_exprarg	x	cf	h1{1}
++u_two	x	cf	h1{1}
++u_two	y	cf	h1{1}
++u_retptr	x	cf	h2{1}
++u_switch	x	cf	h1{1}
++u_dowhile	x	cf	h1{1}
++u_forinc	x	cf	h1{1}
+diff --git a/tests/regression/cpp_calls/src/more.cpp b/tests/regression/cpp_calls/src/more.cpp
+new file mode 100644
+index 0000000..2c7a19b
+--- /dev/null
++++ b/tests/regression/cpp_calls/src/more.cpp
+@@ -0,0 +1,11 @@
++struct S { int m(int a); };
++int h1(int a){ return a; }
++int h2(int *p){ return *p; }
++int u_method(){ S s; int x = 1; int r = s.m(x); return r; }
++int u_ptr(){ int x = 1; int r = h2(&x); return r; }
++int u_exprarg(){ int x = 1; int r = h1(x + 1); return r; }
++int u_two(){ int x = 1; int y = 2; h1(x); h1(y); return 0; }
++int u_retptr(){ int x = 1; return h2(&x); }
++int u_switch(){ int x = 1; switch (h1(x)) { case 1: return 1; } return 0; }
++int u_dowhile(){ int x = 1; do { x = 0; } while (h1(x)); return 0; }
++int u_forinc(){ int x = 1; int i; for (i = 0; i < 3; i = h1(x)) { } return i; }
+diff --git a/tests/regression/interprocedural/expected.tsv b/tests/regression/interprocedural/expected.tsv
+new file mode 100644
+index 0000000..6140a35
+--- /dev/null
++++ b/tests/regression/interprocedural/expected.tsv
+@@ -0,0 +1,13 @@
++# callers inherit the slice of the matching callee parameter only
++callee	p	dv	pdep
++callee	k	dv	kdep
++caller_a	a	dv	pdep
++caller_a	a	nodv	kdep
++caller_a	a	use	9;20
++caller_a	b	dv	kdep
++caller_a	b	nodv	pdep
++caller_a	b	use	10;20
++caller_b	a	dv	kdep
++caller_b	a	nodv	pdep
++caller_b	b	dv	pdep;out
++caller_b	b	nodv	kdep;r
+diff --git a/tests/regression/interprocedural/src/inter.c b/tests/regression/interprocedural/src/inter.c
+new file mode 100644
+index 0000000..ba9d980
+--- /dev/null
++++ b/tests/regression/interprocedural/src/inter.c
+@@ -0,0 +1,27 @@
++int G1 = 0;
++int G2 = 0;
++int proto(int q, int w);
++int likely(int c);
++int sink(int v);
++int callee(int p, int k)
++{
++	int r;
++	int pdep = p + 1;
++	int kdep = k + 1;
++	r = sink(pdep);
++	if (likely(r == 0)) {
++		return kdep;
++	}
++	return pdep;
++}
++int caller_a(int a)
++{
++	int b = 2;
++	return callee(a, b);
++}
++int caller_b(int a)
++{
++	int b = 2;
++	int out = callee(b, a);
++	return out;
++}
+diff --git a/tests/regression/member_sizeof/expected.tsv b/tests/regression/member_sizeof/expected.tsv
+new file mode 100644
+index 0000000..fbd77de
+--- /dev/null
++++ b/tests/regression/member_sizeof/expected.tsv
+@@ -0,0 +1,10 @@
++m3	s	cf	g{1}
++m3	ws	cf	
++m4	a	cf	g{1};g{3}
++m4	s	cf	memset{1}
++m5	p	cf	g{1}
++m5	k	cf	g{2}
++m6	k	cf	h{1}
++m6	p	cf	h{1}
++m7	p	cf	g{1}
++m7	ws	cf	g{2}
+diff --git a/tests/regression/member_sizeof/src/m.c b/tests/regression/member_sizeof/src/m.c
+new file mode 100644
+index 0000000..d4c8150
+--- /dev/null
++++ b/tests/regression/member_sizeof/src/m.c
+@@ -0,0 +1,9 @@
++struct A { int dev; int ws; };
++int g(int a, int b, int c);
++int m3(struct A s){ int ws = 0; g(s.ws, 0, 0); return ws; }
++int m4(struct A s){ int a = 1; memset(&s, 0, sizeof(s)); g(a, sizeof(s), a); return 0; }
++int m5(struct A *p){ int k = 1; g(p->dev, k, 0); return 0; }
++int m6(struct A *p){ int k = 1; g(0,
++		h(k) |
++		h(p->dev), 0); return 0; }
++int m7(struct A *p){ int ws = 1; g(p->ws, ws, 0); return 0; }
+diff --git a/tests/regression/python_constructs/expected.tsv b/tests/regression/python_constructs/expected.tsv
+new file mode 100644
+index 0000000..9a8c751
+--- /dev/null
++++ b/tests/regression/python_constructs/expected.tsv
+@@ -0,0 +1,40 @@
++# keyword arguments map to the callee's named parameter
++p_kw	x	cf	g{1};g{2}
++p_kwonly	x	cf	g{1}
++# methods: the receiver fills self, so argument k is parameter k+1
++caller	z	cf	m{2}
++caller	z	dv	w
++p_method_arg	x	cf	m{2}
++p_method_arg	x	dv	w
++# for-loop target
++p_for	it	def	25
++p_for	items	dv	it
++p_for	it	cf	g{1}
++p_for	total	def	24;26
++# with ... as
++p_with	path	cf	open{1}
++p_with	path	dv	fh
++p_with	fh	def	30
++p_with	fh	dv	data
++# tuple assignment: separate targets, no phantom
++p_tuple	ab	absent
++p_tuple	a	def	35
++p_tuple	b	def	35
++p_tuple	x	dv	a
++p_tuple	y	dv	b
++p_tuple	x	cf	g{1}
++# augmented assignment
++p_aug	x	dv	acc
++p_aug	acc	def	39;40
++# comprehension variable
++p_compr	e	cf	g{1}
++p_compr	xs	dv	e
++# lambda parameter must not leak into the next function
++p_while	kx	absent
++p_while	x	def	68
++p_while	x	cf	g{1}
++p_lambda	k	cf	g{1}
++# unchanged behaviour
++p_attr_arg	obj	cf	g{1}
++p_star	args	cf	g{1}
++p_kw	x	dv	r
+diff --git a/tests/regression/python_constructs/src/b.py b/tests/regression/python_constructs/src/b.py
+new file mode 100644
+index 0000000..788d0ad
+--- /dev/null
++++ b/tests/regression/python_constructs/src/b.py
+@@ -0,0 +1,74 @@
++import os
++
++def g(a, b=0):
++    return a
++
++class K:
++    def m(self, v):
++        w = v + 1
++        return w
++
++    def caller(self, z):
++        q = self.m(z)
++        return q
++
++def p_kw(x):
++    r = g(x, b=x)
++    return r
++
++def p_kwonly(x):
++    r = g(a=x)
++    return r
++
++def p_for(items):
++    total = 0
++    for it in items:
++        total = total + g(it)
++    return total
++
++def p_with(path):
++    with open(path) as fh:
++        data = fh.read()
++    return data
++
++def p_tuple(x, y):
++    a, b = g(x), g(y)
++    return a + b
++
++def p_aug(x):
++    acc = 0
++    acc += g(x)
++    return acc
++
++def p_method_arg(x):
++    s = K()
++    t = s.m(x)
++    return t
++
++def p_attr_arg(obj):
++    u = g(obj.field)
++    return u
++
++def p_star(*args, **kw):
++    v = g(*args, **kw)
++    return v
++
++def p_compr(xs):
++    ys = [g(e) for e in xs]
++    return ys
++
++def p_fstring(x):
++    msg = f"value {g(x)}"
++    return msg
++
++def p_lambda(x):
++    h = lambda k: g(k)
++    return h(x)
++
++def p_while(x):
++    while g(x):
++        x = x - 1
++    return x
++
++def p_global():
++    return os.path.join("a", "b")
+diff --git a/tests/regression/python_params/expected.tsv b/tests/regression/python_params/expected.tsv
+new file mode 100644
+index 0000000..d45ca20
+--- /dev/null
++++ b/tests/regression/python_params/expected.tsv
+@@ -0,0 +1,13 @@
++a1	x	cf	g{1}
++a1	xint	absent
++a2	x	cf	g{1}
++a2	y	cf	g{2}
++a3	limit	cf	g{1}
++a3		absent
++a3	limitint	absent
++a4	self	cf	g{1}
++propertya4	self	absent
++a5	path	cf	g{1}
++a6	x	cf	g{1}
++a7	key	cf	g{1}
++a7	value	cf	g{2}
+diff --git a/tests/regression/python_params/src/c.py b/tests/regression/python_params/src/c.py
+new file mode 100644
+index 0000000..0da295b
+--- /dev/null
++++ b/tests/regression/python_params/src/c.py
+@@ -0,0 +1,22 @@
++def a1(x: int):
++    return g(x)
++
++def a2(x: int = 0, y=None):
++    return g(x, y)
++
++def a3(self, *, limit: int | None = None):
++    return g(limit)
++
++@property
++def a4(self):
++    return g(self)
++
++async def a5(path):
++    return await g(path)
++
++def a6(x) -> str:
++    return g(x)
++
++class C:
++    def a7(self, key: str, value: "list[int]") -> None:
++        g(key, value)
+diff --git a/tests/regression/python_scopes/expected.tsv b/tests/regression/python_scopes/expected.tsv
+new file mode 100644
+index 0000000..770668a
+--- /dev/null
++++ b/tests/regression/python_scopes/expected.tsv
+@@ -0,0 +1,11 @@
++inner	b	cf	g{1}
++outer	a	cf	inner{1};g{1}
++outer	r	cf	g{1}
++outer	b	absent
++use_loads	hook	cf	loads{3}
++use_loads	t	cf	loads{1}
++kwcall	x	cf	g{1}
++# raise / yield arguments; a call receiver inside an argument is not that argument
++raises	x	cf	ValueError{1}
++yields	x	cf	g{1}
++receiver	fp	cf	
+diff --git a/tests/regression/python_scopes/src/d.py b/tests/regression/python_scopes/src/d.py
+new file mode 100644
+index 0000000..c4d5b02
+--- /dev/null
++++ b/tests/regression/python_scopes/src/d.py
+@@ -0,0 +1,24 @@
++def outer(a):
++    def inner(b):
++        return g(b)
++    r = inner(a)
++    return g(r)
++
++def loads(s, *, cls=None, object_hook=None):
++    return s
++
++def use_loads(t, hook):
++    return loads(t, object_hook=hook)
++
++def kwcall(x):
++    return h(options=g(x))
++
++top = g(outer)
++def raises(x):
++    raise ValueError(x)
++
++def yields(x):
++    yield g(x)
++
++def receiver(fp):
++    return loads(fp.read())
+diff --git a/tests/regression/run.sh b/tests/regression/run.sh
+new file mode 100755
+index 0000000..6064783
+--- /dev/null
++++ b/tests/regression/run.sh
+@@ -0,0 +1,17 @@
++#!/bin/bash
++# Regression tests: slice each case with srcSlice and compare against its expected.tsv.
++# Usage: tests/regression/run.sh [path/to/srcSlice] [path/to/srcml]
++here="$(cd "$(dirname "$0")" && pwd)"
++slicer="${1:-srcSlice}"
++srcml="${2:-srcml}"
++work="$(mktemp -d)"
++trap 'rm -r "$work"' EXIT
++failed=0
++for case in "$here"/*/; do
++    name="$(basename "$case")"
++    (cd "$case" && "$srcml" --position src -o "$work/$name.xml") || { echo "FAIL $name: srcml"; failed=1; continue; }
++    result="$(python3 "$here/check.py" "$slicer" "$work/$name.xml" "$case/expected.tsv")"
++    echo "$name: $(echo "$result" | tail -1)"
++    echo "$result" | grep '^FAIL' && failed=1
++done
++exit $failed

@@ -8,8 +8,8 @@ restricts a slice to one execution~\cite{korel1988dynamic, agrawal1990dynamic}, 
 to one input. Frameworks such as WALA provide dependence-graph slicers for Java, JavaScript
 and Python~\cite{wala}, but on a Qiskit program they see each gate as a call on one circuit object and cannot
 tell which qubits an operation depends on. srcSlice computes lightweight forward slices and slice profiles of every variable from srcML without
-building a dependence graph~\cite{alomari2014srcslice}, the design our tool follows, but it has no notion
-of qubits. Gallagher names quantum programs as a direction for semantically
+building a dependence graph~\cite{alomari2014srcslice}. \tool{} follows its design, can take a slice's classical lines
+from it, and exposes three gaps in it, but srcSlice alone has no notion of qubits. Gallagher names quantum programs as a direction for semantically
 defined slicing~\cite{gallagher2025program}, and we define the slice by the reduced state of the criterion. Probabilistic slicing preserves the distribution of the criterion
 variables~\cite{hur2014slicing, amtoft2020theory, olmedo2025slicing}. Our criterion is stronger, since a
 distribution in one basis does not see phase or the kickback of Section~\ref{sec:example}.
@@ -23,9 +23,11 @@ return 1 with certainty, while the implied slice does so with probability \numYz
 unchanged, the reading that phase kickback breaks, as Proposition~\ref{prop:du} shows. LintQ orders
 two operations exactly when they share a qubit~\cite{paltenghi2024lintq}, the relation of the QDG, to find
 bug patterns without aiming at full soundness, and we show that this relation gives sound and
-dependence-complete slices. Behler et al.\ extend srcML to OpenQASM~\cite{behler2024supporting} and name
-qubit slicing with srcML as future work~\cite{behler2025static}, which our tool realizes with a proved
-dependence rule.
+dependence-complete slices. Behler et al.\ extend srcML to OpenQASM~\cite{behler2024supporting}. Their QStatic tool orders the
+operations of each qubit in hand-marked-up OpenQASM and uses that order to find patterns and
+refactorings, and they name qubit slicing with srcML's slicer as future work~\cite{behler2025static}.
+QStatic has no dependence rule and does not read Qiskit, and \tool{} realizes that future work with a
+dependence rule that is proved sound.
 
 \paragraph*{Entanglement analysis}
 Static analyses approximate which qubits may be entangled with type

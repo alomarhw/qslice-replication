@@ -1182,3 +1182,29 @@ cites but the paper does not use: `archive/` (the earlier artifact), `phase1_log
 earlier version's figures). Local paths in logs and result files are written as `<repo>` and `<data-root>`.
 `make_numbers.py` gives the same values without them; its four hardware macros, which the paper did not
 use, are removed.
+
+### Deviation I-20 (2026-10-27, AFTER all results; author decision; exploratory; recorded before any srcSlice output on the corpora): QSlice's classical lines from srcSlice
+- **Why.** The author asked that the tool's classical side be built on srcSlice, not only follow its design. The
+  quantum side (gate roles, the unrolled operation trace, the QDG backward pass) is unchanged, and no RQ, hypothesis,
+  threshold, corpus or reported line-slice result changes: the study's line slices are the quantum lines, which this
+  deviation does not touch.
+- **srcSlice build.** Upstream srcSlice at ce86ef8 with one patch (call-site linking in returns and conditions,
+  argument positions, member names, initializer dvars, output escaping, and Python support), shipped as a plain diff
+  under `tools/srcslice/` with its regression suite; srcML 1.1.0 as before.
+- **Method (`tool/srcslice.py`).** srcSlice's profiles of the program's srcML archive. For a qubit's QDG slice, the
+  start lines are its quantum lines and the header lines of the loops, conditions and `with` blocks that enclose
+  them. A profile is seeded when its use set holds a start line. The closure adds a profile's definition lines, every
+  profile whose dvars hold its name (same function or global), and, for a parameter at position k of f, every profile
+  whose cfuncs hold f{k}. The classical lines are the closure's lines minus the quantum lines.
+- **Comparison (`icpc/srcslice_classical.py`).** Per qubit of the dev programs, the Bugs4Q files, the textbook and the
+  I-17 LintQ sample: the interpreter's provenance lines (I-15) and srcSlice's classical lines, their recall and
+  precision with the interpreter's lines as reference, exact agreement, and srcSlice's time.
+- **Decision rule (fixed before any output).** QSlice reports srcSlice's classical lines if, over the dev programs and
+  Bugs4Q, they contain the interpreter's lines for at least 95% of the qubits. Otherwise the interpreter's lines stay
+  the output and srcSlice's are reported as a comparison. Either way, the paper reports the measured agreement.
+- **Outcome (recorded after the run).** On 1,610 qubits of 401 files, srcSlice's lines contain the interpreter's
+  for 82% of the qubits (85% over the dev programs and Bugs4Q), equal them for 40%, recall 0.88 and precision 0.52,
+  55 ms per file in the median. Below the 95% threshold, so QSlice reports the interpreter's lines and srcSlice's
+  are an option. The misses come from three srcSlice gaps: no use is recorded inside a subscript (`q[a]`, in
+  Python and in C), returned values are not linked to the call, and a module variable used inside a function is
+  not recorded. `results/icpc/srcslice/`.
