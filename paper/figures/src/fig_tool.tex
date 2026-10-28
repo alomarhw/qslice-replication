@@ -6,16 +6,16 @@
 \usetikzlibrary{arrows.meta,calc}
 \definecolor{ink}{HTML}{1F2328}\definecolor{mute}{HTML}{6E7781}\definecolor{rule}{HTML}{D0D7DE}
 \definecolor{wire}{HTML}{0969DA}\definecolor{wireL}{HTML}{DDEBFF}\definecolor{tree}{HTML}{6639BA}
-\definecolor{hlC}{HTML}{FFF1B8}\definecolor{tagC}{HTML}{000000}\definecolor{idC}{HTML}{0550AE}
+\definecolor{hlC}{HTML}{FFF1B8}\definecolor{tagC}{HTML}{000000}\definecolor{idC}{HTML}{800000}
 \newcommand{\hlbox}[1]{{\setlength{\fboxsep}{0.4pt}\colorbox{hlC}{\strut #1}}}
-\newcommand{\hlm}[1]{\raisebox{0.9ex}{\textcolor{tree}{\fontsize{8}{9}\selectfont\bfseries\rmfamily #1}}}
+\newcommand{\hlm}[1]{\raisebox{0.9ex}{\textcolor{tree}{\fontsize{7.5}{8.5}\selectfont\bfseries\rmfamily #1}}}
 \newcommand{\hl}[1]{\textcolor{tree}{\bfseries #1}}
 \tikzset{
   >={Stealth[length=3.6pt,width=3.2pt]},
-  stage/.style={font=\fontsize{10}{12}\selectfont\bfseries, text=ink, anchor=west, inner sep=0pt},
+  stage/.style={font=\fontsize{9}{11}\selectfont\bfseries, text=ink, anchor=west, inner sep=0pt},
   stnum/.style={circle, draw=ink, line width=0.6pt, font=\fontsize{8}{9}\selectfont\bfseries, text=ink, inner sep=0pt, minimum size=11pt},
-  xml/.style={font=\ttfamily\fontsize{10}{12}\selectfont, anchor=west, inner sep=0pt},
-  note/.style={font=\fontsize{10}{12}\selectfont\itshape, execute at begin node={\hyphenpenalty=10000}, text=mute, inner sep=0pt},
+  xml/.style={font=\ttfamily\fontsize{9}{11}\selectfont, anchor=west, inner sep=0pt},
+  note/.style={font=\fontsize{9}{11}\selectfont\itshape, execute at begin node={\hyphenpenalty=10000}, text=mute, inner sep=0pt},
   flowarrow/.style={->, line width=0.7pt, draw=ink},
 }
 \begin{document}
@@ -24,69 +24,67 @@
 \node[stnum] at (0.2,0.5) {1};
 \node[stage] at (0.45,0.5) {srcML of lines 14--15 and 18--20};
 \draw[rule, line width=0.6pt] (0,0.28) -- (18.0,0.28);
-\node[xml] at (0.05,0.0) {\textcolor{tagC}{<for \hlbox{pos:start="14:5"}>}\hlm{g}\hlbox{\textcolor{idC}{\bfseries for }}\hlm{a}\textcolor{tagC}{<control>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qubit}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{idC}{\bfseries  }\textcolor{tagC}{<range>}\textcolor{idC}{\bfseries in }\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}};
-\node[xml] at (0.7212000000000001,-0.405) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{idC}{\bfseries range}\textcolor{tagC}{</name>}\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries n}}\hlm{b}\textcolor{tagC}{</name>}\textcolor{idC}{\bfseries  }\textcolor{tagC}{<operator>}\hlbox{\textcolor{idC}{\bfseries -}}\textcolor{tagC}{</operator>}\textcolor{idC}{\bfseries  }};
-\node[xml] at (0.7212000000000001,-0.81) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<literal type="number">}\hlbox{\textcolor{idC}{\bfseries 1}}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</range>}};
-\node[xml] at (0.7212000000000001,-1.215) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</control>}\textcolor{tagC}{<block>}\textcolor{idC}{\bfseries :}\textcolor{tagC}{<block\_content>}};
-\node[xml] at (1.3924,-1.62) {\textcolor{tagC}{<expr\_stmt>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries cx}}\hlm{c}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}};
-\node[xml] at (2.0636,-2.0250000000000004) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries qubit}}\hlm{d}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries , }\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}};
-\node[xml] at (2.0636,-2.4300000000000006) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries qubit}}\textcolor{tagC}{</name>}\textcolor{idC}{\bfseries  }\textcolor{tagC}{<operator>}\hlbox{\textcolor{idC}{\bfseries +}}\textcolor{tagC}{</operator>}\textcolor{idC}{\bfseries  }\textcolor{tagC}{<literal type="number">}\hlbox{\textcolor{idC}{\bfseries 1}}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}};
-\node[xml] at (2.0636,-2.835000000000001) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</expr\_stmt>}};
-\node[xml] at (0.05,-3.240000000000001) {\textcolor{tagC}{</block\_content>}\textcolor{tagC}{</block>}\textcolor{tagC}{</for>}};
-\node[xml] at (0.05,-3.8450000000000015) {\textcolor{tagC}{<expr\_stmt \hlbox{pos:start="18:1"}>}\hlm{g}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries measure}}\hlm{c}};
-\node[xml] at (0.7212000000000001,-4.250000000000002) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries n}}\hlm{d}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries , }\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}};
-\node[xml] at (0.7212000000000001,-4.655000000000002) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries n}}\hlm{e}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</expr\_stmt>}};
-\node[xml] at (0.05,-5.060000000000002) {\hlbox{\textcolor{tagC}{<with>}}\hlm{f}\textcolor{idC}{\bfseries with }\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries if\_test}}\hlm{f}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}};
-\node[xml] at (0.7212000000000001,-5.4650000000000025) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<tuple>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}};
-\node[xml] at (0.7212000000000001,-5.870000000000003) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\hlbox{\textcolor{idC}{\bfseries clbits}}\hlm{e}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{idC}{\bfseries [}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries n}}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{idC}{\bfseries ]}\textcolor{tagC}{</index>}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{idC}{\bfseries , }\textcolor{tagC}{<expr>}};
-\node[xml] at (0.7212000000000001,-6.275000000000003) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<literal type="number">}\textcolor{idC}{\bfseries 1}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</tuple>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}};
-\node[xml] at (0.7212000000000001,-6.680000000000003) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</expr>}\textcolor{tagC}{<block>}\textcolor{idC}{\bfseries :}\textcolor{tagC}{<block\_content>}};
-\node[xml] at (0.7212000000000001,-7.0850000000000035) {\textcolor{tagC}{<expr\_stmt>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries x}}\hlm{c}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}};
-\node[xml] at (1.3924,-7.490000000000004) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<literal type="number">}\hlbox{\textcolor{idC}{\bfseries 0}}\hlm{d}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}};
-\node[xml] at (1.3924,-7.895000000000004) {\textcolor{mute}{\rmfamily\fontsize{10}{12}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</expr\_stmt>}};
-\node[xml] at (0.05,-8.300000000000004) {\textcolor{tagC}{</block\_content>}\textcolor{tagC}{</block>}\textcolor{tagC}{</with>}};
-\node[anchor=north west, align=left, font=\fontsize{10}{12}\selectfont, text=ink, inner sep=0pt] at (0.05,-8.625000000000004) {\hl{a}\,\texttt{for} $\to$ unrolled\enspace \hl{b}\,range $\to$ iteration count, from line 4\enspace \hl{c}\,gate\\ \hl{d}\,qubit argument, evaluated per iteration\enspace \hl{e}\,classical bit, written by the measurement and read by the condition\\\hl{f}\,\texttt{if\_test} $\to$ conditioned block\enspace \hl{g}\,position $\to$ source line};
-\begin{scope}[yshift=-10.655cm]
+\node[xml] at (0.05,0.0) {\textcolor{tagC}{<for \hlbox{pos:start="14:5"}>}\hlm{g}\hlbox{\textcolor{idC}{\bfseries for }}\hlm{a}\textcolor{tagC}{<control>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qubit}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{idC}{\bfseries  }\textcolor{tagC}{<range>}\textcolor{idC}{\bfseries in }\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries range}\textcolor{tagC}{</name>}};
+\node[xml] at (0.654,-0.37) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries n}}\hlm{b}\textcolor{tagC}{</name>}\textcolor{idC}{\bfseries  }\textcolor{tagC}{<operator>}\hlbox{\textcolor{idC}{\bfseries -}}\textcolor{tagC}{</operator>}\textcolor{idC}{\bfseries  }\textcolor{tagC}{<literal type="number">}\hlbox{\textcolor{idC}{\bfseries 1}}\textcolor{tagC}{</literal>}};
+\node[xml] at (0.654,-0.74) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</range>}\textcolor{tagC}{</control>}\textcolor{tagC}{<block>}\textcolor{idC}{\bfseries :}\textcolor{tagC}{<block\_content>}};
+\node[xml] at (1.258,-1.1099999999999999) {\textcolor{tagC}{<expr\_stmt>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries cx}}\hlm{c}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}};
+\node[xml] at (1.8619999999999999,-1.48) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries qubit}}\hlm{d}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries , }\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries qubit}}};
+\node[xml] at (1.8619999999999999,-1.85) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</name>}\textcolor{idC}{\bfseries  }\textcolor{tagC}{<operator>}\hlbox{\textcolor{idC}{\bfseries +}}\textcolor{tagC}{</operator>}\textcolor{idC}{\bfseries  }\textcolor{tagC}{<literal type="number">}\hlbox{\textcolor{idC}{\bfseries 1}}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</argument\_list>}};
+\node[xml] at (1.8619999999999999,-2.22) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</expr\_stmt>}};
+\node[xml] at (0.05,-2.5900000000000003) {\textcolor{tagC}{</block\_content>}\textcolor{tagC}{</block>}\textcolor{tagC}{</for>}};
+\node[xml] at (0.05,-3.1600000000000006) {\textcolor{tagC}{<expr\_stmt \hlbox{pos:start="18:1"}>}\hlm{g}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries measure}}\hlm{c}\textcolor{tagC}{</name>}};
+\node[xml] at (0.654,-3.5300000000000007) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</name>}\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries n}}\hlm{d}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries , }\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries n}}\hlm{e}\textcolor{tagC}{</name>}};
+\node[xml] at (0.654,-3.900000000000001) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</expr\_stmt>}};
+\node[xml] at (0.05,-4.2700000000000005) {\hlbox{\textcolor{tagC}{<with>}}\hlm{f}\textcolor{idC}{\bfseries with }\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries if\_test}}\hlm{f}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}};
+\node[xml] at (0.654,-4.640000000000001) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<tuple>}\textcolor{idC}{\bfseries (}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries clbits}}\hlm{e}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{idC}{\bfseries [}\textcolor{tagC}{<expr>}};
+\node[xml] at (0.654,-5.010000000000001) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries n}}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{idC}{\bfseries ]}\textcolor{tagC}{</index>}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{idC}{\bfseries , }\textcolor{tagC}{<expr>}\textcolor{tagC}{<literal type="number">}\textcolor{idC}{\bfseries 1}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</tuple>}\textcolor{tagC}{</expr>}};
+\node[xml] at (0.654,-5.380000000000001) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{<block>}\textcolor{idC}{\bfseries :}\textcolor{tagC}{<block\_content>}};
+\node[xml] at (0.654,-5.750000000000001) {\textcolor{tagC}{<expr\_stmt>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{idC}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{idC}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\hlbox{\textcolor{idC}{\bfseries x}}\hlm{c}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}\textcolor{tagC}{<argument\_list>}\textcolor{idC}{\bfseries (}};
+\node[xml] at (1.258,-6.120000000000001) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<literal type="number">}\hlbox{\textcolor{idC}{\bfseries 0}}\hlm{d}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{idC}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}};
+\node[xml] at (1.258,-6.490000000000001) {\textcolor{mute}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</expr\_stmt>}};
+\node[xml] at (0.05,-6.860000000000001) {\textcolor{tagC}{</block\_content>}\textcolor{tagC}{</block>}\textcolor{tagC}{</with>}};
+\node[anchor=north west, align=left, font=\fontsize{9}{11}\selectfont, text=ink, inner sep=0pt] at (0.05,-7.150000000000001) {\hl{a}\,\texttt{for} $\to$ unrolled\enspace \hl{b}\,range $\to$ iteration count, from line 4\enspace \hl{c}\,gate\\ \hl{d}\,qubit argument, evaluated per iteration\enspace \hl{e}\,classical bit, written by the measurement and read by the condition\\\hl{f}\,\texttt{if\_test} $\to$ conditioned block\enspace \hl{g}\,position $\to$ source line};
+\begin{scope}[yshift=-9.080cm]
 \node[stnum] at (0.2,0.5) {2};
 \node[stage] at (0.45,0.5) {Trace};
 \draw[rule, line width=0.6pt] (0.0,0.28) -- (7.0,0.28);
-\node[anchor=north west, font=\fontsize{10}{12}\selectfont, text=ink, inner sep=0pt] (trace) at (0.04,-0.05) {\setlength{\tabcolsep}{5pt}\begin{tabular}{rll}\textcolor{mute}{line}&\textcolor{mute}{iteration}&\textcolor{mute}{operation}\\[0pt]12, 13&\textcolor{mute}{every}&12 rotations\\[0pt]15&0, 0&\texttt{cx} $q_0$,\,$q_1$\\[0pt]15&0, 1&\texttt{cx} $q_1$,\,$q_2$\\[0pt]15&1, 0&\texttt{cx} $q_0$,\,$q_1$\\[0pt]15&1, 1&\texttt{cx} $q_1$,\,$q_2$\\[0pt]17&\textcolor{mute}{--}&\texttt{h} $q_3$\\[0pt]18&\textcolor{mute}{--}&\texttt{measure} $q_3$ $\to$ $c_{3}$\\[0pt]20&\textcolor{mute}{--}&\texttt{x} $q_0$ if $c_{3}$\\[0pt]\end{tabular}};
+\node[anchor=north west, font=\fontsize{9}{11}\selectfont, text=ink, inner sep=0pt] (trace) at (0.04,-0.05) {\setlength{\tabcolsep}{5pt}\begin{tabular}{rll}\textcolor{mute}{line}&\textcolor{mute}{iteration}&\textcolor{mute}{operation}\\[0pt]12, 13&\textcolor{mute}{every}&12 rotations\\[0pt]15&0, 0&\texttt{cx} $q_0$,\,$q_1$\\[0pt]15&0, 1&\texttt{cx} $q_1$,\,$q_2$\\[0pt]15&1, 0&\texttt{cx} $q_0$,\,$q_1$\\[0pt]15&1, 1&\texttt{cx} $q_1$,\,$q_2$\\[0pt]17&\textcolor{mute}{--}&\texttt{h} $q_3$\\[0pt]18&\textcolor{mute}{--}&\texttt{measure} $q_3$ $\to$ $c_{3}$\\[0pt]20&\textcolor{mute}{--}&\texttt{x} $q_0$ if $c_{3}$\\[0pt]\end{tabular}};
 \node[stnum] at (7.6000000000000005,0.5) {3};
 \node[stage] at (7.8500000000000005,0.5) {Slice of $q_0$};
 \draw[rule, line width=0.6pt] (7.4,0.28) -- (18.0,0.28);
-\node[font=\fontsize{10}{12}\selectfont, text=ink, anchor=south, align=center] at (9.575,-0.75) {line 12, \texttt{ry}\\[-1pt]\textcolor{wire}{\bfseries 5} of 6};
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=east] at (8.7,-1.275) {layer 0};
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (8.75,-1.0) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (9.3,-1.0) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (9.85,-1.0) rectangle ++(0.51,-0.51);
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=east] at (8.7,-1.8250000000000002) {layer 1};
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (8.75,-1.55) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (9.3,-1.55) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=white] (9.85,-1.55) rectangle ++(0.51,-0.51);
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=north] at (9.005,-2.12) {$q_{0}$};
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=north] at (9.555000000000001,-2.12) {$q_{1}$};
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=north] at (10.105,-2.12) {$q_{2}$};
-\node[font=\fontsize{10}{12}\selectfont, text=ink, anchor=south, align=center] at (12.274999999999999,-0.75) {line 13, \texttt{rz}\\[-1pt]\textcolor{wire}{\bfseries 5} of 6};
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.45,-1.0) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (12.0,-1.0) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (12.549999999999999,-1.0) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.45,-1.55) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (12.0,-1.55) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=white] (12.549999999999999,-1.55) rectangle ++(0.51,-0.51);
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=north] at (11.705,-2.12) {$q_{0}$};
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=north] at (12.255,-2.12) {$q_{1}$};
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=north] at (12.805,-2.12) {$q_{2}$};
-\node[font=\fontsize{10}{12}\selectfont, text=ink, anchor=south, align=center] at (14.700000000000001,-0.75) {line 15, \texttt{cx}\\[-1pt]\textcolor{wire}{\bfseries 3} of 4};
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (14.15,-1.0) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (14.700000000000001,-1.0) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (14.15,-1.55) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=white] (14.700000000000001,-1.55) rectangle ++(0.51,-0.51);
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=north] at (14.405000000000001,-2.12) {$q_{01}$};
-\node[font=\fontsize{10}{12}\selectfont, text=mute, anchor=north] at (14.955000000000002,-2.12) {$q_{12}$};
-\node[font=\fontsize{10}{12}\selectfont, text=ink, anchor=west] at (7.45,-3.255) {lines 17, 18, 20\enspace\textcolor{wire}{\bfseries 3} of 3};
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.100000000000001,-3.0) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.650000000000002,-3.0) rectangle ++(0.51,-0.51);
-\draw[draw=ink!45, line width=0.4pt, fill=wire] (12.200000000000001,-3.0) rectangle ++(0.51,-0.51);
+\node[font=\fontsize{9}{11}\selectfont, text=ink, anchor=south, align=center] at (9.5,-0.75) {line 12, \texttt{ry}\\[-1pt]\textcolor{wire}{\bfseries 5} of 6};
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=east] at (8.7,-1.25) {layer 0};
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (8.75,-1.0) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (9.25,-1.0) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (9.75,-1.0) rectangle ++(0.46,-0.46);
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=east] at (8.7,-1.75) {layer 1};
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (8.75,-1.5) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (9.25,-1.5) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=white] (9.75,-1.5) rectangle ++(0.46,-0.46);
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=north] at (8.98,-2.02) {$q_{0}$};
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=north] at (9.48,-2.02) {$q_{1}$};
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=north] at (9.98,-2.02) {$q_{2}$};
+\node[font=\fontsize{9}{11}\selectfont, text=ink, anchor=south, align=center] at (12.2,-0.75) {line 13, \texttt{rz}\\[-1pt]\textcolor{wire}{\bfseries 5} of 6};
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.45,-1.0) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.95,-1.0) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (12.45,-1.0) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.45,-1.5) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.95,-1.5) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=white] (12.45,-1.5) rectangle ++(0.46,-0.46);
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=north] at (11.68,-2.02) {$q_{0}$};
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=north] at (12.18,-2.02) {$q_{1}$};
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=north] at (12.68,-2.02) {$q_{2}$};
+\node[font=\fontsize{9}{11}\selectfont, text=ink, anchor=south, align=center] at (14.65,-0.75) {line 15, \texttt{cx}\\[-1pt]\textcolor{wire}{\bfseries 3} of 4};
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (14.15,-1.0) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (14.65,-1.0) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (14.15,-1.5) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=white] (14.65,-1.5) rectangle ++(0.46,-0.46);
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=north] at (14.38,-2.02) {$q_{01}$};
+\node[font=\fontsize{9}{11}\selectfont, text=mute, anchor=north] at (14.88,-2.02) {$q_{12}$};
+\node[font=\fontsize{9}{11}\selectfont, text=ink, anchor=west] at (7.45,-3.23) {lines 17, 18, 20\enspace\textcolor{wire}{\bfseries 3} of 3};
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.100000000000001,-3.0) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (11.600000000000001,-3.0) rectangle ++(0.46,-0.46);
+\draw[draw=ink!45, line width=0.4pt, fill=wire] (12.100000000000001,-3.0) rectangle ++(0.46,-0.46);
 \draw[flowarrow] (6.7,0.5) -- (7.36,0.5);
 \end{scope}
 \end{tikzpicture}
