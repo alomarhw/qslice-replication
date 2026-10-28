@@ -7,8 +7,9 @@ reachability~\cite{ottenstein1984pdg, ferrante1987pdg, horwitz1990interprocedura
 restricts a slice to one execution~\cite{korel1988dynamic, agrawal1990dynamic}, as state-based pruning does
 to one input. Frameworks such as WALA provide dependence-graph slicers for Java, JavaScript
 and Python~\cite{wala}, but on a Qiskit program they see each gate as a call on one circuit object and cannot
-tell which qubits an operation depends on. srcSlice computes static slices from srcML~\cite{alomari2014srcslice},
-as our tool does, but has no notion of qubits. Gallagher names quantum programs as a direction for semantically
+tell which qubits an operation depends on. srcSlice computes lightweight forward slices and slice profiles of every variable from srcML without
+building a dependence graph~\cite{alomari2014srcslice}, the design our tool follows, but it has no notion
+of qubits. Gallagher names quantum programs as a direction for semantically
 defined slicing~\cite{gallagher2025program}, and we define the slice by the reduced state of the criterion. Probabilistic slicing preserves the distribution of the criterion
 variables~\cite{hur2014slicing, amtoft2020theory, olmedo2025slicing}. Our criterion is stronger, since a
 distribution in one basis does not see phase or the kickback of Section~\ref{sec:example}.
@@ -23,7 +24,8 @@ unchanged, the reading that phase kickback breaks, as Proposition~\ref{prop:du} 
 two operations exactly when they share a qubit~\cite{paltenghi2024lintq}, the relation of the QDG, to find
 bug patterns without aiming at full soundness, and we show that this relation gives sound and
 dependence-complete slices. Behler et al.\ extend srcML to OpenQASM~\cite{behler2024supporting} and name
-qubit slicing as future work~\cite{behler2025static}, and our results give it a dependence rule.
+qubit slicing with srcML as future work~\cite{behler2025static}, which our tool realizes with a proved
+dependence rule.
 
 \paragraph*{Entanglement analysis}
 Static analyses approximate which qubits may be entangled with type

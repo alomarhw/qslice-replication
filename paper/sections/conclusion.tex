@@ -1,11 +1,11 @@
 \section{Conclusion}\label{sec:conclusion}
 
 A quantum slice supports comprehension only if it keeps every operation that can change the state of the
-qubits the developer asks about, a requirement we defined semantically and measured dependence rules
-against. Reading the control of a gate as unchanged gives wrong
-slices that can look right, and entanglement edges add code that cannot matter. The QDG is sound for every
-input, dependence-complete and cheap, and our static slicer shows it on Qiskit source as the lines,
-iterations and qubit profiles a developer reads, and a study with developers is the next step.
+qubits the developer asks about. We defined this requirement semantically and measured dependence rules
+against it. Reading the control of a gate as unchanged gives wrong slices that look right, entanglement
+edges add code that cannot matter, and pruning at one input gives slices of that input only. The QDG is
+sound for every input, dependence-complete and cheap, and our srcML-based slicer shows it on Qiskit source
+as the lines, iterations and qubit profiles a developer reads.
 
 \section*{Data Availability}
 The replication package at \url{https://anonymous.4open.science/r/qslice-replication-5B21} contains the

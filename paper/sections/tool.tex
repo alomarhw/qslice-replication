@@ -4,6 +4,26 @@ A slice helps developers only as lines of their program, so we built a tool that
 statically with the QDG of Section~\ref{sec:dependence}. Fig.~\ref{fig:tool} shows its steps on the ansatz of
 Fig.~\ref{fig:ansatz}.
 
+\paragraph*{Why srcML}
+Four properties of srcML matter for a slicer whose output a developer reads. First, srcML parses a file
+without compiling or running it. The tool therefore slices programs that cannot be run, such as fragments,
+programs written for earlier Qiskit releases, as the Bugs4Q programs are, and programs from untrusted
+sources, and it needs neither a simulator nor quantum hardware. Second, srcML keeps every character of the
+source, including whitespace and comments, and the position of every element, and converts back to source
+without loss~\cite{collard2011lightweight, behler2024supporting}. A slice is therefore shown on the
+developer's own text, line by line, and its source can be recovered from the markup. Third, srcML marks up
+its languages with one vocabulary of elements~\cite{collard2013srcml}, and a markup for OpenQASM has been
+specified~\cite{behler2024supporting}. A front end for another language then needs only the quantum layer
+described below, and the classical and quantum parts of a polyglot program share one
+representation~\cite{behler2025static}. Fourth, slicing on srcML scales. srcSlice computes dependences as
+needed while it slices, without building a dependence graph, and gives the lines, dependent variables,
+aliases and calls of every variable of the Linux kernel in about 20 minutes, with accuracy comparable to
+CodeSurfer~\cite{alomari2014srcslice}. Our tool follows this design for qubits. It computes the QDG's
+dependences on the trace while it slices instead of building the graph, and its qubit slice profile is the
+analogue of srcSlice's variable profile. Behler et al.\ proposed adapting srcML's slicer to find every line
+that affects a qubit~\cite{behler2025static}, and the tool realizes that proposal with a dependence rule
+that is proved sound.
+
 \paragraph*{Parsing}
 The tool parses the program with srcML~\cite{collard2011lightweight, collard2013srcml}, which marks up its
 syntax and the position of every element. A table of \numToolGateTable{} Qiskit instruction methods records
@@ -40,7 +60,9 @@ the circuit-level QDG slice of the study. The remaining program nests conditiona
 \numToolNestedDraws{} random product inputs the oracle of Section~\ref{sec:design} finds the circuit-level slice
 wrong \numToolNestedStudyWrong{} times and the tool's slice never. The tool's line slices equal those of the
 study on all \numToolTTwoUnits{} units whose lines the study maps, which include the \numLinesUnits{} units of
-Section~\ref{sec:results}. Of the \numToolBugsQiskit{} Qiskit files of Bugs4Q, the \numToolTextbookQiskit{} notebooks of the Qiskit
+Section~\ref{sec:results}. On the Bugs4Q programs of the study, read without being run, the trace equals the
+prepared circuit for \numToolTOneExact{} of \numToolTOneBugs{} bugs, and the remaining bug rewrites its
+circuit as a DAG, which the tool reports. Of the \numToolBugsQiskit{} Qiskit files of Bugs4Q, the \numToolTextbookQiskit{} notebooks of the Qiskit
 textbook~\cite{qiskittextbook} and the \numToolLintqQiskit{} programs of LintQ's
 corpus~\cite{paltenghi2024lintq}, \numToolBugsCircuit{}, \numToolTextbookCircuit{} and
 \numToolLintqCircuit{} yield a circuit, \numToolBugsResolved{} of the Bugs4Q ones without over-approximation.

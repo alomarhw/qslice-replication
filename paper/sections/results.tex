@@ -38,8 +38,11 @@ Table~\ref{tab:rq1} shows that only the rules with quantum dependence are sound.
 wrong slice for \numCpdgUnsound{} of the \numNPairs{} pairs, or \numCpdgUnsoundPct{}, with a 95\% interval of
 \numCcCpdgUnsound{} when the \numCcFamilies{} algorithm families are resampled as clusters. Its control
 dependence matters only on dynamic circuits, where it is wrong on \numCpdgDynamicUnsound{} pair against
-\numDuDynamicUnsound{} for def-use. Of its \numCpdgMissTotal{} missed dependences, all but the \numCpdgMissFeedback{} that pass through
-classical feedback follow from reading a control as unchanged.
+\numDuDynamicUnsound{} for def-use. Of its \numCpdgMissTotal{} missed dependences, \numCpdgMissSameWire{} are controlled gates whose control
+is the criterion qubit, \numCpdgMissKickback{} reach the criterion only through such a gate,
+\numCpdgMissWritten{} reach it through a control further along the chain, and only \numCpdgMissFeedback{}
+pass through classical feedback. Every miss but these \numCpdgMissFeedback{} follows from reading a control
+as unchanged.
 Many of these wrong slices look right. Of the \numCpdgUnsound{}, \numFdCpdgZMatch{} give the criterion the
 same distribution of outcomes in the computational basis as the whole circuit, so only
 \numFdCpdgObservable{} pairs, or \numFdCpdgObservablePct{}, are wrong in what a terminal measurement reads.
@@ -56,7 +59,9 @@ grow from \numRqOneLcSize{} to \numRqOneYzSize{} of the circuit. The flow-sensit
 \numYzfExcess{} percentage points above the dependence set, so the imprecision comes from the entanglement
 edges and not from our reading of them. Under the other reading of Yu and Zhao's data dependence, in which a
 controlled gate writes only its targets, the QPDG is wrong on \numYzRoUnsound{} pairs from
-\numYzRoUnsoundCircuits{} circuits with either entanglement rule. The QDG and the QPDG are also sound on all \numCorpusLSoundPairs{} pairs of the
+\numYzRoUnsoundCircuits{} circuits with either entanglement rule. Its entanglement edges recover most of
+what read-only controls lose, but it still misses \numYzRoMissed{} dependences, \numYzRoMissedKick{} of
+them by kickback. The QDG and the QPDG are also sound on all \numCorpusLSoundPairs{} pairs of the
 \numCorpusLSoundCircuits{} corpus-L circuits that the simulator can check exactly, where def-use is wrong
 on \numCorpusLWrongDu{}.
 
@@ -120,8 +125,10 @@ the QDG and QPDG slices keep \numRqThreeSizeLc{} and \numRqThreeSizeYz{} of the 
 a random set of its own size, every rule contains the fault more often, the QDG by \numSizeCtlLcGain{} points
 (family CI \numSizeCtlLcGainCi{}), so containment is not only a matter of size. The QPDG's lead over the QDG
 comes from size, since a random set of its size already holds the fault in \numSizeCtlYzRandom{} of the units. All
-\numLcMissTotal{} units the QDG slice misses are omission faults, such as a removed control or a deleted
-gate, that delete the interaction the QDG slice of the faulty program would follow. The QPDG contains
+\numLcMissTotal{} units the QDG slice misses are omission faults, a removed control (\numLcMissCrm{}), a
+re-targeted operand (\numLcMissQsw{}), a removed preparation of an entangling gate (\numLcMissEnt{}) or a
+deleted gate (\numLcMissDel{}). Each deletes the interaction that the QDG slice of the faulty program would
+follow. The QPDG contains
 \numLcMissYzContained{} of them, because its closure still links operations that the faulty program no
 longer connects.
 
@@ -154,5 +161,7 @@ which simulates the circuit for every candidate removal, exceeds the per-circuit
 \numCostWallLimit{}~s for \numCostDepthEightyOverLimit{} of the \numCostDepthCircuits{} circuits at the
 second-largest depth and for all \numCostDepthOneSixtyOverLimit{} at the largest, grows exponentially with
 width, and completes on \numCorpusLCompleted{} of the \numCorpusLCircuits{} circuits of corpus~L. Building
-the QPDG takes \numCostBuildDepthOneSixty{}~s at depth \numCostMeasuredDepthOneSixty{} in the median,
-because its closure links every pair of operations on a coupling component.
+the QPDG takes \numCostBuildDepthForty{}~s at depth \numCostMeasuredDepthForty{} and
+\numCostBuildDepthOneSixty{}~s at depth \numCostMeasuredDepthOneSixty{} in the median, against
+milliseconds for the QDG slice, because its closure links every pair of operations on a coupling component
+while the QDG needs only the edges of each qubit.

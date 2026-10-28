@@ -16,7 +16,9 @@ Slicing has been proposed for quantum programs. Yu and Zhao's quantum program de
 (QPDG)~\cite{yu2025qpdg} extends the classical program dependence graph (PDG)~\cite{ferrante1987pdg} with
 entanglement, no-cloning, temporal and measurement dependences and keeps the classical criterion. Roadmaps
 describe this graph as an aid to understanding~\cite{murillo2025roadmap} whose validation remains
-open~\cite{ye2026llmqse}. No definition of quantum dependence has been checked against what quantum
+open~\cite{ye2026llmqse}. Its own example shows why. In the graph Yu and Zhao draw for their first
+listing, the slice of a measured qubit omits the two gates that fix its outcome, so the slice returns 1
+with probability \numYzFigSliceProb{} where the program returns 1 with certainty. No definition of quantum dependence has been checked against what quantum
 programs compute, so a developer cannot know whether a slice shows the code that matters. Worse, a slice
 can look right and hide the fault. Section~\ref{sec:example} shows a classical reading of a
 two-qubit gate giving a slice that omits the faulty line and still reproduces the qubit's state.
@@ -28,7 +30,8 @@ as the whole program for every input. Which rules produce such slices is measure
 on \numNPairs{} circuit--qubit pairs, \numFamCircuits{} circuits with known structure, \numRqThreeUnits{}
 fault--qubit units and real bugs from Bugs4Q~\cite{zhao2023bugs4q}, from the classical PDG to state-based
 pruning, which simulates one input, with a documented reimplementation of the QPDG. How a slice is shown to
-a developer is answered by a static slicer for Qiskit programs~\cite{javadi2024qiskit}, built on srcML, that
+a developer is answered by a static slicer for Qiskit programs~\cite{javadi2024qiskit}. It is built on srcML,
+so it reads a program without running it and keeps every character and position of the source, and it
 reports source lines, loop iterations, the classical lines that compute them and a profile of every qubit.
 
 The classical PDG gives wrong slices for \numCpdgUnsoundPct{} of the pairs, because a two-qubit gate can
@@ -37,13 +40,25 @@ wrong slices, \numFdCpdgZMatchPct{} reproduce the measured outcomes, so a develo
 histogram would accept them. Entanglement turns out to be neither necessary nor sufficient for dependence,
 and the QPDG's entanglement edges make it keep \numRqOneYzSize{} of a circuit. The quantum dependence graph
 (QDG), in which every gate reads and writes all its qubits, keeps \numRqOneLcSize{}, only \numLcExcess{}
-points above the dependences themselves, and is sound for every input. It is the known backward light cone, so what we add
-is the semantics that justifies it as a slice and the measurement of what the alternatives cost. State-based pruning is \numHTwoRelative{} smaller,
-but its slices hold for one input and lose a fault that the QDG slice keeps in \numCQFour{} units. Slices
-narrow where a developer looks but do not improve mutation-based fault ranking, a gap that a study with
-developers must close.
+points above the dependences themselves, and is sound for every input. Its relation is the backward light cone, by which LintQ orders operations
+and from which Qiskit's \texttt{LightCone} pass starts, and we show that it is exactly what a slice must
+keep. State-based pruning is \numHTwoRelative{} smaller,
+but its slices hold for one input and lose a fault that the QDG slice keeps in \numCQFour{} units. On real
+Bugs4Q programs the QDG slice keeps every faulty line, while def-use loses it in \numLinesDuMissed{} of
+\numLinesUnits{} units. Slices narrow where a developer looks but do not improve mutation-based fault
+ranking.
 
-Section~\ref{sec:dependence} defines what a quantum slice must keep and proves that the QDG keeps it,
-Section~\ref{sec:tool} presents the static slicer, Section~\ref{sec:results} compares the rules, and
-Section~\ref{sec:discussion} draws the implications for comprehension tools and the open problems. A
-replication package regenerates every number in the paper.
+The contributions of this paper are the following.
+\begin{itemize}
+\item A semantic definition of quantum dependence and of slice soundness for a set of criterion qubits,
+under which the QDG is proved sound, with the induction mechanized in Isabelle/HOL, and
+dependence-complete, given in Section~\ref{sec:dependence}.
+\item A pre-registered comparison of dependence rules, from the classical PDG to state-based pruning,
+against this ground truth, which explains why classical slices fail and what entanglement edges and
+pruning cost, designed in Section~\ref{sec:design} and reported in Section~\ref{sec:results}.
+\item A static slicer for Qiskit, built on srcML, that shows a slice as source lines, loop iterations,
+classical lines and qubit profiles, validated on Bugs4Q, the Qiskit textbook and \numToolLintqQiskit{}
+programs from GitHub, presented in Section~\ref{sec:tool}.
+\item The implications for comprehension tools that Section~\ref{sec:discussion} draws, and a replication
+package that regenerates every number in the paper.
+\end{itemize}

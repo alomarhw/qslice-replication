@@ -79,7 +79,10 @@ The \emph{quantum dependence graph} (QDG) adds quantum dependence to the classic
 the operations, and every operation reads and writes all its locations,
 $r_{\mathrm{QDG}}(o) = w_{\mathrm{QDG}}(o) = \mathit{loc}(o)$, so a controlled gate also writes its
 controls. The QDG slice $\Bw(W)$ is backward reachability in the QDG from $W$. It is the backward light
-cone of $W$, extended along classical bits from measurements to the gates they condition.
+cone of $W$, extended along classical bits from measurements to the gates they condition. LintQ orders
+operations by this relation to find bug patterns~\cite{paltenghi2024lintq}, and Qiskit's
+\texttt{LightCone} pass starts from it before it prunes~\cite{qiskit2025}. Theorem~\ref{thm:sound} and
+Proposition~\ref{prop:complete} show that it is exactly what a slice must keep.
 
 Fig.~\ref{fig:ansatz} applies the rules to one program that needs both control and quantum dependence.
 An ansatz is the parameterized circuit of a variational algorithm such as the variational quantum
