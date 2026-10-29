@@ -3361,6 +3361,16 @@
   "tex": "0",
   "source": "results/icpc/nesting/summary.json"
  },
+ "NestDEqQpdg": {
+  "value": 426,
+  "tex": "426",
+  "source": "results/icpc/nesting/pairs.csv"
+ },
+ "NestQpdgLarger": {
+  "value": 287,
+  "tex": "287",
+  "source": "results/icpc/nesting/summary.json"
+ },
  "QheTasks": {
   "value": 151,
   "tex": "151",

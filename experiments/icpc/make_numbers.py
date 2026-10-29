@@ -939,6 +939,10 @@ def main() -> int:
             put(f"Nest{nm}", ns[k], cnt(ns[k]), src)
         put("NestDUnsound", ns["pairs"] - ns["d_sound"], cnt(ns["pairs"] - ns["d_sound"]), src)
         put("NestViolations", len(ns["violations"]), cnt(len(ns["violations"])), src)
+        npairs = rows(ICPC / "nesting" / "pairs.csv")  # D lies within the QPDG slice, so equal sizes mean equal sets
+        deq = sum(r["qpdg"] != "" and int(r["d"]) == int(r["qpdg"]) for r in npairs)
+        put("NestDEqQpdg", deq, cnt(deq), "results/icpc/nesting/pairs.csv")
+        put("NestQpdgLarger", len(npairs) - ns["qdg_eq_qpdg"], cnt(len(npairs) - ns["qdg_eq_qpdg"]), src)
 
     # ---- Deviation I-25: Qiskit HumanEval, current Qiskit (exploratory) ---------------------------------------
     if (ICPC / "qhe" / "summary.json").exists():

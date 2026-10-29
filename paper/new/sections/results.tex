@@ -154,9 +154,10 @@ developer is trying to diagnose.
   \end{minipage}
 \end{table}
 
-Table~\ref{tab:rq3} shows that a slice that contains the fault more often is also larger. The QDG slice contains the
-fault in \numRqThreeContainLc{} of the units and the QPDG slice in \numRqThreeContainYz{}, but the QPDG's lead comes from
-its size, since a random set of the same size already contains the fault in \numSizeCtlYzRandom{} of the units. Against
+Table~\ref{tab:rq3} shows that a slice that contains the fault more often is also larger, so containment has to be
+read against a random set of the slice's size. The QDG slice contains the fault in \numRqThreeContainLc{} of the units
+and the QPDG slice in \numRqThreeContainYz{}, but a random set of the QPDG's size already contains it in
+\numSizeCtlYzRandom{}, and Section~\ref{sec:qdgqpdg} returns to this comparison. Against
 a random set of its own size, every rule contains the fault more often, the QDG by \numSizeCtlLcGain{} points (family CI
 \numSizeCtlLcGainCi{}), so containment is not only a matter of size. All \numLcMissTotal{} units whose fault the QDG
 slice misses are omission faults, a removed control (\numLcMissCrm{}), a re-targeted operand (\numLcMissQsw{}), a
@@ -251,6 +252,56 @@ parametric programs the source stays at about a dozen lines while the trace grow
 \numScaleQftOps{} operations from \numScaleQftLines{} code lines in \numScaleQftS{}~s, where running the program with
 Qiskit and slicing one qubit takes \numScaleQftRunS{}~s, the speed a static slicer gives up so that it never executes
 the program.
+
+\subsection{The QDG against the QPDG}\label{sec:qdgqpdg}
+
+\begin{table}[t]
+  \centering
+  \caption{The QDG and the QPDG on every measure of the study}
+  \label{tab:qdgqpdg}
+  \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \newcommand{\win}{\cellcolor{blue!7}}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.3cm} r r l@{}}
+    \toprule
+    \textbf{Measure} & \textbf{QDG} & \textbf{QPDG} & \textbf{RQ} \\
+    \midrule
+    Wrong slices & \numRqOneLcUnsound{} & \numRqOneYzUnsound{} & RQ1 \\ \sep
+    Dependences missed & 0 & 0 & RQ1 \\ \sep
+    Mean slice size & \win\numRqOneLcSize{} & \numRqOneYzSize{} & RQ1 \\ \sep
+    Code beyond the dependences & \win\numLcExcess{} points & \numYzExcess{} points & RQ1 \\ \sep
+    Pairs equal to the dependence set & \win\numNestDEqQdg{} & \numNestDEqQpdg{} & RQ1 \\ \sep
+    Precision & \win\numRqOneLcPrecision{} & \numRqOneYzPrecision{} & RQ1 \\ \sep
+    Units whose fault the slice contains & \numRqThreeContainLc{} & \win\numRqThreeContainYz{} & RQ3 \\ \sep
+    Gain over a random set of its size & \win\numSizeCtlLcGain{} points & \numSizeCtlYzGain{} points & RQ3 \\ \sep
+    EXAM of fault localization & \numMbflAllExamLc{} & \win\numMbflAllExamYz{} & RQ3 \\ \sep
+    Time at depth \numCostMeasuredDepthOneSixty{} & \win$\leq$\,\numCostLcMaxCritMs{}~ms & \numCostBuildDepthOneSixty{}~s & RQ4 \\ \sep
+    Largest circuit within the limit & \win\numScaleQbMaxOps{} & \numScaleQpdgMaxOps{} & RQ4 \\
+    \bottomrule
+  \end{tabular}\\[3pt]
+  \begin{minipage}{\columnwidth}\footnotesize
+  Shading marks the better value. Time is per criterion for the QDG and the median graph build for the QPDG. The
+  largest circuits are QASMBench's, in operations, sliced in one pass by \tool{} and built within 600~s by the QPDG.
+  \end{minipage}
+\end{table}
+
+The QPDG looks as good as the QDG on correctness and better on fault localization, and Table~\ref{tab:qdgqpdg} shows
+why it is not. Both are sound and both contain every dependence, since the QPDG is the QDG with entanglement edges
+added. Everything those edges add is code that cannot change the criterion, \numYzExcess{} points of the circuit on
+average against \numLcExcess{} for the QDG, and on \numNestQpdgLarger{} of the \numNPairs{} pairs the QPDG slice is
+larger than the QDG slice. A developer reading a QPDG slice reads \numYzLcExcessRatio{} times as much irrelevant code.
+
+The QPDG's two wins come from that extra code. It contains the fault in \numRqThreeContainYz{} of the units, but a
+random set of its size already does in \numSizeCtlYzRandom{}, so per unit of size the QDG locates faults better, by
+\numSizeCtlLcGain{} points over random against \numSizeCtlYzGain{}. The \numLcMissYzContained{} units the QPDG catches
+and the QDG misses are omission faults, whose missing operation the closure happens to link, not by a guarantee. Its
+lower EXAM score is a size effect as well, since EXAM divides by the number of operations ranked, and the whole circuit
+has the lowest score of all. The costs are not close. The QDG slices a criterion in at most \numCostLcMaxCritMs{}~ms at
+every depth, while building the QPDG takes \numCostBuildDepthOneSixty{}~s at depth \numCostMeasuredDepthOneSixty{} and
+does not finish within 600~s on circuits beyond \numScaleQpdgMaxOps{} operations. Under the reading in which a
+control is left unchanged, which Yu and Zhao's prose allows, the QPDG is not even sound and is wrong on
+\numYzRoUnsound{} pairs. For comprehension the QDG is the better rule. It keeps everything that can matter, adds the
+least that cannot, and is computed in milliseconds.
 
 \subsection{\tool{} on LintQ's data}
 
