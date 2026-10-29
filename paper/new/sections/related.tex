@@ -22,11 +22,11 @@ the original~\cite{collard2011lightweight, collard2013srcml}. Instead of buildin
 for every variable a \emph{slice profile}, the lines where the variable is defined and used, the variables it flows
 into and the calls it is passed to, and it computes dependences from these profiles as it slices. It slices the
 whole system at once, giving the forward slice of every variable in every function rather than of one chosen
-criterion. It slices the
-Linux kernel in about 20 minutes with accuracy comparable to CodeSurfer~\cite{alomari2014srcslice}. General
-frameworks such as WALA provide dependence-graph slicers for Python~\cite{wala}, but on a Qiskit program every
-gate is a method call on one circuit object, so neither they nor srcSlice can tell which qubits an operation
-depends on.
+criterion, and slices the Linux kernel in about 20 minutes with accuracy comparable to
+CodeSurfer~\cite{alomari2014srcslice}. General
+analysis frameworks such as WALA, which also reads Python~\cite{wala}, build dependence graphs, but on a Qiskit
+program every gate is a method call on one circuit object, so neither they nor srcSlice can tell which qubits an
+operation depends on.
 
 \emph{Relation and reuse.} We keep the classical notions, a criterion, a backward and a forward slice, and
 dependence as the possibility of change, and define them for the reduced state of a set of qubits, a criterion
@@ -62,8 +62,9 @@ shows why validation matters. In the graph Yu and Zhao draw for their first list
 qubit omits the two gates that fix its outcome, so the slice returns 1 with probability
 \numYzFigSliceProb{} where the program returns 1 with certainty. Kaul et al.\ build the quantum code property graph
 (QCPG), a code property graph for Qiskit and OpenQASM programs, and query it for bugs and smells, among them superfluous operations, gates that
-do not affect a measured qubit~\cite{kaul2023uniform}. Their graph treats the control of a CNOT as unchanged,
-so the query can report gates whose effect reaches a measured qubit back through a control. Kaul et al.\
+do not affect a measured qubit~\cite{kaul2023uniform}. Its data-flow edges run from the control of a CNOT to its target only, and the
+authors state that the control is not changed, so the query can report gates whose effect reaches a measured
+qubit back through a control. Kaul et al.\
 demonstrate the graph on example programs and note the lack of large datasets.
 In their roadmap of quantum software engineering, Murillo et al.\ describe the QPDG as an aid to
 understanding programs~\cite{murillo2025roadmap}, and in their roadmap of testing and debugging, Ramalho et al.\
@@ -90,7 +91,8 @@ The \emph{backward light cone} of a set of qubits at the end of a circuit is the
 affect their final state. It is found by walking backward from the end with those qubits, keeping every gate that
 touches one of them and adding all of that gate's qubits. Compilers build gate-dependence graphs on this
 principle to schedule and map circuits~\cite{murali2019triq, amy2020staq}, and QAOA analyses use it to bound the
-gates that can reach an observable~\cite{farhi2014qaoa}.
+gates that can reach an observable~\cite{farhi2014qaoa}. Quantum separation logics reason locally about the qubits
+a program touches~\cite{zhou2021qsl, le2022qsl}.
 
 Qiskit implements it as the \texttt{LightCone} transpiler pass~\cite{qiskit2025}. Given the qubits to be
 measured, or a Pauli observable on them, the pass walks the circuit backward from the end, keeps the gates in the
@@ -100,8 +102,7 @@ that quantum dependences should account for commutation~\cite{heim2020quantum}. 
 not on source code, and decides commutation for the circuit's actual angles. In our study it applies to
 \numLcqApplicable{} of the \numNPairs{} circuit--qubit pairs, because it rejects circuits with mid-circuit
 measurements (\numLcqNaMeasurements{} pairs) and on \numLcqNaReorder{} it returns a circuit whose operations
-cannot be matched back to the original in order. Quantum separation logics reason locally about the qubits a program
-touches~\cite{zhou2021qsl, le2022qsl}. Compilers also move a single-qubit gate within the idle time of its qubit
+cannot be matched back to the original in order. Compilers also move a single-qubit gate within the idle time of its qubit
 without changing the computation~\cite{smith2022timestitch}, and call the time windows of a circuit its
 slices, a sense different from ours.
 
@@ -136,14 +137,14 @@ faults and rankings to this field.
 narrows the fault by hand, and a slice by the write-all rule generalizes the removal of unused qubits, since it
 drops every qubit and operation that cannot reach the criterion. The \tool{} approach maps operations to source
 lines statically. LintQ's ordering relation is the relation of the write-all rule, which confirms the rule in
-practice, while LintQ uses it for patterns and makes no claim about slices. Detectors report known patterns,
-and of the 42 Bugs4Q bugs on which QChecker was evaluated, 22 are wrong outputs that it cannot
-detect~\cite{zhao2023qchecker}. A slice shows where such a fault can be. We reuse Bugs4Q, LintQ's corpus and its
+practice, while LintQ uses it for patterns and makes no claim about slices. Of the 42 Bugs4Q bugs on which
+QChecker was evaluated, 22 are wrong outputs that no pattern detects~\cite{zhao2023qchecker}, and a slice shows
+where such a fault can be. We reuse Bugs4Q, LintQ's corpus and its
 public warnings, published mutation operators and mutation-based fault localization.
 
 \subsection{Open gaps and the data used}
 Table~\ref{tab:related} sets these approaches side by side, although only srcSlice and the QPDG slice in the
-classical sense of keeping what affects a criterion. We compare them together because each line of work supplies
+classical sense. We compare them together because each line of work supplies
 part of what a quantum slicer for comprehension needs and none supplies all of it. Behler et al.'s analysis and
 the QCPG represent quantum source code for static analysis, the infrastructure a source-level slicer is built on.
 The \texttt{LightCone} pass and the compilers compute the dependence relation, but on circuits rather than
@@ -153,9 +154,9 @@ operations by the relation a slicer needs. The seven property columns are what a
 needs, and the table shows which of them each approach already provides.
 Three gaps remain open, and each can be shown from the work above. First, no dependence rule proposed for
 quantum slicing has been checked against what a quantum program computes, and the one example worked out in
-detail, the QPDG's, gives a wrong slice. Second, the analyses that represent quantum programs, from code
-property graphs to execution-order tables, read the control of a gate as unchanged, and no work has measured
-what that reading does to a slice. Third, the slicing support developers have is manual and dynamic, and no
+detail, the QPDG's, gives a wrong slice. Second, the analyses that represent quantum source code, the QCPG and the execution-order tables
+of Behler et al., read the control of a gate as unchanged, and no work has measured what that reading does to a
+slice. Third, the slicing support developers have is manual and dynamic, and no
 static slicer shows a qubit's slice on Qiskit source with its loop iterations.
 
 \begin{table*}[t]
@@ -197,7 +198,7 @@ static slicer shows a qubit's slice on Qiskit source with its loop iterations.
 \end{table*}
 
 The data differ as much as the methods. The dependence graphs were shown on examples, the srcML work on the
-OpenQASM~3 examples, and the detectors on Bugs4Q and on LintQ's GitHub corpus, while no slicing approach was
+OpenQASM~3 examples, and the detectors on Bugs4Q and on LintQ's GitHub corpus, while no quantum slicing approach was
 evaluated on real programs. We use the detectors' data where they fit, Bugs4Q for real faults and LintQ's corpus
 and confirmed warnings for real programs, and add what a slicing study needs that they lack, circuits with a
 simulated ground truth. These are \numNCircuits{} circuits from MQT Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench} and
