@@ -5,7 +5,7 @@
   fig_llm.tex     RQ3: top-3 fault-localization accuracy per model and input (results/llm/t2_scores.csv,
                   context prompt, temperature 0)
   fig_cost.tex    RQ4: median time per depth at width 8 (results/icpc/cost/circuits.csv)
-  fig_scale.tex   RQ4: srcSlice-Q's time against operations on LintQ's corpus, QASMBench and our parametric
+  fig_scale.tex   RQ4: QLine's time against operations on LintQ's corpus, QASMBench and our parametric
                   programs, with Qiskit and QPDG baselines (results/icpc/scale; Deviation I-22)
   fig_size.tex    RQ1: mean slice size by circuit width against the dependence floor (results/icpc/numbers.json,
                   written by icpc/make_numbers.py from rq1, rq1_lcq_remap and corpus_l; Deviation I-13)
@@ -151,12 +151,12 @@ def scale():
     f = lambda r, ks: sum(float(r[k]) for k in ks if r.get(k))  # noqa: E731
     s1 = [r for r in rows(sc / "s1_lintq.csv") if not r["error"] and r.get("ops")]
     s2 = rows(sc / "s2_qasmbench.csv")
-    ops = {r["path"]: int(r["ops"]) for r in s2 if r["tool"] == "srcSlice-Q" and not r["error"]}
+    ops = {r["path"]: int(r["ops"]) for r in s2 if r["tool"] == "QLine" and not r["error"]}
     s3 = rows(sc / "s3_parametric.csv")
     series = [
-        ("srcSlice-Q, LintQ corpus", "cgrey!70", "*", [(int(r["ops"]), f(r, ["t_srcml", "t_interp", "t_slice", "t_srcslice", "t_profile"])) for r in s1]),
-        ("srcSlice-Q, QASMBench, all qubits", "cblue", "*", [(ops[r["path"]], f(r, ["t_read", "t_terminal", "t_all"])) for r in s2 if r["tool"] == "srcSlice-Q" and not r["error"]]),
-        ("srcSlice-Q, parametric programs", "cgreen", "diamond*", [(int(r["ops"]), f(r, ["t_srcml", "t_interp", "t_all", "t_srcslice"])) for r in s3 if r["tool"] == "srcSlice-Q" and not r["error"]]),
+        ("QLine, LintQ corpus", "cgrey!70", "*", [(int(r["ops"]), f(r, ["t_srcml", "t_interp", "t_slice", "t_srcslice", "t_profile"])) for r in s1]),
+        ("QLine, QASMBench, all qubits", "cblue", "*", [(ops[r["path"]], f(r, ["t_read", "t_terminal", "t_all"])) for r in s2 if r["tool"] == "QLine" and not r["error"]]),
+        ("QLine, parametric programs", "cgreen", "diamond*", [(int(r["ops"]), f(r, ["t_srcml", "t_interp", "t_all", "t_srcslice"])) for r in s3 if r["tool"] == "QLine" and not r["error"]]),
         ("Qiskit DAG ancestors, one qubit", "cora", "square*", [(ops[r["path"]], f(r, ["t_load", "t_build", "t_one"])) for r in s2 if r["tool"] == "qiskit-dag" and not r["error"] and r["path"] in ops]),
         ("Qiskit LightCone, one qubit", "cver", "triangle*", [(ops[r["path"]], f(r, ["t_load", "t_build", "t_one"])) for r in s2 if r["tool"] == "qiskit-lightcone" and not r["error"] and r["path"] in ops]),
         ("QPDG, build and one slice", "cpurple", "pentagon*", [(ops[r["path"]], f(r, ["t_load", "t_build", "t_one"])) for r in s2 if r["tool"] == "qpdg" and not r["error"] and r["path"] in ops]),

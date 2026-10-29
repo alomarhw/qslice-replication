@@ -53,7 +53,7 @@ is not the paper's QDG.
 ## Requirements
 - Python 3.12 with the pinned packages in `experiments/requirements.lock` (qiskit 2.3.0, numpy 1.26.4);
   the noise analysis uses `experiments/requirements_noise.lock`.
-- srcML 1.1 on the PATH for the static slicer (srcSlice-Q), and srcSlice with the patch in `tools/srcslice/`
+- srcML 1.1 on the PATH for the static slicer (QLine), and srcSlice with the patch in `tools/srcslice/`
   for its classical lines (Deviations I-20 and I-21); without srcSlice, classical lines come from the interpreter.
 - Graphviz (`dot`) for the layout of Fig. 2, and `pdflatex` with `latexmk` to build the paper.
 - Isabelle2025 to check the proof (optional).
@@ -88,7 +88,7 @@ python -m tool.tests.nested_check                    # nested conditional blocks
 python experiments/icpc/srcslice_classical.py --data-root DATA_ROOT   # srcSlice's classical lines against the interpreter's
 python -m tool.tests.check_qasm                                   # OpenQASM 2 front end and one-pass slice against the study
 python experiments/icpc/scale_run.py s1 --data-root DATA_ROOT      # scalability on LintQ's corpus (s2: QASMBench, s3: parametric)
-python experiments/icpc/lintq_compare.py --data-root DATA_ROOT     # srcSlice-Q on LintQ's confirmed bugs and both papers' examples
+python experiments/icpc/lintq_compare.py --data-root DATA_ROOT     # QLine on LintQ's confirmed bugs and both papers' examples
 python -m tool.corpus.coverage CORPUS_DIR OUT.csv    # T3 coverage on a corpus of Qiskit programs
 ```
 The tool reads programs and never runs them. The Bugs4Q, Qiskit textbook and LintQ corpora are not

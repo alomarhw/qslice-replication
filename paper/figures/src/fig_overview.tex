@@ -30,8 +30,8 @@
 \draw[arr] (sem) -- (rules);
 \draw[arr] (rules) -- (study);
 \draw[arr] (study) -- (impl);
-% ---- srcSlice-Q
-\node[lane] at (0, 0.45) {How srcSlice-Q shows it, Sec.~IV};
+% ---- QLine
+\node[lane] at (0, 0.45) {How QLine shows it, Sec.~IV};
 \node[io, anchor=west, text width=1.6cm] (py) at (0, -0.65) {Qiskit\\\texttt{.py}};
 \node[reused, right=0.38cm of py, text width=1.85cm] (srcml) {srcML\\Python markup\\and positions};
 \node[new, right=0.38cm of srcml, text width=1.85cm] (e1) {E1 quantum\\roles of calls};
@@ -55,7 +55,7 @@
 \draw[arr] (reader.east) -| (e2.south);
 \draw[arr] (e5.east) -- (e5.east -| out.west);
 \draw[arr] (e4.east) -- (e4.east -| out.west);
-% the rule the study selects is the rule srcSlice-Q runs
+% the rule the study selects is the rule QLine runs
 \draw[arr, dashed] (study.south) to[out=-90, in=90] node[pos=0.5, left, font=\fontsize{8}{9}\selectfont\itshape, text=mute] {the sound and complete rule} (e3.north);
 % ---- key
 \node[reused, minimum height=0.32cm, minimum width=0.55cm, inner sep=0pt, anchor=west] (k1) at (0, -4.25) {};

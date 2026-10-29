@@ -1,4 +1,4 @@
-"""OpenQASM 2 front end of srcSlice-Q (Deviation I-22).
+"""OpenQASM 2 front end of QLine (Deviation I-22).
 
 srcML 1.1 has no OpenQASM language, and the markup Behler et al. specified has no released parser, so OpenQASM 2
 files are read here, statement by statement, into the operation trace that the Qiskit front end builds from srcML

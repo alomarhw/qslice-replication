@@ -1,6 +1,6 @@
-"""Scalability of srcSlice-Q (Deviation I-22), under RQ4 as descriptive.
+"""Scalability of QLine (Deviation I-22), under RQ4 as descriptive.
 
-S1  every file of LintQ's corpus (read, never executed): per-stage times of srcSlice-Q (srcML, interpretation E1+E2,
+S1  every file of LintQ's corpus (read, never executed): per-stage times of QLine (srcML, interpretation E1+E2,
     the QDG slice of every qubit E3 up to 64 qubits, srcSlice's profiles E4, qubit profiles E5), with operation,
     qubit and code-line counts, and for comprehension the lines of each qubit's slice.
 S2  QASMBench medium and large through the OpenQASM 2 front end: read, one slice (the qubit with most operations),
@@ -8,7 +8,7 @@ S2  QASMBench medium and large through the OpenQASM 2 front end: read, one slice
     qiskit.qasm2.load, DAG ancestors of the last operation on that qubit (the plain light cone), Qiskit's LightCone
     pass for that qubit (Z), and building the QPDG reimplementation (Slicers).
 S3  our own parametric programs (QFT, GHZ, QAOA ring, repetition code), generated at growing sizes into
-    results/icpc/scale/programs/: srcSlice-Q's stages, and, since these programs are ours and safe to run, Qiskit
+    results/icpc/scale/programs/: QLine's stages, and, since these programs are ours and safe to run, Qiskit
     building the circuit by running the program followed by DAG ancestors.
 Every input runs in its own process, killed at the wall-clock limit (tool.corpus.hardlimit).
 Usage (workspace root):
@@ -180,7 +180,7 @@ def s2_srcsliceq(path: str):
     from tool import qasm, slicer
     signal.signal(signal.SIGALRM, _alarm)
     signal.alarm(LIMIT)
-    row = {"path": path, "tool": "srcSlice-Q"}
+    row = {"path": path, "tool": "QLine"}
     try:
         t = time.perf_counter()
         c = qasm.compact(QB / path)
@@ -260,13 +260,13 @@ def s2(workers: int, tools=None):
             files.append(str(p.relative_to(QB)))
     workers = max(workers, 4)
     files.sort(key=lambda f: (QB / f).stat().st_size)  # smallest first
-    tools = tools or ["srcSlice-Q", "qiskit-dag", "qiskit-lightcone", "qpdg"]
+    tools = tools or ["QLine", "qiskit-dag", "qiskit-lightcone", "qpdg"]
     kept = [r for r in csv.DictReader(open(OUT / "s2_qasmbench.csv")) if r["tool"] not in tools] \
         if (OUT / "s2_qasmbench.csv").exists() else []
     rows = kept
-    if "srcSlice-Q" in tools:
-        rows += list(run_all(s2_srcsliceq, [(f,) for f in files], LIMIT, lambda f: {"path": f, "tool": "srcSlice-Q", "error": "timeout"}, workers))
-    for which in [t for t in tools if t != "srcSlice-Q"]:
+    if "QLine" in tools:
+        rows += list(run_all(s2_srcsliceq, [(f,) for f in files], LIMIT, lambda f: {"path": f, "tool": "QLine", "error": "timeout"}, workers))
+    for which in [t for t in tools if t != "QLine"]:
         # in batches by size; once every circuit of a batch hits the limit, the larger ones are not run
         stop = False
         for i in range(0, len(files), workers):
@@ -289,7 +289,7 @@ def s3_one(prog: str, size: int):
     signal.signal(signal.SIGALRM, _alarm)
     signal.alarm(LIMIT)
     path = OUT / "programs" / f"{prog}_{size}.py"
-    row = {"program": prog, "size": size, "tool": "srcSlice-Q", "code_lines": code_lines(path)}
+    row = {"program": prog, "size": size, "tool": "QLine", "code_lines": code_lines(path)}
     try:
         t = time.perf_counter()
         root = X.parse_file(path)
@@ -354,7 +354,7 @@ def s3(workers: int):
         for n in sizes:
             (OUT / "programs" / f"{prog}_{n}.py").write_text(TEMPLATES[prog].replace("{N}", str(n)))
             jobs.append((prog, n))
-    rows = list(run_all(s3_one, jobs, LIMIT, lambda p, n: {"program": p, "size": n, "tool": "srcSlice-Q", "error": "timeout"}, workers))
+    rows = list(run_all(s3_one, jobs, LIMIT, lambda p, n: {"program": p, "size": n, "tool": "QLine", "error": "timeout"}, workers))
     rows += list(run_all(s3_run, jobs, LIMIT, lambda p, n: {"program": p, "size": n, "tool": "qiskit-run-dag", "error": "timeout"}, workers))
     write(OUT / "s3_parametric.csv", rows)
     print(f"S3: {len(jobs)} programs")

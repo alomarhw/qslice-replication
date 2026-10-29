@@ -640,7 +640,7 @@ def main() -> int:
     put("ScaleReadQubits", len(share), cnt(len(share)), src)
     src = "results/icpc/scale/s2_qasmbench.csv"
     s2 = rows(sc / "s2_qasmbench.csv")
-    sq = {r["path"]: r for r in s2 if r["tool"] == "srcSlice-Q" and not r["error"]}
+    sq = {r["path"]: r for r in s2 if r["tool"] == "QLine" and not r["error"]}
     put("ScaleQbFiles", len({r["path"] for r in s2}), cnt(len({r["path"] for r in s2})), src)
     put("ScaleQbRead", len(sq), cnt(len(sq)), src)
     put("ScaleQbMillion", sum(int(r["ops"]) >= 1_000_000 for r in sq.values()), cnt(sum(int(r["ops"]) >= 1_000_000 for r in sq.values())), src)
@@ -677,7 +677,7 @@ def main() -> int:
         cnt(sum(lc[p]["error"] in ("timeout",) or lc[p]["error"].startswith("skipped") for p in lc if p in sq)), src)
     src = "results/icpc/scale/s3_parametric.csv"
     s3 = rows(sc / "s3_parametric.csv")
-    q600 = next(r for r in s3 if r["program"] == "qft" and r["size"] == "600" and r["tool"] == "srcSlice-Q")
+    q600 = next(r for r in s3 if r["program"] == "qft" and r["size"] == "600" and r["tool"] == "QLine")
     put("ScaleQftOps", int(q600["ops"]), cnt(int(q600["ops"])), src)
     put("ScaleQftS", tf(q600, ["t_srcml", "t_interp", "t_all", "t_srcslice"]), f"{tf(q600, ['t_srcml', 't_interp', 't_all', 't_srcslice']):.0f}", src)
     r600 = next(r for r in s3 if r["program"] == "qft" and r["size"] == "600" and r["tool"] == "qiskit-run-dag")
@@ -700,7 +700,7 @@ def main() -> int:
         put(f"Cov{nm}", cr[k], cnt(cr[k]), src)
     src = "results/icpc/scale/s2_qasmbench.csv"
     s2r = rows(ICPC / "scale" / "s2_qasmbench.csv")
-    sqr = {r["path"]: r for r in s2r if r["tool"] == "srcSlice-Q" and not r["error"]}
+    sqr = {r["path"]: r for r in s2r if r["tool"] == "QLine" and not r["error"]}
     dgr = {r["path"]: r for r in s2r if r["tool"] == "qiskit-dag" and not r["error"]}
     one = lambda r, ks: sum(float(r[k]) for k in ks)  # noqa: E731
     rat = [one(sqr[p], ["t_terminal", "t_one"]) / one(dgr[p], ["t_build", "t_one"]) for p in sqr if p in dgr and one(dgr[p], ["t_build", "t_one"]) > 0]
