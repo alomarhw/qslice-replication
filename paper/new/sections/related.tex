@@ -60,8 +60,8 @@ PDG~\cite{ferrante1987pdg} with entanglement, no-cloning, temporal and measureme
 slicing on it. It is defined in prose with examples and has not been implemented or evaluated. Its own example
 shows why validation matters. In the graph Yu and Zhao draw for their first listing, the slice of a measured
 qubit omits the two gates that fix its outcome, so the slice returns 1 with probability
-\numYzFigSliceProb{} where the program returns 1 with certainty. Kaul et al.\ build a code property graph for
-Qiskit and OpenQASM programs and query it for bugs and smells, among them superfluous operations, gates that
+\numYzFigSliceProb{} where the program returns 1 with certainty. Kaul et al.\ build the quantum code property graph
+(QCPG), a code property graph for Qiskit and OpenQASM programs, and query it for bugs and smells, among them superfluous operations, gates that
 do not affect a measured qubit~\cite{kaul2023uniform}. Their graph treats the control of a CNOT as unchanged,
 so the query can report gates whose effect reaches a measured qubit back through a control. Kaul et al.\
 demonstrate the graph on example programs and note the lack of large datasets.
@@ -118,8 +118,9 @@ which the pass does not do.
 Metwalli and Van Meter adapt slicing to circuits by splitting a circuit at barriers the developer places and
 removing the qubits a part does not use, and their tool maps gates to source lines through tracebacks at run
 time~\cite{metwalli2022debugging, metwalli2024testing}. Their phase tests detect a wrong phase but need
-hand-designed test vectors to locate the faulty qubit. Qiskit's slicing utilities partition a circuit by
-barriers, depth or gate type~\cite{qiskitaddonutils}. Ramalho et al.\ list slicing as a way around no-cloning and note that it grows hard to manage as circuits
+hand-designed test vectors to locate the faulty qubit. Qiskit's circuit-slicing utilities cut a circuit into consecutive parts by barriers, depth or gate
+type~\cite{qiskitaddonutils}. Both use slicing in the sense of cutting a circuit into pieces, which helps a
+developer inspect it piece by piece but follows no dependence. Ramalho et al.\ list slicing as a way around no-cloning and note that it grows hard to manage as circuits
 grow~\cite{ramalho2025road}. Zappin et al.\ surveyed and interviewed 26 quantum developers, who debug with print statements, circuit
 drawings, simulators and manual inspection of the code and report that these methods do not
 scale~\cite{zappin2026challenges}. A slice shortens exactly that reading of code. Testing faces the related limit that phase faults escape computational-basis measurement~\cite{oldfield2024faster}.
@@ -141,6 +142,15 @@ detect~\cite{zhao2023qchecker}. A slice shows where such a fault can be. We reus
 public warnings, published mutation operators and mutation-based fault localization.
 
 \subsection{Open gaps and the data used}
+Table~\ref{tab:related} sets these approaches side by side, although only srcSlice and the QPDG slice in the
+classical sense of keeping what affects a criterion. We compare them together because each line of work supplies
+part of what a quantum slicer for comprehension needs and none supplies all of it. Behler et al.'s analysis and
+the QCPG represent quantum source code for static analysis, the infrastructure a source-level slicer is built on.
+The \texttt{LightCone} pass and the compilers compute the dependence relation, but on circuits rather than
+programs. Cirquo and Qiskit's utilities give developers pieces of a circuit to inspect, without a criterion.
+LintQ and QChecker analyze the same Qiskit programs statically and report source lines, and LintQ orders
+operations by the relation a slicer needs. The seven property columns are what a slicer for comprehension
+needs, and the table shows which of them each approach already provides.
 Three gaps remain open, and each can be shown from the work above. First, no dependence rule proposed for
 quantum slicing has been checked against what a quantum program computes, and the one example worked out in
 detail, the QPDG's, gives a wrong slice. Second, the analyses that represent quantum programs, from code
@@ -153,29 +163,23 @@ static slicer shows a qubit's slice on Qiskit source with its loop iterations.
   \caption{Related approaches against the properties a quantum slicer needs}
   \label{tab:related}
   \footnotesize\setlength{\tabcolsep}{3.4pt}\renewcommand{\arraystretch}{1.18}
-  \newcommand{\grp}[1]{\rowcolor{black!8}\multicolumn{9}{@{\hspace{3.4pt}}l}{\textit{#1}}\\}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
   \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.0cm} *{6}{>{\centering\arraybackslash}p{1.2cm}} >{\centering\arraybackslash}p{1.42cm} >{\raggedright\arraybackslash}X@{}}
     \toprule
     \textbf{Approach} & \textbf{Source lines} & \textbf{Static} & \textbf{Criterion} & \textbf{Control can change} &
     \textbf{Measured bits} & \textbf{Loops} & \textbf{Guarantee} & \textbf{Evaluated on} \\
     \midrule
-    \grp{Slicing on source code}
-    srcSlice~\cite{alomari2014srcslice}                         & \full & \full & \full & \na   & \na   & \full & \none & the Linux kernel; accuracy compared with CodeSurfer \\ % TODO verify: kernel version, size and the CodeSurfer subjects \sep
-    Behler et al., QStatic~\cite{behler2024supporting, behler2025static} & \full & \full & \none & \none & \half & \half & \none & the 16 example files of OpenQASM~3 \\ % TODO verify: QStatic's evaluation set
-    \grp{Dependence models of quantum programs}
+    srcSlice~\cite{alomari2014srcslice}                         & \full & \full & \full & \na   & \na   & \full & \none & the Linux kernel; accuracy compared with CodeSurfer \\ \sep % TODO verify: kernel version, size and the CodeSurfer subjects
+    Behler et al., QStatic~\cite{behler2024supporting, behler2025static} & \full & \full & \none & \none & \half & \half & \none & the 16 example files of OpenQASM~3 \\ \sep % TODO verify: QStatic's evaluation set
     QPDG, Yu and Zhao~\cite{yu2025qpdg}                         & \full & \full & \full & ?     & \full & ?     & \none & five worked listings, not implemented \\ \sep
-    Kaul et al.~\cite{kaul2023uniform}                          & \full & \full & \none & \none & \full & \full & \none & three listings, one circuit in Qiskit and in OpenQASM and one hybrid program \\
-    \grp{Circuit analyses in compilers}
+    QCPG, Kaul et al.~\cite{kaul2023uniform}                    & \full & \full & \none & \none & \full & \full & \none & three listings, one circuit in Qiskit and in OpenQASM and one hybrid program \\ \sep
     Qiskit \texttt{LightCone}~\cite{qiskit2025}                 & \none & \full & \full & \full & \none & \none & \half & \na \\ \sep
-    TriQ, staq~\cite{murali2019triq, amy2020staq}               & \none & \full & \none & \full & \na   & \na   & \na   & TriQ, 12 benchmarks run on seven devices; staq, 24 circuits of 5 to 20 qubits \\
-    \grp{Debugging support}
+    TriQ, staq~\cite{murali2019triq, amy2020staq}               & \none & \full & \none & \full & \na   & \na   & \na   & TriQ, 12 benchmarks run on seven devices; staq, 24 circuits of 5 to 20 qubits \\ \sep
     Cirquo, Metwalli and Van Meter~\cite{metwalli2022debugging, metwalli2024testing} & \half & \none & \none & \na & \na & \na & \none & one Grover case study and a user survey \\ \sep
-    Qiskit slicing utilities~\cite{qiskitaddonutils}            & \none & \full & \none & \na   & \na   & \na   & \none & \na \\
-    \grp{Bug detectors}
+    Qiskit circuit slicing~\cite{qiskitaddonutils}              & \none & \full & \none & \na   & \na   & \na   & \none & \na \\ \sep
     LintQ~\cite{paltenghi2024lintq}                             & \full & \full & \none & \full & \full & \half & \none & \numSizeLintqFiles{} GitHub programs (median \numSizeLintqMedianLines{} lines, about \numSizeLintqTotalLines{} in all), 345 warnings inspected, \numLqTp{} confirmed \\ \sep
     QChecker~\cite{zhao2023qchecker}                            & \full & \full & \none & \na   & \na   & \na   & \none & the 42 bugs of Bugs4Q \\
-    \grp{This paper}
+    \midrule
     \rowcolor{blue!7}\textbf{\tool{}} & \full & \full & \full & \full & \full & \full & \full & the corpora below \\
     \rowcolor{blue!7} & \multicolumn{8}{>{\raggedright\arraybackslash}p{14.9cm}@{}}{\numNCircuits{} benchmark circuits of \numSizeAMinQubits{} to \numSizeAMaxQubits{} qubits and up to \numSizeAMaxOps{} operations; \numFamCircuits{} generated circuits; \numRqThreeUnits{} seeded-fault units; Bugs4Q, \numSizeBugsFiles{} programs (median \numSizeBugsMedianLines{} lines); the Qiskit textbook, \numSizeTextFiles{} programs (median \numSizeTextMedianLines{}); LintQ's \numSizeLintqFiles{} programs (median \numSizeLintqMedianLines{}); QASMBench, \numScaleQbFiles{} circuits of up to \numScaleQbMaxOps{} operations; Qiskit HumanEval, \numSizeQheFiles{} programs (median \numSizeQheMedianLines{})} \\
     \bottomrule
