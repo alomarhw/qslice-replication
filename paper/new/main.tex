@@ -17,6 +17,7 @@
 \usepackage{url}
 \providecommand{\ket}[1]{\lvert #1\rangle}
 \newcommand{\Bw}{B_{\mathrm{QDG}}}
+\newcommand{\Fw}{F_{\mathrm{QDG}}}
 % The tool's name, in one place. tools/build_anon.sh defines \anonbuild for the double-anonymous submission.
 \ifdefined\anonbuild\newcommand{\tool}{QLine}\else\newcommand{\tool}{srcSlice-Q}\fi
 \newcommand{\TODO}[1]{\textcolor{red}{[TODO: #1]}}
@@ -39,8 +40,7 @@
 \section{A Classical Slice That Looks Right}\label{sec:example}
 \TODO{to be written}
 
-\section{Quantum Dependence and the Write-All Rule}\label{sec:core}
-\TODO{to be written next: the semantics, the write-all rule and its guarantees}
+\input{sections/core}
 
 \section{The \tool{} Approach}\label{sec:approach}
 \TODO{to be written}
