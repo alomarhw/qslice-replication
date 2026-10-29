@@ -1313,3 +1313,20 @@ use, are removed.
   reduced state. Reported as evidence that dropping a qubit from a gate's write set is unsound for these gates; no
   general claim and no theorem.
 - **Script.** `icpc/nesting.py` -> `results/icpc/nesting/`; `icpc/gate_signal.py` -> `results/icpc/gate_signal/`.
+
+### Deviation I-25 (2026-10-28, AFTER all results; author decision; exploratory; recorded before the data is downloaded)
+- **Why.** LintQ's corpus predates Qiskit 1.0. Coverage of QLine on current Qiskit is measured on Qiskit HumanEval
+  (Vishwakarma et al. 2024), 101 tasks written and peer-reviewed by Qiskit experts for Qiskit >= 1.0. No RQ,
+  hypothesis or threshold changes.
+- **Data.** github.com/qiskit-community/qiskit-human-eval at commit 555f329651209e6eb108787cff30626a03a4cadf
+  (Apache-2.0): `dataset/dataset_qiskit_test_human_eval.json` (the standard set) and, reported separately,
+  `dataset/dataset_qiskit_test_human_eval_hard.json`. Stored under the data root in `qiskit_human_eval/`, with its
+  licence and commit, and checksummed. The files are read, never executed; the tasks' tests are not used.
+- **Programs.** One file per task: the task's prompt followed by its canonical solution, exactly as given. The
+  test code is not included. A function the file defines and never calls is analysed as an entry point with
+  unknown arguments, as for every corpus.
+- **Measures.** Those of S1 (`scale_run.s1_one`, unchanged): a circuit or not, operations, qubits, stage times,
+  and each qubit's slice lines over code lines. Files with no circuit are classified by the I-23 rule
+  (`coverage_reasons.reason`, unchanged), and the interpreter's notes are counted by kind. Reported per set and
+  per the dataset's task category and difficulty.
+- **Script.** `icpc/qhe_run.py` -> `results/icpc/qhe/`.
