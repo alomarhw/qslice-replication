@@ -148,39 +148,48 @@ property graphs to execution-order tables, read the control of a gate as unchang
 what that reading does to a slice. Third, the slicing support developers have is manual and dynamic, and no
 static slicer shows a qubit's slice on Qiskit source with its loop iterations.
 
-\begin{table}[t]
+\begin{table*}[t]
   \centering
-  \caption{Related approaches against the properties a quantum slicer needs. \full{} has the property,
-  \half{} has it in part, \none{} lacks it, ? means the authors do not specify it, and \na{} means it does not apply. Src, results on source lines.
-  Stat, a static analysis. Crit, a slicing criterion. Ctrl, a controlled gate can change its control. Bits,
-  follows measured bits to what they condition. Loop, follows loops of any length. Guar, a stated guarantee
-  about the result. Data, the original evaluation: Ex, examples. Bm, benchmark circuits. GH, LintQ's 7,568
-  GitHub programs. B4Q, Bugs4Q. Lx, the Linux kernel. HE, Qiskit HumanEval.}
+  \caption{Related approaches against the properties a quantum slicer needs}
   \label{tab:related}
-  \footnotesize\setlength{\tabcolsep}{2.6pt}\renewcommand{\arraystretch}{1.12}
-  \begin{tabular}{@{}l c c c c c c c >{\raggedright\arraybackslash}p{1.15cm}@{}}
+  \footnotesize\setlength{\tabcolsep}{3.4pt}\renewcommand{\arraystretch}{1.18}
+  \newcommand{\grp}[1]{\rowcolor{black!8}\multicolumn{9}{@{\hspace{3.4pt}}l}{\textit{#1}}\\}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.0cm} *{6}{>{\centering\arraybackslash}p{1.2cm}} >{\centering\arraybackslash}p{1.42cm} >{\raggedright\arraybackslash}X@{}}
     \toprule
-    Approach & Src & Stat & Crit & Ctrl & Bits & Loop & Guar & Data \\
+    \textbf{Approach} & \textbf{Source lines} & \textbf{Static} & \textbf{Criterion} & \textbf{Control can change} &
+    \textbf{Measured bits} & \textbf{Loops} & \textbf{Guarantee} & \textbf{Evaluated on} \\
     \midrule
-    srcSlice~\cite{alomari2014srcslice}                       & \full & \full & \full & \na   & \na   & \full & \none & Lx \\
-    Behler et al.~\cite{behler2024supporting, behler2025static} & \full & \full & \none & \none & \half & \half & \none & Ex \\ % TODO verify: QStatic's evaluation set
-    \midrule
-    QPDG~\cite{yu2025qpdg}                                    & \full & \full & \full & ?     & \full & ?     & \none & Ex \\
-    Kaul et al.~\cite{kaul2023uniform}                        & \full & \full & \none & \none & \full & \full & \none & Ex \\
-    \midrule
-    \texttt{LightCone}~\cite{qiskit2025}                      & \none & \full & \full & \full & \none & \none & \half & \na \\
-    TriQ, staq~\cite{murali2019triq, amy2020staq}             & \none & \full & \none & \full & \na   & \na   & \na   & Bm \\
-    \midrule
-    Cirquo~\cite{metwalli2022debugging, metwalli2024testing} & \half & \none & \none & \na & \na & \na & \none & Ex \\
-    Qiskit utilities~\cite{qiskitaddonutils}          & \none & \full & \none & \na   & \na   & \na   & \none & \na \\
-    \midrule
-    LintQ~\cite{paltenghi2024lintq}                           & \full & \full & \none & \full & \full & \half & \none & GH \\
-    QChecker~\cite{zhao2023qchecker}                          & \full & \full & \none & \na   & \na   & \na   & \none & B4Q \\
-    \midrule
-    \rowcolor{blue!7}\textbf{\tool{}}            & \full & \full & \full & \full & \full & \full & \full & Bm, B4Q, GH, HE \\
+    \grp{Slicing on source code}
+    srcSlice~\cite{alomari2014srcslice}                         & \full & \full & \full & \na   & \na   & \full & \none & the Linux kernel \\ \sep
+    Behler et al., QStatic~\cite{behler2024supporting, behler2025static} & \full & \full & \none & \none & \half & \half & \none & OpenQASM~3 examples \\ % TODO verify: QStatic's evaluation set
+    \grp{Dependence models of quantum programs}
+    QPDG, Yu and Zhao~\cite{yu2025qpdg}                         & \full & \full & \full & ?     & \full & ?     & \none & worked examples \\ \sep
+    Kaul et al.~\cite{kaul2023uniform}                          & \full & \full & \none & \none & \full & \full & \none & example programs \\
+    \grp{Circuit analyses in compilers}
+    Qiskit \texttt{LightCone}~\cite{qiskit2025}                 & \none & \full & \full & \full & \none & \none & \half & \na \\ \sep
+    TriQ, staq~\cite{murali2019triq, amy2020staq}               & \none & \full & \none & \full & \na   & \na   & \na   & benchmark circuits \\
+    \grp{Debugging support}
+    Cirquo, Metwalli and Van Meter~\cite{metwalli2022debugging, metwalli2024testing} & \half & \none & \none & \na & \na & \na & \none & a case study and a user survey \\ \sep
+    Qiskit slicing utilities~\cite{qiskitaddonutils}            & \none & \full & \none & \na   & \na   & \na   & \none & \na \\
+    \grp{Bug detectors}
+    LintQ~\cite{paltenghi2024lintq}                             & \full & \full & \none & \full & \full & \half & \none & 7,568 GitHub programs \\ \sep
+    QChecker~\cite{zhao2023qchecker}                            & \full & \full & \none & \na   & \na   & \na   & \none & Bugs4Q \\
+    \grp{This paper}
+    \rowcolor{blue!7}\textbf{\tool{}}                           & \full & \full & \full & \full & \full & \full & \full & benchmark and generated circuits, Bugs4Q, GitHub programs, Qiskit HumanEval \\
     \bottomrule
-  \end{tabular}
-\end{table}
+  \end{tabularx}\\[3pt]
+  \begin{minipage}{\textwidth}\footnotesize
+  \full{} has the property, \half{} has it in part, \none{} lacks it, ? means the authors do not specify it, and
+  \na{} means it does not apply. \emph{Source lines}, results are shown on the program's source lines.
+  \emph{Static}, the approach reads the program or circuit and never runs it. \emph{Criterion}, the user names what to
+  slice for, such as a variable or a set of qubits. \emph{Control can change}, a controlled gate such as a CNOT is
+  read as able to change its control, as in phase kickback. \emph{Measured bits}, classical control is followed
+  from a measurement to the operations its bit conditions. \emph{Loops}, loops of any length are followed.
+  \emph{Guarantee}, the authors state or prove a property of the result. \emph{Evaluated on}, the data of the
+  original evaluation.
+  \end{minipage}
+\end{table*}
 
 The data differ as much as the methods. The dependence graphs were shown on examples, the srcML work on the
 OpenQASM~3 examples, and the detectors on Bugs4Q and on LintQ's GitHub corpus, while no slicing approach was
