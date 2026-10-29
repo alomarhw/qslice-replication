@@ -1,0 +1,117 @@
+{
+ "programs": 7568,
+ "per_kind": {
+  "single": 4413,
+  "two": 2933,
+  "multi": 718,
+  "legacy": 1033,
+  "special": 3701,
+  "composition": 3509,
+  "control_flow": 169,
+  "transform": 623,
+  "to_dag": 100
+ },
+ "methods": {
+  "single": [
+   "h",
+   "id",
+   "p",
+   "r",
+   "rv",
+   "rx",
+   "ry",
+   "rz",
+   "s",
+   "sdg",
+   "sx",
+   "sxdg",
+   "t",
+   "tdg",
+   "u",
+   "x",
+   "y",
+   "z"
+  ],
+  "two": [
+   "ch",
+   "cp",
+   "crx",
+   "cry",
+   "crz",
+   "cs",
+   "csdg",
+   "csx",
+   "cu",
+   "cx",
+   "cy",
+   "cz",
+   "dcx",
+   "ecr",
+   "iswap",
+   "rxx",
+   "ryy",
+   "rzx",
+   "rzz",
+   "swap"
+  ],
+  "multi": [
+   "ccx",
+   "ccz",
+   "cswap",
+   "mcp",
+   "mcx",
+   "ms",
+   "rcccx",
+   "rccx"
+  ],
+  "legacy": [
+   "cnot",
+   "cu1",
+   "cu3",
+   "fredkin",
+   "i",
+   "iden",
+   "mcrx",
+   "mcry",
+   "mcrz",
+   "mct",
+   "mcu1",
+   "toffoli",
+   "u1",
+   "u2",
+   "u3"
+  ],
+  "special": [
+   "barrier",
+   "delay",
+   "initialize",
+   "measure",
+   "reset",
+   "unitary"
+  ],
+  "composition": [
+   "append",
+   "compose",
+   "measure_active",
+   "measure_all"
+  ],
+  "control_flow": [
+   "c_if",
+   "for_loop",
+   "if_test",
+   "switch",
+   "while_loop"
+  ],
+  "transform": [
+   "assign_parameters",
+   "bind_parameters",
+   "inverse",
+   "power",
+   "repeat",
+   "reverse_ops"
+  ],
+  "to_dag": [
+   "circuit_to_dag"
+  ]
+ }
+}

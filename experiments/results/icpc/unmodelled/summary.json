@@ -1,0 +1,235 @@
+{
+ "lintq": {
+  "programs": 7568,
+  "with_circuit": 4186,
+  "errors": {
+   "timeout": 1
+  },
+  "method_not_modelled": {
+   "programs": 183,
+   "top": [
+    [
+     "reverse_bits",
+     25
+    ],
+    [
+     "save_unitary",
+     18
+    ],
+    [
+     "from_qasm_str",
+     17
+    ],
+    [
+     "run",
+     15
+    ],
+    [
+     "add_calibration",
+     8
+    ],
+    [
+     "diagonal",
+     8
+    ],
+    [
+     "iso",
+     7
+    ],
+    [
+     "control",
+     7
+    ],
+    [
+     "add",
+     7
+    ],
+    [
+     "save_density_matrix",
+     6
+    ],
+    [
+     "set_statevector",
+     5
+    ],
+    [
+     "extend",
+     5
+    ]
+   ]
+  },
+  "result_unknown": {
+   "programs": 142,
+   "top": [
+    [
+     "inverse",
+     78
+    ],
+    [
+     "bind_parameters",
+     45
+    ],
+    [
+     "assign_parameters",
+     14
+    ],
+    [
+     "reverse_ops",
+     3
+    ],
+    [
+     "power",
+     1
+    ],
+    [
+     "repeat",
+     1
+    ]
+   ]
+  },
+  "to_dag": {
+   "programs": 33,
+   "top": [
+    [
+     "circuit_to_dag",
+     33
+    ]
+   ]
+  },
+  "circuit_to_unseen_code": 294
+ },
+ "textbook": {
+  "programs": 72,
+  "with_circuit": 60,
+  "errors": {},
+  "method_not_modelled": {
+   "programs": 10,
+   "top": [
+    [
+     "save_unitary",
+     4
+    ],
+    [
+     "add_calibration",
+     4
+    ],
+    [
+     "control",
+     1
+    ],
+    [
+     "run",
+     1
+    ]
+   ]
+  },
+  "result_unknown": {
+   "programs": 4,
+   "top": [
+    [
+     "inverse",
+     4
+    ]
+   ]
+  },
+  "to_dag": {
+   "programs": 0,
+   "top": []
+  },
+  "circuit_to_unseen_code": 0
+ },
+ "bugs4q": {
+  "programs": 151,
+  "with_circuit": 111,
+  "errors": {},
+  "method_not_modelled": {
+   "programs": 7,
+   "top": [
+    [
+     "control",
+     2
+    ],
+    [
+     "wait",
+     1
+    ],
+    [
+     "QFT",
+     1
+    ],
+    [
+     "from_qasm_str",
+     1
+    ],
+    [
+     "add_calibration",
+     1
+    ],
+    [
+     "transform_registers",
+     1
+    ]
+   ]
+  },
+  "result_unknown": {
+   "programs": 3,
+   "top": [
+    [
+     "inverse",
+     3
+    ]
+   ]
+  },
+  "to_dag": {
+   "programs": 3,
+   "top": [
+    [
+     "circuit_to_dag",
+     3
+    ]
+   ]
+  },
+  "circuit_to_unseen_code": 2
+ },
+ "qhe": {
+  "programs": 151,
+  "with_circuit": 78,
+  "errors": {},
+  "method_not_modelled": {
+   "programs": 4,
+   "top": [
+    [
+     "prepare_state",
+     3
+    ],
+    [
+     "tensor",
+     1
+    ]
+   ]
+  },
+  "result_unknown": {
+   "programs": 2,
+   "top": [
+    [
+     "assign_parameters",
+     1
+    ],
+    [
+     "inverse",
+     1
+    ]
+   ]
+  },
+  "to_dag": {
+   "programs": 2,
+   "top": [
+    [
+     "circuit_to_dag",
+     2
+    ]
+   ]
+  },
+  "circuit_to_unseen_code": 0
+ }
+}

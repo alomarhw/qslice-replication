@@ -1384,3 +1384,16 @@ use, are removed.
   cannot see.
 - **Addendum (2026-10-29, before the measurement).** `noop`, which marks qubits as used and does nothing, joins
   `barrier` and `delay` as never part of a slice. No program of the corpora calls it, so no result changes.
+- **Findings of the unmodelled-call count (2026-10-29).** On LintQ's corpus, 183 programs call a QuantumCircuit
+  method the interpreter does not model, 142 one whose result it treats as unknown, 33 convert a circuit to a DAG,
+  and 294 pass a circuit to code it cannot see (`summary.json`). The interpretation-only pass yields a circuit for
+  4,186 programs against 4,182 in S1, because S1 also runs srcML and srcSlice under the same 120 s limit and has more
+  timeouts; the paper keeps S1's count.
+- **Calls per kind (descriptive, before the count).** For the role table in Section V, the programs of LintQ's corpus
+  that call each kind of method are counted from the source text with one rule for every row: a program counts for a
+  kind if it calls a method of that kind as `.name(`. The kinds are the categories of the role table, composition,
+  circuit control flow, whole-circuit transforms and DAG conversion. Script `icpc/calls_per_kind.py` ->
+  `results/icpc/unmodelled/calls_per_kind.json`.
+- **Correction (2026-10-29, after the first count).** `circuit_to_dag` is a function, called as `circuit_to_dag(...)`
+  without a receiver, so the rule `.name(` found 12 programs; it is counted as `name(` and finds 100. The other kinds
+  are unchanged. The interpreter's count, 33, is of conversions of a circuit it traced, a different measure.

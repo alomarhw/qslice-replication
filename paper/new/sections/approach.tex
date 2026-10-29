@@ -36,10 +36,60 @@ meaning in five extensions, E1 to E5 in Fig.~\ref{fig:overview}.
 
 \subsection{From source to slices}
 \paragraph*{E1, quantum roles of calls}
-A table of \numToolGateTable{} Qiskit instruction methods, including those of earlier releases, records which
-arguments of each are qubits, classical bits and angles, and which leading qubits are controls. It turns a call in
-the srcML tree into an operation on qubit operands. In OpenQASM the syntax states these roles, and in Qiskit the
-table supplies them.
+A Qiskit program applies a gate by calling a method of its circuit, as in \texttt{qc.cx(0, 1)} or \texttt{qc.ry(theta,
+q)}. E1 decides for each call which arguments are qubits, which are classical bits and which are angles, and turns the
+call into an operation on qubit operands. It does so with a role table derived from the signatures of Qiskit's
+\texttt{QuantumCircuit} methods, so that it follows the library rather than a hand-written list. The table holds the
+\numToolGateQiskit{} methods of Qiskit~\numQiskitVersion{} that take qubits and add an operation, the
+\numToolGateLegacy{} methods that Qiskit~1.0 removed but older programs, such as those of Bugs4Q, still call, and
+\numToolGateSpecial{} methods whose arguments the signatures do not name uniformly, \numToolGateTable{} in all.
+Table~\ref{tab:roles} lists them by kind. The table also marks which leading qubits are controls, for reporting and
+for the classical PDG baseline, since the write-all rule writes every qubit of a gate whatever its role. In OpenQASM
+the syntax states these roles, so the table is needed for Qiskit only.
+
+Calls outside the table are read as the lower part of Table~\ref{tab:roles} shows. Composition
+maps the operations of the added circuit onto the qubits it is given, and a gate the table does not know, such as a
+circuit from Qiskit's library, becomes one operation on all its qubits, which can only enlarge a slice. Conditioned
+operations and loops of the circuit are read as Section~\ref{sec:loops} describes. A transformation of a whole
+circuit, such as \texttt{inverse} or \texttt{assign\_parameters}, makes its result unknown, a conversion of a circuit
+to a DAG ends the trace of that circuit, and every other method is not modelled. Each of these is reported. On LintQ's
+corpus, \numUnmodMethodProgs{} of the \numSubjLintqCount{} programs call a method that is not modelled. Most such
+methods do not change a circuit at all. They run or simulate it, as \texttt{run} and \texttt{save\_unitary} do, or
+build it from text, as \texttt{from\_qasm\_str} does. The rest are operations outside the table, such as
+\texttt{reverse\_bits}, \texttt{diagonal} and \texttt{iso} on LintQ's corpus and \texttt{prepare\_state} in
+\numUnmodQhePrepare{} Qiskit HumanEval programs, and adding them is the main way to widen coverage.
+
+\begin{table}[t]
+  \centering
+  \caption{How E1 reads the calls of a Qiskit program}
+  \label{tab:roles}
+  \footnotesize\setlength{\tabcolsep}{2.6pt}\renewcommand{\arraystretch}{1.12}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \newcommand{\blk}[1]{\multicolumn{4}{@{}l}{\textit{#1}}\\}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.75cm} r >{\raggedright\arraybackslash}p{2.95cm} r@{}}
+    \toprule
+    \textbf{Calls} & \textbf{Methods} & \textbf{Read as} & \textbf{Programs} \\
+    \midrule
+    \blk{In the role table}
+    Single-qubit gates, \texttt{h}, \texttt{rz}, \texttt{u} & \numKindSingleN{} & one operation on its qubit & \numCallsSingle{} \\ \sep
+    Two-qubit gates, \texttt{cx}, \texttt{cz}, \texttt{swap} & \numKindTwoN{} & one operation on both qubits & \numCallsTwo{} \\ \sep
+    Multi-qubit gates, \texttt{ccx}, \texttt{mcx} & \numKindMultiN{} & one operation on all its qubits & \numCallsMulti{} \\ \sep
+    Removed in Qiskit~1.0, \texttt{cnot}, \texttt{u3} & \numKindLegacyN{} & as gates of the same arity & \numCallsLegacy{} \\ \sep
+    \texttt{measure}, \texttt{reset}, \texttt{barrier}, \texttt{initialize}, \ldots & \numKindSpecialN{} & a measurement writes its bit, a barrier is never sliced & \numCallsSpecial{} \\
+    \midrule
+    \blk{Outside the role table}
+    \texttt{append}, \texttt{compose}, \texttt{measure\_all} & \numKindComposeN{} & mapped onto the target's qubits & \numCallsCompose{} \\ \sep
+    \texttt{if\_test}, \texttt{while\_loop}, \texttt{switch}, \ldots & \numKindFlowN{} & conditioned, Section~\ref{sec:loops} & \numCallsFlow{} \\ \sep
+    \texttt{inverse}, \texttt{power}, \ldots & \numKindTransformN{} & result unknown, reported & \numCallsTransform{} \\ \sep
+    \texttt{circuit\_to\_dag} & \numKindDagN{} & trace of that circuit ends & \numCallsDag{} \\ \sep
+    any other, \texttt{reverse\_bits}, \texttt{run}, \ldots & -- & not modelled, reported & \numUnmodMethodProgs{} \\
+    \bottomrule
+  \end{tabular}\\[3pt]
+  \begin{minipage}{\columnwidth}\footnotesize
+  Programs counts the programs of LintQ's corpus whose source calls a method of the row. For the last row it counts
+  those in which the interpreter meets a method it does not model.
+  \end{minipage}
+\end{table}
 
 \paragraph*{E2, the operation trace}
 A static interpretation of the srcML tree turns the program into the circuit it builds, as a trace of operations,

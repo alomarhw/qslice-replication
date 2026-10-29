@@ -3810,5 +3810,150 @@
   "value": 200000,
   "tex": "200{,}000",
   "source": "tool/interp.py (MAX_OPS)"
+ },
+ "CallsSingle": {
+  "value": 4413,
+  "tex": "4{,}413",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "KindSingleN": {
+  "value": 18,
+  "tex": "18",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "CallsTwo": {
+  "value": 2933,
+  "tex": "2{,}933",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "KindTwoN": {
+  "value": 20,
+  "tex": "20",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "CallsMulti": {
+  "value": 718,
+  "tex": "718",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "KindMultiN": {
+  "value": 8,
+  "tex": "8",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "CallsLegacy": {
+  "value": 1033,
+  "tex": "1{,}033",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "KindLegacyN": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "CallsSpecial": {
+  "value": 3701,
+  "tex": "3{,}701",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "KindSpecialN": {
+  "value": 6,
+  "tex": "6",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "CallsCompose": {
+  "value": 3509,
+  "tex": "3{,}509",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "KindComposeN": {
+  "value": 4,
+  "tex": "4",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "CallsFlow": {
+  "value": 169,
+  "tex": "169",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "KindFlowN": {
+  "value": 5,
+  "tex": "5",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "CallsTransform": {
+  "value": 623,
+  "tex": "623",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "KindTransformN": {
+  "value": 6,
+  "tex": "6",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "CallsDag": {
+  "value": 100,
+  "tex": "100",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "KindDagN": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/unmodelled/calls_per_kind.json"
+ },
+ "UnmodMethodProgs": {
+  "value": 183,
+  "tex": "183",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodUnknownProgs": {
+  "value": 142,
+  "tex": "142",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodDagProgs": {
+  "value": 33,
+  "tex": "33",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodUnseenProgs": {
+  "value": 294,
+  "tex": "294",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodReverseBits": {
+  "value": 25,
+  "tex": "25",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodSaveUnitary": {
+  "value": 18,
+  "tex": "18",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodFromQasm": {
+  "value": 17,
+  "tex": "17",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodRun": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodDiagonal": {
+  "value": 8,
+  "tex": "8",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodIso": {
+  "value": 7,
+  "tex": "7",
+  "source": "results/icpc/unmodelled/summary.json"
+ },
+ "UnmodQhePrepare": {
+  "value": 3,
+  "tex": "three",
+  "source": "results/icpc/unmodelled/summary.json"
  }
 }
