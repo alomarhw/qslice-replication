@@ -162,7 +162,7 @@ dependence arises only through measurement, whose classical bit then conditions 
 
 \begin{table}[t]
   \centering
-  \caption{The kinds of dependence a quantum slice needs}
+  \caption{The three kinds of dependence a quantum slice needs}
   \label{tab:kinds}
   \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.15}
   \begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.55cm} >{\raggedright\arraybackslash}p{3.2cm}
@@ -175,10 +175,12 @@ dependence arises only through measurement, whose classical bit then conditions 
     Classical control & host loops and branches, and measured bits that condition operations & \texttt{for qubit in range(n)}, the flip conditioned on the measured bit \\
     \arrayrulecolor{black!25}\hline\arrayrulecolor{black}
     Quantum data & every qubit an operation acts on, written by the write-all rule & \texttt{cx(qubit, qubit + 1)} writes both qubits \\
-    \midrule
-    Quantum control & no kind of its own, it is quantum data dependence & a controlled gate is not a branch \\
     \bottomrule
-  \end{tabular}
+  \end{tabular}\\[3pt]
+  \begin{minipage}{\columnwidth}\footnotesize
+  A controlled gate adds no fourth kind. Its control is written like its target, so what looks like quantum control
+  dependence is quantum data dependence.
+  \end{minipage}
 \end{table}
 
 The other kinds proposed for quantum programs add no dependence either. Entanglement is the most natural
