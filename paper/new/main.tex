@@ -8,6 +8,11 @@
 \usepackage[table]{xcolor}
 \usepackage{pifont}
 \newcommand{\yes}{\ding{51}}\newcommand{\no}{\ding{55}}
+\usepackage{tikz}
+% Harvey balls for the comparison table: does, partly does, does not.
+\DeclareRobustCommand{\hb}[1]{\tikz[baseline=-0.55ex]{\draw[line width=0.4pt] (0,0) circle (0.75ex);
+  \ifcase#1\or\fill (0,0.75ex) arc (90:270:0.75ex) -- cycle;\or\fill (0,0) circle (0.75ex);\fi}}
+\DeclareRobustCommand{\full}{\hb{2}}\DeclareRobustCommand{\half}{\hb{1}}\DeclareRobustCommand{\none}{\hb{0}}\newcommand{\na}{--}
 \usepackage{url}
 \providecommand{\ket}[1]{\lvert #1\rangle}
 \newcommand{\Bw}{B_{\mathrm{QDG}}}
