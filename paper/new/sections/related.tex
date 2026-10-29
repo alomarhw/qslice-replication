@@ -150,26 +150,62 @@ static slicer shows a qubit's slice on Qiskit source with its loop iterations.
 
 \begin{table*}[t]
   \centering
-  \caption{Related approaches by what they analyze, whether they slice from a criterion, what they guarantee,
-  whether they report source lines, and the data they were evaluated on.}
+  \caption{Approaches related to quantum slicing, grouped by line of work. Input is what the approach
+  reads and whether it analyzes it statically or by running it. Criterion is what the user asks about.
+  Controlled gate is how a gate such as a CNOT is read, where \yes{} means that its control can change, as in
+  phase kickback, and \no{} that the control is treated as unchanged. Measured bits, loops is how classical control
+  is followed, from a measurement to the operations its bit conditions and through loops. Output is what
+  the user gets, and Guarantee what the authors state or prove about it. Evaluated on is the data of
+  the original evaluation. Elsewhere \yes{} and \no{} mark what an approach does or does not do, and a dash means that the property does
+  not apply.}
   \label{tab:related}
-  \footnotesize\setlength{\tabcolsep}{3pt}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{2.4cm}
-                  >{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{2.6cm} l
-                  >{\raggedright\arraybackslash}p{4.4cm}@{}}
+  \scriptsize\setlength{\tabcolsep}{2.4pt}\renewcommand{\arraystretch}{1.15}
+  \newcommand{\grp}[1]{\rowcolor{black!10}\multicolumn{8}{@{\hspace{2.4pt}}l}{\textbf{#1}}\\}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.05cm} >{\raggedright\arraybackslash}p{1.9cm}
+                  >{\raggedright\arraybackslash}p{2.0cm} >{\raggedright\arraybackslash}p{2.05cm}
+                  >{\raggedright\arraybackslash}p{2.35cm} >{\raggedright\arraybackslash}p{2.1cm}
+                  >{\raggedright\arraybackslash}p{1.85cm} >{\raggedright\arraybackslash}p{2.55cm}@{}}
     \toprule
-    Approach & Analyzes & Slicing criterion & Stated guarantee & Lines & Evaluated on \\
+    \textbf{Approach} & \textbf{Input} & \textbf{Criterion} & \textbf{Controlled gate} & \textbf{Measured bits, loops} &
+    \textbf{Output} & \textbf{Guarantee} & \textbf{Evaluated on} \\
     \midrule
-    srcSlice~\cite{alomari2014srcslice} & classical source, srcML & variable, automatic & none & yes & the Linux kernel, against CodeSurfer \\
-    Behler et al., QStatic~\cite{behler2024supporting, behler2025static} & OpenQASM~3, srcML & none & none & yes & the 16 OpenQASM~3 example files \\ % TODO verify: QStatic's own evaluation set
-    QPDG~\cite{yu2025qpdg} & quantum programs & variable or qubit & none & -- & examples, not implemented \\
-    Kaul et al.~\cite{kaul2023uniform} & Qiskit, OpenQASM & none, queries & none & yes & example programs \\
-    \texttt{LightCone}~\cite{qiskit2025} & circuits & observable & keeps the observable's value & no & -- \\
-    Metwalli, Van Meter~\cite{metwalli2022debugging, metwalli2024testing} & Qiskit, at run time & none, manual breakpoints & none & yes, dynamic & small example circuits \\ % TODO verify: count of circuits and the survey
-    LintQ~\cite{paltenghi2024lintq} & Qiskit, CodeQL & none, bug patterns & none & yes & 7,568 GitHub programs, \numLqTp{} confirmed bugs \\
-    QChecker~\cite{zhao2023qchecker} & Qiskit, syntax tree & none, bug patterns & none & yes & the 42 bugs of Bugs4Q \\
-    \midrule
-    This paper, \tool{} & Qiskit, OpenQASM~2, srcML and srcSlice & a set of qubits (backward) or a line (forward), automatic & sound, dependence-complete & yes, static & \numNCircuits{} benchmark circuits, \numFamCircuits{} generated circuits, Bugs4Q, the Qiskit textbook, LintQ's \numScaleSOneFiles{} programs and warnings, QASMBench, Qiskit HumanEval \\
+    \grp{Slicing on source code}
+    srcSlice~\cite{alomari2014srcslice} & C and C++ via srcML, static & every variable of the system & -- (no qubits) &
+      classical loops and branches & forward slices, slice profiles & none stated & the Linux kernel, accuracy against CodeSurfer \\ \sep
+    Behler et al., QStatic~\cite{behler2024supporting, behler2025static} & OpenQASM~3 via srcML, static & none, per-qubit order &
+      \no{} control and target labeled apart & \texttt{for} unrolled, \texttt{if} labeled, no \texttt{while} &
+      execution order, patterns, refactorings & none stated & the 16 OpenQASM~3 example files \\ % TODO verify: QStatic's own evaluation set
+    \grp{Dependence models of quantum programs}
+    QPDG, Yu and Zhao~\cite{yu2025qpdg} & quantum programs, static & a variable or qubit at a point &
+      not specified & measurement and control edges & a slice of the graph & none stated & worked examples, not implemented \\ \sep
+    Kaul et al.~\cite{kaul2023uniform} & Qiskit and OpenQASM, code property graph & none, graph queries &
+      \no{} control unchanged & evaluation order and data flow & bugs and smells as query results & none stated & example programs \\
+    \grp{Circuit analyses in compilers}
+    Qiskit \texttt{LightCone}~\cite{qiskit2025} & a circuit, static & measured qubits or a Pauli observable &
+      \yes{} light cone, then commuting gates removed & \no{} rejects mid-circuit measurement & a smaller circuit &
+      same expectation value at the circuit's angles & -- (a library pass) \\ \sep
+    TriQ, staq~\cite{murali2019triq, amy2020staq} & a circuit, static & none, whole circuit &
+      \yes{} gates ordered by shared qubits & -- & a scheduled, mapped circuit & equivalent circuit &
+      12 benchmarks on seven devices; reversible-arithmetic benchmarks against Qiskit \\
+    \grp{Debugging support}
+    Metwalli and Van Meter~\cite{metwalli2022debugging, metwalli2024testing} & Qiskit, by running parts of the circuit &
+      breakpoints the developer places & -- (no dependence model) & -- & sub-circuits, gate-to-line map at run time &
+      none stated & a Grover case study and a user survey \\ \sep
+    Qiskit slicing utilities~\cite{qiskitaddonutils} & a circuit & barriers, depth or gate type & -- & -- &
+      sub-circuits & none stated & -- (a library) \\
+    \grp{Bug detectors}
+    LintQ~\cite{paltenghi2024lintq} & Qiskit via CodeQL, static & none, 10 bug patterns &
+      \yes{} operations ordered by shared qubits & loops of known bound up to 10 iterations; conditions &
+      warnings at source lines & none, precision reported & 7,568 GitHub programs, \numLqTp{} confirmed bugs \\ \sep
+    QChecker~\cite{zhao2023qchecker} & Qiskit syntax tree, static & none, 8 bug patterns & -- (no qubit model) & -- &
+      warnings at source lines & none stated & the 42 bugs of Bugs4Q \\
+    \grp{This paper}
+    \rowcolor{blue!7}\textbf{\tool{}} & Qiskit and OpenQASM~2 via srcML and srcSlice, static &
+      a set of qubits (backward), a line (forward), every qubit at once &
+      \yes{} write-all rule, every qubit written & Python loops and branches, measured bits, in-circuit loops until stable &
+      source lines, loop iterations, classical lines, qubit profiles & sound, dependence-complete, proved &
+      \numNCircuits{} benchmark and \numFamCircuits{} generated circuits, Bugs4Q, Qiskit textbook, LintQ's programs, QASMBench, Qiskit HumanEval \\
     \bottomrule
   \end{tabular}
 \end{table*}
