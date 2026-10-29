@@ -1,0 +1,49 @@
+{
+ "kickback_cnot_removed_min_fidelity": 0.666667,
+ "archived_interpreter": {
+  "cf01_while_rus.py": {
+   "nonterminating": "while_loop did not terminate within the cutoff"
+  },
+  "cf02_while_kickback.py": {
+   "nonterminating": "while_loop did not terminate within the cutoff"
+  },
+  "cf03_for_known.py": {
+   "qubits": 3,
+   "unsound": [],
+   "min_fidelity": 1.0
+  },
+  "cf04_for_chain.py": {
+   "qubits": 4,
+   "unsound": [
+    1,
+    2,
+    3
+   ],
+   "min_fidelity": 0.354595132
+  },
+  "cf05_switch.py": {
+   "qubits": 4,
+   "unsound": [],
+   "min_fidelity": 1.0
+  },
+  "cf06_if_else.py": {
+   "qubits": 3,
+   "unsound": [],
+   "min_fidelity": 1.0
+  },
+  "cf07_nested.py": {
+   "nonterminating": "while_loop did not terminate within the cutoff"
+  },
+  "cf08_python_and_circuit_loops.py": {
+   "nonterminating": "while_loop did not terminate within the cutoff"
+  },
+  "cf09_idle_loop.py": {
+   "nonterminating": "while_loop did not terminate within the cutoff"
+  },
+  "cf10_feedback.py": {
+   "nonterminating": "while_loop did not terminate within the cutoff"
+  }
+ },
+ "archived_programs_wrong": 7,
+ "programs": 10
+}

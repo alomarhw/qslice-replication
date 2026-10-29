@@ -1360,3 +1360,12 @@ use, are removed.
   real programs that use these constructs (LintQ corpus: 1 while_loop, 1 for_loop, 1 switch, 2 if_test files;
   Qiskit HumanEval: 1 for_loop, 5 if_test) are traced statically and never executed.
 - **Script.** `tool/tests/check_controlflow.py` -> `results/icpc/controlflow/`.
+- **Findings (2026-10-28).** All 33 slices of the 10 programs are sound at all six inputs (`check.csv`). Negative
+  controls (`check_controlflow_negative.py`, `negative.json`): removing the kickback CNOT from qubit 1's slice in
+  `cf02` gives fidelity 0.67, and the slices of the archived interpreter are wrong on 7 of the 10 programs (six
+  sliced programs whose while_loop no longer terminates, because the slice dropped the measurement that ends it, and
+  one, `cf04`, whose body was taken once). Real programs (`real.csv`): of the 7 that use in-circuit control flow
+  (the eighth match, `main_59bca5.py`, mentions switch only in comments), 5 are traced with their conditioned
+  operations; `standard_072` enters if_test through contextlib.ExitStack and `standard_150` receives its circuit as
+  a parameter. The alias of a `with` statement is a sibling `<alias>` element in srcML; the first version read it
+  from the expression and missed it, which the switch program exposed before any recorded run.

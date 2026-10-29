@@ -44,6 +44,14 @@ class _Unknown:
 UNK = _Unknown()
 
 
+@dataclass(frozen=True)
+class _Branch:
+    """The else branch of an if_test, or the case function of a switch: blocks under it are conditioned on bits."""
+    circ: "Circuit"
+    bits: FrozenSet[int]
+    lines: FrozenSet[int]
+
+
 @dataclass
 class Reg:
     kind: str           # "q" or "c"
@@ -166,6 +174,10 @@ class Env:
 
     def set(self, k, v, lines):
         self.vars[k] = (v, frozenset(lines))
+
+    def get_value(self, k):
+        got = self.get(k)
+        return got[0] if got is not None else None
 
 
 @dataclass
@@ -636,30 +648,86 @@ class Interpreter:
         self.defined.append(f)
 
     def do_with(self, st, env):
+        """with blocks. Qiskit's in-circuit control flow runs on the device and reads measured bits (Deviation I-26):
+        an if_test body and its else branch, a switch case, and a while_loop or for_loop body are conditioned on the
+        bits of their condition; a while_loop, and a for_loop over an unknown index set, is repeated until no new
+        dependence appears, as a loop of unknown length."""
         ln = X.line(st)
         expr = st.find(X.S + "expr")
         src = X.text(expr).strip() if expr is not None else ""
         blk = X.child(st, "block")
+        head, _, alias = src.partition(" as ")
+        al = st.find(X.S + "alias")  # srcML marks "as NAME" up as a sibling of the expression
+        if al is not None:
+            alias = X.text(al).strip()
+            alias = alias[2:].strip() if alias.startswith("as") else alias
+        alias = alias.strip()
         try:
-            node = ast.parse(src.split(" as ")[0], mode="eval").body
+            node = ast.parse(head, mode="eval").body
         except SyntaxError:
             node = None
-        if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr == "if_test":
+        if isinstance(node, ast.Name) and isinstance(env.get_value(node.id), _Branch):
+            br = env.get_value(node.id)  # the else branch of an if_test
+            return self._conditioned(br.circ, br.bits, frozenset(br.lines) | {ln}, blk, env)
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and isinstance(env.get_value(node.func.id), _Branch):
+            br = env.get_value(node.func.id)  # a case of a switch
+            return self._conditioned(br.circ, br.bits, frozenset(br.lines) | {ln}, blk, env)
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and \
+                node.func.attr in ("if_test", "while_loop", "for_loop", "switch"):
+            kind = node.func.attr
             circ, _ = self.ev(node.func.value, ln, env)
-            cond, cl = self.ev(node.args[0], ln, env) if node.args else (UNK, E)
+            arg, cl = self.ev(node.args[0], ln, env) if node.args else (UNK, E)
             if isinstance(circ, Circuit):
-                bits = self.cbits_of(circ, cond[0] if isinstance(cond, tuple) and cond else cond, ln)
-                self.ctx.append(("if_test", ln, frozenset(cl) | {ln}, (circ, bits)))
+                lines = frozenset(cl) | {ln}
+                if kind == "for_loop":
+                    return self._circuit_for(circ, arg, lines, alias, blk, env, ln)
+                target = arg[0] if kind != "switch" and isinstance(arg, tuple) and arg else arg
+                bits = self.cbits_of(circ, target, ln)
+                if alias:
+                    env.set(alias, _Branch(circ, bits, lines), set(lines))
+                if kind == "switch":
+                    return self._block_plain(blk, env, ln)  # its cases carry the condition
+                if kind == "if_test":
+                    return self._conditioned(circ, bits, lines, blk, env)
+                self.ctx.append(("if_test", ln, lines, (circ, bits)))
                 try:
-                    self.block(blk, env)
+                    self.unknown_loop(ln, "while_loop", lines, lambda i: self.block(blk, env), env)
                 finally:
                     self.ctx.pop()
                 return
+        self._block_plain(blk, env, ln)
+
+    def _block_plain(self, blk, env, ln):
         self.ctx.append(("with", ln, E, None))
         try:
             self.block(blk, env)
         finally:
             self.ctx.pop()
+
+    def _conditioned(self, circ, bits, lines, blk, env):
+        self.ctx.append(("if_test", min(lines), frozenset(lines), (circ, bits)))
+        try:
+            self.block(blk, env)
+        finally:
+            self.ctx.pop()
+
+    def _circuit_for(self, circ, indexset, lines, alias, blk, env, ln):
+        """A for_loop over a known index set is unrolled; its loop parameter is a symbolic angle, unknown here."""
+        items = self.iterate(indexset) if isinstance(indexset, (list, tuple, range)) and len(indexset) <= MAX_ITER else None
+
+        def body(i):
+            if alias:
+                env.set(alias, UNK, set(lines))
+            self.block(blk, env)
+        if items is None:
+            self.unknown_loop(ln, "for_loop", lines, body, env)
+            return
+        for i, _ in enumerate(items):
+            self.ctx.append(("for", ln, frozenset(lines), i))
+            try:
+                body(i)
+            finally:
+                self.ctx.pop()
 
     # ---------------------------------------------------------------- expressions
     def eval_text(self, src, ln, env):
