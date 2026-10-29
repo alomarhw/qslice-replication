@@ -1,0 +1,67 @@
+{
+ "s1": {
+  "rerun_files": [
+   "control_flow_circuits_e78e53.py",
+   "main_59bca5.py",
+   "qiskit_20lab_203_20_20quantum_20teleportation_202301_v1_a02b5c.py"
+  ],
+  "old": {
+   "rows": 7568,
+   "sliced": 4182,
+   "median_ms": 131.0,
+   "median_slice_share": 0.2353,
+   "may_files": 1697
+  },
+  "new": {
+   "rows": 7568,
+   "sliced": 4182,
+   "median_ms": 131.0,
+   "median_slice_share": 0.2353,
+   "may_files": 1697
+  }
+ },
+ "qhe_standard": {
+  "old": {
+   "rows": 151,
+   "sliced": 78,
+   "median_ms": 114.6,
+   "median_slice_share": 0.375,
+   "may_files": 18
+  },
+  "new": {
+   "rows": 151,
+   "sliced": 78,
+   "median_ms": 113.8,
+   "median_slice_share": 0.375,
+   "may_files": 18
+  }
+ },
+ "qhe_hard": {
+  "old": {
+   "rows": 151,
+   "sliced": 78,
+   "median_ms": 114.9,
+   "median_slice_share": 0.4444,
+   "may_files": 18
+  },
+  "new": {
+   "rows": 151,
+   "sliced": 78,
+   "median_ms": 113.8,
+   "median_slice_share": 0.4444,
+   "may_files": 18
+  }
+ },
+ "qhe_rerun_files": [
+  "standard_051.py",
+  "standard_072.py",
+  "standard_121.py",
+  "standard_128.py",
+  "standard_150.py",
+  "hard_051.py",
+  "hard_072.py",
+  "hard_121.py",
+  "hard_128.py",
+  "hard_150.py"
+ ]
+}

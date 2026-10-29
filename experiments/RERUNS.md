@@ -10,3 +10,15 @@ logged here with its cause, script, commit, and the old and new value of every n
   read and write it through `tool.TOOL_NAME`.
 - **Numbers.** None changed: `make_numbers.py` regenerates `paper/numbers.tex` byte for byte equal to the archived
   one.
+
+## 2026-10-28 rerun after Deviation I-26 (in-circuit control flow)
+- **Cause.** The interpreter now slices `if_test` else branches, `while_loop`, `for_loop` and `switch` (I-26). Only
+  files that call these can trace differently.
+- **Script.** `experiments/icpc/rerun_controlflow_files.py` (scale_run.s1_one unchanged), on the 3 LintQ-corpus files
+  and the 5 Qiskit HumanEval tasks (10 files, both sets) that call them; every other row is copied unchanged.
+- **Where.** `results/icpc/scale__rerun-20261028/s1_lintq.csv`, `results/icpc/qhe__rerun-20261028/tasks.csv`,
+  comparison in `results/icpc/scale__rerun-20261028/compare.json`. The old results are unchanged in place.
+- **Numbers.** None of the paper's numbers changes. S1: 4,182 of 7,568 sliced, median 131 ms, median slice share
+  23.5%, before and after. Qiskit HumanEval: 78 of 151 traced and the slice shares are unchanged; the median time
+  moved from 114.6 ms to 113.8 ms (standard set) because the 10 files were timed again, which is timing noise, and
+  the paper keeps the archived value.
