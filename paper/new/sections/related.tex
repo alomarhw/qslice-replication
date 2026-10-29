@@ -99,10 +99,7 @@ measured, or a Pauli observable on them, the pass walks the circuit backward fro
 light cone and also removes every gate that commutes with the observable, since such a gate cannot change its
 expectation value. It returns a smaller circuit for estimating that observable, and Heim et al.\ likewise argue
 that quantum dependences should account for commutation~\cite{heim2020quantum}. The pass works on a circuit,
-not on source code, and decides commutation for the circuit's actual angles. In our study it applies to
-\numLcqApplicable{} of the \numNPairs{} circuit--qubit pairs, because it rejects circuits with mid-circuit
-measurements (\numLcqNaMeasurements{} pairs) and on \numLcqNaReorder{} it returns a circuit whose operations
-cannot be matched back to the original in order. Compilers also move a single-qubit gate within the idle time of its qubit
+not on source code, and decides commutation for the circuit's actual angles. It rejects circuits with mid-circuit measurements. Compilers also move a single-qubit gate within the idle time of its qubit
 without changing the computation~\cite{smith2022timestitch}, and call the time windows of a circuit its
 slices, a sense different from ours.
 
