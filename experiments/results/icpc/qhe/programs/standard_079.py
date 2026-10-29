@@ -1,0 +1,5 @@
+from qiskit import QuantumCircuit
+def count_instructions(circuit: QuantumCircuit) -> int:
+    """ Return the total number of instructions in the circuit.
+    """
+    return len(circuit.data)

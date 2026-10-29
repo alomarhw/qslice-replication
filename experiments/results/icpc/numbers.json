@@ -3335,5 +3335,45 @@
   "value": 0,
   "tex": "0",
   "source": "results/icpc/nesting/summary.json"
+ },
+ "QheTasks": {
+  "value": 151,
+  "tex": "151",
+  "source": "results/icpc/qhe/summary.json"
+ },
+ "QheTraced": {
+  "value": 78,
+  "tex": "78",
+  "source": "results/icpc/qhe/summary.json"
+ },
+ "QheNoConstruction": {
+  "value": 69,
+  "tex": "69",
+  "source": "results/icpc/qhe/summary.json"
+ },
+ "QheBuilds": {
+  "value": 82,
+  "tex": "82",
+  "source": "results/icpc/qhe/summary.json"
+ },
+ "QheTracedOfBuildsPct": {
+  "value": 0.9512195121951219,
+  "tex": "95\\%",
+  "source": "results/icpc/qhe/summary.json"
+ },
+ "QheMedianMs": {
+  "value": 114.6,
+  "tex": "115",
+  "source": "results/icpc/qhe/summary.json"
+ },
+ "QheMayFiles": {
+  "value": 18,
+  "tex": "18",
+  "source": "results/icpc/qhe/summary.json"
+ },
+ "QheSliceSharePct": {
+  "value": 0.4444,
+  "tex": "44\\%",
+  "source": "results/icpc/qhe/summary.json"
  }
 }

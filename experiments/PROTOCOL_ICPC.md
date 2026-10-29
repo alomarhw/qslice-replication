@@ -1330,3 +1330,14 @@ use, are removed.
   (`coverage_reasons.reason`, unchanged), and the interpreter's notes are counted by kind. Reported per set and
   per the dataset's task category and difficulty.
 - **Script.** `icpc/qhe_run.py` -> `results/icpc/qhe/`.
+- **Correction (2026-10-28, before any output; the first run was stopped and wrote no result).** The dataset at
+  this commit has 151 tasks in each set, not 101, and no category field, so results are reported per set and per
+  difficulty (basic 79, intermediate 67, difficult 5 in each set). In the hard set the prompt is an English
+  description and the canonical solution is the whole program, so a hard-set file is the canonical solution alone;
+  a standard-set file stays the prompt followed by the canonical solution. Each file runs under the hard per-file
+  limit of S1 (`tool/corpus/hardlimit.run_all`, 120 s), because the first run hung on one file.
+- **Findings of the run (2026-10-28).** The hard set's canonical solutions are the standard set's 151 programs,
+  whole, so the hard set adds no program and serves as a consistency check; its counts equal the standard set's.
+  Slice shares are reported on the hard-set files, which hold the program without the prompt's docstring. Of the
+  four standard tasks that construct a circuit and yield none, one builds an empty circuit and three use
+  `QuantumCircuit.prepare_state`, which the interpreter does not model.

@@ -1,0 +1,6 @@
+from qiskit.visualization import plot_error_map
+from qiskit_ibm_runtime.fake_provider import FakeBelemV2
+
+def backend_error_map():
+    backend = FakeBelemV2()
+    return plot_error_map(backend)
