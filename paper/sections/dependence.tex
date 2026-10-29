@@ -224,7 +224,9 @@ the union of those for $W_1$ and $W_2$.
 Entanglement does not decide dependence, by Proposition~\ref{prop:ent}, and the other proposed sources
 add no edges. A CNOT that copies a basis state, the case no-cloning concerns, is a two-qubit gate whose
 edges data dependence already has. Timing decides when an operation runs on hardware, not what a state
-depends on. Superposition changes amplitudes, not which qubits an operation
+depends on. Compilers move a single-qubit gate within the idle window of its qubit to reduce noise, and the
+ideal computation stays the same~\cite{smith2022timestitch}, since the gate passes no other operation on that
+qubit. Such work also calls the time windows of a circuit its slices, a different sense from ours. Superposition changes amplitudes, not which qubits an operation
 acts on~\cite{nielsen2010quantum}, so it cannot enlarge a dependence graph. Only state-based pruning
 uses amplitudes, at a cost exponential in the circuit's width.
 
