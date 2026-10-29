@@ -1,7 +1,7 @@
-"""QLine against LintQ's own data (Deviation I-22, C1 and C3). LintQ is not run; its files are read as data.
+"""srcSlice-Q against LintQ's own data (Deviation I-22, C1 and C3). LintQ is not run; its files are read as data.
 
 C1  For each of the 216 warnings that LintQ's authors confirmed as true positives on LintQ's corpus
-    (data/lintq_artifact/Inspection_LintQ_on_LintQ_dataset.csv), QLine traces the file statically and reports
+    (data/lintq_artifact/Inspection_LintQ_on_LintQ_dataset.csv), srcSlice-Q traces the file statically and reports
       traced     the file yields a circuit with an operation or a circuit construction on the warned line;
       exposed    for the five rules about qubits, the profile predicate fixed in I-22 holds at the warned line;
       read       the lines of the backward slices of the qubits acted on at the warned line, against the file's

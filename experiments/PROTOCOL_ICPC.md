@@ -1223,7 +1223,7 @@ use, are removed.
   so.
 - **Outcome (recorded after the rerun).** srcSlice's lines contain the interpreter's for 90% of the 1,610 qubits
   and for 97% over the dev programs and Bugs4Q (273 of 276 on Bugs4Q), recall 0.92 and precision 0.52. Above the
-  threshold, so QLine (the tool's name, author decision) reports srcSlice's classical lines
+  threshold, so srcSlice-Q (the tool's name, author decision) reports srcSlice's classical lines
   by default (`tool/cli.py --classical srcslice`), and the interpreter's lines remain an option. The remaining 142
   missed lines lie mostly in functions that build and return a circuit or a value, and in containers filled by
   method calls. The I-20 run is kept in `results/icpc/srcslice_i20/`.
@@ -1233,7 +1233,7 @@ use, are removed.
   comparison with LintQ and QChecker on their own data and examples, and an explicit comprehension account. No RQ,
   hypothesis, threshold or corpus of RQ1–RQ4 changes. Scalability is reported under RQ4 as descriptive; the
   comparisons and comprehension measures go in Sections IV and VII as exploratory.
-- **OpenQASM 2 front end (`tool/qasm.py`).** A line-mapped reader of OpenQASM 2 that builds QLine's operation
+- **OpenQASM 2 front end (`tool/qasm.py`).** A line-mapped reader of OpenQASM 2 that builds srcSlice-Q's operation
   trace; srcML 1.1 has no OpenQASM language, and Behler et al.'s markup parser is unreleased. Acceptance test (fixed
   now): on every corpus-A circuit, the trace equals the circuit the study loads, and every qubit's QDG slice equals
   the study's circuit-level slice.
@@ -1248,7 +1248,7 @@ use, are removed.
   are quoted with their hardware, not rerun. A per-input wall-clock limit of 600 s.
 - **LintQ/QChecker comparison (`icpc/lintq_compare.py`).** Data only, neither tool is run. LintQ's public
   manual-inspection CSVs and SARIF (github.com/sola-st/LintQ) are downloaded as data. C1: for each LintQ true
-  positive on its own corpus that QLine traces, whether the warned line is in the warned qubit's profile, whether
+  positive on its own corpus that srcSlice-Q traces, whether the warned line is in the warned qubit's profile, whether
   a profile predicate exposes the pattern, and the lines a developer reads. Predicates fixed now: OpAfterMeas (a
   non-measure operation on q after a measurement of q), DoubleMeas (two measurements of q with no operation on q
   between), OversizedCircuit (a qubit no operation acts on), CondWoMeas (a condition on a bit no measurement writes),
@@ -1271,7 +1271,7 @@ use, are removed.
   untraced. A circuit built on the warned line now counts with or without operations. No predicate changed.
 - **Run note (2026-10-28, before S2 started).** S2's baselines run by file size in batches of four, and a baseline is
   not run on circuits larger than a batch in which every circuit hit the 600 s limit; those are recorded as skipped.
-  QLine runs on every circuit. This bounds the run time; the limit is unchanged.
+  srcSlice-Q runs on every circuit. This bounds the run time; the limit is unchanged.
 - **Findings during the runs (2026-10-28).** (1) The interpreter cut a known `for` loop at 10,000 iterations without a
   note, so two LintQ-corpus files (`circuituse_0c5a5d.py`, `qaoa_def_82b4c7.py`) and the largest S3 sizes were traced
   incompletely. A longer loop is now read as a loop of unknown length (the sound over-approximation of I-15) with a
@@ -1288,8 +1288,8 @@ use, are removed.
 - **Held-out srcSlice comparison.** `icpc/srcslice_classical.py` unchanged, on a held-out sample of 500 LintQ-corpus
   files (seed 20261028) that are neither in the I-17 sample nor among the files whose misses were inspected for
   I-21. Reported against the same 95% threshold, as a check of the I-21 fixes.
-- **Like-for-like timing.** On the S2 circuits, QLine's one-qubit slice against Qiskit's one-qubit DAG
-  ancestors, each without reading; QLine's all-qubit slice against n one-qubit Qiskit slices.
+- **Like-for-like timing.** On the S2 circuits, srcSlice-Q's one-qubit slice against Qiskit's one-qubit DAG
+  ancestors, each without reading; srcSlice-Q's all-qubit slice against n one-qubit Qiskit slices.
 - **Coverage.** The S1 files that yield no circuit, classified by a fixed rule on the file text: no circuit
   construction (`QuantumCircuit(` absent), a circuit built only from a file or library call (`from_qasm`, `qasm2.load`,
   `QuantumCircuit.from`, `transpile(` without gate calls), or other.
@@ -1315,7 +1315,7 @@ use, are removed.
 - **Script.** `icpc/nesting.py` -> `results/icpc/nesting/`; `icpc/gate_signal.py` -> `results/icpc/gate_signal/`.
 
 ### Deviation I-25 (2026-10-28, AFTER all results; author decision; exploratory; recorded before the data is downloaded)
-- **Why.** LintQ's corpus predates Qiskit 1.0. Coverage of QLine on current Qiskit is measured on Qiskit HumanEval
+- **Why.** LintQ's corpus predates Qiskit 1.0. Coverage of srcSlice-Q on current Qiskit is measured on Qiskit HumanEval
   (Vishwakarma et al. 2024), 101 tasks written and peer-reviewed by Qiskit experts for Qiskit >= 1.0. No RQ,
   hypothesis or threshold changes.
 - **Data.** github.com/qiskit-community/qiskit-human-eval at commit 555f329651209e6eb108787cff30626a03a4cadf

@@ -35,3 +35,4 @@ phase1_logs/
 *.blg
 *.bbl
 *.synctex.gz
+build/

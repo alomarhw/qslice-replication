@@ -1,4 +1,4 @@
-"""Deviation I-25: QLine on Qiskit HumanEval, a corpus of current (Qiskit >= 1.0) programs. Read, never executed.
+"""Deviation I-25: srcSlice-Q on Qiskit HumanEval, a corpus of current (Qiskit >= 1.0) programs. Read, never executed.
 
 Per task, the file is the prompt followed by the canonical solution in the standard set, and the canonical solution
 alone in the hard set, whose prompt is an English description; the test is not used. The measures are

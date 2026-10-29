@@ -1,6 +1,6 @@
-# srcSlice as QLine uses it
+# srcSlice as srcSlice-Q uses it
 
-QLine takes the classical lines of a slice from srcSlice (`tool/srcslice.py`, Deviations I-20 and I-21 of
+srcSlice-Q takes the classical lines of a slice from srcSlice (`tool/srcslice.py`, Deviations I-20 and I-21 of
 `experiments/PROTOCOL_ICPC.md`). It uses upstream srcSlice at commit `ce86ef8` with the patch in this
 folder, `srcslice-python.diff`.
 
