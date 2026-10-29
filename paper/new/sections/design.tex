@@ -30,10 +30,11 @@ circuits, where an exact simulation gives the ground truth, and \tool{} is evalu
 never runs. Corpus~A collects benchmark circuits of at most \numSizeAMaxQubits{} qubits from MQT
 Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench} and VeriQBench~\cite{chen2022veriqbench}. Every
 qubit of every circuit is a criterion, which gives \numNPairs{} circuit--qubit pairs, \numNDynamicPairs{} of them in
-dynamic circuits with mid-circuit measurement, reset or conditioned gates. The generated circuits have a known
-structure, and corpus~L has wider circuits on which only some rules finish. The programs come from Bugs4Q, the
-Qiskit textbook~\cite{qiskittextbook}, the corpus that LintQ's authors collected from GitHub, QASMBench's medium and
-large sets, four parametric programs of our own and Qiskit HumanEval.
+dynamic circuits with mid-circuit measurement, reset or conditioned gates. The generated circuits come in families of known
+structure that grow in depth and in width, corpus~L has wider circuits on which only some rules finish, and
+QASMBench's medium and large sets have circuits far larger than corpus~A. The programs come from Bugs4Q, the Qiskit
+textbook~\cite{qiskittextbook}, the corpus that LintQ's authors collected from GitHub and Qiskit HumanEval, and two
+sets are our own, four parametric programs and ten programs with circuit loops.
 
 \begin{table*}[t]
   \centering
@@ -52,7 +53,9 @@ large sets, four parametric programs of our own and Qiskit HumanEval.
     Corpus~A & MQT Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench}, VeriQBench~\cite{chen2022veriqbench} &
       \numSubjACount{} & \numSubjATraced{} & \numSubjAMinQubits{}--\numSubjAMaxQubits{} & \numSubjAMedianOps{} / \numSubjAMaxOps{} & -- & RQ1 to RQ4 \\ \sep
     Generated circuits & ours & \numSubjGenCount{} & \numSubjGenTraced{} & \numSubjGenMinQubits{}--\numSubjGenMaxQubits{} &
-      \numSubjGenMedianOps{} / \numSubjGenMaxOps{} & -- & RQ1 \\ \sep
+      \numSubjGenMedianOps{} / \numSubjGenMaxOps{} & -- & RQ1, RQ4 \\ \sep
+    Width sweeps & ours & \numSubjSweepCount{} & \numSubjSweepTraced{} & \numSubjSweepMinQubits{}--\numSubjSweepMaxQubits{} &
+      \numSubjSweepMedianOps{} / \numSubjSweepMaxOps{} & -- & RQ4 \\ \sep
     Corpus~L & MQT Bench, QASMBench, VeriQBench & \numSubjLCount{} & \numSubjLTraced{} & \numSubjLMinQubits{}--\numSubjLMaxQubits{} &
       \numSubjLMedianOps{} / \numSubjLMaxOps{} & -- & RQ1, RQ4 \\ \sep
     QASMBench medium and large & QASMBench~\cite{li2023qasmbench} & \numSubjQbCount{} & \numSubjQbTraced{} &
@@ -79,8 +82,9 @@ large sets, four parametric programs of our own and Qiskit HumanEval.
   iteration limit. Qubits and operations describe the circuits, for programs the traced ones, as smallest to largest
   and as median / largest. Registers of unknown size are left out of the qubit range, and \numToolMaxOps{} operations is
   the interpreter's trace limit. Code lines exclude blank and comment lines and are given as medians. Faults are seeded
-  into corpus~A, \numRqThreeUnits{} units from \numMutantsKilled{} mutants, and \numBugsFourQIncluded{} Bugs4Q bugs port to
-  circuits, giving \numLinesUnits{} units, where a unit is a fault and a qubit whose measured distribution it changes.
+  into corpus~A, giving \numRqThreeUnits{} units from \numMutantsKilled{} mutants. Of Bugs4Q's bugs, \numBugsFourQIncluded{}
+  port to circuits and \numBugsFourQKilled{} of them give \numLinesUnits{} units. A unit is a fault and a qubit whose
+  measured distribution it changes.
   Programs by others are read and never run, and ours and our ports of the Bugs4Q bugs are also run.
   \end{minipage}
 \end{table*}
@@ -128,10 +132,11 @@ number ranked, so a smaller slice can raise it.
 The two tasks for language models ask what a slice offers a model that reads a circuit. In the first, a model lists
 the operations that can affect a qubit, for \numTOneItems{} items. In the second, it names the likely faulty
 operation of \numTTwoItems{} units, given the whole circuit or a slice. The models are Claude Sonnet~5.5 and
-Haiku~5.5 and the open Qwen2.5-Coder-32B.
+Haiku~5.5 and the open Qwen2.5-Coder models with 32 and 1.5 billion parameters.
 
 \subsection{Cost, scalability and comparison with LintQ}
-RQ4 times every rule on corpus~A and corpus~L with a limit of \numCostWallLimit{}~s per circuit. \tool{} is timed in
+RQ4 times the rules on the generated family that grows in depth at a width of eight qubits, on width sweeps of two
+generated families from \numSubjSweepMinQubits{} to \numSubjSweepMaxQubits{} qubits, and on corpus~L, each circuit in a fresh process with limits of \numCostWallLimit{}~s and 4~GiB. \tool{} is timed in
 three settings, all exploratory. On LintQ's corpus it slices every qubit, up to 64, of each program that builds a
 circuit, with a limit of 120~s per program. On QASMBench's medium and large circuits, read through the OpenQASM front
 end, it slices every qubit in one pass, against three baselines that slice one qubit, Qiskit's DAG ancestors,

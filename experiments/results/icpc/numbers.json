@@ -3501,6 +3501,36 @@
   "tex": "2{,}119",
   "source": "results/icpc/corpus_sizes.json"
  },
+ "SubjSweepCount": {
+  "value": 22,
+  "tex": "22",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjSweepTraced": {
+  "value": 22,
+  "tex": "22",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjSweepMinQubits": {
+  "value": 4,
+  "tex": "4",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjSweepMaxQubits": {
+  "value": 14,
+  "tex": "14",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjSweepMedianOps": {
+  "value": 26.5,
+  "tex": "26",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjSweepMaxOps": {
+  "value": 104,
+  "tex": "104",
+  "source": "results/icpc/corpus_sizes.json"
+ },
  "SubjLCount": {
   "value": 55,
   "tex": "55",

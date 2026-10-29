@@ -48,6 +48,10 @@ def main():
     out["corpus_a"]["by_corpus"] = {c: sum(1 for x, _, _ in circ.values() if x == c) for c in ("MQT Bench", "QASMBench", "VeriQBench")}
     fam = {(r["family"], r["circuit"]): (int(r["n_qubits"]), int(r["n_ops"])) for r in rows(RES / "families" / "rows.csv")}
     out["generated"] = summary(len(fam), [q for q, _ in fam.values()], [o for _, o in fam.values()])
+    # the width sweeps of RQ4; its depth sweep is the F-depth family of the generated circuits, counted there
+    sw = [r for r in rows(RES / "cost" / "circuits.csv") if r["kind"].startswith("width")]
+    out["sweeps"] = summary(len(sw), [int(r["n_qubits"]) for r in sw], [int(r["n_ops"]) for r in sw])
+    out["sweeps"]["by_kind"] = {k: sum(r["kind"] == k for r in sw) for k in sorted({r["kind"] for r in sw})}
     cl = rows(RES / "corpus_l" / "circuits.csv")
     out["corpus_l"] = summary(len(cl), [int(r["n_qubits"]) for r in cl], [int(r["n_ops"]) for r in cl])
     out["corpus_l"]["by_corpus"] = {c: sum(r["corpus"] == c for r in cl) for c in ("MQT Bench", "QASMBench", "VeriQBench")}

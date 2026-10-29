@@ -980,7 +980,7 @@ def main() -> int:
     if (ICPC / "corpus_sizes.json").exists():
         cz = json.load(open(ICPC / "corpus_sizes.json"))
         src = "results/icpc/corpus_sizes.json"
-        names = {"corpus_a": "A", "generated": "Gen", "corpus_l": "L", "qasmbench": "Qb", "bugs4q": "Bugs",
+        names = {"corpus_a": "A", "generated": "Gen", "sweeps": "Sweep", "corpus_l": "L", "qasmbench": "Qb", "bugs4q": "Bugs",
                  "textbook": "Text", "lintq": "Lintq", "qhe": "Qhe", "parametric": "Param", "controlflow": "Cf"}
         for k, nm in names.items():
             s = cz[k]
