@@ -11,6 +11,9 @@ git archive HEAD | tar -x -C "$OUT/package"
 find "$OUT/package" -type f \( -name '*.py' -o -name '*.md' -o -name '*.tex' -o -name '*.csv' -o -name '*.json' \
   -o -name '*.sh' -o -name '*.txt' -o -name '*.tsv' -o -name '*.diff' \) -print0 | xargs -0 sed -i '' 's/srcSlice-Q/QLine/g'
 # MANIFEST.sha256.tsv lists the renamed files; it is regenerated for the package
+# figures that show the tool's name are regenerated from the renamed scripts
+(cd "$OUT/package" && python3 paper/figures/src/make_fig_overview.py >/dev/null && cd paper/figures/src \
+  && pdflatex -interaction=batchmode fig_overview.tex >/dev/null 2>&1 && cp fig_overview.pdf ../fig_overview.pdf) || true
 (cd "$OUT/package/paper/new" && pdflatex -interaction=nonstopmode '\def\anonbuild{}\input{main}' >/dev/null 2>&1 \
   && bibtex main >/dev/null 2>&1; pdflatex -interaction=nonstopmode '\def\anonbuild{}\input{main}' >/dev/null 2>&1; \
   pdflatex -interaction=nonstopmode '\def\anonbuild{}\input{main}' >/dev/null 2>&1) || true
