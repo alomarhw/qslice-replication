@@ -6,17 +6,31 @@ dependence, shows that three kinds of dependence are all a slice needs, and plac
 it. The definitions do not depend on any slicer, and Section~\ref{sec:results} measures each rule against them.
 
 \subsection{Circuits, criteria and dependence}
-A quantum program builds a circuit $P = o_0 \dots o_{L-1}$, a sequence of operations over qubits $Q = \{0,
-\dots, n-1\}$ and classical bits $C$. Each operation $o$ acts on a set of \emph{locations} $\mathit{loc}(o)
-\subseteq Q \cup C$. A gate acts on its qubits, a measurement on its qubit and the bit it writes, a reset on its
-qubit, and a classically conditioned gate on its qubits and the bits its condition reads. The host program's
-loops and branches decide which operations the circuit contains, and Section~\ref{sec:loops} treats loops that
-run inside the circuit. For an input state $\rho$ of the qubits, with every bit initially $0$,
-$\llbracket P \rrbracket(\rho)$ is the final joint state of qubits and bits, averaged over measurement outcomes.
-For $W \subseteq Q$ and $\overline{W} = (Q \setminus W) \cup C$, the reduced state $\rho_W =
-\operatorname{Tr}_{\overline{W}}(\rho)$ determines every measurement statistic of $W$, in every basis. A slice is
-a set of positions $S$, and it is judged by running the restriction $P|_S$, which keeps the operations at the
-positions in $S$ in their original order.
+A Qiskit program does not act on qubits directly. It builds a \emph{circuit}, which a simulator or a quantum
+computer then runs. The circuit $P = o_0 \dots o_{L-1}$ is the sequence of operations the program appends, in the
+order it appends them, and position $k$ holds the operation $o_k$. The circuit has $n$ qubits, numbered
+$Q = \{0, \dots, n-1\}$, which form its quantum memory, and a set $C$ of classical bits, which store the outcomes of
+measurements.
+
+Each operation touches some qubits and bits, which we call its \emph{locations} $\mathit{loc}(o) \subseteq Q \cup
+C$. A gate touches the qubits it is applied to, so \texttt{h(0)} has the location $q_0$ and \texttt{cx(0, 1)} the
+locations $q_0$ and $q_1$. A measurement touches the measured qubit and the bit that receives its outcome, so
+\texttt{measure(2, 0)} has the locations $q_2$ and $c_0$. A reset, which returns a qubit to $\ket{0}$, touches that
+qubit. A conditioned gate is applied only when a measured bit has a given value, as in \texttt{x(0)} inside
+\texttt{if\_test((c[0], 1))}, and it touches its qubits and the bits its condition reads, here $q_0$ and $c_0$.
+
+The program's own loops and branches run while the circuit is built and decide which operations it contains and
+how often. Loops that run inside the circuit, on the device, are treated in Section~\ref{sec:loops}.
+
+The state of the qubits is described by a density matrix $\rho$, which also covers the mixtures that arise when a
+measurement outcome is not known in advance. Running $P$ on the input $\rho$, with every bit initially $0$, gives
+$\llbracket P \rrbracket(\rho)$, the final joint state of qubits and bits, averaged over the outcomes of the
+measurements. A developer asks about some of the qubits, a set $W \subseteq Q$. Their \emph{reduced state}
+$\rho_W = \operatorname{Tr}_{\overline{W}}(\rho)$ is what remains of $\rho$ when everything else,
+$\overline{W} = (Q \setminus W) \cup C$, is traced out, that is, averaged away. It determines every statistic of
+measuring $W$ in any basis, so two runs that give $W$ the same reduced state cannot be told apart by looking at
+$W$. A slice is a set $S$ of positions in $P$, and it is judged by running the restriction $P|_S$, the circuit that
+keeps only the operations at the positions in $S$, in their original order.
 
 \begin{definition}[Slicing criterion]\label{def:criterion}
 A slicing criterion is a nonempty set $W \subseteq Q$ of qubits, whose state is taken at the end of the circuit,
