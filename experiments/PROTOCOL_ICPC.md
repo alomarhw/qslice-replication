@@ -1341,3 +1341,22 @@ use, are removed.
   Slice shares are reported on the hard-set files, which hold the program without the prompt's docstring. Of the
   four standard tasks that construct a circuit and yield none, one builds an empty circuit and three use
   `QuantumCircuit.prepare_state`, which the interpreter does not model.
+
+### Deviation I-26 (2026-10-28, AFTER all results; author decision; exploratory; recorded before any code or output)
+- **Why.** Qiskit's in-circuit control flow (`while_loop`, `for_loop`, `switch`, and the `else` branch of `if_test`)
+  runs on the device and is conditioned on measured bits. The static interpreter treated these blocks as plain
+  `with` blocks, interpreting the body once with no condition bits, so loop-carried dependences and the classical
+  control dependence on the measurement were lost. No RQ, hypothesis, threshold or study circuit changes: the study
+  circuits (OpenQASM 2) contain none of these constructs, so every RQ1-RQ4 number stays as it is.
+- **Semantics.** A circuit loop is sliced by repeating its body until the set of needed qubits and bits stops
+  growing (the treatment of Python loops of unknown length in I-15), with every operation in the body conditioned
+  on the bits its condition reads. `switch` cases and the `else` branch are conditioned on the target's bits. A
+  `for_loop` over a known index set is unrolled; otherwise it is read as a loop of unknown length. The soundness
+  argument extends Theorem 1 to circuits with these loops on paper; the Isabelle model is not extended.
+- **Validation.** A suite of our own programs with these constructs (safe to run, in `tool/tests/controlflow/`). For
+  each program and each qubit, the circuit with every operation outside the slice deleted must give the qubit the
+  same reduced density matrix as the whole circuit, under Qiskit Aer's density-matrix simulation, at |0...0> and at
+  seeded random product inputs. Pass criterion: every program, every qubit, every input (fidelity >= 1 - 1e-6). The
+  real programs that use these constructs (LintQ corpus: 1 while_loop, 1 for_loop, 1 switch, 2 if_test files;
+  Qiskit HumanEval: 1 for_loop, 5 if_test) are traced statically and never executed.
+- **Script.** `tool/tests/check_controlflow.py` -> `results/icpc/controlflow/`.
