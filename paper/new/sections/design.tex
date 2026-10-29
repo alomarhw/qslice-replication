@@ -1,0 +1,137 @@
+\section{Study Design}\label{sec:design}
+
+The study measures every rule of Section~\ref{sec:core} against the definitions of that section. It asks four
+research questions, each a question a developer has of a slice, whether it can be trusted, how small it can safely
+be, whether it holds the fault, and what it costs.
+
+\begin{itemize}
+\item \textbf{RQ1} Which dependence rules give sound and dependence-complete slices?
+\item \textbf{RQ2} How much smaller than the QDG slice can a slice safely be, and under which inputs does the extra
+precision hold?
+\item \textbf{RQ3} What does each rule do to fault localization, measured by whether the slice contains the fault and
+by mutation-based fault localization?
+\item \textbf{RQ4} What does each rule cost in time, and how does \tool{} scale to large programs and circuits?
+\end{itemize}
+
+\subsection{Pre-registration}
+The protocol was committed before the runs reported here. It extends an earlier run whose results it reuses, so
+the outcomes of H1 and H2 below were known when it was written. Every later change is a dated deviation, marked when
+it was made after a result. The five confirmatory tests concern state-based pruning. Every other result, including
+the classical PDG's share of wrong slices, is exploratory or descriptive, and so is everything added after the
+first results. These additions are the classical PDG and \texttt{LightCone} baselines, the dependence set as a size
+reference and its nesting with the rules, the symbolic-angle, flow-sensitive and read-only variants, the two-qubit
+gate directions, the static slicer with its scalability, coverage and comparison with LintQ, and the loops of
+Section~\ref{sec:loops}. The protocol also pre-registered two descriptive tasks for language models, from which the most expensive model
+was dropped for cost before any scored call.
+
+\subsection{Subjects}
+Table~\ref{tab:subjects} lists the circuits and programs and the questions each serves. The rules are compared on
+circuits, where an exact simulation gives the ground truth, and \tool{} is evaluated on programs, which it reads but
+never runs. Corpus~A collects benchmark circuits of at most \numSizeAMaxQubits{} qubits from MQT
+Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench} and VeriQBench~\cite{chen2022veriqbench}. Every
+qubit of every circuit is a criterion, which gives \numNPairs{} circuit--qubit pairs, \numNDynamicPairs{} of them in
+dynamic circuits with mid-circuit measurement, reset or conditioned gates. The generated circuits have a known
+structure, and corpus~L has wider circuits on which only some rules finish. The programs come from Bugs4Q, the
+Qiskit textbook~\cite{qiskittextbook}, the corpus that LintQ's authors collected from GitHub, QASMBench's medium and
+large sets, four parametric programs of our own and Qiskit HumanEval.
+
+\begin{table*}[t]
+  \centering
+  \caption{Circuits and programs of the study}
+  \label{tab:subjects}
+  \footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}p{1.8cm}
+                  >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.4cm}@{}}
+    \toprule
+    \textbf{Subject} & \textbf{Count} & \textbf{Size} & \textbf{Used for} \\
+    \midrule
+    Corpus~A: MQT Bench, QASMBench, VeriQBench & \numCircuitsMqt{}, \numCircuitsQasm{} and \numCircuitsVeriq{} circuits &
+      \numSizeAMinQubits{} to \numSizeAMaxQubits{} qubits, up to \numSizeAMaxOps{} operations; \numNPairs{} circuit--qubit pairs & RQ1 to RQ4 \\ \sep
+    Generated circuits & \numFamCircuits{} & families with known dependence structure & RQ1 \\ \sep
+    Corpus~L & \numCorpusLCircuits{} circuits & \numCorpusLMinQubits{} to \numCorpusLMaxQubits{} qubits & RQ1, RQ4 \\ \sep
+    Seeded faults & \numRqThreeUnits{} units & from \numMutantsKilled{} mutants of \numMutOperators{} operators that change a measured distribution & RQ3 \\ \sep
+    Bugs4Q~\cite{zhao2023bugs4q} & \numBugsFourQIncluded{} bugs, \numLinesUnits{} units; \numSizeBugsFiles{} programs & circuit-level real faults; programs of median \numSizeBugsMedianLines{} code lines & RQ3; \tool{} \\ \sep
+    Qiskit textbook & \numSizeTextFiles{} programs & median \numSizeTextMedianLines{} code lines & \tool{} \\ \sep
+    LintQ's corpus and warnings~\cite{paltenghi2024lintq} & \numSizeLintqFiles{} programs, \numLqTp{} confirmed bugs & median \numSizeLintqMedianLines{} code lines, about \numSizeLintqTotalLines{} in all & RQ4, comparison with LintQ \\ \sep
+    QASMBench medium and large & \numScaleQbFiles{} circuits & up to \numScaleQbMaxOps{} operations and \numScaleQbMaxQubits{} qubits & RQ4 \\ \sep
+    Parametric programs (ours) & 4 programs, 5 sizes each & about a dozen code lines, up to \numScaleQftOps{} operations & RQ4 \\ \sep
+    Qiskit HumanEval~\cite{vishwakarma2024qhe} & \numSizeQheFiles{} programs & expert-written for Qiskit 1.0 and later, median \numSizeQheMedianLines{} code lines & coverage of \tool{} \\ \sep
+    Programs with circuit loops (ours) & \numCfPrograms{} programs, \numCfQubits{} qubits & \texttt{while\_loop}, \texttt{for\_loop}, \texttt{switch} and \texttt{if\_test} with \texttt{else} & Proposition~\ref{prop:loops} \\
+    \bottomrule
+  \end{tabularx}\\[3pt]
+  \begin{minipage}{\textwidth}\footnotesize
+  Code lines exclude blank and comment lines. A unit is a fault and a qubit whose measured distribution it changes.
+  Programs written by others are read and never run. Our own programs, and our ports of the Bugs4Q faults to
+  circuits, are also run as references.
+  \end{minipage}
+\end{table*}
+
+\subsection{Ground truth}
+An independent oracle simulates each circuit exactly, branching over measurement outcomes, and agrees with Qiskit's
+statevector simulation to within \numOracleErr{}. A slice preserves the criterion when the squared Uhlmann fidelity
+between the criterion's reduced states under the slice and under the whole circuit is at least $1 - 10^{-6}$. The
+dependences of Definition~\ref{def:dep} are measured by inserting \numInfluencePerturbations{} random unitaries after
+every operation and comparing the criterion's state at \numInfluenceInputs{} inputs, $\ket{0\dots0}$ and random
+product states. Because the inputs and perturbations are sampled, the measured dependence set can only miss true
+dependences, never add false ones. A catalog of \numCatEntries{} hand-derived cases checks the ground truth and every
+slicer before the runs.
+
+\subsection{Slicers}
+Each rule of Section~\ref{sec:rules} is implemented on circuits from its read and write sets or its pruning step.
+Commutation pruning uses Qiskit's \texttt{LightCone} pass, which applies to \numLcqApplicable{} of the \numNPairs{}
+pairs. It rejects the circuits with mid-circuit measurements, \numLcqNaMeasurements{} pairs, and on
+\numLcqNaReorder{} it returns a circuit whose operations cannot be matched back to the original in order.
+Exploratory variants make commutation pruning hold for all angles and give state-based pruning a joint criterion.
+
+\subsection{Robustness}
+A slice computed at $\ket{0\dots0}$ is rechecked, with its operations unchanged, under \numRobDraws{} random
+computational-basis inputs, \numRobDraws{} random product inputs and, for circuits with rotation angles,
+\numRobDraws{} random rebindings of every angle. A pair is robust if the slice preserves the criterion in every draw.
+
+\subsection{Faults and fault localization}
+Faults are seeded with \numMutOperators{} operators, \numMutPublished{} from Muskit~\cite{mendiluze2021muskit},
+QMutPy~\cite{fortunato2022qmutpy} and García de la Barrera et al.~\cite{garcia2022testing}, and an angle perturbation
+of our own. Of the \numMutants{} mutants, \numMutantsExcluded{} with an empty fault site are excluded, and
+\numMutantsKilled{} change the measured distribution of at least one qubit. Each such qubit and its mutant form a
+unit, and for each unit we record the slice's size and whether it contains the fault site. Of the
+\numBugsFourQTriaged{} entries of Bugs4Q, \numBugsFourQIncluded{} are circuit-level faults that port mechanically to
+the current Qiskit release, and \numBugsFourQKilled{} of them change a qubit's measured distribution. Their
+operations map to lines of the original programs, on which \tool{} computes the same line slices.
+
+Mutation-based fault localization ranks the operations of the faulty circuit by how their mutants change its
+observable behavior, with the Ochiai formula, as Ishimoto et al.\ do for quantum programs~\cite{ishimoto2025mbfl}. It
+runs on a sample of \numMbflUnits{} units, stratified by fault operator and including every Bugs4Q unit. We rank over
+the whole circuit and within each slice and report the EXAM score, the share of ranked operations examined before the
+fault, lower being better. Without fault localization, we also order each slice from its last operation backward and
+score the fault's rank the same way. A slice never makes a developer examine more operations, but EXAM divides by the
+number ranked, so a smaller slice can raise it.
+
+The two tasks for language models ask what a slice offers a model that reads a circuit. In the first, a model lists
+the operations that can affect a qubit, for \numTOneItems{} items. In the second, it names the likely faulty
+operation of \numTTwoItems{} units, given the whole circuit or a slice. The models are Claude Sonnet~5.5 and
+Haiku~5.5 and the open Qwen2.5-Coder-32B.
+
+\subsection{Cost, scalability and comparison with LintQ}
+RQ4 times every rule on corpus~A and corpus~L with a limit of \numCostWallLimit{}~s per circuit. \tool{} is timed in
+three settings, all exploratory. On LintQ's corpus it slices every qubit, up to 64, of each program that builds a
+circuit, with a limit of 120~s per program. On QASMBench's medium and large circuits, read through the OpenQASM front
+end, it slices every qubit in one pass, against three baselines that slice one qubit, Qiskit's DAG ancestors,
+Qiskit's \texttt{LightCone} pass and the construction of our QPDG reimplementation, with a limit of 600~s per circuit.
+On the parametric programs, a QFT, a GHZ preparation, a QAOA ring and a repetition code, a size constant grows the
+trace while the source stays the same.
+
+The comparison with LintQ uses LintQ's public data and never runs LintQ. For each of the \numLqQubitTp{} confirmed bugs
+of its five analyses that concern qubits and bits, \tool{} traces the program and evaluates a predicate on its qubit
+profiles, fixed before the comparison, at the warned line. The same predicates are evaluated on the warnings LintQ's
+authors rejected and on all of its warnings of these analyses.
+
+\subsection{Statistics}
+Five confirmatory hypotheses compare state-based pruning with the other rules. H1 states that it is wrong on fewer
+pairs than def-use, H2 that its slices are smaller than QDG slices, and H3 that at least 95\% of pairs keep a correct
+slice under random product inputs. H4 states that it loses at most five percentage points of fault containment against
+the QDG slice, and H5 that its slices are smaller where both contain the fault. State-based pruning starts from the
+QDG slice and checks every removal at $\ket{0\dots0}$, so H1 and the directions of H2 and H5 hold by construction, and
+H3 and H4 are the real tests. We use exact McNemar tests on paired outcomes and Wilcoxon signed-rank tests on paired
+sizes, with Holm's correction across the five. Effect sizes come with bootstrap 95\% intervals and Wilson intervals
+for proportions, and exploratory intervals resample whole algorithm families. Everything else is descriptive.

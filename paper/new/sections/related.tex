@@ -192,7 +192,4 @@ The data differ as much as the methods. The dependence graphs were shown on exam
 OpenQASM~3 examples, and the detectors on Bugs4Q and on LintQ's GitHub corpus, while no quantum slicing approach was
 evaluated on real programs. We use the detectors' data where they fit, Bugs4Q for real faults and LintQ's corpus
 and confirmed warnings for real programs, and add what a slicing study needs that they lack, circuits with a
-simulated ground truth. These are \numNCircuits{} circuits from MQT Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench} and
-VeriQBench~\cite{chen2022veriqbench}, \numFamCircuits{} generated circuits with known structure, and seeded faults. For the scale of real programs we
-add QASMBench's large circuits and, for current Qiskit, the expert-written programs of Qiskit
-HumanEval~\cite{vishwakarma2024qhe}.
+simulated ground truth and seeded faults, which Section~\ref{sec:design} lists.
