@@ -1369,3 +1369,16 @@ use, are removed.
   operations; `standard_072` enters if_test through contextlib.ExitStack and `standard_150` receives its circuit as
   a parameter. The alias of a `with` statement is a sibling `<alias>` element in srcML; the first version read it
   from the expression and missed it, which the switch program exposed before any recorded run.
+
+### Deviation I-27 (2026-10-29, AFTER all results; author request; exploratory; recorded before the measurement below)
+- **Correction to the role table (E1).** The table is derived from every public QuantumCircuit method whose
+  parameters include qubits. Five such methods add no operation: `from_instructions` (a constructor), `if_else` (the
+  non-context form of control flow, which the interpreter reads from `with` blocks) and the timing queries
+  `qubit_duration`, `qubit_start_time` and `qubit_stop_time`. They leave the table, which now has 68 methods (47 of
+  Qiskit 2.3, 15 removed in Qiskit 1.0, and measure, reset, barrier, delay, initialize and unitary). One file of
+  LintQ's corpus calls one of them; it is rerun beside the old results (`rerun_gate_table.py`, RERUNS.md).
+- **Unmodelled calls (descriptive).** The interpreter's notes on calls it does not model are counted per program on
+  LintQ's corpus, the Qiskit textbook, Bugs4Q and Qiskit HumanEval (files read, never executed), with
+  `icpc/unmodelled_calls.py` -> `results/icpc/unmodelled/`: QuantumCircuit methods that are not modelled, methods
+  whose result is treated as unknown, conversions of a circuit to a DAG, and circuits passed to code the interpreter
+  cannot see.

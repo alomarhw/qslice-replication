@@ -22,7 +22,10 @@ NOT_GATES = {"append", "compose", "if_test", "while_loop", "for_loop", "switch",
              "initialize", "unitary", "store", "box", "add_var", "add_input", "add_uninitialized_var",
              "add_capture", "add_stretch", "break_loop", "continue_loop", "has_register", "find_bit", "repeat",
              "reverse_bits", "reverse_ops", "tensor", "clear", "reset", "barrier", "measure", "delay", "pauli",
-             "prepare_state"}
+             "prepare_state",
+             # methods that take qubits but add no operation: a constructor, the non-context form of if_else
+             # (control flow is read from with blocks), and timing queries
+             "from_instructions", "if_else", "qubit_duration", "qubit_start_time", "qubit_stop_time"}
 
 
 @dataclass(frozen=True)

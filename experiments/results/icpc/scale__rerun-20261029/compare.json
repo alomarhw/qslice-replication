@@ -1,0 +1,25 @@
+{
+ "rerun_files": [
+  {
+   "file": "transpiled_stabilizer_test_7be7ce.py",
+   "old_ops": "24",
+   "new_ops": 23,
+   "old_slice_lines": "32;32;32;32;32",
+   "new_slice_lines": "32;32;32;32;32"
+  }
+ ],
+ "old": {
+  "rows": 7568,
+  "sliced": 4182,
+  "median_ms": 131.0,
+  "median_slice_share": 0.2353,
+  "may_files": 1697
+ },
+ "new": {
+  "rows": 7568,
+  "sliced": 4182,
+  "median_ms": 131.0,
+  "median_slice_share": 0.2353,
+  "may_files": 1697
+ }
+}
