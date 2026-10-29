@@ -80,6 +80,17 @@ circuit and on corpus~L \numCorpusLSizeLc{}, while the QPDG stays near \numCorpu
 the operations of a whole coupling component. Commutation pruning falls below the dependence set, to
 \numWElevenLcq{} at the same widths, because it is not dependence-complete.
 
+The rules nest. On all \numNestPairs{} pairs the dependence set lies within the QDG slice and the QDG slice
+within the QPDG slice, so the three agree on what matters and differ only in what they add. Restricted to its
+dependence set, every circuit preserves the criterion at $\ket{0\dots0}$ on all \numNestDSound{} pairs, so the
+dependence set is itself a sound slice there (exploratory, Deviation I-24). It is the smallest slice that is
+both sound and dependence-complete, the QDG reaches it on \numNestDEqQdg{} pairs, and the QDG and the QPDG
+coincide on \numNestQdgEqQpdg{}. The QPDG adds \numYzLcExcessRatio{} times as much code that cannot change the
+criterion as the QDG does. A slice that is only sound can be smaller, as commutation pruning shows, but it
+can drop an operation where a fault would change the criterion, such as the identity gates of line~38 in
+Fig.~\ref{fig:bv}, which a perturbation after them shows to be dependences although deleting them changes
+nothing. For comprehension, completeness is what guarantees that the place of a fault is shown.
+
 \subsection{RQ2: How much precision beyond the QDG slice is safe?}
 
 \begin{figure}[t]

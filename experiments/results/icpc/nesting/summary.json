@@ -1,0 +1,12 @@
+{
+ "pairs": 784,
+ "excluded": [],
+ "d_in_qdg": 784,
+ "qdg_in_qpdg": 784,
+ "qpdg_pairs": 784,
+ "d_eq_qdg": 559,
+ "qdg_eq_qpdg": 497,
+ "d_sound": 784,
+ "d_unsound": [],
+ "violations": []
+}

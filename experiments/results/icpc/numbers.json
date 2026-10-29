@@ -3270,5 +3270,70 @@
   "value": 0.5,
   "tex": "1/2",
   "source": "results/icpc/yz_listings/fig1.json"
+ },
+ "CpdgMissControlPct": {
+  "value": 0.9968494013862634,
+  "tex": "99.7\\%",
+  "source": "results/icpc/cpdg/rq1_misses.csv"
+ },
+ "YzLcExcessRatio": {
+  "value": 2.733304573899268,
+  "tex": "2.7",
+  "source": "results/icpc/rq1/records.csv"
+ },
+ "GateSignalN": {
+  "value": 21,
+  "tex": "21",
+  "source": "results/icpc/gate_signal/summary.json"
+ },
+ "GateSignalBoth": {
+  "value": 21,
+  "tex": "21",
+  "source": "results/icpc/gate_signal/summary.json"
+ },
+ "NestPairs": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/nesting/summary.json"
+ },
+ "NestDInQdg": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/nesting/summary.json"
+ },
+ "NestQdgInQpdg": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/nesting/summary.json"
+ },
+ "NestQpdgPairs": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/nesting/summary.json"
+ },
+ "NestDEqQdg": {
+  "value": 559,
+  "tex": "559",
+  "source": "results/icpc/nesting/summary.json"
+ },
+ "NestQdgEqQpdg": {
+  "value": 497,
+  "tex": "497",
+  "source": "results/icpc/nesting/summary.json"
+ },
+ "NestDSound": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/nesting/summary.json"
+ },
+ "NestDUnsound": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/nesting/summary.json"
+ },
+ "NestViolations": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/nesting/summary.json"
  }
 }
