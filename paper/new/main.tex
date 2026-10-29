@@ -1,0 +1,57 @@
+\documentclass[10pt,conference]{IEEEtran}
+\usepackage{amsmath,amssymb,stmaryrd}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{url}
+\providecommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\Bw}{B_{\mathrm{QDG}}}
+% The tool's name, in one place. tools/build_anon.sh defines \anonbuild for the double-anonymous submission.
+\ifdefined\anonbuild\newcommand{\tool}{QLine}\else\newcommand{\tool}{srcSlice-Q}\fi
+\newcommand{\TODO}[1]{\textcolor{red}{[TODO: #1]}}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\input{../numbers}
+
+\begin{document}
+\title{Slicing Quantum Programs for Comprehension: What a Quantum Slice Should Look Like}
+\author{\IEEEauthorblockN{Anonymous Author(s)}}
+\maketitle
+
+% Sections are written one at a time and agreed with the author before the next starts.
+\section{Introduction}\label{sec:intro}
+\TODO{to be written after the core section}
+
+\input{sections/related}
+
+\section{A Classical Slice That Looks Right}\label{sec:example}
+\TODO{to be written}
+
+\section{Quantum Dependence and the Write-All Rule}\label{sec:core}
+\TODO{to be written next: the semantics, the write-all rule and its guarantees}
+
+\section{The \tool{} Approach}\label{sec:approach}
+\TODO{to be written}
+
+\section{Study Design}\label{sec:design}
+\TODO{to be written}
+
+\section{Results}\label{sec:results}
+\TODO{to be written}
+
+\section{Implications for Comprehension Tools}\label{sec:implications}
+\TODO{to be written}
+
+\section{Threats to Validity}\label{sec:threats}
+\TODO{to be written}
+
+\section{Conclusion}\label{sec:conclusion}
+\TODO{to be written}
+
+\bibliographystyle{IEEEtran}
+\bibliography{../references}
+\end{document}
