@@ -80,7 +80,7 @@ operations as nodes and the dependences of this rule as edges, and the QDG slice
 reachability from $W$.
 \end{definition}
 
-The QDG slice is computed in one backward pass. Start at the end of the circuit with the needed set $N = W$, and
+The QDG specifies the slice. Computing the slice needs no graph, only one backward pass over the circuit. Start at the end of the circuit with the needed set $N = W$, and
 whenever an operation acts on a location in $N$, keep the operation and add all its locations to $N$. On qubits
 alone, this is the backward light cone of $W$. The classical bits extend it, from a measurement to the
 operations its bit conditions. Take the circuit
@@ -148,9 +148,9 @@ of these gates as writing only some of its qubits therefore misses a dependence 
 The write-all rule needs only three kinds of dependence, which Table~\ref{tab:kinds} lists with examples from the
 ansatz of Fig.~\ref{fig:ansatz}. \emph{Classical data} dependence follows the host values that compute gate
 arguments, such as angles, sizes and qubit indices. \emph{Classical control} dependence follows what decides
-whether an operation is applied at all. It covers the host program's loops and branches, which decide when the
-circuit is built which operations it contains and how often, and the measured bits that condition operations when
-the circuit runs, in a conditioned gate, a branch or a loop of the circuit. \emph{Quantum data} dependence follows
+whether an operation is applied at all. It covers the host program's loops and branches, which shape the circuit as it is built, and
+the measured bits that condition operations when the circuit runs, in a conditioned gate, a branch or a loop of the
+circuit. \emph{Quantum data} dependence follows
 a qubit through the operations that act on it, under the write-all rule.
 
 A controlled gate looks like a fourth kind, quantum control dependence, since it reads like a branch, if the control
@@ -216,8 +216,7 @@ is~$1$.
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig_pdg_ansatz.pdf}
-  \caption{The rules on a variational ansatz, criterion $q_0$. (a)~The program. After the loops, an auxiliary qubit
-  is measured mid-circuit and conditions a flip of $q_0$. (b)~One graph for the first four rules of
+  \caption{The rules on a variational ansatz, criterion $q_0$. (a)~The program, described in Section~\ref{sec:rules}. (b)~One graph for the first four rules of
   Table~\ref{tab:rules}. Each node is an operation as it executes, with its source line and loop iteration, and a box
   holds each iteration of the outer loop. Grey data edges belong to every rule, and def-use lacks the green control
   edge from the measurement. The classical PDG and def-use lack the blue quantum edges and have the dotted edges

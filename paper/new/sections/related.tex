@@ -11,14 +11,13 @@ which makes it a comprehension aid as much as a debugging one~\cite{binkley2007s
 reachability~\cite{ottenstein1984pdg, ferrante1987pdg, horwitz1990interprocedural}, Podgurski and Clarke gave
 dependence a semantic definition~\cite{podgurski1990formal}, and dynamic slicing restricts a slice to one
 execution~\cite{korel1988dynamic, agrawal1990dynamic}. A backward slice answers which statements can affect a
-value at a point, and a forward slice, its dual, answers which statements a given statement can affect, the
-question a developer asks before changing a line~\cite{tip1994a, horwitz1990interprocedural}. Surveys catalog the many kinds of slices that
+value at a point, and a forward slice, its dual, answers which statements a given statement can
+affect~\cite{tip1994a, horwitz1990interprocedural}. Surveys catalog the many kinds of slices that
 followed~\cite{tip1994a, silva2012vocabulary, binkley2004a}. Probabilistic slicing preserves the distribution of the
 criterion variables~\cite{hur2014slicing, amtoft2020theory, olmedo2025slicing}, and Gallagher names quantum
 programs as a direction for semantically defined slicing~\cite{gallagher2025program}.
 
-srcSlice computes slices from srcML, the XML form of source code that keeps every character and position of
-the original~\cite{collard2011lightweight, collard2013srcml}. Instead of building a dependence graph, it records
+srcSlice computes slices from srcML, an XML form of source code~\cite{collard2011lightweight, collard2013srcml}. Instead of building a dependence graph, it records
 for every variable a \emph{slice profile}, the lines where the variable is defined and used, the variables it flows
 into and the calls it is passed to, and it computes dependences from these profiles as it slices. It slices the
 whole system at once, giving the forward slice of every variable in every function rather than of one chosen
@@ -33,10 +32,8 @@ dependence as the possibility of change, and define them for the reduced state o
 stronger than a distribution in one basis, which misses phase. Where srcSlice slices every variable, the \tool{}
 approach slices every qubit. For any qubit or set of qubits it finds every line of the program that can affect
 their state, the backward slice, and for any line it finds every qubit and line that line can affect, the forward
-slice. It also gives each qubit a profile, the counterpart of srcSlice's slice profile of a variable. The \tool{} approach reuses srcML's
-representation and srcSlice's slice profiles for the classical part of a program and adds a quantum layer,
-which Section~\ref{sec:approach} describes. We fix two gaps in srcSlice's handling of Python, subscript uses and
-module globals, as a patch to the open-source tool.
+slice. It reuses srcML's representation and srcSlice's slice profiles for the classical part of a program and
+adds a quantum layer, which Section~\ref{sec:approach} describes.
 
 \subsection{srcML for quantum programs}
 Behler et al.\ specify a srcML markup for OpenQASM~3, so that quantum syntax shares one representation with the
@@ -71,16 +68,14 @@ understanding programs~\cite{murillo2025roadmap}, and in their roadmap of testin
 find dependence and data-flow analysis of circuits almost unexplored, naming only Kaul et al.~\cite{ramalho2025road}.
 
 \emph{Relation and reuse.} We take the QPDG's question, which operations a qubit depends on, and answer it
-against a semantic definition. We reimplement the QPDG as a documented baseline, logging every reading of its
-prose before any run, and Section~\ref{sec:core} shows that its entanglement edges add no dependence the
-write-all rule misses.
+against a semantic definition. Section~\ref{sec:rules} describes the baseline we reimplement from its prose, and
+Section~\ref{sec:kinds} shows that its entanglement edges add no dependence the write-all rule misses.
 
 \subsection{Entanglement analysis}
 Static analyses approximate which qubits may be entangled, with type systems~\cite{perdrix2007types,
 prost2009reasoning, yuan2022twist}, abstract interpretation~\cite{perdrix2008entanglement, yu2021abstract}, the
 stabilizer formalism~\cite{honda2015stabilizer} and data-flow rules~\cite{xia2025entanglement}. ScaffCC assumes
-that qubits that interact may be entangled~\cite{javadiabhari2015scaffcc}, the rule our reimplementation of the
-QPDG uses, since Yu and Zhao do not say how entanglement is decided.
+that qubits that interact may be entangled~\cite{javadiabhari2015scaffcc}.
 
 \emph{Relation.} These analyses answer a different question, whether two qubits may be correlated, and they are
 not slicers. Section~\ref{sec:core} shows that entanglement neither implies nor is implied by dependence, so
@@ -88,8 +83,7 @@ their results cannot decide what a slice keeps.
 
 \subsection{Light cones and compilers}
 The \emph{backward light cone} of a set of qubits at the end of a circuit is the set of gates that can
-affect their final state. It is found by walking backward from the end with those qubits, keeping every gate that
-touches one of them and adding all of that gate's qubits. Compilers build gate-dependence graphs on this
+affect their final state, and Section~\ref{sec:core} shows how it is computed. Compilers build gate-dependence graphs on this
 principle to schedule and map circuits~\cite{murali2019triq, amy2020staq}, and QAOA analyses use it to bound the
 gates that can reach an observable~\cite{farhi2014qaoa}. Quantum separation logics reason locally about the qubits
 a program touches~\cite{zhou2021qsl, le2022qsl}.

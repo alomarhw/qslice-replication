@@ -25,10 +25,8 @@ neither a simulator nor quantum hardware. Second, srcML keeps every character of
 every element and converts back to source without loss~\cite{collard2011lightweight}, so a slice is shown on the
 developer's own text. Third, srcML marks up its languages with one vocabulary of elements~\cite{collard2013srcml},
 and a markup for OpenQASM has been specified~\cite{behler2024supporting}, so the classical and quantum parts of a
-program can share one representation~\cite{behler2025static}. Fourth, srcSlice computes dependences while it
-slices instead of building a dependence graph, which lets it slice large systems~\cite{alomari2014srcslice}. The
-approach takes the step that Behler et al.\ name as future work, a slicer on srcML that finds every line that
-affects a qubit~\cite{behler2025static}.
+program can share one representation~\cite{behler2025static}. Fourth, srcSlice's slicing from profiles,
+without a dependence graph, scales to large systems, as Section~\ref{sec:related} describes.
 
 What neither tool provides is the quantum meaning of a program. srcML marks a Qiskit program up as Python, so
 \texttt{qc.cx(qubit, qubit + 1)} is a call with two argument expressions, and to srcSlice the circuit \texttt{qc} is
@@ -49,35 +47,33 @@ each tagged with its source line and with the iteration of every loop that enclo
 indices, sizes and angles in Python, so the interpretation evaluates the program's expressions over the values it
 can know, unrolls loops, inlines functions and follows the conditioned gates, branches and loops of the circuit as
 Section~\ref{sec:loops} describes. Where a value cannot be known statically, it over-approximates. An unknown qubit
-index acts on every qubit it may denote, an unknown condition runs every branch, and a loop of unknown length is
-repeated until no new dependence appears, at most \numToolMaxCopies{} times. Each of these is reported to the
+index acts on every qubit it may denote, every branch of an unknown condition is interpreted, and a loop of unknown
+length is handled as Section~\ref{sec:loops} describes, with at most \numToolMaxCopies{} copies of its body. Each of these is reported to the
 developer, and a circuit passed to code the interpretation does not model is reported as not traced.
 
 \paragraph*{E3, the write-all slice}
-srcSlice's rule is that a statement defines the variables it assigns and uses the others, so \texttt{qc.cx(a, b)}
-defines nothing. For qubits, the approach replaces this rule with the write-all rule of
-Definition~\ref{def:writeall}. A gate defines and uses all its qubits, a measurement defines its bit, and a
-conditioned operation uses the bits its condition reads. The slice is the backward pass of
-Theorem~\ref{thm:sound} on the trace, computed while slicing, as srcSlice does, in time linear in the trace. An
-operation that may act on several qubits adds all of them to the needed set, and a bit leaves it only when an
-operation certainly writes it, so the over-approximations of E2 can only enlarge a slice. A second pass gives the
-forward slice of Proposition~\ref{prop:dual}. For large circuits, the implementation carries a set of criterion qubits on every needed
-location, which gives the backward slice of every qubit in a single pass, the counterpart of srcSlice's slicing of
-every variable at once.
+srcSlice reads a statement as defining the variables it assigns and using the others, so to srcSlice
+\texttt{qc.cx(a, b)} defines nothing. For qubits, the approach reads it by the write-all rule of
+Definition~\ref{def:writeall} instead, so a gate defines and uses all its qubits, a measurement defines its bit, and
+a conditioned operation uses the bits its condition reads. Like srcSlice, \tool{} builds no dependence graph. The QDG
+specifies the slice, and \tool{} computes it with the backward pass of Theorem~\ref{thm:sound} over the trace, in
+time linear in the trace. An operation that may act on several qubits adds all of them to the needed set, so the
+over-approximations of E2 can only enlarge a slice. A forward pass gives the forward slice of
+Proposition~\ref{prop:dual}. For large circuits, the implementation also carries a set of criterion qubits on every
+needed location, which gives the backward slice of every qubit in a single pass.
 
 \paragraph*{E4, classical lines}
 The lines that compute a slice's qubits, angles, conditions and loop ranges come from srcSlice's profiles. The
 start lines are the slice's quantum lines and the headers of the loops, conditions and \texttt{with} blocks that
 enclose them. The profiles used on a start line are followed backward to their definitions, to the variables that
 flow into them and, for a function parameter, to the arguments passed in its place. srcSlice is run with a patch
-for Python and with the two fixes of Section~\ref{sec:related}, for uses inside a subscript, as in \texttt{q[a]},
-and for module variables read inside a function. The patch applies to the public srcSlice and is in the
+that adds Python and two fixes that building \tool{} exposed, for uses inside a subscript, as in \texttt{q[a]},
+which is how Qiskit names qubits and C indexes arrays, and for module variables read inside a function. The patch applies to the public srcSlice and is in the
 replication package with its regression tests.
 
 \paragraph*{E5, qubit profiles}
 The profile of Definition~\ref{def:profile} comes from one backward and one forward pass over the trace and from
-the srcML of the gate calls on the qubit. It places the uses, names, dependents and measured bits of a qubit
-beside its slices, as srcSlice's profile of a variable places its definitions, uses and aliases.
+the srcML of the gate calls on the qubit.
 
 \subsection{Two front ends}
 The approach reads Qiskit programs, the language of the real programs of Bugs4Q and LintQ's
