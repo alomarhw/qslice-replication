@@ -714,6 +714,16 @@ def main() -> int:
     sys.path.insert(0, str(HERE.parent))
     from tool.gates import GATES  # noqa: PLC0415
     put("ToolGateTable", len(GATES), cnt(len(GATES)), "tool/gates.py")
+    import qiskit  # noqa: PLC0415
+    from tool.gates import _from_qiskit, _legacy, _special  # noqa: PLC0415
+    gq, gs = _from_qiskit(), _special()
+    gl = set(_legacy()) - set(gq) - set(gs)
+    put("ToolGateQiskit", len(gq), cnt(len(gq)), "tool/gates.py (_from_qiskit)")
+    put("ToolGateLegacy", len(gl), cnt(len(gl)), "tool/gates.py (_legacy)")
+    put("ToolGateSpecial", len(gs), word(len(gs)), "tool/gates.py (_special)")
+    put("ToolGateControlled", sum(any(n.startswith("control") for n, _ in s.args) for s in gq.values()),
+        cnt(sum(any(n.startswith("control") for n, _ in s.args) for s in gq.values())), "tool/gates.py")
+    put("QiskitVersion", qiskit.__version__, qiskit.__version__.rsplit(".", 1)[0], "qiskit.__version__")
     from tool.interp import MAX_UNKNOWN_COPIES  # noqa: PLC0415
     put("ToolMaxCopies", MAX_UNKNOWN_COPIES, cnt(MAX_UNKNOWN_COPIES), "tool/interp.py")
     TA = ICPC / "tool_acceptance"
@@ -966,21 +976,28 @@ def main() -> int:
         put("CfRealFiles", len(uses), word(len(uses)), "results/icpc/controlflow/real.csv")
         put("CfRealTraced", sum(not r["error"] for r in uses), word(sum(not r["error"] for r in uses)), "results/icpc/controlflow/real.csv")
 
-    # ---- sizes of the corpora (corpus_sizes.py; code lines are non-blank, non-comment lines) ------------------
+    # ---- the same statistics for every subject (corpus_sizes.py; code lines are non-blank, non-comment lines) --
     if (ICPC / "corpus_sizes.json").exists():
         cz = json.load(open(ICPC / "corpus_sizes.json"))
         src = "results/icpc/corpus_sizes.json"
-        a_ = cz["corpus_a"]
-        put("SizeAMinQubits", a_["min_qubits"], cnt(a_["min_qubits"]), src)
-        put("SizeAMaxQubits", a_["max_qubits"], cnt(a_["max_qubits"]), src)
-        put("SizeAMedianOps", a_["median_ops"], f"{a_['median_ops']:.0f}", src)
-        put("SizeAMaxOps", a_["max_ops"], cnt(a_["max_ops"]), src)
+        names = {"corpus_a": "A", "generated": "Gen", "corpus_l": "L", "qasmbench": "Qb", "bugs4q": "Bugs",
+                 "textbook": "Text", "lintq": "Lintq", "qhe": "Qhe", "parametric": "Param", "controlflow": "Cf"}
+        for k, nm in names.items():
+            s = cz[k]
+            for f, fn in (("count", "Count"), ("traced", "Traced"), ("min_qubits", "MinQubits"), ("max_qubits", "MaxQubits"),
+                          ("median_ops", "MedianOps"), ("max_ops", "MaxOps"), ("median_lines", "MedianLines")):
+                if f in s:
+                    v = s[f]
+                    tex = (f"{v / 1e6:.1f}~million" if v >= 1e6 else cnt(round(v)))
+                    put(f"Subj{nm}{fn}", v, tex, src)
+        # names used by the related-work table
+        put("SizeAMinQubits", cz["corpus_a"]["min_qubits"], cnt(cz["corpus_a"]["min_qubits"]), src)
+        put("SizeAMaxQubits", cz["corpus_a"]["max_qubits"], cnt(cz["corpus_a"]["max_qubits"]), src)
+        put("SizeAMaxOps", cz["corpus_a"]["max_ops"], cnt(cz["corpus_a"]["max_ops"]), src)
         for k, nm in (("bugs4q", "Bugs"), ("textbook", "Text"), ("lintq", "Lintq"), ("qhe", "Qhe")):
-            put(f"Size{nm}Files", cz[k]["files"], cnt(cz[k]["files"]), src)
-            put(f"Size{nm}MedianLines", cz[k]["median_lines"], f"{cz[k]['median_lines']:.0f}", src)
-            put(f"Size{nm}MaxLines", cz[k]["max_lines"], cnt(cz[k]["max_lines"]), src)
-        tl = cz["lintq"]["total_lines"]
-        put("SizeLintqTotalLines", tl, f"{tl / 1e3:.0f}{{,}}000" if tl < 1e6 else f"{tl / 1e6:.1f}~million", src)
+            put(f"Size{nm}Files", cz[k]["count"], cnt(cz[k]["count"]), src)
+        from tool.interp import MAX_OPS  # noqa: PLC0415
+        put("ToolMaxOps", MAX_OPS, cnt(MAX_OPS), "tool/interp.py (MAX_OPS)")
 
     # ---- write ----------------------------------------------------------------------------------------------
     TEX.parent.mkdir(parents=True, exist_ok=True)

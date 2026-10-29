@@ -41,29 +41,47 @@ large sets, four parametric programs of our own and Qiskit HumanEval.
   \label{tab:subjects}
   \footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
-  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}p{1.8cm}
-                  >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.4cm}@{}}
+  \newcommand{\blk}[1]{\multicolumn{8}{@{}l}{\textit{#1}}\\}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.05cm}
+                  r r r r r >{\raggedright\arraybackslash}p{2.2cm}@{}}
     \toprule
-    \textbf{Subject} & \textbf{Count} & \textbf{Size} & \textbf{Used for} \\
+    \textbf{Subject} & \textbf{Source} & \textbf{Count} & \textbf{Traced} & \textbf{Qubits} & \textbf{Operations} &
+      \textbf{Code lines} & \textbf{Used for} \\
     \midrule
-    Corpus~A: MQT Bench, QASMBench, VeriQBench & \numCircuitsMqt{}, \numCircuitsQasm{} and \numCircuitsVeriq{} circuits &
-      \numSizeAMinQubits{} to \numSizeAMaxQubits{} qubits, up to \numSizeAMaxOps{} operations; \numNPairs{} circuit--qubit pairs & RQ1 to RQ4 \\ \sep
-    Generated circuits & \numFamCircuits{} & families with known dependence structure & RQ1 \\ \sep
-    Corpus~L & \numCorpusLCircuits{} circuits & \numCorpusLMinQubits{} to \numCorpusLMaxQubits{} qubits & RQ1, RQ4 \\ \sep
-    Seeded faults & \numRqThreeUnits{} units & from \numMutantsKilled{} mutants of \numMutOperators{} operators that change a measured distribution & RQ3 \\ \sep
-    Bugs4Q~\cite{zhao2023bugs4q} & \numBugsFourQIncluded{} bugs, \numLinesUnits{} units; \numSizeBugsFiles{} programs & circuit-level real faults; programs of median \numSizeBugsMedianLines{} code lines & RQ3; \tool{} \\ \sep
-    Qiskit textbook & \numSizeTextFiles{} programs & median \numSizeTextMedianLines{} code lines & \tool{} \\ \sep
-    LintQ's corpus and warnings~\cite{paltenghi2024lintq} & \numSizeLintqFiles{} programs, \numLqTp{} confirmed bugs & median \numSizeLintqMedianLines{} code lines, about \numSizeLintqTotalLines{} in all & RQ4, comparison with LintQ \\ \sep
-    QASMBench medium and large & \numScaleQbFiles{} circuits & up to \numScaleQbMaxOps{} operations and \numScaleQbMaxQubits{} qubits & RQ4 \\ \sep
-    Parametric programs (ours) & 4 programs, 5 sizes each & about a dozen code lines, up to \numScaleQftOps{} operations & RQ4 \\ \sep
-    Qiskit HumanEval~\cite{vishwakarma2024qhe} & \numSizeQheFiles{} programs & expert-written for Qiskit 1.0 and later, median \numSizeQheMedianLines{} code lines & coverage of \tool{} \\ \sep
-    Programs with circuit loops (ours) & \numCfPrograms{} programs, \numCfQubits{} qubits & \texttt{while\_loop}, \texttt{for\_loop}, \texttt{switch} and \texttt{if\_test} with \texttt{else} & Proposition~\ref{prop:loops} \\
+    \blk{Circuits}
+    Corpus~A & MQT Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench}, VeriQBench~\cite{chen2022veriqbench} &
+      \numSubjACount{} & \numSubjATraced{} & \numSubjAMinQubits{}--\numSubjAMaxQubits{} & \numSubjAMedianOps{} / \numSubjAMaxOps{} & -- & RQ1 to RQ4 \\ \sep
+    Generated circuits & ours & \numSubjGenCount{} & \numSubjGenTraced{} & \numSubjGenMinQubits{}--\numSubjGenMaxQubits{} &
+      \numSubjGenMedianOps{} / \numSubjGenMaxOps{} & -- & RQ1 \\ \sep
+    Corpus~L & MQT Bench, QASMBench, VeriQBench & \numSubjLCount{} & \numSubjLTraced{} & \numSubjLMinQubits{}--\numSubjLMaxQubits{} &
+      \numSubjLMedianOps{} / \numSubjLMaxOps{} & -- & RQ1, RQ4 \\ \sep
+    QASMBench medium and large & QASMBench~\cite{li2023qasmbench} & \numSubjQbCount{} & \numSubjQbTraced{} &
+      \numSubjQbMinQubits{}--\numSubjQbMaxQubits{} & \numSubjQbMedianOps{} / \numSubjQbMaxOps{} & -- & RQ4 \\
+    \midrule
+    \blk{Programs}
+    Bugs4Q & Zhao et al.~\cite{zhao2023bugs4q} & \numSubjBugsCount{} & \numSubjBugsTraced{} &
+      \numSubjBugsMinQubits{}--\numSubjBugsMaxQubits{} & \numSubjBugsMedianOps{} / \numSubjBugsMaxOps{} & \numSubjBugsMedianLines{} & RQ3, \tool{} \\ \sep
+    Qiskit textbook & IBM~\cite{qiskittextbook} & \numSubjTextCount{} & \numSubjTextTraced{} &
+      \numSubjTextMinQubits{}--\numSubjTextMaxQubits{} & \numSubjTextMedianOps{} / \numSubjTextMaxOps{} & \numSubjTextMedianLines{} & \tool{} \\ \sep
+    LintQ's corpus & Paltenghi and Pradel~\cite{paltenghi2024lintq} & \numSubjLintqCount{} & \numSubjLintqTraced{} &
+      \numSubjLintqMinQubits{}--\numSubjLintqMaxQubits{} & \numSubjLintqMedianOps{} / \numSubjLintqMaxOps{} & \numSubjLintqMedianLines{} & RQ4, LintQ comparison \\ \sep
+    Qiskit HumanEval & Vishwakarma et al.~\cite{vishwakarma2024qhe} & \numSubjQheCount{} & \numSubjQheTraced{} &
+      \numSubjQheMinQubits{}--\numSubjQheMaxQubits{} & \numSubjQheMedianOps{} / \numSubjQheMaxOps{} & \numSubjQheMedianLines{} & \tool{} \\ \sep
+    Parametric programs, 5 sizes each & ours & \numSubjParamCount{} & \numSubjParamTraced{} of 20 &
+      \numSubjParamMinQubits{}--\numSubjParamMaxQubits{} & \numSubjParamMedianOps{} / \numSubjParamMaxOps{} & \numSubjParamMedianLines{} & RQ4 \\ \sep
+    Programs with circuit loops & ours & \numSubjCfCount{} & \numSubjCfTraced{} & \numSubjCfMinQubits{}--\numSubjCfMaxQubits{} &
+      \numSubjCfMedianOps{} / \numSubjCfMaxOps{} & \numSubjCfMedianLines{} & Proposition~\ref{prop:loops} \\
     \bottomrule
   \end{tabularx}\\[3pt]
   \begin{minipage}{\textwidth}\footnotesize
-  Code lines exclude blank and comment lines. A unit is a fault and a qubit whose measured distribution it changes.
-  Programs written by others are read and never run. Our own programs, and our ports of the Bugs4Q faults to
-  circuits, are also run as references.
+  Traced counts the circuits read, of which QASMBench has \numSubjQbTraced{} in valid OpenQASM~2, and the programs from which
+  \tool{} traces a circuit, or for the parametric programs the sizes, two of which loop beyond the interpreter's
+  iteration limit. Qubits and operations describe the circuits, for programs the traced ones, as smallest to largest
+  and as median / largest. Registers of unknown size are left out of the qubit range, and \numToolMaxOps{} operations is
+  the interpreter's trace limit. Code lines exclude blank and comment lines and are given as medians. Faults are seeded
+  into corpus~A, \numRqThreeUnits{} units from \numMutantsKilled{} mutants, and \numBugsFourQIncluded{} Bugs4Q bugs port to
+  circuits, giving \numLinesUnits{} units, where a unit is a fault and a qubit whose measured distribution it changes.
+  Programs by others are read and never run, and ours and our ports of the Bugs4Q bugs are also run.
   \end{minipage}
 \end{table*}
 

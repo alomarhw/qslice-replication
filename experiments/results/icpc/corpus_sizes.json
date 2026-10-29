@@ -1,39 +1,111 @@
 {
  "corpus_a": {
-  "circuits": 158,
+  "count": 158,
+  "traced": 158,
+  "min_qubits": 1,
+  "max_qubits": 14,
+  "median_ops": 14.0,
+  "max_ops": 126,
   "by_corpus": {
    "MQT Bench": 40,
    "QASMBench": 38,
    "VeriQBench": 80
-  },
-  "min_qubits": 1,
-  "max_qubits": 14,
-  "min_ops": 3,
-  "median_ops": 14.0,
-  "max_ops": 126
+  }
+ },
+ "generated": {
+  "count": 119,
+  "traced": 119,
+  "min_qubits": 2,
+  "max_qubits": 10,
+  "median_ops": 19,
+  "max_ops": 2119
+ },
+ "corpus_l": {
+  "count": 55,
+  "traced": 55,
+  "min_qubits": 15,
+  "max_qubits": 20,
+  "median_ops": 120,
+  "max_ops": 783,
+  "by_corpus": {
+   "MQT Bench": 7,
+   "QASMBench": 8,
+   "VeriQBench": 40
+  }
+ },
+ "qasmbench": {
+  "count": 169,
+  "traced": 164,
+  "min_qubits": 11,
+  "max_qubits": 10000,
+  "median_ops": 550.5,
+  "max_ops": 5843491
  },
  "bugs4q": {
-  "files": 151,
+  "count": 151,
+  "traced": 111,
+  "min_qubits": 1,
+  "max_qubits": 20,
+  "median_ops": 4,
+  "max_ops": 84000,
   "median_lines": 15,
   "max_lines": 70,
   "total_lines": 2595
  },
  "textbook": {
-  "files": 72,
+  "count": 72,
+  "traced": 60,
+  "min_qubits": 1,
+  "max_qubits": 13,
+  "median_ops": 8.0,
+  "max_ops": 4204,
   "median_lines": 90.5,
   "max_lines": 435,
   "total_lines": 8032
  },
  "lintq": {
-  "files": 7568,
+  "count": 7568,
+  "traced": 4182,
+  "min_qubits": 1,
+  "max_qubits": 4096,
+  "median_ops": 8.0,
+  "max_ops": 200000,
   "median_lines": 58.0,
   "max_lines": 22320,
   "total_lines": 974216
  },
  "qhe": {
-  "files": 151,
+  "count": 151,
+  "traced": 78,
+  "min_qubits": 1,
+  "max_qubits": 11,
+  "median_ops": 3.0,
+  "max_ops": 122,
   "median_lines": 9,
   "max_lines": 33,
   "total_lines": 1613
+ },
+ "parametric": {
+  "count": 4,
+  "traced": 18,
+  "min_qubits": 9,
+  "max_qubits": 10000,
+  "median_ops": 2980.5,
+  "max_ops": 181200,
+  "median_lines": 12.0,
+  "max_lines": 15,
+  "total_lines": 46,
+  "traces": 18
+ },
+ "controlflow": {
+  "count": 10,
+  "traced": 10,
+  "min_qubits": 3,
+  "max_qubits": 4,
+  "median_ops": 18.0,
+  "max_ops": 37,
+  "median_lines": 12.0,
+  "max_lines": 17,
+  "total_lines": 118
  }
 }

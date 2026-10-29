@@ -86,4 +86,4 @@ def _special() -> Dict[str, Sig]:
 
 
 GATES: Dict[str, Sig] = {**_legacy(), **_from_qiskit(), **_special()}
-NOT_SLICED = {"barrier", "delay"}  # ordering directives: never part of a slice
+NOT_SLICED = {"barrier", "delay", "noop"}  # directives and no-ops: never part of a slice

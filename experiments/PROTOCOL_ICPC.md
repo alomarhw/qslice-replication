@@ -1382,3 +1382,5 @@ use, are removed.
   `icpc/unmodelled_calls.py` -> `results/icpc/unmodelled/`: QuantumCircuit methods that are not modelled, methods
   whose result is treated as unknown, conversions of a circuit to a DAG, and circuits passed to code the interpreter
   cannot see.
+- **Addendum (2026-10-29, before the measurement).** `noop`, which marks qubits as used and does nothing, joins
+  `barrier` and `delay` as never part of a slice. No program of the corpora calls it, so no result changes.

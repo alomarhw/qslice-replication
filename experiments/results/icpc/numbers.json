@@ -2399,9 +2399,34 @@
   "source": "results/icpc/scale/s2_qasmbench.csv"
  },
  "ToolGateTable": {
-  "value": 73,
-  "tex": "73",
+  "value": 68,
+  "tex": "68",
   "source": "tool/gates.py"
+ },
+ "ToolGateQiskit": {
+  "value": 47,
+  "tex": "47",
+  "source": "tool/gates.py (_from_qiskit)"
+ },
+ "ToolGateLegacy": {
+  "value": 15,
+  "tex": "15",
+  "source": "tool/gates.py (_legacy)"
+ },
+ "ToolGateSpecial": {
+  "value": 6,
+  "tex": "six",
+  "source": "tool/gates.py (_special)"
+ },
+ "ToolGateControlled": {
+  "value": 19,
+  "tex": "19",
+  "source": "tool/gates.py"
+ },
+ "QiskitVersion": {
+  "value": "2.3.0",
+  "tex": "2.3",
+  "source": "qiskit.__version__"
  },
  "ToolMaxCopies": {
   "value": 65,
@@ -3416,6 +3441,336 @@
   "tex": "five",
   "source": "results/icpc/controlflow/real.csv"
  },
+ "SubjACount": {
+  "value": 158,
+  "tex": "158",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjATraced": {
+  "value": 158,
+  "tex": "158",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjAMinQubits": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjAMaxQubits": {
+  "value": 14,
+  "tex": "14",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjAMedianOps": {
+  "value": 14.0,
+  "tex": "14",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjAMaxOps": {
+  "value": 126,
+  "tex": "126",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjGenCount": {
+  "value": 119,
+  "tex": "119",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjGenTraced": {
+  "value": 119,
+  "tex": "119",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjGenMinQubits": {
+  "value": 2,
+  "tex": "2",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjGenMaxQubits": {
+  "value": 10,
+  "tex": "10",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjGenMedianOps": {
+  "value": 19,
+  "tex": "19",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjGenMaxOps": {
+  "value": 2119,
+  "tex": "2{,}119",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLCount": {
+  "value": 55,
+  "tex": "55",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLTraced": {
+  "value": 55,
+  "tex": "55",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLMinQubits": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLMaxQubits": {
+  "value": 20,
+  "tex": "20",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLMedianOps": {
+  "value": 120,
+  "tex": "120",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLMaxOps": {
+  "value": 783,
+  "tex": "783",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQbCount": {
+  "value": 169,
+  "tex": "169",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQbTraced": {
+  "value": 164,
+  "tex": "164",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQbMinQubits": {
+  "value": 11,
+  "tex": "11",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQbMaxQubits": {
+  "value": 10000,
+  "tex": "10{,}000",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQbMedianOps": {
+  "value": 550.5,
+  "tex": "550",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQbMaxOps": {
+  "value": 5843491,
+  "tex": "5.8~million",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjBugsCount": {
+  "value": 151,
+  "tex": "151",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjBugsTraced": {
+  "value": 111,
+  "tex": "111",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjBugsMinQubits": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjBugsMaxQubits": {
+  "value": 20,
+  "tex": "20",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjBugsMedianOps": {
+  "value": 4,
+  "tex": "4",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjBugsMaxOps": {
+  "value": 84000,
+  "tex": "84{,}000",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjBugsMedianLines": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjTextCount": {
+  "value": 72,
+  "tex": "72",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjTextTraced": {
+  "value": 60,
+  "tex": "60",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjTextMinQubits": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjTextMaxQubits": {
+  "value": 13,
+  "tex": "13",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjTextMedianOps": {
+  "value": 8.0,
+  "tex": "8",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjTextMaxOps": {
+  "value": 4204,
+  "tex": "4{,}204",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjTextMedianLines": {
+  "value": 90.5,
+  "tex": "90",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLintqCount": {
+  "value": 7568,
+  "tex": "7{,}568",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLintqTraced": {
+  "value": 4182,
+  "tex": "4{,}182",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLintqMinQubits": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLintqMaxQubits": {
+  "value": 4096,
+  "tex": "4{,}096",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLintqMedianOps": {
+  "value": 8.0,
+  "tex": "8",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLintqMaxOps": {
+  "value": 200000,
+  "tex": "200{,}000",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjLintqMedianLines": {
+  "value": 58.0,
+  "tex": "58",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQheCount": {
+  "value": 151,
+  "tex": "151",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQheTraced": {
+  "value": 78,
+  "tex": "78",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQheMinQubits": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQheMaxQubits": {
+  "value": 11,
+  "tex": "11",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQheMedianOps": {
+  "value": 3.0,
+  "tex": "3",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQheMaxOps": {
+  "value": 122,
+  "tex": "122",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjQheMedianLines": {
+  "value": 9,
+  "tex": "9",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjParamCount": {
+  "value": 4,
+  "tex": "4",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjParamTraced": {
+  "value": 18,
+  "tex": "18",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjParamMinQubits": {
+  "value": 9,
+  "tex": "9",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjParamMaxQubits": {
+  "value": 10000,
+  "tex": "10{,}000",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjParamMedianOps": {
+  "value": 2980.5,
+  "tex": "2{,}980",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjParamMaxOps": {
+  "value": 181200,
+  "tex": "181{,}200",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjParamMedianLines": {
+  "value": 12.0,
+  "tex": "12",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjCfCount": {
+  "value": 10,
+  "tex": "10",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjCfTraced": {
+  "value": 10,
+  "tex": "10",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjCfMinQubits": {
+  "value": 3,
+  "tex": "3",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjCfMaxQubits": {
+  "value": 4,
+  "tex": "4",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjCfMedianOps": {
+  "value": 18.0,
+  "tex": "18",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjCfMaxOps": {
+  "value": 37,
+  "tex": "37",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjCfMedianLines": {
+  "value": 12.0,
+  "tex": "12",
+  "source": "results/icpc/corpus_sizes.json"
+ },
  "SizeAMinQubits": {
   "value": 1,
   "tex": "1",
@@ -3423,11 +3778,6 @@
  },
  "SizeAMaxQubits": {
   "value": 14,
-  "tex": "14",
-  "source": "results/icpc/corpus_sizes.json"
- },
- "SizeAMedianOps": {
-  "value": 14.0,
   "tex": "14",
   "source": "results/icpc/corpus_sizes.json"
  },
@@ -3441,29 +3791,9 @@
   "tex": "151",
   "source": "results/icpc/corpus_sizes.json"
  },
- "SizeBugsMedianLines": {
-  "value": 15,
-  "tex": "15",
-  "source": "results/icpc/corpus_sizes.json"
- },
- "SizeBugsMaxLines": {
-  "value": 70,
-  "tex": "70",
-  "source": "results/icpc/corpus_sizes.json"
- },
  "SizeTextFiles": {
   "value": 72,
   "tex": "72",
-  "source": "results/icpc/corpus_sizes.json"
- },
- "SizeTextMedianLines": {
-  "value": 90.5,
-  "tex": "90",
-  "source": "results/icpc/corpus_sizes.json"
- },
- "SizeTextMaxLines": {
-  "value": 435,
-  "tex": "435",
   "source": "results/icpc/corpus_sizes.json"
  },
  "SizeLintqFiles": {
@@ -3471,34 +3801,14 @@
   "tex": "7{,}568",
   "source": "results/icpc/corpus_sizes.json"
  },
- "SizeLintqMedianLines": {
-  "value": 58.0,
-  "tex": "58",
-  "source": "results/icpc/corpus_sizes.json"
- },
- "SizeLintqMaxLines": {
-  "value": 22320,
-  "tex": "22{,}320",
-  "source": "results/icpc/corpus_sizes.json"
- },
  "SizeQheFiles": {
   "value": 151,
   "tex": "151",
   "source": "results/icpc/corpus_sizes.json"
  },
- "SizeQheMedianLines": {
-  "value": 9,
-  "tex": "9",
-  "source": "results/icpc/corpus_sizes.json"
- },
- "SizeQheMaxLines": {
-  "value": 33,
-  "tex": "33",
-  "source": "results/icpc/corpus_sizes.json"
- },
- "SizeLintqTotalLines": {
-  "value": 974216,
-  "tex": "974{,}000",
-  "source": "results/icpc/corpus_sizes.json"
+ "ToolMaxOps": {
+  "value": 200000,
+  "tex": "200{,}000",
+  "source": "tool/interp.py (MAX_OPS)"
  }
 }
