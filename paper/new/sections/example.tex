@@ -49,7 +49,9 @@ are equal, so it gives the developer no reason to look at lines~\numBvMissedLine
 These lines can nonetheless change $q_0$. Restoring Z on line~25 turns $q_0$ from $\ket{0}$ into $\ket{1}$, two states
 with fidelity \numBvFixFidelity{}, because the CNOT acts on its control as well as its target. A slice that lets
 every gate write all its qubits, the QDG of Section~\ref{sec:core}, keeps lines~\numBvQdgLines{}, together with the
-lines that compute them, among them the oracle's loop and condition on lines~35 to~39. Its slice contains the fault.
+lines that compute them, among them the oracle's loop and condition on lines~35 to~39. Its slice contains the fault. The QPDG of Yu and Zhao keeps the same lines here, since its two extra operations, the Hadamard gate and the
+CNOT of $q_1$, are later iterations of lines~29 and~40 that cannot change $q_0$, and Fig.~\ref{fig:ansatz} shows where
+it costs more.
 
 \paragraph*{Why the outcomes cannot tell}
 Here the fault shows in the measured outcome of $q_0$. That is not always so. In a real bug from
