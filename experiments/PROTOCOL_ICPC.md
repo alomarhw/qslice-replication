@@ -1293,3 +1293,23 @@ use, are removed.
 - **Coverage.** The S1 files that yield no circuit, classified by a fixed rule on the file text: no circuit
   construction (`QuantumCircuit(` absent), a circuit built only from a file or library call (`from_qasm`, `qasm2.load`,
   `QuantumCircuit.from`, `transpile(` without gate calls), or other.
+
+### Deviation I-24 (2026-10-28, AFTER all results; author decision after an external brief; exploratory; recorded before any output below)
+- **Why.** The brief asks what the minimal correct slice is and how far each rule is from it. No RQ, hypothesis,
+  threshold, input or corpus changes. Everything below is exploratory and reported as such.
+- **Nesting (Check 2).** On the 784 RQ1 pairs, with the dependence set D of `icpc/influence.py` (unchanged), assert
+  D ⊆ QDG and QDG ⊆ QPDG (slicers `lc` and `yz` of `slicers/registry.py`, unchanged). Every violation is reported.
+  Count the pairs with D = QDG and with QDG = QPDG.
+- **The dependence set as a slice (Check 1).** Materialise each circuit restricted to D, exactly as RQ1 materialises
+  a slice, and apply the RQ1 oracle unchanged (reduced state of the criterion qubit at |0...0>, sound iff
+  fidelity >= 1 - 1e-6). D is measured with finitely many inputs, so it approximates the true dependence set from
+  below, and a failure is reported as it is, not explained away.
+- **Size by width.** From `results/icpc/rq1/records.csv`, unchanged: mean slice share of D, QDG and QPDG by qubit
+  count. No new run.
+- **The single write-set count.** From `results/icpc/rq1/misses.csv`, unchanged: of the dependences the classical
+  PDG (`du`) misses, how many the QDG keeps, by miss category. No new run.
+- **Two-qubit gates in both directions (evidence only).** For each standard two-qubit gate of Qiskit and each
+  direction a -> b, search seeded random product inputs and single-qubit perturbations on a for a change in b's
+  reduced state. Reported as evidence that dropping a qubit from a gate's write set is unsound for these gates; no
+  general claim and no theorem.
+- **Script.** `icpc/nesting.py` -> `results/icpc/nesting/`; `icpc/gate_signal.py` -> `results/icpc/gate_signal/`.
