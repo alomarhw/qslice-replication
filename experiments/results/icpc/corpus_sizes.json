@@ -1,0 +1,39 @@
+{
+ "corpus_a": {
+  "circuits": 158,
+  "by_corpus": {
+   "MQT Bench": 40,
+   "QASMBench": 38,
+   "VeriQBench": 80
+  },
+  "min_qubits": 1,
+  "max_qubits": 14,
+  "min_ops": 3,
+  "median_ops": 14.0,
+  "max_ops": 126
+ },
+ "bugs4q": {
+  "files": 151,
+  "median_lines": 15,
+  "max_lines": 70,
+  "total_lines": 2595
+ },
+ "textbook": {
+  "files": 72,
+  "median_lines": 90.5,
+  "max_lines": 435,
+  "total_lines": 8032
+ },
+ "lintq": {
+  "files": 7568,
+  "median_lines": 58.0,
+  "max_lines": 22320,
+  "total_lines": 974216
+ },
+ "qhe": {
+  "files": 151,
+  "median_lines": 9,
+  "max_lines": 33,
+  "total_lines": 1613
+ }
+}

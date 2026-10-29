@@ -161,22 +161,23 @@ static slicer shows a qubit's slice on Qiskit source with its loop iterations.
     \textbf{Measured bits} & \textbf{Loops} & \textbf{Guarantee} & \textbf{Evaluated on} \\
     \midrule
     \grp{Slicing on source code}
-    srcSlice~\cite{alomari2014srcslice}                         & \full & \full & \full & \na   & \na   & \full & \none & the Linux kernel \\ \sep
-    Behler et al., QStatic~\cite{behler2024supporting, behler2025static} & \full & \full & \none & \none & \half & \half & \none & OpenQASM~3 examples \\ % TODO verify: QStatic's evaluation set
+    srcSlice~\cite{alomari2014srcslice}                         & \full & \full & \full & \na   & \na   & \full & \none & the Linux kernel; accuracy compared with CodeSurfer \\ % TODO verify: kernel version, size and the CodeSurfer subjects \sep
+    Behler et al., QStatic~\cite{behler2024supporting, behler2025static} & \full & \full & \none & \none & \half & \half & \none & the 16 example files of OpenQASM~3 \\ % TODO verify: QStatic's evaluation set
     \grp{Dependence models of quantum programs}
-    QPDG, Yu and Zhao~\cite{yu2025qpdg}                         & \full & \full & \full & ?     & \full & ?     & \none & worked examples \\ \sep
-    Kaul et al.~\cite{kaul2023uniform}                          & \full & \full & \none & \none & \full & \full & \none & example programs \\
+    QPDG, Yu and Zhao~\cite{yu2025qpdg}                         & \full & \full & \full & ?     & \full & ?     & \none & five worked listings, not implemented \\ \sep
+    Kaul et al.~\cite{kaul2023uniform}                          & \full & \full & \none & \none & \full & \full & \none & three listings, one circuit in Qiskit and in OpenQASM and one hybrid program \\
     \grp{Circuit analyses in compilers}
     Qiskit \texttt{LightCone}~\cite{qiskit2025}                 & \none & \full & \full & \full & \none & \none & \half & \na \\ \sep
-    TriQ, staq~\cite{murali2019triq, amy2020staq}               & \none & \full & \none & \full & \na   & \na   & \na   & benchmark circuits \\
+    TriQ, staq~\cite{murali2019triq, amy2020staq}               & \none & \full & \none & \full & \na   & \na   & \na   & TriQ, 12 benchmarks run on seven devices; staq, 24 circuits of 5 to 20 qubits \\
     \grp{Debugging support}
-    Cirquo, Metwalli and Van Meter~\cite{metwalli2022debugging, metwalli2024testing} & \half & \none & \none & \na & \na & \na & \none & a case study and a user survey \\ \sep
+    Cirquo, Metwalli and Van Meter~\cite{metwalli2022debugging, metwalli2024testing} & \half & \none & \none & \na & \na & \na & \none & one Grover case study and a user survey \\ \sep
     Qiskit slicing utilities~\cite{qiskitaddonutils}            & \none & \full & \none & \na   & \na   & \na   & \none & \na \\
     \grp{Bug detectors}
-    LintQ~\cite{paltenghi2024lintq}                             & \full & \full & \none & \full & \full & \half & \none & 7,568 GitHub programs \\ \sep
-    QChecker~\cite{zhao2023qchecker}                            & \full & \full & \none & \na   & \na   & \na   & \none & Bugs4Q \\
+    LintQ~\cite{paltenghi2024lintq}                             & \full & \full & \none & \full & \full & \half & \none & \numSizeLintqFiles{} GitHub programs (median \numSizeLintqMedianLines{} lines, about \numSizeLintqTotalLines{} in all), 345 warnings inspected, \numLqTp{} confirmed \\ \sep
+    QChecker~\cite{zhao2023qchecker}                            & \full & \full & \none & \na   & \na   & \na   & \none & the 42 bugs of Bugs4Q \\
     \grp{This paper}
-    \rowcolor{blue!7}\textbf{\tool{}}                           & \full & \full & \full & \full & \full & \full & \full & benchmark and generated circuits, Bugs4Q, GitHub programs, Qiskit HumanEval \\
+    \rowcolor{blue!7}\textbf{\tool{}} & \full & \full & \full & \full & \full & \full & \full & the corpora below \\
+    \rowcolor{blue!7} & \multicolumn{8}{>{\raggedright\arraybackslash}p{14.9cm}@{}}{\numNCircuits{} benchmark circuits of \numSizeAMinQubits{} to \numSizeAMaxQubits{} qubits and up to \numSizeAMaxOps{} operations; \numFamCircuits{} generated circuits; \numRqThreeUnits{} seeded-fault units; Bugs4Q, \numSizeBugsFiles{} programs (median \numSizeBugsMedianLines{} lines); the Qiskit textbook, \numSizeTextFiles{} programs (median \numSizeTextMedianLines{}); LintQ's \numSizeLintqFiles{} programs (median \numSizeLintqMedianLines{}); QASMBench, \numScaleQbFiles{} circuits of up to \numScaleQbMaxOps{} operations; Qiskit HumanEval, \numSizeQheFiles{} programs (median \numSizeQheMedianLines{})} \\
     \bottomrule
   \end{tabularx}\\[3pt]
   \begin{minipage}{\textwidth}\footnotesize
@@ -187,7 +188,8 @@ static slicer shows a qubit's slice on Qiskit source with its loop iterations.
   read as able to change its control, as in phase kickback. \emph{Measured bits}, classical control is followed
   from a measurement to the operations its bit conditions. \emph{Loops}, loops of any length are followed.
   \emph{Guarantee}, the authors state or prove a property of the result. \emph{Evaluated on}, the data of the
-  original evaluation.
+  original evaluation. Program sizes are code lines, without blank and comment lines, as we measured them on the
+  versions we use.
   \end{minipage}
 \end{table*}
 

@@ -3375,5 +3375,130 @@
   "value": 0.4444,
   "tex": "44\\%",
   "source": "results/icpc/qhe/summary.json"
+ },
+ "CfPrograms": {
+  "value": 10,
+  "tex": "10",
+  "source": "results/icpc/controlflow/summary.json"
+ },
+ "CfQubits": {
+  "value": 33,
+  "tex": "33",
+  "source": "results/icpc/controlflow/summary.json"
+ },
+ "CfInputs": {
+  "value": 6,
+  "tex": "six",
+  "source": "results/icpc/controlflow/summary.json"
+ },
+ "CfSound": {
+  "value": 33,
+  "tex": "33",
+  "source": "results/icpc/controlflow/summary.json"
+ },
+ "CfKickbackDropFidelity": {
+  "value": 0.666667,
+  "tex": "0.67",
+  "source": "results/icpc/controlflow/negative.json"
+ },
+ "CfOldWrong": {
+  "value": 7,
+  "tex": "seven",
+  "source": "results/icpc/controlflow/negative.json"
+ },
+ "CfRealFiles": {
+  "value": 7,
+  "tex": "seven",
+  "source": "results/icpc/controlflow/real.csv"
+ },
+ "CfRealTraced": {
+  "value": 5,
+  "tex": "five",
+  "source": "results/icpc/controlflow/real.csv"
+ },
+ "SizeAMinQubits": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeAMaxQubits": {
+  "value": 14,
+  "tex": "14",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeAMedianOps": {
+  "value": 14.0,
+  "tex": "14",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeAMaxOps": {
+  "value": 126,
+  "tex": "126",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeBugsFiles": {
+  "value": 151,
+  "tex": "151",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeBugsMedianLines": {
+  "value": 15,
+  "tex": "15",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeBugsMaxLines": {
+  "value": 70,
+  "tex": "70",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeTextFiles": {
+  "value": 72,
+  "tex": "72",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeTextMedianLines": {
+  "value": 90.5,
+  "tex": "90",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeTextMaxLines": {
+  "value": 435,
+  "tex": "435",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeLintqFiles": {
+  "value": 7568,
+  "tex": "7{,}568",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeLintqMedianLines": {
+  "value": 58.0,
+  "tex": "58",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeLintqMaxLines": {
+  "value": 22320,
+  "tex": "22{,}320",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeQheFiles": {
+  "value": 151,
+  "tex": "151",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeQheMedianLines": {
+  "value": 9,
+  "tex": "9",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeQheMaxLines": {
+  "value": 33,
+  "tex": "33",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SizeLintqTotalLines": {
+  "value": 974216,
+  "tex": "974{,}000",
+  "source": "results/icpc/corpus_sizes.json"
  }
 }
