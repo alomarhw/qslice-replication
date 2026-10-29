@@ -14,6 +14,8 @@ find "$OUT/package" -type f \( -name '*.py' -o -name '*.md' -o -name '*.tex' -o 
 # figures that show the tool's name are regenerated from the renamed scripts
 (cd "$OUT/package" && python3 paper/figures/src/make_fig_overview.py >/dev/null && cd paper/figures/src \
   && pdflatex -interaction=batchmode fig_overview.tex >/dev/null 2>&1 && cp fig_overview.pdf ../fig_overview.pdf) || true
+(cd "$OUT/package/experiments" && python3 icpc/make_result_figs.py >/dev/null && cd ../paper/figures/src \
+  && pdflatex -interaction=batchmode fig_scale.tex >/dev/null 2>&1 && cp fig_scale.pdf ../fig_scale.pdf) || true
 (cd "$OUT/package/paper/new" && pdflatex -interaction=nonstopmode '\def\anonbuild{}\input{main}' >/dev/null 2>&1 \
   && bibtex main >/dev/null 2>&1; pdflatex -interaction=nonstopmode '\def\anonbuild{}\input{main}' >/dev/null 2>&1; \
   pdflatex -interaction=nonstopmode '\def\anonbuild{}\input{main}' >/dev/null 2>&1) || true
