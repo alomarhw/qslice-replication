@@ -12,7 +12,10 @@ patterns, but 22 of the 42 Bugs4Q bugs on which QChecker was evaluated are wrong
 detect~\cite{zhao2023qchecker}. For such faults, a slice that tells the developer which lines can influence
 the wrong outcome is the natural aid.
 
-Slicing has been proposed for quantum programs. Yu and Zhao's quantum program dependence graph
+Slicing has been proposed for quantum programs. A roadmap of quantum testing and debugging names slicing
+as a way around no-cloning, notes that it grows hard to manage as circuits grow, and finds dependence
+analysis of circuits almost unexplored~\cite{ramalho2025road}, and the work that extends srcML to quantum
+languages names a slicer that finds every line affecting a qubit as future work~\cite{behler2025static}. Yu and Zhao's quantum program dependence graph
 (QPDG)~\cite{yu2025qpdg} extends the classical program dependence graph (PDG)~\cite{ferrante1987pdg} with
 entanglement, no-cloning, temporal and measurement dependences and keeps the classical criterion. Roadmaps
 describe this graph as an aid to understanding~\cite{murillo2025roadmap} whose validation remains
@@ -44,8 +47,10 @@ change its control qubit, as in phase kickback, which no classical reading of th
 wrong slices, \numFdCpdgZMatchPct{} reproduce the measured outcomes, so a developer checking a slice by its
 histogram would accept them. Entanglement turns out to be neither necessary nor sufficient for dependence,
 and the QPDG's entanglement edges make it keep \numRqOneYzSize{} of a circuit. The quantum dependence graph
-(QDG), in which every gate reads and writes all its qubits, keeps \numRqOneLcSize{}, only \numLcExcess{}
-points above the dependences themselves, and is sound for every input. Its relation is the backward light cone, and we show that it is exactly what a slice must keep. State-based pruning is \numHTwoRelative{} smaller,
+(QDG), in which every gate reads and writes all its qubits, the write-all rule, keeps \numRqOneLcSize{}, only \numLcExcess{}
+points above the dependences themselves, and is sound for every input. Its relation coincides with the backward light cone that compilers use, and we establish it as the slicing
+rule. All but \numCpdgMissFeedback{} of the \numCpdgMissTotal{} dependences the classical PDG misses come from
+this one choice of write set. State-based pruning is \numHTwoRelative{} smaller,
 but its slices hold for one input and lose a fault that the QDG slice keeps in \numCQFour{} units. On real
 Bugs4Q programs the QDG slice keeps every faulty line, while def-use loses it in \numLinesDuMissed{} of
 \numLinesUnits{} units. Slices do not improve mutation-based fault ranking.
@@ -57,10 +62,12 @@ warned line add the \numLqReadMedian{} lines in the median that determine their 
 code lines in the file.
 
 The contributions of this paper are the following.
-\begin{itemize}
+\begin{enumerate}
 \item A semantic definition of quantum dependence and of slice soundness for a set of criterion qubits,
-under which the QDG is proved sound, with the induction mechanized in Isabelle/HOL, and
-dependence-complete, given in Section~\ref{sec:dependence}.
+given in Section~\ref{sec:dependence}.
+\item The result that one rule suffices. Under the write-all rule, a gate writes every qubit it touches, the
+QDG is proved sound, with the induction mechanized in Isabelle/HOL, dependence-complete and distributive
+over criteria, and three kinds of dependence are all a slice needs, also in Section~\ref{sec:dependence}.
 \item A pre-registered comparison of dependence rules, from the classical PDG to state-based pruning,
 against this ground truth, which explains why classical slices fail and what entanglement edges and
 pruning cost, designed in Section~\ref{sec:design} and reported in Section~\ref{sec:results}.
@@ -74,4 +81,4 @@ GitHub and QASMBench, which measures its scalability to circuits of millions of 
 LintQ on LintQ's confirmed bugs and with both LintQ and QChecker on the examples of their papers.
 \item The implications for comprehension tools that Section~\ref{sec:discussion} draws, and a replication
 package that regenerates every number in the paper.
-\end{itemize}
+\end{enumerate}

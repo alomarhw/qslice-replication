@@ -3,8 +3,9 @@
 A quantum slice supports comprehension only if it keeps every operation that can change the state of the
 qubits the developer asks about. We defined this requirement semantically and measured dependence rules
 against it. Reading the control of a gate as unchanged gives wrong slices that look right, entanglement
-edges add code that cannot matter, and pruning at one input gives slices of that input only. The QDG is
-sound for every input, dependence-complete and cheap. Slices narrow where a developer looks but do not improve mutation-based
+edges add code that cannot matter, and pruning at one input gives slices of that input only. One rule suffices. Under the write-all rule, a gate writes every qubit it touches, the QDG is
+sound for every input, dependence-complete and cheap, and it is the backward light cone that compilers
+already compute, now justified as a slice. Slices narrow where a developer looks but do not improve mutation-based
 fault ranking. \tool{}, built on srcML and srcSlice, shows the QDG slice on Qiskit and OpenQASM~2 source as the
 lines, iterations and qubit profiles a developer reads, scales to circuits of millions of operations, and
 gives the qubit bugs that LintQ's authors confirmed the lines that determine each faulty qubit.

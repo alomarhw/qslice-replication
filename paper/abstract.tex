@@ -5,8 +5,10 @@ but its dependence rules have never been checked against what a quantum program 
 that they can give slices that look right while hiding the fault. We ask what a quantum slice should look
 like to support comprehension. A slice must preserve the joint state of the criterion qubits for every
 input, and an operation is a dependence when changing it can change that state. Under these definitions
-we prove that the quantum dependence graph (QDG), in which every gate reads and writes all of its qubits,
-gives sound and dependence-complete slices, and we measure every alternative against it. On
+we prove that one rule suffices. Under the write-all rule, a gate writes every qubit it touches, the
+quantum dependence graph (QDG) gives sound and dependence-complete slices in milliseconds. The rule coincides
+with the backward light cone that compilers use, and we establish it as the slicing rule and measure what
+every alternative costs against it. On
 \numNPairs{} circuit--qubit pairs, the classical program dependence graph, which reads the control of a
 gate as unchanged, gives wrong slices for \numCpdgUnsoundPct{} of them, and \numFdCpdgZMatchPct{} of these
 reproduce the measured outcomes, so a histogram check would accept them. Entanglement edges, as in the

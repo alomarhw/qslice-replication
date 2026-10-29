@@ -78,11 +78,24 @@ dependence without classical bits, as the simplest transfer of classical slicing
 The \emph{quantum dependence graph} (QDG) adds quantum dependence to the classical PDG. Its nodes are
 the operations, and every operation reads and writes all its locations,
 $r_{\mathrm{QDG}}(o) = w_{\mathrm{QDG}}(o) = \mathit{loc}(o)$, so a controlled gate also writes its
-controls. The QDG slice $\Bw(W)$ is backward reachability in the QDG from $W$. It is the backward light
-cone of $W$, extended along classical bits from measurements to the gates they condition. LintQ orders
+controls. We call this the \emph{write-all rule}, a gate writes every qubit it touches, and it is the one
+place where the QDG departs from the classical PDG. The QDG slice $\Bw(W)$ is backward reachability in the QDG from $W$. It is the backward light
+cone of $W$, extended along classical bits from measurements to the gates they condition. To compute it, walk
+backward from the end of the circuit with the set $W$, and whenever a gate touches a qubit of the set, keep
+the gate and add all its qubits to the set. For $\mathrm{H}(q_1)\,\mathrm{X}(q_2)\,\mathrm{CX}(q_0, q_1)$ the
+slice of $q_0$ keeps $\mathrm{H}(q_1)$ and the CNOT, although $q_0$ is the CNOT's control, because in phase
+kickback the gate on $q_1$ changes $q_0$. LintQ orders
 operations by this relation to find bug patterns~\cite{paltenghi2024lintq}, and Qiskit's
-\texttt{LightCone} pass starts from it before it prunes~\cite{qiskit2025}. Theorem~\ref{thm:sound} and
-Proposition~\ref{prop:complete} show that it is exactly what a slice must keep.
+\texttt{LightCone} pass starts from it before it prunes~\cite{qiskit2025}, which confirms the relation in
+practice. What neither provides, and Theorem~\ref{thm:sound} and Proposition~\ref{prop:complete} do, is the
+proof that it is exactly what a slice must keep.
+
+The write set cannot be smaller for any standard gate. For each of the \numGateSignalN{} two-qubit gates
+of Qiskit's standard library, a change of either qubit's input changes the reduced state of the other for
+some product input (exploratory, Deviation I-24), so a rule that drops either qubit from the gate's write
+set misses a dependence of some circuit.
+% TODO authors: a general necessity proposition (every non-product two-qubit gate signals in both
+% directions) needs checking against Beckman et al., Phys. Rev. A 64 (2001), before it is stated.
 
 Fig.~\ref{fig:ansatz} applies the rules to one program that needs both control and quantum dependence.
 An ansatz is the parameterized circuit of a variational algorithm such as the variational quantum
@@ -101,20 +114,22 @@ as an exploratory addition, the reading in which it does not. Table~\ref{tab:rul
 
 \begin{table}[t]
   \centering
-  \caption{The dependence rules, by what a CNOT with control $c$ and target $t$ writes. Every rule reads
-  $\{c, t\}$, and complete means dependence-complete. The last columns give the slice of $q_0$ in
+  \caption{The dependence rules, by what a CNOT with control $c$ and target $t$ writes and by how each
+  differs from the QDG. Every rule reads $\{c, t\}$, and complete means dependence-complete. Commutation and
+  state-based pruning remove operations from the QDG slice. The last columns give the slice of $q_0$ in
   Fig.~\ref{fig:ansatz}, as the operations it keeps of \numAnsOps{} and its fidelity at $\ket{0\dots0}$.}
   \label{tab:rules}
   \footnotesize\setlength{\tabcolsep}{2.6pt}
-  \begin{tabular}{@{}l c l l r r@{}}
+  \begin{tabular}{@{}l c >{\raggedright\arraybackslash}p{2.15cm} >{\raggedright\arraybackslash}p{1.25cm} r r@{}}
     \toprule
-    Rule & $w(\mathit{cx}_{c,t})$ & Dependence & Guarantee & Ops & $F$ \\
+    Rule & $w(\mathit{cx}_{c,t})$ & Relation to the QDG & Guarantee & Ops & $F$ \\
     \midrule
-    Def-use & $\{t\}$ & data & none & \numAnsDuOps{} & \numAnsDuFidelity{} \\
-    Classical PDG & $\{t\}$ & data, control & none & \numAnsCpdgOps{} & \numAnsCpdgFidelity{} \\
-    QDG & $\{c, t\}$ & + quantum & sound, complete & \numAnsWireOps{} & \numAnsQdgFidelity{} \\
-    QPDG~\cite{yu2025qpdg} & $\{c, t\}$ & QDG + entangl. & sound & \numAnsYzOps{} & \numAnsYzFidelity{} \\
-    QPDG, read-only & $\{t\}$ & CPDG + entangl. & none & \numAnsYzroOps{} & \numAnsYzroFidelity{} \\
+    \textbf{QDG} & $\{c, t\}$ & \textbf{write-all rule} & \textbf{sound, complete} & \numAnsWireOps{} & \numAnsQdgFidelity{} \\
+    \midrule
+    Def-use & $\{t\}$ & $-$ control write, $-$ bits & none & \numAnsDuOps{} & \numAnsDuFidelity{} \\
+    Classical PDG & $\{t\}$ & $-$ control write & none & \numAnsCpdgOps{} & \numAnsCpdgFidelity{} \\
+    QPDG~\cite{yu2025qpdg} & $\{c, t\}$ & $+$ closed entangl.\ edges & sound & \numAnsYzOps{} & \numAnsYzFidelity{} \\
+    QPDG, read-only & $\{t\}$ & $-$ control write, $+$ entangl. & none & \numAnsYzroOps{} & \numAnsYzroFidelity{} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -174,6 +189,11 @@ keeps only the \numAnsCpdgOps{} dark- and mid-blue nodes of
 Fig.~\ref{fig:ansatz}b, and misses \numAnsCpdgMissed{} dependences, with fidelity \numAnsCpdgFidelity{}.
 Where the QDG has a blue quantum edge out of a CNOT, the classical PDG has a dotted edge that skips the
 CNOT. The QDG slice keeps the \numAnsWireOps{} operations that are dependences of $q_0$, and no other.
+The read-only control is the usual explanation of a CNOT, under which the control qubit remains the
+same~\cite{ramalho2025road}, and it holds for computational basis states. A table of the operations on each
+qubit that marks the control of a CNOT apart from its target~\cite{behler2024supporting} serves pattern
+detection well, but read as a dependence graph it gives this reading, and Proposition~\ref{prop:du} shows
+what a slice loses under it.
 
 \begin{proposition}[Entanglement is neither necessary nor sufficient for dependence]\label{prop:ent}
 (i) An operation can be a dependence of $q$ although, at an input that witnesses the dependence, $q$ is
@@ -207,6 +227,31 @@ edges data dependence already has. Timing decides when an operation runs on hard
 depends on. Superposition changes amplitudes, not which qubits an operation
 acts on~\cite{nielsen2010quantum}, so it cannot enlarge a dependence graph. Only state-based pruning
 uses amplitudes, at a cost exponential in the circuit's width.
+
+Three kinds of dependence therefore suffice, as Table~\ref{tab:kinds} lists. A controlled gate looks like a
+branch, if the control is 1 then flip the target, but its control is coherent, so the gate acts on a
+superposition of control values and can change the control itself. What looks like quantum control
+dependence is quantum data dependence in both directions, and reading the gate as a branch is the classical
+PDG's error. Control dependence in a quantum program arises only from measurement, whose bit then conditions
+later operations classically.
+
+\begin{table}[t]
+  \centering
+  \caption{The kinds of dependence a quantum slice needs, with examples from Figs.~\ref{fig:bv} and~\ref{fig:ansatz}.}
+  \label{tab:kinds}
+  \footnotesize\setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.75cm} >{\raggedright\arraybackslash}p{3.05cm} >{\raggedright\arraybackslash}p{3.05cm}@{}}
+    \toprule
+    Kind & Source & Example \\
+    \midrule
+    Classical data & host values that compute gate arguments & \texttt{n}, \texttt{s}, angles, qubit indices \\
+    Classical control & host branches and loops, and measured bits that condition gates & \texttt{if s[q] == '0'}, the conditioned flip of $q_0$ in Fig.~\ref{fig:ansatz}a \\
+    Quantum data & every qubit a gate touches, written by the write-all rule & \texttt{cx(q, n)} writes $q$ and $n$ \\
+    \midrule
+    Quantum control & none of its own, it is quantum data dependence & a controlled gate is not a branch \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Kinds of slices}
 Classical slicing knows other kinds of slices besides the backward one~\cite{tip1994a, silva2012vocabulary},

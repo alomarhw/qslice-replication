@@ -20,7 +20,9 @@ slicing for quantum programs. Its dependences are defined in prose and were not 
 although it produces the product state $\ket{11}$, which is case~(i) of Proposition~\ref{prop:ent}. In their
 graph for Listing~1, the measurement of $q_1$ misses \texttt{x(1)} and the second CNOT, which make it
 return 1 with certainty, while the implied slice does so with probability \numYzFigSliceProb{}. We implement it as a documented baseline. The quantum code property graph of Kaul et al.~\cite{kaul2023uniform} treats the control of a CNOT as
-unchanged, the reading that phase kickback breaks, as Proposition~\ref{prop:du} shows. Behler et al.\ extend srcML to OpenQASM~\cite{behler2024supporting}, and their
+unchanged, the reading that phase kickback breaks, as Proposition~\ref{prop:du} shows. Under that reading its
+check for superfluous operations, gates that do not affect a measured qubit, can flag gates whose effect
+reaches a measured qubit back through a control, as the gates of lines~24, 25 and~40 of Fig.~\ref{fig:bv} do. Behler et al.\ extend srcML to OpenQASM~\cite{behler2024supporting}, and their
 QStatic tool orders the operations of each qubit to find patterns and refactorings~\cite{behler2025static}.
 Section~\ref{sec:tool} compares \tool{} with LintQ and QChecker, and Table~\ref{tab:tools} with QStatic.
 
@@ -43,9 +45,12 @@ sound, and Theorem~\ref{thm:sound} states the light-cone fact as a property of s
 \paragraph*{Debugging quantum programs}
 A roadmap of quantum debugging lists slicing as an opportunity and finds almost no use of dependence
 analysis~\cite{ramalho2025road}. The slicing of Metwalli and Van
-Meter~\cite{metwalli2022debugging, metwalli2024testing} splits a circuit at breakpoints the developer places,
-and Qiskit's slicing utilities partition it by barriers, depth or gate type~\cite{qiskitaddonutils}. Neither
-has a criterion, so the developer still narrows the fault by hand. Metwalli and Van Meter's phase tests detect a wrong phase
+Meter~\cite{metwalli2022debugging, metwalli2024testing} splits a circuit at breakpoints the developer places, removes the qubits a part does not use and maps
+gates to source lines through tracebacks at run time, and Qiskit's slicing utilities partition it by
+barriers, depth or gate type~\cite{qiskitaddonutils}. Neither has a criterion, so the developer still
+narrows the fault by hand. A QDG slice generalizes their horizontal slicing, since it drops every qubit and
+operation that cannot reach the criterion, and it maps gates to lines statically, without running the
+program. Metwalli and Van Meter's phase tests detect a wrong phase
 but need hand-designed test vectors to locate the faulty qubit. Bugs4Q~\cite{zhao2023bugs4q} catalogs real faults,
 QChecker~\cite{zhao2023qchecker} and Q-PAC~\cite{nayak2023qpac} detect known patterns, and mutation tools and fault models~\cite{mendiluze2021muskit, fortunato2022qmutpy, garcia2022testing} and
 mutation-based fault localization~\cite{ishimoto2025mbfl} supply our faults and ranking. Slicing restricts

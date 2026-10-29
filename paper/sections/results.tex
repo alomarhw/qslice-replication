@@ -48,7 +48,8 @@ Many of these wrong slices look right. Of the \numCpdgUnsound{}, \numFdCpdgZMatc
 same distribution of outcomes in the computational basis as the whole circuit, so only
 \numFdCpdgObservable{} pairs, or \numFdCpdgObservablePct{}, are wrong in what a terminal measurement reads.
 The others are wrong in phase, which a histogram check would accept but which changes the outcome once the
-slice is composed with later gates or measured in another basis. As H1 expects by construction, state-based
+slice is composed with later gates or measured in another basis. Testing faces the same limit, since
+phase-flip faults escape measurement in the computational basis~\cite{oldfield2024faster}. As H1 expects by construction, state-based
 pruning, which starts from the QDG slice, is wrong on fewer pairs than def-use, \numRqOneQUnsound{} against
 \numRqOneDuUnsound{} with exact McNemar and Holm \numHOnePHolm{}.
 
