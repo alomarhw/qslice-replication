@@ -4,7 +4,8 @@ A developer who sees a qubit end in the wrong state asks which lines of the prog
 programs, a backward slice answers that question~\cite{weiser1984program}, and programmers use slices when they
 read and debug code~\cite{weiser1982programmers, binkley2007source}. Quantum programs need such help more. Their
 intermediate states cannot be inspected without disturbing them, and a gate on one qubit can change another, as in
-phase kickback, where a controlled gate changes the qubit that controls it. Quantum developers debug with print
+phase kickback, where a controlled gate changes the phase of the qubit that controls it, even when the two qubits
+are never entangled, as Section~\ref{sec:example} shows. Quantum developers debug with print
 statements, circuit drawings, simulators and manual reading of the code, and report that these methods do not
 scale~\cite{zappin2026challenges}. Bug detectors such as LintQ and QChecker find known patterns by static analysis,
 which reads a program without running it, % static-definition
