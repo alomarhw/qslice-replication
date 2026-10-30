@@ -327,7 +327,6 @@ A slice is computed on the circuit, and a developer reads it on the program. Eve
 line and the loop iterations that appended it, so a slice of operations maps to lines, and the host code that
 computes the kept operations' qubits, angles and loop bounds follows by a classical slice of the host
 program~\cite{weiser1984program}. The record can be taken while the program builds its circuit, as the study does for
-Bugs4Q, or by a static analysis, which reads the program without running it, % static-definition
-as Behler et al.\ derive the order of qubit operations from OpenQASM~3 source~\cite{behler2025static}. Where a value is unknown statically, such an
+Bugs4Q, or by a static analysis of the source, as Behler et al.\ derive the order of qubit operations from OpenQASM~3 source~\cite{behler2025static}. Where a value is unknown statically, such an
 analysis must assume every qubit an expression may denote and every branch a condition may take, which can only enlarge
 the slice. The definitions of this section are stated on the circuit and hold for any front end that produces it.
