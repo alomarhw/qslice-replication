@@ -384,7 +384,7 @@ def ansatz_graphviz():
     leg = r"\par\vspace{3pt}".join(r"\parbox[t]{7.2cm}{\raggedright\hangindent=0.66cm " + LEGEND[i] + "}" for i in
                                    ["data", "control", "quantumq", "cpdgonly", "lvdu", "lvcp", "lvqd", "lvyzh", "crit",
                                     "classicalall", "loopouter"])
-    tex = (head + r"\begin{minipage}{18.45cm}" + listing("ansatz.py", 4, 20, "7.4cm", "(a) VQE ansatz",
+    tex = (head + r"\begin{minipage}{18.45cm}" + listing("ansatz.py", 4, 20, "7.4cm", "(a) Variational ansatz",
                                                     r"\par\vspace{10pt}{\footnotesize " + leg + r"\par}") +
            r"\hfill\begin{minipage}[t]{10.95cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]"
            r"\begin{tikzpicture}[line cap=round]\input{fig2_graphviz/graph_body.tikz}\end{tikzpicture}\end{minipage}\end{minipage}\end{document}" + "\n")
@@ -461,7 +461,7 @@ def ansatz_side():
             .replace(r"boxlbl/.style={font=\ttfamily\fontsize{5.2}{5.6}\selectfont", r"boxlbl/.style={font=\ttfamily\fontsize{6.8}{7.4}\selectfont"))
     assert head.count("7.2}{8}") == 1 and head.count("6.8}{7.4}") == 1 and head.count("7.2}{9}") == 1
     tex = (head
-           + r"\begin{minipage}{17.8cm}" + listing("ansatz.py", 4, 20, "7.05cm", "(a) VQE ansatz",
+           + r"\begin{minipage}{17.8cm}" + listing("ansatz.py", 4, 20, "7.05cm", "(a) Variational ansatz",
                                                    r"\par\vspace{10pt}{\footnotesize " + leg + r"\par}") +
            r"\hfill\begin{minipage}[t]{10.6cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]"
            r"\begin{tikzpicture}" + "\n" + "\n".join(o) + "\n" + r"\end{tikzpicture}\end{minipage}\end{minipage}\end{document}" + "\n")
@@ -503,7 +503,7 @@ def ansatz_vertical():
                                      ["data", "control", "quantumq", "cpdgonly", "lvdu", "lvcp", "lvqd", "lvyz", "crit", "classicalq", "loop"])
     summary = (A["note"].replace(r"operations:\\", r"operations:\par\vspace{2pt}")
                .replace(r"\enspace$\cdot$\enspace{}", r"\par ").replace(r"\enspace$\cdot$\enspace ", r"\par ").replace(r"\\", r"\par "))
-    tex = (TEX_HEAD + r"\begin{minipage}{8.8cm}" + listing("ansatz.py", 4, 20, "5.5cm", "(a) VQE ansatz") +
+    tex = (TEX_HEAD + r"\begin{minipage}{8.8cm}" + listing("ansatz.py", 4, 20, "5.5cm", "(a) Variational ansatz") +
            r"\hfill\begin{minipage}[t]{3.1cm}\vspace{16pt}{\scriptsize\raggedright " + summary + r"\par}\end{minipage}\\[6pt]"
            r"{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[3pt]"
            r"\begin{minipage}[t]{5.65cm}\vspace{0pt}\begin{tikzpicture}" + "\n" + "\n".join(o) + "\n" +
@@ -599,7 +599,7 @@ def ansatz_horizontal():
            + legend(["lvdu", "lvcp", "lvqd"]) + r"\\[2pt]" + legend(["lvyz", "classicalq"]))
     o.append(rf"\node[anchor=north, align=center] at ($(note.south)+(0,-0.08)$) {{{leg}}};")
     graph = "\n".join(o)
-    tex = (TEX_HEAD + r"\begin{minipage}{17.8cm}" + listing("ansatz.py", 4, 20, "5.5cm", "(a) VQE ansatz") +
+    tex = (TEX_HEAD + r"\begin{minipage}{17.8cm}" + listing("ansatz.py", 4, 20, "5.5cm", "(a) Variational ansatz") +
            r"\hfill\begin{minipage}[t]{12.2cm}\vspace{0pt}\centering{\footnotesize\textbf{(b) Dependence graph of the four rules, criterion $q_0$}}\\[4pt]"
            r"\begin{tikzpicture}" + "\n" + graph + "\n" + r"\end{tikzpicture}\end{minipage}\end{minipage}\end{document}" + "\n")
     (SRC / "fig_pdg_ansatz.tex").write_text(tex)

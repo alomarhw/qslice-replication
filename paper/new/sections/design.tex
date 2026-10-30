@@ -10,9 +10,12 @@ has of a slice.
 \item \textbf{RQ4} What does each rule cost in time as circuits grow?
 \end{itemize}
 
+RQ1 checks Theorem~\ref{thm:sound} and Proposition~\ref{prop:complete} against measured dependences, RQ2 asks what
+precision beyond the QDG slice is safe, RQ3 whether slices help find faults, and RQ4 what they cost.
+
 \subsection{Pre-registration}
 The protocol was committed before the runs reported here. It extends an earlier run whose results it reuses, so the
-outcomes of two of its hypotheses were known when it was written, and every later change is a dated deviation. It was
+outcomes of two of the five hypotheses of Section~\ref{sec:stats} were known when it was written, and every later change is a dated deviation. It was
 written for a slicer that prunes by state, and its research questions are worded here for the comparison of rules,
 with hypotheses and measures unchanged. The five confirmatory tests concern state-based pruning. Every other result is
 exploratory or descriptive, among them everything added after the first results, namely the classical PDG and
@@ -27,28 +30,28 @@ VeriQBench~\cite{chen2022veriqbench}, with \numSubjAMinQubits{} to \numSubjAMaxQ
 \numSubjAMedianOps{} operations, at most \numSubjAMaxOps{}. Every qubit of every circuit is a criterion, which gives
 \numNPairs{} circuit--qubit pairs, \numNDynamicPairs{} of them in dynamic circuits with mid-circuit measurement, reset
 or conditioned gates. The \numSubjGenCount{} generated circuits come in families of known structure that grow in depth
-and in width, with \numSubjGenMinQubits{} to \numSubjGenMaxQubits{} qubits and up to \numSubjGenMaxOps{} operations,
+and in width, the number of qubits, with \numSubjGenMinQubits{} to \numSubjGenMaxQubits{} qubits and up to \numSubjGenMaxOps{} operations,
 and \numSubjSweepCount{} width sweeps extend two of the families to \numSubjSweepMaxQubits{} qubits. Corpus~L has
 \numSubjLCount{} wider circuits from the same suites, with \numSubjLMinQubits{} to \numSubjLMaxQubits{} qubits and up
 to \numSubjLMaxOps{} operations, on which only some rules finish. Faults are seeded into corpus~A, and real faults
 come from Bugs4Q~\cite{zhao2023bugs4q}.
 
 \subsection{Ground truth}
-An independent oracle simulates each circuit exactly, branching over measurement outcomes, and agrees with Qiskit's
+An independent reference simulator computes each circuit's states exactly, branching over measurement outcomes, and agrees with Qiskit's
 simulation to within \numOracleErr{}. A slice preserves the criterion when the squared Uhlmann fidelity of the
 criterion's reduced states under the slice and the whole circuit is at least $1 - 10^{-6}$. The
 dependences of Definition~\ref{def:dep} are measured by inserting \numInfluencePerturbations{} random unitaries after
 every operation and comparing the criterion's state at \numInfluenceInputs{} inputs, $\ket{0\dots0}$ and random
-product states. A catalog of \numCatEntries{} hand-derived cases checks the ground truth and every
+product states, in which every qubit starts in its own random state. A catalog of \numCatEntries{} hand-derived cases checks the ground truth and every
 slicer before the runs.
 
 \subsection{Slicers}
 Each rule is implemented on circuits from its read and write sets or its pruning step. Qiskit's \texttt{LightCone}
-pass applies to \numLcqApplicable{} of the \numNPairs{} pairs. It rejects mid-circuit measurements on
-\numLcqNaMeasurements{} pairs, and on \numLcqNaReorder{} its output cannot be matched back to the original.
+pass applies to \numLcqApplicable{} of the \numNPairs{} pairs. It refuses an observable on circuits that contain
+measurements, \numLcqNaMeasurements{} pairs, and on \numLcqNaReorder{} its output cannot be matched back to the original.
 Exploratory variants make commutation pruning hold for all angles and give state-based pruning a joint criterion.
 
-\subsection{Robustness}
+\subsection{Robustness, noise and two-qubit gates}
 A slice computed at $\ket{0\dots0}$ is rechecked, with its operations unchanged, under \numRobDraws{} random
 computational-basis inputs, \numRobDraws{} random product inputs and, for circuits with rotation angles,
 \numRobDraws{} random rebindings of every angle. A pair is robust if the slice preserves the criterion in every draw. The noise analysis, pre-registered and
@@ -66,7 +69,8 @@ Faults are seeded with \numMutOperators{} operators, \numMutPublished{} from Mus
 QMutPy~\cite{fortunato2022qmutpy} and García de la Barrera et al.~\cite{garcia2022testing}, and an angle perturbation
 of our own. Of the \numMutants{} mutants, \numMutantsExcluded{} with an empty fault site are excluded, and
 \numMutantsKilled{} change the measured distribution of at least one qubit. Each such qubit and its mutant form a
-unit, \numRqThreeUnits{} in all, for which we record each slice's size and whether it contains the fault site. Of the
+unit, \numRqThreeUnits{} in all, for which we record each slice's size and whether it contains the fault site, the operations the mutation changed or, for a deletion,
+those next to it. Of the
 \numBugsFourQTriaged{} entries of Bugs4Q, \numBugsFourQIncluded{} are circuit-level faults that port mechanically to
 the current Qiskit release, and \numBugsFourQKilled{} of them change a qubit's measured distribution, giving
 \numBugsFourQUnits{} units, \numLinesUnits{} of whose faulty lines map to the original program. Running each port
@@ -75,12 +79,13 @@ lines of the programs their developers wrote.
 
 Mutation-based fault localization, which Ishimoto et al.\ evaluate for quantum programs~\cite{ishimoto2025mbfl},
 ranks the operations of the faulty circuit by how their mutants change its observable behavior, here with the Ochiai
-formula, on a sample of \numMbflUnits{} units stratified by fault operator and including every Bugs4Q unit. We rank over the whole
+formula, a standard suspiciousness score, on a sample of \numMbflUnits{} units stratified by fault operator and including every Bugs4Q unit. We rank over the whole
 circuit and within each slice and report the EXAM score, the share of ranked operations examined before the fault,
 lower being better. For H5, the inspection cost of a slice is its size together with the same score for the slice read
 from its last operation backward.
 
-In the language-model tasks, a model lists the operations that can affect a qubit for \numTOneItems{} items, and
+\subsection{Language models}
+In two descriptive tasks, a model lists the operations that can affect a qubit for \numTOneItems{} items, and
 names the likely faulty operation of \numTTwoItems{} units given the whole circuit or a slice. The models are Claude
 Sonnet~5.5, Claude Haiku~5.5, and Qwen2.5-Coder at 32 and at 1.5 billion parameters.
 
@@ -88,7 +93,7 @@ Sonnet~5.5, Claude Haiku~5.5, and Qwen2.5-Coder at 32 and at 1.5 billion paramet
 RQ4 times the rules on the generated family that grows in depth at \numCostDepthWidth{} qubits, on the width sweeps and on
 corpus~L, each circuit in a fresh process limited to \numCostWallLimit{}~s and \numCostMemLimit{}~GiB.
 
-\subsection{Statistics}
+\subsection{Statistics}\label{sec:stats}
 Five confirmatory hypotheses concern state-based pruning. It is wrong on fewer pairs than def-use (H1), its slices
 are smaller than QDG slices (H2), at least 95\% of pairs keep a correct slice under random product inputs (H3), it
 loses at most five points of fault containment against the QDG slice (H4), and it costs less to inspect where both

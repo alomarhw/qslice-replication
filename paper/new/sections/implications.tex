@@ -4,14 +4,14 @@
 A slicer must let every gate write all its qubits, so a representation that reads the control as unchanged, as the
 QCPG does, should not be read as a dependence graph.
 A slicer must also follow measured bits, without which def-use is wrong on \numDuDynamicUnsound{} of the
-\numNDynamicPairs{} dynamic pairs, and should not add entanglement edges, which add \numYzLcExcessRatio{} times as much
-code that cannot matter and take seconds to build where the QDG takes milliseconds. Since one loop iteration can put a
+\numNDynamicPairs{} dynamic pairs, and should not add entanglement edges, which add \numYzLcExcessRatio{} times as many
+operations that cannot affect the criterion and take seconds to build where the QDG takes milliseconds. Since one loop iteration can put a
 line in a slice, it should show the iterations that do.
 
 \paragraph*{What a developer should not trust}
 A slice cannot be validated by its outcomes, as \numFdCpdgZMatchPct{} of the wrong classical slices and the Bugs4Q
-example show, so a tool that checks slices should compare reduced states, or at least joint outcomes in more than one
-basis. Pruned slices
+example show, so a tool that checks slices could instead compare reduced states, or at least joint outcomes in more
+than one basis. Pruned slices
 answer a narrower question. A commutation-pruned slice is right for the criterion at the circuit's angles but drops dependences. A state-based
 slice is right for one input, stays correct for random inputs on only \numHThreeRate{} of the pairs, and contains the
 fault \numHFourDiffAbs{} points less often. A tool should label either as such and show the QDG slice by default.
@@ -19,7 +19,9 @@ fault \numHFourDiffAbs{} points less often. A tool should label either as such a
 \paragraph*{What a slice cannot show}
 Every unit whose fault the QDG slice missed deletes an interaction, by removing a control, gate or preparation or by
 moving a gate to another qubit. No slice contains an operation the program lacks, so when a qubit's slice leaves out a qubit
-the developer expected, that absence is the clue, and listing the qubits each slice contains makes it visible.
+the developer expected, that absence is the clue, and listing the qubits each slice contains could make it visible. The forward slice of an
+operation, the operations reachable from it in the QDG, serves the same reader before a change, since by
+Proposition~\ref{prop:complete} it reaches every qubit of which the operation is a dependence.
 
 \paragraph*{What remains open}
 Slices contained most faults but improved neither fault ranking nor a language model's localization, which they

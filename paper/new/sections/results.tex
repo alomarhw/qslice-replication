@@ -1,7 +1,7 @@
 \section{Results}\label{sec:results}
 
 Table~\ref{tab:scorecard} gives the answer first. The QDG does what Section~\ref{sec:core} predicts on every pair the
-oracle can check and costs milliseconds, but it cannot be guaranteed to contain a fault, which can delete the very
+reference simulator can check and takes milliseconds to compute, but it cannot be guaranteed to contain a fault, which can delete the very
 interaction a slice would follow. The subsections answer each question for every rule.
 
 \begin{table}[t]
@@ -17,9 +17,9 @@ interaction a slice would follow. The subsections answer each question for every
     Sound (RQ1) & every input, Theorem~\ref{thm:sound} & \numRqOneLcUnsound{} wrong slices of \numNPairs{} pairs, and of \numCorpusLSoundPairs{} on corpus~L \\ \sep
     Complete (RQ1) & Proposition~\ref{prop:complete} & recall \numRqOneLcRecall{} of the measured dependences \\ \sep
     Size (RQ1) & not minimal & \numLcExcess{} points above the dependence set, equal to it on \numLcExact{} pairs \\ \sep
-    Noise (RQ2) & local noise, Theorem~\ref{thm:sound} & trace distance at most \numNoiseLcCrossExactMax{} \\ \sep
+    Noise (RQ2) & noise on a gate's own qubits, Theorem~\ref{thm:sound} & trace distance at most \numNoiseLcCrossExactMax{} \\ \sep
     Faults (RQ3) & no guarantee & contains \numRqThreeContainLc{} of the faults, \numSizeCtlLcGain{} points above a random set of its size \\ \sep
-    Cost (RQ4) & one pass & at most \numCostLcMaxCritMs{}~ms per criterion \\
+    Cost (RQ4) & one pass over the circuit & at most \numCostLcMaxCritMs{}~ms per criterion \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -79,13 +79,14 @@ starts from the QDG slice, is wrong on fewer pairs than def-use, \numRqOneQUnsou
 (exact McNemar, Holm \numHOnePHolm{}).
 
 The QDG preserves the criterion on every pair at every input checked and recovers every measured dependence, as Theorem~\ref{thm:sound} and
-Proposition~\ref{prop:complete} predict. The QPDG is sound too, since its slices contain the QDG's, but its
+Proposition~\ref{prop:complete} predict, and Table~\ref{tab:rq1} gives each rule's recall and precision against the
+dependence set. The QPDG is sound too, since its slices contain the QDG's, but its
 entanglement edges add only operations that are not dependences, and its slices grow from \numRqOneLcSize{} to
 \numRqOneYzSize{} of the circuit. The flow-sensitive variant still keeps \numYzfExcess{} points above the dependence
 set, and a graph with one entanglement edge per two-qubit gate gives exactly the QDG slice on all
 \numFdFourEdgeNoClosureEqual{} pairs it applies to, so the excess comes from closing these edges transitively. Under the
 reading in which a controlled gate writes only its targets, the QPDG is wrong on \numYzRoUnsound{} pairs. On the
-\numCorpusLSoundPairs{} pairs of corpus~L that the oracle can check exactly, the QDG and the QPDG are sound everywhere,
+\numCorpusLSoundPairs{} pairs of corpus~L that the reference simulator can check exactly, the QDG and the QPDG are sound everywhere,
 while def-use is wrong on \numCorpusLWrongDu{}.
 
 \begin{table}[t]
@@ -96,7 +97,7 @@ while def-use is wrong on \numCorpusLWrongDu{}.
   \input{figures/tab_size_robust}\\[3pt]
   \begin{minipage}{\columnwidth}\footnotesize
   Widths are in qubits, and L is corpus~L, of \numSubjLMinQubits{} to \numSubjLMaxQubits{} qubits, which has no dependence set because measuring one would
-  need more simulation than the oracle can do exactly. Still correct is the share of pairs whose slice, computed at
+  need more simulation than the reference simulator can do exactly. Still correct is the share of pairs whose slice, computed at
   $\ket{0\dots0}$, preserves the criterion in all \numRobDraws{} draws of random basis inputs, random product inputs
   and rebound angles, the last on circuits with rotation angles. Commutation is measured on the \numLcqApplicable{}
   pairs where Qiskit's pass applies and state-based pruning on the \numHThreePrunedN{} pairs it prunes, and -- marks
@@ -115,6 +116,10 @@ corpus~L \numCorpusLSizeLc{}, while the QPDG stays near \numCorpusLSizeYz{}, bec
 coupling component. On the pairs where it applies, commutation pruning falls below the dependence set, to \numWElevenLcq{} at the same widths,
 because it is sound for fixed angles but not complete, and can drop an operation where a fault would change the
 criterion, like the identity gate of line~38 in Fig.~\ref{fig:bv}.
+
+Language models miss dependences that the rule finds. Asked to list the operations that can affect a qubit, Claude
+Sonnet~5.5 and Haiku~5.5 recall \numTOneSonnetRecall{} and \numTOneHaikuRecall{} of the dependences and both Qwen
+models \numTOneQwenMidRecall{}, and Sonnet recalls only \numTOneSonnetKick{} of those through kickback.
 
 \emph{Answer to RQ1.} Only rules that let a gate write all its qubits are sound. Def-use and the classical PDG give
 wrong slices for \numRqOneDuUnsound{} and \numCpdgUnsound{} of the \numNPairs{} pairs, and pruning is correct at
@@ -137,7 +142,7 @@ correct on every random basis and product input, and fails only when the angles 
 \numLcqSize{}, stays correct everywhere, but recalls of \numLcqRecall{} and \numLcqsRecall{} show that both variants
 miss dependences.
 
-Under depolarizing noise, the criterion's states under the QDG slice and the whole circuit differ by a trace distance
+Safety also means behaving like the program on a noisy device. Under depolarizing noise, the criterion's states under the QDG slice and the whole circuit differ by a trace distance
 of at most \numNoiseLcCrossExactMax{}, which is rounding error, as Theorem~\ref{thm:sound} predicts for noise that
 acts on a gate's own qubits, while the state-based slice differs in \numNoiseQCrossExactNonzero{} of \numNoiseQCrossExactN{} exact runs, by up to
 \numNoiseQCrossExactMax{}, because it removes noisy gates that the program executes~\cite{preskill2018nisq}.
@@ -207,14 +212,10 @@ the reading. Def-use, which equals the classical PDG on these unitary programs, 
 \numLinesDuMissed{} of the units.
 
 \paragraph*{Language models}
-Asked to list the operations that can affect a qubit, Claude Sonnet~5.5 and Haiku~5.5 recall \numTOneSonnetRecall{}
-and \numTOneHaikuRecall{} of the dependences and both Qwen models \numTOneQwenMidRecall{}, where the QDG slice recalls
-them all, and Sonnet recalls only \numTOneSonnetKick{} of those through kickback. Asked to name the faulty operation,
-the Claude models do worse with every slice than with the whole circuit. Sonnet has the fault in its top three for
+Asked to name the faulty operation, the Claude models do worse with every slice than with the whole circuit. Sonnet has the fault in its top three for
 \numTTwoSonnetFull{} of the units with the whole circuit, \numTTwoSonnetLc{} with the QDG slice and \numTTwoSonnetQ{}
 with the state-based slice, and Haiku for \numTTwoHaikuFull{}, \numTTwoHaikuLc{} and \numTTwoHaikuQ{}, while the Qwen
-models change by less than a point with the QDG slice. In this exploratory analysis, a model misses dependences that a
-slicer finds by rule, yet a slice does not help it localize a fault.
+models change by less than a point with the QDG slice. In this exploratory analysis, a slice does not help a model localize a fault.
 
 \emph{Answer to RQ3.} The QDG slice contains the fault in \numRqThreeContainLc{} of the units and misses only faults
 that delete the interaction it would follow. State-based pruning loses \numHFourDiffAbs{} points of containment, and
@@ -230,5 +231,5 @@ State-based pruning, which simulates the circuit for every candidate removal, ex
 \numCostBuildDepthForty{}~s at depth \numCostMeasuredDepthForty{} and \numCostBuildDepthOneSixty{}~s at depth
 \numCostMeasuredDepthOneSixty{} in the median, because its closure links every pair of operations on a coupling component.
 
-\emph{Answer to RQ4.} The QDG slice costs milliseconds at every depth studied, while state-based pruning and the
+\emph{Answer to RQ4.} The QDG slice takes milliseconds at every depth studied, while state-based pruning and the
 construction of the QPDG grow to seconds and beyond the limit as circuits deepen.

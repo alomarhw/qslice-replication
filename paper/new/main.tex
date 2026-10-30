@@ -27,7 +27,7 @@
 \input{../numbers}
 
 \begin{document}
-\title{Slicing Quantum Programs for Comprehension: What a Quantum Slice Should Look Like}
+\title{What Must a Quantum Slice Keep? Slicing Quantum Programs for Comprehension}
 \author{\IEEEauthorblockN{Anonymous Author(s)}}
 \maketitle
 
@@ -35,16 +35,16 @@
 A developer who asks which lines of a quantum program determine a qubit's state needs a slice that never hides code
 able to change it. Slicing answers this question for classical programs, but the dependence rules proposed for quantum
 programs have never been checked against what a quantum program computes. We define a slice of a set of qubits by the
-joint state it must preserve for every input, and an operation as a dependence of those qubits if a change right after
+joint state it must preserve for every input state, and an operation as a dependence of those qubits if a change right after
 it can change that state. One rule meets both, the write-all rule, under which a gate writes every qubit it touches,
 its controls included. We prove that the slices of its quantum dependence graph (QDG) are sound and keep every
 dependence, and that classical data, classical control and quantum data dependence suffice, while entanglement is
 neither necessary nor sufficient for dependence. A study with pre-registered hypotheses, on \numNPairs{} circuit--qubit
 pairs and \numStudyFaultUnits{} fault units, measures the alternatives. Reading a control as unchanged, as classical
 slicing does, gives wrong slices for \numCpdgUnsoundPct{} of the pairs, and \numFdCpdgZMatchPct{} of these reproduce
-the program's outcome histogram. The quantum program dependence graph keeps \numYzLcExcessRatio{} times as much code
-that cannot matter as the QDG, and pruning drops dependences. The QDG slice contains \numRqThreeContainLc{} of the
-faults and costs milliseconds, though slices do not improve fault ranking.
+the program's outcome histogram. The quantum program dependence graph keeps \numYzLcExcessRatio{} times as many operations
+that cannot affect the qubits as the QDG, and pruning drops dependences. The QDG slice contains \numRqThreeContainLc{} of the
+faults and takes milliseconds to compute, though slices do not improve fault ranking.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -54,9 +54,9 @@ program slicing, program comprehension, quantum programs, dependence analysis, l
 % Sections are written one at a time and agreed with the author before the next starts.
 \input{sections/intro}
 
-\input{sections/related}
-
 \input{sections/example}
+
+\input{sections/related}
 
 \input{sections/core}
 

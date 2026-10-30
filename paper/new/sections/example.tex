@@ -19,7 +19,8 @@ quantum concepts the rest of the paper uses.
 \paragraph*{Background}
 A qubit's state is a superposition $\alpha\ket{0} + \beta\ket{1}$, and measuring it yields $0$ or $1$ with
 probabilities $|\alpha|^2$ and $|\beta|^2$. The states $\ket{+}$ and $\ket{-}$ give both outcomes equally often and
-differ only in phase, which no measurement in the computational basis can see, and the Hadamard gate H turns
+differ only in phase, which no measurement in the computational basis, the standard measurement that reports $0$ or
+$1$, can see, and the Hadamard gate H turns
 $\ket{0}$ into $\ket{+}$ and back. The controlled-NOT (CNOT) flips its target when its control is $1$, but when the
 target is in $\ket{-}$ it leaves the target unchanged and flips the phase of its control instead. This is phase
 kickback, and it needs no entanglement, a joint state of two qubits that cannot be written as a product of their
@@ -31,7 +32,7 @@ functions that compute which gates act on which qubits.
 The Bernstein--Vazirani algorithm~\cite{bernstein1997qct} finds a hidden bit string $s$ with one query to an oracle.
 Fig.~\ref{fig:bv} shows the program of the Qiskit textbook~\cite{qiskittextbook}, with $s = 011$. Lines~24 and~25
 prepare the auxiliary qubit $q_3$ in $\ket{-}$, line~29 puts every data qubit in $\ket{+}$, and for every bit of $s$
-that is $1$, the CNOT of line~40 kicks a phase onto its data qubit, turning $\ket{+}$ into $\ket{-}$. The Hadamard
+that is $1$, the CNOT of line~40 flips the phase of its data qubit, turning $\ket{+}$ into $\ket{-}$. The Hadamard
 gates of line~47 turn these phases into the bits of $s$. We seeded one fault, X instead of Z on line~25. It leaves
 the auxiliary in $\ket{+}$, on which a CNOT changes nothing, so the program returns \numBvBuggyOut{} instead of
 \numBvFixedOut{}.
@@ -49,8 +50,7 @@ Yet these lines can change $q_0$. Restoring Z on line~25 turns $q_0$ from $\ket{
 fidelity \numBvFixFidelity{}, because the CNOT acts on its control as well as its target. The QDG of
 Section~\ref{sec:core}, which lets every gate write all its qubits, keeps lines~\numBvQdgLines{} and the lines that
 compute them, among them the oracle's loop and condition on lines~35 to~37 and~39, and so contains the fault. The QPDG of Yu
-and Zhao keeps the same lines here, since its two extra operations are later iterations of lines~29 and~40, and
-Fig.~\ref{fig:ansatz} shows where it costs more.
+and Zhao keeps the same lines here, and Fig.~\ref{fig:ansatz} shows where it keeps more.
 
 \paragraph*{Why the outcomes cannot tell}
 Here the fault shows in the outcome of $q_0$, but not always. In a real bug from Bugs4Q~\cite{zhao2023bugs4q}, posted

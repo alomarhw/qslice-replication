@@ -3,10 +3,10 @@
 A quantum slice helps a developer only if it never hides code that can change the qubits asked about. We defined that
 requirement as preserving the qubits' joint state for every input while keeping every semantic dependence, and showed
 that the write-all rule meets it. Its slice is the backward light cone extended along classical bits and is computed in one pass, and the rule needs
-only classical data, classical control and quantum data dependence. A pre-registered study
+only classical data, classical control and quantum data dependence. A study with pre-registered hypotheses
 measured what the other rules lose. Reading a control as unchanged gives wrong slices that often reproduce the
-program's outcomes, entanglement edges add only code that cannot matter, and pruning trades dependences for size, a state-based slice holding for one
-input only. The QDG slice is on average \numLcExcess{} points larger than the smallest complete slice and costs
-milliseconds. Two questions remain, whether these slices shorten the manual code reading that developers find does
+program's outcomes, entanglement edges add only operations that cannot affect the criterion, and pruning trades dependences for size, a state-based slice holding for one
+input only. The QDG slice is on average \numLcExcess{} points larger than the smallest complete slice and takes
+milliseconds to compute. Two questions remain, whether these slices shorten the manual code reading that developers find does
 not scale, which needs a study with developers, and how to compute them statically on the source developers write, at
 the scale of real programs and with loops that run on the device.
