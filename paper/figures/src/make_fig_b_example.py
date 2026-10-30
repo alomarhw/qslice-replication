@@ -63,10 +63,10 @@ def main():
     ROW, X0, CODE_W = 0.36, 0.0, 5.9
     XH = CODE_W + 0.35          # first hop dot
     DH = 0.27                   # hop spacing
-    XS = XH + 3 * DH + 0.6     # srcSlice column
+    XS = XH + 3 * DH + 0.9     # srcSlice column
     o = [HEAD]
     # headers
-    o.append(rf"\node[hdr] at ({XH + 1.5 * DH},0.42) {{hop}};")
+    o.append(rf"\node[hdr] at ({XH + 1.5 * DH},0.42) {{iteration $h$}};")
     for h in range(n_hops):
         o.append(rf"\node[hdr, text=mute] at ({XH + h * DH},0.12) {{{h}}};")
     o.append(r"\node[hdr, anchor=base west] at (-0.45,0.12) {\bfseries Program, with the slice of \texttt{q[4]}};")
@@ -95,11 +95,11 @@ def main():
         (r"\fill[cbg] (0,0) rectangle (0.32,0.2); \fill[mute!70] (0,0) rectangle (0.04,0.2);", "classical statement that computes them"),
     ]
     items2 = [
-        (r"\draw[wire, line width=0.5pt, fill=wire] (0.16,0.07) circle (0.075);", "hop in the slice"),
-        (r"\draw[wire, line width=0.5pt, fill=white] (0.16,0.07) circle (0.075);", "hop left out"),
-        (r"\fill[mute] (0.09,0) rectangle ++(0.14,0.14);", "in srcSlice's slice of \\texttt{qc}"),
+        (r"\draw[wire, line width=0.5pt, fill=wire] (0.16,0.07) circle (0.075);", "operation of iteration $h$ in the slice"),
+        (r"\draw[wire, line width=0.5pt, fill=white] (0.16,0.07) circle (0.075);", "operation of iteration $h$ left out"),
     ]
-    for row, its in enumerate((items, items2)):
+    items3 = [(r"\fill[mute] (0.09,0) rectangle ++(0.14,0.14);", "in srcSlice's slice of \\texttt{qc}")]
+    for row, its in enumerate((items, items2, items3)):
         x = -0.45
         for sym, label in its:
             o.append(rf"\begin{{scope}}[shift={{({x},{yb - row * 0.32:.3f})}}] {sym} \end{{scope}}")
