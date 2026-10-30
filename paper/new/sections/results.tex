@@ -105,8 +105,8 @@ everywhere, while def-use is wrong on \numCorpusLWrongDu{}.
 
 The rules nest, and Fig.~\ref{fig:size} shows how far apart they are. On all \numNestPairs{} pairs the dependence set
 lies within the QDG slice and the QDG slice within the QPDG slice. Restricted to its dependence set, every circuit
-preserves the criterion at $\ket{0\dots0}$, so the dependence set is itself a sound slice and the smallest one that
-contains every dependence. It makes up \numDepFloor{} of a circuit on average. The QDG slice keeps only
+preserves the criterion at $\ket{0\dots0}$, so at that input the dependence set is itself a correct slice, the
+smallest one that contains every dependence. It makes up \numDepFloor{} of a circuit on average. The QDG slice keeps only
 \numLcExcess{} percentage points more and equals it on \numLcExact{} of the \numNPairs{} pairs, while the QPDG keeps
 \numYzExcess{} points more, \numYzLcExcessRatio{} times as much code that cannot change the criterion. The gap grows
 with width. At \numWElevenLo{} to \numWElevenHi{} qubits the QDG slice keeps \numWElevenLc{} of the circuit and on

@@ -1,0 +1,43 @@
+\section{Threats to Validity}\label{sec:threats}
+
+\paragraph*{Construct validity}
+The dependence set is measured with \numInfluencePerturbations{} random perturbations after every operation at
+\numInfluenceInputs{} inputs, so it can miss true dependences but never adds false ones. The QDG's recall of
+\numRqOneLcRecall{} is therefore a measured result that Proposition~\ref{prop:complete} guarantees in full, while the
+distance between the QDG slice and the dependence set may be smaller than reported, since true dependences the
+sampling missed would enlarge the set. That the dependence set is itself a sound slice was checked at
+$\ket{0\dots0}$ only, which is why the paper does not call it a slice for every input. Wrong slices are counted at
+$\ket{0\dots0}$ as well, a lower bound for every rule but the QDG, and RQ2 rechecks the slices under random inputs.
+A slice preserves its criterion when the squared fidelity is at least $1 - 10^{-6}$, far above the oracle's error of
+\numOracleErr{}. Each criterion of the study is a single qubit. The QDG slice of a set is the union of the slices of
+its members by Proposition~\ref{prop:joint}, but this does not hold for the pruning rules, whose joint criteria were
+explored only for state-based pruning. Fault containment measures where a developer would look, not whether a
+developer finds the fault, and no developer took part in the study.
+
+The QPDG is reimplemented from prose, which leaves room for readings its authors did not intend. Every reading was
+logged before any run, and the flow-insensitive, flow-sensitive and read-only variants bracket the plausible ones.
+Under the readings in which a gate writes its control, the QPDG contains the QDG slice, so its excess cannot come from
+a reading that drops dependences. Commutation pruning is measured through Qiskit's pass, which applies to
+\numLcqApplicable{} of the \numNPairs{} pairs, so its results describe circuits without mid-circuit measurements.
+
+\paragraph*{Internal validity}
+The slicers, the oracle and the dependence measurement could contain errors. The oracle agrees with Qiskit's
+simulation to within \numOracleErr{}, a catalog of \numCatEntries{} hand-derived cases checks the ground truth and every
+slicer before the runs, and the nesting of the dependence set within the QDG slice and of that within the QPDG slice,
+which holds on all \numNPairs{} pairs, would expose an error that drops or adds operations in either. The soundness proof is mechanized for an
+abstract model of local operations, and that quantum operations satisfy the model is argued on paper. The protocol was
+written after an earlier run, so the outcomes of H1 and H2 were known, and both hold by construction. Every later
+change is a dated deviation, and every result outside the five hypotheses, among them the classical PDG's share of
+wrong slices and the nesting of the rules, is reported as exploratory. The language models were queried once per
+item in the primary run. The Claude models accept only their default sampling, so their answers can differ between
+calls, and the most expensive model was dropped before any scored call.
+
+\paragraph*{External validity}
+The circuits with an exact ground truth have at most \numSizeAMaxQubits{} qubits in corpus~A and 20 in corpus~L, and
+only \numNDynamicPairs{} pairs come from dynamic circuits, so rules whose errors grow with width or with feedback may
+fare worse on larger circuits than reported. The proofs hold for every circuit, but the measured distances between the
+rules may change. Benchmark and generated circuits are not programs written by developers, and the \numLinesUnits{}
+Bugs4Q units are the only real faults. Seeded faults follow published mutation operators and may not represent real
+faults in their mix. The gate check covers Qiskit's standard two-qubit gates at one angle each, and the noise analysis
+covers depolarizing noise only. Loops that run on the device are outside the model of Section~\ref{sec:core}, and
+circuits that use them are not studied.

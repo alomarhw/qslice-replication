@@ -1,0 +1,15 @@
+\section{Conclusion}\label{sec:conclusion}
+
+A quantum slice helps a developer only if it never hides code that can change the qubits the developer asks about.
+This paper defined that requirement as preservation of the qubits' joint state for every input together with
+completeness for semantic dependence, and showed that one rule meets it, the write-all rule, under which a gate writes
+every qubit it touches. Its slice is the backward light cone extended along classical bits, it needs only classical
+data, classical control and quantum data dependence, and it is computed in one pass. A pre-registered study measured
+what every other rule loses. Reading the control of a gate as unchanged gives wrong slices that often reproduce the
+program's outcomes, entanglement edges add only code that cannot matter, and pruning trades dependences for size and
+holds for one observable or one input. The QDG slice comes within a few points of the smallest slice that keeps every
+dependence and costs milliseconds.
+
+Two questions remain. The first is whether these slices shorten the manual reading that developers report does not
+scale, which needs a study with developers. The second is how to compute them on the source developers write, statically and at the
+scale of real programs, including loops that run on the device.
