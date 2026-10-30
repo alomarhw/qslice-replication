@@ -168,8 +168,9 @@ $\mathrm{H}(q_0)\,\mathrm{CX}(q_0, q_1)\,\mathrm{X}(q_1)$ the two qubits are max
 $\mathrm{X}(q_1)$, but by no-signaling no operation on $q_1$ after the CNOT can change $\rho_{q_0}$.
 \end{IEEEproof}
 
-By Proposition~\ref{prop:complete}, entanglement edges add no dependence the QDG misses, and by (ii) they can add
-operations that are not dependences. A CNOT that copies a basis state, the case no-cloning concerns, has the edges of
+By Proposition~\ref{prop:complete}, entanglement edges add no dependence the QDG misses, and by (ii) they can add operations that are not dependences. The correlation between entangled qubits is a property of their
+joint state, which a criterion that names both qubits preserves, and a measurement that steers later operations
+reaches them through classical control dependence. A CNOT that copies a basis state, the case no-cloning concerns, has the edges of
 quantum data dependence already. In the noise-free semantics, timing decides when an operation runs, not what a state
 depends on, although under decoherence it does matter~\cite{smith2022timestitch}, and superposition changes amplitudes, not the locations an operation
 acts on~\cite{nielsen2010quantum}.
