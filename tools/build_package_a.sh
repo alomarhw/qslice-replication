@@ -26,7 +26,8 @@ for d in lintq_compare profiles qasm_frontend qhe qhe__rerun-20261028 scale scal
 git mv -k qslice qdg 2>/dev/null || mv qslice qdg
 mv isabelle/QSliceSoundness.thy isabelle/SliceSoundness.thy
 find . -type f \( -name '*.py' -o -name '*.md' -o -name '*.tex' -o -name '*.csv' -o -name '*.json' -o -name '*.jsonl' \
-  -o -name '*.sh' -o -name '*.txt' -o -name '*.tsv' -o -name '*.thy' -o -name 'ROOT' -o -name '*.diff' -o -name '*.log' \) \
+  -o -name '*.sh' -o -name '*.txt' -o -name '*.tsv' -o -name '*.thy' -o -name 'ROOT' -o -name '*.diff' -o -name '*.log' \
+  -o -name '.gitignore' \) ! -name MANIFEST.sha256.tsv \
   -print0 | xargs -0 sed -i '' \
     -e 's/QSliceSoundness/SliceSoundness/g' -e 's/srcSlice-Q/the static slicer/g' -e 's/QLine/the static slicer/g' \
     -e 's/QSlice_/Qdg_/g' -e 's/\([^A-Za-z]\)QSlice/\1the slicer/g' -e 's/^QSlice/the slicer/' -e 's/QSlice/Qdg/g' -e 's/from qslice/from qdg/g' -e 's/import qslice/import qdg/g' -e 's/qslice\./qdg./g' \
@@ -54,8 +55,26 @@ print(f"bibliography: {len(kept)} cited entries kept")
 PYEOF
 ( cd paper/new && bibtex main >/dev/null 2>&1; pdflatex -interaction=nonstopmode main >/dev/null 2>&1; \
   pdflatex -interaction=nonstopmode main >/dev/null 2>&1 ) || true
-find . -type f ! -name MANIFEST.sha256.tsv ! -path './paper/new/main.*' -print0 | sort -z \
-  | xargs -0 shasum -a 256 | awk '{print $2"\t"$1}' > MANIFEST.sha256.tsv
+# the manifest keeps the original rows of the shipped corpora and adds every other file of the package
+"$PYV" - <<'PYEOF'
+import csv, hashlib, os
+old = list(csv.DictReader(open("MANIFEST.sha256.tsv"), delimiter="\t"))
+data = [r for r in old if r["path"].startswith("data/") and os.path.exists(r["path"])]
+seen = {r["path"] for r in data}
+rows = list(data)
+for root, _, files in os.walk("."):
+    for f in files:
+        p = os.path.relpath(os.path.join(root, f))
+        if p in seen or p == "MANIFEST.sha256.tsv" or p.startswith("paper/new/main."):
+            continue
+        rows.append({"origin": "package file", "path": p,
+                     "sha256": hashlib.sha256(open(p, "rb").read()).hexdigest(), "note": ""})
+rows.sort(key=lambda r: r["path"])
+with open("MANIFEST.sha256.tsv", "w", newline="") as fh:
+    w = csv.DictWriter(fh, fieldnames=["origin", "path", "sha256", "note"], delimiter="\t", lineterminator="\n")
+    w.writeheader(); w.writerows(rows)
+print(f"manifest: {len(rows)} files")
+PYEOF
 cd ..
 zip -qr package-a.zip package-a
 echo "built build/package-a ($(du -sh package-a | cut -f1)) and build/package-a.zip"
