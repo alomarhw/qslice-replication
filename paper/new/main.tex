@@ -37,9 +37,9 @@ fundamental to using slicing for program comprehension, yet the dependence rules
 been evaluated against such a criterion. We define a correct slice as one that preserves the selected qubits' joint
 state for every input state, and an operation as a dependence when a change right after it can alter that state. Our approach builds the quantum dependence graph (QDG) from a write-all rule, under which a gate writes every
 qubit it acts on, its controls included, and we prove that QDG slices preserve the required state and retain every
-dependence. Classical
-data, classical control, and quantum data dependence suffice, and entanglement is neither necessary nor sufficient for
-dependence. We compare the QDG with alternative dependence rules on \numNPairs{}
+dependence. The QDG needs only three kinds of dependence, classical data, classical control, and quantum data dependence. The further
+kinds proposed for quantum programs, such as entanglement, add none, since entanglement is neither necessary nor
+sufficient for dependence. We compare the QDG with alternative dependence rules on \numNPairs{}
 circuit--qubit pairs and \numStudyFaultUnits{} fault units. Treating control qubits as read-only, as the classical
 program dependence graph does, produces incorrect slices for \numCpdgUnsoundPct{} of the pairs. Of these,
 \numFdCpdgZMatchPct{} still give the qubit the same frequencies of measured outcomes as the whole program, so the
