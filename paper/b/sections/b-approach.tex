@@ -21,9 +21,9 @@ them.
   \centering
   \includegraphics[width=\textwidth]{figures/fig_b_tool.pdf}
   \caption{The approach on the program of Fig.~\ref{fig:b-example}. (1) srcML's markup of line 14 and of lines 18 and
-  19, with the elements the extensions read lettered. (2) The trace of the first hop, each operation with its line and
-  iteration. (3) The slice of \texttt{q[4]}, one cell per operation of a loop line in each hop, filled when the operation
-  is in the slice.}
+  19, each under its Python, with the elements the extensions read coloured by role and the tags greyed. (2) The trace of
+  line 8 and the first iteration, each operation with its line and iteration $h$. (3) The slice of \texttt{q[4]}, one cell
+  per operation of a loop line in each iteration, filled when the operation is in the slice.}
   \label{fig:b-tool}
 \end{figure*}
 
@@ -81,7 +81,7 @@ leading qubits are controls. It reads this from a role table derived from the si
 \numToolGateQiskit{} methods of Qiskit~\numQiskitVersion{} that take qubits and add an operation, \numToolGateLegacy{}
 methods that Qiskit~1.0 removed but older programs still call, and \numToolGateSpecial{} methods whose arguments the
 signatures do not name uniformly, \numToolGateTable{} in all. With the table, a srcML \texttt{call} becomes a gate on
-qubit operands, as letters c and d mark in stage~1 of Fig.~\ref{fig:b-tool}, the part the quantum argument lists of the
+qubit operands, as the gate and qubit colours mark in stage~1 of Fig.~\ref{fig:b-tool}, the part the quantum argument lists of the
 OpenQASM markup play in a language whose syntax states them. Table~\ref{tab:b-roles} lists the methods by kind, with the
 calls outside the table and how they are read. A circuit composed into another is mapped onto the qubits it is given,
 and a gate the table does not know, such as a circuit from Qiskit's library, becomes one operation on all its qubits,
@@ -124,10 +124,10 @@ silently.
 Qiskit computes qubit indices, register sizes and angles in Python, so E2 interprets the srcML tree of the program over
 the values it can know and records the operations the program would append, as a trace, much as the execution-order
 analysis of Behler et al.\ does for OpenQASM~3~\cite{behler2025static}. Each operation carries its source line, from
-the position srcML records (letter g in Fig.~\ref{fig:b-tool}), and the iteration of every loop around it. The
+the position srcML records (the grey \texttt{pos:start} in Fig.~\ref{fig:b-tool}), and the iteration of every loop around it. The
 interpretation unrolls loops of the host program of up to 10{,}000 iterations, inlines its functions, follows its
 branches, and reads \texttt{if\_test} and \texttt{c\_if}, Qiskit's two ways of conditioning gates on measured bits
-(letters e and f), as stage~2 of Fig.~\ref{fig:b-tool} shows. Where a value cannot be known without running the program,
+(the bit and condition colours), as stage~2 of Fig.~\ref{fig:b-tool} shows. Where a value cannot be known without running the program,
 it over-approximates. An index it cannot evaluate acts on every qubit it may denote, both branches of a condition it
 cannot decide are followed, and a loop of unknown length is repeated as Section~\ref{sec:b-loops} describes, up to
 \numToolMaxCopies{} copies. Each over-approximation adds operations or qubits, so it can only enlarge a slice, and each
