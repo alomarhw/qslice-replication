@@ -3,10 +3,10 @@
 Walk the circuit from its end with a needed set that starts at the criterion qubit. An operation whose locations meet
 the needed set joins the slice, and its locations join the needed set.
 
-bits="graph"  classical bits as the study's graph treats them (slicer `lc`): a conditioned operation depends on the
+bits="graph"  Definition 4 as the paper states it, and as the study's graph computes it (slicer `lc`): a conditioned operation depends on the
               most recent earlier measurement of each bit its condition reads, and a measurement reads no bit.
-bits="def4"   Definition 4 read literally: every location of an operation, its qubits, its measured bits and its
-              condition's bits, is read and written.
+bits="def4"   the earlier wording of Definition 4, kept for the check of Deviation I-28: every location of an
+              operation, its qubits, its measured bits and its condition's bits, is read and written.
 """
 
 from __future__ import annotations
