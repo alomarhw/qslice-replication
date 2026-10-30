@@ -230,8 +230,8 @@ def main():
         (OUT / f"{name}.tex").write_text(fn())
         print("wrote", OUT / f"{name}.tex")
     (OUT.parent / "tab_size_robust.tex").write_text(tab_size_robust())
-    if HAS_TOOL:  # the anonymous build of Paper B names the tool QtmSlice
-        (OUT / "fig_scale_anon.tex").write_text(scale().replace(TOOL_NAME, "QtmSlice"))
+    if HAS_TOOL:  # the anonymous build of Paper B names the tool QuSlice
+        (OUT / "fig_scale_anon.tex").write_text(scale().replace(TOOL_NAME, "QuSlice"))
     print("wrote", OUT.parent / "tab_size_robust.tex")
 
 

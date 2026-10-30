@@ -1,5 +1,5 @@
 #!/bin/sh
-# Anonymous build: the submission PDF and the replication package with the tool named QtmSlice.
+# Anonymous build: the submission PDF and the replication package with the tool named QuSlice.
 # The source of the rewrite names the tool srcSlice-Q (tool.TOOL_NAME, \tool in the paper); this script renders
 # the anonymous form into build/anon/ and fails if "srcSlice-Q" survives in either.
 # Usage (workspace root): sh tools/build_anon.sh
@@ -9,7 +9,7 @@ rm -rf "$OUT" && mkdir -p "$OUT/package"
 git archive HEAD | tar -x -C "$OUT/package"
 # text files only; binary files (PDFs, images) are rebuilt or carry no name
 find "$OUT/package" -type f \( -name '*.py' -o -name '*.md' -o -name '*.tex' -o -name '*.csv' -o -name '*.json' \
-  -o -name '*.sh' -o -name '*.txt' -o -name '*.tsv' -o -name '*.diff' \) -print0 | xargs -0 sed -i '' 's/srcSlice-Q/QtmSlice/g'
+  -o -name '*.sh' -o -name '*.txt' -o -name '*.tsv' -o -name '*.diff' \) -print0 | xargs -0 sed -i '' 's/srcSlice-Q/QuSlice/g'
 # MANIFEST.sha256.tsv lists the renamed files; it is regenerated for the package
 # figures that show the tool's name are regenerated from the renamed scripts
 (cd "$OUT/package" && python3 paper/figures/src/make_fig_overview.py >/dev/null && cd paper/figures/src \
