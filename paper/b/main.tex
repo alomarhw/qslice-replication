@@ -33,7 +33,8 @@ lines, the loop iterations that put them in it, and the classical statements tha
 accurate. On \numToolDevPrograms{} programs the static trace equals the circuit Qiskit builds and the slices equal those
 computed on that circuit in \numToolDevSliceEqual{}, and on \numQasmCircuitsChecked{} benchmark circuits the OpenQASM
 reader agrees with Qiskit. Exact simulation confirms every qubit's slice in programs with loops on the device, and the
-classical statements cover those a reference computation finds for \numSsContainPct{} of qubits. Of
+classical statements cover those a reference computation finds for \numSsContainPct{} of qubits, and for
+\numSsHeldContainPct{} in held-out GitHub programs. Of
 \numScaleSOneFiles{} Qiskit programs from GitHub, \tool{} traces a circuit in \numScaleSOneSliced{}, and
 \numCovNoConstruction{} of the others never build one. It traces \numQheTracedOfBuildsPct{} of the expert-written
 Qiskit HumanEval programs that build a circuit. It slices a program in \numScaleSOneMedianMs{}~ms in the median and
