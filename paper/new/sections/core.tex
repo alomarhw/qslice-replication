@@ -1,48 +1,39 @@
 \section{Quantum Dependence and the Write-All Rule}\label{sec:core}
 
-This section defines what a slice of a set of qubits must preserve and when an operation is a dependence of
-those qubits. It then states the write-all rule, proves that it gives slices that are sound and contain every
-dependence, shows that three kinds of dependence are all a slice needs, and places every other rule relative to
-it. The definitions do not depend on any slicer, and Section~\ref{sec:results} measures each rule against them.
+This section defines what a slice must preserve and what a dependence is, states the write-all rule and its
+guarantees, shows that three kinds of dependence suffice, and places every other rule relative to it.
 
 \subsection{Circuits, criteria and dependence}
-A Qiskit program does not act on qubits directly. It builds a \emph{circuit}, which a simulator or a quantum
-computer then runs. The circuit $P = o_0 \dots o_{L-1}$ is the sequence of operations the program appends, in the
-order it appends them, and position $k$ holds the operation $o_k$. The circuit has $n$ qubits, numbered
-$Q = \{0, \dots, n-1\}$, which form its quantum memory, and a set $C$ of classical bits, which store the outcomes of
-measurements.
+A Qiskit program builds a \emph{circuit}, which a simulator or a quantum computer then runs. The circuit
+$P = o_0 \dots o_{L-1}$ is the sequence of operations the program appends, in order, on $n$ qubits
+$Q = \{0, \dots, n-1\}$ and a set $C$ of classical bits that store measurement outcomes.
 
-Each operation touches some qubits and bits, which we call its \emph{locations} $\mathit{loc}(o) \subseteq Q \cup
-C$. A gate touches the qubits it is applied to, so \texttt{h(0)} has the location $q_0$ and \texttt{cx(0, 1)} the
+The qubits and bits an operation touches are its \emph{locations} $\mathit{loc}(o) \subseteq Q \cup C$. A gate
+touches the qubits it is applied to, so \texttt{h(0)} has the location $q_0$ and \texttt{cx(0, 1)} the
 locations $q_0$ and $q_1$. A measurement touches the measured qubit and the bit that receives its outcome, so
 \texttt{measure(2, 0)} has the locations $q_2$ and $c_0$. A reset, which returns a qubit to $\ket{0}$, touches that
 qubit. A conditioned gate is applied only when a measured bit has a given value, as in \texttt{x(0)} inside
 \texttt{if\_test((c[0], 1))}, and it touches its qubits and the bits its condition reads, here $q_0$ and $c_0$.
 
-The program's own loops and branches run while the circuit is built and decide which operations it contains and
-how often. Loops that run on the device, inside the circuit, are outside this model, and none of the study's circuits
-has one.
+The program's own loops and branches run while the circuit is built and decide which operations it contains. Loops
+that run on the device, inside the circuit, are outside this model, and none of the study's circuits has one.
 
-The state of the qubits is described by a density matrix $\rho$, which also covers the mixtures that arise when a
-measurement outcome is not known in advance. Running $P$ on the input $\rho$, with every bit initially $0$, gives
+The state of the qubits is a density matrix $\rho$, which also covers the mixtures that measurements create. Running $P$ on the input $\rho$, with every bit initially $0$, gives
 $\llbracket P \rrbracket(\rho)$, the final joint state of qubits and bits, averaged over the outcomes of the
 measurements. A developer asks about some of the qubits, a set $W \subseteq Q$. Their \emph{reduced state}
 $\rho_W = \operatorname{Tr}_{\overline{W}}(\rho)$ is what remains of $\rho$ when everything else,
 $\overline{W} = (Q \setminus W) \cup C$, is traced out, that is, averaged away. It determines every statistic of
-measuring $W$ in any basis, so two runs that give $W$ the same reduced state cannot be told apart by looking at
-$W$. A slice is a set $S$ of positions in $P$, and it is judged by running the restriction $P|_S$, the circuit that
-keeps only the operations at the positions in $S$, in their original order.
+measuring $W$ in any basis. A slice is a set $S$ of positions in $P$, judged by running the restriction $P|_S$, which
+keeps only the operations at those positions, in order.
 
 \begin{definition}[Slicing criterion]\label{def:criterion}
 A slicing criterion is a nonempty set $W \subseteq Q$ of qubits, whose state is taken at the end of the circuit,
 before any terminal measurement reads it.
 \end{definition}
 
-The criterion is a set of qubits, not a single one, because the joint state of entangled qubits is not determined
-by their separate states, so a developer may need to ask about several qubits together. Yu and Zhao keep the
-classical criterion of a variable at a statement~\cite{yu2025qpdg}, and we preserve the \emph{joint} state of the
-criterion instead. Taking that state before readout keeps a slice correct
-when it is composed with later gates or read in another basis.
+The criterion is a set because the joint state of entangled qubits is not determined by their separate states. Yu
+and Zhao keep the classical criterion of a variable at a statement~\cite{yu2025qpdg}, and we preserve the joint state
+instead, taken before readout so that a slice stays correct when composed with later gates or read in another basis.
 
 \begin{definition}[Soundness]\label{def:sound}
 A set of positions $S$ \emph{preserves} $W$ at input $\rho$ if $\operatorname{Tr}_{\overline{W}}
@@ -50,8 +41,8 @@ A set of positions $S$ \emph{preserves} $W$ at input $\rho$ if $\operatorname{Tr
 \emph{sound} slice for $W$ if it preserves $W$ at every input.
 \end{definition}
 
-A sound slice reproduces the criterion, but comprehension needs more, the assurance that the slice shows every
-place where a change, and so a fault, could alter the criterion.
+Comprehension needs more than soundness, the assurance that a slice shows every place where a change, and so a
+fault, could alter the criterion.
 
 \begin{definition}[Dependence]\label{def:dep}
 Operation $o_k$ is a \emph{dependence} of $W$ in $P$ if there are an input $\rho$ and a unitary $U$ on the qubits
@@ -61,11 +52,11 @@ is the set of dependences of $W$, and a set $S$ is \emph{dependence-complete} fo
 \subseteq S$.
 \end{definition}
 
-This is semantic dependence in the sense of Podgurski and Clarke~\cite{podgurski1990formal}, stated for quantum
-states. The two guarantees differ. A sound slice need not contain every dependence. The identity gate of line~38 in
+This is semantic dependence~\cite{podgurski1990formal} stated for quantum states. A sound slice need not contain
+every dependence. The identity gate of line~38 in
 Fig.~\ref{fig:bv}, which acts on $q_2$, is a dependence of $q_2$, since a perturbation inserted after it changes the
-state of $q_2$, yet deleting it changes nothing. In the other direction, deleting a single unitary operation that is not a dependence never changes
-$\rho_W$, since deleting it has the same effect as inserting its inverse after it.
+state of $q_2$, yet deleting it changes nothing. Conversely, deleting a single unitary that is not a dependence never changes
+$\rho_W$, since it has the same effect as inserting its inverse.
 
 \subsection{The write-all rule}
 A \emph{dependence rule} $R$ assigns each operation the locations it reads, $r_R(o)$, and the locations it writes,
@@ -81,23 +72,19 @@ operations as nodes and the dependences of this rule as edges, and the QDG slice
 reachability from $W$.
 \end{definition}
 
-The QDG specifies the slice. Computing the slice needs no graph, only one backward pass over the circuit. Start at the end of the circuit with the needed set $N = W$, and
-whenever an operation acts on a location in $N$, keep the operation and add all its locations to $N$. On qubits
-alone, this is the backward light cone of $W$. The classical bits extend it, from a measurement to the
-operations its bit conditions. Take the program of Fig.~\ref{fig:bv} with a one-bit secret, the circuit
+The QDG specifies the slice, and computing it needs no graph, only one backward pass. Start at the end of the
+circuit with the needed set $N = W$, and whenever an operation acts on a location in $N$, keep it and add all its
+locations to $N$. On qubits this is the backward light cone of $W$, which the classical bits extend from a measurement
+to the operations its bit conditions. Take the program of Fig.~\ref{fig:bv} with a one-bit secret, the circuit
 \[
 P_1 \;=\; \mathrm{H}(q_1)\;\; \mathrm{Z}(q_1)\;\; \mathrm{H}(q_0)\;\; \mathrm{CX}(q_0, q_1)\;\; \mathrm{H}(q_0)
 \]
-whose gates are those of lines 24, 25, 29, 40 and 47, and the criterion $\{q_0\}$. Walking backward, the last
-$\mathrm{H}(q_0)$ is kept, the CNOT acts on $q_0$, so it is kept and $q_1$ joins $N$, and then $\mathrm{H}(q_0)$ and
-the two gates on $q_1$ are kept as well, so the slice is the whole circuit. The gates on $q_1$ prepare it in
-$\ket{-}$, and through phase kickback they turn $q_0$ into $\ket{1}$, although $q_0$ is the CNOT's control. A rule
-that reads the control as unchanged lets the CNOT write only $q_1$, so its slice keeps the two Hadamard gates on $q_0$
-alone, lines 29 and 47 of Fig.~\ref{fig:bv}.
+whose gates are those of lines 24, 25, 29, 40 and 47, and the criterion $\{q_0\}$. Walking backward, the CNOT acts on $q_0$, so $q_1$ joins $N$ and the slice is the
+whole circuit, as it must be, since through kickback the gates on $q_1$ turn $q_0$ into $\ket{1}$. A rule that lets
+the CNOT write only $q_1$ keeps just the Hadamard gates of lines 29 and 47.
 
-On qubits, the soundness of this slice is a known property of the light cone, which compilers and analyses of
-variational circuits rely on~\cite{murali2019triq, farhi2014qaoa}. We state it for the QDG, classical bits included,
-and prove it, because the results that follow build on its proof.
+On qubits, soundness is a known property of the light cone~\cite{murali2019triq, farhi2014qaoa}. We prove it for the
+QDG, classical bits included, because the results that follow build on the proof.
 
 \begin{theorem}[The QDG is sound]\label{thm:sound}
 For every circuit $P$ and criterion $W$, $\Bw(W)$ is a sound slice for $W$.
@@ -134,17 +121,13 @@ In the backward pass of Theorem~\ref{thm:sound}, the needed set for $W_1 \cup W_
 of those for $W_1$ and $W_2$.
 \end{IEEEproof}
 
-Together these say that the QDG slice keeps everything a slice must keep and reproduces the criterion for every
-input, and that the slice of a set of qubits is the union of the slices of its members, so a tool computes
-single-qubit slices and combines them. It is not always the smallest such set, since an operation can touch a needed
-qubit without changing it, and Section~\ref{sec:results} measures how close it comes to the dependences themselves.
-What is new is not the relation but what it is shown to be, a slice that keeps every dependence, against which every
-other rule can be measured.
+So the QDG slice reproduces the criterion for every input and keeps every dependence, and a tool can combine
+single-qubit slices. It is not always the smallest such set, since an operation can touch a needed qubit without
+changing it, and Section~\ref{sec:results} measures how close it comes to the dependences.
 
 No gate can safely write fewer qubits. For each of the \numGateSignalN{} two-qubit gates of Qiskit's standard
-library, a change of either qubit's input changes the reduced state of the other for some product input, an
-exploratory check of Section~\ref{sec:design}, so a rule that drops a qubit from any of their write sets misses a
-dependence of some circuit.
+library, a change of either qubit's input changes the other's reduced state for some product input, in an
+exploratory check of Section~\ref{sec:design}.
 % TODO authors: a general necessity proposition (every two-qubit gate that is not a product of single-qubit gates
 % signals in both directions) needs checking against Beckman et al., Phys. Rev. A 64 (2001), before it is stated.
 
@@ -158,15 +141,14 @@ it is built, such as \texttt{for qubit in range(n)}, and the measured bits that 
 runs, such as the flip conditioned on the measured bit. \emph{Quantum data} dependence follows a qubit through the
 operations that act on it, under the write-all rule, so that \texttt{cx(qubit, qubit + 1)} writes both of its qubits.
 
-A controlled gate looks like a fourth kind, quantum control dependence, since it reads like a branch, if the control
-is 1 then flip the target. It is not one. Its control is coherent, so the gate acts on a superposition of control
-values and no branch is ever taken, and it can change its control, as $P_1$ shows. What looks like control
-dependence is quantum data dependence in both directions, which the write-all rule records, and reading the gate as
-a branch is exactly the error of the classical PDG in Section~\ref{sec:rules}. Within the circuit, control
-dependence arises only through measurement, whose classical bit then conditions later operations.
+A controlled gate looks like a fourth kind, quantum control dependence, since it reads like a branch. It is not
+one. Its control is coherent, so the gate acts on a superposition of control values, no branch is taken, and it can
+change its control, as $P_1$ shows. What looks like control dependence is quantum data dependence in both directions,
+and reading the gate as a branch is the error of the classical PDG. Within the circuit, control dependence arises
+only through measurement.
 
-The other kinds proposed for quantum programs add no dependence either. Entanglement is the most natural
-candidate, since entangled qubits are correlated, but it decides nothing.
+Nor do the other proposed kinds add a dependence. Entanglement is the most natural candidate, but it decides
+nothing.
 
 \begin{proposition}[Entanglement is neither necessary nor sufficient for dependence]\label{prop:ent}
 (i) An operation can be a dependence of $q$ although, at an input that witnesses the dependence, $q$ is never
@@ -180,20 +162,17 @@ $\mathrm{H}(q_0)\,\mathrm{CX}(q_0, q_1)\,\mathrm{X}(q_1)$ the two qubits are max
 $\mathrm{X}(q_1)$, but by no-signaling no operation on $q_1$ after the CNOT can change $\rho_{q_0}$.
 \end{IEEEproof}
 
-By Proposition~\ref{prop:complete}, entanglement edges can add no dependence that the QDG misses, and by (ii) they
-can add operations that are not dependences. The remaining proposed kinds add no edges. A CNOT that copies a basis
-state, the case no-cloning concerns, is a two-qubit gate whose edges quantum data dependence already has. Timing
-decides when an operation runs on hardware, not what a state depends on~\cite{smith2022timestitch}.
-Superposition changes amplitudes, not which locations an operation acts on~\cite{nielsen2010quantum}, so it cannot
-add an edge to a dependence graph.
+By Proposition~\ref{prop:complete}, entanglement edges add no dependence the QDG misses, and by (ii) they can add
+operations that are not dependences. A CNOT that copies a basis state, the case no-cloning concerns, has the edges of
+quantum data dependence already. Timing decides when an operation runs, not what a state depends
+on~\cite{smith2022timestitch}, and superposition changes amplitudes, not the locations an operation
+acts on~\cite{nielsen2010quantum}.
 
 \subsection{The other rules, relative to the write-all rule}\label{sec:rules}
-The study compares the write-all rule with the rules a developer or tool builder would otherwise use.
-Table~\ref{tab:rules} gives each by how it differs from the QDG, and Fig.~\ref{fig:ansatz} applies them to one
-program that needs every kind of dependence. An ansatz is the parameterized circuit of a variational algorithm,
-whose rotation angles a classical optimizer tunes. The ansatz of Fig.~\ref{fig:ansatz}a has layers of rotations and
-a chain of CNOTs, and after them an auxiliary qubit is measured mid-circuit and $q_0$ is flipped when the outcome
-is~$1$.
+Table~\ref{tab:rules} gives each alternative rule by how it differs from the QDG, and Fig.~\ref{fig:ansatz}
+applies them to a program that needs every kind of dependence, an ansatz, the parameterized circuit of a variational
+algorithm. It has layers of rotations and a chain of CNOTs, after which an auxiliary qubit is measured mid-circuit and
+$q_0$ is flipped when the outcome is~$1$.
 
 \begin{figure*}[t]
   \centering
@@ -235,49 +214,41 @@ is~$1$.
 \end{table}
 
 \paragraph*{The classical PDG and def-use}
-The classical PDG, written CPDG in subscripts, applies the program dependence graph~\cite{ferrante1987pdg} to the
-circuit. It reads a gate as a classical assignment, so a controlled gate reads its controls and targets and writes
-only its targets, and any other gate reads and writes all its qubits. A measurement writes its bit, and a
-conditioned gate reads the bits its condition tests. \emph{Def-use} (DU) is the same data dependence without the
-bits, the simplest transfer of classical slicing. Reading a control as unchanged is the usual explanation of a
-CNOT~\cite{ramalho2025road}, and it holds for computational basis states.
+The classical PDG (CPDG) applies the program dependence graph~\cite{ferrante1987pdg} to the circuit, reading a
+controlled gate as an assignment that writes only its targets, the usual explanation of a CNOT~\cite{ramalho2025road},
+which holds for computational basis states. A measurement writes its bit, and a conditioned gate reads the bits its
+condition tests. \emph{Def-use} (DU) is the same without the bits.
 
 \begin{proposition}[The classical PDG is unsound]\label{prop:du}
 There are circuits for which neither $B_{\mathrm{CPDG}}(W)$ nor $B_{\mathrm{DU}}(W)$ preserves $W$, even at
 $\ket{0\dots0}$.
 \end{proposition}
 
-The ansatz of Fig.~\ref{fig:ansatz} is a witness for both, and on unitary circuits the two slices are equal.
-Def-use ignores the classical bits, so its slice of $q_0$ keeps only \numAnsDuOps{} of the \numAnsOps{} operations,
-with fidelity \numAnsDuFidelity{}, and loses the auxiliary's gate and measurement, which the classical PDG reaches
-through the green control edge in Fig.~\ref{fig:ansatz}b. Control dependence is not enough, however. Each
-\texttt{cx(qubit, qubit + 1)} changes its control as well as its target, so the state of $q_0$ comes to depend on the
-rotations of $q_1$ and, from the second layer on, of $q_2$. The classical PDG keeps only \numAnsCpdgOps{}
-operations, misses \numAnsCpdgMissed{} dependences and reaches fidelity \numAnsCpdgFidelity{}. Where the QDG has
-a blue quantum edge out of a CNOT, the classical PDG has a dotted edge that skips the CNOT. The QDG slice keeps the
-\numAnsWireOps{} operations that are dependences of $q_0$, and no other.
+The ansatz is a witness for both. Def-use ignores the bits, so its slice of $q_0$ keeps only \numAnsDuOps{} of the
+\numAnsOps{} operations, with fidelity \numAnsDuFidelity{}, and loses the auxiliary's gate and measurement, which the
+classical PDG reaches through the green control edge of Fig.~\ref{fig:ansatz}b. Each \texttt{cx(qubit, qubit + 1)}
+also changes its control, so $q_0$ depends on the rotations of $q_1$ and, from the second layer on, of $q_2$, which
+the classical PDG skips with its dotted edges. It keeps \numAnsCpdgOps{} operations, misses \numAnsCpdgMissed{}
+dependences and reaches fidelity \numAnsCpdgFidelity{}, while the QDG keeps the \numAnsWireOps{} dependences of $q_0$
+and no other operation.
 
 \paragraph*{The QPDG}
-Our reimplementation of Yu and Zhao's graph~\cite{yu2025qpdg} serves as a baseline. Its dependences are given in
-prose, so we logged every reading of it before any run. Data and control dependence are as in the QDG. The QPDG
-gives no rule for when two qubits are entangled, so we use the flow-insensitive rule of entanglement analysis, under
-which qubits joined by a two-qubit gate anywhere in the circuit are entangled~\cite{javadiabhari2015scaffcc}, and
-add an edge from every operation to every later one on qubits of the same component. A flow-sensitive variant
-counts two qubits as entangled only from the first gate that couples them. Either way the QPDG is the QDG plus
-entanglement edges, so its slices contain those of the QDG, and in Fig.~\ref{fig:ansatz}b the extra edges add the
-\numAnsYzExtra{} hatched operations of $q_2$ in the second layer, which run after the last gate that carries
-information from $q_2$ to $q_0$. Yu and Zhao do not say whether a gate writes its control, so we also run, as an
-exploratory variant, the reading in which it does not.
+Our reimplementation of Yu and Zhao's graph~\cite{yu2025qpdg} follows readings of its prose logged before any run.
+Data and control dependence are as in the QDG. For entanglement, which the QPDG does not define, qubits joined by a
+two-qubit gate anywhere in the circuit are entangled~\cite{javadiabhari2015scaffcc}, and an edge links every operation
+to every later one on qubits of the same component. A flow-sensitive variant counts qubits as entangled only from
+their first coupling gate. Either way the QPDG is the QDG plus entanglement edges, which in Fig.~\ref{fig:ansatz}b
+add the \numAnsYzExtra{} hatched operations of $q_2$ that run after the last gate carrying information from $q_2$ to
+$q_0$. Yu and Zhao do not say whether a gate writes its control, so an exploratory variant reads it as unchanged.
 
 \paragraph*{Pruning}
-Two refinements start from the QDG slice and remove operations from it. \emph{Commutation pruning} propagates the
-Pauli observables $X$, $Y$ and $Z$ of every criterion qubit backward and removes each operation that commutes with
-all of them, since such an operation cannot change a measurement statistic of the criterion. Qiskit's
-\texttt{LightCone} pass implements it~\cite{qiskit2025}. \emph{State-based pruning} fixes one input, by default
+Two refinements remove operations from the QDG slice. \emph{Commutation pruning}, which Qiskit's \texttt{LightCone}
+pass implements~\cite{qiskit2025}, removes each operation that commutes with the Pauli observables $X$, $Y$ and $Z$
+of every criterion qubit propagated backward. \emph{State-based pruning} fixes one input, by default
 $\ket{0\dots0}$, and removes an operation that does not act on the criterion if the mutual information between the
-criterion and the operation's qubits is below $10^{-9}$ and the removal still preserves $W$ at that input. Both give
-smaller slices, but neither is dependence-complete, and a state-based slice holds for its one input only, as a
-conditioned slice does~\cite{canfora1998conditioned}.
+criterion and the operation's qubits is below $10^{-9}$ and the removal still preserves $W$ at that input. Neither is
+dependence-complete, and a state-based slice holds for its one input only, like a conditioned
+slice~\cite{canfora1998conditioned}.
 
 \subsection{Forward slices and source lines}\label{sec:lines}
 The forward slice $\Fw(o_k)$ of an operation, the operations reachable from it in the QDG, answers which later
@@ -285,16 +256,12 @@ operations and qubits a change to $o_k$ can reach. Both slices follow the same p
 operation on a qubit $q$ exactly when $o_k \in \Bw(\{q\})$, and by Proposition~\ref{prop:complete} it reaches every
 qubit of which it is a dependence.
 
-A slice can be reported as operations, loop iterations or source lines. Operations are the unit of the definitions
-and lines the unit of the developer. A line is in a slice if one of its operations is, so a single iteration can put a
-line in a slice. In the second layer of the ansatz, the rotations of $q_2$ are not dependences of $q_0$, yet
-their lines are in its slice because their first-layer iterations are. A line slice therefore names the iterations
-that put each line in it.
-
-A slice is computed on the circuit, and a developer reads it on the program. Every operation records the source
-line and the loop iterations that appended it, so a slice of operations maps to lines, and the host code that
-computes the kept operations' qubits, angles and loop bounds follows by a classical slice of the host
-program~\cite{weiser1984program}. The record can be taken while the program builds its circuit, as the study does for
-Bugs4Q, or by a static analysis of the source, as Behler et al.\ derive the order of qubit operations from OpenQASM~3 source~\cite{behler2025static}. Where a value is unknown statically, such an
-analysis must assume every qubit an expression may denote and every branch a condition may take, which can only enlarge
-the slice. The definitions of this section are stated on the circuit and hold for any front end that produces it.
+A slice is computed on the circuit and read on the program. Every operation records the source line and loop
+iterations that appended it, so a slice of operations maps to lines, and the host code that computes the kept
+operations' qubits, angles and loop bounds follows by a classical slice of the host program~\cite{weiser1984program}.
+A line is in a slice if one of its operations is, so a single iteration can put it there. The second-layer rotations
+of $q_2$ in the ansatz are not dependences of $q_0$, yet their lines are in its slice through the first layer, so a
+line slice should name the iterations that put each line in it. The record can be taken while the program builds its circuit, as the study does for
+Bugs4Q, or by a static analysis of the source, as Behler et al.\ derive operation order from OpenQASM~3~\cite{behler2025static}.
+Where a value is unknown, such an analysis must assume every qubit an expression may denote and every branch a
+condition may take, which can only enlarge the slice.

@@ -3,21 +3,19 @@
 \paragraph*{Construct validity}
 The dependence set is measured with \numInfluencePerturbations{} random perturbations per operation at
 \numInfluenceInputs{} inputs, so it can miss true dependences but never adds false ones, and the QDG's distance to it
-may be smaller than reported. The dependence set and the wrong slices of every rule were checked at $\ket{0\dots0}$,
-which RQ2 extends to random inputs. A slice preserves its criterion at a squared fidelity of at least $1 - 10^{-6}$,
-far above the oracle's error. Each criterion is a single qubit, and Proposition~\ref{prop:joint} extends the QDG to
+may be smaller than reported. The dependence set and the wrong slices were checked at $\ket{0\dots0}$,
+which RQ2 extends to random inputs. Each criterion is a single qubit, and Proposition~\ref{prop:joint} extends the QDG to
 sets but not the pruning rules. Fault containment measures where a developer would look, not whether a developer finds
 the fault. The QPDG is reimplemented from prose, with every reading logged before any run and three variants
 bracketing the plausible ones. Qiskit's pass applies to \numLcqApplicable{} of the \numNPairs{} pairs, those without
 mid-circuit measurements.
 
 \paragraph*{Internal validity}
-The oracle agrees with Qiskit's simulation to within \numOracleErr{}, a catalog of \numCatEntries{} hand-derived cases
-checks the ground truth and every slicer before the runs, and the nesting of the rules, which holds on every pair,
-would expose a slicer that drops or adds operations. The soundness proof is mechanized for an abstract model of local
-operations, and that quantum operations satisfy the model is argued on paper. The outcomes of H1 and H2 were known
-when the protocol was written, and both hold by construction. Every later change is a dated deviation, and every
-result outside the five hypotheses is exploratory. The Claude models accept only their default sampling, so their
+Errors in the slicers or the oracle are guarded against by the agreement with Qiskit's simulation, the
+\numCatEntries{} hand-derived cases, and the nesting of the rules on every pair, which would expose a slicer that
+drops or adds operations. The soundness proof is mechanized for an abstract model of local
+operations, and that quantum operations satisfy the model is argued on paper. H1 and H2 were known in advance and hold by
+construction, and every result outside the five hypotheses is exploratory. The Claude models accept only their default sampling, so their
 answers can differ between calls.
 
 \paragraph*{External validity}
