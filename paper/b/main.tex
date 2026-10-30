@@ -22,19 +22,19 @@
 \maketitle
 
 \begin{abstract}
-Which statements of a quantum program determine the state of a qubit? In Qiskit programs, loops, functions and
-computed indices decide which gates act on which qubits, and a gate can change a qubit it does not target. Classical
-programs have mature slicers, but quantum programs have almost none, and developers debug by printing, drawing circuits
-and reading code. This work extends the srcML infrastructure and the srcSlice slicer with a quantum layer that
-identifies each call's quantum role, traces the circuit a program builds without executing it, and slices every qubit
-along the gates and measured bits that can affect it, including loops on the device. The tool, \tool{}, shows each
-slice as source lines, the loop iterations behind them and the classical statements that compute them. On
-\numToolDevPrograms{} programs its trace equals the circuit Qiskit builds and its slices match those computed on that
-circuit in \numToolDevSliceEqual{}, and exact simulation confirms every qubit's slice in \numCfPrograms{} programs with
-device loops. Its classical statements cover a reference computation's for \numSsContainPct{} of qubits,
-\numSsHeldContainPct{} in held-out programs. Of \numScaleSOneFiles{} GitHub Qiskit programs, \tool{} traces
-\numScaleSOneSliced{}, and \numCovNoConstruction{} of the rest never build a circuit. It slices a program in
-\numScaleSOneMedianMs{}~ms in the median, and a qubit's slice holds \numScaleReadMedianPct{} of the code lines.
+Which statements of a quantum program determine the state of a qubit? In Qiskit programs this is hard to see, because
+loops, functions and computed indices decide which gates act on which qubits, and a gate can change a qubit it does not
+target. Slicing answers such questions for classical programs, but quantum programs have almost no slicing support.
+This work extends the srcML infrastructure and the srcSlice slicer with a quantum layer. The layer identifies the
+quantum role of each call, traces the circuit a program builds without executing it, and slices every qubit along the
+gates and measured bits that can affect it, including loops that run on the device. The resulting tool, \tool{}, shows
+a slice as source lines, the loop iterations that put them there and the classical statements that compute them. On
+\numToolDevPrograms{} programs its traces match the circuits Qiskit builds and its slices match circuit-level slices
+in all but one, and exact simulation confirms its slices of programs with device loops. Its classical statements
+include all those a reference computation finds for \numSsContainPct{} of qubits, and for \numSsHeldContainPct{} in
+held-out programs. \tool{} traces a circuit in \numScaleSOneSliced{} of \numScaleSOneFiles{} GitHub programs, and most
+of the others never build one. It slices a program in \numScaleSOneMedianMs{}~ms in the median, and a qubit's slice
+holds \numScaleReadMedianPct{} of the program's code lines.
 \end{abstract}
 
 \begin{IEEEkeywords}
