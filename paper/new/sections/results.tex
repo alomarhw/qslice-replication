@@ -87,17 +87,24 @@ reading in which a controlled gate writes only its targets, the QPDG is wrong on
 \numCorpusLSoundPairs{} pairs of corpus~L that the oracle can check exactly, the QDG and the QPDG are sound everywhere,
 while def-use is wrong on \numCorpusLWrongDu{}.
 
-\begin{figure}[t]
+\begin{table}[t]
   \centering
-  \includegraphics[width=\columnwidth]{figures/fig_size.pdf}
-  \caption{Mean slice size by circuit width, for RQ1. The dependence set is the floor that every complete slice
-  contains. Corpus~L has no dependence set, since measuring one there would need more simulation than the oracle can
-  do exactly.}
-  \label{fig:size}
-\end{figure}
+  \caption{Slice size by circuit width (RQ1) and slices that stay correct under other inputs (RQ2)}
+  \label{tab:sizerob}
+  \footnotesize\setlength{\tabcolsep}{1.9pt}\renewcommand{\arraystretch}{1.12}
+  \input{figures/tab_size_robust}\\[3pt]
+  \begin{minipage}{\columnwidth}\footnotesize
+  Widths are in qubits, and L is corpus~L, of 15 to 20 qubits, which has no dependence set because measuring one would
+  need more simulation than the oracle can do exactly. Still correct is the share of pairs whose slice, computed at
+  $\ket{0\dots0}$, preserves the criterion in all \numRobDraws{} draws of random basis inputs, random product inputs
+  and rebound angles, the last on circuits with rotation angles. Commutation is measured on the \numLcqApplicable{}
+  pairs where Qiskit's pass applies and state-based pruning on the \numHThreePrunedN{} pairs it prunes, and -- marks
+  what was not measured.
+  \end{minipage}
+\end{table}
 
 The rules nest. On all \numNestPairs{} pairs the dependence set lies within the QDG slice and the QDG slice within
-the QPDG slice, and Fig.~\ref{fig:size} shows how far apart they are. Restricted to its dependence set, every circuit
+the QPDG slice, and Table~\ref{tab:sizerob} shows how far apart they are. Restricted to its dependence set, every circuit
 preserves the criterion at $\ket{0\dots0}$, so at that input the dependence set is itself a correct slice, the
 smallest one that contains every dependence. It makes up \numDepFloor{} of a circuit on average. The QDG slice keeps only
 \numLcExcess{} percentage points more and equals it on \numLcExact{} of the \numNPairs{} pairs, while the QPDG keeps
@@ -110,20 +117,10 @@ criterion, like the identity gate of line~38 in Fig.~\ref{fig:bv}.
 
 \subsection{RQ2: How much precision beyond the QDG slice is safe?}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\columnwidth]{figures/fig_robust.pdf}
-  \caption{Share of pairs whose slice, computed at $\ket{0\dots0}$, stays correct in all \numRobDraws{} draws of each
-  input regime, for RQ2. Commutation is shown on the \numLcqApplicable{} pairs where Qiskit's pass applies,
-  state-based pruning on the \numHThreePrunedN{} pairs it prunes, and angle rebinding on the pairs of circuits with
-  rotation angles.}
-  \label{fig:robust}
-\end{figure}
-
 Both refinements make slices smaller, but only commutation pruning keeps them correct for fixed angles. State-based
 pruning shrinks the QDG slice by \numHTwoDiff{} percentage points of the circuit (95\% CI \numHTwoCILow{} to
 \numHTwoCIHigh{}) and is smaller on \numHTwoSmaller{} pairs (H2, Wilcoxon, Holm \numHTwoPHolm{}).
-Fig.~\ref{fig:robust} shows the cost. Of the pairs it prunes, the slice stays correct for all random product inputs
+Table~\ref{tab:sizerob} shows the cost. Of the pairs it prunes, the slice stays correct for all random product inputs
 on only \numHThreePrunedRate{}, and over all pairs on \numHThreeRate{} (Wilson CI \numHThreeCILow{} to
 \numHThreeCIHigh{}, \numCcHThree{} with families as clusters), far below the threshold of 95\%, so H3 fails.
 

@@ -1002,6 +1002,12 @@ def main() -> int:
             put(f"Size{nm}Files", cz[k]["count"], cnt(cz[k]["count"]), src)
         from tool.interp import MAX_OPS  # noqa: PLC0415
         put("ToolMaxOps", MAX_OPS, cnt(MAX_OPS), "tool/interp.py (MAX_OPS)")
+        # Paper A, Table I: every circuit with a ground truth (corpus A, generated, width sweeps, corpus L)
+        n = sum(cz[k]["count"] for k in ("corpus_a", "generated", "sweeps", "corpus_l"))
+        put("StudyCircuits", n, cnt(n), src)
+        if "RqThreeUnits" in NUMS and "LinesUnits" in NUMS:
+            n = NUMS["RqThreeUnits"]["value"] + NUMS["LinesUnits"]["value"]
+            put("StudyFaultUnits", n, cnt(n), "results/icpc/rq3/records.csv + results/icpc/source_map/units.csv")
 
     # ---- Deviation I-27: the role table and the calls outside it, on LintQ's corpus (descriptive) -------------
     if (ICPC / "unmodelled" / "calls_per_kind.json").exists():

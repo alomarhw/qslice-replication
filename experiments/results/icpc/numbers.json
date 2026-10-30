@@ -3851,6 +3851,16 @@
   "tex": "200{,}000",
   "source": "tool/interp.py (MAX_OPS)"
  },
+ "StudyCircuits": {
+  "value": 354,
+  "tex": "354",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "StudyFaultUnits": {
+  "value": 5703,
+  "tex": "5{,}703",
+  "source": "results/icpc/rq3/records.csv + results/icpc/source_map/units.csv"
+ },
  "CallsSingle": {
   "value": 4413,
   "tex": "4{,}413",

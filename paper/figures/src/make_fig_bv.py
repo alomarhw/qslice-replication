@@ -134,7 +134,7 @@ def tex(ours: list, F: dict) -> str:
         r"\definecolor{cblue}{HTML}{0072B2}\definecolor{cver}{HTML}{D55E00}",
         r"\setlength{\fboxsep}{1pt}",
         r"\begin{document}\begin{varwidth}{8.7cm}",
-        r"\renewcommand{\arraystretch}{0.86}",
+        r"\renewcommand{\arraystretch}{0.74}",
         r"\begin{tabular}{@{}r@{\hspace{4pt}}c@{\hspace{3pt}}c@{\hspace{6pt}}l@{}}",
         r"& {\tiny CPDG} & {\tiny QDG} & {\footnotesize\textbf{Bernstein--Vazirani} (Qiskit textbook), slices of $q_0$} \\[1pt]",
         *rows,
