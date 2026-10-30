@@ -169,10 +169,10 @@ def main():
         o.append(rf"\node[lab, font=\ttfamily\fontsize{{8}}{{10}}\selectfont] at ({NUMX},{y:.3f}) {{{num}}};")
         o.append(rf"\node[pyline] at ({XP},{y:.3f}) {{{py_roles(src[ln - 1], ln in mapped)}}};")
     frags = fragments()
-    blocks, ytop = [], ylin[14] + 0.45
+    blocks, ytop = [], ylin[10] + 0.2  # the blocks start at the top of the code
     for fi, (s_, lines) in enumerate(zip(frags, ((14,), (18, 19)))):
         rows = T.rows_of(s_)
-        top = min(ytop, ylin[lines[0]] + 0.45)
+        top = ytop
         y = top - 0.2
         for ind, ts, first in rows:
             x = XS + 0.1 + (CH8 * ind if first else CH8 * (ind + 4))
