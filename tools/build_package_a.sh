@@ -23,7 +23,7 @@ for d in lintq_compare profiles qasm_frontend qhe qhe__rerun-20261028 scale scal
   rm -f programs/lintq_fig*.py programs/qchecker_fig5.py )
 
 # ---- names: no tool name, no earlier working title, no author path
-git mv -k qslice qdg 2>/dev/null || mv qslice qdg
+mv qslice qdg
 mv isabelle/QSliceSoundness.thy isabelle/SliceSoundness.thy
 find . -type f \( -name '*.py' -o -name '*.md' -o -name '*.tex' -o -name '*.csv' -o -name '*.json' -o -name '*.jsonl' \
   -o -name '*.sh' -o -name '*.txt' -o -name '*.tsv' -o -name '*.thy' -o -name 'ROOT' -o -name '*.diff' -o -name '*.log' \
