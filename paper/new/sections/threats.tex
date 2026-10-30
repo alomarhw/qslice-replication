@@ -3,25 +3,29 @@
 \paragraph*{Construct validity}
 The dependence set is measured with \numInfluencePerturbations{} random perturbations per operation at
 \numInfluenceInputs{} inputs, so it can miss true dependences but never adds false ones, and the QDG's distance to it
-may be smaller than reported. The dependence set and the wrong slices were checked at $\ket{0\dots0}$,
+may be smaller than reported. A check with \numGcInputs{} inputs, \numGcEntangledInputs{} of them entangled, and
+\numGcPerturbations{} perturbations found only \numGcDepsNew{} new dependences, \numGcDepsNewPct{} of
+\numGcDepsBefore{}, and left the QDG's recall unchanged. The dependence set and the wrong slices were checked at $\ket{0\dots0}$,
 which RQ2 extends to random inputs. Each criterion is a single qubit, and Proposition~\ref{prop:joint} extends the QDG to
 sets but not the pruning rules. Fault containment measures where a developer would look, not whether a developer finds
-the fault. The QPDG is reimplemented from prose, with every reading logged before any run and three variants
-bracketing the plausible ones. Qiskit's pass applies to \numLcqApplicable{} of the \numNPairs{} pairs, those without
-mid-circuit measurements.
+the fault. A unit is a fault that changes a qubit's measured distribution, so faults visible only in phase are left
+out, which if anything favors the classical rules. The QPDG is reimplemented from prose, with every reading logged before any run and three variants
+bracketing the plausible ones. Qiskit's pass applies to \numLcqApplicable{} of the \numNPairs{} pairs, since it refuses
+circuits with measurements and some of its outputs cannot be matched back.
 
 \paragraph*{Internal validity}
 Errors in the slicers or the oracle are guarded against by the agreement with Qiskit's simulation, the
 \numCatEntries{} hand-derived cases, and the nesting of the rules on every pair, which would expose a slicer that
 drops or adds operations. The soundness proof is mechanized for an abstract model of local
-operations, and that quantum operations satisfy the model is argued on paper. H1 and H2 were known in advance and hold by
+operations, in which a measurement and the gate its bit conditions form one operation, and that quantum operations
+satisfy the model is argued on paper. H1 and H2 were known in advance and hold by
 construction, and every result outside the five hypotheses is exploratory. The Claude models accept only their default sampling, so their
-answers can differ between calls.
+answers can differ between calls, and the models may have seen the public benchmark circuits in training.
 
 \paragraph*{External validity}
-The circuits with an exact ground truth have at most \numSizeAMaxQubits{} qubits in corpus~A and 20 in corpus~L, and
+The circuits with an exact ground truth have at most \numSizeAMaxQubits{} qubits in corpus~A and \numSubjLMaxQubits{} in corpus~L, and
 \numNDynamicPairs{} pairs come from dynamic circuits. The proofs hold for every circuit, but the measured distances
 between the rules may change with width and feedback. Benchmark circuits are not programs written by developers, the
-\numLinesUnits{} Bugs4Q units are the only real faults, and seeded faults may not match real ones in their mix. The
+\numBugsFourQUnits{} Bugs4Q units are the only real faults, and seeded faults may not match real ones in their mix. The
 gate check uses one angle per gate, the noise analysis depolarizing noise only, and loops that run on the device are
 not studied.

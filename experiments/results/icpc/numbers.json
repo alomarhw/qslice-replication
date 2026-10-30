@@ -374,6 +374,41 @@
   "tex": "0.061",
   "source": "results/icpc/confirmatory/summary.json"
  },
+ "HThreePHolm": {
+  "value": 1.0,
+  "tex": "p = 1.00",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFourPHolm": {
+  "value": 2.5764595078388533e-231,
+  "tex": "p < 10^{-10}",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFivePHolm": {
+  "value": 0.0,
+  "tex": "p < 10^{-10}",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFourOnlyLc": {
+  "value": 769,
+  "tex": "769",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFourOnlyQ": {
+  "value": 0,
+  "tex": "0",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFiveExamP": {
+  "value": 2.7274671979995712e-251,
+  "tex": "p < 10^{-10}",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
+ "HFiveN": {
+  "value": 4674,
+  "tex": "4{,}674",
+  "source": "results/icpc/confirmatory/summary.json"
+ },
  "RobQPrunedBasis": {
   "value": 0.6582809224318659,
   "tex": "65.8\\%",
@@ -672,6 +707,11 @@
  "LinesUnits": {
   "value": 15,
   "tex": "15",
+  "source": "results/icpc/source_map/units.csv"
+ },
+ "BugsFourQUnits": {
+  "value": 17,
+  "tex": "17",
   "source": "results/icpc/source_map/units.csv"
  },
  "LinesDuMissed": {
@@ -3857,8 +3897,8 @@
   "source": "results/icpc/corpus_sizes.json"
  },
  "StudyFaultUnits": {
-  "value": 5703,
-  "tex": "5{,}703",
+  "value": 5705,
+  "tex": "5{,}705",
   "source": "results/icpc/rq3/records.csv + results/icpc/source_map/units.csv"
  },
  "CallsSingle": {

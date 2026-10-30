@@ -41,8 +41,8 @@ A set of positions $S$ \emph{preserves} $W$ at input $\rho$ if $\operatorname{Tr
 \emph{sound} slice for $W$ if it preserves $W$ at every input.
 \end{definition}
 
-Comprehension needs more than soundness, the assurance that a slice shows every place where a change, and so a
-fault, could alter the criterion.
+Comprehension needs more than soundness. It needs the assurance that a slice shows every place where a change, and
+so a fault, could alter the criterion.
 
 \begin{definition}[Dependence]\label{def:dep}
 Operation $o_k$ is a \emph{dependence} of $W$ in $P$ if there are an input $\rho$ and a unitary $U$ on the qubits
@@ -56,7 +56,7 @@ This is semantic dependence~\cite{podgurski1990formal} stated for quantum states
 every dependence. The identity gate of line~38 in
 Fig.~\ref{fig:bv}, which acts on $q_2$, is a dependence of $q_2$, since a perturbation inserted after it changes the
 state of $q_2$, yet deleting it changes nothing. Conversely, deleting a single unitary that is not a dependence never changes
-$\rho_W$, since it has the same effect as inserting its inverse.
+$\rho_W$ at any input, since it has the same effect as inserting its inverse.
 
 \subsection{The write-all rule}
 A \emph{dependence rule} $R$ assigns each operation the locations it reads, $r_R(o)$, and the locations it writes,
@@ -79,11 +79,12 @@ to the operations its bit conditions. Take the program of Fig.~\ref{fig:bv} with
 \[
 P_1 \;=\; \mathrm{H}(q_1)\;\; \mathrm{Z}(q_1)\;\; \mathrm{H}(q_0)\;\; \mathrm{CX}(q_0, q_1)\;\; \mathrm{H}(q_0)
 \]
-whose gates are those of lines 24, 25, 29, 40 and 47, and the criterion $\{q_0\}$. Walking backward, the CNOT acts on $q_0$, so $q_1$ joins $N$ and the slice is the
+whose gates are those of lines 24, 25, 29, 40 and 47, and the criterion $\{q_0\}$. In the backward pass, the CNOT acts on $q_0$, so $q_1$ joins $N$ and the slice is the
 whole circuit, as it must be, since through kickback the gates on $q_1$ turn $q_0$ into $\ket{1}$. A rule that lets
 the CNOT write only $q_1$ keeps just the Hadamard gates of lines 29 and 47.
 
-On qubits, soundness is a known property of the light cone~\cite{murali2019triq, farhi2014qaoa}. We prove it for the
+On qubits, soundness is a known property of the light cone, on which QAOA analyses rely~\cite{farhi2014qaoa} and
+which the dependence orders of compilers respect~\cite{murali2019triq}. We prove it for the
 QDG, classical bits included, because the results that follow build on the proof.
 
 \begin{theorem}[The QDG is sound]\label{thm:sound}
@@ -97,7 +98,8 @@ reset, measurement and conditioned gate is a channel that acts only on $\mathit{
 trace, the no-signaling principle, an operation outside the slice cannot change the reduced state of the needed
 locations after it, and an operation in the slice maps the reduced state of the needed set before it to the one
 after it. Induction over $P$ gives the claim. The induction is mechanized in Isabelle/HOL for an abstract model of
-local operations, and that quantum operations satisfy the model is argued on paper.
+local operations, in which a measurement and the gate its bit conditions form one operation, and that quantum
+operations satisfy the model is argued on paper.
 \end{IEEEproof}
 
 \begin{proposition}[The QDG is dependence-complete]\label{prop:complete}
@@ -122,12 +124,14 @@ of those for $W_1$ and $W_2$.
 \end{IEEEproof}
 
 So the QDG slice reproduces the criterion for every input and keeps every dependence, and a tool can combine
-single-qubit slices. It is not always the smallest such set, since an operation can touch a needed qubit without
+single-qubit slices. Every superset of $\Bw(W)$ is sound as well, since in the backward pass over it the added
+operations never meet the needed set. It is not always the smallest such set, since an operation can touch a needed qubit without
 changing it, and Section~\ref{sec:results} measures how close it comes to the dependences.
 
-No gate can safely write fewer qubits. For each of the \numGateSignalN{} two-qubit gates of Qiskit's standard
-library, a change of either qubit's input changes the other's reduced state for some product input, in an
-exploratory check of Section~\ref{sec:design}.
+Nor can the gates developers use safely write fewer qubits. For each of the \numGateSignalN{} standard two-qubit
+gates of Qiskit that an exploratory check of Section~\ref{sec:design} examines, a change of either qubit's input
+changes the other's reduced state for some product input, so dropping either qubit from the write set misses a
+dependence of some circuit.
 % TODO authors: a general necessity proposition (every two-qubit gate that is not a product of single-qubit gates
 % signals in both directions) needs checking against Beckman et al., Phys. Rev. A 64 (2001), before it is stated.
 
@@ -135,7 +139,7 @@ exploratory check of Section~\ref{sec:design}.
 The write-all rule needs only three kinds of dependence, all of which the variational ansatz of
 Fig.~\ref{fig:ansatz}a, described in Section~\ref{sec:rules}, shows.
 \emph{Classical data} dependence follows the host values that compute gate arguments, such as angles, sizes and qubit
-indices, there \texttt{n}, \texttt{layers} and the angles. \emph{Classical control} dependence follows what decides
+indices, in the ansatz \texttt{n}, \texttt{layers} and the angles. \emph{Classical control} dependence follows what decides
 whether an operation is applied at all. It covers the host program's loops and branches, which shape the circuit as
 it is built, such as \texttt{for qubit in range(n)}, and the measured bits that condition operations when the circuit
 runs, such as the flip conditioned on the measured bit. \emph{Quantum data} dependence follows a qubit through the
@@ -164,8 +168,8 @@ $\mathrm{X}(q_1)$, but by no-signaling no operation on $q_1$ after the CNOT can 
 
 By Proposition~\ref{prop:complete}, entanglement edges add no dependence the QDG misses, and by (ii) they can add
 operations that are not dependences. A CNOT that copies a basis state, the case no-cloning concerns, has the edges of
-quantum data dependence already. Timing decides when an operation runs, not what a state depends
-on~\cite{smith2022timestitch}, and superposition changes amplitudes, not the locations an operation
+quantum data dependence already. In the noise-free semantics, timing decides when an operation runs, not what a state
+depends on, although under decoherence it does matter~\cite{smith2022timestitch}, and superposition changes amplitudes, not the locations an operation
 acts on~\cite{nielsen2010quantum}.
 
 \subsection{The other rules, relative to the write-all rule}\label{sec:rules}
@@ -203,7 +207,7 @@ $q_0$ is flipped when the outcome is~$1$.
     \midrule
     Def-use & $\{t\}$ & $-$ control write, $-$ bits & none & \numAnsDuOps{} & \numAnsDuFidelity{} \\
     Classical PDG & $\{t\}$ & $-$ control write & none & \numAnsCpdgOps{} & \numAnsCpdgFidelity{} \\
-    QPDG~\cite{yu2025qpdg} & $\{c, t\}$ & $+$ closed entanglement edges & sound & \numAnsYzOps{} & \numAnsYzFidelity{} \\
+    QPDG~\cite{yu2025qpdg} & $\{c, t\}$ & $+$ closed entanglement edges & sound, complete & \numAnsYzOps{} & \numAnsYzFidelity{} \\
     QPDG, read-only & $\{t\}$ & $-$ control write, $+$ entanglement & none & \numAnsYzroOps{} & \numAnsYzroFidelity{} \\
     \bottomrule
   \end{tabular}\\[3pt]
@@ -220,7 +224,7 @@ controlled gate as an assignment that writes only its targets, the usual explana
 which holds for computational basis states. A measurement writes its bit, and a conditioned gate reads the bits its
 condition tests. \emph{Def-use} (DU) is the same without the bits.
 
-\begin{proposition}[The classical PDG is unsound]\label{prop:du}
+\begin{proposition}[The classical PDG and def-use are unsound]\label{prop:du}
 There are circuits for which neither $B_{\mathrm{CPDG}}(W)$ nor $B_{\mathrm{DU}}(W)$ preserves $W$, even at
 $\ket{0\dots0}$.
 \end{proposition}
@@ -236,7 +240,7 @@ and no other operation.
 \paragraph*{The QPDG}
 Our reimplementation of Yu and Zhao's graph~\cite{yu2025qpdg} follows readings of its prose logged before any run.
 Data and control dependence are as in the QDG. For entanglement, which the QPDG does not define, qubits joined by a
-two-qubit gate anywhere in the circuit are entangled~\cite{javadiabhari2015scaffcc}, and an edge links every operation
+two-qubit gate anywhere in the circuit are taken to be entangled~\cite{javadiabhari2015scaffcc}, and an edge links every operation
 to every later one on qubits of the same component. A flow-sensitive variant counts qubits as entangled only from
 their first coupling gate. Either way the QPDG is the QDG plus entanglement edges, which in Fig.~\ref{fig:ansatz}b
 add the \numAnsYzExtra{} vermilion operations of $q_2$ that run after the last gate carrying information from $q_2$ to

@@ -167,6 +167,13 @@ def main() -> int:
     put("HFiveSizeDiff", c["H5"]["mean_difference"], f"{c['H5']['mean_difference']:.1f}", src)
     put("HFiveExamDiff", c["H5"]["exam_slice_alongside"]["mean_difference"], f"{c['H5']['exam_slice_alongside']['mean_difference']:.3f}", src)
     put("HFiveExamQHigher", -c["H5"]["exam_slice_alongside"]["mean_difference"], f"{-c['H5']['exam_slice_alongside']['mean_difference']:.3f}", src)  # state-based minus wire
+    # tests and Holm-corrected p of H3-H5, and the EXAM test reported alongside H5 (Paper A, review 2026-10-29)
+    for h, nm in (("H3", "HThree"), ("H4", "HFour"), ("H5", "HFive")):
+        put(f"{nm}PHolm", c["holm"][h]["p_holm"], pval(c["holm"][h]["p_holm"]), src)
+    put("HFourOnlyLc", c["H4"]["b_only"], cnt(c["H4"]["b_only"]), src)
+    put("HFourOnlyQ", c["H4"]["a_only"], cnt(c["H4"]["a_only"]), src)
+    put("HFiveExamP", c["H5"]["exam_slice_alongside"]["p_value"], pval(c["H5"]["exam_slice_alongside"]["p_value"]), src)
+    put("HFiveN", c["H5"]["n"], cnt(c["H5"]["n"]), src)
 
     # ---- RQ2: robustness under three input regimes -------------------------------------------------------
     src = "results/icpc/rq2_robustness/pairs.csv"
@@ -242,6 +249,8 @@ def main() -> int:
         put(f"Lines{nm}Contained", sum(r["contained_lines"] == "1" for r in x), cnt(sum(r["contained_lines"] == "1" for r in x)), src + "units.csv")
         put(f"Lines{nm}Mean", st.mean(int(r["slice_lines"]) for r in x), f"{st.mean(int(r['slice_lines']) for r in x):.1f}", src + "units.csv")
     put("LinesUnits", len([r for r in um if r["slicer"] == "full"]), cnt(len([r for r in um if r["slicer"] == "full"])), src + "units.csv")
+    ua = [r for r in rows(ICPC / "source_map" / "units.csv") if r["analysis"] == "primary" and r["slicer"] == "full"]
+    put("BugsFourQUnits", len(ua), cnt(len(ua)), src + "units.csv")  # all primary units; LinesUnits keeps those whose faulty lines map
     put("LinesDuMissed", NUMS["LinesUnits"]["value"] - NUMS["LinesDuContained"]["value"],
         ["no", "one", "two", "three"][NUMS["LinesUnits"]["value"] - NUMS["LinesDuContained"]["value"]], src + "units.csv")
 
@@ -1006,7 +1015,7 @@ def main() -> int:
         n = sum(cz[k]["count"] for k in ("corpus_a", "generated", "sweeps", "corpus_l"))
         put("StudyCircuits", n, cnt(n), src)
         if "RqThreeUnits" in NUMS and "LinesUnits" in NUMS:
-            n = NUMS["RqThreeUnits"]["value"] + NUMS["LinesUnits"]["value"]
+            n = NUMS["RqThreeUnits"]["value"] + NUMS["BugsFourQUnits"]["value"]
             put("StudyFaultUnits", n, cnt(n), "results/icpc/rq3/records.csv + results/icpc/source_map/units.csv")
 
     # ---- Deviation I-27: the role table and the calls outside it, on LintQ's corpus (descriptive) -------------

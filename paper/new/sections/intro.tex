@@ -2,16 +2,17 @@
 
 A developer who sees a qubit end in the wrong state asks which lines of the program determine it. For classical
 programs a backward slice answers this~\cite{weiser1984program}, and programmers use slices to read and debug
-code~\cite{weiser1982programmers, binkley2007source}. Quantum programs need such help more. Their intermediate states
+code~\cite{weiser1982programmers, gallagher1991using}. Quantum programs need such help more. Their intermediate states
 cannot be inspected without disturbing them, and a gate can change a qubit it does not target, as in phase kickback,
-where a controlled gate changes the phase of its control without entangling the two qubits. Quantum developers debug
+where a controlled gate changes the phase of its control without entangling the two
+qubits~\cite{nielsen2010quantum}. Quantum developers debug
 by printing, drawing circuits, simulating and reading code, and report that this does not
 scale~\cite{zappin2026challenges}. Bug detectors such as LintQ and QChecker find known patterns by static analysis,
 which reads a program without running it, % static-definition
 but many faults are wrong outputs that no pattern describes~\cite{paltenghi2024lintq, zhao2023qchecker}.
 
-Slicing has been proposed for quantum programs~\cite{yu2025qpdg, kaul2023uniform, murillo2025roadmap}, but no
-proposed dependence rule has been checked against what a quantum program computes. For comprehension this matters
+Slicing has been proposed for quantum programs~\cite{yu2025qpdg} and named as an aid to understanding
+them~\cite{murillo2025roadmap}, but no proposed dependence rule has been checked against what a quantum program computes. For comprehension this matters
 most, because a slice that hides code able to change the qubit sends its reader away from the fault, and such slices
 look right. The classical slice of the textbook program of Fig.~\ref{fig:bv} reproduces the faulty program's state
 and leaves out the faulty line. Over the \numNPairs{} circuit--qubit pairs of our study, reading a controlled gate as
@@ -23,25 +24,26 @@ This paper asks what a quantum slice must keep, and which dependence rule produc
 preserve their joint state for every input, and an operation is a dependence of them if a change right after it can
 change that state. One rule meets both, the \emph{write-all rule}, under which a gate writes every qubit it touches,
 its controls included. On qubits its slice is the backward light cone, whose soundness compilers already rely
-on~\cite{murali2019triq, qiskit2025}. What has been missing is the case for it as a slice, that it keeps every
-dependence and that nothing else proposed for quantum programs adds one, and a measurement of what each alternative
-loses. We make the case in proofs and measure the losses in a pre-registered study on \numNCircuits{} benchmark
-circuits with an exact ground truth, \numFamCircuits{} generated circuits and \numRqThreeUnits{} seeded-fault units,
-with real faults from Bugs4Q~\cite{zhao2023bugs4q}.
+on~\cite{murali2019triq, qiskit2025}. What has been missing is a proof that it keeps every dependence, so that no
+other proposed kind of dependence can add one, and a measurement of what each alternative loses. We give the proof and
+measure the losses on \numNCircuits{} benchmark circuits with an exact ground truth, \numFamCircuits{} generated
+circuits, \numRqThreeUnits{} seeded-fault units and \numBugsFourQUnits{} real-fault units from
+Bugs4Q~\cite{zhao2023bugs4q}. The study was pre-registered, but its confirmatory tests concern pruning, and the
+comparisons of the other rules, added after the first results, are exploratory.
 
 The paper makes four contributions. The first is a definition of what a slice of a set of qubits must preserve and of
 dependence, which separates sound slices from slices that keep every dependence. The second is a proof that the slice
 of the quantum dependence graph (QDG), defined by the write-all rule and extended along classical bits, is sound for
-every input, with the induction mechanized in Isabelle/HOL, and keeps every dependence, with evidence that no standard
-two-qubit gate can safely write fewer qubits. The third shows that classical data, classical control and quantum data
+every input, with the induction mechanized in Isabelle/HOL, and keeps every dependence, with evidence that none of Qiskit's
+standard two-qubit gates can safely write fewer qubits. The third shows that classical data, classical control and quantum data
 dependence suffice, since apparent quantum control dependence is quantum data dependence and entanglement is neither
-necessary nor sufficient for dependence. The fourth measures the alternatives. The classical PDG fails almost only
-through its reading of the control, the QPDG of Yu and Zhao~\cite{yu2025qpdg} keeps \numYzLcExcessRatio{} times as
-much code that cannot matter as the QDG, whose slices come within \numLcExcess{} points of the smallest slice that
-keeps every dependence, and pruning drops dependences. Slices narrow where a developer looks but improve neither
-mutation-based fault ranking nor a language model's localization of faults.
+necessary nor sufficient for dependence. The fourth measures the alternatives. The classical PDG fails almost
+entirely through its reading of the control. The QPDG of Yu and Zhao~\cite{yu2025qpdg} keeps \numYzLcExcessRatio{}
+times as much code that cannot matter as the QDG, whose slices are on average \numLcExcess{} percentage points larger
+than the smallest slice that keeps every dependence, a gap that grows with width. Pruning drops dependences. Slices
+contain most faults but improve neither mutation-based fault ranking nor a language model's localization of faults.
 
-The paper builds no slicer for a particular language. Its definitions are stated on the circuit a program builds,
+The paper builds no slicer for a particular language. Its definitions are stated on the circuit a program builds.
 Section~\ref{sec:lines} shows how a slice reaches source lines, and computing slices at scale on the source developers
 write is a separate question. Section~\ref{sec:related} reviews related work, Section~\ref{sec:example} works through
 Fig.~\ref{fig:bv}, Section~\ref{sec:core} defines the semantics and the rules, Sections~\ref{sec:design}

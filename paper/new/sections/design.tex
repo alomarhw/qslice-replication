@@ -12,11 +12,12 @@ has of a slice.
 
 \subsection{Pre-registration}
 The protocol was committed before the runs reported here. It extends an earlier run whose results it reuses, so the
-outcomes of H1 and H2 were known when it was written, and every later change is a dated deviation. The five
-confirmatory tests concern state-based pruning. Every other result is exploratory or descriptive, including the
-classical PDG's share of wrong slices and everything added after the first results, the classical PDG and
-\texttt{LightCone} baselines, the dependence set and its nesting with the rules, the symbolic-angle, flow-sensitive and
-read-only variants, and the gate check. Two descriptive tasks for language models were pre-registered, and the most
+outcomes of two of its hypotheses were known when it was written, and every later change is a dated deviation. It was
+written for a slicer that prunes by state, and its research questions are worded here for the comparison of rules,
+with hypotheses and measures unchanged. The five confirmatory tests concern state-based pruning. Every other result is
+exploratory or descriptive, among them everything added after the first results, namely the classical PDG and
+\texttt{LightCone} baselines with the classical PDG's share of wrong slices, the dependence set and its nesting with
+the rules, the symbolic-angle, flow-sensitive and read-only variants, and the gate check. Two descriptive tasks for language models were pre-registered, and the most
 expensive model was dropped for cost before any scored call.
 
 \subsection{Subjects}
@@ -30,7 +31,7 @@ and in width, with \numSubjGenMinQubits{} to \numSubjGenMaxQubits{} qubits and u
 and \numSubjSweepCount{} width sweeps extend two of the families to \numSubjSweepMaxQubits{} qubits. Corpus~L has
 \numSubjLCount{} wider circuits from the same suites, with \numSubjLMinQubits{} to \numSubjLMaxQubits{} qubits and up
 to \numSubjLMaxOps{} operations, on which only some rules finish. Faults are seeded into corpus~A, and real faults
-come from Bugs4Q~\cite{zhao2023bugs4q}. A unit is a fault and a qubit whose measured distribution it changes.
+come from Bugs4Q~\cite{zhao2023bugs4q}.
 
 \subsection{Ground truth}
 An independent oracle simulates each circuit exactly, branching over measurement outcomes, and agrees with Qiskit's
@@ -38,7 +39,7 @@ simulation to within \numOracleErr{}. A slice preserves the criterion when the s
 criterion's reduced states under the slice and the whole circuit is at least $1 - 10^{-6}$. The
 dependences of Definition~\ref{def:dep} are measured by inserting \numInfluencePerturbations{} random unitaries after
 every operation and comparing the criterion's state at \numInfluenceInputs{} inputs, $\ket{0\dots0}$ and random
-product states. Being sampled, the measured dependence set can only miss true dependences. A catalog of \numCatEntries{} hand-derived cases checks the ground truth and every
+product states. A catalog of \numCatEntries{} hand-derived cases checks the ground truth and every
 slicer before the runs.
 
 \subsection{Slicers}
@@ -50,10 +51,15 @@ Exploratory variants make commutation pruning hold for all angles and give state
 \subsection{Robustness}
 A slice computed at $\ket{0\dots0}$ is rechecked, with its operations unchanged, under \numRobDraws{} random
 computational-basis inputs, \numRobDraws{} random product inputs and, for circuits with rotation angles,
-\numRobDraws{} random rebindings of every angle. A pair is robust if the slice preserves the criterion in every draw. The gate check takes each of the
-\numGateSignalN{} two-qubit gates of Qiskit's standard library, parameterized gates at a fixed angle, and searches
-seeded random product inputs, for each direction, for two inputs of one qubit that leave the other in different
-reduced states, evidence for these gates and not a proof for all.
+\numRobDraws{} random rebindings of every angle. A pair is robust if the slice preserves the criterion in every draw. The noise analysis, pre-registered and
+descriptive, transpiles the whole circuit and each slice to single-qubit gates and CNOTs, adds depolarizing noise to
+every gate at two-qubit rates of $10^{-3}$ to $3\cdot10^{-2}$ and a tenth of that on single-qubit gates, simulates the
+corpus-A pairs of at most \numNoiseMaxQubits{} qubits exactly, and compares the criterion's noisy states by trace
+distance.
+
+The gate check takes \numGateSignalN{} standard two-qubit gates of Qiskit, parameterized gates at a fixed angle. For
+each direction it searches seeded random product inputs for two inputs of one qubit that leave the other in different
+reduced states. This is evidence for these gates, not a proof for all gates.
 
 \subsection{Faults and fault localization}
 Faults are seeded with \numMutOperators{} operators, \numMutPublished{} from Muskit~\cite{mendiluze2021muskit},
@@ -63,28 +69,29 @@ of our own. Of the \numMutants{} mutants, \numMutantsExcluded{} with an empty fa
 unit, \numRqThreeUnits{} in all, for which we record each slice's size and whether it contains the fault site. Of the
 \numBugsFourQTriaged{} entries of Bugs4Q, \numBugsFourQIncluded{} are circuit-level faults that port mechanically to
 the current Qiskit release, and \numBugsFourQKilled{} of them change a qubit's measured distribution, giving
-\numLinesUnits{} units. Running each port
+\numBugsFourQUnits{} units, \numLinesUnits{} of whose faulty lines map to the original program. Running each port
 records the line that appends each operation, mapped to the original program, so these slices are also reported as
 lines of the programs their developers wrote.
 
-Mutation-based fault localization ranks the operations of the faulty circuit by how their mutants change its
-observable behavior, with the Ochiai formula, as Ishimoto et al.\ do for quantum programs~\cite{ishimoto2025mbfl}, on a
-sample of \numMbflUnits{} units stratified by fault operator and including every Bugs4Q unit. We rank over the whole
+Mutation-based fault localization, which Ishimoto et al.\ evaluate for quantum programs~\cite{ishimoto2025mbfl},
+ranks the operations of the faulty circuit by how their mutants change its observable behavior, here with the Ochiai
+formula, on a sample of \numMbflUnits{} units stratified by fault operator and including every Bugs4Q unit. We rank over the whole
 circuit and within each slice and report the EXAM score, the share of ranked operations examined before the fault,
-lower being better.
+lower being better. For H5, the inspection cost of a slice is its size together with the same score for the slice read
+from its last operation backward.
 
 In the language-model tasks, a model lists the operations that can affect a qubit for \numTOneItems{} items, and
 names the likely faulty operation of \numTTwoItems{} units given the whole circuit or a slice. The models are Claude
-Sonnet~5.5 and Haiku~5.5 and Qwen2.5-Coder with 32 and 1.5 billion parameters.
+Sonnet~5.5, Claude Haiku~5.5, and Qwen2.5-Coder at 32 and at 1.5 billion parameters.
 
 \subsection{Cost}
-RQ4 times the rules on the generated family that grows in depth at eight qubits, on the width sweeps and on
-corpus~L, each circuit in a fresh process limited to \numCostWallLimit{}~s and 4~GiB.
+RQ4 times the rules on the generated family that grows in depth at \numCostDepthWidth{} qubits, on the width sweeps and on
+corpus~L, each circuit in a fresh process limited to \numCostWallLimit{}~s and \numCostMemLimit{}~GiB.
 
 \subsection{Statistics}
 Five confirmatory hypotheses concern state-based pruning. It is wrong on fewer pairs than def-use (H1), its slices
 are smaller than QDG slices (H2), at least 95\% of pairs keep a correct slice under random product inputs (H3), it
-loses at most five points of fault containment against the QDG slice (H4), and its slices are smaller where both
+loses at most five points of fault containment against the QDG slice (H4), and it costs less to inspect where both
 contain the fault (H5). It starts from the QDG slice and checks every removal at $\ket{0\dots0}$, so H1 and the
 directions of H2 and H5 hold by construction, and H3 and H4 are the real tests. We use exact McNemar tests on paired outcomes and Wilcoxon signed-rank tests on paired
 sizes, with Holm's correction across the five. Effect sizes come with bootstrap 95\% intervals and Wilson intervals

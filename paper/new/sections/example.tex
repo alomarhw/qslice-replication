@@ -22,7 +22,8 @@ probabilities $|\alpha|^2$ and $|\beta|^2$. The states $\ket{+}$ and $\ket{-}$ g
 differ only in phase, which no measurement in the computational basis can see, and the Hadamard gate H turns
 $\ket{0}$ into $\ket{+}$ and back. The controlled-NOT (CNOT) flips its target when its control is $1$, but when the
 target is in $\ket{-}$ it leaves the target unchanged and flips the phase of its control instead. This is phase
-kickback, and it needs no entanglement, the state of two qubits that cannot be written as a state of each alone. A
+kickback, and it needs no entanglement, a joint state of two qubits that cannot be written as a product of their
+separate states. A
 measurement writes a classical bit that later gates may read. Qiskit programs build circuits in Python, with loops and
 functions that compute which gates act on which qubits.
 
@@ -31,7 +32,7 @@ The Bernstein--Vazirani algorithm~\cite{bernstein1997qct} finds a hidden bit str
 Fig.~\ref{fig:bv} shows the program of the Qiskit textbook~\cite{qiskittextbook}, with $s = 011$. Lines~24 and~25
 prepare the auxiliary qubit $q_3$ in $\ket{-}$, line~29 puts every data qubit in $\ket{+}$, and for every bit of $s$
 that is $1$, the CNOT of line~40 kicks a phase onto its data qubit, turning $\ket{+}$ into $\ket{-}$. The Hadamard
-gates of line~47 turn these phases into the bits of $s$. We seeded one fault, X instead of Z on line~25, which leaves
+gates of line~47 turn these phases into the bits of $s$. We seeded one fault, X instead of Z on line~25. It leaves
 the auxiliary in $\ket{+}$, on which a CNOT changes nothing, so the program returns \numBvBuggyOut{} instead of
 \numBvFixedOut{}.
 
@@ -40,13 +41,14 @@ The developer sees $q_0$ read $0$ where $s$ says $1$ and slices backward from $q
 \texttt{cx(q, n)} as the assignment $q_n \leftarrow q_n \oplus q$, which reads $q$ and writes only the auxiliary. Its
 slice of $q_0$, the left column of Fig.~\ref{fig:bv}, keeps the Hadamard gates of lines~\numBvCpdgLines{} and the
 lines that compute their qubits, \numBvCpdgClassical{}. The slice looks right. Its \numBvCpdgOps{} operations give
-$q_0$ the same state as the faulty program, with fidelity \numBvCpdgFidelity{}, a similarity of quantum states that is
-$1$ exactly when they are equal, so nothing sends the developer to lines~\numBvMissedLines{}, where the fault is.
+$q_0$ the same state as the faulty program. Their fidelity, a similarity of quantum states that is $1$ exactly when
+they are equal, is \numBvCpdgFidelity{}, so nothing sends the developer to lines~\numBvMissedLines{}, where the
+fault is.
 
 Yet these lines can change $q_0$. Restoring Z on line~25 turns $q_0$ from $\ket{0}$ into $\ket{1}$, states with
 fidelity \numBvFixFidelity{}, because the CNOT acts on its control as well as its target. The QDG of
 Section~\ref{sec:core}, which lets every gate write all its qubits, keeps lines~\numBvQdgLines{} and the lines that
-compute them, among them the oracle's loop and condition on lines~35 to~39, and so contains the fault. The QPDG of Yu
+compute them, among them the oracle's loop and condition on lines~35 to~37 and~39, and so contains the fault. The QPDG of Yu
 and Zhao keeps the same lines here, since its two extra operations are later iterations of lines~29 and~40, and
 Fig.~\ref{fig:ansatz} shows where it costs more.
 
