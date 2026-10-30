@@ -21,6 +21,27 @@
 \author{\IEEEauthorblockN{Anonymous Author(s)}}
 \maketitle
 
+\begin{abstract}
+Slicing helps developers understand which statements affect a value, but the quantum programs developers write are
+Python programs that build circuits through loops, functions and computed qubit indices, and existing slicers either
+see a single circuit object or must run the program. We present \tool{}, an approach and tool that slices Qiskit
+programs statically, on their source. \tool{} adds a quantum layer to srcML's markup. It gives the calls of a program
+quantum roles from a table derived from Qiskit's interface, traces the circuit a program builds without running it,
+over-approximating unknown indices and loop bounds, and slices every qubit by the backward light cone extended along
+measured bits, including loops that run on the device. It reports the source lines, the loop iterations that put them
+in the slice, and the classical lines that compute them, which srcSlice supplies. On \numToolDevPrograms{} programs
+its trace equals the circuit Qiskit builds, and on \numQasmCircuitsChecked{} benchmark circuits its OpenQASM reader
+agrees with Qiskit. It traces a circuit in \numScaleSOneSliced{} of \numScaleSOneFiles{} GitHub programs, where
+\numCovNoConstruction{} of the others never build one, and in \numQheTracedOfBuildsPct{} of the expert-written Qiskit
+HumanEval programs that do, in \numScaleSOneMedianMs{}~ms per program in the median. It slices every qubit of circuits
+of up to \numScaleQbMaxOps{} operations in \numScaleQbAllS{}~s after reading them. A qubit's slice holds
+\numScaleReadMedianPct{} of a program's code lines in the median.
+\end{abstract}
+
+\begin{IEEEkeywords}
+program slicing, static analysis, quantum software engineering, Qiskit, srcML, program comprehension
+\end{IEEEkeywords}
+
 % Paper B, split from the ICPC 2027 rewrite on 2026-10-29. Material removed from Paper A is collected under inbox/
 % as raw material and logged in MOVED_FROM_A.md; this paper's prose is written fresh, with no sentence reused from A.
 \section{Introduction}\label{sec:b-intro}
