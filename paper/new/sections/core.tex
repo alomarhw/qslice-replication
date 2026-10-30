@@ -72,8 +72,25 @@ operations as nodes and the dependences of this rule as edges, and the QDG slice
 reachability from $W$.
 \end{definition}
 
-The QDG specifies the slice, and computing it needs no graph, only one backward pass. Start at the end of the circuit with the needed set $N = W$. Whenever an operation writes a location in $N$, keep
-it, remove the bits it measures from $N$, and add every location it reads. On qubits this is the backward light cone of $W$, which the classical bits extend from a measurement
+The QDG specifies the slice, and computing it needs no graph, only the one backward pass of Algorithm~\ref{alg:qdg},
+in time linear in the circuit.
+
+\begin{algorithm}[t]
+  \caption{The QDG slice by one backward pass, where $\mathit{meas}(o)$ is the set of bits $o$ measures}\label{alg:qdg}
+  \begin{algorithmic}[1]
+    \Require circuit $P = o_0 \dots o_{L-1}$, criterion $W$
+    \Ensure the positions of the slice $\Bw(W)$
+    \State $N \gets W$, \quad $S \gets \emptyset$
+    \For{$k \gets L-1$ \textbf{down to} $0$}
+      \If{$w(o_k) \cap N \neq \emptyset$}
+        \State $S \gets S \cup \{k\}$
+        \State $N \gets (N \setminus \mathit{meas}(o_k)) \cup r(o_k)$
+      \EndIf
+    \EndFor
+    \State \Return $S$
+  \end{algorithmic}
+\end{algorithm}
+ On qubits this is the backward light cone of $W$, which the classical bits extend from a measurement
 to the operations its bit conditions. Reduced to a one-bit secret, the program of Fig.~\ref{fig:bv} becomes the circuit
 \[
 P_1 \;=\; \mathrm{H}(q_1)\;\; \mathrm{Z}(q_1)\;\; \mathrm{H}(q_0)\;\; \mathrm{CX}(q_0, q_1)\;\; \mathrm{H}(q_0)
@@ -91,8 +108,7 @@ For every circuit $P$ and criterion $W$, $\Bw(W)$ is a sound slice for $W$.
 \end{theorem}
 
 \begin{IEEEproof}[Proof sketch]
-Process $P$ backward with the needed set $N$, initially $W$. Operation $o_k$ joins the slice exactly when it writes a location in $N$, and $N$ then loses the bits $o_k$
-measures and gains the locations it reads, which computes $\Bw(W)$. Every gate,
+Algorithm~\ref{alg:qdg} computes $\Bw(W)$, since an operation joins the slice exactly when it writes a location that a kept operation after it reads. Every gate,
 reset, measurement and conditioned gate is a channel, the most general quantum operation, that acts only on $\mathit{loc}(o)$. By locality of the partial
 trace, the no-signaling principle, an operation outside the slice cannot change the reduced state of the needed
 locations after it, and an operation in the slice maps the reduced state of the needed set before it to the one
@@ -118,7 +134,7 @@ $\Bw(W_1 \cup W_2) = \Bw(W_1) \cup \Bw(W_2)$.
 \end{proposition}
 
 \begin{IEEEproof}
-In the backward pass of Theorem~\ref{thm:sound}, the needed set for $W_1 \cup W_2$ is at every position the union
+In Algorithm~\ref{alg:qdg}, the needed set for $W_1 \cup W_2$ is at every position the union
 of those for $W_1$ and $W_2$.
 \end{IEEEproof}
 
