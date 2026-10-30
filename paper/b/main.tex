@@ -22,24 +22,19 @@
 \maketitle
 
 \begin{abstract}
-Quantum programs are increasingly written in general-purpose languages, most often in Python with Qiskit, where loops,
-functions and computed indices decide which gates act on which qubits. While classical programs are supported by
-mature slicing tools, quantum programs have almost none, and developers still debug them by printing, drawing
-circuits and reading code. This work brings static program slicing to quantum programs. The srcML infrastructure and
-the srcSlice slicer are extended with a quantum layer that identifies the quantum role of each call, traces the circuit
-a program builds without executing it, and slices every qubit along the gates and measured bits that can affect it,
-including loops that run on the device. The approach is implemented in a tool, \tool{}, which reports a slice as source
-lines, the loop iterations that put them in it, and the classical statements that compute them. The slices are
-accurate. On \numToolDevPrograms{} programs the static trace equals the circuit Qiskit builds and the slices equal those
-computed on that circuit in \numToolDevSliceEqual{}, and on \numQasmCircuitsChecked{} benchmark circuits the OpenQASM
-reader agrees with Qiskit. Exact simulation confirms every qubit's slice in programs with loops on the device, and the
-classical statements cover those a reference computation finds for \numSsContainPct{} of qubits, and for
-\numSsHeldContainPct{} in held-out GitHub programs. Of
-\numScaleSOneFiles{} Qiskit programs from GitHub, \tool{} traces a circuit in \numScaleSOneSliced{}, and
-\numCovNoConstruction{} of the others never build one. It traces \numQheTracedOfBuildsPct{} of the expert-written
-Qiskit HumanEval programs that build a circuit. It slices a program in \numScaleSOneMedianMs{}~ms in the median and
-every qubit of a circuit of \numScaleQbMaxOps{} operations in \numScaleQbAllS{}~s after \numScaleQbReadS{}~s of
-reading, and a qubit's slice holds \numScaleReadMedianPct{} of a program's code lines in the median.
+Which statements of a quantum program determine the state of a qubit? In Qiskit programs, loops, functions and
+computed indices decide which gates act on which qubits, and a gate can change a qubit it does not target. Classical
+programs have mature slicers, but quantum programs have almost none, and developers debug by printing, drawing circuits
+and reading code. This work extends the srcML infrastructure and the srcSlice slicer with a quantum layer that
+identifies each call's quantum role, traces the circuit a program builds without executing it, and slices every qubit
+along the gates and measured bits that can affect it, including loops on the device. The tool, \tool{}, shows each
+slice as source lines, the loop iterations behind them and the classical statements that compute them. On
+\numToolDevPrograms{} programs its trace equals the circuit Qiskit builds and its slices match those computed on that
+circuit in \numToolDevSliceEqual{}, and exact simulation confirms every qubit's slice in \numCfPrograms{} programs with
+device loops. Its classical statements cover a reference computation's for \numSsContainPct{} of qubits,
+\numSsHeldContainPct{} in held-out programs. Of \numScaleSOneFiles{} GitHub Qiskit programs, \tool{} traces
+\numScaleSOneSliced{}, and \numCovNoConstruction{} of the rest never build a circuit. It slices a program in
+\numScaleSOneMedianMs{}~ms in the median, and a qubit's slice holds \numScaleReadMedianPct{} of the code lines.
 \end{abstract}
 
 \begin{IEEEkeywords}
