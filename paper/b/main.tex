@@ -30,10 +30,8 @@
 Quantum programs are increasingly written in general-purpose languages, most often as Python programs that build
 circuits with libraries such as Qiskit. However, there is a notable lack of tools that help developers understand and
 debug these programs. Program slicing, which finds the statements that can affect a value of interest, is well
-supported for classical software, yet difficult in quantum programs, because a gate can change every qubit it acts
-on, its controls included, measurement turns a qubit's state into bits that steer later operations, and loops,
-functions and computed indices decide which gates act on which qubits. This work aims to address this gap.
-Specifically, the srcML infrastructure and the srcSlice slicer are extended with a quantum layer that identifies the
+supported for classical software, yet difficult in quantum programs, where dependence flows through gates and
+measurements rather than assignments, and code computes which gates act on which qubits. To address this gap, the srcML infrastructure and the srcSlice slicer are extended with a quantum layer that identifies the
 quantum role of each API call, reconstructs the circuit a program builds without executing it, and slices every qubit,
 including loops that run on the quantum device. Each slice is reported as source lines, the loop iterations that
 contribute them and the classical statements that compute them. The approach is implemented in a tool, \tool{}, and
