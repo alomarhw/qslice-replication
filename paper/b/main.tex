@@ -1,0 +1,45 @@
+\documentclass[10pt,conference]{IEEEtran}
+\usepackage{amsmath,amssymb,stmaryrd}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage[table]{xcolor}
+\usepackage{url}
+\providecommand{\ket}[1]{\lvert #1\rangle}
+% The tool's name, in one place. An anonymous build defines \anonbuild.
+\ifdefined\anonbuild\newcommand{\tool}{QLine}\else\newcommand{\tool}{srcSlice-Q}\fi
+\newcommand{\TODO}[1]{\textcolor{red}{[TODO: #1]}}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\input{../numbers}
+
+\begin{document}
+\title{Slicing Quantum Programs Where Developers Write Them: Static Slicing of Qiskit Source at Scale}
+\author{\IEEEauthorblockN{Anonymous Author(s)}}
+\maketitle
+
+% Paper B, split from the ICPC 2027 rewrite on 2026-10-29. Material removed from Paper A is collected under inbox/
+% as raw material and logged in MOVED_FROM_A.md; this paper's prose is written fresh, with no sentence reused from A.
+\section{Introduction}\label{sec:b-intro}
+\TODO{to be written}
+\section{Background and Related Work}\label{sec:b-related}
+\TODO{srcML and srcSlice, Behler et al. and QStatic, static analyzers for Qiskit, circuit tools; the light-cone rule stated and cited, not proved}
+\section{A Motivating Example}\label{sec:b-example}
+\TODO{a program of our own with computed qubit indices, loops and conditioned gates, e.g. \texttt{tool/tests/big/teleport\_chain.py}}
+\section{The Approach}\label{sec:b-approach}
+\TODO{a semantic quantum layer over srcML (E1 to E5), over-approximation, circuit loops, one-pass slicing, OpenQASM front end}
+\section{Evaluation Design}\label{sec:b-design}
+\TODO{RQ1 faithfulness, RQ2 coverage, RQ3 scalability, RQ4 value for comprehension; all exploratory}
+\section{Results}\label{sec:b-results}
+\TODO{to be written}
+\section{Discussion and Threats to Validity}\label{sec:b-threats}
+\TODO{to be written}
+\section{Conclusion}\label{sec:b-conclusion}
+\TODO{to be written}
+
+\bibliographystyle{IEEEtran}
+\bibliography{../references}
+\end{document}
