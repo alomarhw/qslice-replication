@@ -19,7 +19,7 @@ interaction a slice would follow. The subsections answer each question for every
     Size (RQ1) & not minimal & \numLcExcess{} points above the dependence set, equal to it on \numLcExact{} pairs \\ \sep
     Noise (RQ2) & noise on a gate's own qubits, Theorem~\ref{thm:sound} & trace distance at most \numNoiseLcCrossExactMax{} \\ \sep
     Faults (RQ3) & no guarantee & contains \numRqThreeContainLc{} of the faults, \numSizeCtlLcGain{} points above a random set of its size \\ \sep
-    Cost (RQ4) & one pass over the circuit & at most \numCostLcMaxCritMs{}~ms per criterion \\
+    Cost (RQ4) & one pass over the circuit & at most \numOnePassMaxMs{}~ms per criterion, from the circuit \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -224,7 +224,10 @@ no slice improves mutation-based fault localization or a language model's.
 
 \subsection{RQ4: What does each rule cost in time as circuits grow?}
 
-The QDG slice costs at most \numCostLcMaxCritMs{}~ms per criterion at every depth.
+Computed from the circuit by the one-pass algorithm, the QDG slice takes \numOnePassMedianMs{}~ms per criterion in the
+median over the \numOnePassCircuits{} circuits of the depth family, the width sweeps and corpus~L,
+\numOnePassDeepMedianMs{}~ms at the largest depth and at most \numOnePassMaxMs{}~ms, and slicing every qubit of a
+circuit takes at most \numOnePassAllMaxMs{}~ms.
 State-based pruning, which simulates the circuit for every candidate removal, exceeds \numCostWallLimit{}~s for \numCostDepthEightyOverLimit{} of the \numCostDepthCircuits{} circuits at the second-largest depth and for all
 \numCostDepthOneSixtyOverLimit{} at the largest, takes up to \numCostWidthQMax{}~s on the width sweeps at
 \numCostWidthMaxQubits{} qubits, and completes on

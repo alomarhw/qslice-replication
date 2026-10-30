@@ -33,6 +33,23 @@ data/                    the benchmark circuits and their licenses; DATA_SOURCES
 paper/                   the paper's sources (paper/new/main.tex), numbers.tex, references.bib, figures
 ```
 
+## Terms in the code
+
+The code predates the paper's names. One graph is built per circuit with data, control and entanglement edges
+(`qdg/qdg.py`, class `QDG`), and each rule the paper compares is a slicer over it in `experiments/slicers/registry.py`.
+
+| In the paper | In the code |
+|---|---|
+| QDG slice (write-all rule) | slicer `lc`: the graph with its entanglement edges removed, then backward reachability; also `qdg/one_pass.py`, the one-pass algorithm of Section IV-B, which gives the same slices |
+| QPDG of Yu and Zhao | slicer `yz`: the full graph, entanglement edges included (`experiments/slicers/yuzhao.py`) |
+| Classical PDG | `experiments/icpc/cpdg.py` |
+| Def-use | slicer `du` |
+| Commutation pruning | slicers `lcq` (Qiskit's `LightCone` pass) and `lcqs` (symbolic angles) |
+| State-based pruning | slicer `q` |
+| Dependence set | `experiments/icpc/influence.py` |
+
+So the name `QDG` in `qdg/qdg.py` means the combined graph, while the paper's QDG never uses entanglement edges.
+
 ## Where each result comes from
 
 | In the paper | Driver (experiments/icpc/) | Results (experiments/results/icpc/) |

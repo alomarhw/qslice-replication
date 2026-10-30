@@ -1397,3 +1397,19 @@ use, are removed.
 - **Correction (2026-10-29, after the first count).** `circuit_to_dag` is a function, called as `circuit_to_dag(...)`
   without a receiver, so the rule `.name(` found 12 programs; it is counted as `name(` and finds 100. The other kinds
   are unchanged. The interpreter's count, 33, is of conversions of a circuit it traced, a different measure.
+
+### Deviation I-28 (2026-10-30, AFTER all results; author decision after a question on the package; exploratory; recorded before any code or output)
+- **Why.** The paper states that the QDG slice needs no graph, only one backward pass, but the study computes it as
+  backward reachability in a graph built with every edge type (slicer `lc`), and RQ4 times only the reachability on a
+  graph already built, while the QPDG's time is its build. The one-pass algorithm is implemented only in the static
+  slicer, which is not part of this study.
+- **One-pass slicer.** `qslice/one_pass.py`, written from Section IV-B: walk the circuit backward with a needed set
+  that starts at the criterion qubit; keep an operation whose locations meet the needed set and add its locations.
+  Two treatments of classical bits are run and both reported: (a) Definition 4 read literally, every location of an
+  operation (its qubits, its measured bits, its condition's bits) is read and written; (b) as the graph of `lc` does,
+  a conditioned operation depends only on the most recent earlier measurement of each bit its condition reads.
+- **Check.** On the 784 RQ1 pairs, compare (a) and (b) with `lc`; every difference is listed.
+- **Cost.** On the RQ4 circuits (depth family, width sweeps, corpus L), time (b) from the circuit to the slice of
+  every criterion, in one process per circuit, against the graph build plus `lc`, and against the QPDG's build as
+  already measured. No RQ, hypothesis, threshold or reported slice changes.
+- **Script.** `icpc/one_pass_check.py` -> `results/icpc/one_pass/`.

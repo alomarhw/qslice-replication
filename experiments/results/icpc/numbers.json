@@ -4045,5 +4045,50 @@
   "value": 3,
   "tex": "three",
   "source": "results/icpc/unmodelled/summary.json"
+ },
+ "OnePassPairs": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/one_pass/summary.json"
+ },
+ "OnePassEqual": {
+  "value": 784,
+  "tex": "784",
+  "source": "results/icpc/one_pass/summary.json"
+ },
+ "OnePassDefFourDiffer": {
+  "value": 14,
+  "tex": "14",
+  "source": "results/icpc/one_pass/summary.json"
+ },
+ "OnePassCircuits": {
+  "value": 102,
+  "tex": "102",
+  "source": "results/icpc/one_pass/cost.csv"
+ },
+ "OnePassMaxMs": {
+  "value": 41.738,
+  "tex": "42",
+  "source": "results/icpc/one_pass/cost.csv"
+ },
+ "OnePassMedianMs": {
+  "value": 0.29,
+  "tex": "0.29",
+  "source": "results/icpc/one_pass/cost.csv"
+ },
+ "OnePassDeepMedianMs": {
+  "value": 4.542,
+  "tex": "4.5",
+  "source": "results/icpc/one_pass/cost.csv"
+ },
+ "OnePassAllMaxMs": {
+  "value": 74.5,
+  "tex": "74",
+  "source": "results/icpc/one_pass/cost.csv"
+ },
+ "QdgGraphBuildMaxMs": {
+  "value": 54.800000000000004,
+  "tex": "55",
+  "source": "results/icpc/one_pass/cost.csv"
  }
 }

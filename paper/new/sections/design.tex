@@ -46,7 +46,9 @@ product states, in which every qubit starts in its own random state. A catalog o
 slicer before the runs.
 
 \subsection{Slicers}
-Each rule is implemented on circuits from its read and write sets or its pruning step. Qiskit's \texttt{LightCone}
+The study builds every rule as one graph over a circuit's operations, so that the rules differ only in their edges or
+its pruning step, and slices by backward reachability. The QDG slice is also computed by the one-pass algorithm of
+Section~\ref{sec:core}, which gives the same slice on all \numOnePassEqual{} pairs, an exploratory check. Qiskit's \texttt{LightCone}
 pass applies to \numLcqApplicable{} of the \numNPairs{} pairs. It refuses an observable on circuits that contain
 measurements, \numLcqNaMeasurements{} pairs, and on \numLcqNaReorder{} its output cannot be matched back to the original.
 Exploratory variants make commutation pruning hold for all angles and give state-based pruning a joint criterion.
@@ -90,7 +92,7 @@ names the likely faulty operation of \numTTwoItems{} units given the whole circu
 Sonnet~5.5, Claude Haiku~5.5, and Qwen2.5-Coder at 32 and at 1.5 billion parameters.
 
 \subsection{Cost}
-RQ4 times the rules on the generated family that grows in depth at \numCostDepthWidth{} qubits, on the width sweeps and on
+RQ4 times the QDG slice by the one-pass algorithm from the circuit, and the other rules as built, on the generated family that grows in depth at \numCostDepthWidth{} qubits, on the width sweeps and on
 corpus~L, each circuit in a fresh process limited to \numCostWallLimit{}~s and \numCostMemLimit{}~GiB.
 
 \subsection{Statistics}\label{sec:stats}

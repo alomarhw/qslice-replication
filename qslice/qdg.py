@@ -2,6 +2,10 @@
 qdg.py
 Quantum Dependency Graph (QDG) implementation.
 
+Naming note (2026-10-30): this class builds the combined graph with every edge type. The paper's QDG is this
+graph with its ENTANGLEMENT edges removed (slicer `lc` in experiments/slicers/registry.py), and the paper's
+QPDG is the full graph (slicer `yz`). one_pass.py computes the paper's QDG slice without a graph.
+
 Constructs a typed directed graph over quantum circuit operations with three
 edge types:
   - DATA: reversible state-carry along qubit lifelines

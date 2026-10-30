@@ -1,0 +1,9 @@
+{
+ "pairs": 784,
+ "graph_equal": 784,
+ "def4_equal": 770,
+ "cost_circuits": 102,
+ "one_pass_max_ms_overall": 41.738,
+ "one_pass_all_max_s": 0.0745,
+ "graph_build_max_s": 0.0548
+}
