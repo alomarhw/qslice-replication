@@ -17,25 +17,22 @@
 \input{../numbers}
 
 \begin{document}
-\title{Slicing Quantum Programs Where Developers Write Them: Static Slicing of Qiskit Source at Scale}
+\title{Static Program Slicing for Quantum Programming Languages}
 \author{\IEEEauthorblockN{Anonymous Author(s)}}
 \maketitle
 
 \begin{abstract}
-Slicing helps developers understand which statements affect a value, but the quantum programs developers write are
-Python programs that build circuits through loops, functions and computed qubit indices, and existing slicers either
-see a single circuit object or must run the program. We present \tool{}, an approach and tool that slices Qiskit
-programs statically, on their source. \tool{} adds a quantum layer to srcML's markup. It gives the calls of a program
-quantum roles from a table derived from Qiskit's interface, traces the circuit a program builds without running it,
-over-approximating unknown indices and loop bounds, and slices every qubit by the backward light cone extended along
-measured bits, including loops that run on the device. It reports the source lines, the loop iterations that put them
-in the slice, and the classical lines that compute them, which srcSlice supplies. On \numToolDevPrograms{} programs
-its trace equals the circuit Qiskit builds, and on \numQasmCircuitsChecked{} benchmark circuits its OpenQASM reader
-agrees with Qiskit. It traces a circuit in \numScaleSOneSliced{} of \numScaleSOneFiles{} GitHub programs, where
-\numCovNoConstruction{} of the others never build one, and in \numQheTracedOfBuildsPct{} of the expert-written Qiskit
-HumanEval programs that do, in \numScaleSOneMedianMs{}~ms per program in the median. It slices every qubit of circuits
-of up to \numScaleQbMaxOps{} operations in \numScaleQbAllS{}~s after reading them. A qubit's slice holds
-\numScaleReadMedianPct{} of a program's code lines in the median.
+Quantum programs are increasingly written in general-purpose languages, most often in Python with Qiskit, where loops,
+functions and computed indices decide which gates act on which qubits. While classical programs are supported by
+mature slicing tools, quantum programs have almost none, and developers still debug them by printing, drawing
+circuits and reading code. This work brings static program slicing to quantum programming languages. The srcML
+infrastructure and the srcSlice slicer are extended with a quantum layer that identifies the quantum role of each
+call, traces the circuit a program builds without executing it, and slices every qubit along the gates and measured
+bits that can affect it. The approach is implemented in a tool, \tool{}, which reports a slice as source lines, the
+loop iterations that put them in it, and the classical statements that compute them. \tool{} is evaluated on Qiskit
+programs from GitHub (\numScaleSOneFiles{}), Bugs4Q, the Qiskit textbook and Qiskit HumanEval, and on OpenQASM
+benchmarks of up to \numScaleQbMaxOps{} operations. It slices a typical program in milliseconds, and a qubit's slice
+holds about a quarter of a program's code, giving developers a focused view of the statements that determine a qubit.
 \end{abstract}
 
 \begin{IEEEkeywords}
