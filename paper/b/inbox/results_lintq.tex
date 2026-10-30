@@ -1,0 +1,38 @@
+% Moved verbatim from Paper A (new/sections/results.tex lines 306-342, commit f96523f) on 2026-10-29. Raw material for Paper B; rewrite, do not reuse.
+\subsection{\tool{} on LintQ's data}
+
+\begin{table}[t]
+  \centering
+  \caption{The qubit profiles of \tool{} on LintQ's warnings of its five qubit analyses}
+  \label{tab:lintq}
+  \footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabular}{@{}l r r r@{}}
+    \toprule
+    \textbf{Warnings} & \textbf{Count} & \textbf{Traced} & \textbf{Predicate holds} \\
+    \midrule
+    Confirmed as bugs by LintQ's authors & \numLqQubitTp{} & \numLqQubitTraced{} & \numLqQubitExposed{} \\ \sep
+    Rejected as false by LintQ's authors & \numLqFpWarnings{} & \numLqFpTraced{} & \numLqFpFires{} \\ \sep
+    All warnings of these analyses & \numLqSarifWarnings{} & \numLqSarifTraced{} & \numLqSarifFires{} \\
+    \bottomrule
+  \end{tabular}\\[3pt]
+  \begin{minipage}{\columnwidth}\footnotesize
+  The five analyses are operation after measurement, double measurement, oversized circuit, conditional without
+  measurement and unmeasurable qubits. A predicate on the qubit profiles, fixed before the comparison, is evaluated at
+  the warned line of each traced warning.
+  \end{minipage}
+\end{table}
+
+LintQ and \tool{} answer different questions, what is wrong and where to look, so the comparison asks what the qubit
+view adds to LintQ's warnings. Table~\ref{tab:lintq} shows that the profiles contain what LintQ's five qubit analyses
+check. Of the \numLqQubitTp{} warnings of these analyses that LintQ's authors confirmed as bugs, \tool{} traces
+\numLqQubitTraced{}, and on all of them a predicate on its profiles holds at the warned line. The predicates also hold on
+\numLqFpFires{} of the \numLqFpTraced{} traced warnings the authors rejected, and on \numLqSarifFires{} of the
+\numLqSarifTraced{} traced warnings in all, so the profiles reproduce these analyses with their false alarms and are not
+a more precise detector. What they add is context. LintQ points to one line, and the slices of the qubits on that line
+give the \numLqReadMedian{} lines in the median that determine their state, out of \numLqCodeMedian{} code lines in the
+file. LintQ's bound of ten loop iterations also matters. In \numLqBeyondTenFiles{} of the programs \tool{} traces,
+operations are created after the tenth iteration of a loop, \numLqBeyondTenOpsPct{} of all their operations. On the
+examples of both papers, transcribed as programs of our own, the slices show each bug. In LintQ's first example the
+slice of $q_3$ is empty, the oversized circuit, and the slice of $q_0$ holds the rotation after its measurement. In
+QChecker's fifth example the slice of $q_2$ holds the measurement of $q_1$ and the CNOT that follows it on $q_1$.

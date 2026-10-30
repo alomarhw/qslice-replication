@@ -1,0 +1,80 @@
+% Moved verbatim from Paper A (new/sections/design.tex lines 27-90 (subjects with program rows) and 137-150, commit f96523f) on 2026-10-29. Raw material for Paper B; rewrite, do not reuse.
+\subsection{Subjects}
+Table~\ref{tab:subjects} lists the circuits and programs and the questions each serves. The rules are compared on
+circuits, where an exact simulation gives the ground truth, and \tool{} is evaluated on programs, which it reads but
+never runs. Corpus~A collects benchmark circuits of at most \numSizeAMaxQubits{} qubits from MQT
+Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench} and VeriQBench~\cite{chen2022veriqbench}. Every
+qubit of every circuit is a criterion, which gives \numNPairs{} circuit--qubit pairs, \numNDynamicPairs{} of them in
+dynamic circuits with mid-circuit measurement, reset or conditioned gates. The generated circuits come in families of known
+structure that grow in depth and in width, corpus~L has wider circuits on which only some rules finish, and
+QASMBench's medium and large sets have circuits far larger than corpus~A. The programs come from Bugs4Q, the Qiskit
+textbook~\cite{qiskittextbook}, the corpus that LintQ's authors collected from GitHub and Qiskit HumanEval, and two
+sets are our own, four parametric programs and ten programs with circuit loops.
+
+\begin{table*}[t]
+  \centering
+  \caption{Circuits and programs of the study}
+  \label{tab:subjects}
+  \footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \newcommand{\blk}[1]{\multicolumn{8}{@{}l}{\textit{#1}}\\}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.05cm}
+                  r r r r r >{\raggedright\arraybackslash}p{2.2cm}@{}}
+    \toprule
+    \textbf{Subject} & \textbf{Source} & \textbf{Count} & \textbf{Traced} & \textbf{Qubits} & \textbf{Operations} &
+      \textbf{Code lines} & \textbf{Used for} \\
+    \midrule
+    \blk{Circuits}
+    Corpus~A & MQT Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench}, VeriQBench~\cite{chen2022veriqbench} &
+      \numSubjACount{} & \numSubjATraced{} & \numSubjAMinQubits{}--\numSubjAMaxQubits{} & \numSubjAMedianOps{} / \numSubjAMaxOps{} & -- & RQ1 to RQ4 \\ \sep
+    Generated circuits & ours & \numSubjGenCount{} & \numSubjGenTraced{} & \numSubjGenMinQubits{}--\numSubjGenMaxQubits{} &
+      \numSubjGenMedianOps{} / \numSubjGenMaxOps{} & -- & RQ1, RQ4 \\ \sep
+    Width sweeps & ours & \numSubjSweepCount{} & \numSubjSweepTraced{} & \numSubjSweepMinQubits{}--\numSubjSweepMaxQubits{} &
+      \numSubjSweepMedianOps{} / \numSubjSweepMaxOps{} & -- & RQ4 \\ \sep
+    Corpus~L & MQT Bench, QASMBench, VeriQBench & \numSubjLCount{} & \numSubjLTraced{} & \numSubjLMinQubits{}--\numSubjLMaxQubits{} &
+      \numSubjLMedianOps{} / \numSubjLMaxOps{} & -- & RQ1, RQ4 \\ \sep
+    QASMBench medium and large & QASMBench~\cite{li2023qasmbench} & \numSubjQbCount{} & \numSubjQbTraced{} &
+      \numSubjQbMinQubits{}--\numSubjQbMaxQubits{} & \numSubjQbMedianOps{} / \numSubjQbMaxOps{} & -- & RQ4 \\
+    \midrule
+    \blk{Programs}
+    Bugs4Q & Zhao et al.~\cite{zhao2023bugs4q} & \numSubjBugsCount{} & \numSubjBugsTraced{} &
+      \numSubjBugsMinQubits{}--\numSubjBugsMaxQubits{} & \numSubjBugsMedianOps{} / \numSubjBugsMaxOps{} & \numSubjBugsMedianLines{} & RQ3, \tool{} \\ \sep
+    Qiskit textbook & IBM~\cite{qiskittextbook} & \numSubjTextCount{} & \numSubjTextTraced{} &
+      \numSubjTextMinQubits{}--\numSubjTextMaxQubits{} & \numSubjTextMedianOps{} / \numSubjTextMaxOps{} & \numSubjTextMedianLines{} & \tool{} \\ \sep
+    LintQ's corpus & Paltenghi and Pradel~\cite{paltenghi2024lintq} & \numSubjLintqCount{} & \numSubjLintqTraced{} &
+      \numSubjLintqMinQubits{}--\numSubjLintqMaxQubits{} & \numSubjLintqMedianOps{} / \numSubjLintqMaxOps{} & \numSubjLintqMedianLines{} & RQ4, LintQ comparison \\ \sep
+    Qiskit HumanEval & Vishwakarma et al.~\cite{vishwakarma2024qhe} & \numSubjQheCount{} & \numSubjQheTraced{} &
+      \numSubjQheMinQubits{}--\numSubjQheMaxQubits{} & \numSubjQheMedianOps{} / \numSubjQheMaxOps{} & \numSubjQheMedianLines{} & \tool{} \\ \sep
+    Parametric programs, 5 sizes each & ours & \numSubjParamCount{} & \numSubjParamTraced{} of 20 &
+      \numSubjParamMinQubits{}--\numSubjParamMaxQubits{} & \numSubjParamMedianOps{} / \numSubjParamMaxOps{} & \numSubjParamMedianLines{} & RQ4 \\ \sep
+    Programs with circuit loops & ours & \numSubjCfCount{} & \numSubjCfTraced{} & \numSubjCfMinQubits{}--\numSubjCfMaxQubits{} &
+      \numSubjCfMedianOps{} / \numSubjCfMaxOps{} & \numSubjCfMedianLines{} & Proposition~\ref{prop:loops} \\
+    \bottomrule
+  \end{tabularx}\\[3pt]
+  \begin{minipage}{\textwidth}\footnotesize
+  Traced counts the circuits read, of which QASMBench has \numSubjQbTraced{} in valid OpenQASM~2, and the programs from which
+  \tool{} traces a circuit, or for the parametric programs the sizes, two of which loop beyond the interpreter's
+  iteration limit. Qubits and operations describe the circuits, for programs the traced ones, as smallest to largest
+  and as median / largest. Registers of unknown size are left out of the qubit range, and \numToolMaxOps{} operations is
+  the interpreter's trace limit. Code lines exclude blank and comment lines and are given as medians. Faults are seeded
+  into corpus~A, giving \numRqThreeUnits{} units from \numMutantsKilled{} mutants. Of Bugs4Q's bugs, \numBugsFourQIncluded{}
+  port to circuits and \numBugsFourQKilled{} of them give \numLinesUnits{} units. A unit is a fault and a qubit whose
+  measured distribution it changes.
+  Programs by others are read and never run, and ours and our ports of the Bugs4Q bugs are also run.
+  \end{minipage}
+\end{table*}
+
+\subsection{Cost, scalability and comparison with LintQ}
+RQ4 times the rules on the generated family that grows in depth at a width of eight qubits, on width sweeps of two
+generated families from \numSubjSweepMinQubits{} to \numSubjSweepMaxQubits{} qubits, and on corpus~L, each circuit in a fresh process with limits of \numCostWallLimit{}~s and 4~GiB. \tool{} is timed in
+three settings, all exploratory. On LintQ's corpus it slices every qubit, up to 64, of each program that builds a
+circuit, with a limit of 120~s per program. On QASMBench's medium and large circuits, read through the OpenQASM front
+end, it slices every qubit in one pass, against three baselines that slice one qubit, Qiskit's DAG ancestors,
+Qiskit's \texttt{LightCone} pass and the construction of our QPDG reimplementation, with a limit of 600~s per circuit.
+On the parametric programs, a QFT, a GHZ preparation, a QAOA ring and a repetition code, a size constant grows the
+trace while the source stays the same.
+
+The comparison with LintQ uses LintQ's public data and never runs LintQ. For each of the \numLqQubitTp{} confirmed bugs
+of its five analyses that concern qubits and bits, \tool{} traces the program and evaluates a predicate on its qubit
+profiles, fixed before the comparison, at the warned line. The same predicates are evaluated on the warnings LintQ's
+authors rejected and on all of its warnings of these analyses.

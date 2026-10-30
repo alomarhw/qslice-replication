@@ -1,0 +1,33 @@
+% Moved verbatim from Paper A (new/sections/core.tex lines 300-331, commit f96523f) on 2026-10-29. Raw material for Paper B; rewrite, do not reuse.
+\subsection{Loops}\label{sec:loops}
+A loop of the host program runs when the circuit is built. A static slicer unrolls it, so every iteration
+contributes its own operations, each tagged with the line and iteration that emit it. When the number of iterations
+cannot be known statically, the loop body is repeated as \emph{may-operations}, operations that might be emitted,
+until no repetition adds a location to any dependence chain. A loop of the circuit itself, Qiskit's
+\texttt{while\_loop}, \texttt{for\_loop} or \texttt{switch}, runs on the device, and its condition reads measured
+bits. A \texttt{for\_loop} over a known index set is unrolled, and any other circuit loop is repeated until stable
+in the same way, with every operation in its body conditioned on the bits its condition reads, so the classical
+control dependence on the measurement that decides the loop is kept.
+
+\begin{proposition}[Loops]\label{prop:loops}
+Let a loop body $B$ act on a set of locations $\Lambda$, let the loop end with probability one, and let $P_B$ repeat
+$B$ $|\Lambda| + 1$ times, with every operation of $B$ conditioned on the bits that decide the loop. For a
+criterion $W$, deleting from $B$ every operation none of whose copies is in the QDG slice of $P_B$ for $W$ preserves
+$W$ at every input.
+\end{proposition}
+
+\begin{IEEEproof}[Proof sketch]
+A loop that runs at most $K$ times is the circuit of $K$ copies of $B$, each conditioned on the bits that decide
+the loop, a circuit with conditioned operations to which Theorem~\ref{thm:sound} applies. In its backward pass every
+copy is processed alike, and the needed set only grows. Once a copy adds no location of $\Lambda$, every earlier copy
+keeps the same operations, and the needed set can grow at most $|\Lambda|$ times, so for every $K$ the copies keep
+only operations that one of the $|\Lambda| + 1$ copies of $P_B$ keeps. The bits that decide the loop are read by
+every copy, so the measurements that write them are kept and the distribution over numbers of iterations is
+preserved. A loop that ends with probability one is the limit of its bounded prefixes.
+\end{IEEEproof}
+
+The induction of Theorem~\ref{thm:sound} is not mechanized for loops, and the proposition is argued on paper. It is
+checked exactly on \numCfPrograms{} programs of our own with circuit loops, branches and switches. For every one of
+their \numCfQubits{} qubits, deleting every operation outside the qubit's slice from the source leaves the qubit's
+state unchanged at \numCfInputs{} inputs, while the slices that read a circuit loop's body once are wrong on
+\numCfOldWrong{} of the \numCfPrograms{} programs, an exploratory check of Section~\ref{sec:design}.

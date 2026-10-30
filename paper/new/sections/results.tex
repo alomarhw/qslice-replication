@@ -1,5 +1,30 @@
 \section{Results}\label{sec:results}
 
+Table~\ref{tab:scorecard} gives the answer first. The QDG does what Section~\ref{sec:core} predicts on every pair the
+oracle can check, comes within a few points of the smallest complete slice, holds under noise, and costs milliseconds.
+It is not guaranteed to contain a fault, since a fault can delete the very interaction a slice would follow, and RQ3
+measures how often that happens. The subsections answer each question for every rule.
+
+\begin{table}[t]
+  \centering
+  \caption{The QDG on every question of the study}
+  \label{tab:scorecard}
+  \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabular}{@{}l >{\raggedright\arraybackslash}p{2.0cm} >{\raggedright\arraybackslash}p{4.15cm}@{}}
+    \toprule
+    \textbf{Question} & \textbf{Expected} & \textbf{Observed} \\
+    \midrule
+    Sound (RQ1) & every input, Theorem~\ref{thm:sound} & \numRqOneLcUnsound{} wrong slices of \numNPairs{} pairs, and of \numCorpusLSoundPairs{} on corpus~L \\ \sep
+    Complete (RQ1) & Proposition~\ref{prop:complete} & recall \numRqOneLcRecall{} of the measured dependences \\ \sep
+    Size (RQ1) & not minimal & \numLcExcess{} points above the dependence set, equal to it on \numLcExact{} pairs \\ \sep
+    Noise (RQ2) & local noise, Theorem~\ref{thm:sound} & trace distance at most \numNoiseLcCrossExactMax{} \\ \sep
+    Faults (RQ3) & no guarantee & contains \numRqThreeContainLc{} of the faults, \numSizeCtlLcGain{} points above a random set of its size \\ \sep
+    Cost (RQ4) & one pass & at most \numCostLcMaxCritMs{}~ms per criterion \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 \subsection{RQ1: Which rules give sound and complete slices?}
 
 \begin{table}[t]
@@ -223,36 +248,6 @@ for \numCostDepthEightyOverLimit{} of the \numCostDepthCircuits{} circuits at th
 \numCostMeasuredDepthOneSixty{} in the median, against milliseconds for the QDG slice, because its closure links every
 pair of operations on a coupling component while the QDG needs only the operations on each qubit.
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\columnwidth]{figures/fig_scale.pdf}
-  \caption{Time of \tool{} against the operations of a trace, for RQ4. Grey points are the programs of LintQ's corpus,
-  with every stage. The QASMBench points slice every qubit in one pass, reading included, and the baselines slice one
-  qubit of the same circuits, loading included. Runs beyond the 600~s limit are left out.}
-  \label{fig:scale}
-\end{figure}
-
-\tool{} scales to the programs developers write and to circuits of millions of operations, as Fig.~\ref{fig:scale}
-shows. On LintQ's corpus it slices the \numScaleSOneSliced{} programs that build a circuit, every qubit up to 64 of
-them, in \numScaleSOneMedianMs{}~ms per program in the median and within \numScaleSOneNinetyNine{}~s for 99\% of them,
-and \numScaleSOneTimeouts{} programs reach the limit of 120~s. srcML and srcSlice take most of the median,
-\numScaleSOneSrcmlMs{} and \numScaleSOneSrcsliceMs{}~ms, and the slices themselves \numScaleSOneSliceMs{}~ms. A qubit's
-slice holds \numScaleReadMedianPct{} of a program's code lines in the median. On the \numScaleQbRead{} QASMBench circuits
-in valid OpenQASM~2, of up to \numScaleQbMaxOps{} operations and \numScaleQbMaxQubits{} qubits, the one-pass slice of
-every qubit takes at most \numScaleQbAllS{}~s, on the largest circuit, after \numScaleQbReadS{}~s of reading. Qiskit's
-DAG slices one of its \numScaleQbMaxOpsQubits{} qubits in \numScaleQbDagOneS{}~s after \numScaleQbDagLoadS{}~s of loading,
-about \numScaleQbDagAllMin{} minutes for all of them. Qubit for qubit the two are close, \tool{}'s single slice taking
-\numScaleOneRatio{} times Qiskit's in the median and \numScaleOneRatioBig{} times on circuits of 100{,}000 operations or
-more, so \tool{}'s advantage is the single pass over every qubit. The QPDG reimplementation builds its graph within the
-limit for circuits of up to \numScaleQpdgMaxOps{} operations, in \numScaleQpdgMaxS{}~s, where \tool{} reads and slices
-the circuit in \numScaleQpdgSqS{}~s, and the \numScaleQpdgOver{} larger circuits are beyond it. Qiskit's \texttt{LightCone}
-pass slices one qubit of the circuit of \numScaleLcMaxOps{} operations in \numScaleLcMaxS{}~s, where \tool{} slices all
-\numScaleLcQubits{} of its qubits in \numScaleLcSqS{}~s, and exceeds the limit on \numScaleLcOver{} circuits. On the
-parametric programs the source stays at about a dozen lines while the trace grows. The QFT on 600 qubits unrolls
-\numScaleQftOps{} operations from \numScaleQftLines{} code lines in \numScaleQftS{}~s, where running the program with
-Qiskit and slicing one qubit takes \numScaleQftRunS{}~s, the speed a static slicer gives up so that it never executes
-the program.
-
 \subsection{The QDG against the QPDG}\label{sec:qdgqpdg}
 
 \begin{table}[t]
@@ -275,13 +270,11 @@ the program.
     Units whose fault the slice contains & \numRqThreeContainLc{} & \win\numRqThreeContainYz{} & RQ3 \\ \sep
     Gain over a random set of its size & \win\numSizeCtlLcGain{} points & \numSizeCtlYzGain{} points & RQ3 \\ \sep
     EXAM of fault localization & \numMbflAllExamLc{} & \win\numMbflAllExamYz{} & RQ3 \\ \sep
-    Time at depth \numCostMeasuredDepthOneSixty{} & \win$\leq$\,\numCostLcMaxCritMs{}~ms & \numCostBuildDepthOneSixty{}~s & RQ4 \\ \sep
-    Largest circuit within the limit & \win\numScaleQbMaxOps{} & \numScaleQpdgMaxOps{} & RQ4 \\
+    Time at depth \numCostMeasuredDepthOneSixty{} & \win$\leq$\,\numCostLcMaxCritMs{}~ms & \numCostBuildDepthOneSixty{}~s & RQ4 \\
     \bottomrule
   \end{tabular}\\[3pt]
   \begin{minipage}{\columnwidth}\footnotesize
-  Shading marks the better value. Time is per criterion for the QDG and the median graph build for the QPDG. The
-  largest circuits are QASMBench's, in operations, sliced in one pass by \tool{} and built within 600~s by the QPDG.
+  Shading marks the better value. Time is per criterion for the QDG and the median graph build for the QPDG.
   \end{minipage}
 \end{table}
 
@@ -297,46 +290,7 @@ random set of its size already does in \numSizeCtlYzRandom{}, so per unit of siz
 and the QDG misses are omission faults, whose missing operation the closure happens to link, not by a guarantee. Its
 lower EXAM score is a size effect as well, since EXAM divides by the number of operations ranked, and the whole circuit
 has the lowest score of all. The costs are not close. The QDG slices a criterion in at most \numCostLcMaxCritMs{}~ms at
-every depth, while building the QPDG takes \numCostBuildDepthOneSixty{}~s at depth \numCostMeasuredDepthOneSixty{} and
-does not finish within 600~s on circuits beyond \numScaleQpdgMaxOps{} operations. Under the reading in which a
+every depth, while building the QPDG takes \numCostBuildDepthOneSixty{}~s at depth \numCostMeasuredDepthOneSixty{}. Under the reading in which a
 control is left unchanged, which Yu and Zhao's prose allows, the QPDG is not even sound and is wrong on
 \numYzRoUnsound{} pairs. For comprehension the QDG is the better rule. It keeps everything that can matter, adds the
 least that cannot, and is computed in milliseconds.
-
-\subsection{\tool{} on LintQ's data}
-
-\begin{table}[t]
-  \centering
-  \caption{The qubit profiles of \tool{} on LintQ's warnings of its five qubit analyses}
-  \label{tab:lintq}
-  \footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
-  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
-  \begin{tabular}{@{}l r r r@{}}
-    \toprule
-    \textbf{Warnings} & \textbf{Count} & \textbf{Traced} & \textbf{Predicate holds} \\
-    \midrule
-    Confirmed as bugs by LintQ's authors & \numLqQubitTp{} & \numLqQubitTraced{} & \numLqQubitExposed{} \\ \sep
-    Rejected as false by LintQ's authors & \numLqFpWarnings{} & \numLqFpTraced{} & \numLqFpFires{} \\ \sep
-    All warnings of these analyses & \numLqSarifWarnings{} & \numLqSarifTraced{} & \numLqSarifFires{} \\
-    \bottomrule
-  \end{tabular}\\[3pt]
-  \begin{minipage}{\columnwidth}\footnotesize
-  The five analyses are operation after measurement, double measurement, oversized circuit, conditional without
-  measurement and unmeasurable qubits. A predicate on the qubit profiles, fixed before the comparison, is evaluated at
-  the warned line of each traced warning.
-  \end{minipage}
-\end{table}
-
-LintQ and \tool{} answer different questions, what is wrong and where to look, so the comparison asks what the qubit
-view adds to LintQ's warnings. Table~\ref{tab:lintq} shows that the profiles contain what LintQ's five qubit analyses
-check. Of the \numLqQubitTp{} warnings of these analyses that LintQ's authors confirmed as bugs, \tool{} traces
-\numLqQubitTraced{}, and on all of them a predicate on its profiles holds at the warned line. The predicates also hold on
-\numLqFpFires{} of the \numLqFpTraced{} traced warnings the authors rejected, and on \numLqSarifFires{} of the
-\numLqSarifTraced{} traced warnings in all, so the profiles reproduce these analyses with their false alarms and are not
-a more precise detector. What they add is context. LintQ points to one line, and the slices of the qubits on that line
-give the \numLqReadMedian{} lines in the median that determine their state, out of \numLqCodeMedian{} code lines in the
-file. LintQ's bound of ten loop iterations also matters. In \numLqBeyondTenFiles{} of the programs \tool{} traces,
-operations are created after the tenth iteration of a loop, \numLqBeyondTenOpsPct{} of all their operations. On the
-examples of both papers, transcribed as programs of our own, the slices show each bug. In LintQ's first example the
-slice of $q_3$ is empty, the oversized circuit, and the slice of $q_0$ holds the rotation after its measurement. In
-QChecker's fifth example the slice of $q_2$ holds the measurement of $q_1$ and the CNOT that follows it on $q_1$.

@@ -1,0 +1,18 @@
+% Moved verbatim from Paper A (new/sections/core.tex lines 354-370, commit f96523f) on 2026-10-29. Raw material for Paper B; rewrite, do not reuse.
+The slice profile of a variable, which srcSlice records~\cite{alomari2014srcslice}, has a quantum counterpart that
+gathers in one view what a developer first asks about a qubit.
+
+\begin{definition}[Qubit slice profile]\label{def:profile}
+The profile of a qubit $q$ records its \emph{uses}, the lines of the operations on $q$, each of which both reads
+and writes $q$ under the write-all rule; its \emph{names}, the source expressions that denote $q$ in gate calls; its
+\emph{functions}, the call sites of the functions in which $q$ is acted on; its \emph{dependents}, the qubits that the
+first operation on $q$ reaches; its \emph{bits}, those measured from $q$, with the lines they condition; and its
+\emph{backward} and \emph{forward} entries, the lines of the backward slice of $q$ and of the forward slice of its
+first operation.
+\end{definition}
+
+In the program of Fig.~\ref{fig:bv}, the profile of $q_0$ has the uses $\numBvProfDefsSet{}$, the names \texttt{i} on
+lines $\numBvProfNameISet{}$ and \texttt{q} on line $\numBvProfNameQSet{}$, no functions, the dependents
+$\numBvProfDependentsSet{}$, the bit $c_0$, the backward entry $\numBvProfBackwardSet{}$ and the forward entry
+$\numBvProfForwardSet{}$. One look at the backward entry shows the developer of Section~\ref{sec:example} that lines 24
+and 25, which prepare another qubit, determine $q_0$.

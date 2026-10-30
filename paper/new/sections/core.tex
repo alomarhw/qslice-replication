@@ -20,7 +20,8 @@ qubit. A conditioned gate is applied only when a measured bit has a given value,
 \texttt{if\_test((c[0], 1))}, and it touches its qubits and the bits its condition reads, here $q_0$ and $c_0$.
 
 The program's own loops and branches run while the circuit is built and decide which operations it contains and
-how often. Loops that run inside the circuit, on the device, are treated in Section~\ref{sec:loops}.
+how often. Loops that run on the device, inside the circuit, are outside this model, and none of the study's circuits
+has one.
 
 The state of the qubits is described by a density matrix $\rho$, which also covers the mixtures that arise when a
 measurement outcome is not known in advance. Running $P$ on the input $\rho$, with every bit initially $0$, gives
@@ -94,6 +95,10 @@ $\ket{-}$, and through phase kickback they turn $q_0$ into $\ket{1}$, although $
 that reads the control as unchanged lets the CNOT write only $q_1$, so its slice keeps the two Hadamard gates on $q_0$
 alone, lines 29 and 47 of Fig.~\ref{fig:bv}.
 
+On qubits, the soundness of this slice is a known property of the light cone, which compilers and analyses of
+variational circuits rely on~\cite{murali2019triq, farhi2014qaoa}. We state it for the QDG, classical bits included,
+and prove it, because the results that follow build on its proof.
+
 \begin{theorem}[The QDG is sound]\label{thm:sound}
 For every circuit $P$ and criterion $W$, $\Bw(W)$ is a sound slice for $W$.
 \end{theorem}
@@ -133,7 +138,8 @@ Together these say that the QDG slice keeps everything a slice must keep and rep
 input, and that the slice of a set of qubits is the union of the slices of its members, so a tool computes
 single-qubit slices and combines them. It is not always the smallest such set, since an operation can touch a needed
 qubit without changing it, and Section~\ref{sec:results} measures how close it comes to the dependences themselves.
-The relation is the light cone of Section~\ref{sec:related}, and these results justify it as a slice.
+What is new is not the relation but what it is shown to be, a slice that keeps every dependence, against which every
+other rule can be measured.
 
 \paragraph*{Why the write set cannot be smaller}
 Dropping a qubit from the write set of a two-qubit gate is safe only if that gate can never carry information from
@@ -149,8 +155,7 @@ The write-all rule needs only three kinds of dependence, which Table~\ref{tab:ki
 ansatz of Fig.~\ref{fig:ansatz}. \emph{Classical data} dependence follows the host values that compute gate
 arguments, such as angles, sizes and qubit indices. \emph{Classical control} dependence follows what decides
 whether an operation is applied at all. It covers the host program's loops and branches, which shape the circuit as it is built, and
-the measured bits that condition operations when the circuit runs, in a conditioned gate, a branch or a loop of the
-circuit. \emph{Quantum data} dependence follows
+the measured bits that condition operations when the circuit runs, in a conditioned gate or a branch of the circuit. \emph{Quantum data} dependence follows
 a qubit through the operations that act on it, under the write-all rule.
 
 A controlled gate looks like a fourth kind, quantum control dependence, since it reads like a branch, if the control
@@ -297,40 +302,7 @@ criterion and the operation's qubits is below $10^{-9}$ and the removal still pr
 smaller slices, but neither is dependence-complete, and a state-based slice holds for its one input only, as a
 conditioned slice does~\cite{canfora1998conditioned}.
 
-\subsection{Loops}\label{sec:loops}
-A loop of the host program runs when the circuit is built. A static slicer unrolls it, so every iteration
-contributes its own operations, each tagged with the line and iteration that emit it. When the number of iterations
-cannot be known statically, the loop body is repeated as \emph{may-operations}, operations that might be emitted,
-until no repetition adds a location to any dependence chain. A loop of the circuit itself, Qiskit's
-\texttt{while\_loop}, \texttt{for\_loop} or \texttt{switch}, runs on the device, and its condition reads measured
-bits. A \texttt{for\_loop} over a known index set is unrolled, and any other circuit loop is repeated until stable
-in the same way, with every operation in its body conditioned on the bits its condition reads, so the classical
-control dependence on the measurement that decides the loop is kept.
-
-\begin{proposition}[Loops]\label{prop:loops}
-Let a loop body $B$ act on a set of locations $\Lambda$, let the loop end with probability one, and let $P_B$ repeat
-$B$ $|\Lambda| + 1$ times, with every operation of $B$ conditioned on the bits that decide the loop. For a
-criterion $W$, deleting from $B$ every operation none of whose copies is in the QDG slice of $P_B$ for $W$ preserves
-$W$ at every input.
-\end{proposition}
-
-\begin{IEEEproof}[Proof sketch]
-A loop that runs at most $K$ times is the circuit of $K$ copies of $B$, each conditioned on the bits that decide
-the loop, a circuit with conditioned operations to which Theorem~\ref{thm:sound} applies. In its backward pass every
-copy is processed alike, and the needed set only grows. Once a copy adds no location of $\Lambda$, every earlier copy
-keeps the same operations, and the needed set can grow at most $|\Lambda|$ times, so for every $K$ the copies keep
-only operations that one of the $|\Lambda| + 1$ copies of $P_B$ keeps. The bits that decide the loop are read by
-every copy, so the measurements that write them are kept and the distribution over numbers of iterations is
-preserved. A loop that ends with probability one is the limit of its bounded prefixes.
-\end{IEEEproof}
-
-The induction of Theorem~\ref{thm:sound} is not mechanized for loops, and the proposition is argued on paper. It is
-checked exactly on \numCfPrograms{} programs of our own with circuit loops, branches and switches. For every one of
-their \numCfQubits{} qubits, deleting every operation outside the qubit's slice from the source leaves the qubit's
-state unchanged at \numCfInputs{} inputs, while the slices that read a circuit loop's body once are wrong on
-\numCfOldWrong{} of the \numCfPrograms{} programs, an exploratory check of Section~\ref{sec:design}.
-
-\subsection{Forward slices and qubit profiles}
+\subsection{Forward slices and source lines}\label{sec:lines}
 The forward slice $\Fw(o_k)$ of an operation is the set of operations reachable from $o_k$ in the QDG. It answers
 the question a developer asks before changing a gate, which later operations and qubits the change can reach. We say
 that $o_k$ reaches $q$ if $\Fw(o_k)$ contains the last operation on $q$.
@@ -351,20 +323,11 @@ line in a slice. In the second layer of the ansatz, the rotations of $q_2$ are n
 their lines are in its slice because their first-layer iterations are. A line slice therefore names the iterations
 that put each line in it.
 
-The slice profile of a variable, which srcSlice records~\cite{alomari2014srcslice}, has a quantum counterpart that
-gathers in one view what a developer first asks about a qubit.
-
-\begin{definition}[Qubit slice profile]\label{def:profile}
-The profile of a qubit $q$ records its \emph{uses}, the lines of the operations on $q$, each of which both reads
-and writes $q$ under the write-all rule; its \emph{names}, the source expressions that denote $q$ in gate calls; its
-\emph{functions}, the call sites of the functions in which $q$ is acted on; its \emph{dependents}, the qubits that the
-first operation on $q$ reaches; its \emph{bits}, those measured from $q$, with the lines they condition; and its
-\emph{backward} and \emph{forward} entries, the lines of the backward slice of $q$ and of the forward slice of its
-first operation.
-\end{definition}
-
-In the program of Fig.~\ref{fig:bv}, the profile of $q_0$ has the uses $\numBvProfDefsSet{}$, the names \texttt{i} on
-lines $\numBvProfNameISet{}$ and \texttt{q} on line $\numBvProfNameQSet{}$, no functions, the dependents
-$\numBvProfDependentsSet{}$, the bit $c_0$, the backward entry $\numBvProfBackwardSet{}$ and the forward entry
-$\numBvProfForwardSet{}$. One look at the backward entry shows the developer of Section~\ref{sec:example} that lines 24
-and 25, which prepare another qubit, determine $q_0$.
+A slice is computed on the circuit, and a developer reads it on the program. Every operation records the source
+line and the loop iterations that appended it, so a slice of operations maps to lines, and the host code that
+computes the kept operations' qubits, angles and loop bounds follows by a classical slice of the host
+program~\cite{weiser1984program}. The record can be taken while the program builds its circuit, as the study does for
+Bugs4Q, or by a static analysis, which reads the program without running it, % static-definition
+as Behler et al.\ derive the order of qubit operations from OpenQASM~3 source~\cite{behler2025static}. Where a value is unknown statically, such an
+analysis must assume every qubit an expression may denote and every branch a condition may take, which can only enlarge
+the slice. The definitions of this section are stated on the circuit and hold for any front end that produces it.
