@@ -42,9 +42,8 @@ kinds proposed for quantum programs, such as entanglement, add none, since entan
 sufficient for dependence. We compare the QDG with alternative dependence rules on \numNPairs{}
 circuit--qubit pairs and \numStudyFaultUnits{} fault units. Treating control qubits as read-only, as the classical
 program dependence graph does, produces incorrect slices for \numCpdgUnsoundPct{} of the pairs, and \numFdCpdgZMatchPct{} of these hide
-the error because the qubit's measurement outcomes match those of the whole program. The previously proposed quantum program dependence graph
-(QPDG), which adds entanglement edges, retains \numYzLcExcessRatio{} times as many operations that cannot affect the selected qubits as the
-QDG, and pruning slices to make them smaller removes genuine dependences. QDG slices contain \numRqThreeContainLc{} of
+the error because the qubit's measurement outcomes match those of the whole program. The other proposed dependence graph for quantum programs that we compare with adds entanglement edges and
+retains \numYzLcExcessRatio{} times as many operations that cannot affect the selected qubits as the QDG, and pruning slices to make them smaller removes genuine dependences. QDG slices contain \numRqThreeContainLc{} of
 the seeded faults and take milliseconds to compute, although they do not improve the ranking of mutation-based fault
 localization. These findings provide a semantic foundation for quantum slicing and clarify its benefits and limits for
 comprehension and debugging.
