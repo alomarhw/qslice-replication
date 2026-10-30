@@ -194,8 +194,11 @@ missed a module variable read inside a function. The patch applies to the public
 tests.
 
 \subsection{E5, qubit profiles}
-srcSlice records a slice profile for every variable. E5 gives each qubit a counterpart, which gathers what a developer
-first asks about it, and Table~\ref{tab:b-profile} sets the two side by side.
+srcSlice does not store a slice as a list of lines. It summarizes every variable in a \emph{slice profile}, a small
+record of what a developer asks first about the variable, and reads slices off these records. A profile holds the lines
+that define and use the variable, the \emph{dependent variables} its value flows into, its \emph{aliases}, the other
+names for the same data, and the \emph{calls} it is passed to, with the argument position. E5 gives each qubit the same
+kind of record.
 
 \begin{definition}[Qubit profile]\label{def:b-profile}
 The profile of a qubit $q$ records its \emph{uses}, the lines of the operations on $q$; its \emph{names}, the source
@@ -207,29 +210,31 @@ first operation.
 
 \begin{table}[t]
   \centering
-  \caption{The profile of a variable in srcSlice and of a qubit in \tool{}}
+  \caption{srcSlice's profile of the register \texttt{q} and \tool{}'s profile of the qubit \texttt{q[4]}, both computed
+  on the program of Fig.~\ref{fig:b-example}}
   \label{tab:b-profile}
-  \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+  \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.4\columnwidth} >{\raggedright\arraybackslash}p{0.56\columnwidth}@{}}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.45cm} >{\raggedright\arraybackslash}p{2.75cm} >{\raggedright\arraybackslash}p{3.95cm}@{}}
     \toprule
-    \textbf{srcSlice, variable $v$} & \textbf{\tool{}, qubit $q$} \\
+    \textbf{Entry} & \textbf{srcSlice, variable \texttt{q}} & \textbf{\tool{}, qubit \texttt{q[4]}} \\
     \midrule
-    definition and use lines & uses, the lines of the operations on $q$, each of which reads and writes $q$ \\ \sep
-    dependent variables & dependents, the qubits whose final state the first operation on $q$ can affect \\ \sep
-    aliases & names, the expressions that denote $q$, such as \texttt{q[b]} or \texttt{q[src]} \\ \sep
-    functions $v$ is passed to & call sites of the functions in which $q$ is acted on \\ \sep
-    -- & bits measured from $q$, and the lines they condition \\ \sep
-    -- & loop iterations of each line, backward and forward lines \\
+    Lines & defined on 4, used on 7, 8, 12--17, 19, 21, 23 & 13--16, 19, 21, each operation reading and writing \texttt{q[4]} \\ \sep
+    Flows into & the variable \texttt{qc} & the qubits \texttt{q[2]}, \texttt{q[3]}, \texttt{q[5]}--\texttt{q[8]}, which its first operation can affect \\ \sep
+    Other names & none & \texttt{q[b]} in iteration 1, \texttt{q[src]} in iteration 2 \\ \sep
+    Passed to & \texttt{QuantumCircuit}, \texttt{u}, \texttt{h}, \texttt{cx}, \texttt{measure}, \texttt{x}, \texttt{z} & no function of the program \\ \sep
+    Bits & -- & \texttt{c[4]}, which conditions line 21 \\ \sep
+    Slice & every line that uses \texttt{q} or \texttt{qc} & backward 8, 12--17, 19, 21 and forward 13--17, 19, 21, 23, each with its iterations \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-E5 computes the profile from one backward and one forward pass over the trace and from the srcML of the gate calls on
-the qubit. In Fig.~\ref{fig:b-example}, the profile of \texttt{q[4]} has the uses 13 to 16, 19 and 21, the names
-\texttt{q[b]} and \texttt{q[src]}, the dependents \texttt{q[2]}, \texttt{q[3]} and \texttt{q[5]} to \texttt{q[8]}, and the
-bit \texttt{c[4]}, which conditions line 21. The two names show at once that \texttt{q[4]} is first a target and then the
-carrier.
+Table~\ref{tab:b-profile} sets the two side by side on the program of Fig.~\ref{fig:b-example}. To srcSlice the register
+\texttt{q} is one variable, used on every gate line and passed to every gate, so its profile cannot tell one qubit from
+another. The profile of \texttt{q[4]} keeps only the six lines whose operations act on it. Its two names show at once
+that \texttt{q[4]} is first the target of a hop, as \texttt{q[b]}, and then the carrier, as \texttt{q[src]}. Its bit
+\texttt{c[4]} points to the conditioned gate on line 21, which a variable profile has no entry for. E5 computes the
+profile from one backward and one forward pass over the trace and from the srcML of the gate calls on the qubit.
 
 \subsection{Two front ends}
 The approach reads Qiskit programs, the language of Bugs4Q and of LintQ's corpus~\cite{zhao2023bugs4q,
