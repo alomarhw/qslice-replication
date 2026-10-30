@@ -31,11 +31,11 @@ Quantum programs are increasingly written in general-purpose languages, most oft
 circuits with libraries such as Qiskit. However, there is a notable lack of tools that help developers understand and
 debug these programs. Program slicing, which finds the statements that can affect a value of interest, is well
 supported for classical software, yet difficult in quantum programs, where dependence flows through gates and
-measurements rather than assignments, and code computes which gates act on which qubits. To address this gap, the srcML infrastructure and the srcSlice slicer are extended with a quantum layer that identifies the
+measurements rather than assignments, and code computes which gates act on which qubits. In this paper, we extend the srcML infrastructure and the srcSlice slicer with a quantum layer that identifies the
 quantum role of each API call, reconstructs the circuit a program builds without executing it, and slices every qubit,
 including loops that run on the quantum device. Each slice is reported as source lines, the loop iterations that
-contribute them and the classical statements that compute them. The approach is implemented in a tool, \tool{}, and
-evaluated on GitHub programs, Bugs4Q, the Qiskit textbook, Qiskit HumanEval and QASMBench. The reconstructed circuits
+contribute them and the classical statements that compute them. We implement the approach in a tool, \tool{}, and
+evaluate it on GitHub programs, Bugs4Q, the Qiskit textbook, Qiskit HumanEval and QASMBench. The reconstructed circuits
 match those Qiskit builds, and the slices match reference slices on \numToolDevSliceEqual{} of \numToolDevPrograms{}
 programs, where \tool{} is the more precise on the remaining one. The classical statements are complete for
 \numSsContainPct{} of qubits, and for \numSsHeldContainPct{} in programs not used during development. \tool{} slices
