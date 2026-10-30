@@ -1065,6 +1065,9 @@ def main() -> int:
         put("OnePassAllMaxMs", al * 1000, f"{al * 1000:.0f}", src + "cost.csv")
         gb = max(float(r["graph_build_s"]) for r in oc)
         put("QdgGraphBuildMaxMs", gb * 1000, f"{gb * 1000:.0f}", src + "cost.csv")
+        for d, nm in (("d40_", "Forty"), ("d160_", "OneSixty")):  # the QDG built as a graph, beside the QPDG's build
+            gbd = st.median(float(r["graph_build_s"]) for r in oc if r["kind"] == "F-depth" and r["name"].startswith(d))
+            put(f"QdgBuildDepth{nm}Ms", gbd * 1000, f"{gbd * 1000:.0f}" if gbd >= 0.01 else f"{gbd * 1000:.1f}", src + "cost.csv")
         if (ICPC / "one_pass" / "forward.json").exists():
             fw1 = json.load(open(ICPC / "one_pass" / "forward.json"))
             put("OnePassForwardOps", fw1["ops"], cnt(fw1["ops"]), src + "forward.json")

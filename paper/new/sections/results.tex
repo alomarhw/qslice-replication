@@ -234,9 +234,12 @@ circuit takes at most \numOnePassAllMaxMs{}~ms.
 State-based pruning, which simulates the circuit for every candidate removal, exceeds \numCostWallLimit{}~s for \numCostDepthEightyOverLimit{} of the \numCostDepthCircuits{} circuits at the second-largest depth and for all
 \numCostDepthOneSixtyOverLimit{} at the largest, takes up to \numCostWidthQMax{}~s on the width sweeps at
 \numCostWidthMaxQubits{} qubits, and completes on
-\numCorpusLCompleted{} of the \numCorpusLCircuits{} circuits of corpus~L. Building the QPDG takes
-\numCostBuildDepthForty{}~s at depth \numCostMeasuredDepthForty{} and \numCostBuildDepthOneSixty{}~s at depth
-\numCostMeasuredDepthOneSixty{} in the median, because its closure links every pair of operations on a coupling component.
+\numCorpusLCompleted{} of the \numCorpusLCircuits{} circuits of corpus~L. Built as graphs, the QDG and the QPDG differ by two to three orders of magnitude. The QDG's graph takes
+\numQdgBuildDepthFortyMs{}~ms at depth \numCostMeasuredDepthForty{} and \numQdgBuildDepthOneSixtyMs{}~ms at depth
+\numCostMeasuredDepthOneSixty{} in the median, and the QPDG's \numCostBuildDepthForty{}~s and
+\numCostBuildDepthOneSixty{}~s, because its closure links every pair of operations on a coupling component. An
+implementation of the QPDG that avoided building the closure would be faster, but its slices would still be the larger
+ones of RQ1.
 
 \emph{Answer to RQ4.} The QDG slice takes milliseconds at every depth studied, while state-based pruning and the
 construction of the QPDG grow to seconds and beyond the limit as circuits deepen.

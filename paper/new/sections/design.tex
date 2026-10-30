@@ -94,9 +94,9 @@ Sonnet~5.5, Claude Haiku~5.5, and Qwen2.5-Coder at 32 and at 1.5 billion paramet
 \subsection{Cost}
 RQ4 times the QDG slice by the one-pass algorithm from the circuit, and the other rules as built, on the generated family that grows in depth at \numCostDepthWidth{} qubits, on the width sweeps and on
 corpus~L, each circuit in a fresh process limited to \numCostWallLimit{}~s and \numCostMemLimit{}~GiB. All times are wall-clock
-on one machine, an Intel Xeon W-2140B at 3.2~GHz with 32~GB of memory, with Python~3.12 and Qiskit~2.3. The QDG slice
-is timed from the circuit in memory without building a graph, the QPDG with the construction of its graph, and
-state-based pruning end to end.
+on one machine, an Intel Xeon W-2140B at 3.2~GHz with 32~GB of memory, with Python~3.12 and Qiskit~2.3. The QDG slice is timed both by the one-pass algorithm, from the circuit in memory without a graph, and as the
+construction of its graph, which compares with the construction of the QPDG's graph, and state-based pruning is timed
+end to end.
 
 \subsection{Statistics}\label{sec:stats}
 Five confirmatory hypotheses concern state-based pruning. It is wrong on fewer pairs than def-use (H1), its slices

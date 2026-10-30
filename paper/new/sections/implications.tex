@@ -5,7 +5,7 @@ A slicer must let every gate write all its qubits, so a representation that read
 QCPG does, should not be read as a dependence graph.
 A slicer must also follow measured bits, without which def-use is wrong on \numDuDynamicUnsound{} of the
 \numNDynamicPairs{} dynamic pairs, and should not add entanglement edges, which add \numYzLcExcessRatio{} times as many
-operations that cannot affect the criterion and take seconds to build where the QDG takes milliseconds. Since one loop iteration can put a
+operations that cannot affect the criterion and take seconds to build where the QDG's graph takes milliseconds. Since one loop iteration can put a
 line in a slice, it should show the iterations that do.
 
 \paragraph*{What a developer should not trust}

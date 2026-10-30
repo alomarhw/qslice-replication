@@ -4091,6 +4091,16 @@
   "tex": "55",
   "source": "results/icpc/one_pass/cost.csv"
  },
+ "QdgBuildDepthFortyMs": {
+  "value": 5.1000000000000005,
+  "tex": "5.1",
+  "source": "results/icpc/one_pass/cost.csv"
+ },
+ "QdgBuildDepthOneSixtyMs": {
+  "value": 22.3,
+  "tex": "22",
+  "source": "results/icpc/one_pass/cost.csv"
+ },
  "OnePassForwardOps": {
   "value": 3156,
   "tex": "3{,}156",
