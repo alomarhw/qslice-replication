@@ -179,11 +179,12 @@ $q_0$ is flipped when the outcome is~$1$.
   \includegraphics[width=\textwidth]{figures/fig_pdg_ansatz.pdf}
   \caption{The rules on a variational ansatz, criterion $q_0$. (a)~The program, described in Section~\ref{sec:rules}. (b)~One graph for the first four rules of
   Table~\ref{tab:rules}. Each node is an operation as it executes, with its source line and loop iteration, and a box
-  holds each iteration of the outer loop. Grey data edges belong to every rule, and def-use lacks the green control
-  edge from the measurement. The classical PDG and def-use lack the blue quantum edges and have the dotted edges
-  instead, each of which skips a CNOT whose control it reads as unchanged. A node is shaded by the weakest rule that
-  keeps it. The QDG keeps exactly the dependences of $q_0$, and the QPDG adds the hatched operations, which are not
-  dependences. Graphs, slices and fidelities at $\ket{0\dots0}$ are computed by the study's code from the program
+  holds each iteration of the outer loop. Grey data edges, classical or quantum, belong to every rule. Green dashed
+  edges are classical control, from the loop of line~10 and from the measurement to the conditioned flip, and def-use
+  lacks the second. Blue edges are quantum data dependence through a CNOT's control. The classical PDG and def-use lack
+  them and have the black dotted edges instead, each of which skips a CNOT whose control they read as unchanged. A
+  node is shaded by the weakest rule that keeps it. The QDG keeps exactly the dependences of $q_0$, and the QPDG adds
+  the vermilion operations, which are not dependences. Graphs, slices and fidelities at $\ket{0\dots0}$ are computed by the study's code from the program
   shown.}
   \label{fig:ansatz}
 \end{figure*}
@@ -238,7 +239,7 @@ Data and control dependence are as in the QDG. For entanglement, which the QPDG 
 two-qubit gate anywhere in the circuit are entangled~\cite{javadiabhari2015scaffcc}, and an edge links every operation
 to every later one on qubits of the same component. A flow-sensitive variant counts qubits as entangled only from
 their first coupling gate. Either way the QPDG is the QDG plus entanglement edges, which in Fig.~\ref{fig:ansatz}b
-add the \numAnsYzExtra{} hatched operations of $q_2$ that run after the last gate carrying information from $q_2$ to
+add the \numAnsYzExtra{} vermilion operations of $q_2$ that run after the last gate carrying information from $q_2$ to
 $q_0$. Yu and Zhao do not say whether a gate writes its control, so an exploratory variant reads it as unchanged.
 
 \paragraph*{Pruning}
