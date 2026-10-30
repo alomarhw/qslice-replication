@@ -16,8 +16,8 @@
   >={Stealth[length=3.6pt,width=3.2pt]},
   stage/.style={font=\fontsize{9}{11}\selectfont\bfseries, text=ink, anchor=west, inner sep=0pt},
   stnum/.style={circle, draw=ink, line width=0.6pt, font=\fontsize{8}{9}\selectfont\bfseries, text=ink, inner sep=0pt, minimum size=11pt},
-  xml/.style={font=\ttfamily\fontsize{9}{11}\selectfont, anchor=west, inner sep=0pt},
-  pyline/.style={font=\ttfamily\fontsize{9}{11}\selectfont, anchor=west, inner sep=0pt, text=ink},
+  xml/.style={font=\ttfamily\fontsize{8}{10}\selectfont, anchor=west, inner sep=0pt},
+  pyline/.style={font=\ttfamily\fontsize{8.5}{10}\selectfont, anchor=west, inner sep=0pt, text=ink},
   lab/.style={font=\fontsize{8.5}{10}\selectfont, anchor=west, inner sep=0pt, text=mute},
   flowarrow/.style={->, line width=0.7pt, draw=ink},
 }
@@ -25,35 +25,62 @@
 \begin{tikzpicture}
 
 \node[stnum] at (0.2,0.5) {1};
-\node[stage] at (0.45,0.5) {srcML of lines 14 and 18--19};
+\node[stage] at (0.45,0.5) {Python source and its srcML};
 \draw[rule, line width=0.6pt] (0,0.28) -- (18.0,0.28);
-\node[lab] at (0.05,0.000) {14};
-\node[pyline] at (0.55,0.000) {qc.cx(q[src],\ q[a])};
-\begin{scope}[on background layer]\fill[srcbg] (-0.05,0.220) rectangle (18.0,-0.200);\end{scope}
-\node[lab, anchor=east] at (17.9,0.000) {Python};
-\node[lab, anchor=east] at (17.9,-0.450) {srcML};
-\node[xml] at (0.05,-0.450) {\textcolor{tagC}{<expr\_stmt }\role{posC}{posL}{pos:start="14:5"}\textcolor{tagC}{>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{ink}{qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{ink}{.}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\role{gateC}{gateL}{cx}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}};
-\node[xml] at (0.654,-0.820) {\textcolor{tagC}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<argument\_list>}\textcolor{ink}{(}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{q}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{ink}{[}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{src}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{ink}{]}\textcolor{tagC}{</index>}\textcolor{tagC}{</name>}};
-\node[xml] at (0.654,-1.190) {\textcolor{tagC}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{ink}{, }\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{q}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{ink}{[}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{a}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{ink}{]}\textcolor{tagC}{</index>}\textcolor{tagC}{</name>}};
-\node[xml] at (0.654,-1.560) {\textcolor{tagC}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{ink}{)}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</expr\_stmt>}};
-\node[lab] at (0.05,-2.230) {18};
-\node[pyline] at (0.55,-2.230) {with\ qc.if\_test((c[2\ *\ h\ +\ 1],\ 1)):};
-\node[lab] at (0.05,-2.600) {19};
-\node[pyline] at (0.55,-2.600) {\ \ \ \ qc.x(q[b])};
-\begin{scope}[on background layer]\fill[srcbg] (-0.05,-2.010) rectangle (18.0,-2.800);\end{scope}
-\node[lab, anchor=east] at (17.9,-2.230) {Python};
-\node[lab, anchor=east] at (17.9,-3.050) {srcML};
-\node[xml] at (0.05,-3.050) {\textcolor{tagC}{<with }\role{posC}{posL}{pos:start="18:5"}\textcolor{tagC}{>}\textcolor{ink}{with }\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{ink}{qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{ink}{.}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\role{condC}{condL}{if\_test}\textcolor{tagC}{</name>}};
-\node[xml] at (0.654,-3.420) {\textcolor{tagC}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</name>}\textcolor{tagC}{<argument\_list>}\textcolor{ink}{(}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<tuple>}\textcolor{ink}{(}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\role{bitC}{bitL}{c}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{ink}{[}\textcolor{tagC}{<expr>}};
-\node[xml] at (0.654,-3.790) {\textcolor{tagC}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<literal type="number">}\role{bitC}{bitL}{2}\textcolor{tagC}{</literal>}\textcolor{ink}{ }\textcolor{tagC}{<operator>}\role{bitC}{bitL}{*}\textcolor{tagC}{</operator>}\textcolor{ink}{ }\textcolor{tagC}{<name>}\role{bitC}{bitL}{h}\textcolor{tagC}{</name>}\textcolor{ink}{ }\textcolor{tagC}{<operator>}\role{bitC}{bitL}{+}\textcolor{tagC}{</operator>}\textcolor{ink}{ }};
-\node[xml] at (0.654,-4.160) {\textcolor{tagC}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<literal type="number">}\role{bitC}{bitL}{1}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}\textcolor{ink}{]}\textcolor{tagC}{</index>}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{ink}{, }\textcolor{tagC}{<expr>}\textcolor{tagC}{<literal type="number">}\textcolor{ink}{1}\textcolor{tagC}{</literal>}};
-\node[xml] at (0.654,-4.530) {\textcolor{tagC}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</expr>}\textcolor{ink}{)}\textcolor{tagC}{</tuple>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{ink}{)}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{<block>}\textcolor{ink}{:}\textcolor{tagC}{<block\_content>}};
-\node[xml] at (1.258,-4.900) {\textcolor{tagC}{<expr\_stmt>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{ink}{qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{ink}{.}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\role{gateC}{gateL}{x}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}};
-\node[xml] at (1.8619999999999999,-5.270) {\textcolor{tagC}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{<argument\_list>}\textcolor{ink}{(}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{q}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{ink}{[}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{b}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{ink}{]}\textcolor{tagC}{</index>}};
-\node[xml] at (1.8619999999999999,-5.640) {\textcolor{tagC}{\rmfamily\fontsize{9}{11}\selectfont$\hookrightarrow$}\,\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{ink}{)}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</expr\_stmt>}};
-\node[xml] at (0.05,-6.010) {\textcolor{tagC}{</block\_content>}\textcolor{tagC}{</block>}\textcolor{tagC}{</with>}};
-\node[anchor=north west, font=\fontsize{8.5}{10}\selectfont, inner sep=0pt] at (0.05,-6.380) {{\ttfamily \role{gateC}{gateL}{cx}}\ \textcolor{ink}{gate}\qquad {\ttfamily \role{qubC}{qubL}{q[src]}}\ \textcolor{ink}{qubit argument, evaluated in each iteration}\qquad {\ttfamily \role{bitC}{bitL}{c}}\ \textcolor{ink}{classical bit, written by a measurement and read by a condition}\qquad {\ttfamily \role{condC}{condL}{if\_test}}\ \textcolor{ink}{conditioned block}\qquad {\ttfamily \role{posC}{posL}{pos:start}}\ \textcolor{ink}{source line}};
-\begin{scope}[yshift=-7.630cm]
+\node[lab] at (0.05,0.0) {};
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-0.600) {10};
+\node[pyline] at (0.55,-0.600) {\textbf{for}\ h\ \textbf{in}\ range(hops):};
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-1.000) {11};
+\node[pyline] at (0.55,-1.000) {\ \ \ \ a,\ b\ =\ 1\ +\ 2\ *\ h,\ 2\ +\ 2\ *\ h};
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-1.400) {12};
+\node[pyline] at (0.55,-1.400) {\ \ \ \ qc.h(q[a])};
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-1.800) {13};
+\node[pyline] at (0.55,-1.800) {\ \ \ \ qc.cx(q[a],\ q[b])};
+\fill[srcbg] (-0.03,-2.320) rectangle (6.55,-1.930);
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-2.200) {\role{posC}{posL}{14}};
+\node[pyline] at (0.55,-2.200) {\ \ \ \ qc.\role{gateC}{gateL}{cx}(\role{qubC}{qubL}{q[src]},\ \role{qubC}{qubL}{q[a]})};
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-2.600) {15};
+\node[pyline] at (0.55,-2.600) {\ \ \ \ qc.h(q[src])};
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-3.000) {16};
+\node[pyline] at (0.55,-3.000) {\ \ \ \ qc.measure(q[src],\ c[2\ *\ h])};
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-3.400) {17};
+\node[pyline] at (0.55,-3.400) {\ \ \ \ qc.measure(q[a],\ c[2\ *\ h\ +\ 1])};
+\fill[srcbg] (-0.03,-3.920) rectangle (6.55,-3.530);
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-3.800) {\role{posC}{posL}{18}};
+\node[pyline] at (0.55,-3.800) {\ \ \ \ \textbf{with}\ qc.\role{condC}{condL}{if\_test}((\role{bitC}{bitL}{c[2\ *\ h\ +\ 1]},\ 1)):};
+\fill[srcbg] (-0.03,-4.320) rectangle (6.55,-3.930);
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-4.200) {\role{posC}{posL}{19}};
+\node[pyline] at (0.55,-4.200) {\ \ \ \ \ \ \ \ qc.\role{gateC}{gateL}{x}(\role{qubC}{qubL}{q[b]})};
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-4.600) {20};
+\node[pyline] at (0.55,-4.600) {\ \ \ \ \textbf{with}\ qc.if\_test((c[2\ *\ h],\ 1)):};
+\node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.05,-5.000) {21};
+\node[pyline] at (0.55,-5.000) {\ \ \ \ \ \ \ \ qc.z(q[b])};
+\node[xml] at (7.850,-1.950) {\textcolor{tagC}{<expr\_stmt }\role{posC}{posL}{pos:start="14:5"}\textcolor{tagC}{>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{ink}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}};
+\node[xml] at (8.387,-2.280) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{ink}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\role{gateC}{gateL}{cx}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}\textcolor{tagC}{<argument\_list>}\textcolor{ink}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}};
+\node[xml] at (8.387,-2.610) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{q}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{ink}{\bfseries [}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{src}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{ink}{\bfseries ]}\textcolor{tagC}{</index>}};
+\node[xml] at (8.387,-2.940) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{ink}{\bfseries , }\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{q}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{ink}{\bfseries [}};
+\node[xml] at (8.387,-3.270) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{a}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{ink}{\bfseries ]}\textcolor{tagC}{</index>}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{ink}{\bfseries )}};
+\node[xml] at (8.387,-3.600) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</expr\_stmt>}};
+\node[xml] at (7.850,-4.160) {\textcolor{tagC}{<with }\role{posC}{posL}{pos:start="18:5"}\textcolor{tagC}{>}\textcolor{ink}{\bfseries with }\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{ink}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}};
+\node[xml] at (8.387,-4.490) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{ink}{\bfseries .}\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\role{condC}{condL}{if\_test}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}\textcolor{tagC}{<argument\_list>}\textcolor{ink}{\bfseries (}\textcolor{tagC}{<argument>}\textcolor{tagC}{<expr>}};
+\node[xml] at (8.387,-4.820) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{<tuple>}\textcolor{ink}{\bfseries (}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\role{bitC}{bitL}{c}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{ink}{\bfseries [}\textcolor{tagC}{<expr>}\textcolor{tagC}{<literal type="number">}};
+\node[xml] at (8.387,-5.150) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\role{bitC}{bitL}{2}\textcolor{tagC}{</literal>}\textcolor{ink}{\bfseries  }\textcolor{tagC}{<operator>}\role{bitC}{bitL}{*}\textcolor{tagC}{</operator>}\textcolor{ink}{\bfseries  }\textcolor{tagC}{<name>}\role{bitC}{bitL}{h}\textcolor{tagC}{</name>}\textcolor{ink}{\bfseries  }\textcolor{tagC}{<operator>}\role{bitC}{bitL}{+}};
+\node[xml] at (8.387,-5.480) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{</operator>}\textcolor{ink}{\bfseries  }\textcolor{tagC}{<literal type="number">}\role{bitC}{bitL}{1}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}\textcolor{ink}{\bfseries ]}\textcolor{tagC}{</index>}\textcolor{tagC}{</name>}};
+\node[xml] at (8.387,-5.810) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{</expr>}\textcolor{ink}{\bfseries , }\textcolor{tagC}{<expr>}\textcolor{tagC}{<literal type="number">}\textcolor{ink}{\bfseries 1}\textcolor{tagC}{</literal>}\textcolor{tagC}{</expr>}\textcolor{ink}{\bfseries )}\textcolor{tagC}{</tuple>}};
+\node[xml] at (8.387,-6.140) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{ink}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}\textcolor{tagC}{</expr>}\textcolor{tagC}{<block>}\textcolor{ink}{\bfseries :}};
+\node[xml] at (8.387,-6.470) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{<block\_content>}};
+\node[xml] at (8.924,-6.800) {\textcolor{tagC}{<expr\_stmt>}\textcolor{tagC}{<expr>}\textcolor{tagC}{<call>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\textcolor{ink}{\bfseries qc}\textcolor{tagC}{</name>}\textcolor{tagC}{<operator>}\textcolor{ink}{\bfseries .}};
+\node[xml] at (9.460,-7.130) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{</operator>}\textcolor{tagC}{<name>}\role{gateC}{gateL}{x}\textcolor{tagC}{</name>}\textcolor{tagC}{</name>}\textcolor{tagC}{<argument\_list>}\textcolor{ink}{\bfseries (}\textcolor{tagC}{<argument>}};
+\node[xml] at (9.460,-7.460) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{q}\textcolor{tagC}{</name>}\textcolor{tagC}{<index>}\textcolor{ink}{\bfseries [}\textcolor{tagC}{<expr>}\textcolor{tagC}{<name>}\role{qubC}{qubL}{b}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{ink}{\bfseries ]}};
+\node[xml] at (9.460,-7.790) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{</index>}\textcolor{tagC}{</name>}\textcolor{tagC}{</expr>}\textcolor{tagC}{</argument>}\textcolor{ink}{\bfseries )}\textcolor{tagC}{</argument\_list>}\textcolor{tagC}{</call>}};
+\node[xml] at (9.460,-8.120) {\textcolor{tagC}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{</expr>}\textcolor{tagC}{</expr\_stmt>}};
+\node[xml] at (7.850,-8.450) {\textcolor{tagC}{</block\_content>}\textcolor{tagC}{</block>}\textcolor{tagC}{</with>}};
+\begin{scope}[on background layer]\fill[srcbg] (7.75,-1.750) rectangle (18.0,-3.740);\fill[srcbg!70!rule] (6.55,-1.930) -- (7.75,-1.750) -- (7.75,-3.740) -- (6.55,-2.320) -- cycle;\end{scope}
+\begin{scope}[on background layer]\fill[srcbg] (7.75,-3.960) rectangle (18.0,-8.590);\fill[srcbg!70!rule] (6.55,-3.530) -- (7.75,-3.960) -- (7.75,-8.590) -- (6.55,-4.320) -- cycle;\end{scope}
+\node[lab, anchor=south west] at (0.55,-0.280) {Python, lines 10--21};
+\node[lab, anchor=south west] at (7.85,-0.280) {srcML, with positions};
+\node[anchor=north west, align=left, font=\fontsize{8.5}{10}\selectfont, inner sep=0pt] at (0.05,-8.790) {{\ttfamily \role{gateC}{gateL}{cx}}\ \textcolor{ink}{gate}\qquad {\ttfamily \role{qubC}{qubL}{q[src]}}\ \textcolor{ink}{qubit argument, evaluated in each iteration}\qquad {\ttfamily \role{bitC}{bitL}{c[2*h+1]}}\ \textcolor{ink}{classical bit, written by a measurement and read by a condition}\\[2pt]{\ttfamily \role{condC}{condL}{if\_test}}\ \textcolor{ink}{conditioned block}\qquad {\ttfamily \role{posC}{posL}{14}}\ \textcolor{ink}{source line, from \texttt{pos:start}}};
+\begin{scope}[yshift=-10.540cm]
 \node[stnum] at (0.2,0.5) {2};
 \node[stage] at (0.45,0.5) {Trace of line 8 and iteration $h = 0$};
 \draw[rule, line width=0.6pt] (0.0,0.28) -- (7.6,0.28);
