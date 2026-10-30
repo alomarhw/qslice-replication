@@ -14,3 +14,8 @@ Body before: 13.61 pages; after: 11.63 pages (measured to the end of the Conclus
 | VI | RQ1 QPDG paragraph condensed (precision numbers left to Table VI); noise paragraph condensed (sampled-run maximum dropped); MBFL results condensed; language-model results condensed and Fig. llm removed; Fig. cost removed; VI-E (QDG vs QPDG, Table VIII) removed, its size-control point moved into RQ3 |
 | VII | Implications halved, all four points kept |
 | VIII | Threats tightened |
+
+## 2026-10-29, contributions as a paragraph (author request)
+The numbered list of four contributions in the Introduction became one paragraph (278 -> 196 words). Dropped from it,
+still in the body: the 99.7% figure, the count of 21 gates, distributivity over criteria and the 55.4% of state-based
+slices. The list is in 2026-10-29-precut/intro.tex.

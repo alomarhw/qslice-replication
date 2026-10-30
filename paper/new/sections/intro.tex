@@ -33,26 +33,18 @@ study of every rule a developer or tool builder would otherwise use, on \numNCir
 exact ground truth, \numFamCircuits{} generated circuits and \numRqThreeUnits{} seeded-fault units, with real faults
 from Bugs4Q~\cite{zhao2023bugs4q}.
 
-This paper makes the following contributions.
-\begin{enumerate}
-\item \textbf{Semantics.} A definition of what a slice of a set of qubits must preserve and of when an operation is a
-dependence of those qubits, which separates sound slices from slices that keep every dependence.
-\item \textbf{The rule and its guarantees.} The slice of the quantum dependence graph (QDG), which the write-all rule
-defines and classical bits extend from a measurement to the operations it conditions, is sound for every input, with
-the induction mechanized in Isabelle/HOL, keeps every dependence and distributes over criteria. For each of the
-\numGateSignalN{} two-qubit gates of Qiskit's standard library, either qubit can change the other, so no gate can
-safely write fewer qubits.
-\item \textbf{Three kinds of dependence.} Classical data, classical control and quantum data dependence are all a slice
-needs. What looks like quantum control dependence is quantum data dependence, and entanglement is neither necessary
-nor sufficient for dependence, so entanglement edges can only add code that cannot matter.
-\item \textbf{What the alternatives cost.} The classical program dependence graph misses dependences almost only
-through its reading of the control, \numCpdgMissControlPct{} of them. The QPDG of Yu and Zhao~\cite{yu2025qpdg} is
-sound, but its slices hold \numYzLcExcessRatio{} times as much code that cannot change the criterion as the QDG's,
-whose slices come within \numLcExcess{} points of the smallest slice that keeps every dependence. Pruning a slice by
-commutation or by simulating one input makes it smaller but drops dependences, and a state-based slice stays correct
-for random inputs on only \numHThreeRate{} of the pairs. Slices narrow where a developer looks but do not improve
-mutation-based fault ranking or a language model's localization of faults.
-\end{enumerate}
+The paper makes four contributions. It defines what a slice of a set of qubits must preserve and when an
+operation is a dependence of those qubits, which separates sound slices from slices that keep every dependence. It
+shows that the slice of the quantum dependence graph (QDG), which the write-all rule defines and classical bits extend
+to the operations a measurement conditions, is sound for every input, with the induction mechanized in Isabelle/HOL,
+and keeps every dependence, and that no standard two-qubit gate can safely write fewer qubits. It shows that classical
+data, classical control and quantum data dependence suffice, since what looks like quantum control dependence is
+quantum data dependence and entanglement is neither necessary nor sufficient for dependence. Finally, it measures what
+the alternatives cost. The classical PDG misses dependences almost only through its reading of the control, the QPDG
+of Yu and Zhao~\cite{yu2025qpdg} keeps \numYzLcExcessRatio{} times as much code that cannot matter as the QDG, whose
+slices come within \numLcExcess{} points of the smallest slice that keeps every dependence, and pruning drops
+dependences. Slices narrow where a developer looks but improve neither mutation-based fault ranking nor a language
+model's localization of faults.
 
 The paper does not build a slicer for a particular language. Its definitions are stated on the circuit a program
 builds, Section~\ref{sec:lines} states how a slice reaches the program's source lines, and computing slices at scale
