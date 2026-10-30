@@ -13,8 +13,7 @@ but many faults are wrong outputs that no pattern describes~\cite{paltenghi2024l
 
 Slicing has been proposed for quantum programs~\cite{yu2025qpdg} and named as an aid to understanding
 them~\cite{murillo2025roadmap}, but no proposed dependence rule, which decides what each operation reads and changes
-and so which operations a slice keeps, has been checked against what a quantum program computes. For comprehension
-this matters most, because a slice that hides code able to change the qubit directs its reader away from the fault,
+and so which operations a slice keeps, has been checked against what a quantum program computes. For comprehension this matters especially, because a slice that hides code able to change the qubit directs its reader away from the fault,
 and such slices appear correct. The classical slice of the textbook program of Fig.~\ref{fig:bv} reproduces the faulty
 program's state and leaves out the faulty line. Over the \numNPairs{} circuit--qubit pairs of our study, reading a
 controlled gate as an assignment that leaves its control unchanged gives a wrong slice for \numCpdgUnsoundPct{} of the
@@ -23,10 +22,12 @@ slice by its outcomes would accept them.
 
 This paper asks what a quantum slice must keep, and which dependence rule produces it. A slice of a set of qubits must
 preserve their joint state for every input state, which we call \emph{sound}, and an operation is a \emph{dependence}
-of them if a change right after it can change that state. One rule gives slices that are sound and keep every
-dependence, the \emph{write-all rule}, under which a gate writes, that is may change, every qubit it acts on, its
-controls included. On qubits its slice is the backward light cone, the set of gates that can reach these qubits, and
-compilers already rely on its soundness~\cite{murali2019triq, qiskit2025}. What has been missing is a proof that it
+of them if a change right after it can change that state. The \emph{write-all rule}, under which a gate writes, that is may change, every qubit it acts on, its controls
+included, gives slices that are sound and keep every dependence, with less
+extra code than the QPDG, the other such rule. On qubits its slice is the backward light cone, the set of gates that can reach these qubits, and
+compilers already rely on its soundness~\cite{murali2019triq, qiskit2025}.
+
+What has been missing is a proof that it
 keeps every dependence, so that no other proposed kind of dependence can add one, and a measurement of what each
 alternative loses. We give the proof and measure the losses on \numNCircuits{} benchmark circuits with an exact ground
 truth, \numFamCircuits{} generated circuits, \numRqThreeUnits{} units of a seeded fault and an affected qubit, and

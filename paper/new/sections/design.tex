@@ -17,8 +17,8 @@ precision beyond the QDG slice is safe, RQ3 whether slices help find faults, and
 The protocol was committed before the runs reported here. It extends an earlier run whose results it reuses, so the
 outcomes of two of the five hypotheses of Section~\ref{sec:stats} were known when it was written, and every later change is a dated deviation. It was
 written for a slicer that prunes by state, and its research questions are worded here for the comparison of rules,
-with hypotheses and measures unchanged. The five confirmatory tests concern state-based pruning. Every other result is
-exploratory or descriptive, among them everything added after the first results, namely the classical PDG and
+with hypotheses and measures unchanged. The five confirmatory tests concern state-based pruning. Every other result is exploratory or descriptive,
+including everything added after the first results. These additions are the classical PDG and
 \texttt{LightCone} baselines with the classical PDG's share of wrong slices, the dependence set and its nesting with
 the rules, the symbolic-angle, flow-sensitive and read-only variants, and the gate check. Two descriptive tasks for language models were pre-registered, and the most
 expensive model was dropped for cost before any scored call.
@@ -55,10 +55,10 @@ Exploratory variants make commutation pruning hold for all angles and give state
 A slice computed at $\ket{0\dots0}$ is rechecked, with its operations unchanged, under \numRobDraws{} random
 computational-basis inputs, \numRobDraws{} random product inputs and, for circuits with rotation angles,
 \numRobDraws{} random rebindings of every angle. A pair is robust if the slice preserves the criterion in every draw. The noise analysis, pre-registered and
-descriptive, transpiles the whole circuit and each slice to single-qubit gates and CNOTs, adds depolarizing noise to
-every gate at two-qubit rates of $10^{-3}$ to $3\cdot10^{-2}$ and a tenth of that on single-qubit gates, simulates the
+descriptive, transpiles the whole circuit and each slice to single-qubit gates and CNOTs, adds depolarizing noise, which replaces a qubit's state by a random one with
+a small probability, to every gate at two-qubit rates of $10^{-3}$ to $3\cdot10^{-2}$ and a tenth of that on single-qubit gates, simulates the
 corpus-A pairs of at most \numNoiseMaxQubits{} qubits exactly, and compares the criterion's noisy states by trace
-distance.
+distance, which measures how distinguishable two states are.
 
 The gate check takes \numGateSignalN{} standard two-qubit gates of Qiskit, parameterized gates at a fixed angle. For
 each direction it searches seeded random product inputs for two inputs of one qubit that leave the other in different

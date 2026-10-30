@@ -128,7 +128,7 @@ once answers every question about a set of qubits. Every superset of $\Bw(W)$ is
 operations never meet the needed set. It is not always the smallest such set, since an operation can act on a needed qubit without
 changing it, and Section~\ref{sec:results} measures how close it comes to the dependences.
 
-Nor can the gates developers use safely write fewer qubits. For each of the \numGateSignalN{} standard two-qubit
+No standard two-qubit gate can safely write fewer qubits. For each of the \numGateSignalN{} standard two-qubit
 gates of Qiskit that an exploratory check of Section~\ref{sec:design} examines, a change of either qubit's input
 changes the other's reduced state for some product input, so dropping either qubit from the write set misses a
 dependence of some circuit.
