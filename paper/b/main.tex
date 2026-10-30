@@ -22,19 +22,23 @@
 \maketitle
 
 \begin{abstract}
-Which statements of a quantum program determine the state of a qubit? In Qiskit programs this is hard to see, because
-loops, functions and computed indices decide which gates act on which qubits, and a gate can change a qubit it does not
-target. Slicing answers such questions for classical programs, but quantum programs have almost no slicing support.
-This work extends the srcML infrastructure and the srcSlice slicer with a quantum layer. The layer identifies the
-quantum role of each call, traces the circuit a program builds without executing it, and slices every qubit along the
-gates and measured bits that can affect it, including loops that run on the device. The resulting tool, \tool{}, shows
-a slice as source lines, the loop iterations that put them there and the classical statements that compute them. On
-\numToolDevPrograms{} programs its traces match the circuits Qiskit builds and its slices match circuit-level slices
-in all but one, and exact simulation confirms its slices of programs with device loops. Its classical statements
-include all those a reference computation finds for \numSsContainPct{} of qubits, and for \numSsHeldContainPct{} in
-held-out programs. \tool{} traces a circuit in \numScaleSOneSliced{} of \numScaleSOneFiles{} GitHub programs, and most
-of the others never build one. It slices a program in \numScaleSOneMedianMs{}~ms in the median, and a qubit's slice
-holds \numScaleReadMedianPct{} of the program's code lines.
+Which statements of a quantum program can affect a qubit's state? Answering this question is central to program
+comprehension and debugging, yet difficult in Qiskit. Loops, functions, and computed indices determine which gates act
+on which qubits, and quantum dependencies extend beyond the gates that directly target a qubit. Program slicing
+addresses analogous questions in classical software, but support for quantum programs remains limited. We present
+\tool{}, a static slicer that extends the srcML infrastructure and the srcSlice slicer with a quantum analysis layer.
+It identifies the quantum role of API calls, reconstructs the circuit a program builds without executing the program,
+and computes qubit-specific slices that capture relevant gates, measurement results, and device-executed loops. Each
+slice links circuit operations to source lines, identifies the loop iterations that contribute those operations, and
+includes the classical statements needed to compute them. Across \numToolDevPrograms{} programs of our own, the
+reconstructed circuits match those built by Qiskit, and the slices match circuit-level reference slices for all but
+one program. Exact simulation additionally confirms slice correctness for the programs with device-executed loops. The
+slices include every classical statement identified by a reference computation for \numSsContainPct{} of evaluated
+qubits and \numSsHeldContainPct{} of qubits in held-out programs. Of \numScaleSOneFiles{} GitHub programs, \tool{}
+reconstructs circuits for \numScaleSOneSliced{}, and most of the remaining programs do not build a circuit. Median
+slicing time is \numScaleSOneMedianMs{}~ms per program, and the median qubit slice contains \numScaleReadMedianPct{} of
+the program's code lines. These results show that static, source-level slicing of quantum programs is feasible and can
+support program comprehension.
 \end{abstract}
 
 \begin{IEEEkeywords}
