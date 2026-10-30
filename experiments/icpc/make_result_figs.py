@@ -23,7 +23,11 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from tool import TOOL_NAME  # noqa: E402
+try:  # fig_scale needs the static slicer (Paper B); Paper A's package has none
+    from tool import TOOL_NAME  # noqa: E402
+    HAS_TOOL = True
+except ImportError:
+    TOOL_NAME, HAS_TOOL = "", False
 
 HERE = Path(__file__).resolve().parents[1]
 RES = HERE / "results"
@@ -221,7 +225,8 @@ def tab_size_robust():
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("fig_robust", robust), ("fig_llm", llm), ("fig_cost", cost), ("fig_size", size), ("fig_scale", scale)):
+    figs = (("fig_robust", robust), ("fig_llm", llm), ("fig_cost", cost), ("fig_size", size))
+    for name, fn in figs + ((("fig_scale", scale),) if HAS_TOOL else ()):
         (OUT / f"{name}.tex").write_text(fn())
         print("wrote", OUT / f"{name}.tex")
     (OUT.parent / "tab_size_robust.tex").write_text(tab_size_robust())

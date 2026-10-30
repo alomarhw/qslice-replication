@@ -16,8 +16,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "experiments"))
-from icpc.scale_run import code_lines  # noqa: E402
-from tool import TOOL_NAME  # noqa: E402
+try:  # program statistics need the static slicer (Paper B); Paper A's package has circuits only
+    from icpc.scale_run import code_lines  # noqa: E402
+    from tool import TOOL_NAME  # noqa: E402
+    HAS_TOOL = True
+except ImportError:
+    HAS_TOOL = False
 
 RES = ROOT / "experiments" / "results" / "icpc"
 
@@ -55,34 +59,35 @@ def main():
     cl = rows(RES / "corpus_l" / "circuits.csv")
     out["corpus_l"] = summary(len(cl), [int(r["n_qubits"]) for r in cl], [int(r["n_ops"]) for r in cl])
     out["corpus_l"]["by_corpus"] = {c: sum(r["corpus"] == c for r in cl) for c in ("MQT Bench", "QASMBench", "VeriQBench")}
-    s2 = [r for r in rows(RES / "scale" / "s2_qasmbench.csv") if r["tool"] == TOOL_NAME]
-    ok = [r for r in s2 if not r["error"]]
-    out["qasmbench"] = summary(len(s2), [int(r["qubits"]) for r in ok], [int(r["ops"]) for r in ok])
+    if HAS_TOOL:  # QASMBench as read by the slicer, and the programs
+        s2 = [r for r in rows(RES / "scale" / "s2_qasmbench.csv") if r["tool"] == TOOL_NAME]
+        ok = [r for r in s2 if not r["error"]]
+        out["qasmbench"] = summary(len(s2), [int(r["qubits"]) for r in ok], [int(r["ops"]) for r in ok])
 
-    # ---- programs: circuit statistics of what srcSlice-Q traces, and code lines of every program
-    def programs(rs, path_of, ok_of):
-        traced = [r for r in rs if ok_of(r)]
-        return summary(len(rs), [int(r["qubits"]) for r in traced], [int(r["ops"]) for r in traced],
-                       [code_lines(path_of(r)) for r in rs])
-    dr = lambda r: Path(r["file"].replace("<data-root>", str(root)))  # noqa: E731
-    b4 = [r for r in rows(RES / "tool_acceptance" / "tool-v7" / "t3_bugs4q.csv") if r["uses_qiskit"] == "1"]
-    out["bugs4q"] = programs(b4, dr, lambda r: int(r["ops"]) > 0)
-    tb = [r for r in rows(RES / "tool_coverage" / "textbook_v7.csv") if r["uses_qiskit"] == "1"]
-    out["textbook"] = programs(tb, dr, lambda r: int(r["ops"]) > 0)
-    lq = rows(RES / "scale" / "s1_lintq.csv")
-    lqdir = root / "lintq" / "exp_v08" / "files_selected"
-    out["lintq"] = programs(lq, lambda r: lqdir / r["file"], lambda r: not r["error"])
-    qh = [r for r in rows(RES / "qhe" / "tasks.csv") if r["set"] == "hard"]  # the hard set holds the programs without docstrings
-    out["qhe"] = programs(qh, lambda r: RES / "qhe" / "programs" / r["file"], lambda r: not r.get("error"))
-    s3 = [r for r in rows(RES / "scale" / "s3_parametric.csv") if r["tool"] == TOOL_NAME and not r["error"]]
-    out["parametric"] = summary(len({r["program"] for r in s3}), [int(r["qubits"]) for r in s3], [int(r["ops"]) for r in s3],
-                                [int(r["code_lines"]) for r in {r["program"]: r for r in s3}.values()])
-    out["parametric"]["traces"] = len(s3)
-    from tool import srcml as X  # noqa: PLC0415
-    from tool.interp import Interpreter  # noqa: PLC0415
-    cf = sorted((ROOT / "tool" / "tests" / "controlflow").glob("cf*.py"))
-    tr = [Interpreter(str(p), 60).run(X.parse_file(p)).main_circuit() for p in cf]
-    out["controlflow"] = summary(len(cf), [c.n("q") for c in tr], [len(c.ops) for c in tr], [code_lines(p) for p in cf])
+        # ---- programs: circuit statistics of what srcSlice-Q traces, and code lines of every program
+        def programs(rs, path_of, ok_of):
+            traced = [r for r in rs if ok_of(r)]
+            return summary(len(rs), [int(r["qubits"]) for r in traced], [int(r["ops"]) for r in traced],
+                           [code_lines(path_of(r)) for r in rs])
+        dr = lambda r: Path(r["file"].replace("<data-root>", str(root)))  # noqa: E731
+        b4 = [r for r in rows(RES / "tool_acceptance" / "tool-v7" / "t3_bugs4q.csv") if r["uses_qiskit"] == "1"]
+        out["bugs4q"] = programs(b4, dr, lambda r: int(r["ops"]) > 0)
+        tb = [r for r in rows(RES / "tool_coverage" / "textbook_v7.csv") if r["uses_qiskit"] == "1"]
+        out["textbook"] = programs(tb, dr, lambda r: int(r["ops"]) > 0)
+        lq = rows(RES / "scale" / "s1_lintq.csv")
+        lqdir = root / "lintq" / "exp_v08" / "files_selected"
+        out["lintq"] = programs(lq, lambda r: lqdir / r["file"], lambda r: not r["error"])
+        qh = [r for r in rows(RES / "qhe" / "tasks.csv") if r["set"] == "hard"]  # the hard set holds the programs without docstrings
+        out["qhe"] = programs(qh, lambda r: RES / "qhe" / "programs" / r["file"], lambda r: not r.get("error"))
+        s3 = [r for r in rows(RES / "scale" / "s3_parametric.csv") if r["tool"] == TOOL_NAME and not r["error"]]
+        out["parametric"] = summary(len({r["program"] for r in s3}), [int(r["qubits"]) for r in s3], [int(r["ops"]) for r in s3],
+                                    [int(r["code_lines"]) for r in {r["program"]: r for r in s3}.values()])
+        out["parametric"]["traces"] = len(s3)
+        from tool import srcml as X  # noqa: PLC0415
+        from tool.interp import Interpreter  # noqa: PLC0415
+        cf = sorted((ROOT / "tool" / "tests" / "controlflow").glob("cf*.py"))
+        tr = [Interpreter(str(p), 60).run(X.parse_file(p)).main_circuit() for p in cf]
+        out["controlflow"] = summary(len(cf), [c.n("q") for c in tr], [len(c.ops) for c in tr], [code_lines(p) for p in cf])
 
     (RES / "corpus_sizes.json").write_text(json.dumps(out, indent=1) + "\n")
     print(json.dumps(out, indent=1))
