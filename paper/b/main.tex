@@ -14,6 +14,11 @@
 \newcommand{\TODO}[1]{\textcolor{red}{[TODO: #1]}}
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
+\usepackage{tikz}
+% Harvey balls for the comparison table: has, has in part, lacks.
+\DeclareRobustCommand{\hb}[1]{\tikz[baseline=-0.55ex]{\draw[line width=0.4pt] (0,0) circle (0.75ex);
+  \ifcase#1\or\fill (0,0.75ex) arc (90:270:0.75ex) -- cycle;\or\fill (0,0) circle (0.75ex);\fi}}
+\DeclareRobustCommand{\full}{\hb{2}}\DeclareRobustCommand{\half}{\hb{1}}\DeclareRobustCommand{\none}{\hb{0}}\newcommand{\na}{--}
 \input{../numbers}
 
 \begin{document}
@@ -50,10 +55,10 @@ program slicing, static analysis, quantum software engineering, Qiskit, srcML, p
 % as raw material and logged in MOVED_FROM_A.md; this paper's prose is written fresh, with no sentence reused from A.
 \section{Introduction}\label{sec:b-intro}
 \TODO{to be written}
-\section{Background and Related Work}\label{sec:b-related}
-\TODO{srcML and srcSlice, Behler et al. and QStatic, static analyzers for Qiskit, circuit tools; the light-cone rule stated and cited, not proved}
 \section{A Motivating Example}\label{sec:b-example}
 \TODO{a program of our own with computed qubit indices, loops and conditioned gates, e.g. \texttt{tool/tests/big/teleport\_chain.py}}
+\input{sections/b-related}
+
 \section{The Approach}\label{sec:b-approach}
 \TODO{a semantic quantum layer over srcML (E1 to E5), over-approximation, circuit loops, one-pass slicing, OpenQASM front end}
 \section{Evaluation Design}\label{sec:b-design}

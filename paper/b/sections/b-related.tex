@@ -1,0 +1,90 @@
+\section{Background and Related Work}\label{sec:b-related}
+
+This section reviews the infrastructure the approach builds on, the analyses that already read quantum source code,
+the tools that work on circuits and the dependence models proposed for slicing, and ends with the gaps that
+Table~\ref{tab:b-related} summarizes.
+
+\subsection{srcML and srcSlice}
+srcML represents source code as XML in which the syntax of the language is marked up while the original text, comments
+and layout included, is kept, so the XML converts back to the exact source~\cite{collard2011lightweight,
+collard2013srcml}. Because srcML parses without compiling, it accepts fragments and programs whose libraries are
+missing, which suits code collected from repositories. srcSlice computes slices from srcML for every variable of a
+system at once~\cite{alomari2014srcslice}. Instead of building a program dependence graph~\cite{ferrante1987pdg,
+horwitz1990interprocedural}, it keeps a slice profile per variable, the lines that define and use it, the variables it
+flows into and the calls that receive it, and slices from these profiles, which let it process the Linux kernel.
+Neither tool knows what a quantum program means. To srcML a Qiskit program is Python, and to srcSlice its circuit is a
+single variable that every gate call uses, so the slice of any qubit is every line that touches the circuit.
+
+\subsection{Analyses of quantum source code}
+Behler et al.\ specified a srcML markup for OpenQASM~3~\cite{behler2024supporting} and built QStatic on it, which
+derives the order in which a program applies operations to each qubit, unrolling loops and expanding gate definitions,
+and uses that order to find iteration patterns and suggest refactorings~\cite{behler2025static}. They demonstrate the
+markup on the 16 example files of OpenQASM~3, leave \texttt{while} loops for later, and name a slicer that finds the
+lines affecting a qubit as future work. Kaul et al.\ translate Qiskit and OpenQASM programs into a code property graph,
+the QCPG, and query it for bugs and code smells~\cite{kaul2023uniform}. LintQ runs CodeQL queries over Qiskit programs,
+unrolling loops for up to ten iterations to relate their operations, and was applied to 7,568 programs from
+GitHub~\cite{paltenghi2024lintq}. QChecker checks Qiskit programs against bug patterns over their syntax trees~\cite{zhao2023qchecker}, Q-PAC is
+another pattern-based detector~\cite{nayak2023qpac}, Chen et al.\ define smells specific to quantum
+code~\cite{chen2023smelly},
+and Xia and Zhao analyze entanglement statically~\cite{xia2025entanglement}. These analyses look for known patterns and
+properties. None returns the statements that determine a qubit.
+
+\subsection{Tools that work on circuits}
+Once a program has run and built its circuit, Qiskit can list the operations that precede a qubit's last operation as
+the ancestors in its DAG representation, and its \texttt{LightCone} pass keeps the gates that can affect given qubits or
+an observable and drops those that commute with it~\cite{qiskit2025}. Qiskit's slicing utilities split a circuit into consecutive pieces at barriers, by depth or by gate
+type~\cite{qiskitaddonutils}, and the Cirquo tool of Metwalli and Van Meter splits a
+circuit at barriers and maps its gates back to source lines through tracebacks taken while the program
+runs~\cite{metwalli2022debugging, metwalli2024testing}. Working on the circuit has two costs for a developer. The
+program must run, with its Qiskit version, its inputs and sometimes access to hardware, and the circuit no longer says
+which line and which loop iteration added each gate.
+
+\subsection{Dependence models for quantum programs}
+Yu and Zhao describe a dependence graph for quantum programs whose edges add four quantum kinds to data and control
+dependence, and outline slicing on it without implementing it~\cite{yu2025qpdg}. Compilers order and place gates by their backward light cone, the gates whose effect can propagate to given qubits by
+the end of a circuit~\cite{murali2019triq, amy2020staq}. The approach slices by this light cone, followed further from each
+measurement to the operations its bit conditions. Two roadmaps point to the same need, one describing dependence graphs
+as an aid to understanding quantum programs~\cite{murillo2025roadmap}, the other finding that dependence analysis of
+circuits has hardly been studied~\cite{ramalho2025road}, and developers report that their debugging methods, printing, drawing circuits and reading code, do not
+scale~\cite{zappin2026challenges}.
+
+\subsection{Gaps}
+Table~\ref{tab:b-related} compares these approaches with \tool{}. Three gaps remain. No slicer reads Qiskit, the
+language most quantum programs are written in, and the slicer named for OpenQASM~3 is future work. The tools that
+slice or prune circuits need the program to run and lose the link to its lines and loop iterations. The analyzers that
+read Qiskit source look for patterns, and none has been evaluated as a slicer on real programs.
+
+\begin{table*}[t]
+  \centering
+  \caption{Approaches that analyze quantum programs or circuits, against what a source-level quantum slicer needs}
+  \label{tab:b-related}
+  \footnotesize\setlength{\tabcolsep}{3.4pt}\renewcommand{\arraystretch}{1.18}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.0cm} *{6}{>{\centering\arraybackslash}p{1.2cm}} >{\raggedright\arraybackslash}X@{}}
+    \toprule
+    \textbf{Approach} & \textbf{Reads Qiskit} & \textbf{Without running} & \textbf{Slice per qubit} & \textbf{Measured bits} &
+    \textbf{Loops} & \textbf{Source lines} & \textbf{Evaluated on} \\
+    \midrule
+    srcSlice~\cite{alomari2014srcslice}                                  & \none & \full & \none & \na   & \full & \full & Linux kernel \\ \sep
+    Behler et al., QStatic~\cite{behler2024supporting, behler2025static} & \none & \full & \none & \half & \half & \full & 16 OpenQASM~3 example files \\ \sep
+    QPDG, Yu and Zhao~\cite{yu2025qpdg}                                  & \full & \full & \full & \full & ?     & \full & 5 listings, not implemented \\ \sep
+    QCPG, Kaul et al.~\cite{kaul2023uniform}                             & \full & \full & \none & \full & \full & \full & 3 listings, 1 Qiskit/OpenQASM circuit \\ \sep
+    LintQ~\cite{paltenghi2024lintq}                                      & \full & \full & \none & \full & \half & \full & 7,568 GitHub programs, 216 problems found by inspection \\ \sep
+    QChecker~\cite{zhao2023qchecker}                                     & \full & \full & \none & \na   & \na   & \full & 42 Bugs4Q bugs \\ \sep
+    Qiskit DAG, \texttt{LightCone}~\cite{qiskit2025}                     & \none & \half & \full & \none & \none & \none & \na \\ \sep
+    Qiskit circuit slicing~\cite{qiskitaddonutils}                       & \none & \half & \none & \na   & \na   & \none & \na \\ \sep
+    Cirquo, Metwalli and Van Meter~\cite{metwalli2022debugging, metwalli2024testing} & \full & \none & \none & \na & \na & \half & 1 Grover case study, 1 user survey \\
+    \midrule
+    \rowcolor{blue!7}\textbf{\tool{}} & \full & \full & \full & \full & \full & \full & \numSizeLintqFiles{} GitHub, \numSizeBugsFiles{} Bugs4Q, \numSizeTextFiles{} textbook and \numSizeQheFiles{} Qiskit HumanEval programs; \numScaleQbFiles{} QASMBench circuits \\
+    \bottomrule
+  \end{tabularx}\\[3pt]
+  \begin{minipage}{\textwidth}\footnotesize
+  \full{} has the property, \half{} has it in part, \none{} lacks it, ? means the authors do not specify it, and \na{}
+  means it does not apply. \emph{Reads Qiskit}, the approach takes Qiskit programs as input. \emph{Without running}, it
+  analyzes the program without executing it; circuit tools need the program run to obtain the circuit, unless the
+  circuit is given in OpenQASM. \emph{Slice per qubit}, it returns the operations or lines that can affect a chosen
+  qubit. \emph{Measured bits}, it follows a measured bit to the operations the bit conditions. \emph{Loops}, it follows
+  loops of any length. \emph{Source lines}, it reports results on the program's lines. \emph{Evaluated on}, the data of
+  the original evaluation.
+  \end{minipage}
+\end{table*}
