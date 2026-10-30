@@ -29,7 +29,8 @@ find . -type f \( -name '*.py' -o -name '*.md' -o -name '*.tex' -o -name '*.csv'
   -o -name '*.sh' -o -name '*.txt' -o -name '*.tsv' -o -name '*.thy' -o -name 'ROOT' -o -name '*.diff' -o -name '*.log' \) \
   -print0 | xargs -0 sed -i '' \
     -e 's/QSliceSoundness/SliceSoundness/g' -e 's/srcSlice-Q/the static slicer/g' -e 's/QLine/the static slicer/g' \
-    -e 's/\([^A-Za-z]\)QSlice/\1the slicer/g' -e 's/^QSlice/the slicer/' -e 's/QSlice/Qdg/g' -e 's/from qslice/from qdg/g' -e 's/import qslice/import qdg/g' -e 's/qslice\./qdg./g' \
+    -e 's/QSlice_/Qdg_/g' -e 's/\([^A-Za-z]\)QSlice/\1the slicer/g' -e 's/^QSlice/the slicer/' -e 's/QSlice/Qdg/g' -e 's/from qslice/from qdg/g' -e 's/import qslice/import qdg/g' -e 's/qslice\./qdg./g' \
+    -e 's/QSLICE/QDG/g' -e 's/qslice/qdg/g' \
     -e 's#/Users/[A-Za-z0-9_]*/#/home/anon/#g'
 
 # ---- the package's own README and reproduce script; numbers and Table V regenerated without the slicer
@@ -39,6 +40,20 @@ PYV="$(cd ../.. && pwd)/.venv/bin/python"
 ( cd experiments && "$PYV" icpc/make_result_figs.py >/dev/null && "$PYV" icpc/make_numbers.py >/dev/null )
 ( cd paper/new && pdflatex -interaction=nonstopmode main >/dev/null 2>&1; bibtex main >/dev/null 2>&1; \
   pdflatex -interaction=nonstopmode main >/dev/null 2>&1; pdflatex -interaction=nonstopmode main >/dev/null 2>&1 ) || true
+# the bibliography keeps only the entries the paper cites
+"$PYV" - <<'PYEOF'
+import re
+keys = set()
+for m in re.finditer(r'\\citation\{([^}]*)\}', open('paper/new/main.aux').read()):
+    keys |= {k.strip() for k in m.group(1).split(',')}
+bib = open('paper/references.bib').read()
+entries = re.split(r'\n(?=@)', bib)
+kept = [e for e in entries if (m := re.match(r'@\w+\{([^,]+),', e.strip())) and m.group(1).strip() in keys]
+open('paper/references.bib', 'w').write('\n'.join(e.strip() for e in kept) + '\n')
+print(f"bibliography: {len(kept)} cited entries kept")
+PYEOF
+( cd paper/new && bibtex main >/dev/null 2>&1; pdflatex -interaction=nonstopmode main >/dev/null 2>&1; \
+  pdflatex -interaction=nonstopmode main >/dev/null 2>&1 ) || true
 find . -type f ! -name MANIFEST.sha256.tsv ! -path './paper/new/main.*' -print0 | sort -z \
   | xargs -0 shasum -a 256 | awk '{print $2"\t"$1}' > MANIFEST.sha256.tsv
 cd ..
