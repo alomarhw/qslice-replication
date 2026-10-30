@@ -23,8 +23,8 @@
 
 \begin{abstract}
 Which statements of a quantum program can affect a qubit's state? Answering this question is central to program
-comprehension and debugging, yet difficult in Qiskit. Loops, functions, and computed indices determine which gates act
-on which qubits, and quantum dependencies extend beyond the gates that directly target a qubit. Program slicing
+comprehension and debugging, yet difficult in quantum programs such as those written with Qiskit, because loops,
+functions, and computed indices determine which gates act on which qubits, and quantum dependencies extend beyond the gates that directly target a qubit. Program slicing
 addresses analogous questions in classical software, but support for quantum programs remains limited. We present an
 approach to static slicing of quantum programs that extends the srcML infrastructure and the srcSlice slicer with a
 quantum analysis layer. The approach identifies the quantum role of API calls, reconstructs the circuit a program builds
