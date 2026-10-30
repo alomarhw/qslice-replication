@@ -1,0 +1,16 @@
+# Cuts to Paper A (for length)
+
+The full text before each cut is kept verbatim in the dated folder, so anything can be restored.
+
+## 2026-10-29, Tiers 1 and 2 (author decision), snapshot in 2026-10-29-precut/
+Body before: 13.61 pages; after: 11.63 pages (measured to the end of the Conclusion).
+
+| Section | Cut |
+|---|---|
+| II | Five "Relation and reuse" paragraphs merged into the gaps paragraph; entanglement analysis folded into II-B; debugging tools and detectors halved (Ramalho's slicing remark, Oldfield's testing limit, bug patterns cite dropped here) |
+| III | Background paragraph halved |
+| IV | Table II (three kinds) replaced by inline examples; "Why the write set cannot be smaller" reduced to two sentences; Proposition (forward/backward duality) reduced to one sentence |
+| V | Subjects table replaced by text; MBFL design shortened (backward-order ranking dropped) |
+| VI | RQ1 QPDG paragraph condensed (precision numbers left to Table VI); noise paragraph condensed (sampled-run maximum dropped); MBFL results condensed; language-model results condensed and Fig. llm removed; Fig. cost removed; VI-E (QDG vs QPDG, Table VIII) removed, its size-control point moved into RQ3 |
+| VII | Implications halved, all four points kept |
+| VIII | Threats tightened |

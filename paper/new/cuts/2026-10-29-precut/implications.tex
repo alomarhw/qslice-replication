@@ -1,0 +1,45 @@
+\section{Implications for Comprehension Tools}\label{sec:implications}
+
+The results turn into advice for those who build slicers and other comprehension aids for quantum programs, for the
+developers who read their output, and for research on both.
+
+\paragraph*{What a slicer must do}
+A slicer must let every gate write all its qubits. Reading the control of a gate as unchanged is the one choice
+behind \numCpdgMissControlPct{} of the dependences the classical PDG misses in RQ1, and it is the reading that the QCPG states and that an order table invites
+when it marks the control apart from the target. A representation built for pattern detection can keep that
+distinction for reporting, but a slicer that reads it as a dependence graph will hide code that can change the
+qubit. A slicer must also follow measured bits to the operations they condition, since without them def-use is wrong
+on \numDuDynamicUnsound{} of the \numNDynamicPairs{} pairs in dynamic circuits. It should not add entanglement
+edges, which add only code that cannot change the criterion, \numYzLcExcessRatio{} times as much as the QDG keeps
+beyond the dependences, and turn a pass of milliseconds into a graph that takes \numCostBuildDepthOneSixty{}~s to
+build at the largest depth of RQ4. Because a single loop iteration can put a line in a slice, a slicer should show the iterations that put each
+line there, so that the developer does not read a whole loop body as relevant.
+
+\paragraph*{What a developer should not trust}
+A slice cannot be validated by its outcomes. Of the wrong classical slices, \numFdCpdgZMatchPct{} reproduce the
+outcome histogram of the whole program, and the Bugs4Q example of Section~\ref{sec:example} shows that a fault can
+leave every single-qubit histogram unchanged. A check that compares histograms accepts exactly the slices that are
+wrong in phase or in correlation, so a tool that offers such a check should compare the criterion's reduced state, or
+at least its joint outcomes in more than one basis. Pruned slices answer a narrower question than the one a developer
+asks. A slice pruned by commutation is correct for the observable at the circuit's angles, and Qiskit's pass is the
+right tool to estimate that observable, but it drops dependences, recalling \numLcqRecall{} of them, and it fails
+on \numRobLcqParamFail{} of \numRobLcqParamN{} variational pairs when the angles change. A state-based slice is correct for its one input, stays correct for random inputs on only
+\numHThreeRate{} of the pairs, contains the fault \numHFourDiffAbs{} points less often than the QDG slice, and can
+remove the noisy gates a developer is trying to diagnose. A tool that offers either should label it as a view for one
+observable or one input and keep the QDG slice as the default.
+
+\paragraph*{What a slice cannot show}
+The QDG slice contained the fault in \numRqThreeContainLc{} of the units, and every unit it missed is an omission
+fault, a removed control, gate or preparation, or a gate moved to another qubit. No slice can contain an operation
+that the program lacks, nor follow an interaction that the fault has removed. When the slice of a qubit leaves out a qubit the developer expected it to depend on, that absence is itself
+the clue. A tool can make it visible by listing the qubits each slice contains and, by the duality of
+Proposition~\ref{prop:dual}, the qubits each operation reaches, at no extra cost.
+
+\paragraph*{What remains open}
+Slices narrowed where to look but did not improve mutation-based fault ranking, and given a slice, no language model
+localized faults better than with the whole circuit by more than a fraction of a point. The models did miss
+dependences that a slicer finds by rule, and Sonnet recalled \numTOneSonnetKick{} and the larger Qwen model
+\numTOneQwenMidKick{} of those through kickback, so a slice is better used to give a model or a developer the dependences
+than to rank suspects. Whether slices shorten the manual reading that developers report does not
+scale~\cite{zappin2026challenges} is a question for a study with developers, which the semantics and the measured
+rules of this paper make possible to design.

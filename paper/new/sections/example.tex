@@ -18,15 +18,13 @@ quantum concepts the rest of the paper uses.
 
 \paragraph*{Background}
 A qubit's state is a superposition $\alpha\ket{0} + \beta\ket{1}$, and measuring it yields $0$ or $1$ with
-probabilities $|\alpha|^2$ and $|\beta|^2$. The two states $\ket{+}$ and $\ket{-}$ give both outcomes equally often
-and differ only in the sign of $\beta$, their phase, which no measurement in the computational basis can see. Gates are
-reversible operations on qubits, such as the Hadamard gate H, which turns $\ket{0}$ into $\ket{+}$ and $\ket{+}$ back
-into $\ket{0}$. A controlled gate such as the controlled-NOT (CNOT) applies an operation to its target depending on
-its control, but it can also change the control. When the target is in $\ket{-}$, the CNOT leaves the target as it is
-and flips the phase of its control instead, an effect called phase kickback. Two qubits are entangled when their
-joint state cannot be written as a state of each qubit alone. A measurement writes a classical bit, which later gates
-may read as a condition. Qiskit programs build circuits in Python, with loops, functions and conditions that compute
-which gates act on which qubits.
+probabilities $|\alpha|^2$ and $|\beta|^2$. The states $\ket{+}$ and $\ket{-}$ give both outcomes equally often and
+differ only in phase, which no measurement in the computational basis can see, and the Hadamard gate H turns
+$\ket{0}$ into $\ket{+}$ and back. The controlled-NOT (CNOT) flips its target when its control is $1$, but when the
+target is in $\ket{-}$ it leaves the target unchanged and flips the phase of its control instead. This is phase
+kickback, and it needs no entanglement, the state of two qubits that cannot be written as a state of each alone. A
+measurement writes a classical bit that later gates may read. Qiskit programs build circuits in Python, with loops and
+functions that compute which gates act on which qubits.
 
 \paragraph*{The program}
 The Bernstein--Vazirani algorithm~\cite{bernstein1997qct} finds a hidden bit string $s$ with a single query to an

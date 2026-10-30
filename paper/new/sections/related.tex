@@ -1,8 +1,7 @@
 \section{Related Work}\label{sec:related}
 
-This section places our work among five lines of research. For each line it states what others have done, how our
-work relates to it and what we reuse. It closes with the gaps that remain open and with Table~\ref{tab:related},
-which compares the dependence models that have been proposed or used for quantum programs.
+This section reviews four lines of research and closes with the gaps they leave open and with
+Table~\ref{tab:related}, which compares the dependence models proposed or used for quantum programs.
 
 \subsection{Program slicing and its semantics}
 Weiser introduced program slicing~\cite{weiser1984program} and showed that programmers use slices when they
@@ -17,10 +16,6 @@ for example, computes dependences from a slice profile of every variable~\cite{a
 the many kinds of slices that followed~\cite{tip1994a, silva2012vocabulary, binkley2004a}. Probabilistic slicing
 preserves the distribution of the criterion variables~\cite{hur2014slicing, amtoft2020theory, olmedo2025slicing}, and
 Gallagher names quantum programs as a direction for semantically defined slicing~\cite{gallagher2025program}.
-
-\emph{Relation and reuse.} We keep the classical notions, a criterion, a backward and a forward slice, and dependence
-as the possibility of change, and define them for the reduced state of a set of qubits, a criterion stronger than a
-distribution in one basis, which misses phase.
 
 \subsection{Dependence models for quantum programs}
 Yu and Zhao's quantum program dependence graph (QPDG)~\cite{yu2025qpdg} extends the classical
@@ -38,20 +33,10 @@ refactorings, and their order table marks the control of a CNOT apart from its t
 behler2025static}. In their roadmap of quantum software engineering, Murillo et al.\ describe the QPDG as an aid to
 understanding programs~\cite{murillo2025roadmap}, and in their roadmap of testing and debugging, Ramalho et al.\ find
 dependence and data-flow analysis of circuits almost unexplored, naming only Kaul et al.~\cite{ramalho2025road}.
-
-\emph{Relation and reuse.} We take the QPDG's question, which operations a qubit depends on, and answer it against a
-semantic definition. Section~\ref{sec:rules} describes the baseline we reimplement from its prose and the classical
-reading of the control that the QCPG states, and Section~\ref{sec:results} measures both.
-
-\subsection{Entanglement analysis}
-Static analyses approximate which qubits may be entangled, with type systems~\cite{perdrix2007types,
+Entanglement analyses approximate which qubits may be correlated, with type systems~\cite{perdrix2007types,
 prost2009reasoning, yuan2022twist}, abstract interpretation~\cite{perdrix2008entanglement, yu2021abstract}, the
-stabilizer formalism~\cite{honda2015stabilizer} and data-flow rules~\cite{xia2025entanglement}. ScaffCC assumes that
-qubits that interact may be entangled~\cite{javadiabhari2015scaffcc}.
-
-\emph{Relation.} These analyses answer a different question, whether two qubits may be correlated, and they are not
-slicers. Section~\ref{sec:core} shows that entanglement neither implies nor is implied by dependence, so their
-results cannot decide what a slice keeps.
+stabilizer formalism~\cite{honda2015stabilizer} and data-flow rules~\cite{xia2025entanglement}, and ScaffCC assumes
+that qubits that interact may be entangled~\cite{javadiabhari2015scaffcc}. They are not slicers.
 
 \subsection{Light cones and compilers}
 The \emph{backward light cone} of a set of qubits at the end of a circuit is the set of gates that can affect their
@@ -66,38 +51,18 @@ observable, decides commutation for the circuit's actual angles and rejects circ
 Heim et al.\ likewise argue that quantum dependences should account for commutation~\cite{heim2020quantum}. Compilers
 also call the time windows of a circuit its slices~\cite{smith2022timestitch}, a sense different from ours.
 
-\emph{Relation and reuse.} On qubits, the backward light cone is the relation of our write-all rule, and that it
-determines the final state of its qubits is known. We claim neither the relation nor its soundness as new. What these
-works do not provide is a definition of what a slice must preserve, a proof that the light cone keeps every
-dependence, and a measurement of what smaller or different rules lose, which Sections~\ref{sec:core}
-and~\ref{sec:results} give. Removing commuting gates goes further than the light cone. A pruned slice is correct for
-the observable at the given angles but no longer contains every operation that could change the qubit, so it can omit
-the place where a fault would be. We reuse Qiskit's \texttt{LightCone} pass as the commutation-pruning baseline and
-follow the light cone along classical bits, which the pass does not do.
-
 \subsection{Debugging tools and bug detectors}
-Metwalli and Van Meter adapt slicing to circuits by splitting a circuit at barriers the developer places and removing
-the qubits a part does not use~\cite{metwalli2022debugging, metwalli2024testing}, and Qiskit's circuit-slicing
-utilities cut a circuit into consecutive parts by barriers, depth or gate type~\cite{qiskitaddonutils}. Both cut a
-circuit into pieces to inspect and follow no dependence. Ramalho et al.\ list slicing as a way around no-cloning and
-note that it grows hard to manage as circuits grow~\cite{ramalho2025road}. Zappin et al.\ surveyed and interviewed 26
-quantum developers, who debug with print statements, circuit drawings, simulators and manual inspection of the code
-and report that these methods do not scale~\cite{zappin2026challenges}. Testing faces the limit that phase faults
-escape computational-basis measurement~\cite{oldfield2024faster}. Bug detectors find known patterns, and Chen et al.\
-catalog quantum-specific code smells~\cite{chen2023smelly}. LintQ runs queries over Qiskit programs and orders two
-operations when they share a qubit~\cite{paltenghi2024lintq}, QChecker matches patterns in the abstract syntax
-tree~\cite{zhao2023qchecker}, and Q-PAC also detects known patterns~\cite{nayak2023qpac}. Bug
-patterns~\cite{zhao2021bugpatterns}, Bugs4Q~\cite{zhao2023bugs4q}, mutation tools~\cite{mendiluze2021muskit,
-fortunato2022qmutpy, garcia2022testing} and mutation-based fault localization~\cite{ishimoto2025mbfl} supply faults
-and rankings to this field.
-
-\emph{Relation and reuse.} Slices complement these tools. Manual slicing has no criterion, so the developer still
-narrows the fault by hand, and a slice by the write-all rule generalizes the removal of unused qubits, since it drops
-every qubit and operation that cannot reach the criterion. LintQ's ordering relation is the relation of the write-all
-rule, which confirms the rule in practice, while LintQ uses it for patterns and makes no claim about slices. Of the
-42 Bugs4Q bugs on which QChecker was evaluated, 22 are wrong outputs that no pattern detects~\cite{zhao2023qchecker},
-and a slice shows where such a fault can be. We reuse Bugs4Q, published mutation operators and mutation-based fault
-localization.
+Metwalli and Van Meter split a circuit at barriers the developer places and remove the qubits a part does not
+use~\cite{metwalli2022debugging, metwalli2024testing}, and Qiskit's circuit-slicing utilities cut a circuit by
+barriers, depth or gate type~\cite{qiskitaddonutils}. Both cut a circuit into pieces and follow no dependence. Zappin
+et al.\ found that 26 quantum developers debug with print statements, circuit drawings, simulators and manual reading
+of the code, and that these methods do not scale~\cite{zappin2026challenges}. Bug detectors find known
+patterns~\cite{chen2023smelly, zhao2023qchecker, nayak2023qpac}. LintQ orders two operations when they share a
+qubit~\cite{paltenghi2024lintq}, which is the relation of the write-all rule, but uses it for patterns and makes no
+claim about slices. Of the 42 Bugs4Q bugs on which QChecker was evaluated, 22 are wrong outputs that no pattern
+detects~\cite{zhao2023qchecker}, and a slice shows where such a fault can be. Bugs4Q~\cite{zhao2023bugs4q}, mutation
+tools~\cite{mendiluze2021muskit, fortunato2022qmutpy, garcia2022testing} and mutation-based fault
+localization~\cite{ishimoto2025mbfl} supply the faults and rankings we reuse.
 
 \subsection{Open gaps and the data used}
 Table~\ref{tab:related} compares the models of dependence these lines of work use, by what a CNOT writes, whether
@@ -108,6 +73,15 @@ wrong slice. Second, the analyses that represent quantum programs for static ana
 of Behler et al., read the control of a gate as unchanged, and no work has measured what that reading does to a slice.
 Third, the light cone is known to be sound, but no work has asked whether it keeps every dependence, how far it is from
 the smallest slice that does, and what smaller rules lose in correctness and in locating faults.
+
+We address the three gaps. We keep the classical notions of a criterion, a backward and a forward slice, and
+dependence as the possibility of change, and define them for the joint state of a set of qubits, which unlike a
+distribution in one basis also keeps phase. We claim neither the light cone nor its soundness as new. What we add is
+a definition of what a slice must preserve, a proof that the light cone keeps every dependence, and a measurement of
+what the other rules lose, among them the QPDG, reimplemented from its prose, the classical reading of the QCPG, and
+commutation pruning by Qiskit's pass, whose slices hold for fixed angles and can omit the place where a fault would
+be. Section~\ref{sec:kinds} shows that entanglement neither implies nor is implied by dependence, so entanglement
+analyses cannot decide what a slice keeps.
 
 \begin{table*}[t]
   \centering

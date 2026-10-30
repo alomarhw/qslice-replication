@@ -24,37 +24,17 @@ two-qubit gates in both directions. The protocol also pre-registered two descrip
 was dropped for cost before any scored call.
 
 \subsection{Subjects}
-The rules are compared on circuits, where an exact simulation gives the ground truth, and Table~\ref{tab:subjects}
-lists them. Corpus~A collects benchmark circuits of at most \numSizeAMaxQubits{} qubits from MQT
-Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench} and VeriQBench~\cite{chen2022veriqbench}. Every
-qubit of every circuit is a criterion, which gives \numNPairs{} circuit--qubit pairs, \numNDynamicPairs{} of them in
-dynamic circuits with mid-circuit measurement, reset or conditioned gates. The generated circuits come in families of
-known structure that grow in depth and in width, the width sweeps extend two of the families, and corpus~L, drawn
-from the same three suites, has wider circuits on which only some rules finish. Real faults come from
-Bugs4Q~\cite{zhao2023bugs4q}, as the next subsections describe.
-
-\begin{table}[t]
-  \centering
-  \caption{Circuits of the study}
-  \label{tab:subjects}
-  \footnotesize\setlength{\tabcolsep}{3.5pt}\renewcommand{\arraystretch}{1.12}
-  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
-  \begin{tabular}{@{}l r r r l@{}}
-    \toprule
-    \textbf{Subject} & \textbf{Circuits} & \textbf{Qubits} & \textbf{Operations} & \textbf{Used for} \\
-    \midrule
-    Corpus~A & \numSubjACount{} & \numSubjAMinQubits{}--\numSubjAMaxQubits{} & \numSubjAMedianOps{} / \numSubjAMaxOps{} & RQ1 to RQ4 \\ \sep
-    Generated circuits & \numSubjGenCount{} & \numSubjGenMinQubits{}--\numSubjGenMaxQubits{} & \numSubjGenMedianOps{} / \numSubjGenMaxOps{} & RQ1, RQ4 \\ \sep
-    Width sweeps & \numSubjSweepCount{} & \numSubjSweepMinQubits{}--\numSubjSweepMaxQubits{} & \numSubjSweepMedianOps{} / \numSubjSweepMaxOps{} & RQ4 \\ \sep
-    Corpus~L & \numSubjLCount{} & \numSubjLMinQubits{}--\numSubjLMaxQubits{} & \numSubjLMedianOps{} / \numSubjLMaxOps{} & RQ1, RQ4 \\
-    \bottomrule
-  \end{tabular}\\[3pt]
-  \begin{minipage}{\columnwidth}\footnotesize
-  Qubits are given as smallest to largest, operations as median / largest. Faults are seeded into corpus~A, giving
-  \numRqThreeUnits{} units from \numMutantsKilled{} mutants, and \numBugsFourQKilled{} of the Bugs4Q bugs give
-  \numLinesUnits{} units. A unit is a fault and a qubit whose measured distribution it changes.
-  \end{minipage}
-\end{table}
+The rules are compared on circuits, where an exact simulation gives the ground truth. Corpus~A collects
+\numSubjACount{} benchmark circuits from MQT Bench~\cite{quetschlich2023mqt}, QASMBench~\cite{li2023qasmbench} and
+VeriQBench~\cite{chen2022veriqbench}, with \numSubjAMinQubits{} to \numSubjAMaxQubits{} qubits and a median of
+\numSubjAMedianOps{} operations, at most \numSubjAMaxOps{}. Every qubit of every circuit is a criterion, which gives
+\numNPairs{} circuit--qubit pairs, \numNDynamicPairs{} of them in dynamic circuits with mid-circuit measurement, reset
+or conditioned gates. The \numSubjGenCount{} generated circuits come in families of known structure that grow in depth
+and in width, with \numSubjGenMinQubits{} to \numSubjGenMaxQubits{} qubits and up to \numSubjGenMaxOps{} operations,
+and \numSubjSweepCount{} width sweeps extend two of the families to \numSubjSweepMaxQubits{} qubits. Corpus~L has
+\numSubjLCount{} wider circuits from the same suites, with \numSubjLMinQubits{} to \numSubjLMaxQubits{} qubits and up
+to \numSubjLMaxOps{} operations, on which only some rules finish. Faults are seeded into corpus~A, and real faults
+come from Bugs4Q~\cite{zhao2023bugs4q}. A unit is a fault and a qubit whose measured distribution it changes.
 
 \subsection{Ground truth}
 An independent oracle simulates each circuit exactly, branching over measurement outcomes, and agrees with Qiskit's
@@ -88,19 +68,18 @@ Faults are seeded with \numMutOperators{} operators, \numMutPublished{} from Mus
 QMutPy~\cite{fortunato2022qmutpy} and García de la Barrera et al.~\cite{garcia2022testing}, and an angle perturbation
 of our own. Of the \numMutants{} mutants, \numMutantsExcluded{} with an empty fault site are excluded, and
 \numMutantsKilled{} change the measured distribution of at least one qubit. Each such qubit and its mutant form a
-unit, and for each unit we record the slice's size and whether it contains the fault site. Of the
+unit, \numRqThreeUnits{} in all, and for each unit we record the slice's size and whether it contains the fault site. Of the
 \numBugsFourQTriaged{} entries of Bugs4Q, \numBugsFourQIncluded{} are circuit-level faults that port mechanically to
-the current Qiskit release, and \numBugsFourQKilled{} of them change a qubit's measured distribution. Running each
+the current Qiskit release, and \numBugsFourQKilled{} of them change a qubit's measured distribution, giving
+\numLinesUnits{} units. Running each
 port records, for every operation, the line that appends it, which is mapped to the line of the original program, so
 the slices of these units are also reported as lines of the programs their developers wrote.
 
 Mutation-based fault localization ranks the operations of the faulty circuit by how their mutants change its
-observable behavior, with the Ochiai formula, as Ishimoto et al.\ do for quantum programs~\cite{ishimoto2025mbfl}. It
-runs on a sample of \numMbflUnits{} units, stratified by fault operator and including every Bugs4Q unit. We rank over
-the whole circuit and within each slice and report the EXAM score, the share of ranked operations examined before the
-fault, lower being better. Without fault localization, we also order each slice from its last operation backward and
-score the fault's rank the same way. A slice never makes a developer examine more operations, but EXAM divides by the
-number ranked, so a smaller slice can raise it.
+observable behavior, with the Ochiai formula, as Ishimoto et al.\ do for quantum programs~\cite{ishimoto2025mbfl}, on a
+sample of \numMbflUnits{} units stratified by fault operator and including every Bugs4Q unit. We rank over the whole
+circuit and within each slice and report the EXAM score, the share of ranked operations examined before the fault,
+lower being better.
 
 The two tasks for language models ask what a slice offers a model that reads a circuit. In the first, a model lists
 the operations that can affect a qubit, for \numTOneItems{} items. In the second, it names the likely faulty
