@@ -1,0 +1,103 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}\usepackage[varqu,scaled=0.95]{zi4}
+\usepackage{enumitem}
+\setlist{itemsep=2pt, topsep=3pt}
+\ifdefined\anonbuild\newcommand{\tool}{QLine}\else\newcommand{\tool}{srcSlice-Q}\fi
+\input{../numbers}
+\title{The Story of Paper B\\[2pt]\large Static Program Slicing for Quantum Programs}
+\date{Big-picture document, 30 October 2026}
+\begin{document}
+\maketitle
+
+\section*{What the paper is about}
+Quantum programs are written as Python programs that build circuits. This paper presents an approach that slices
+such programs on their source, without running them, and shows a developer the lines, the loop iterations and the
+classical statements that determine a qubit. The approach is implemented in a tool, \tool{}, for Qiskit and
+OpenQASM~2, and evaluated for faithfulness, coverage, cost and what it shows a developer.
+
+\section*{The problem}
+A Qiskit program decides in Python which gates act on which qubits: indices are computed, registers are sized by
+variables, gates are added in loops and helper functions, and measured bits steer later operations. The tools a
+developer has today see only part of this.
+\begin{itemize}
+\item A classical slicer reads the circuit as one object. To srcSlice, \texttt{qc.cx(a, b)} uses the variable
+\texttt{qc}, so the slice of any qubit is every line that touches the circuit.
+\item Circuit tools, such as Qiskit's DAG and its \texttt{LightCone} pass, work on a circuit that already exists. To get
+one, the program must run, which needs its Qiskit version, its inputs and sometimes hardware credentials, and it
+loses the link from each gate to the line and iteration that added it.
+\item Analyses of quantum source code exist for OpenQASM~3, the srcML work of Behler et al., which names a qubit
+slicer as future work. Qiskit, the language most quantum programs are written in, has bug detectors but no slicer.
+\end{itemize}
+
+\paragraph{Thesis.} Quantum programs can be sliced statically, on the source developers write, faithfully and at
+scale. A semantic layer over srcML gives calls their quantum meaning, a static trace with over-approximations that
+can only enlarge a slice stands in for running the program, and the slice points a developer to about a quarter of
+a program.
+
+\section*{Contributions}
+\begin{enumerate}
+\item \textbf{The approach.} A quantum layer over srcML and srcSlice with five parts: quantum roles of calls from a
+table derived from Qiskit's interface (\numToolGateTable{} methods); a static trace of the circuit with loop iterations
+and source lines, over-approximating unknown indices, branches and loop bounds; slices of every qubit along the
+backward light cone extended through measured bits; the classical statements that compute each slice, from srcSlice
+with two fixes; and a profile of each qubit.
+\item \textbf{Loops that run on the device.} Qiskit's \texttt{while\_loop}, \texttt{for\_loop} and \texttt{switch} are
+sliced by repeating the body, conditioned on its bits, until the needed set stops growing, with a soundness argument.
+\item \textbf{Two front ends.} Qiskit programs through srcML, and OpenQASM~2 circuits through a line-mapped reader.
+\item \textbf{An evaluation on real programs.} Faithfulness: on \numToolDevPrograms{} programs the trace equals the
+circuit Qiskit builds and the slices equal circuit-level slices in \numToolDevSliceEqual{}; the OpenQASM reader agrees
+with Qiskit on \numQasmCircuitsChecked{} circuits; exact simulation confirms every slice of \numCfQubits{} qubits in
+\numCfPrograms{} programs with device loops; the classical statements cover a reference for \numSsContainPct{} of
+qubits and \numSsHeldContainPct{} on held-out programs. Coverage: \numScaleSOneSliced{} of \numScaleSOneFiles{} GitHub
+programs traced, \numCovNoConstruction{} of the rest never build a circuit; \numSubjBugsTraced{} of
+\numSubjBugsCount{} Bugs4Q programs, \numSubjTextTraced{} of \numSubjTextCount{} textbook programs, and
+\numQheTracedOfBuildsPct{} of the Qiskit HumanEval programs that build a circuit. Cost: \numScaleSOneMedianMs{}~ms per
+program in the median; every qubit of a circuit of \numScaleQbMaxOps{} operations in \numScaleQbAllS{}~s, where Qiskit's
+\texttt{LightCone} takes \numScaleLcMaxS{}~s for one qubit and the QPDG exceeds the limit beyond
+\numScaleQpdgMaxOps{} operations. Value: a qubit's slice holds \numScaleReadMedianPct{} of a program's code lines; on
+LintQ's warnings the slices give \numLqReadMedian{} of \numLqCodeMedian{} lines in the median, and
+\numLqBeyondTenFiles{} traced programs create operations beyond the tenth loop iteration that LintQ unrolls.
+\end{enumerate}
+
+\section*{What is new, and what we build on}
+\textbf{New.} The quantum layer for Qiskit source, its over-approximations and their soundness, slicing of loops that
+run on the device, qubit profiles, and the first evaluation of a quantum slicer on thousands of real programs.
+
+\textbf{Built on.} srcML's markup and srcSlice's slice profiles, patched for Python with two fixes; the backward light
+cone, stated and cited as the dependence relation, not re-proved; Behler et al.'s idea of a static execution order of
+qubit operations; Qiskit's own interface for the role table. Data from LintQ, Bugs4Q, the Qiskit textbook, Qiskit
+HumanEval and QASMBench.
+
+\section*{The motivating example}
+A teleportation chain of four hops (\texttt{teleport\_chain.py}). The loop computes the qubits of each hop from its
+counter, a variable \texttt{src} is reassigned on every iteration, and each hop measures two qubits whose bits steer
+corrections on the next. A developer asks which lines determine the final qubit. srcSlice returns every line that
+touches \texttt{qc}; \tool{} returns the lines, the iterations that put them there, and the statements that compute
+\texttt{src}.
+
+\section*{How the sections fit together}
+I Introduction. II the motivating example. III Background and related work: srcML and srcSlice, analyses of quantum
+source, circuit tools, bug detectors, and a table of approaches. IV The approach, with the overview figure and the
+five parts, device loops and the two front ends. V Evaluation design: four research questions on faithfulness,
+coverage, cost and value, the subjects, and the oracles. VI Results. VII Discussion of the limits, such as calls the
+role table does not model. VIII Threats. IX Conclusion.
+
+\section*{Rules for keeping Paper B separate}
+It stands alone and does not cite the other submission. No sentence is reused from it; the material moved from it is
+raw data, rewritten here. It has its own anonymous replication package. In the anonymous version the tool is
+\tool{}.
+
+\section*{Decisions to check}
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{An independent faithfulness oracle.} The slices are now compared with a circuit-level slicer that the other
+paper also uses. Comparing them with Qiskit's DAG ancestors instead would make the check independent; about three hours,
+no paid runs.
+\item \textbf{Semantic layer or quantum markup.} The approach interprets srcML's Python markup rather than emitting new
+quantum elements. Describe it honestly as a semantic layer, or add emitted markup (16 to 25 hours).
+\item \textbf{The example}, the teleportation chain above, or another program.
+\item \textbf{Section order}, the example before related work, as in the other paper.
+\item \textbf{Length.} The material is about 9 to 10 pages; the profile and LintQ comparison are the first to shorten.
+\end{enumerate}
+\end{document}
