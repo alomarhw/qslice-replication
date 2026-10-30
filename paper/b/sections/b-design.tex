@@ -68,7 +68,8 @@ over measurement outcomes deletes every operation outside a qubit's slice from t
 state is unchanged at \numCfInputs{} inputs, and a negative control reads each device loop's body once. The classical
 statements of E4 are compared with the values E2 tracks along the one path it follows, which give a second,
 flow-sensitive set of lines, on our programs and Bugs4Q, on a sample of LintQ's corpus, and on a held-out sample of
-\numSsHeldFiles{} files of that corpus that were not inspected while the srcSlice fixes were made.
+\numSsHeldFiles{} files of that corpus that were not inspected while the srcSlice fixes were made. We fixed a
+threshold of 95\% containment before the comparison.
 
 \subsection{Coverage, cost and what a slice shows}
 For RQ2, \tool{} traces every program, and the programs that yield no circuit are classified by a fixed rule on their
@@ -81,4 +82,5 @@ one machine, an Intel Xeon W-2140B at 3.2~GHz with 32~GB of memory, with Python~
 the share of a program's code lines that a qubit's slice holds, and compare \tool{} with LintQ on LintQ's public data,
 without running LintQ. For each warning of LintQ's five analyses that concern qubits and bits, \tool{} traces the
 program and evaluates a predicate on its qubit profiles, fixed before the comparison, at the warned line, on the warnings
-LintQ's authors labelled true and false positives and on all warnings of these analyses.
+LintQ's authors labelled true and false positives and on all warnings of these analyses. The examples in the papers of LintQ
+and QChecker~\cite{paltenghi2024lintq, zhao2023qchecker} are transcribed as programs and sliced.

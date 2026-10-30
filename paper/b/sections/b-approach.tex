@@ -4,19 +4,89 @@ The approach adds a quantum layer to srcML and srcSlice. srcML parses the progra
 give its markup a quantum meaning: they read what each call does to which qubits (E1), reconstruct the circuit the
 program builds (E2), slice every qubit of that circuit (E3), add the classical statements that compute each slice (E4),
 and summarize each qubit in a profile (E5). The result is shown on the program's lines. We implement the approach in a
-tool, \tool{}, for Qiskit programs~\cite{javadi2024qiskit} and OpenQASM~2 circuits.
+tool, \tool{}, for Qiskit programs~\cite{javadi2024qiskit} and OpenQASM~2 circuits. Fig.~\ref{fig:b-architecture} shows
+its parts and where each comes from, and Fig.~\ref{fig:b-tool} follows the program of Fig.~\ref{fig:b-example} through
+them.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.86\textwidth]{figures/fig_b_architecture.pdf}
+  \caption{The parts of the approach. A Qiskit program passes through srcML and the extensions E1 to E5, and an
+  OpenQASM~2 circuit enters at the trace. srcSlice, patched, gives the classical lines. What the developer is shown is
+  on the right.}
+  \label{fig:b-architecture}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_b_tool.pdf}
+  \caption{The approach on the program of Fig.~\ref{fig:b-example}. (1) srcML's markup of line 14 and of lines 18 and
+  19, with the elements the extensions read lettered. (2) The trace of the first hop, each operation with its line and
+  iteration. (3) The slice of \texttt{q[4]}, one cell per operation of a loop line in each hop, filled when the operation
+  is in the slice.}
+  \label{fig:b-tool}
+\end{figure*}
+
+\subsection{Why srcML and srcSlice}
+A slicer whose output a developer reads needs four properties that srcML and srcSlice already have. srcML parses a file
+as text and never compiles or runs it~\cite{collard2011lightweight}, so the approach accepts fragments, programs
+written for Qiskit releases that no longer install, and code from sources one would not execute, and it needs neither
+a simulator nor a quantum device. srcML keeps every character of the source, layout and comments included, with the
+position of each element, and converts its markup back to the exact text~\cite{collard2011lightweight}, so a slice can
+be shown on the developer's own lines. srcML marks up all its languages with one vocabulary~\cite{collard2013srcml}, and
+a markup for OpenQASM has been specified~\cite{behler2024supporting}, so a new front end needs only its quantum layer
+and the classical and quantum parts of a program can share one representation. Last, srcSlice slices from per-variable
+profiles that it computes on demand rather than from a dependence graph, which let it process the Linux kernel in about
+20 minutes with accuracy comparable to CodeSurfer~\cite{alomari2014srcslice}. Behler et al.\ proposed adapting srcML's
+slicer to find the lines that affect a qubit~\cite{behler2025static}, and the approach carries out that proposal for
+Qiskit.
+
+\subsection{What srcML and srcSlice see in a Qiskit program}
+Qiskit is ordinary Python, so unlike OpenQASM it needs no new markup, but its quantum meaning lies in library calls that
+no markup captures. In stage~1 of Fig.~\ref{fig:b-tool}, \texttt{qc.cx(q[src], q[a])} is a \texttt{call} with two
+argument expressions. srcSlice sees the program as variables. Its profile of \texttt{qc} uses every gate line, because
+every gate is a call on the one circuit object, and its profile of the register \texttt{q} records that it reaches both
+arguments of \texttt{cx}. srcSlice therefore knows which variables reach which argument of which call, but not
+which qubits a gate acts on, so its slice of \texttt{qc} is the whole program and no qubit has a slice at all.
+Table~\ref{tab:b-flaws} lists what srcSlice lacks for quantum programs and which part of the approach supplies it.
+
+\begin{table}[t]
+  \centering
+  \caption{What srcSlice lacks for quantum programs, and what supplies it}
+  \label{tab:b-flaws}
+  \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.47\columnwidth} >{\raggedright\arraybackslash}p{0.49\columnwidth}@{}}
+    \toprule
+    \textbf{srcSlice} & \textbf{Supplied by} \\
+    \midrule
+    no Python & patch for keyword arguments, method receivers, loop, \texttt{with}, tuple and comprehension targets,
+    nested scopes, f-strings \\ \sep
+    call arguments in returns and conditions unlinked, nested arguments misnumbered & patch, for every language \\ \sep
+    no use inside a subscript, \texttt{q[a]}, in Python and C & patch \\ \sep
+    a module variable read inside a function is missed & patch \\ \sep
+    the circuit is one variable, used on every gate line & E1 roles of arguments, E2 qubits \\ \sep
+    flow-insensitive, no loop iterations & E2 trace, one operation per iteration \\ \sep
+    no measured bits, conditions or quantum dependence & E3 slices \\ \sep
+    a returned value is not linked to its call & the trace's own lines, shown beside \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{E1, quantum roles of calls}
 Qiskit applies a gate through a method of the circuit, as in \texttt{qc.cx(a, b)} or \texttt{qc.ry(theta, q)}. E1
-decides, for every such call, which arguments are qubits, which are classical bits and which are angles. It reads this
-from a role table derived from the signatures of Qiskit's \texttt{QuantumCircuit} methods rather than from a
-hand-written list, so the table follows the library. It holds the \numToolGateQiskit{} methods of
-Qiskit~\numQiskitVersion{} that take qubits and add an operation, \numToolGateLegacy{} methods that Qiskit~1.0 removed
-but older programs still call, and \numToolGateSpecial{} methods whose arguments the signatures do not name uniformly,
-\numToolGateTable{} in all. Table~\ref{tab:b-roles} lists them by kind, with the calls outside the table and how they are
-read. A circuit composed into another is mapped onto the qubits it is given, and a gate the table does not know, such as
-a circuit from Qiskit's library, becomes one operation on all its qubits, which can only enlarge a slice. A method the
-approach does not model is reported to the developer, never skipped silently.
+decides, for every such call, which arguments are qubits, which are classical bits and which are angles, and which
+leading qubits are controls. It reads this from a role table derived from the signatures of Qiskit's
+\texttt{QuantumCircuit} methods rather than from a hand-written list, so the table follows the library. It holds the
+\numToolGateQiskit{} methods of Qiskit~\numQiskitVersion{} that take qubits and add an operation, \numToolGateLegacy{}
+methods that Qiskit~1.0 removed but older programs still call, and \numToolGateSpecial{} methods whose arguments the
+signatures do not name uniformly, \numToolGateTable{} in all. With the table, a srcML \texttt{call} becomes a gate on
+qubit operands, as letters c and d mark in stage~1 of Fig.~\ref{fig:b-tool}, the part the quantum argument lists of the
+OpenQASM markup play in a language whose syntax states them. Table~\ref{tab:b-roles} lists the methods by kind, with the
+calls outside the table and how they are read. A circuit composed into another is mapped onto the qubits it is given,
+and a gate the table does not know, such as a circuit from Qiskit's library, becomes one operation on all its qubits,
+which can only enlarge a slice. A method the approach does not model is reported to the developer, never skipped
+silently.
 
 \begin{table}[t]
   \centering
@@ -52,22 +122,30 @@ approach does not model is reported to the developer, never skipped silently.
 
 \subsection{E2, the static trace}
 Qiskit computes qubit indices, register sizes and angles in Python, so E2 interprets the srcML tree of the program over
-the values it can know and records the operations the program would append, as a trace. Each operation carries its
-source line and the iteration of every loop around it. The interpretation unrolls loops of the host program, inlines
-its functions and follows its branches. Where a value cannot be known without running the program, it
-over-approximates. An index it cannot evaluate acts on every qubit it may denote, both branches of a condition it cannot
-decide are followed, and a loop of unknown length is repeated as Section~\ref{sec:b-loops} describes, up to
-\numToolMaxCopies{} copies. Each over-approximation adds operations or qubits, so it can only enlarge a slice, and each is
-reported to the developer.
+the values it can know and records the operations the program would append, as a trace, much as the execution-order
+analysis of Behler et al.\ does for OpenQASM~3~\cite{behler2025static}. Each operation carries its source line, from
+the position srcML records (letter g in Fig.~\ref{fig:b-tool}), and the iteration of every loop around it. The
+interpretation unrolls loops of the host program of up to 10{,}000 iterations, inlines its functions, follows its
+branches, and reads \texttt{if\_test} and \texttt{c\_if}, Qiskit's two ways of conditioning gates on measured bits
+(letters e and f), as stage~2 of Fig.~\ref{fig:b-tool} shows. Where a value cannot be known without running the program,
+it over-approximates. An index it cannot evaluate acts on every qubit it may denote, both branches of a condition it
+cannot decide are followed, and a loop of unknown length is repeated as Section~\ref{sec:b-loops} describes, up to
+\numToolMaxCopies{} copies. Each over-approximation adds operations or qubits, so it can only enlarge a slice, and each
+is reported to the developer, as is a circuit passed to code the interpretation does not model.
 
 \subsection{E3, the slices}
-To srcSlice, \texttt{qc.cx(a, b)} defines no variable. E3 reads each operation of the trace by its qubits and bits
-instead. A gate writes every qubit it acts on, its controls included, a measurement writes its bit, and a conditioned
-operation reads the bits it tests. A qubit's slice is then the backward light cone of its final state, the relation
-compilers use to order and place gates~\cite{murali2019triq, amy2020staq}, followed from each measurement to the
-operations its bit conditions. E3 computes it in one backward pass over the trace with a set of needed qubits and bits,
-in time linear in the trace, and the forward pass from an operation gives its forward slice. For large circuits, the
-pass carries the set of criterion qubits on each needed location and so slices every qubit at once.
+To srcSlice, \texttt{qc.cx(a, b)} defines no variable and uses \texttt{qc}, \texttt{a} and \texttt{b}. E3 reads each
+operation of the trace by its qubits and bits instead. A gate writes every qubit it acts on, its controls included, a
+measurement writes its bit, and a conditioned operation reads the bits it tests. A qubit's slice is then the backward
+light cone of its final state, the relation compilers use to order and place gates~\cite{murali2019triq, amy2020staq},
+followed from each measurement to the operations its bit conditions. E3 computes it in one backward pass over the
+trace with a set of needed qubits and bits, in time linear in the trace, skipping barriers and the measurements at the
+end of the circuit. An operation that may act on several qubits adds all of them to the needed set, and a bit leaves
+the set only when an operation certainly writes it, so the over-approximations of E2 stay sound. Like srcSlice, E3
+computes dependence while it slices and builds no graph. The pass returns the operations of the slice with their lines
+and iterations, as stage~3 of Fig.~\ref{fig:b-tool} shows, and the forward pass from an operation gives its forward
+slice. For large circuits, the pass carries the set of criterion qubits on each needed location and so slices every
+qubit at once.
 
 \subsection{Loops that run on the device}\label{sec:b-loops}
 Since Qiskit~1.0, a circuit can contain its own loops and branches, \texttt{while\_loop}, \texttt{for\_loop},
@@ -92,15 +170,20 @@ loop that ends with probability one is the limit of its bounded prefixes.
 
 \subsection{E4, the classical statements}
 The statements that compute a slice's qubits, angles, conditions and loop bounds come from srcSlice's profiles. E4
-starts from the slice's lines and the headers of the loops, conditions and \texttt{with} blocks around them, and follows
-the profiles of the variables they use back to their definitions, to the variables that flow into them, and from a
-function's parameters to the arguments of its calls. srcSlice runs with a patch that adds Python and two fixes that this
-work exposed, for uses inside a subscript, as in \texttt{q[a]}, which is how Qiskit names a qubit, and for module
-variables read inside a function.
+starts from the slice's lines and the headers of the loops, conditions and \texttt{with} blocks around them. Every
+profile used on a start line is taken, and the closure adds its definition lines, every profile whose dependent
+variables name it, and, for a parameter at position $k$ of a function $f$, every profile passed to $f$ at position $k$.
+srcSlice's profiles record forward facts, which variables a variable reaches and where it is passed, and E4 follows them
+backward from the start lines. srcSlice runs with a patch that adds Python, covering keyword arguments, the receiver
+offset of methods, loop, \texttt{with}, tuple and comprehension targets, nested scopes and f-strings, and with fixes that
+apply to every language srcSlice supports. Two of these fixes came from this work. srcSlice recorded no use of a
+variable inside a subscript, as in \texttt{q[a]}, which is how Qiskit names a qubit and how C indexes an array, and it
+missed a module variable read inside a function. The patch applies to the public srcSlice and comes with regression
+tests.
 
 \subsection{E5, qubit profiles}
 srcSlice records a slice profile for every variable. E5 gives each qubit a counterpart, which gathers what a developer
-first asks about it.
+first asks about it, and Table~\ref{tab:b-profile} sets the two side by side.
 
 \begin{definition}[Qubit profile]\label{def:b-profile}
 The profile of a qubit $q$ records its \emph{uses}, the lines of the operations on $q$; its \emph{names}, the source
@@ -110,12 +193,39 @@ lines they condition; and its \emph{backward} and \emph{forward} lines, those of
 first operation.
 \end{definition}
 
-In Fig.~\ref{fig:b-example}, the profile of \texttt{q[4]} has the uses 13 to 16, 19 and 21, the names \texttt{q[b]} and
-\texttt{q[src]}, the dependents \texttt{q[2]}, \texttt{q[3]} and \texttt{q[5]} to \texttt{q[8]}, and the bit \texttt{c[4]},
-which conditions line 21. The two names show at once that \texttt{q[4]} is first a target and then the carrier.
+\begin{table}[t]
+  \centering
+  \caption{The profile of a variable in srcSlice and of a qubit in \tool{}}
+  \label{tab:b-profile}
+  \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.4\columnwidth} >{\raggedright\arraybackslash}p{0.56\columnwidth}@{}}
+    \toprule
+    \textbf{srcSlice, variable $v$} & \textbf{\tool{}, qubit $q$} \\
+    \midrule
+    definition and use lines & uses, the lines of the operations on $q$, each of which reads and writes $q$ \\ \sep
+    dependent variables & dependents, the qubits whose final state the first operation on $q$ can affect \\ \sep
+    aliases & names, the expressions that denote $q$, such as \texttt{q[b]} or \texttt{q[src]} \\ \sep
+    functions $v$ is passed to & call sites of the functions in which $q$ is acted on \\ \sep
+    -- & bits measured from $q$, and the lines they condition \\ \sep
+    -- & loop iterations of each line, backward and forward lines \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+E5 computes the profile from one backward and one forward pass over the trace and from the srcML of the gate calls on
+the qubit. In Fig.~\ref{fig:b-example}, the profile of \texttt{q[4]} has the uses 13 to 16, 19 and 21, the names
+\texttt{q[b]} and \texttt{q[src]}, the dependents \texttt{q[2]}, \texttt{q[3]} and \texttt{q[5]} to \texttt{q[8]}, and the
+bit \texttt{c[4]}, which conditions line 21. The two names show at once that \texttt{q[4]} is first a target and then the
+carrier.
 
 \subsection{Two front ends}
-Qiskit programs are read through srcML as described. OpenQASM~2 circuits, the format that Qiskit exports and benchmark
-suites ship in, name their qubits explicitly and run in order, so E1 is given by the syntax and E2 reduces to reading
-the statements. srcML has no released parser for OpenQASM yet, so \tool{} reads OpenQASM~2 with a reader that maps every
-operation to its line and produces the same trace, and E3 to E5 apply unchanged.
+The approach reads Qiskit programs, the language of Bugs4Q and of LintQ's corpus~\cite{zhao2023bugs4q,
+paltenghi2024lintq}, and OpenQASM~2 circuits, the format that Qiskit exports and benchmark suites ship in. The two need
+different amounts of work. In Qiskit the qubits of a gate are computed in Python, so all of E1 and E2 are needed. In
+OpenQASM~2 the qubit arguments are explicit and the statements run in order, so E1 is given by the syntax and E2
+reduces to reading the statements. srcML~1.1 has no OpenQASM language, and the OpenQASM markup has no released parser
+yet, which is why QStatic runs on hand-marked-up files~\cite{behler2025static}. \tool{} therefore reads OpenQASM~2 with a
+reader that maps every operation to its line and produces the same trace, and E3 to E5 apply unchanged. Once srcML
+parses OpenQASM, the reader becomes a srcML front end, and OpenQASM~3, with its loops and subroutines, gets E2 as Qiskit
+does.

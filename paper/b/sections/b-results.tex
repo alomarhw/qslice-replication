@@ -3,11 +3,14 @@
 \subsection{RQ1: Faithfulness}
 The static trace matches what Qiskit builds. On all \numToolDevPrograms{} of our runnable programs, of up to
 \numToolDevMaxOps{} operations, the trace equals the circuit the program builds when it runs, and on all
-\numQasmCircuitsChecked{} benchmark circuits the OpenQASM reader's trace equals the circuit Qiskit loads. The slices match
-the light cone of the built circuit on \numToolDevSliceEqual{} of the programs. The remaining one nests one condition
-inside another, which the reference slicer on the circuit reads by the outer condition only, while \tool{} follows the
-bits of both, so there \tool{} is the more precise of the two. On all \numToolTTwoUnits{} Bugs4Q units whose operations map
-to lines, \tool{}'s line slices equal those recorded while the ported programs run.
+\numQasmCircuitsChecked{} benchmark circuits the OpenQASM reader's trace equals the circuit Qiskit loads. Read without
+being run, the Bugs4Q programs yield the circuit their ported bug prepares for \numToolTOneExact{} of \numToolTOneBugs{}
+bugs, and the remaining one rewrites its circuit as a DAG, which \tool{} reports. The slices match the light cone of the
+built circuit on \numToolDevSliceEqual{} of our programs. The remaining one nests one condition inside another, which
+the reference slicer on the circuit reads by the outer condition only. On \numToolNestedDraws{} random product inputs,
+exact simulation finds the reference's slice wrong \numToolNestedStudyWrong{} times and \tool{}'s never, so there
+\tool{} is the more precise of the two. On all \numToolTTwoUnits{} Bugs4Q units whose operations map to lines,
+\tool{}'s line slices equal those recorded while the ported programs run.
 
 Loops that run on the device are sliced soundly. In the \numCfPrograms{} programs with device loops, branches and
 switches, deleting every operation outside a qubit's slice from the source leaves the state of each of the
@@ -15,10 +18,16 @@ switches, deleting every operation outside a qubit's slice from the source leave
 predicts, while slices that read each loop body once are wrong on \numCfOldWrong{} of the \numCfPrograms{} programs.
 
 The classical statements are where the approach is least exact. srcSlice's lines contain those of the flow-sensitive
-reference for \numSsContainPct{} of \numSsQubits{} qubits in \numSsFiles{} files, and for \numSsDevBugsContainPct{} on our
-programs and Bugs4Q, but for only \numSsHeldContainPct{} on the \numSsHeldFiles{} held-out programs of LintQ's corpus. Most
-misses lie in functions that build a value and return it, which srcSlice's forward slices do not link to the call, so
-\tool{} shows both sets of classical lines.
+reference for \numSsContainPct{} of \numSsQubits{} qubits in \numSsFiles{} files, for \numSsDevBugsContainPct{} on our
+programs and Bugs4Q, and for \numSsBugsContain{} of \numSsBugsQubits{} qubits on Bugs4Q alone, with recall \numSsRecall{}
+and precision \numSsPrecision{} against the reference, in \numSsMedianMs{}~ms per file in the median. Before the
+subscript and module-variable fixes of E4, containment was \numSsBeforeContainPct{} and \numSsBeforeDevBugsContainPct{},
+below the threshold of 95\%, and the fixes were made after that result. On the \numSsHeldQubits{} qubits of the
+\numSsHeldFiles{} held-out programs, containment is \numSsHeldContainPct{}, close to the \numSsLintqContainPct{} of the
+sample of LintQ's corpus that exposed the gaps, so the fixes did not fit those files, but code from GitHub stays below
+the threshold. Most misses lie in functions that build a value and return it, and in containers filled by method calls,
+which srcSlice's forward slices do not link to the use. The extra lines are those any flow-insensitive slicer adds, such
+as the definition of an index in another loop, so \tool{} shows both sets of classical lines.
 
 \emph{Answer to RQ1.} Without running a program, \tool{} reconstructs the circuit it builds and slices it as the light
 cone of the built circuit does, device loops included. Its classical statements are complete for most qubits but miss
@@ -29,12 +38,15 @@ Of the \numScaleSOneFiles{} programs of LintQ's corpus, \tool{} traces a circuit
 \numCovNoCircuit{} that yield none, \numCovNoConstruction{} never construct a circuit, such as helpers and scripts that
 read results, \numCovFromFile{} load their circuits from a file or a library, and \numCovOther{} build them in code the
 interpretation does not follow. It traces \numSubjBugsTraced{} of the \numSubjBugsCount{} Bugs4Q programs and
-\numSubjTextTraced{} of the \numSubjTextCount{} textbook programs. On current Qiskit, it traces \numQheTracedOfBuildsPct{}
+\numSubjTextTraced{} of the \numSubjTextCount{} textbook programs, \numToolBugsResolved{} of the Bugs4Q
+ones without any over-approximation. On current Qiskit, it traces \numQheTracedOfBuildsPct{}
 of the \numQheBuilds{} Qiskit HumanEval programs that construct a circuit. Where tracing stops, the cause is mostly a
 method outside the role table. \numUnmodMethodProgs{} programs of LintQ's corpus call one, most often a method that runs
 or simulates the circuit, such as \texttt{run}, or builds it from text, and otherwise operations such as
 \texttt{reverse\_bits}, or \texttt{prepare\_state} in \numUnmodQhePrepare{} Qiskit HumanEval programs. Adding such methods
 is the main way to widen coverage.
+
+No program of Bugs4Q or LintQ's corpus crashes \tool{}.
 
 \emph{Answer to RQ2.} The approach slices most programs that build a circuit in code, and its failures are reported
 with a cause, most often a method it does not yet model.
@@ -53,7 +65,8 @@ with a cause, most often a method it does not yet model.
 \tool{} slices the programs developers write in milliseconds and circuits of millions of operations in seconds, as
 Fig.~\ref{fig:b-scale} shows. On LintQ's corpus it slices the \numScaleSOneSliced{} programs that build a circuit, every
 qubit up to 64 of them, in \numScaleSOneMedianMs{}~ms per program in the median and within \numScaleSOneNinetyNine{}~s
-for 99\% of them, and \numScaleSOneTimeouts{} programs reach the limit of 120~s. srcML and srcSlice take most of the
+for 99\% of them, and \numScaleSOneTimeouts{} programs reach the limit of 120~s. A Bugs4Q program takes
+\numToolBugsMedianMs{}~ms in the median. srcML and srcSlice take most of the
 median, \numScaleSOneSrcmlMs{} and \numScaleSOneSrcsliceMs{}~ms, and the slices themselves \numScaleSOneSliceMs{}~ms. On
 the \numScaleQbRead{} QASMBench circuits in valid OpenQASM~2, of up to \numScaleQbMaxOps{} operations and
 \numScaleQbMaxQubits{} qubits, slicing every qubit in one pass takes at most \numScaleQbAllS{}~s, on the largest circuit,
@@ -97,17 +110,64 @@ operations, where its one pass over every qubit outpaces tools that slice one qu
 
 A slice narrows what a developer reads. A qubit's slice holds \numScaleReadMedianPct{} of a program's code lines in the
 median over LintQ's corpus, together with the loop iterations that put each line there.
+The profile shows two directions, and they differ. Over the \numProfBugsQubits{} qubits of Bugs4Q, the
+\numProfTextQubits{} of the textbook and the \numProfLintqQubits{} of \numProfLintqSample{} sampled files of LintQ's corpus,
+a qubit's slice and the forward slice of its first operation differ in length for \numProfBugsFwdNeBwd{},
+\numProfTextFwdNeBwd{} and \numProfLintqFwdNeBwd{} of the qubits, so what determines a qubit is seldom what it goes on to
+affect.
 
 Slices answer a different question from a bug detector's, where to look rather than what is wrong, and the comparison
 with LintQ asks what the qubit view adds to its warnings. Table~\ref{tab:b-lintq} shows that the profiles contain what
 LintQ's qubit analyses check. Of the \numLqQubitTp{} warnings LintQ's authors labelled true positives, \tool{} traces
 \numLqQubitTraced{}, and a predicate on the profiles holds at the warned line of all of them. The predicates also hold
 on \numLqFpFires{} of the \numLqFpTraced{} traced warnings the authors labelled false positives, so the profiles reproduce
-these analyses with their false alarms and are not a more precise detector. What they add is context. LintQ points to
+these analyses with their false alarms and are not a more precise detector. LintQ's other five analyses concern
+API use, such as a deprecated gate, and lie outside any slice. What they add is context. LintQ points to
 one line, and the slices of the qubits on that line give the \numLqReadMedian{} lines in the median that determine their
 state, out of \numLqCodeMedian{} code lines in the file. LintQ's bound of ten loop iterations also matters. In
 \numLqBeyondTenFiles{} of the programs \tool{} traces, operations are created after the tenth iteration of a loop,
 \numLqBeyondTenOpsPct{} of all their operations.
 
-\emph{Answer to RQ4.} A slice asks a developer to read about a quarter of a program, and beside a bug detector it shows
-the few lines that determine the qubits a warning names.
+\begin{table*}[t]
+  \centering
+  \caption{\tool{} beside the tool it builds on and the static analyzers of quantum source code. Times are as each
+  paper reports them, on its own corpus and machine.}
+  \label{tab:b-tools}
+  \footnotesize\setlength{\tabcolsep}{3.2pt}\renewcommand{\arraystretch}{1.1}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabular}{@{}l p{2.75cm} p{2.75cm} p{2.9cm} p{2.6cm} p{3.85cm}@{}}
+    \toprule
+    & \textbf{srcSlice}~\cite{alomari2014srcslice} & \textbf{QStatic}~\cite{behler2025static} & \textbf{LintQ}~\cite{paltenghi2024lintq} &
+    \textbf{QChecker}~\cite{zhao2023qchecker} & \textbf{\tool{}} \\
+    \midrule
+    Input & C, C++, C\#, Java & OpenQASM~3, hand-marked-up srcML & Qiskit & Qiskit & Qiskit, OpenQASM~2 \\ \sep
+    Representation & srcML & srcML & CodeQL database & Python AST & srcML, srcSlice, operation trace \\ \sep
+    Qubits & none & per-qubit order of operations & register and index & none & global index per operation,
+    over-approximated when unknown \\ \sep
+    Loops & all, flow-insensitive & unrolled, no \texttt{while} & unrolled if the bound is known and at most 10 & none &
+    unrolled if the bound is known, with iterations, device loops repeated \\ \sep
+    Dependence & def-use of variables & none & same-qubit order & none & backward light cone, followed through
+    measured bits \\ \sep
+    Slices & forward, of variables & none & none & none & backward and forward, of qubits, by line and
+    iteration \\ \sep
+    Output & variable profiles & patterns, refactorings & warnings, 10 analyses & warnings, 8 detectors &
+    slices, qubit profiles \\ \sep
+    Time per program & Linux kernel in 20 min & -- & 1.3~s & 48.2~ms & \numScaleSOneMedianMs{}~ms in the
+    median on LintQ's corpus \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+Table~\ref{tab:b-tools} sets \tool{} beside the analyzers that read quantum source code. LintQ orders two operations
+exactly when they share a qubit, the relation a slice follows, but uses the order for adjacent patterns, and QChecker
+matches calls in the syntax tree with no model of qubits or order. On the examples of their own papers, transcribed as
+programs, the slices show each bug. In LintQ's Fig.~1, the slice of $q_3$ is empty, which is the oversized circuit,
+and the slice of $q_0$ holds the \texttt{ry} applied after its measurement. In QChecker's Fig.~5, the slice of $q_2$
+holds the measurement of $q_1$ and the \texttt{cx} that follows it on $q_1$. QChecker's authors report that it cannot
+detect the Bugs4Q bugs that show only as wrong outputs~\cite{zhao2023qchecker}. Every Bugs4Q unit of RQ1 changes an
+output, and on \numLinesLcContained{} of the \numLinesUnits{} units whose faulty lines map to the source, the slice keeps
+the faulty line, although these programs are small enough that a slice holds most of their lines.
+
+\emph{Answer to RQ4.} A slice asks a developer to read about a quarter of a program, and its profile separates what
+determines a qubit from what the qubit affects. Beside a bug detector it shows the few lines that determine the qubits a
+warning names, and it keeps the faulty line of bugs that no pattern detects.

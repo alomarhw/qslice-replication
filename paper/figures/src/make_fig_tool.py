@@ -82,6 +82,9 @@ def fragments():
     return out
 
 
+QUBIT_INDEX_IS_D = False  # make_fig_b_tool.py: an index into a qubit argument stays a qubit argument (d)
+
+
 def marked_tokens(shown: str):
     """(token, mark) over a fragment; marks as in the module docstring."""
     toks = re.findall(r"<[^>]+>|[^<]+", shown)
@@ -130,7 +133,7 @@ def marked_tokens(shown: str):
                         m = "d" if top["arg"] == 0 else "e"
                     elif top["callee"] in GATES:
                         m = "d"
-                if in_index and m:
+                if in_index and m and not (QUBIT_INDEX_IS_D and m == "d"):
                     m = "e"
         out.append((t, m))
     return out
