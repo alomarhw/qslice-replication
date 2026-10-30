@@ -10,7 +10,7 @@ digraph G {
   cqc [width=1.8182, height=0.2588];
   cfor [width=1.4501, height=0.2588];
   subgraph cluster_layer0 {
-    graph [label="", margin=4.00, style=dashed];
+    graph [label="", margin=10.00, style=dashed];
     m0 [width=0.7561, height=0.2588, group=q0];
     m1 [width=0.7561, height=0.2588, group=q0];
     m2 [width=0.7561, height=0.2588, group=q1];
@@ -33,7 +33,7 @@ digraph G {
     lbl_cluster_layer0 -> m4 [style=invis, weight=20];
   }
   subgraph cluster_layer1 {
-    graph [label="", margin=4.00, style=dashed];
+    graph [label="", margin=10.00, style=dashed];
     m8 [width=0.7561, height=0.2588, group=q0];
     m9 [width=0.7561, height=0.2588, group=q0];
     m10 [width=0.7561, height=0.2588, group=q1];

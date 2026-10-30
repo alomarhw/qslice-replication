@@ -179,7 +179,7 @@ $q_0$ is flipped when the outcome is~$1$.
   \includegraphics[width=\textwidth]{figures/fig_pdg_ansatz.pdf}
   \caption{The rules on a variational ansatz, criterion $q_0$. (a)~The program, described in Section~\ref{sec:rules}. (b)~One graph for the first four rules of
   Table~\ref{tab:rules}. Each node is an operation as it executes, with its source line and loop iteration, and a box
-  holds each iteration of the outer loop. Grey data edges, classical or quantum, belong to every rule. Green dashed
+  holds each iteration of the outer loop. An edge that ends on a box applies to every operation in that iteration. Grey data edges, classical or quantum, belong to every rule. Green dashed
   edges are classical control, from the loop of line~10 and from the measurement to the conditioned flip, and def-use
   lacks the second. Blue edges are quantum data dependence through a CNOT's control. The classical PDG and def-use lack
   them and have the black dotted edges instead, each of which skips a CNOT whose control they read as unchanged. A

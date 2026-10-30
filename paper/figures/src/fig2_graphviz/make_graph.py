@@ -59,7 +59,7 @@ CPDG_PORTS = {('m1', 'm8'): ('e', 'ne'), ('m9', 'm18'): ('e', 'ne'), ('m6', 'm10
 EXTRA = {('cfor', 'cluster_layer1'): ['tailport=e']}
 
 NODESEP, RANKSEP = 0.13, 0.09   # inches
-CMARGIN = 4                     # cluster margin, bp
+CMARGIN = 10                    # cluster margin, bp
 CPDG_ESEP = 1                   # neato obstacle margin for the cpdg edges, bp
 
 PARTS = {}   # spec edge id -> dot edge ids it was split into ('~' = reversed leg)
