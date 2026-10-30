@@ -143,6 +143,11 @@ once answers every question about a set of qubits. Every superset of $\Bw(W)$ is
 operations never meet the needed set. It is not always the smallest such set, since an operation can act on a needed qubit without
 changing it, and Section~\ref{sec:results} measures how close it comes to the dependences.
 
+The QDG also answers the question a developer asks before changing an operation. The forward slice $\Fw(o_k)$ of an
+operation is the set of operations reachable from $o_k$ in the QDG, those a change to $o_k$ can affect. Both slices
+follow the same edges, so $o_k \in \Bw(\{q\})$ exactly when $\Fw(o_k)$ contains the last operation on $q$, and by
+Proposition~\ref{prop:complete} the forward slice of an operation reaches every qubit of which it is a dependence.
+
 No standard two-qubit gate can safely write fewer qubits. For each of the \numGateSignalN{} standard two-qubit
 gates of Qiskit that an exploratory check of Section~\ref{sec:design} examines, a change of either qubit's input
 changes the other's reduced state for some product input, so dropping either qubit from the write set misses a

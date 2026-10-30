@@ -19,9 +19,7 @@ fault \numHFourDiffAbs{} points less often. A tool should label either as such a
 \paragraph*{What a slice cannot show}
 Every unit whose fault the QDG slice missed deletes an interaction, by removing a control, gate or preparation or by
 moving a gate to another qubit. No slice contains an operation the program lacks, so when a qubit's slice leaves out a qubit
-the developer expected, that absence is the clue, and listing the qubits each slice contains could make it visible. The forward slice of an
-operation, the operations reachable from it in the QDG, serves the same reader before a change, since by
-Proposition~\ref{prop:complete} it reaches every qubit of which the operation is a dependence.
+the developer expected, that absence is the clue, and listing the qubits each slice contains could make it visible. Before a change, the forward slice of Section~\ref{sec:core} shows the developer every qubit the change can reach.
 
 \paragraph*{What remains open}
 Slices contained most faults but improved neither fault ranking nor a language model's localization, which they

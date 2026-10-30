@@ -118,6 +118,9 @@ coupling component. On the pairs where it applies, commutation pruning falls bel
 because it is sound for fixed angles but not complete, and can drop an operation where a fault would change the
 criterion, like the identity gate of line~38 in Fig.~\ref{fig:bv}.
 
+Forward slices behave alike. For all \numFdFwdOps{} operations of corpus~A, the forward slice contains every measured
+forward dependence and agrees with the backward slices, at a precision of \numFdFwdPrecision{}.
+
 Language models miss dependences that the rule finds. Asked to list the operations that can affect a qubit, Claude
 Sonnet~5.5 and Haiku~5.5 recall \numTOneSonnetRecall{} and \numTOneHaikuRecall{} of the dependences and both Qwen
 models \numTOneQwenMidRecall{}, and Sonnet recalls only \numTOneSonnetKick{} of those through kickback.
