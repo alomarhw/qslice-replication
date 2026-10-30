@@ -145,8 +145,8 @@ def main():
     src = PROG.read_text().splitlines()
 
     o = [HEAD]
-    WL, WT, WR = 18.0, 7.6, 10.0
-    XT, XR = 0.0, 7.6 + 0.4
+    WL, WT, WR = 18.0, 9.9, 7.6
+    XT, XR = 0.0, 9.9 + 0.5
 
     def header(x, n, title, w):
         o.append(rf"\node[stnum] at ({x + 0.2},0.5) {{{n}}};")
@@ -216,24 +216,40 @@ def main():
     y = min(blocks[-1][1], ky - 2.55)
     o.append(rf"\begin{{scope}}[yshift={y - 1.15:.3f}cm]")
 
-    # ---- 2 trace of the first iteration
-    header(XT, 2, r"Trace of line 8 and iteration $h = 0$", WT)
-    rows = [r"\textcolor{mute}{line}&\textcolor{mute}{$h$}&\textcolor{mute}{operation}\\[0pt]"]
-    for k, op in ops:
-        it = dict(op.iters) if op.iters else {}
-        if (it and it.get(LOOP, 0) != 0) or (not it and op.line != 8):
-            continue
-        qs = r",\,".join(r"\textcolor{qubC}{$q_{%d}$}" % next(iter(op.qubits[j])) for j in range(len(op.qubits)))
-        txt = rf"\textcolor{{gateC}}{{\texttt{{{op.name}}}}} {qs}"
-        if op.clbits:
-            txt += r" $\to$ \textcolor{bitC}{$c_{%d}$}" % next(iter(op.clbits[0]))
-        if op.cond:
-            txt += r" \textcolor{condC}{if} \textcolor{bitC}{$c_{%d}$}" % next(iter(op.cond))
-        h = it.get(LOOP, r"\textcolor{mute}{--}")
-        rows.append(rf"{op.line}&{h}&{txt}\\[0pt]")
-    rows.append(r"&\textcolor{mute}{1--3}&\textcolor{mute}{the same on the next qubits}\\[0pt]")
-    o.append(rf"\node[anchor=north west, font=\fontsize{{9}}{{11}}\selectfont, text=ink, inner sep=0pt] at ({XT + 0.04},-0.05) "
-             rf"{{\setlength{{\tabcolsep}}{{5pt}}\begin{{tabular}}{{rll}}{''.join(rows)}\end{{tabular}}}};")
+    # ---- 2 the trace of line 8 and the first iteration, drawn as a circuit: one column per operation, headed by the
+    # source line that appends it, a dot on the control of a CNOT, and the bit a measurement writes or a gate tests.
+    header(XT, 2, r"Trace of line 8 and iteration $h = 0$, as a circuit", WT)
+    first = [op for _, op in ops if (dict(op.iters).get(LOOP) == 0 if op.iters else op.line == 8)]
+    qs = sorted({next(iter(qq)) for op in first for qq in op.qubits})
+    QX0, DX, WY0, DY = XT + 0.85, 1.0, -0.95, 0.78
+    wy = {q: WY0 - r * DY for r, q in enumerate(qs)}
+    o.append(rf"\node[lab, anchor=east] at ({QX0 - 0.25},{WY0 + 0.55:.3f}) {{line}};")
+    for q in qs:
+        o.append(rf"\node[anchor=east, inner sep=0pt, font=\fontsize{{9}}{{11}}\selectfont] at ({QX0 - 0.25},{wy[q]:.3f}) {{\textcolor{{qubC}}{{$q_{{{q}}}$}}}};")
+        o.append(rf"\draw[ink!55, line width=0.5pt] ({QX0 - 0.15},{wy[q]:.3f}) -- ({QX0 + DX * (len(first) - 0.4):.3f},{wy[q]:.3f});")
+    box = r"draw=gateC, fill=white, line width=0.6pt, minimum width=0.5cm, minimum height=0.42cm, inner sep=1pt, font=\ttfamily\fontsize{8.5}{10}\selectfont, text=gateC"
+    for c, op in enumerate(first):
+        x = QX0 + 0.35 + c * DX
+        o.append(rf"\node[font=\fontsize{{9}}{{11}}\selectfont, text=ink, anchor=base] at ({x:.3f},{WY0 + 0.55:.3f}) {{{op.line}}};")
+        qq = [next(iter(a)) for a in op.qubits]
+        if op.name == "cx":
+            ctl, tgt = qq
+            o.append(rf"\draw[gateC, line width=0.7pt] ({x:.3f},{wy[ctl]:.3f}) -- ({x:.3f},{wy[tgt]:.3f});")
+            o.append(rf"\fill[gateC] ({x:.3f},{wy[ctl]:.3f}) circle (0.075);")
+            o.append(rf"\draw[gateC, line width=0.7pt, fill=white] ({x:.3f},{wy[tgt]:.3f}) circle (0.15);"
+                     rf"\draw[gateC, line width=0.7pt] ({x - 0.15:.3f},{wy[tgt]:.3f}) -- ({x + 0.15:.3f},{wy[tgt]:.3f}) ({x:.3f},{wy[tgt] - 0.15:.3f}) -- ({x:.3f},{wy[tgt] + 0.15:.3f});")
+        elif op.name == "measure":
+            b = next(iter(op.clbits[0]))
+            o.append(rf"\node[{box}] at ({x:.3f},{wy[qq[0]]:.3f}) {{M}};")
+            o.append(rf"\node[anchor=north, inner sep=0pt, font=\fontsize{{8}}{{9}}\selectfont] at ({x:.3f},{wy[qq[0]] - 0.26:.3f}) {{$\to$\,\textcolor{{bitC}}{{$c_{{{b}}}$}}}};")
+        else:
+            o.append(rf"\node[{box}] at ({x:.3f},{wy[qq[0]]:.3f}) {{{op.name}}};")
+            if op.cond:
+                b = next(iter(op.cond))
+                o.append(rf"\node[anchor=south, inner sep=0pt, font=\fontsize{{8}}{{9}}\selectfont] at ({x:.3f},{wy[qq[0]] + 0.26:.3f}) {{\textcolor{{condC}}{{if}} \textcolor{{bitC}}{{$c_{{{b}}}$}}}};")
+    o.append(rf"\node[lab, anchor=north west, align=left, text width={WT - 0.2}cm] at ({XT + 0.05},{wy[qs[-1]] - 0.55:.3f}) "
+             rf"{{Iterations 1 to 3 repeat it on the next qubits. A CNOT, line 14, can change its control "
+             rf"\textcolor{{qubC}}{{$q_0$}} as well as its target.}};")
 
     # ---- 3 slice of q[4] by line and iteration
     header(XR, 3, r"Slice of \texttt{q[4]} by line and iteration", WR)

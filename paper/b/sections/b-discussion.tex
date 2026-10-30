@@ -1,13 +1,5 @@
 \section{Discussion and Threats to Validity}\label{sec:b-threats}
 
-\paragraph*{Limits of the approach}
-The approach slices what it can reconstruct. A program that loads its circuit from a file or builds it in code the
-interpretation does not follow yields no slice, and a method outside the role table stops the trace of its circuit,
-both reported with their cause. Over-approximation keeps slices sound but can make them larger than needed, for
-instance when an index depends on input the program reads at run time. The classical statements are the least exact
-part, since srcSlice does not link a value returned from a function to its call, and on held-out programs they miss
-statements for about one qubit in seven.
-
 \paragraph*{Construct validity}
 Faithfulness is measured against the circuit Qiskit builds and the light cone of that circuit, so it shows that the
 approach computes what the rule defines, not that the rule suits every question a developer asks. The light cone is

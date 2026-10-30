@@ -1,5 +1,19 @@
 \section{A Motivating Example}\label{sec:b-example}
 
+\paragraph*{Quantum programs in Qiskit}
+A Qiskit program does not compute with quantum states directly. It builds a circuit, a sequence of operations on
+numbered qubits, by calling methods of a \texttt{QuantumCircuit} object, and hands the circuit to a simulator or a
+quantum device to run. A gate such as \texttt{h} or \texttt{x} changes the state of the one qubit it acts on. A two-qubit
+gate such as the controlled NOT, \texttt{cx}, acts on a control and a target, and although it is usually described as
+flipping the target when the control is 1, it can change the state of both qubits, its control included. A measurement
+reads a qubit into a classical bit and disturbs the qubit as it does so. An \texttt{if\_test} block conditions the
+operations inside it on such bits while the circuit runs, so a measured value can steer operations that come later.
+What a qubit's final state depends on is therefore decided by the gates on it, the gates it shares with other qubits and
+the bits that condition them, and in the program all three are chosen by ordinary Python, through its loops, functions
+and computed indices.
+
+\paragraph*{The example}
+
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figures/fig_b_example.pdf}
