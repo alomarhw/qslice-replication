@@ -72,22 +72,32 @@ operations as nodes and the dependences of this rule as edges, and the QDG slice
 reachability from $W$.
 \end{definition}
 
-The QDG specifies the slice, and computing it needs no graph, only the one backward pass of Algorithm~\ref{alg:qdg},
+The QDG specifies the slice, and computing it needs no graph, only the backward pass of Algorithm~\ref{alg:qdg},
 in time linear in the circuit.
 
 \begin{algorithm}[t]
-  \caption{The QDG slice by one backward pass, where $\mathit{meas}(o)$ is the set of bits $o$ measures}\label{alg:qdg}
+  \caption{QDG slices by one pass, where $\mathit{meas}(o)$ is the set of bits $o$ measures}\label{alg:qdg}
   \begin{algorithmic}[1]
-    \Require circuit $P = o_0 \dots o_{L-1}$, criterion $W$
-    \Ensure the positions of the slice $\Bw(W)$
-    \State $N \gets W$, \quad $S \gets \emptyset$
-    \For{$k \gets L-1$ \textbf{down to} $0$}
-      \If{$w(o_k) \cap N \neq \emptyset$}
-        \State $S \gets S \cup \{k\}$
-        \State $N \gets (N \setminus \mathit{meas}(o_k)) \cup r(o_k)$
-      \EndIf
-    \EndFor
-    \State \Return $S$
+    \Function{Backward}{$P = o_0 \dots o_{L-1}$, $W$}
+      \State $N \gets W$, \quad $S \gets \emptyset$
+      \For{$k \gets L-1$ \textbf{down to} $0$}
+        \If{$w(o_k) \cap N \neq \emptyset$}
+          \State $S \gets S \cup \{k\}$, \quad $N \gets (N \setminus \mathit{meas}(o_k)) \cup r(o_k)$
+        \EndIf
+      \EndFor
+      \State \Return $S$ \Comment{$\Bw(W)$}
+    \EndFunction
+    \Function{Forward}{$P$, $k$}
+      \State $F \gets w(o_k)$, \quad $S \gets \{k\}$
+      \For{$j \gets k+1$ \textbf{to} $L-1$}
+        \If{$r(o_j) \cap F \neq \emptyset$}
+          \State $S \gets S \cup \{j\}$, \quad $F \gets F \cup w(o_j)$
+        \Else
+          \State $F \gets F \setminus \mathit{meas}(o_j)$
+        \EndIf
+      \EndFor
+      \State \Return $S$ \Comment{$\Fw(o_k)$}
+    \EndFunction
   \end{algorithmic}
 \end{algorithm}
  On qubits this is the backward light cone of $W$, which the classical bits extend from a measurement
@@ -143,8 +153,7 @@ once answers every question about a set of qubits. Every superset of $\Bw(W)$ is
 operations never meet the needed set. It is not always the smallest such set, since an operation can act on a needed qubit without
 changing it, and Section~\ref{sec:results} measures how close it comes to the dependences.
 
-The QDG also answers the question a developer asks before changing an operation. The forward slice $\Fw(o_k)$ of an
-operation is the set of operations reachable from $o_k$ in the QDG, those a change to $o_k$ can affect. Both slices
+The QDG also answers the question a developer asks before changing an operation. The forward slice $\Fw(o_k)$ of an operation is the set of operations reachable from $o_k$ in the QDG, those a change to $o_k$ can affect, and the forward pass of Algorithm~\ref{alg:qdg} computes it. Both slices
 follow the same edges, so $o_k \in \Bw(\{q\})$ exactly when $\Fw(o_k)$ contains the last operation on $q$, and by
 Proposition~\ref{prop:complete} the forward slice of an operation reaches every qubit of which it is a dependence.
 

@@ -50,3 +50,20 @@ def qdg_slice(qc: QuantumCircuit, target: int, bits: str = "graph") -> Set[int]:
                 need_c -= measured  # the most recent earlier measurement of a bit is the one a condition reads
                 need_c |= cond
     return keep
+
+
+def qdg_forward(qc: QuantumCircuit, k: int) -> Set[int]:
+    """Positions of the operations in the forward slice of operation k (Definition 4, bits as the graph treats them)."""
+    qidx = {q: i for i, q in enumerate(qc.qubits)}
+    cidx = {b: i for i, b in enumerate(qc.clbits)}
+    q0, m0, _ = _locations(qc.data[k], qidx, cidx)
+    reach_q, reach_c, keep = set(q0), set(m0), {k}
+    for pos in range(k + 1, len(qc.data)):
+        qubits, measured, cond = _locations(qc.data[pos], qidx, cidx)
+        if qubits & reach_q or cond & reach_c:
+            keep.add(pos)
+            reach_q |= qubits
+            reach_c |= measured
+        else:
+            reach_c -= measured  # an unreached measurement overwrites the bit
+    return keep

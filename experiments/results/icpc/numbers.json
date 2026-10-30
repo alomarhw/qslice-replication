@@ -4090,5 +4090,15 @@
   "value": 54.800000000000004,
   "tex": "55",
   "source": "results/icpc/one_pass/cost.csv"
+ },
+ "OnePassForwardOps": {
+  "value": 3156,
+  "tex": "3{,}156",
+  "source": "results/icpc/one_pass/forward.json"
+ },
+ "OnePassForwardEqual": {
+  "value": 3156,
+  "tex": "3{,}156",
+  "source": "results/icpc/one_pass/forward.json"
  }
 }

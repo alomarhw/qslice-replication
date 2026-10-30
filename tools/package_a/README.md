@@ -64,6 +64,7 @@ So the name `QDG` in `qdg/qdg.py` means the combined graph, while the paper's QD
 | Bugs4Q units and line slices | rq3_bugs4q.py, qiskit_source_map.py | rq3_bugs4q/, source_map/ |
 | Language models | llm_tasks.py | ../llm/ |
 | RQ4 cost | families_run.py, cost_run.py | families/, cost/ |
+| Algorithm 1, its checks and the QDG's cost from the circuit | one_pass_check.py, one_pass_forward_check.py (code in qdg/one_pass.py) | one_pass/ |
 | Hypotheses H1 to H5 | confirmatory.py, cluster_ci.py | confirmatory/, cluster_ci/ |
 | Every number | make_numbers.py | numbers.json, and paper/numbers.tex |
 

@@ -48,7 +48,7 @@ slicer before the runs.
 \subsection{Slicers}
 The study builds every rule as one graph over a circuit's operations, so that the rules differ only in their edges or
 its pruning step, and slices by backward reachability. The QDG slice is also computed by the one-pass algorithm of
-Section~\ref{sec:core}, which gives the same slice on all \numOnePassEqual{} pairs, an exploratory check. Qiskit's \texttt{LightCone}
+Section~\ref{sec:core}, which gives the same slice on all \numOnePassEqual{} pairs, and its forward pass gives the graph's forward slice for all \numOnePassForwardEqual{} operations of corpus~A, an exploratory check. Qiskit's \texttt{LightCone}
 pass applies to \numLcqApplicable{} of the \numNPairs{} pairs. It refuses an observable on circuits that contain
 measurements, \numLcqNaMeasurements{} pairs, and on \numLcqNaReorder{} its output cannot be matched back to the original.
 Exploratory variants make commutation pruning hold for all angles and give state-based pruning a joint criterion.

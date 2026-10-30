@@ -1417,3 +1417,8 @@ use, are removed.
   circuits in which several conditioned operations read one bit. Author decision: Definition 4 is reworded to (b), the
   treatment the study used, so an operation reads its qubits and its condition's bits and writes its qubits and its
   measured bits. No reported slice or number changes.
+- **Forward pass (2026-10-30, author request, recorded before the run).** `qslice/one_pass.py` gains the forward pass
+  of the same rule: from an operation, walk the circuit forward with the set of locations it writes; an operation that
+  reads one of them joins the slice and adds the locations it writes, and a measurement outside the slice removes the
+  bits it overwrites. Check: for every operation of corpus A, the forward pass against forward reachability in the graph
+  of `lc`. Results in `results/icpc/one_pass/forward.json`.

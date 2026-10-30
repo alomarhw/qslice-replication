@@ -1065,6 +1065,10 @@ def main() -> int:
         put("OnePassAllMaxMs", al * 1000, f"{al * 1000:.0f}", src + "cost.csv")
         gb = max(float(r["graph_build_s"]) for r in oc)
         put("QdgGraphBuildMaxMs", gb * 1000, f"{gb * 1000:.0f}", src + "cost.csv")
+        if (ICPC / "one_pass" / "forward.json").exists():
+            fw1 = json.load(open(ICPC / "one_pass" / "forward.json"))
+            put("OnePassForwardOps", fw1["ops"], cnt(fw1["ops"]), src + "forward.json")
+            put("OnePassForwardEqual", fw1["equal"], cnt(fw1["equal"]), src + "forward.json")
 
     # ---- write ----------------------------------------------------------------------------------------------
     TEX.parent.mkdir(parents=True, exist_ok=True)
