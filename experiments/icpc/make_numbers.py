@@ -922,8 +922,9 @@ def main() -> int:
     qr = rows(ICPC / "q_repeat" / "pairs.csv")
     assert all(r["all_equal_stored"] == "1" and r["all_sound"] == "1" for r in qr), "S-q not repeatable on corpus A"
     put("QRepeatPairs", len(qr), cnt(len(qr)), "results/icpc/q_repeat/pairs.csv")
-    tlim = int(re.search(r'add_argument\("--timeout", type=int, default=(\d+)\)', (HERE.parent / "tool" / "corpus" / "coverage.py").read_text()).group(1))
-    put("ToolFileLimit", tlim, str(tlim), "tool/corpus/coverage.py (--timeout default)")
+    if HAS_TOOL:
+        tlim = int(re.search(r'add_argument\("--timeout", type=int, default=(\d+)\)', (HERE.parent / "tool" / "corpus" / "coverage.py").read_text()).group(1))
+        put("ToolFileLimit", tlim, str(tlim), "tool/corpus/coverage.py (--timeout default)")
     put("QRepeatRuns", const("icpc/q_repeat.py", "REPEATS"), word(const("icpc/q_repeat.py", "REPEATS")), "icpc/q_repeat.py (REPEATS)")
 
     yf = json.load(open(ICPC / "yz_listings" / "fig1.json"))
