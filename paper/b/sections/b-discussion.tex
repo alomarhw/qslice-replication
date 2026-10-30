@@ -1,0 +1,27 @@
+\section{Discussion and Threats to Validity}\label{sec:b-threats}
+
+\paragraph*{Limits of the approach}
+The approach slices what it can reconstruct. A program that loads its circuit from a file or builds it in code the
+interpretation does not follow yields no slice, and a method outside the role table stops the trace of its circuit,
+both reported with their cause. Over-approximation keeps slices sound but can make them larger than needed, for
+instance when an index depends on input the program reads at run time. The classical statements are the least exact
+part, since srcSlice does not link a value returned from a function to its call, and on held-out programs they miss
+statements for about one qubit in seven.
+
+\paragraph*{Construct validity}
+Faithfulness is measured against the circuit Qiskit builds and the light cone of that circuit, so it shows that the
+approach computes what the rule defines, not that the rule suits every question a developer asks. The light cone is
+taken as the dependence relation, as compilers use it~\cite{murali2019triq, amy2020staq}. The share of code lines a
+slice holds measures how much a developer is asked to read, not whether reading it helps, which needs a study with
+developers. The comparison with LintQ uses LintQ's own labels of its warnings.
+
+\paragraph*{Internal validity}
+The runnable programs that check the trace and the programs with device loops are our own, written while the tool was
+built, so the held-out sample of LintQ's corpus is the better estimate of how the classical statements fare on new code.
+The reference slicer on circuits is separate code from the tool but follows the same rule. Every analysis is
+exploratory and was logged with its changes before its results.
+
+\paragraph*{External validity}
+Most real programs come from LintQ's corpus and Bugs4Q, which predate Qiskit~1.0, and Qiskit HumanEval covers current
+releases with short programs. Qiskit is the only library the source front end reads. Times were measured on one
+machine, and the large circuits come from QASMBench.

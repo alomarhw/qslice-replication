@@ -4046,6 +4046,16 @@
   "tex": "three",
   "source": "results/icpc/unmodelled/summary.json"
  },
+ "ExSliceOps": {
+  "value": 22,
+  "tex": "22",
+  "source": "results/icpc/b_example/teleport_chain_q4.json"
+ },
+ "ExAllOps": {
+  "value": 34,
+  "tex": "34",
+  "source": "results/icpc/b_example/teleport_chain_q4.json"
+ },
  "OnePassPairs": {
   "value": 784,
   "tex": "784",

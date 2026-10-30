@@ -1,0 +1,40 @@
+\section{Introduction}\label{sec:b-intro}
+
+Most quantum programs are not written as circuits. They are Python programs that build a circuit with a library such
+as Qiskit~\cite{javadi2024qiskit}, deciding in loops, functions and computed indices which gates act on which qubits.
+When a qubit ends in an unexpected state, the developer of such a program needs the statements that influence it, and
+in a quantum program these are harder to find by reading than in a classical one. A controlled gate can change the
+qubit that controls it, and a measured bit can steer operations several lines and loop iterations later. Quantum
+developers report that the methods they debug with, printing, drawing circuits and reading code, do not
+scale~\cite{zappin2026challenges}.
+
+Program slicing gives a developer exactly these statements for classical programs~\cite{weiser1984program}, and
+srcSlice computes them statically, from the source and without running the program, % static-definition
+for large systems on srcML's representation of their source~\cite{alomari2014srcslice, collard2013srcml}. For a
+quantum program, however, a classical slicer sees only a circuit object that every gate call uses, and the tools
+that do understand circuits, such as Qiskit's DAG and its \texttt{LightCone} pass~\cite{qiskit2025}, need the program to
+run first and lose the link from each gate to the line and iteration that added it. The analyses that read quantum
+source code look for known patterns~\cite{paltenghi2024lintq, zhao2023qchecker}, and a qubit slicer on srcML has been
+named as future work~\cite{behler2025static}.
+
+This paper presents an approach to static slicing of quantum programs. It extends srcML and srcSlice with a quantum
+layer that reads the quantum role of each call, reconstructs the circuit a program builds, over-approximating what
+cannot be known without running it, slices every qubit of that circuit along the gates and measured bits that can
+affect it, and shows each slice as source lines, the loop iterations that put them there and the classical statements
+that compute them. We implement the approach in a tool, \tool{}, for Qiskit programs and OpenQASM~2 circuits.
+
+The paper makes four contributions.
+The first is the approach, a semantic layer over srcML and srcSlice with five extensions, whose over-approximations can
+only enlarge a slice. The second is a way to slice loops that run on the device, with an argument that it is sound. The
+third is a qubit profile, the quantum counterpart of srcSlice's slice profile. The fourth is an evaluation on
+\numScaleSOneFiles{} GitHub programs, Bugs4Q, the Qiskit textbook, Qiskit HumanEval and QASMBench. Without running a
+program, \tool{} reconstructs the circuit Qiskit builds on all \numToolDevPrograms{} of our runnable programs, and its
+slices match the light cone of that circuit in \numToolDevSliceEqual{} of them. It traces \numScaleSOneSliced{} GitHub
+programs, takes \numScaleSOneMedianMs{}~ms per program in the median, slices every qubit of a circuit of
+\numScaleQbMaxOps{} operations in \numScaleQbAllS{}~s, and points a developer to \numScaleReadMedianPct{} of a program's
+code lines.
+
+Section~\ref{sec:b-example} works through an example, Section~\ref{sec:b-related} reviews related work,
+Section~\ref{sec:b-approach} presents the approach, Sections~\ref{sec:b-design} and~\ref{sec:b-results} the evaluation,
+and the last two sections discuss its limits and conclude. The tool, the data and the scripts are in an anonymous
+replication package.\TODO{anonymous package link for Paper B}

@@ -1046,6 +1046,12 @@ def main() -> int:
         qh = json.load(open(ICPC / "unmodelled" / "summary.json"))["qhe"]["method_not_modelled"]
         put("UnmodQhePrepare", dict(qh["top"]).get("prepare_state", 0), word(dict(qh["top"]).get("prepare_state", 0)), src)
 
+    # ---- Paper B's motivating example: tool/tests/big/teleport_chain.py, slice of q[4] (tool.cli --json) ------------
+    if HAS_TOOL and (ICPC / "b_example" / "teleport_chain_q4.json").exists():
+        ex4 = json.load(open(ICPC / "b_example" / "teleport_chain_q4.json"))
+        put("ExSliceOps", ex4["slices"][0]["operations"], cnt(ex4["slices"][0]["operations"]), "results/icpc/b_example/teleport_chain_q4.json")
+        put("ExAllOps", ex4["operations"], cnt(ex4["operations"]), "results/icpc/b_example/teleport_chain_q4.json")
+
     # ---- Deviation I-28: the one-pass QDG slice, checked against lc and timed from the circuit (exploratory) -------
     if (ICPC / "one_pass" / "summary.json").exists():
         op = json.load(open(ICPC / "one_pass" / "summary.json"))

@@ -53,22 +53,15 @@ program slicing, static analysis, quantum software engineering, Qiskit, srcML, p
 
 % Paper B, split from the ICPC 2027 rewrite on 2026-10-29. Material removed from Paper A is collected under inbox/
 % as raw material and logged in MOVED_FROM_A.md; this paper's prose is written fresh, with no sentence reused from A.
-\section{Introduction}\label{sec:b-intro}
-\TODO{to be written}
-\section{A Motivating Example}\label{sec:b-example}
-\TODO{a program of our own with computed qubit indices, loops and conditioned gates, e.g. \texttt{tool/tests/big/teleport\_chain.py}}
+\input{sections/b-intro}
+\input{sections/b-example}
 \input{sections/b-related}
 
-\section{The Approach}\label{sec:b-approach}
-\TODO{a semantic quantum layer over srcML (E1 to E5), over-approximation, circuit loops, one-pass slicing, OpenQASM front end}
-\section{Evaluation Design}\label{sec:b-design}
-\TODO{RQ1 faithfulness, RQ2 coverage, RQ3 scalability, RQ4 value for comprehension; all exploratory}
-\section{Results}\label{sec:b-results}
-\TODO{to be written}
-\section{Discussion and Threats to Validity}\label{sec:b-threats}
-\TODO{to be written}
-\section{Conclusion}\label{sec:b-conclusion}
-\TODO{to be written}
+\input{sections/b-approach}
+\input{sections/b-design}
+\input{sections/b-results}
+\input{sections/b-discussion}
+\input{sections/b-conclusion}
 
 \bibliographystyle{IEEEtran}
 \bibliography{../references}

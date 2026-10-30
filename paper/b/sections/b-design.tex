@@ -1,0 +1,84 @@
+\section{Evaluation Design}\label{sec:b-design}
+
+The evaluation asks four questions about the approach as a developer would use it.
+\begin{itemize}
+\item \textbf{RQ1, faithfulness.} Does the approach compute, without running the program, the circuit the program
+builds, the slices of that circuit, and the classical statements the slices need?
+\item \textbf{RQ2, coverage.} How many real programs can it slice, and why does it fail on the others?
+\item \textbf{RQ3, cost.} How fast is it, and how does it scale against tools that work on the circuit?
+\item \textbf{RQ4, what a slice shows.} How much of a program does a slice ask a developer to read, and what does it add
+to the warnings of a bug detector?
+\end{itemize}
+Every analysis was planned in a protocol and changed only through dated deviations, which the replication package
+contains, and all of them are exploratory.
+
+\subsection{Subjects}
+Table~\ref{tab:b-subjects} lists the programs and circuits. Bugs4Q~\cite{zhao2023bugs4q} and the corpus that LintQ's
+authors collected from GitHub~\cite{paltenghi2024lintq} are real programs, most written for Qiskit releases before~1.0.
+Qiskit HumanEval~\cite{vishwakarma2024qhe} holds tasks solved by Qiskit experts for current releases, and the Qiskit
+textbook~\cite{qiskittextbook} programs teach the standard algorithms. We wrote three sets ourselves, the
+\numToolDevPrograms{} runnable programs used to check the trace, programs in which a size constant grows the circuit
+while the source stays fixed, and programs with loops that run on the device. The OpenQASM front end is checked on
+\numQasmCircuitsChecked{} benchmark circuits from MQT Bench~\cite{quetschlich2023mqt}, QASMBench and
+VeriQBench~\cite{chen2022veriqbench}, and timed on the medium and large circuits of QASMBench~\cite{li2023qasmbench}.
+
+\begin{table*}[t]
+  \centering
+  \caption{Programs and circuits of the evaluation}
+  \label{tab:b-subjects}
+  \footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X r r r r r >{\raggedright\arraybackslash}p{2.6cm}@{}}
+    \toprule
+    \textbf{Subject} & \textbf{Count} & \textbf{Traced} & \textbf{Qubits} & \textbf{Operations} & \textbf{Code lines} &
+      \textbf{Used for} \\
+    \midrule
+    LintQ's corpus, GitHub programs & \numSubjLintqCount{} & \numSubjLintqTraced{} & \numSubjLintqMinQubits{}--\numSubjLintqMaxQubits{} &
+      \numSubjLintqMedianOps{} / \numSubjLintqMaxOps{} & \numSubjLintqMedianLines{} & RQ1 to RQ4 \\ \sep
+    Bugs4Q programs & \numSubjBugsCount{} & \numSubjBugsTraced{} & \numSubjBugsMinQubits{}--\numSubjBugsMaxQubits{} &
+      \numSubjBugsMedianOps{} / \numSubjBugsMaxOps{} & \numSubjBugsMedianLines{} & RQ1, RQ2 \\ \sep
+    Qiskit textbook & \numSubjTextCount{} & \numSubjTextTraced{} & \numSubjTextMinQubits{}--\numSubjTextMaxQubits{} &
+      \numSubjTextMedianOps{} / \numSubjTextMaxOps{} & \numSubjTextMedianLines{} & RQ2 \\ \sep
+    Qiskit HumanEval & \numSubjQheCount{} & \numSubjQheTraced{} & \numSubjQheMinQubits{}--\numSubjQheMaxQubits{} &
+      \numSubjQheMedianOps{} / \numSubjQheMaxOps{} & \numSubjQheMedianLines{} & RQ2 \\ \sep
+    Parametric programs, 5 sizes each, ours & \numSubjParamCount{} & \numSubjParamTraced{} of 20 &
+      \numSubjParamMinQubits{}--\numSubjParamMaxQubits{} & \numSubjParamMedianOps{} / \numSubjParamMaxOps{} &
+      \numSubjParamMedianLines{} & RQ3 \\ \sep
+    Programs with device loops, ours & \numSubjCfCount{} & \numSubjCfTraced{} & \numSubjCfMinQubits{}--\numSubjCfMaxQubits{} &
+      \numSubjCfMedianOps{} / \numSubjCfMaxOps{} & \numSubjCfMedianLines{} & RQ1 \\ \sep
+    QASMBench medium and large, OpenQASM~2 & \numSubjQbCount{} & \numSubjQbTraced{} & \numSubjQbMinQubits{}--\numSubjQbMaxQubits{} &
+      \numSubjQbMedianOps{} / \numSubjQbMaxOps{} & -- & RQ3 \\
+    \bottomrule
+  \end{tabularx}\\[3pt]
+  \begin{minipage}{\textwidth}\footnotesize
+  Traced counts the programs from which \tool{} reconstructs a circuit, the sizes of the parametric programs, and for
+  QASMBench the circuits in valid OpenQASM~2. Qubits and operations describe the traced circuits, as smallest to largest
+  and as median / largest, and \numToolMaxOps{} operations is the trace limit. Code lines exclude blank and comment
+  lines and are medians. Programs by others are read and never run.
+  \end{minipage}
+\end{table*}
+
+\subsection{References for faithfulness}
+For RQ1, our runnable programs are also run with Qiskit, and the trace must equal the circuit Qiskit builds, operation
+by operation. The slices must equal the backward light-cone slices of that built circuit, which the study computes with
+code separate from the tool, and on the Bugs4Q bugs that port to circuits, the line slices must equal those obtained by
+recording which line appends each operation while the port runs. The OpenQASM reader's trace must equal the circuit
+Qiskit loads from the same file. For the programs with device loops, an exact density-matrix simulation that branches
+over measurement outcomes deletes every operation outside a qubit's slice from the source and checks that the qubit's
+state is unchanged at \numCfInputs{} inputs, and a negative control reads each device loop's body once. The classical
+statements of E4 are compared with the values E2 tracks along the one path it follows, which give a second,
+flow-sensitive set of lines, on our programs and Bugs4Q, on a sample of LintQ's corpus, and on a held-out sample of
+\numSsHeldFiles{} files of that corpus that were not inspected while the srcSlice fixes were made.
+
+\subsection{Coverage, cost and what a slice shows}
+For RQ2, \tool{} traces every program, and the programs that yield no circuit are classified by a fixed rule on their
+text. For RQ3, \tool{} slices every qubit, up to 64, of each program of LintQ's corpus that builds a circuit, with a limit
+of 120~s per program. On the QASMBench circuits it slices every qubit in one pass, against three tools that slice one
+qubit of the built circuit, the ancestors in Qiskit's DAG, Qiskit's \texttt{LightCone} pass and a reimplementation of the
+QPDG~\cite{yu2025qpdg}, with a limit of 600~s per circuit. On the parametric programs, a QFT, a GHZ preparation, a QAOA
+ring and a repetition code, a size constant grows the trace while the source stays the same. All times are wall-clock on
+one machine, an Intel Xeon W-2140B at 3.2~GHz with 32~GB of memory, with Python~3.12 and Qiskit~2.3. For RQ4, we measure
+the share of a program's code lines that a qubit's slice holds, and compare \tool{} with LintQ on LintQ's public data,
+without running LintQ. For each warning of LintQ's five analyses that concern qubits and bits, \tool{} traces the
+program and evaluates a predicate on its qubit profiles, fixed before the comparison, at the warned line, on the warnings
+LintQ's authors labelled true and false positives and on all warnings of these analyses.

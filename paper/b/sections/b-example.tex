@@ -1,0 +1,55 @@
+\section{A Motivating Example}\label{sec:b-example}
+
+\begin{figure}[t]
+  \centering\scriptsize
+  \renewcommand{\arraystretch}{0.82}
+  \begin{tabular}{@{}r@{\hspace{5pt}}l@{\hspace{6pt}}l@{}}
+    & \textbf{Program} & \textbf{Slice of \texttt{q[4]}} \\[1pt]
+    \color{black!50}3  & \texttt{hops = 4} & C \\
+    \color{black!50}4  & \texttt{q = QuantumRegister(1 + 2 * hops, "q")} & C \\
+    \color{black!50}5  & \texttt{c = ClassicalRegister(2 * hops, "c")} & C \\
+    \color{black!50}6  & \texttt{out = ClassicalRegister(1, "out")} & C \\
+    \color{black!50}7  & \texttt{qc = QuantumCircuit(q, c, out)} & C \\
+    \color{black!50}8  & \texttt{qc.u(0.4, 0.2, 0.1, q[0])} & Q \\
+    \color{black!50}9  & \texttt{src = 0} & C \\
+    \color{black!50}10 & \texttt{for h in range(hops):} & C \\
+    \color{black!50}11 & \texttt{\ \ a, b = 1 + 2 * h, 2 + 2 * h} & C \\
+    \color{black!50}12 & \texttt{\ \ qc.h(q[a])} & Q, $h = 0, 1, 2$ \\
+    \color{black!50}13 & \texttt{\ \ qc.cx(q[a], q[b])} & Q, $h = 0, 1, 2$ \\
+    \color{black!50}14 & \texttt{\ \ qc.cx(q[src], q[a])} & Q, $h = 0, 1, 2$ \\
+    \color{black!50}15 & \texttt{\ \ qc.h(q[src])} & Q, $h = 0, 1, 2$ \\
+    \color{black!50}16 & \texttt{\ \ qc.measure(q[src], c[2 * h])} & Q, $h = 0, 1, 2$ \\
+    \color{black!50}17 & \texttt{\ \ qc.measure(q[a], c[2 * h + 1])} & Q, $h = 0, 1$ \\
+    \color{black!50}18 & \texttt{\ \ with qc.if\_test((c[2 * h + 1], 1)):} & C \\
+    \color{black!50}19 & \texttt{\ \ \ \ qc.x(q[b])} & Q, $h = 0, 1$ \\
+    \color{black!50}20 & \texttt{\ \ with qc.if\_test((c[2 * h], 1)):} & C \\
+    \color{black!50}21 & \texttt{\ \ \ \ qc.z(q[b])} & Q, $h = 0, 1$ \\
+    \color{black!50}22 & \texttt{\ \ src = b} & C \\
+    \color{black!50}23 & \texttt{qc.measure(q[src], out[0])} & \\
+  \end{tabular}
+  \caption{A chain of four teleportation hops, our own program (the import on lines 1 and 2 is omitted). The column
+  gives the slice of \texttt{q[4]} that \tool{} computes without running the program: Q marks a line whose
+  operations are in the slice, with the loop iterations that put it there, and C a statement that computes them.
+  srcSlice's profile of \texttt{qc} instead lists every gate line, 8, 12 to 17, 19, 21 and 23.}
+  \label{fig:b-example}
+\end{figure}
+
+Fig.~\ref{fig:b-example} shows a Qiskit program that teleports the state of \texttt{q[0]} along a chain of qubits. Each
+hop $h$ prepares an entangled pair \texttt{q[a]}, \texttt{q[b]} (lines 12 and 13), measures the current carrier
+\texttt{q[src]} and \texttt{q[a]} (lines 14 to 17), and repairs \texttt{q[b]} with gates conditioned on the two measured
+bits (lines 18 to 21). The carrier then moves to \texttt{q[b]}, so the variable \texttt{src} names a different qubit on
+every iteration, and the qubit indices on lines 11 and 22 are computed from the loop counter.
+
+Suppose the state after the second hop, carried by \texttt{q[4]}, looks wrong. A developer who reads the program has to
+work out which iterations act on \texttt{q[4]}, follow \texttt{src} through two reassignments, and remember that a
+measured bit steers the repair on lines 19 and 21. A classical slicer does not help. srcSlice reads \texttt{qc} as a
+single variable that every gate line uses, so its slice of \texttt{qc} is every gate line, and nothing in it
+distinguishes one hop from another or one qubit from another.
+
+The slice of \texttt{q[4]} that \tool{} computes keeps \numExSliceOps{} of the \numExAllOps{} operations. It
+keeps the first two hops in full and, of the third, the gates on lines 12 to 16, and it names these iterations. The
+third hop's preparation of \texttt{q[5]} and \texttt{q[6]} is kept although neither qubit is \texttt{q[4]}, because the
+CNOT of line 14 in that hop has \texttt{q[4]} as its control and can change it. The slice also keeps the statements
+that compute the indices and the carrier, lines 9 to 11 and 22, and leaves out line 23, which measures another qubit.
+None of this needs the program to run, so it works on programs that cannot be run, such as fragments or programs for
+an older Qiskit release.
