@@ -66,15 +66,14 @@ last writer of some $q \in W$ is reachable along these dependences. The rules di
 operation writes.
 
 \begin{definition}[Write-all rule]\label{def:writeall}
-Every operation reads and writes all of its locations, $r(o) = w(o) = \mathit{loc}(o)$. In particular a
-controlled gate writes its controls as well as its targets. The \emph{quantum dependence graph} (QDG) has the
+An operation reads its qubits and the bits its condition tests, and writes its qubits and the bits it measures. In
+particular a controlled gate writes its controls as well as its targets. The \emph{quantum dependence graph} (QDG) has the
 operations as nodes and the dependences of this rule as edges, and the QDG slice $\Bw(W)$ is backward
 reachability from $W$.
 \end{definition}
 
-The QDG specifies the slice, and computing it needs no graph, only one backward pass. Start at the end of the
-circuit with the needed set $N = W$, and whenever an operation acts on a location in $N$, keep it and add all its
-locations to $N$. On qubits this is the backward light cone of $W$, which the classical bits extend from a measurement
+The QDG specifies the slice, and computing it needs no graph, only one backward pass. Start at the end of the circuit with the needed set $N = W$. Whenever an operation writes a location in $N$, keep
+it, remove the bits it measures from $N$, and add every location it reads. On qubits this is the backward light cone of $W$, which the classical bits extend from a measurement
 to the operations its bit conditions. Reduced to a one-bit secret, the program of Fig.~\ref{fig:bv} becomes the circuit
 \[
 P_1 \;=\; \mathrm{H}(q_1)\;\; \mathrm{Z}(q_1)\;\; \mathrm{H}(q_0)\;\; \mathrm{CX}(q_0, q_1)\;\; \mathrm{H}(q_0)
@@ -92,8 +91,8 @@ For every circuit $P$ and criterion $W$, $\Bw(W)$ is a sound slice for $W$.
 \end{theorem}
 
 \begin{IEEEproof}[Proof sketch]
-Process $P$ backward with the needed set $N$, initially $W$. Operation $o_k$ joins the slice, and $N$ grows by
-$\mathit{loc}(o_k)$, exactly when $\mathit{loc}(o_k) \cap N \neq \emptyset$, which computes $\Bw(W)$. Every gate,
+Process $P$ backward with the needed set $N$, initially $W$. Operation $o_k$ joins the slice exactly when it writes a location in $N$, and $N$ then loses the bits $o_k$
+measures and gains the locations it reads, which computes $\Bw(W)$. Every gate,
 reset, measurement and conditioned gate is a channel, the most general quantum operation, that acts only on $\mathit{loc}(o)$. By locality of the partial
 trace, the no-signaling principle, an operation outside the slice cannot change the reduced state of the needed
 locations after it, and an operation in the slice maps the reduced state of the needed set before it to the one
@@ -107,8 +106,8 @@ $\mathit{Dep}_W(P) \subseteq \Bw(W)$.
 \end{proposition}
 
 \begin{IEEEproof}
-Let $o_k \notin \Bw(W)$, and let $P'$ insert a unitary $U$ after $o_k$. In the backward pass, no location of
-$o_k$ is needed after it, since otherwise $o_k$ would be kept. $U$ acts only on locations of $o_k$, so $U$ is not
+Let $o_k \notin \Bw(W)$, and let $P'$ insert a unitary $U$ after $o_k$. In the backward pass, no location that $o_k$ writes is needed after it, since otherwise $o_k$ would be
+kept. $U$ acts only on locations of $o_k$, so $U$ is not
 kept either and the needed set is unchanged. Hence $P'$ and $P$ have the same QDG slice, and by
 Theorem~\ref{thm:sound} the same reduced state of $W$. A negated outcome is handled alike, as an operation on the
 bit of a measurement outside the slice.

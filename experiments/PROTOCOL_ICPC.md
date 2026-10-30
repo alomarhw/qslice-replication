@@ -1413,3 +1413,7 @@ use, are removed.
   every criterion, in one process per circuit, against the graph build plus `lc`, and against the QPDG's build as
   already measured. No RQ, hypothesis, threshold or reported slice changes.
 - **Script.** `icpc/one_pass_check.py` -> `results/icpc/one_pass/`.
+- **Outcome (2026-10-30).** Treatment (b) equals `lc` on 784 of 784 pairs; treatment (a) differs on 14 pairs of two
+  circuits in which several conditioned operations read one bit. Author decision: Definition 4 is reworded to (b), the
+  treatment the study used, so an operation reads its qubits and its condition's bits and writes its qubits and its
+  measured bits. No reported slice or number changes.
