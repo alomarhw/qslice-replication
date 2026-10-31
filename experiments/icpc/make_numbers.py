@@ -631,6 +631,28 @@ def main() -> int:
         marked = [r for r in ll if not r["error"].startswith("larger than")]
         assert all(r["ok"] == "True" for r in marked), "every OpenQASM 2 file up to 20 MB is marked up losslessly"
         put("SmlLossless", uniq(marked), cnt(uniq(marked)), src)
+        # ---- OpenQASM 3 through srcML, the subset (results/icpc/qasm3_srcml, experiments/icpc/qasm3_check.py) ----
+        q3 = json.load(open(ICPC / "qasm3_srcml" / "summary.json"))
+        src = "results/icpc/qasm3_srcml/summary.json"
+        assert q3["grammar"]["invalid_accepted"] == 0 and q3["examples"]["crash"] == q3["veriqbench"]["crash"] == 0
+        assert q3["roundtrip_ours"]["equal"] == q3["roundtrip_ours"]["files"]
+        assert q3["roundtrip_corpus"]["equal"] == q3["roundtrip_corpus"]["files"]
+        put("QthreeRefCases", q3["grammar"]["reference_cases"], cnt(q3["grammar"]["reference_cases"]), src)
+        put("QthreeRefMatch", q3["grammar"]["reference_match"], cnt(q3["grammar"]["reference_match"]), src)
+        put("QthreeInvalidRejected", q3["grammar"]["invalid_rejected"], cnt(q3["grammar"]["invalid_rejected"]), src)
+        put("QthreeOurs", q3["roundtrip_ours"]["files"], cnt(q3["roundtrip_ours"]["files"]), src)
+        rtc = [r for r in rows(ICPC / "qasm3_srcml" / "roundtrip_corpus.csv") if r["equal"] == "True"]
+        import hashlib as _h
+        nd = len({_h.sha256((HERE.parent / "data" / "openqasm3_roundtrip" / "corpus" / r["file"]).read_bytes()).hexdigest()
+                  for r in rtc})
+        put("QthreeCorpus", nd, cnt(nd), "results/icpc/qasm3_srcml/roundtrip_corpus.csv")
+        put("QthreeExamples", q3["examples"]["files"], cnt(q3["examples"]["files"]), src)
+        put("QthreeExamplesTraced", q3["examples"]["trace"], cnt(q3["examples"]["trace"]), src)
+        put("QthreeExamplesReported", q3["examples"]["reported"], cnt(q3["examples"]["reported"]), src)
+        put("QthreeExamplesOutside", q3["examples"]["trace_with_outside_constructs"], cnt(q3["examples"]["trace_with_outside_constructs"]), src)
+        put("QthreeVeriqFiles", q3["veriqbench"]["files"], cnt(q3["veriqbench"]["files"]), src)
+        put("QthreeVeriqRejected", q3["veriqbench"]["rejected"], cnt(q3["veriqbench"]["rejected"]), src)
+
         from tool.tests import test_qasm_srcml as T  # the grammar, invalid-program and specification test cases
         put("SmlGrammarCases", len(T.VALID), cnt(len(T.VALID)), "tool/tests/test_qasm_srcml.py")
         put("SmlInvalidCases", len(T.INVALID), cnt(len(T.INVALID)), "tool/tests/test_qasm_srcml.py")

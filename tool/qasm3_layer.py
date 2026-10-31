@@ -507,8 +507,8 @@ class _Layer:
             return self.while_stmt(e, ln)
         if t == "switch":
             return self.switch_stmt(e, ln)
-        if t == "block":
-            return self.block(e)
+        if t in ("block", "box"):
+            return self.block(e if t == "block" else e.find(S + "block"))
         if t == "break":
             raise _Break()
         if t == "continue":

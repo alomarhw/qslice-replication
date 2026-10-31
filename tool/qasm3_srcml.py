@@ -4,7 +4,7 @@ The grammar is the official one (data/openqasm3_grammar/qasm3Parser.g4). The fro
 decide which operations act on which qubits under which conditions: declarations (qubit, bit, qreg/creg, classical
 scalars, const, input/output), assignments, gate definitions, gate calls with the modifiers ctrl, negctrl, inv and
 pow, gphase, measure in both forms, reset, barrier, if/else, for, while, break, continue, end, switch, and scopes. The
-other statements of the grammar (def, return, let, box, delay, nop, extern, cal, defcal, defcalgrammar, pragma,
+other statements of the grammar (def, return, let, delay, nop, extern, cal, defcal, defcalgrammar, pragma,
 annotations) are marked up losslessly as <unsupported> elements that the quantum layer reports instead of reading.
 Qiskit's exporter writes `for i in [a:b]` without the loop variable's type, which the grammar requires; it is accepted.
 
@@ -53,7 +53,7 @@ _TOKEN = re.compile((r"""
 
 SCALAR = {"bit", "int", "uint", "float", "angle", "bool", "duration", "stretch", "complex"}
 MODIFIERS = {"ctrl", "negctrl", "inv", "pow"}
-UNSUPPORTED = {"def", "return", "let", "box", "delay", "nop", "extern", "cal", "defcal", "defcalgrammar", "pragma",
+UNSUPPORTED = {"def", "return", "let", "delay", "nop", "extern", "cal", "defcal", "defcalgrammar", "pragma",
                "#pragma"}
 KEYWORDS = {"OPENQASM", "include", "qubit", "qreg", "creg", "const", "input", "output", "gate", "measure", "reset",
             "barrier", "if", "else", "for", "in", "while", "break", "continue", "end", "switch", "case", "default",
@@ -162,6 +162,11 @@ class _Parser:
             return self.decl()
         if x == "gate":
             return self.gate()
+        if x == "box":                                  # a timed scope: its statements are read in place
+            a = self.take()
+            kids = [self.designator()] if self.at("[") else []
+            kids.append(self.scope())
+            return Node("box", a.start, kids[-1].end, (), kids)
         if x == "if":
             return self.if_stmt()
         if x == "for":

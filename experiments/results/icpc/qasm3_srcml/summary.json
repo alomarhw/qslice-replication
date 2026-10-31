@@ -38,10 +38,10 @@
  },
  "examples": {
   "files": 21,
-  "trace": 21,
-  "trace_with_outside_constructs": 13,
+  "trace": 20,
+  "trace_with_outside_constructs": 12,
   "rejected": 0,
-  "reported": 0,
+  "reported": 1,
   "crash": 0
  },
  "veriqbench": {

@@ -24,7 +24,7 @@ RULE = {"whileStatement": "while", "forStatement": "for", "ifStatement": "if_stm
         "quantumDeclarationStatement": "decl_stmt", "gateStatement": "gate", "includeStatement": "include",
         "resetStatement": "reset", "barrierStatement": "barrier", "breakStatement": "break",
         "continueStatement": "continue", "endStatement": "end", "measureArrowAssignmentStatement": "measure",
-        "version": "version", "scope": "block"}
+        "version": "version", "scope": "block", "boxStatement": "box"}
 
 
 def cases():

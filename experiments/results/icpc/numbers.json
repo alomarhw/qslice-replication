@@ -2138,6 +2138,61 @@
   "tex": "1{,}228",
   "source": "results/icpc/qasm_srcml/lossless.csv"
  },
+ "QthreeRefCases": {
+  "value": 35,
+  "tex": "35",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
+ "QthreeRefMatch": {
+  "value": 35,
+  "tex": "35",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
+ "QthreeInvalidRejected": {
+  "value": 126,
+  "tex": "126",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
+ "QthreeOurs": {
+  "value": 24,
+  "tex": "24",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
+ "QthreeCorpus": {
+  "value": 1117,
+  "tex": "1{,}117",
+  "source": "results/icpc/qasm3_srcml/roundtrip_corpus.csv"
+ },
+ "QthreeExamples": {
+  "value": 21,
+  "tex": "21",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
+ "QthreeExamplesTraced": {
+  "value": 20,
+  "tex": "20",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
+ "QthreeExamplesReported": {
+  "value": 1,
+  "tex": "1",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
+ "QthreeExamplesOutside": {
+  "value": 12,
+  "tex": "12",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
+ "QthreeVeriqFiles": {
+  "value": 94,
+  "tex": "94",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
+ "QthreeVeriqRejected": {
+  "value": 74,
+  "tex": "74",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
  "SmlGrammarCases": {
   "value": 36,
   "tex": "36",

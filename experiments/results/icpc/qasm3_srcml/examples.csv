@@ -3,7 +3,7 @@ openqasm3_examples/adder.qasm,trace,32,,
 openqasm3_examples/alignment.qasm,trace,4,delay,
 openqasm3_examples/arrays.qasm,trace,0,def copy_3_bytes;def multi_dimensional_input,
 openqasm3_examples/cphase.qasm,trace,1,qubit operand 'q' is not a declared register (a construct outside the subset may have named it),
-openqasm3_examples/dd.qasm,trace,0,box,
+openqasm3_examples/dd.qasm,reported,,,gate 'u' is not defined
 openqasm3_examples/defcal.qasm,trace,0,defcal;defcalgrammar,
 openqasm3_examples/gateteleport.qasm,trace,10,def logical_meas;extern,
 openqasm3_examples/inverseqft1.qasm,trace,28,,
