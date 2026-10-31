@@ -121,23 +121,23 @@ silently.
   \label{tab:b-roles}
   \footnotesize\setlength{\tabcolsep}{2.6pt}\renewcommand{\arraystretch}{1.12}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
-  \newcommand{\blk}[1]{\multicolumn{4}{@{}l}{\textit{#1}}\\}
+  \newcommand{\blk}[1]{\rowcolor{black!8}\multicolumn{4}{@{}l}{\textit{#1}}\\}
   \begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.75cm} r >{\raggedright\arraybackslash}p{2.95cm} r@{}}
     \toprule
-    \textbf{Calls} & \textbf{Methods} & \textbf{Read as} & \textbf{Programs} \\
+    \rowcolor{black!8}\textbf{Calls} & \textbf{Methods} & \textbf{Read as} & \textbf{Programs} \\
     \midrule
     \blk{In the role table}
     Single-qubit gates, \texttt{h}, \texttt{rz}, \texttt{u} & \numKindSingleN{} & one operation on its qubit & \numCallsSingle{} \\ \sep
     Two-qubit gates, \texttt{cx}, \texttt{cz}, \texttt{swap} & \numKindTwoN{} & one operation on both qubits & \numCallsTwo{} \\ \sep
     Multi-qubit gates, \texttt{ccx}, \texttt{mcx} & \numKindMultiN{} & one operation on all its qubits & \numCallsMulti{} \\ \sep
     Removed in Qiskit~1.0, \texttt{cnot}, \texttt{u3} & \numKindLegacyN{} & as gates of the same arity & \numCallsLegacy{} \\ \sep
-    \texttt{measure}, \texttt{reset}, \texttt{barrier}, \ldots & \numKindSpecialN{} & a measurement writes its bit; a barrier is never sliced & \numCallsSpecial{} \\
+    \texttt{measure}, \texttt{reset}, \texttt{barrier}, \ldots & \numKindSpecialN{} & a measurement writes its bit; a barrier, delay or no-op is never sliced & \numCallsSpecial{} \\
     \midrule
     \blk{Outside the role table}
-    \texttt{append}, \texttt{compose}, \texttt{measure\_all} & \numKindComposeN{} & mapped onto the target's qubits & \numCallsCompose{} \\ \sep
+    \texttt{append}, \texttt{compose}, \texttt{measure\_all} & \numKindComposeN{} & their operations, mapped onto the qubits they name; \texttt{measure\_all} measures every qubit & \numCallsCompose{} \\ \sep
     \texttt{if\_test}, \texttt{while\_loop}, \texttt{switch}, \ldots & \numKindFlowN{} & conditioned, Section~\ref{sec:b-loops} & \numCallsFlow{} \\ \sep
     \texttt{inverse}, \texttt{power}, \ldots & \numKindTransformN{} & result unknown, reported & \numCallsTransform{} \\ \sep
-    \texttt{circuit\_to\_dag} & \numKindDagN{} & trace of that circuit ends & \numCallsDag{} \\ \sep
+    \texttt{circuit\_to\_dag} & \numKindDagN{} & operations rewritten on the DAG are not traced, reported & \numCallsDag{} \\ \sep
     any other, \texttt{reverse\_bits}, \texttt{run}, \ldots & -- & not modelled, reported & \numUnmodMethodProgs{} \\
     \bottomrule
   \end{tabular}\\[3pt]
@@ -293,8 +293,8 @@ OpenQASM program. Another srcML tool can then read the quantum roles of a progra
 
 \subsection{What the layer does not read}\label{sec:b-limits}
 The approach slices what it can reconstruct. A program that loads its circuit from a file or builds it in code the
-interpretation does not follow yields no slice, and a method outside the role table stops the trace of its circuit,
-both reported with their cause. Over-approximation keeps slices sound but can make them larger than needed, for
+interpretation does not follow yields no slice, and what a method the layer does not model does to its circuit is not
+traced, both reported with their cause. Over-approximation keeps slices sound but can make them larger than needed, for
 instance when an index depends on input the program reads at run time. The classical statements are the least exact
 part, since srcSlice does not link a value returned from a function to its call, which RQ1 measures. In OpenQASM~3,
 the bodies of subroutines and the targets of aliases are not read but over-approximated, and calibration code is left

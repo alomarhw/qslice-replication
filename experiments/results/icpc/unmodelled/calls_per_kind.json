@@ -86,6 +86,7 @@
    "delay",
    "initialize",
    "measure",
+   "noop",
    "reset",
    "unitary"
   ],

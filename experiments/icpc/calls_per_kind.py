@@ -32,9 +32,9 @@ def kinds():
             two.add(n)
         else:
             multi.add(n)
-    multi.discard("noop")
+    multi.discard("noop")  # a directive, never sliced: counted with barrier and delay (2026-11-01; no program calls it)
     legacy = set(G._legacy()) - set(fq) - set(G._special())
-    return {"single": one, "two": two, "multi": multi, "legacy": legacy, "special": set(G._special()),
+    return {"single": one, "two": two, "multi": multi, "legacy": legacy, "special": set(G._special()) | {"noop"},
             "composition": {"append", "compose", "measure_all", "measure_active"},
             "control_flow": {"if_test", "while_loop", "for_loop", "switch", "c_if"},
             "transform": {"inverse", "power", "repeat", "reverse_ops", "assign_parameters", "bind_parameters"},

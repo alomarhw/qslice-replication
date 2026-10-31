@@ -4072,8 +4072,8 @@
   "source": "results/icpc/unmodelled/calls_per_kind.json"
  },
  "KindSpecialN": {
-  "value": 6,
-  "tex": "6",
+  "value": 7,
+  "tex": "7",
   "source": "results/icpc/unmodelled/calls_per_kind.json"
  },
  "CallsCompose": {
