@@ -11,10 +11,11 @@ them.
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig_b_architecture.pdf}
-  \caption{The parts of the approach, each with what it produces for \texttt{q[4]} of the program of
+  \caption{The parts of the approach. Each box shows what it produces for \texttt{q[4]} of the program of
   Fig.~\ref{fig:b-example}. srcML marks up a Qiskit program, and our front ends mark up an OpenQASM~2 or~3 program in
-  Behler et al.'s markup. E1 to E3 turn the markup into the circuit and slice it, E4 adds the classical lines from srcSlice's
-  profiles, and E5 summarizes each qubit. The quantum markup writes the roles E1 reads back into srcML for other tools.}
+  Behler et al.'s markup. E1 reads the role of each call, E2 builds the circuit, E3 slices it, E4 adds the classical
+  lines from srcSlice's profiles, and E5 summarizes each qubit. The roles and operations are also written back into
+  srcML as the quantum markup, for other srcML tools.}
   \label{fig:b-architecture}
 \end{figure*}
 
