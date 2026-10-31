@@ -1,4 +1,4 @@
-"""Paper B, the RQ2 and RQ4 figures, in the style of the scale figure (make_result_figs.py).
+"""The RQ2 and RQ4 figures, in the style of the scale figure (make_fig_scale.py).
 
 fig_b_coverage: (a) why the programs of LintQ's corpus that yield no circuit yield none, by the rule of
 results/icpc/scale/coverage_reasons.json; (b) the methods that most often stop or blur a trace there, from

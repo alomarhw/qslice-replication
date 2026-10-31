@@ -9,7 +9,8 @@ MAX_BYTES = 20_000_000   # larger files are marked up, and timed, in the scale r
 sys.path.insert(0, str(ROOT))
 from tool.qasm_srcml import unit_parts, QasmSyntaxError  # noqa: E402
 
-files = sorted({os.path.realpath(f) for d in ("../qslice-icpc/data", "data") for f in glob.glob(str(ROOT / d) + "/**/*.qasm", recursive=True) if os.path.isfile(f)})
+files = sorted({os.path.realpath(f) for d in ("../qslice-icpc/data", "data") for f in glob.glob(str(ROOT / d) + "/**/*.qasm", recursive=True)
+                if os.path.isfile(f) and "bugs4q_ported" not in f})  # the Bugs4Q ports are B's RQ1 inputs, not corpus files
 out = ROOT / "experiments/results/icpc/qasm_srcml/lossless.csv"
 done = {r["file"] for r in csv.DictReader(open(out))} if out.exists() and "--resume" in sys.argv else set()
 with open(out, "a" if done else "w", newline="") as fh:

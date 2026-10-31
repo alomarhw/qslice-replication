@@ -76,7 +76,7 @@ def main():
             except Exception as exc:  # recorded, e.g. a construct the exporter cannot write
                 rows.append([str(p.relative_to(ROOT)), "", f"{type(exc).__name__}: {str(exc)[:120]}"])
     files = sorted({os.path.realpath(f) for d in ("../qslice-icpc/data", "data") for f in glob.glob(str(ROOT / d) + "/**/*.qasm", recursive=True)
-                    if os.path.isfile(f) and "openqasm3" not in f})
+                    if os.path.isfile(f) and "openqasm3" not in f and "bugs4q_ported" not in f})
     for f in files:
         t = open(f, errors="replace").read()
         if len(t) > MAX_BYTES or re.search(r"OPENQASM\s+3", t) or re.search(r'include\s+"stdgates', t):

@@ -50,3 +50,20 @@ logged here with its cause, script, commit, and the old and new value of every n
   ScaleQbLayerS 171, ScaleQbReadMin 12, ScaleQbOpsPerS 8,300); ScaleQpdgSqS 0.12 -> 1.11 s (reading through srcML);
   ScaleQpdgOver 32 -> 29; ScaleLcSqS 1.1 -> 1.2 and ScaleOneRatio 1.2 -> 1.3 (timing noise). ScaleQbAllS stays 10 s.
   Paper A uses none of these numbers.
+
+## 2026-10-31 rerun of the S2 LightCone and QPDG baselines with the package's reference code
+- **Cause.** The baselines now run on `experiments/icpc/b_reference.py`, the code the replication package ships
+  (`prepare` and `lightcone_pass` for Qiskit's LightCone, `QPDG` for Yu and Zhao's graph). It builds the same graph
+  with the same edges, and it gives the same slices as the code that produced the earlier rows (checked on every
+  qubit of 111 circuits, and here on every circuit both runs completed), but it finds the instructions on each qubit
+  from a per-qubit index instead of scanning every instruction for each pair of qubits, so the QPDG is built faster.
+- **Script.** `experiments/icpc/scale_run.py s2 --tools qiskit-lightcone,qpdg --workers 4 --base scale__rerun-20261031
+  --out scale__rerun-20261031b`, 600 s limit as before; srcSlice-Q's and Qiskit DAG's rows are copied from
+  `scale__rerun-20261031`. Short LaTeX builds ran on the machine during the run.
+- **Where.** `results/icpc/scale__rerun-20261031b/s2_qasmbench.csv`; the numbers and the scale figure read it.
+- **Slices.** On all 143 circuits both LightCone runs completed and all 132 both QPDG runs completed, the slice sizes
+  are equal.
+- **Numbers that changed.** ScaleQpdgMaxOps 8,355 -> 57,317 operations; ScaleQpdgMaxS 531 -> 111 s; ScaleQpdgSqS
+  1.11 -> 8.19 s (srcSlice-Q on that larger circuit); ScaleQpdgOver 29 -> 22 (seven circuits that hit the limit now
+  finish); ScaleLcMaxS 294 -> 304 s (timing noise); ScaleLcOver 3 -> 1 (three circuits that hit the limit now stop
+  early with the pass's own rejection, recorded as not applicable, and one goes the other way).

@@ -22,7 +22,8 @@ def _alarm(*_):
 
 
 signal.signal(signal.SIGALRM, _alarm)
-files = sorted({os.path.realpath(f) for d in ("../qslice-icpc/data", "data") for f in glob.glob(str(ROOT / d) + "/**/*.qasm", recursive=True) if os.path.isfile(f)})
+files = sorted({os.path.realpath(f) for d in ("../qslice-icpc/data", "data") for f in glob.glob(str(ROOT / d) + "/**/*.qasm", recursive=True)
+                if os.path.isfile(f) and "bugs4q_ported" not in f})  # the Bugs4Q ports are B's RQ1 inputs, not corpus files
 out = ROOT / "experiments/results/icpc/qasm_srcml/equiv.csv"
 with open(out, "w", newline="") as fh:
     w = csv.writer(fh); w.writerow(["file", "bytes", "ops", "layer_vs_qiskit", "layer_vs_reader", "note"])

@@ -46,19 +46,20 @@ def main():
     root = Path(ap.parse_args().data_root)
     out = {}
 
-    # ---- circuits
-    circ = {r["path"]: (r["corpus"], int(r["n_qubits"]), int(r["n_ops"])) for r in rows(RES / "rq1" / "pairs.csv")}
-    out["corpus_a"] = summary(len(circ), [q for _, q, _ in circ.values()], [o for _, _, o in circ.values()])
-    out["corpus_a"]["by_corpus"] = {c: sum(1 for x, _, _ in circ.values() if x == c) for c in ("MQT Bench", "QASMBench", "VeriQBench")}
-    fam = {(r["family"], r["circuit"]): (int(r["n_qubits"]), int(r["n_ops"])) for r in rows(RES / "families" / "rows.csv")}
-    out["generated"] = summary(len(fam), [q for q, _ in fam.values()], [o for _, o in fam.values()])
-    # the width sweeps of RQ4; its depth sweep is the F-depth family of the generated circuits, counted there
-    sw = [r for r in rows(RES / "cost" / "circuits.csv") if r["kind"].startswith("width")]
-    out["sweeps"] = summary(len(sw), [int(r["n_qubits"]) for r in sw], [int(r["n_ops"]) for r in sw])
-    out["sweeps"]["by_kind"] = {k: sum(r["kind"] == k for r in sw) for k in sorted({r["kind"] for r in sw})}
-    cl = rows(RES / "corpus_l" / "circuits.csv")
-    out["corpus_l"] = summary(len(cl), [int(r["n_qubits"]) for r in cl], [int(r["n_ops"]) for r in cl])
-    out["corpus_l"]["by_corpus"] = {c: sum(r["corpus"] == c for r in cl) for c in ("MQT Bench", "QASMBench", "VeriQBench")}
+    # ---- circuits (only where the circuit-level results are present; the static slicer's package has none)
+    if (RES / "rq1" / "pairs.csv").exists():
+        circ = {r["path"]: (r["corpus"], int(r["n_qubits"]), int(r["n_ops"])) for r in rows(RES / "rq1" / "pairs.csv")}
+        out["corpus_a"] = summary(len(circ), [q for _, q, _ in circ.values()], [o for _, _, o in circ.values()])
+        out["corpus_a"]["by_corpus"] = {c: sum(1 for x, _, _ in circ.values() if x == c) for c in ("MQT Bench", "QASMBench", "VeriQBench")}
+        fam = {(r["family"], r["circuit"]): (int(r["n_qubits"]), int(r["n_ops"])) for r in rows(RES / "families" / "rows.csv")}
+        out["generated"] = summary(len(fam), [q for q, _ in fam.values()], [o for _, o in fam.values()])
+        # the width sweeps of RQ4; its depth sweep is the F-depth family of the generated circuits, counted there
+        sw = [r for r in rows(RES / "cost" / "circuits.csv") if r["kind"].startswith("width")]
+        out["sweeps"] = summary(len(sw), [int(r["n_qubits"]) for r in sw], [int(r["n_ops"]) for r in sw])
+        out["sweeps"]["by_kind"] = {k: sum(r["kind"] == k for r in sw) for k in sorted({r["kind"] for r in sw})}
+        cl = rows(RES / "corpus_l" / "circuits.csv")
+        out["corpus_l"] = summary(len(cl), [int(r["n_qubits"]) for r in cl], [int(r["n_ops"]) for r in cl])
+        out["corpus_l"]["by_corpus"] = {c: sum(r["corpus"] == c for r in cl) for c in ("MQT Bench", "QASMBench", "VeriQBench")}
     if HAS_TOOL:  # QASMBench as read by the slicer, and the programs
         s2 = [r for r in rows(RES / "scale" / "s2_qasmbench.csv") if r["tool"] == TOOL_NAME]
         ok = [r for r in s2 if not r["error"]]

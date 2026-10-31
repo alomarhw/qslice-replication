@@ -159,7 +159,7 @@ def scale():
     sc = RES / "icpc" / "scale"
     f = lambda r, ks: sum(float(r[k]) for k in ks if r.get(k))  # noqa: E731
     s1 = [r for r in rows(sc / "s1_lintq.csv") if not r["error"] and r.get("ops")]
-    s2 = rows(RES / "icpc" / "scale__rerun-20261031" / "s2_qasmbench.csv")   # through srcML (RERUNS.md, 2026-10-31)
+    s2 = rows(RES / "icpc" / "scale__rerun-20261031b" / "s2_qasmbench.csv")   # through srcML (RERUNS.md, 2026-10-31)
     ops = {r["path"]: int(r["ops"]) for r in s2 if r["tool"] == TOOL_NAME and not r["error"]}
     s3 = rows(sc / "s3_parametric.csv")
     series = [

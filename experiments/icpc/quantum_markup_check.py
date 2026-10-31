@@ -65,14 +65,24 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data-root", required=True)
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--resume", action="store_true", help="keep the rows of check.csv and run only the other files")
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     todo = list(files(Path(a.data_root)))
     keys = ["corpus", "file", "lossless", "operations", "reached", "error"]
     rows = []
-    with open(OUT / "check.csv", "w", newline="") as fh:
+    if a.resume and (OUT / "check.csv").exists():
+        for r in csv.DictReader(open(OUT / "check.csv")):
+            r["lossless"] = r["lossless"] == "True" if r["lossless"] else None
+            r["operations"] = int(r["operations"]) if r["operations"] else 0
+            r["reached"] = int(r["reached"]) if r["reached"] else 0
+            rows.append(r)
+        done = {r["file"] for r in rows}
+        todo = [(c, f) for c, f in todo if os.path.relpath(f, ROOT) not in done]
+    with open(OUT / "check.csv", "a" if rows else "w", newline="") as fh:
         w = csv.DictWriter(fh, keys)
-        w.writeheader()
+        if not rows:
+            w.writeheader()
         for k, r in enumerate(run_all(one, [(f, c) for c, f in todo], LIMIT, timeout, a.workers)):
             r["file"] = os.path.relpath(r["file"], ROOT)
             w.writerow(r)

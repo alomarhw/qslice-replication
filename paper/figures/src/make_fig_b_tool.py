@@ -1,8 +1,8 @@
-"""Paper B: the approach on the teleportation chain of Fig. 1, srcML, the trace it yields, and the slice of q[4].
+"""The approach on the teleportation chain of Fig. 1, srcML, the trace it yields, and the slice of q[4].
 
 (1) srcML's own text for line 14, the CNOT whose qubits come from src and a, and lines 18-19, the conditioned repair,
 from srcml --position, each under its Python line. The elements the extensions read are coloured by role, as
-make_fig_tool.py marks them: the gate name, the qubit arguments, the classical bits and the condition, the with of
+srcml_marks.py marks them: the gate name, the qubit arguments, the classical bits and the condition, the with of
 if_test, and the position that gives the source line. Tags are muted so that the names stand out.
 (2) The trace of the first iteration, one row per operation, with its line.
 (3) For every gate line of the loop, its operation in each iteration, filled where it is in the slice of q[4].
@@ -23,7 +23,7 @@ SRC = Path(__file__).resolve().parent
 ROOT = SRC.parents[2]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(SRC))
-import make_fig_tool as T  # noqa: E402  (shared parsing of srcML into marked rows)
+import srcml_marks as T  # noqa: E402  (shared parsing of srcML into marked rows)
 from tool.interp import trace_file  # noqa: E402
 from tool.slicer import wire_slice  # noqa: E402
 
@@ -69,7 +69,7 @@ _marked = T.marked_tokens
 
 
 def marked_tokens(shown: str):
-    """As make_fig_tool.py, and a register name whose index is a classical bit is part of that bit."""
+    """As srcml_marks.marked_tokens, and a register name whose index is a classical bit is part of that bit."""
     out = _marked(shown)
     for i, (t, m) in enumerate(out):
         if m is None and not t.startswith("<") and out[i + 1:i + 3] and [x for x, _ in out[i + 1:i + 3]] == ["</name>", "<index>"]:

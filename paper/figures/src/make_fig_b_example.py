@@ -1,4 +1,4 @@
-"""Paper B, Fig. 1: the teleportation chain with the slice of q[4] drawn on its lines.
+"""Fig. 1: the teleportation chain with the slice of q[4] drawn on its lines.
 
 Lines whose operations are in the slice are shaded blue, the classical statements that compute them grey. For each
 gate line of the loop, four dots give its operation in hops 0 to 3, filled where that operation is in the slice. The

@@ -35,7 +35,7 @@ def oq3_files():
     ex = sorted(glob.glob(str(ROOT / "data" / "openqasm3_examples" / "*.qasm")))
     vq = sorted({os.path.realpath(f) for f in glob.glob(str(ROOT / "../qslice-icpc/data") + "/**/*.qasm", recursive=True)
                  + glob.glob(str(ROOT / "data") + "/**/*.qasm", recursive=True)
-                 if os.path.isfile(f) and "openqasm3_" not in f
+                 if os.path.isfile(f) and "openqasm3_" not in f and "bugs4q_ported" not in f
                  and re.search(r"OPENQASM\s+3", open(f, errors="replace").read(300))})
     return ex, vq
 

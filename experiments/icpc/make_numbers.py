@@ -705,8 +705,8 @@ def main() -> int:
         put("ScaleReadMedianPct", st.median(share), pct(st.median(share), 0), src)
         put("ScaleReadQubits", len(share), cnt(len(share)), src)
         # S2 through srcML (rerun 2026-10-31, RERUNS.md): our rows timed again, the baselines' rows copied unchanged
-        src = "results/icpc/scale__rerun-20261031/s2_qasmbench.csv"
-        s2 = rows(ICPC / "scale__rerun-20261031" / "s2_qasmbench.csv")
+        src = "results/icpc/scale__rerun-20261031b/s2_qasmbench.csv"
+        s2 = rows(ICPC / "scale__rerun-20261031b" / "s2_qasmbench.csv")
         sq = {r["path"]: r for r in s2 if r["tool"] == TOOL_NAME and not r["error"]}
         sbad = [r for r in s2 if r["tool"] == TOOL_NAME and r["error"] == "QasmSemanticError"]
         put("ScaleQbRejected", len(sbad), cnt(len(sbad)), src)
@@ -773,8 +773,8 @@ def main() -> int:
         cr = json.load(open(ICPC / "scale" / "coverage_reasons.json"))
         for k, nm in (("no_circuit_files", "NoCircuit"), ("no-construction", "NoConstruction"), ("from-file-or-lib", "FromFile"), ("other", "Other")):
             put(f"Cov{nm}", cr[k], cnt(cr[k]), src)
-        src = "results/icpc/scale__rerun-20261031/s2_qasmbench.csv"
-        s2r = rows(ICPC / "scale__rerun-20261031" / "s2_qasmbench.csv")
+        src = "results/icpc/scale__rerun-20261031b/s2_qasmbench.csv"
+        s2r = rows(ICPC / "scale__rerun-20261031b" / "s2_qasmbench.csv")
         sqr = {r["path"]: r for r in s2r if r["tool"] == TOOL_NAME and not r["error"]}
         dgr = {r["path"]: r for r in s2r if r["tool"] == "qiskit-dag" and not r["error"]}
         one = lambda r, ks: sum(float(r[k]) for k in ks)  # noqa: E731
