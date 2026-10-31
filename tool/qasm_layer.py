@@ -91,8 +91,9 @@ def _signature(e) -> Tuple[str, int, int]:
 
 
 class _Layer:
-    def __init__(self, path: Path):
+    def __init__(self, path: Path, elements=None):
         self.path = path
+        self.elements = elements          # the statement elements, if given; else built from the file
         self.q: Dict[str, Tuple[int, int, int]] = {}    # register -> (offset, size, declaration line)
         self.c: Dict[str, Tuple[int, int, int]] = {}
         self.nq = self.nc = 0
@@ -233,7 +234,7 @@ class _Layer:
             yield name, qb, -1, cond, ln, frozenset(dl)
 
     def run(self) -> Iterator[Tuple]:
-        for e in statements(self.path):
+        for e in (self.elements if self.elements is not None else statements(self.path)):
             t = tag(e)
             if t in ("version", "comment", "empty_stmt"):
                 continue

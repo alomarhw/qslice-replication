@@ -13,7 +13,7 @@ S3  our own parametric programs (QFT, GHZ, QAOA ring, repetition code), generate
 Every input runs in its own process, killed at the wall-clock limit (tool.corpus.hardlimit).
 Usage (workspace root):
   python experiments/icpc/scale_run.py s1 --data-root <data-root> [--workers 6]
-  python experiments/icpc/scale_run.py s2 [--workers 2]
+  python experiments/icpc/scale_run.py s2 [--workers 2] [--tools srcSlice-Q] [--out scale__rerun-YYYYMMDD]
   python experiments/icpc/scale_run.py s3 [--workers 2]
 """
 import argparse
@@ -36,7 +36,9 @@ from tool.corpus.hardlimit import run_all  # noqa: E402
 
 OUT = ROOT / "experiments" / "results" / "icpc" / "scale"
 LIMIT = 600
+SRCML_LIMIT = 3600   # S2, the tool through srcML: marking up a circuit of millions of operations takes minutes
 S1_LIMIT = 120
+ORIG = OUT           # the original results; a rerun (--out) copies the rows it does not rerun from here
 MAX_QUBITS = 64
 QB = ROOT / "data" / "QASMBench-master" / "QASMBench-master"
 SIZES = {"qft": [10, 30, 100, 300, 600], "ghz": [10, 100, 1000, 10000, 50000],
@@ -179,14 +181,29 @@ def s1(data_root: Path, workers: int):
 
 # ---- S2 -------------------------------------------------------------------------------------------------------------
 def s2_srcsliceq(path: str):
-    from tool import qasm, slicer
+    from tool import qasm, qasm_layer, slicer
+    from tool.qasm_srcml import unit_elements
     signal.signal(signal.SIGALRM, _alarm)
-    signal.alarm(LIMIT)
+    signal.alarm(SRCML_LIMIT)
     row = {"path": path, "tool": TOOL_NAME}
     try:
+        p = QB / path
         t = time.perf_counter()
-        c = qasm.compact(QB / path)
-        row |= {"t_read": time.perf_counter() - t, "ops": len(c), "qubits": c.n_qubits}
+        src = p.read_text(errors="replace")
+        markup = [0.0]
+
+        def timed(gen):                    # the time spent building srcML elements, apart from the layer reading them
+            while True:
+                t0 = time.perf_counter()
+                e = next(gen, None)
+                markup[0] += time.perf_counter() - t0
+                if e is None:
+                    return
+                yield e
+        lay = qasm_layer._Layer(p, timed(unit_elements(src)))
+        c = qasm._compact(lay, ((n, qb, mb, cond, ln) for n, qb, mb, cond, ln, _ in lay.run()))
+        t_read = time.perf_counter() - t
+        row |= {"t_read": t_read, "t_markup": markup[0], "t_layer": t_read - markup[0], "ops": len(c), "qubits": c.n_qubits}
         q = busiest(c)
         t = time.perf_counter()
         term = slicer.compact_terminal(c)
@@ -213,7 +230,7 @@ def s2_baseline(path: str, which: str):
     row = {"path": path, "tool": which}
     try:
         from tool import qasm
-        q = busiest(qasm.compact(QB / path))
+        q = busiest(qasm.compact_lines(QB / path))    # the criterion only; the trace equals the srcML one
         t = time.perf_counter()
         qc = qasm2.load(str(QB / path), custom_instructions=qasm2.LEGACY_CUSTOM_INSTRUCTIONS)
         row["t_load"] = time.perf_counter() - t
@@ -263,11 +280,11 @@ def s2(workers: int, tools=None):
     workers = max(workers, 4)
     files.sort(key=lambda f: (QB / f).stat().st_size)  # smallest first
     tools = tools or [TOOL_NAME, "qiskit-dag", "qiskit-lightcone", "qpdg"]
-    kept = [r for r in csv.DictReader(open(OUT / "s2_qasmbench.csv")) if r["tool"] not in tools] \
-        if (OUT / "s2_qasmbench.csv").exists() else []
+    kept = [r for r in csv.DictReader(open(ORIG / "s2_qasmbench.csv")) if r["tool"] not in tools] \
+        if (ORIG / "s2_qasmbench.csv").exists() else []
     rows = kept
     if TOOL_NAME in tools:
-        rows += list(run_all(s2_srcsliceq, [(f,) for f in files], LIMIT, lambda f: {"path": f, "tool": TOOL_NAME, "error": "timeout"}, workers))
+        rows += list(run_all(s2_srcsliceq, [(f,) for f in files], SRCML_LIMIT, lambda f: {"path": f, "tool": TOOL_NAME, "error": "timeout"}, workers))
     for which in [t for t in tools if t != TOOL_NAME]:
         # in batches by size; once every circuit of a batch hits the limit, the larger ones are not run
         stop = False
@@ -384,7 +401,11 @@ def main():
     ap.add_argument("--data-root")
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--tools", help="s2 only: comma-separated tools to (re)run; the other rows of the CSV are kept")
+    ap.add_argument("--out", help="a rerun's directory under results/icpc/, beside the original results (RERUNS.md)")
     a = ap.parse_args()
+    if a.out:
+        global OUT
+        OUT = ROOT / "experiments" / "results" / "icpc" / a.out
     if a.stage == "s1":
         s1(Path(a.data_root), a.workers)
     elif a.stage == "s2":

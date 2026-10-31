@@ -132,7 +132,7 @@ def test_spec_examples(path):
 
 
 def _same(a, b):
-    assert (a.tag, a.attrib, a.text or "", a.tail or "") == (b.tag, b.attrib, b.text or "", b.tail or ""), (a.tag, b.tag)
+    assert (a.tag, dict(a.attrib), a.text or "", a.tail or "") == (b.tag, dict(b.attrib), b.text or "", b.tail or ""), (a.tag, b.tag)
     assert len(a) == len(b)
     for x, y in zip(a, b):
         _same(x, y)
