@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tool.qasm_srcml import unit_parts, QasmSyntaxError  # noqa: E402
 
-files = sorted({os.path.realpath(f) for d in ("../qslice-icpc/data", "data") for f in glob.glob(str(ROOT / d) + "/**/*.qasm", recursive=True)})
+files = sorted({os.path.realpath(f) for d in ("../qslice-icpc/data", "data") for f in glob.glob(str(ROOT / d) + "/**/*.qasm", recursive=True) if os.path.isfile(f)})
 out = ROOT / "experiments/results/icpc/qasm_srcml/lossless.csv"
 with open(out, "w", newline="") as fh:
     w = csv.writer(fh); w.writerow(["file", "bytes", "version", "ok", "seconds", "error"])

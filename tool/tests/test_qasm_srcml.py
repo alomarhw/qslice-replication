@@ -20,7 +20,7 @@ except ImportError:            # the runner at the bottom needs no pytest
 from qiskit import qasm2
 
 from tool import qasm_layer
-from tool.qasm_srcml import QasmSyntaxError, to_srcml
+from tool.qasm_srcml import QasmSyntaxError, to_srcml, unit_elements
 from tool.tests.check_qasm_layer import compare
 
 HEAD = 'OPENQASM 2.0;\ninclude "qelib1.inc";\n'
@@ -131,6 +131,24 @@ def test_spec_examples(path):
     assert ok, note
 
 
+def _same(a, b):
+    assert (a.tag, a.attrib, a.text or "", a.tail or "") == (b.tag, b.attrib, b.text or "", b.tail or ""), (a.tag, b.tag)
+    assert len(a) == len(b)
+    for x, y in zip(a, b):
+        _same(x, y)
+
+
+def test_tree_equals_text(text):
+    """The element tree the layer reads is the tree the written srcML parses to, statement by statement (comments
+    between statements belong to the unit and are not built)."""
+    parsed = [e for e in ET.fromstring(to_srcml(text).encode()) if not e.tag.endswith("}comment")]
+    built = list(unit_elements(text))
+    assert len(parsed) == len(built)
+    for a, b in zip(parsed, built):
+        b.tail = a.tail                           # text between statements belongs to the unit, not the statement
+        _same(a, b)
+
+
 def test_behler_elements():
     """The markup of the constructs both languages share uses Behler et al.'s elements and attributes."""
     x = to_srcml(HEAD + "gate hadamard_cnot a, b {\n    h a;\n    cx a, b;\n}\nqreg q[2];\nx q[0];\n")
@@ -151,7 +169,9 @@ def test_behler_elements():
 if __name__ == "__main__":
     cases = [(f"valid: {n}", test_valid, n) for n in sorted(VALID)] + \
             [(f"invalid: {n}", test_invalid, n) for n in sorted(INVALID)] + \
-            [(f"spec: {p.stem}", test_spec_examples, p) for p in SPEC] + [("behler elements", test_behler_elements, None)]
+            [(f"spec: {p.stem}", test_spec_examples, p) for p in SPEC] + [("behler elements", test_behler_elements, None)] + \
+            [(f"tree = text: {n}", test_tree_equals_text, VALID[n]) for n in sorted(VALID)] + \
+            [(f"tree = text: {p.stem}", test_tree_equals_text, p.read_text()) for p in SPEC]
     failed = 0
     for label, fn, arg in cases:
         try:

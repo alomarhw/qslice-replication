@@ -35,7 +35,7 @@ from pathlib import Path
 from typing import Dict, Iterator, List, Optional, Tuple
 
 from tool.interp import Circuit, Op, Reg, Trace
-from tool.qasm_srcml import NS, POS, unit_parts
+from tool.qasm_srcml import NS, POS, unit_elements
 
 S = "{%s}" % NS
 QELIB = Path(__file__).resolve().parent / "data" / "qelib1.inc"
@@ -67,13 +67,7 @@ def line(e) -> int:
 
 def statements(path: Path) -> Iterator[ET.Element]:
     """The top-level statement elements of the program's srcML, parsed one at a time."""
-    src = path.read_text(errors="replace")
-    parts = unit_parts(src, str(path))
-    next(parts)
-    wrap = f'<w xmlns="{NS}" xmlns:pos="{POS}">%s</w>'
-    for part in parts:
-        for e in ET.fromstring(wrap % part.replace("</unit>", "")):
-            yield e
+    yield from unit_elements(path.read_text(errors="replace"))
 
 
 @lru_cache(maxsize=None)

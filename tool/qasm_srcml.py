@@ -35,9 +35,12 @@ QasmSyntaxError with its line and column; nothing is guessed.
 
 from __future__ import annotations
 
+import bisect
 import re
+from collections import deque
 from dataclasses import dataclass, field
 from typing import Iterator, List, Optional, Tuple
+import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape, quoteattr
 
 NS = "http://www.srcML.org/srcML/src"
@@ -97,7 +100,7 @@ class _Parser:
     def __init__(self, text: str):
         self.text = text
         self._lex = _lexer(text)
-        self.buf: List[Tok] = []          # significant tokens read ahead
+        self.buf = deque()                # significant tokens read ahead
         self.comments: List[Tok] = []     # comments lexed so far and not yet emitted
         self.last_end = 0
 
@@ -124,7 +127,7 @@ class _Parser:
                                   + (f", expected {text or kind!r}" if text or kind else ""))
         if (text is not None and t.text != text) or (kind is not None and t.kind != kind):
             raise QasmSyntaxError(f"{_lc(self.text, t.start)}: expected {text or kind!r}, found {t.text!r}")
-        self.buf.pop(0)
+        self.buf.popleft()
         self.last_end = t.end
         return t
 
@@ -399,11 +402,14 @@ class _Parser:
 class _Pos:
     def __init__(self, text: str):
         self.starts = [0] + [m.end() for m in re.finditer("\n", text)]
+        self._i = 0
 
     def lc(self, off: int) -> str:
-        import bisect
-        i = bisect.bisect_right(self.starts, off) - 1
-        return f"{i + 1}:{off - self.starts[i] + 1}"
+        i = self._i
+        st = self.starts
+        if not (st[i] <= off and (i + 1 == len(st) or off < st[i + 1])):
+            i = self._i = bisect.bisect_right(st, off) - 1
+        return f"{i + 1}:{off - st[i] + 1}"
 
 
 def _emit(text: str, node: Node, pos: _Pos, comments: List[Tok], out: List[str]):
@@ -459,3 +465,63 @@ def unit_parts(text: str, filename: str = "") -> Iterator[str]:
 
 def to_srcml(text: str, filename: str = "") -> str:
     return "".join(unit_parts(text, filename))
+
+# -- the same markup as an element tree, for the quantum layer: no XML text is written or parsed
+
+_T = "{%s}" % NS
+_PS, _PE = "{%s}start" % POS, "{%s}end" % POS
+
+
+def _build(text: str, node: Node, pos: _Pos, comments: List[Tok]) -> ET.Element:
+    e = ET.Element(_T + node.tag, dict(node.attrs))
+    end = node.end - 1 if node.end > node.start else node.start
+    e.set(_PS, pos.lc(node.start))
+    e.set(_PE, pos.lc(end))
+    last = None                                  # where the next gap text goes: e.text, or the tail of `last`
+    cur = node.start
+
+    def gap(a, b):
+        nonlocal last
+        if not comments:
+            if a < b:
+                _put(e, last, text[a:b])
+            return
+        for c in comments:
+            if a <= c.start < b:
+                _put(e, last, text[a:c.start])
+                ce = ET.SubElement(e, _T + "comment", {"type": "line", _PS: pos.lc(c.start), _PE: pos.lc(c.end - 1)})
+                ce.text = c.text
+                last = ce
+                a = c.end
+        _put(e, last, text[a:b])
+
+    for ch in node.children:
+        gap(cur, ch.start)
+        ce = _build(text, ch, pos, comments)
+        e.append(ce)
+        last = ce
+        cur = ch.end
+    gap(cur, node.end)
+    return e
+
+
+def _put(parent: ET.Element, last, s: str):
+    if not s:
+        return
+    if last is None:
+        parent.text = (parent.text or "") + s
+    else:
+        last.tail = (last.tail or "") + s
+
+
+def unit_elements(text: str) -> Iterator[ET.Element]:
+    """The top-level statement elements of the unit, built in memory: the tree unit_parts' text parses to, with the
+    text between statements left out."""
+    p = _Parser(text)
+    pos = _Pos(text)
+    for s in p.program():
+        p.peek()
+        mine = [c for c in p.comments if c.start < s.end]
+        p.comments = [c for c in p.comments if c.start >= s.end]
+        yield _build(text, s, pos, [c for c in mine if c.start >= s.start])
+

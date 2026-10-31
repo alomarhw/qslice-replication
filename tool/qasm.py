@@ -1,4 +1,6 @@
-"""OpenQASM 2 front end of srcSlice-Q (Deviation I-22).
+"""OpenQASM 2 front end of srcSlice-Q (Deviation I-22): read() and compact() build the trace through srcML
+(tool.qasm_srcml, Behler et al.'s markup) and the quantum layer over it (tool.qasm_layer). The line reader below is
+kept as read_lines() and compact_lines(), the baseline the srcML front end is compared and timed against.
 
 srcML 1.1 has no OpenQASM language, and the markup Behler et al. specified has no released parser, so OpenQASM 2
 files are read here, statement by statement, into the operation trace that the Qiskit front end builds from srcML
@@ -166,6 +168,20 @@ class _Reader:
 
 
 def read(path) -> Trace:
+    """The trace, built by the quantum layer from the program's srcML (tool.qasm_srcml, tool.qasm_layer)."""
+    from tool import qasm_layer  # noqa: PLC0415
+    return qasm_layer.read(path)
+
+
+def compact(path) -> Compact:
+    """The compact trace, built by the quantum layer from the program's srcML, statement by statement."""
+    from tool import qasm_layer  # noqa: PLC0415
+    lay = qasm_layer._Layer(Path(path))
+    return _compact(lay, ((n, qb, mb, cond, ln) for n, qb, mb, cond, ln, _ in lay.run()))
+
+
+def read_lines(path) -> Trace:
+    """The trace from the earlier line reader (_Reader), kept as a baseline for the srcML front end."""
     path = Path(path)
     r = _Reader(path)
     ops: List[Op] = []
@@ -180,15 +196,19 @@ def read(path) -> Trace:
     return Trace(str(path), [circ], [])
 
 
-def compact(path) -> Compact:
-    path = Path(path)
-    r = _Reader(path)
+def compact_lines(path) -> Compact:
+    """The compact trace from the earlier line reader, the baseline for timing the srcML front end."""
+    r = _Reader(Path(path))
+    return _compact(r, ((n, qb, mb, cond, ln) for n, qb, mb, cond, ln, _ in r.run()))
+
+
+def _compact(r, it) -> Compact:
     kinds = {"measure": 1, "reset": 2, "barrier": 3}
     out = None
     names: Dict[str, int] = {}
     buf = []
-    for name, qb, mb, cond, ln, _ in r.run():
-        buf.append((name, qb, mb, cond, ln))
+    for row in it:
+        buf.append(row)
         if len(buf) >= 65536:
             out = _flush(out, r, buf, names, kinds)
             buf = []
