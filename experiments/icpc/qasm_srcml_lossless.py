@@ -1,6 +1,6 @@
 """Step 1 of the OpenQASM 2 front-end validation: every OpenQASM 2 file of the corpora is marked up, the markup
 parsed as XML, and its text compared with the file byte for byte (srcML's lossless property).
--> results/icpc/qasm_srcml/lossless.csv (file, bytes, ok, seconds, error)"""
+-> results/icpc/qasm_srcml/lossless.csv (file, bytes, ok, seconds, error); --resume continues a run"""
 import csv, glob, os, re, sys, time
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -10,9 +10,14 @@ from tool.qasm_srcml import unit_parts, QasmSyntaxError  # noqa: E402
 
 files = sorted({os.path.realpath(f) for d in ("../qslice-icpc/data", "data") for f in glob.glob(str(ROOT / d) + "/**/*.qasm", recursive=True) if os.path.isfile(f)})
 out = ROOT / "experiments/results/icpc/qasm_srcml/lossless.csv"
-with open(out, "w", newline="") as fh:
-    w = csv.writer(fh); w.writerow(["file", "bytes", "version", "ok", "seconds", "error"])
+done = {r["file"] for r in csv.DictReader(open(out))} if out.exists() and "--resume" in sys.argv else set()
+with open(out, "a" if done else "w", newline="") as fh:
+    w = csv.writer(fh)
+    if not done:
+        w.writerow(["file", "bytes", "version", "ok", "seconds", "error"])
     for f in files:
+        if f in done:
+            continue
         t = open(f, errors="replace", newline="").read()
         m = re.search(r"OPENQASM\s+([\d.]+)", t)
         if not m and re.search(r'include\s+"stdgates\.inc"|^\s*qubit\b', t, re.M):
