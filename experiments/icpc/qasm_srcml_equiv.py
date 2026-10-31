@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tool import qasm, qasm_layer  # noqa: E402
-from tool.tests.check_qasm_layer import compare, layer_ops  # noqa: E402
+from tool.tests.check_qasm_layer import compare, layer_ops, qiskit_ops  # noqa: E402
 
 MAX_BYTES = 5_000_000      # larger files are compared in the scale run, not here
 LIMIT = 300
@@ -52,7 +52,7 @@ with open(out, "w", newline="") as fh:
             w.writerow([f, len(t), "", "", "", "timeout"])
         except Exception as e:
             try:
-                compare(f); qn = "qiskit loads it"
+                qiskit_ops(f); qn = "qiskit loads it"
             except Exception as e2:
                 qn = f"qiskit also rejects: {type(e2).__name__}"
             w.writerow([f, len(t), "", False, "", f"layer: {type(e).__name__}: {str(e)[:150]} | {qn}"])
