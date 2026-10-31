@@ -88,8 +88,9 @@ values returned from functions in held-out code.
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.78\columnwidth]{figures/fig_b_coverage.pdf}
-  \caption{Coverage on LintQ's corpus. (a) Why programs yield no circuit. (b) The methods that most often stop a trace,
-  because the role table does not model them, or blur it, because the layer cannot know their result.}
+  \caption{Coverage on LintQ's corpus. (a) Why programs yield no circuit. (b) The methods whose effect a trace most often
+  misses, because the layer does not model them, or blurs, because the layer cannot know their result. Either way the
+  trace continues and the method is reported.}
   \label{fig:b-coverage}
 \end{figure}
 
@@ -99,11 +100,11 @@ read results, \numCovFromFile{} load their circuits from a file or a library, an
 interpretation does not follow, as Fig.~\ref{fig:b-coverage}a shows. It traces \numSubjBugsTraced{} of the \numSubjBugsCount{} Bugs4Q programs and
 \numSubjTextTraced{} of the \numSubjTextCount{} textbook programs, \numToolBugsResolved{} of the Bugs4Q
 ones without any over-approximation. On current Qiskit, it traces \numQheTracedOfBuildsPct{}
-of the \numQheBuilds{} Qiskit HumanEval programs that construct a circuit. Where tracing stops, the cause is mostly a
-method outside the role table, as Fig.~\ref{fig:b-coverage}b shows. \numUnmodMethodProgs{} programs of LintQ's corpus
+of the \numQheBuilds{} Qiskit HumanEval programs that construct a circuit. Where a trace is incomplete, the cause is mostly a
+method the layer does not model, as Fig.~\ref{fig:b-coverage}b shows. \numUnmodMethodProgs{} programs of LintQ's corpus
 call one, most often \texttt{reverse\_bits}, a simulator instruction such as \texttt{save\_unitary}, a circuit built
-from text with \texttt{from\_qasm\_str}, or \texttt{run}, and \texttt{prepare\_state} stops \numUnmodQhePrepare{} Qiskit
-HumanEval programs. Another \numUnmodUnknownProgs{} programs apply a method whose result the layer cannot know, most often
+from text with \texttt{from\_qasm\_str}, or \texttt{run}, and \texttt{prepare\_state} leaves \numUnmodQhePrepare{} Qiskit
+HumanEval programs without a circuit. Another \numUnmodUnknownProgs{} programs apply a method whose result the layer cannot know, most often
 \texttt{inverse} or \texttt{bind\_parameters}, so the trace continues with that operation over-approximated. Adding such methods
 is the main way to widen coverage.
 

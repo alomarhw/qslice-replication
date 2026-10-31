@@ -1,7 +1,7 @@
 """The RQ2 and RQ4 figures, in the style of the scale figure (make_fig_scale.py).
 
 fig_b_coverage: (a) why the programs of LintQ's corpus that yield no circuit yield none, by the rule of
-results/icpc/scale/coverage_reasons.json; (b) the methods that most often stop or blur a trace there, from
+results/icpc/scale/coverage_reasons.json; (b) the methods whose effect a trace most often misses or blurs there, from
 results/icpc/unmodelled/summary.json, split into methods not modelled and methods whose result is unknown.
 fig_b_share: the share of a program's code lines that a qubit's slice holds, over every sliced qubit of LintQ's corpus,
 from results/icpc/scale/s1_lintq.csv, with the median that make_numbers.py reports as ScaleReadMedianPct.
@@ -54,7 +54,7 @@ def coverage():
     o.append(r"\begin{axis}[at={(a.south west)}, anchor=north west, yshift=-1.75cm, xbar stacked, width=4.3cm, height=4.3cm, "
              r"bar width=6pt, xmin=0, xmax=%d, symbolic y coords={%s}, ytick=data, xmajorgrids, xlabel={programs}, "
              r"enlarge y limits=0.08, legend style={at={(1,0.02)}, anchor=south east, legend columns=1}, legend cell align=left, "
-             r"title={\footnotesize (b) methods that stop or blur a trace}, title style={at={(0,1)}, anchor=south west, xshift=-1.9cm}]"
+             r"title={\footnotesize (b) methods whose effect a trace misses or blurs}, title style={at={(0,1)}, anchor=south west, xshift=-3.6cm}]"
              % (int(meth[0][1] * 1.2), yb))
     for kind, col in (("not modelled", "cver"), ("result unknown", "cora")):
         pts = " ".join(r"(%d,{\texttt{%s}})" % (n if k == kind else 0, m.replace("_", r"\_")) for m, n, k in meth)
