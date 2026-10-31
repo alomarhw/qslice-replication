@@ -27,26 +27,26 @@
 \begin{document}
 \begin{tikzpicture}
 \begin{scope}[on background layer]
-\fill[lane, rounded corners=3pt] (-0.1,1.45) rectangle (2.09,-5.3);
-\node[lanet] at (0.995,1.39) {Input};
-\fill[lane, rounded corners=3pt] (2.21,1.45) rectangle (5.04,-5.3);
-\node[lanet] at (3.625,1.39) {Markup};
-\fill[lane, rounded corners=3pt] (5.159999999999999,1.45) rectangle (12.19,-5.3);
-\node[lanet] at (8.675,1.39) {Quantum layer};
-\fill[lane, rounded corners=3pt] (12.31,1.45) rectangle (15.7,-5.3);
-\node[lanet] at (14.005,1.39) {Output};
+\fill[lane, rounded corners=3pt] (-0.1,1.45) rectangle (2.19,-5.3);
+\node[lanet] at (1.045,1.39) {Input};
+\fill[lane, rounded corners=3pt] (2.31,1.45) rectangle (5.44,-5.3);
+\node[lanet] at (3.875,1.39) {Markup};
+\fill[lane, rounded corners=3pt] (5.56,1.45) rectangle (12.54,-5.3);
+\node[lanet] at (9.050,1.39) {Quantum layer};
+\fill[lane, rounded corners=3pt] (12.66,1.45) rectangle (16.05,-5.3);
+\node[lanet] at (14.355,1.39) {Output};
 \end{scope}
 \node[io, text width=1.9cm] (qasm) at (0.95,0.0) {\textbf{OpenQASM 2, 3}\\\texttt{.qasm} file\exw{\texttt{cx q[0],q[1];}}};
 \node[io, text width=1.9cm] (py) at (0.95,-2.2) {\textbf{Qiskit}\\\texttt{.py} program\exw{\texttt{qc.cx(q[src],}\\\texttt{q[a])}}};
-\node[new, text width=2.6cm] (fe) at (3.55,0.0) {\textbf{Our front ends}\\OpenQASM to srcML\exn{\texttt{\textless{}argument\_list}\\\texttt{type=\textquotedbl{}quantum\textquotedbl{}\textgreater{}}}};
-\node[reused, text width=2.6cm] (srcml) at (3.55,-2.2) {\textbf{srcML}\\Python to srcML\exw{\texttt{\textless{}call pos:start=\textquotedbl{}14:5\textquotedbl{}\textgreater{}}}};
-\node[ext, text width=2.6cm] (ss) at (3.55,-4.4) {\textbf{srcSlice, patched}\\where variables are set and used\exw{\texttt{src}: def 9, 22}};
-\node[new, text width=2.8cm, minimum height=3.9cm] (tr) at (6.75,-1.1) {\textbf{E1 Roles, E2 Trace}\\for each language\\[3pt]which call is a gate on which qubits; the circuit, built without running the program\exn{line 14, $h=1$:\\\texttt{cx q2, q3}}};
-\node[new, text width=2.9cm] (e5) at (10.55,0.0) {\textbf{E5 Profile}\\uses, names, dependents\exn{\texttt{q[b]}, \texttt{q[src]}}};
-\node[new, text width=2.9cm] (e3) at (10.55,-2.2) {\textbf{E3 Slice}\\light cone through measured bits and loops\exn{\texttt{q[4]}: 22 of 34 ops}};
-\node[new, text width=2.9cm] (e4) at (10.55,-4.4) {\textbf{E4 Classical lines}\\from srcSlice (Qiskit) or the declarations (OpenQASM)\exn{\texttt{src = b}, line 22}};
-\node[io, text width=3.0cm] (o1) at (14.05,0.0) {\textbf{Qubit profile}\\\texttt{q[4]} depends on 6 qubits};
-\node[io, text width=3.0cm, minimum height=3.9cm] (o2) at (14.05,-3.3000000000000003) {\textbf{Slice}\\source lines and loop iterations, classical lines, notes\exw{8, 12--17, 19, 21; $h=0$--2\\classical 3--7, 9--11, 18, 20, 22}};
+\node[new, text width=2.6cm] (fe) at (3.9,0.0) {\textbf{Our front ends}\\OpenQASM to srcML\exn{\texttt{\textless{}argument\_list}\\\texttt{type=\textquotedbl{}quantum\textquotedbl{}\textgreater{}}}};
+\node[reused, text width=2.6cm] (srcml) at (3.9,-2.2) {\textbf{srcML}\\Python to srcML\exw{\texttt{\textless{}call pos:start=\textquotedbl{}14:5\textquotedbl{}\textgreater{}}}};
+\node[ext, text width=2.6cm] (ss) at (3.9,-4.4) {\textbf{srcSlice, patched}\\where variables are set and used\exw{\texttt{src}: def 9, 22}};
+\node[new, text width=2.8cm, minimum height=3.9cm] (tr) at (7.25,-1.1) {\textbf{E1 Roles, E2 Trace}\\for each language\\[3pt]which call is a gate on which qubits; the circuit, built statically\exn{line 14, $h=1$:\\\texttt{cx q2, q3}}};
+\node[new, text width=2.9cm] (e5) at (10.9,0.0) {\textbf{E5 Profile}\\uses, names, dependents\exn{\texttt{q[b]}, \texttt{q[src]}}};
+\node[new, text width=2.9cm] (e3) at (10.9,-2.2) {\textbf{E3 Slice}\\light cone through measured bits and loops\exn{\texttt{q[4]}: 22 of 34 ops}};
+\node[new, text width=2.9cm] (e4) at (10.9,-4.4) {\textbf{E4 Classical lines}\\from srcSlice (Qiskit) or the declarations (OpenQASM)\exn{\texttt{src = b}, line 22}};
+\node[io, text width=3.0cm] (o1) at (14.4,0.0) {\textbf{Qubit profile}\\\texttt{q[4]} depends on 6 qubits};
+\node[io, text width=3.0cm, minimum height=3.9cm] (o2) at (14.4,-3.3000000000000003) {\textbf{Slice}\\source lines and loop iterations, classical lines, notes\exw{8, 12--17, 19, 21; $h=0$--2\\classical 3--7, 9--11, 18, 20, 22}};
 \draw[arr] (qasm) -- (fe);
 \draw[arr] (py) -- (srcml);
 \draw[arr] (srcml) -- (ss);

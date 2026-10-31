@@ -110,10 +110,10 @@ def body(F):
     iters = f"$h={it[0]}$" + (f"--{it[-1]}" if len(it) > 1 else "")
     rows = []
     a = rows.append
-    C = {"in": (0.95, 1.9), "mk": (3.55, 2.6), "l": (6.75, 2.8), "an": (10.55, 2.9), "out": (14.05, 3.0)}
+    C = {"in": (0.95, 1.9), "mk": (3.9, 2.6), "l": (7.25, 2.8), "an": (10.9, 2.9), "out": (14.4, 3.0)}
     Y = {"top": 0.0, "mid": -2.2, "low": -4.4}
-    B = (2.15, 5.1, 8.4, 12.25)    # lane boundaries
-    LT, LB, R = 1.45, -5.3, 15.7
+    B = (2.25, 5.5, 8.9, 12.6)     # lane boundaries
+    LT, LB, R = 1.45, -5.3, 16.05
 
     def node(style, name, col, yy, text, h=None):
         cx, w = C[col]
@@ -135,7 +135,7 @@ def body(F):
     node("ext", "ss", "mk", Y["low"], r"\textbf{srcSlice, patched}\\where variables are set and used\exw{"
          + tt("src") + f": def {F['ss_defs']}" + "}")
     # quantum layer
-    node("new", "tr", "l", (Y["top"] + Y["mid"]) / 2, r"\textbf{E1 Roles, E2 Trace}\\for each language\\[3pt]which call is a gate on which qubits; the circuit, built without running the program\exn{line "
+    node("new", "tr", "l", (Y["top"] + Y["mid"]) / 2, r"\textbf{E1 Roles, E2 Trace}\\for each language\\[3pt]which call is a gate on which qubits; the circuit, built statically\exn{line "
          + str(F["line"]) + r", $h=" + str(F["iter"]) + r"$:\\" + tt(f"cx q{q0}, q{q1}") + "}", h=3.9)
     node("new", "e5", "an", Y["top"], r"\textbf{E5 Profile}\\uses, names, dependents\exn{" + ", ".join(tt(n) for n in F["names"]) + "}")
     node("new", "e3", "an", Y["mid"], r"\textbf{E3 Slice}\\light cone through measured bits and loops\exn{"
