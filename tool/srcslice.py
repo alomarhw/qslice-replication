@@ -56,7 +56,7 @@ def profiles(path: Path) -> Tuple[List[Profile], float]:
     t0 = time.perf_counter()
     with tempfile.TemporaryDirectory() as d:
         xml = Path(d) / "unit.xml"
-        r = subprocess.run(["srcml", "--position", "-l", "Python", str(path), "-o", str(xml)], capture_output=True,
+        r = subprocess.run(["srcml", "--src-encoding=UTF-8", "--position", "-l", "Python", str(path), "-o", str(xml)], capture_output=True,
                            text=True)
         if r.returncode != 0:
             raise X.SrcMLError(r.stderr.strip()[:300])

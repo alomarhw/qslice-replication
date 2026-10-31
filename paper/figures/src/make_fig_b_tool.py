@@ -102,7 +102,7 @@ def render(row_tokens) -> str:
 
 
 def fragments():
-    xml = subprocess.run(["srcml", "--position", "-l", "Python", str(PROG)], capture_output=True, text=True,
+    xml = subprocess.run(["srcml", "--src-encoding=UTF-8", "--position", "-l", "Python", str(PROG)], capture_output=True, text=True,
                          check=True).stdout
     cx = re.search(r'<expr_stmt pos:start="14:\d+"[^>]*>.*?</expr_stmt>', xml, re.S).group(0)
     cond = re.search(r'<with pos:start="18:\d+"[^>]*>.*?</with>', xml, re.S).group(0)

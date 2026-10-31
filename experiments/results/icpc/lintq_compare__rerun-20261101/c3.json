@@ -1,0 +1,243 @@
+{
+ "lintq_fig1": {
+  "qubits": 4,
+  "bits": 3,
+  "ops": 8,
+  "slices": {
+   "0": {
+    "quantum": [
+     8,
+     9,
+     10
+    ],
+    "classical": [
+     2,
+     3,
+     5,
+     7
+    ]
+   },
+   "1": {
+    "quantum": [
+     8
+    ],
+    "classical": [
+     2,
+     3,
+     5,
+     7
+    ]
+   },
+   "2": {
+    "quantum": [
+     8
+    ],
+    "classical": [
+     2,
+     3,
+     5,
+     7
+    ]
+   },
+   "3": {
+    "quantum": [],
+    "classical": []
+   }
+  },
+  "unused_qubits": [
+   3
+  ],
+  "notes": []
+ },
+ "lintq_fig5": {
+  "qubits": 3,
+  "bits": 3,
+  "ops": 4,
+  "slices": {
+   "0": {
+    "quantum": [
+     3,
+     4
+    ],
+    "classical": [
+     2
+    ]
+   },
+   "1": {
+    "quantum": [
+     3
+    ],
+    "classical": [
+     2
+    ]
+   },
+   "2": {
+    "quantum": [
+     3
+    ],
+    "classical": [
+     2
+    ]
+   }
+  },
+  "unused_qubits": [],
+  "notes": []
+ },
+ "lintq_fig6": {
+  "qubits": 2,
+  "bits": 2,
+  "ops": 6,
+  "slices": {
+   "0": {
+    "quantum": [
+     3,
+     4,
+     5,
+     7
+    ],
+    "classical": [
+     2
+    ]
+   },
+   "1": {
+    "quantum": [
+     3,
+     4
+    ],
+    "classical": [
+     2
+    ]
+   }
+  },
+  "unused_qubits": [],
+  "notes": []
+ },
+ "lintq_fig11a": {
+  "qubits": 1,
+  "bits": 1,
+  "ops": 6,
+  "slices": {
+   "0": {
+    "quantum": [
+     2,
+     4,
+     6,
+     10,
+     12
+    ],
+    "classical": [
+     3,
+     5,
+     8
+    ]
+   }
+  },
+  "unused_qubits": [],
+  "notes": [
+   "line 2: function analysed as an entry point with unknown arguments",
+   "line 5: unknown condition: every branch interpreted, as may-operations",
+   "line 8: for with an unknown iteration count: body repeated to cover every dependence chain, as may-operations"
+  ]
+ },
+ "lintq_fig11b": {
+  "qubits": 4,
+  "bits": 0,
+  "ops": 3,
+  "slices": {
+   "0": {
+    "quantum": [
+     3,
+     8
+    ],
+    "classical": [
+     5
+    ]
+   },
+   "1": {
+    "quantum": [],
+    "classical": []
+   },
+   "2": {
+    "quantum": [
+     3,
+     6
+    ],
+    "classical": [
+     5
+    ]
+   },
+   "3": {
+    "quantum": [
+     3,
+     7
+    ],
+    "classical": [
+     5
+    ]
+   }
+  },
+  "unused_qubits": [
+   1
+  ],
+  "notes": [
+   "line 3: function analysed as an entry point with unknown arguments",
+   "line 9: a circuit is passed to a method the tool cannot see: its operations there are not traced",
+   "line 11: a circuit is passed to a function the tool cannot see: its operations there are not traced",
+   "line 13: a circuit is passed to a method the tool cannot see: its operations there are not traced"
+  ]
+ },
+ "qchecker_fig5": {
+  "qubits": 3,
+  "bits": 3,
+  "ops": 9,
+  "slices": {
+   "0": {
+    "quantum": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "classical": [
+     2
+    ]
+   },
+   "1": {
+    "quantum": [
+     3,
+     4,
+     5,
+     6,
+     9,
+     10
+    ],
+    "classical": [
+     2
+    ]
+   },
+   "2": {
+    "quantum": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "classical": [
+     2
+    ]
+   }
+  },
+  "unused_qubits": [],
+  "notes": []
+ }
+}

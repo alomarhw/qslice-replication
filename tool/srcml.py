@@ -17,7 +17,7 @@ class SrcMLError(Exception):
 
 
 def parse_file(path: Path) -> ET.Element:
-    r = subprocess.run(["srcml", "--position", "-l", "Python", str(path)], capture_output=True, text=True)
+    r = subprocess.run(["srcml", "--src-encoding=UTF-8", "--position", "-l", "Python", str(path)], capture_output=True, text=True)
     if r.returncode != 0 or not r.stdout.strip():
         raise SrcMLError(f"srcml failed on {path}: {r.stderr.strip()[:300]}")
     return ET.fromstring(r.stdout)

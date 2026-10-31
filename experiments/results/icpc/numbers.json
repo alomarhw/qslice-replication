@@ -1961,82 +1961,82 @@
  "ProfBugsFiles": {
   "value": 110,
   "tex": "110",
-  "source": "results/icpc/profiles/bugs4q.csv"
+  "source": "results/icpc/profiles__rerun-20261101/bugs4q.csv"
  },
  "ProfBugsQubits": {
   "value": 290,
   "tex": "290",
-  "source": "results/icpc/profiles/bugs4q.csv"
+  "source": "results/icpc/profiles__rerun-20261101/bugs4q.csv"
  },
  "ProfBugsInFunction": {
   "value": 0.13793103448275862,
   "tex": "14\\%",
-  "source": "results/icpc/profiles/bugs4q.csv"
+  "source": "results/icpc/profiles__rerun-20261101/bugs4q.csv"
  },
  "ProfBugsFwdNeBwd": {
   "value": 0.5862068965517241,
   "tex": "59\\%",
-  "source": "results/icpc/profiles/bugs4q.csv"
+  "source": "results/icpc/profiles__rerun-20261101/bugs4q.csv"
  },
  "ProfTextFiles": {
   "value": 58,
   "tex": "58",
-  "source": "results/icpc/profiles/textbook.csv"
+  "source": "results/icpc/profiles__rerun-20261101/textbook.csv"
  },
  "ProfTextQubits": {
   "value": 196,
   "tex": "196",
-  "source": "results/icpc/profiles/textbook.csv"
+  "source": "results/icpc/profiles__rerun-20261101/textbook.csv"
  },
  "ProfTextInFunction": {
   "value": 0.4489795918367347,
   "tex": "45\\%",
-  "source": "results/icpc/profiles/textbook.csv"
+  "source": "results/icpc/profiles__rerun-20261101/textbook.csv"
  },
  "ProfTextFwdNeBwd": {
   "value": 0.75,
   "tex": "75\\%",
-  "source": "results/icpc/profiles/textbook.csv"
+  "source": "results/icpc/profiles__rerun-20261101/textbook.csv"
  },
  "ProfLintqFiles": {
   "value": 220,
   "tex": "220",
-  "source": "results/icpc/profiles/lintq500.csv"
+  "source": "results/icpc/profiles__rerun-20261101/lintq500.csv"
  },
  "ProfLintqQubits": {
   "value": 1058,
   "tex": "1{,}058",
-  "source": "results/icpc/profiles/lintq500.csv"
+  "source": "results/icpc/profiles__rerun-20261101/lintq500.csv"
  },
  "ProfLintqInFunction": {
   "value": 0.554820415879017,
   "tex": "55\\%",
-  "source": "results/icpc/profiles/lintq500.csv"
+  "source": "results/icpc/profiles__rerun-20261101/lintq500.csv"
  },
  "ProfLintqFwdNeBwd": {
   "value": 0.8213610586011342,
   "tex": "82\\%",
-  "source": "results/icpc/profiles/lintq500.csv"
+  "source": "results/icpc/profiles__rerun-20261101/lintq500.csv"
  },
  "ProfLintqSample": {
   "value": 500,
   "tex": "500",
-  "source": "results/icpc/profiles/lintq500.csv"
+  "source": "results/icpc/profiles__rerun-20261101/lintq500.csv"
  },
  "ProfLintqTimeouts": {
   "value": 5,
   "tex": "5",
-  "source": "results/icpc/profiles/lintq500.csv"
+  "source": "results/icpc/profiles__rerun-20261101/lintq500.csv"
  },
  "ProfTextAliasFlagged": {
   "value": 5,
   "tex": "5",
-  "source": "results/icpc/profiles/alias_check_textbook.csv"
+  "source": "results/icpc/profiles__rerun-20261101/alias_check_textbook.csv"
  },
  "ProfTextAliasGenuine": {
   "value": 3,
   "tex": "3",
-  "source": "results/icpc/profiles/alias_check_textbook.csv"
+  "source": "results/icpc/profiles__rerun-20261101/alias_check_textbook.csv"
  },
  "SsFiles": {
   "value": 401,
@@ -2221,147 +2221,147 @@
  "LqTp": {
   "value": 216,
   "tex": "216",
-  "source": "results/icpc/lintq_compare/c1.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1.csv"
  },
  "LqQubitTp": {
   "value": 142,
   "tex": "142",
-  "source": "results/icpc/lintq_compare/c1.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1.csv"
  },
  "LqQubitTraced": {
   "value": 139,
   "tex": "139",
-  "source": "results/icpc/lintq_compare/c1.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1.csv"
  },
  "LqQubitExposed": {
   "value": 139,
   "tex": "139",
-  "source": "results/icpc/lintq_compare/c1.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1.csv"
  },
  "LqReadMedian": {
   "value": 8.0,
   "tex": "8",
-  "source": "results/icpc/lintq_compare/c1.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1.csv"
  },
  "LqCodeMedian": {
   "value": 60.5,
   "tex": "60.5",
-  "source": "results/icpc/lintq_compare/c1.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1.csv"
  },
  "LqReadN": {
   "value": 88,
   "tex": "88",
-  "source": "results/icpc/lintq_compare/c1.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1.csv"
  },
  "LqFpWarnings": {
   "value": 42,
   "tex": "42",
-  "source": "results/icpc/lintq_compare/c1_fp.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1_fp.csv"
  },
  "LqFpTraced": {
   "value": 37,
   "tex": "37",
-  "source": "results/icpc/lintq_compare/c1_fp.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1_fp.csv"
  },
  "LqFpFires": {
   "value": 30,
   "tex": "30",
-  "source": "results/icpc/lintq_compare/c1_fp.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1_fp.csv"
  },
  "LqSarifWarnings": {
   "value": 4079,
   "tex": "4{,}079",
-  "source": "results/icpc/lintq_compare/c1_sarif.csv"
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1_sarif.csv"
  },
  "LqSarifTraced": {
-  "value": 3496,
-  "tex": "3{,}496",
-  "source": "results/icpc/lintq_compare/c1_sarif.csv"
+  "value": 3502,
+  "tex": "3{,}502",
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1_sarif.csv"
  },
  "LqSarifFires": {
-  "value": 3359,
-  "tex": "3{,}359",
-  "source": "results/icpc/lintq_compare/c1_sarif.csv"
+  "value": 3365,
+  "tex": "3{,}365",
+  "source": "results/icpc/lintq_compare__rerun-20261101/c1_sarif.csv"
  },
  "ScaleSOneFiles": {
   "value": 7568,
   "tex": "7{,}568",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneSliced": {
   "value": 4182,
   "tex": "4{,}182",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneTimeouts": {
   "value": 5,
   "tex": "5",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneMedianMs": {
-  "value": 0.130975,
+  "value": 0.130935,
   "tex": "131",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneNinetyNine": {
-  "value": 100.61618,
-  "tex": "101",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "value": 89.57165620999876,
+  "tex": "90",
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneSrcmlMs": {
-  "value": 0.031744999999999995,
+  "value": 0.03174,
   "tex": "32",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneInterpMs": {
-  "value": 0.004055,
+  "value": 0.00409,
   "tex": "4.1",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneSliceMs": {
   "value": 8e-05,
   "tex": "0.1",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneSrcsliceMs": {
-  "value": 0.05677,
+  "value": 0.056745000000000004,
   "tex": "57",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneProfileMs": {
   "value": 0.032630000000000006,
   "tex": "33",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneMaxOps": {
   "value": 200000,
   "tex": "200{,}000",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleSOneMaxOpsS": {
   "value": 45.35508,
   "tex": "45",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "LqBeyondTenFiles": {
   "value": 251,
   "tex": "251",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "LqBeyondTenOpsPct": {
   "value": 0.6936519066869343,
   "tex": "69\\%",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleReadMedianPct": {
   "value": 0.23529411764705882,
   "tex": "24\\%",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleReadQubits": {
   "value": 14781,
   "tex": "14{,}781",
-  "source": "results/icpc/scale/s1_lintq.csv"
+  "source": "results/icpc/scale__rerun-20261101/s1_lintq.csv"
  },
  "ScaleQbRejected": {
   "value": 6,
@@ -2521,17 +2521,17 @@
  "SsHeldFiles": {
   "value": 404,
   "tex": "404",
-  "source": "results/icpc/srcslice_heldout/qubits.csv"
+  "source": "results/icpc/srcslice_heldout__rerun-20261101/qubits.csv"
  },
  "SsHeldQubits": {
   "value": 1831,
   "tex": "1{,}831",
-  "source": "results/icpc/srcslice_heldout/qubits.csv"
+  "source": "results/icpc/srcslice_heldout__rerun-20261101/qubits.csv"
  },
  "SsHeldContainPct": {
   "value": 0.8607318405243036,
   "tex": "86\\%",
-  "source": "results/icpc/srcslice_heldout/qubits.csv"
+  "source": "results/icpc/srcslice_heldout__rerun-20261101/qubits.csv"
  },
  "SsLintqContainPct": {
   "value": 0.8769685039370079,
@@ -2541,22 +2541,22 @@
  "CovNoCircuit": {
   "value": 3381,
   "tex": "3{,}381",
-  "source": "results/icpc/scale/coverage_reasons.json"
+  "source": "results/icpc/scale__rerun-20261101/coverage_reasons.json"
  },
  "CovNoConstruction": {
   "value": 2765,
   "tex": "2{,}765",
-  "source": "results/icpc/scale/coverage_reasons.json"
+  "source": "results/icpc/scale__rerun-20261101/coverage_reasons.json"
  },
  "CovFromFile": {
   "value": 58,
   "tex": "58",
-  "source": "results/icpc/scale/coverage_reasons.json"
+  "source": "results/icpc/scale__rerun-20261101/coverage_reasons.json"
  },
  "CovOther": {
   "value": 558,
   "tex": "558",
-  "source": "results/icpc/scale/coverage_reasons.json"
+  "source": "results/icpc/scale__rerun-20261101/coverage_reasons.json"
  },
  "ScaleOneRatio": {
   "value": 1.3030222360257633,
@@ -2751,42 +2751,42 @@
  "ToolLintqFiles": {
   "value": 7568,
   "tex": "7{,}568",
-  "source": "results/icpc/tool_coverage/lintq_v7.csv"
+  "source": "results/icpc/tool_coverage/lintq_v9.csv"
  },
  "ToolLintqQiskit": {
   "value": 7567,
   "tex": "7{,}567",
-  "source": "results/icpc/tool_coverage/lintq_v7.csv"
+  "source": "results/icpc/tool_coverage/lintq_v9.csv"
  },
  "ToolLintqParsed": {
   "value": 7567,
   "tex": "7{,}567",
-  "source": "results/icpc/tool_coverage/lintq_v7.csv"
+  "source": "results/icpc/tool_coverage/lintq_v9.csv"
  },
  "ToolLintqCircuit": {
-  "value": 4114,
-  "tex": "4{,}114",
-  "source": "results/icpc/tool_coverage/lintq_v7.csv"
+  "value": 4117,
+  "tex": "4{,}117",
+  "source": "results/icpc/tool_coverage/lintq_v9.csv"
  },
  "ToolLintqResolved": {
   "value": 2482,
   "tex": "2{,}482",
-  "source": "results/icpc/tool_coverage/lintq_v7.csv"
+  "source": "results/icpc/tool_coverage/lintq_v9.csv"
  },
  "ToolLintqCrashes": {
   "value": 0,
   "tex": "0",
-  "source": "results/icpc/tool_coverage/lintq_v7.csv"
+  "source": "results/icpc/tool_coverage/lintq_v9.csv"
  },
  "ToolLintqTimeouts": {
-  "value": 78,
-  "tex": "78",
-  "source": "results/icpc/tool_coverage/lintq_v7.csv"
+  "value": 75,
+  "tex": "75",
+  "source": "results/icpc/tool_coverage/lintq_v9.csv"
  },
  "ToolLintqMedianMs": {
   "value": 47.0,
   "tex": "47",
-  "source": "results/icpc/tool_coverage/lintq_v7.csv"
+  "source": "results/icpc/tool_coverage/lintq_v9.csv"
  },
  "MotFidelity": {
   "value": 0.49999999999999967,
@@ -3544,42 +3544,42 @@
  "QheTasks": {
   "value": 151,
   "tex": "151",
-  "source": "results/icpc/qhe/summary.json"
+  "source": "results/icpc/qhe__rerun-20261101/summary.json"
  },
  "QheTraced": {
   "value": 78,
   "tex": "78",
-  "source": "results/icpc/qhe/summary.json"
+  "source": "results/icpc/qhe__rerun-20261101/summary.json"
  },
  "QheNoConstruction": {
   "value": 69,
   "tex": "69",
-  "source": "results/icpc/qhe/summary.json"
+  "source": "results/icpc/qhe__rerun-20261101/summary.json"
  },
  "QheBuilds": {
   "value": 82,
   "tex": "82",
-  "source": "results/icpc/qhe/summary.json"
+  "source": "results/icpc/qhe__rerun-20261101/summary.json"
  },
  "QheTracedOfBuildsPct": {
   "value": 0.9512195121951219,
   "tex": "95\\%",
-  "source": "results/icpc/qhe/summary.json"
+  "source": "results/icpc/qhe__rerun-20261101/summary.json"
  },
  "QheMedianMs": {
-  "value": 114.6,
-  "tex": "115",
-  "source": "results/icpc/qhe/summary.json"
+  "value": 113.8,
+  "tex": "114",
+  "source": "results/icpc/qhe__rerun-20261101/summary.json"
  },
  "QheMayFiles": {
   "value": 18,
   "tex": "18",
-  "source": "results/icpc/qhe/summary.json"
+  "source": "results/icpc/qhe__rerun-20261101/summary.json"
  },
  "QheSliceSharePct": {
   "value": 0.4444,
   "tex": "44\\%",
-  "source": "results/icpc/qhe/summary.json"
+  "source": "results/icpc/qhe__rerun-20261101/summary.json"
  },
  "CfPrograms": {
   "value": 10,
@@ -4194,147 +4194,147 @@
  "CallsSingle": {
   "value": 4413,
   "tex": "4{,}413",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "KindSingleN": {
   "value": 18,
   "tex": "18",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "CallsTwo": {
   "value": 2933,
   "tex": "2{,}933",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "KindTwoN": {
   "value": 20,
   "tex": "20",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "CallsMulti": {
   "value": 718,
   "tex": "718",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "KindMultiN": {
   "value": 8,
   "tex": "8",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "CallsLegacy": {
   "value": 1033,
   "tex": "1{,}033",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "KindLegacyN": {
   "value": 15,
   "tex": "15",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "CallsSpecial": {
   "value": 3701,
   "tex": "3{,}701",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "KindSpecialN": {
   "value": 7,
   "tex": "7",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "CallsCompose": {
   "value": 3509,
   "tex": "3{,}509",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "KindComposeN": {
   "value": 4,
   "tex": "4",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "CallsFlow": {
   "value": 169,
   "tex": "169",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "KindFlowN": {
   "value": 5,
   "tex": "5",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "CallsTransform": {
   "value": 623,
   "tex": "623",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "KindTransformN": {
   "value": 6,
   "tex": "6",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "CallsDag": {
   "value": 100,
   "tex": "100",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "KindDagN": {
   "value": 1,
   "tex": "1",
-  "source": "results/icpc/unmodelled/calls_per_kind.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
  },
  "UnmodMethodProgs": {
-  "value": 183,
-  "tex": "183",
-  "source": "results/icpc/unmodelled/summary.json"
+  "value": 184,
+  "tex": "184",
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodUnknownProgs": {
   "value": 142,
   "tex": "142",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodDagProgs": {
   "value": 33,
   "tex": "33",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodUnseenProgs": {
   "value": 294,
   "tex": "294",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodReverseBits": {
   "value": 25,
   "tex": "25",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodSaveUnitary": {
   "value": 18,
   "tex": "18",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodFromQasm": {
   "value": 17,
   "tex": "17",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodRun": {
   "value": 15,
   "tex": "15",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodDiagonal": {
   "value": 8,
   "tex": "8",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodIso": {
   "value": 7,
   "tex": "7",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "UnmodQhePrepare": {
   "value": 3,
   "tex": "three",
-  "source": "results/icpc/unmodelled/summary.json"
+  "source": "results/icpc/unmodelled__rerun-20261101/summary.json"
  },
  "ExSliceOps": {
   "value": 22,

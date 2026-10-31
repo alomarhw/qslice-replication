@@ -546,10 +546,10 @@ def main() -> int:
 
     if HAS_TOOL:  # Paper B's measures: profiles, srcSlice lines, front end, LintQ, scalability, static slicer
         # ---- qubit slice profiles over the corpora (Deviation I-17, tool-v5; tool/corpus/profiles.py) ----------
-        PR = ICPC / "profiles"
+        PR = ICPC / "profiles__rerun-20261101"
         for f, nm in (("bugs4q", "Bugs"), ("textbook", "Text"), ("lintq500", "Lintq")):
             r = [x for x in rows(PR / f"{f}.csv") if not x["error"]]
-            src = f"results/icpc/profiles/{f}.csv"
+            src = f"results/icpc/profiles__rerun-20261101/{f}.csv"
             put(f"Prof{nm}Files", len({x["file"] for x in r}), cnt(len({x["file"] for x in r})), src)
             put(f"Prof{nm}Qubits", len(r), cnt(len(r)), src)
             fn = sum(x["in_function"] == "1" for x in r) / len(r)
@@ -557,14 +557,14 @@ def main() -> int:
             fb = sum(x["fwd_lines"] != x["bwd_lines"] for x in r) / len(r)
             put(f"Prof{nm}FwdNeBwd", fb, pct(fb, 0), src)
         lq = rows(PR / "lintq500.csv")
-        put("ProfLintqSample", len({x["file"] for x in lq}), cnt(len({x["file"] for x in lq})), "results/icpc/profiles/lintq500.csv")
-        put("ProfLintqTimeouts", sum(x["error"] == "timeout" for x in lq), cnt(sum(x["error"] == "timeout" for x in lq)), "results/icpc/profiles/lintq500.csv")
+        put("ProfLintqSample", len({x["file"] for x in lq}), cnt(len({x["file"] for x in lq})), "results/icpc/profiles__rerun-20261101/lintq500.csv")
+        put("ProfLintqTimeouts", sum(x["error"] == "timeout" for x in lq), cnt(sum(x["error"] == "timeout" for x in lq)), "results/icpc/profiles__rerun-20261101/lintq500.csv")
         ac = rows(PR / "alias_check_textbook.csv")
         flagged = {x["file"] for x in rows(PR / "textbook.csv") if not x["error"] and int(x["names"]) > 1}
         assert flagged == {x["file"] for x in ac}, "alias check does not cover the flagged textbook files"
-        put("ProfTextAliasFlagged", len(ac), cnt(len(ac)), "results/icpc/profiles/alias_check_textbook.csv")
+        put("ProfTextAliasFlagged", len(ac), cnt(len(ac)), "results/icpc/profiles__rerun-20261101/alias_check_textbook.csv")
         put("ProfTextAliasGenuine", sum(x["genuine"] == "1" for x in ac), cnt(sum(x["genuine"] == "1" for x in ac)),
-            "results/icpc/profiles/alias_check_textbook.csv")
+            "results/icpc/profiles__rerun-20261101/alias_check_textbook.csv")
 
         # ---- classical lines from srcSlice against the interpreter's (Deviation I-20) ----
         src = "results/icpc/srcslice/qubits.csv"
@@ -661,8 +661,8 @@ def main() -> int:
         put("SmlSpecPrograms", len(T.SPEC), cnt(len(T.SPEC)), "tool/tests/qasm2/spec_*.qasm")
         nt = NUMS["SmlGrammarCases"]["value"] + NUMS["SmlInvalidCases"]["value"] + NUMS["SmlSpecPrograms"]["value"]
         put("SmlTestPrograms", nt, cnt(nt), "tool/tests/test_qasm_srcml.py, tool/tests/qasm2/spec_*.qasm")
-        src = "results/icpc/lintq_compare/c1.csv"
-        c1 = rows(ICPC / "lintq_compare" / "c1.csv")
+        src = "results/icpc/lintq_compare__rerun-20261101/c1.csv"
+        c1 = rows(ICPC / "lintq_compare__rerun-20261101" / "c1.csv")
         qrules = {"ql-operation-after-measurement", "ql-double-measurement", "ql-oversized-circuit",
                   "ql-conditional-without-measurement", "ql-unmeasurable-qubits"}
         qr = [x for x in c1 if x["rule_id"] in qrules]
@@ -676,17 +676,17 @@ def main() -> int:
         put("LqCodeMedian", st.median(cd), f"{st.median(cd):g}", src)
         put("LqReadN", len(rd), cnt(len(rd)), src)
         for nm, f in (("Fp", "c1_fp.csv"), ("Sarif", "c1_sarif.csv")):
-            x = rows(ICPC / "lintq_compare" / f)
+            x = rows(ICPC / "lintq_compare__rerun-20261101" / f)
             t = [r for r in x if r["traced"] == "1"]
-            put(f"Lq{nm}Warnings", len(x), cnt(len(x)), "results/icpc/lintq_compare/" + f)
-            put(f"Lq{nm}Traced", len(t), cnt(len(t)), "results/icpc/lintq_compare/" + f)
-            put(f"Lq{nm}Fires", sum(r["exposed"] == "1" for r in t), cnt(sum(r["exposed"] == "1" for r in t)), "results/icpc/lintq_compare/" + f)
+            put(f"Lq{nm}Warnings", len(x), cnt(len(x)), "results/icpc/lintq_compare__rerun-20261101/" + f)
+            put(f"Lq{nm}Traced", len(t), cnt(len(t)), "results/icpc/lintq_compare__rerun-20261101/" + f)
+            put(f"Lq{nm}Fires", sum(r["exposed"] == "1" for r in t), cnt(sum(r["exposed"] == "1" for r in t)), "results/icpc/lintq_compare__rerun-20261101/" + f)
 
         # ---- scalability (Deviation I-22) ----
         sc = ICPC / "scale"
         tf = lambda r, ks: sum(float(r[k]) for k in ks if r.get(k))  # noqa: E731
-        src = "results/icpc/scale/s1_lintq.csv"
-        s1 = rows(sc / "s1_lintq.csv")
+        src = "results/icpc/scale__rerun-20261101/s1_lintq.csv"
+        s1 = rows((ICPC / "scale__rerun-20261101") / "s1_lintq.csv")
         ok1 = [r for r in s1 if not r["error"]]
         put("ScaleSOneFiles", len(s1), cnt(len(s1)), src)
         put("ScaleSOneSliced", len(ok1), cnt(len(ok1)), src)
@@ -764,8 +764,8 @@ def main() -> int:
         put("ScaleQftLines", int(q600["code_lines"]), cnt(int(q600["code_lines"])), src)
 
         # ---- Deviation I-23: held-out srcSlice, coverage reasons, like-for-like timing ----
-        src = "results/icpc/srcslice_heldout/qubits.csv"
-        hz = [x for x in rows(ICPC / "srcslice_heldout" / "qubits.csv") if not x["error"]]
+        src = "results/icpc/srcslice_heldout__rerun-20261101/qubits.csv"
+        hz = [x for x in rows(ICPC / "srcslice_heldout__rerun-20261101" / "qubits.csv") if not x["error"]]
         put("SsHeldFiles", len({x["file"] for x in hz}), cnt(len({x["file"] for x in hz})), src)
         put("SsHeldQubits", len(hz), cnt(len(hz)), src)
         hc = sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in hz) / len(hz)
@@ -773,8 +773,8 @@ def main() -> int:
         lq = [x for x in ss if x["corpus"] == "lintq"]
         lc_ = sum(lset(x["interp"]) <= lset(x["srcslice"]) for x in lq) / len(lq)
         put("SsLintqContainPct", lc_, pct(lc_, 0), "results/icpc/srcslice/qubits.csv")
-        src = "results/icpc/scale/coverage_reasons.json"
-        cr = json.load(open(ICPC / "scale" / "coverage_reasons.json"))
+        src = "results/icpc/scale__rerun-20261101/coverage_reasons.json"
+        cr = json.load(open(ICPC / "scale__rerun-20261101" / "coverage_reasons.json"))
         for k, nm in (("no_circuit_files", "NoCircuit"), ("no-construction", "NoConstruction"), ("from-file-or-lib", "FromFile"), ("other", "Other")):
             put(f"Cov{nm}", cr[k], cnt(cr[k]), src)
         src = "results/icpc/scale__rerun-20261031b/s2_qasmbench.csv"
@@ -822,7 +822,7 @@ def main() -> int:
         put("ToolNestedToolWrong", nc["tool_wrong_total"], cnt(nc["tool_wrong_total"]), "results/icpc/tool_acceptance/nested_check.json")
         for path, nm, src in ((TA / "tool-v7" / "t3_bugs4q.csv", "Bugs", "results/icpc/tool_acceptance/tool-v7/t3_bugs4q.csv"),
                               (ICPC / "tool_coverage" / "textbook_v7.csv", "Textbook", "results/icpc/tool_coverage/textbook_v7.csv"),
-                              (ICPC / "tool_coverage" / "lintq_v7.csv", "Lintq", "results/icpc/tool_coverage/lintq_v7.csv")):
+                              (ICPC / "tool_coverage" / "lintq_v9.csv", "Lintq", "results/icpc/tool_coverage/lintq_v9.csv")):
             cov = rows(path)
             q = [r for r in cov if r["uses_qiskit"] == "1"]
             put(f"Tool{nm}Files", len(cov), cnt(len(cov)), src)
@@ -1023,9 +1023,9 @@ def main() -> int:
         put("NestQpdgLarger", len(npairs) - ns["qdg_eq_qpdg"], cnt(len(npairs) - ns["qdg_eq_qpdg"]), src)
 
     # ---- Deviation I-25: Qiskit HumanEval, current Qiskit (exploratory) ---------------------------------------
-    if (ICPC / "qhe" / "summary.json").exists():
-        qh = json.load(open(ICPC / "qhe" / "summary.json"))
-        src = "results/icpc/qhe/summary.json"
+    if (ICPC / "qhe__rerun-20261101" / "summary.json").exists():
+        qh = json.load(open(ICPC / "qhe__rerun-20261101" / "summary.json"))
+        src = "results/icpc/qhe__rerun-20261101/summary.json"
         s, h = qh["standard"], qh["hard"]
         assert (s["tasks"], s["circuit"]) == (h["tasks"], h["circuit"]), "the two sets share their programs"
         builds = s["tasks"] - s["no_circuit_reasons"].get("no-construction", 0)
@@ -1092,15 +1092,15 @@ def main() -> int:
             put("StudyFaultUnits", n, cnt(n), "results/icpc/rq3/records.csv + results/icpc/source_map/units.csv")
 
     # ---- Deviation I-27: the role table and the calls outside it, on LintQ's corpus (descriptive) -------------
-    if (ICPC / "unmodelled" / "calls_per_kind.json").exists():
-        ck = json.load(open(ICPC / "unmodelled" / "calls_per_kind.json"))
-        src = "results/icpc/unmodelled/calls_per_kind.json"
+    if (ICPC / "unmodelled__rerun-20261101" / "calls_per_kind.json").exists():
+        ck = json.load(open(ICPC / "unmodelled__rerun-20261101" / "calls_per_kind.json"))
+        src = "results/icpc/unmodelled__rerun-20261101/calls_per_kind.json"
         for k, nm in (("single", "Single"), ("two", "Two"), ("multi", "Multi"), ("legacy", "Legacy"), ("special", "Special"),
                       ("composition", "Compose"), ("control_flow", "Flow"), ("transform", "Transform"), ("to_dag", "Dag")):
             put(f"Calls{nm}", ck["per_kind"][k], cnt(ck["per_kind"][k]), src)
             put(f"Kind{nm}N", len(ck["methods"][k]), cnt(len(ck["methods"][k])), src)
-        um = json.load(open(ICPC / "unmodelled" / "summary.json"))["lintq"]
-        src = "results/icpc/unmodelled/summary.json"
+        um = json.load(open(ICPC / "unmodelled__rerun-20261101" / "summary.json"))["lintq"]
+        src = "results/icpc/unmodelled__rerun-20261101/summary.json"
         put("UnmodMethodProgs", um["method_not_modelled"]["programs"], cnt(um["method_not_modelled"]["programs"]), src)
         put("UnmodUnknownProgs", um["result_unknown"]["programs"], cnt(um["result_unknown"]["programs"]), src)
         put("UnmodDagProgs", um["to_dag"]["programs"], cnt(um["to_dag"]["programs"]), src)
@@ -1109,7 +1109,7 @@ def main() -> int:
         for m, nm in (("reverse_bits", "ReverseBits"), ("save_unitary", "SaveUnitary"), ("from_qasm_str", "FromQasm"),
                       ("run", "Run"), ("diagonal", "Diagonal"), ("iso", "Iso")):
             put(f"Unmod{nm}", top.get(m, 0), cnt(top.get(m, 0)), src)
-        qh = json.load(open(ICPC / "unmodelled" / "summary.json"))["qhe"]["method_not_modelled"]
+        qh = json.load(open(ICPC / "unmodelled__rerun-20261101" / "summary.json"))["qhe"]["method_not_modelled"]
         put("UnmodQhePrepare", dict(qh["top"]).get("prepare_state", 0), word(dict(qh["top"]).get("prepare_state", 0)), src)
 
     # ---- Paper B's motivating example: tool/tests/big/teleport_chain.py, slice of q[4] (tool.cli --json) ------------

@@ -1,0 +1,56 @@
+{
+ "fp": {
+  "ql-operation-after-measurement": {
+   "warnings": 0,
+   "traced": 0,
+   "fires": 0
+  },
+  "ql-double-measurement": {
+   "warnings": 4,
+   "traced": 4,
+   "fires": 1
+  },
+  "ql-oversized-circuit": {
+   "warnings": 16,
+   "traced": 12,
+   "fires": 8
+  },
+  "ql-conditional-without-measurement": {
+   "warnings": 0,
+   "traced": 0,
+   "fires": 0
+  },
+  "ql-unmeasurable-qubits": {
+   "warnings": 22,
+   "traced": 21,
+   "fires": 21
+  }
+ },
+ "sarif": {
+  "ql-operation-after-measurement": {
+   "warnings": 127,
+   "traced": 121,
+   "fires": 121
+  },
+  "ql-double-measurement": {
+   "warnings": 39,
+   "traced": 39,
+   "fires": 33
+  },
+  "ql-oversized-circuit": {
+   "warnings": 378,
+   "traced": 353,
+   "fires": 301
+  },
+  "ql-conditional-without-measurement": {
+   "warnings": 46,
+   "traced": 46,
+   "fires": 46
+  },
+  "ql-unmeasurable-qubits": {
+   "warnings": 3489,
+   "traced": 2937,
+   "fires": 3230
+  }
+ }
+}

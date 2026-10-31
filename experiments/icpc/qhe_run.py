@@ -48,6 +48,35 @@ def timed_out(p: Path, name: str, task: str, difficulty: str):
             "reason": "", "notes": ""}
 
 
+def summarize(rows):
+    """The summary of the tasks' rows, as run results or as read back from tasks.csv."""
+    def num(v):
+        try:
+            return float(v) if v not in ("", None) else 0.0
+        except (TypeError, ValueError):
+            return v
+    rows = [{**r, **{k: num(r.get(k)) for k in ("code_lines", "t_srcml", "t_interp", "t_slice", "t_srcslice", "t_profile",
+                                                 "ops", "may_ops")}, "slice_lines": str(r.get("slice_lines") or ""),
+             "reason": r.get("reason") or "", "notes": r.get("notes") or ""} for r in rows]
+    summ = {}
+    for name in SETS:
+        rs = [r for r in rows if r["set"] == name]
+        ok = [r for r in rs if not r.get("error")]
+        share = [int(x) / r["code_lines"] for r in ok for x in r["slice_lines"].split(";") if x and r["code_lines"]]
+        summ[name] = {"tasks": len(rs), "circuit": len(ok),
+                      "errors": dict(Counter(r["error"] for r in rs if r.get("error"))),
+                      "no_circuit_reasons": dict(Counter(r["reason"] for r in rs if r["reason"])),
+                      "by_difficulty": {d: {"tasks": sum(r["difficulty"] == d for r in rs),
+                                            "circuit": sum(r["difficulty"] == d for r in ok)}
+                                        for d in sorted({r["difficulty"] for r in rs})},
+                      "median_ms": round(1000 * st.median(r["t_srcml"] + r["t_interp"] + r["t_slice"] + r["t_srcslice"] + r["t_profile"] for r in ok), 1) if ok else None,
+                      "median_ops": st.median(r["ops"] for r in ok) if ok else None,
+                      "may_files": sum(r["may_ops"] > 0 for r in ok),
+                      "median_slice_share": round(st.median(share), 4) if share else None,
+                      "note_kinds": dict(Counter(n for r in rs for n in r["notes"].split("|") if n).most_common(15))}
+    return summ
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data-root", required=True)
@@ -69,22 +98,7 @@ def main():
         w = csv.DictWriter(fh, fieldnames=keys)
         w.writeheader()
         w.writerows(rows)
-    summ = {}
-    for name in SETS:
-        rs = [r for r in rows if r["set"] == name]
-        ok = [r for r in rs if not r.get("error")]
-        share = [int(x) / r["code_lines"] for r in ok for x in r["slice_lines"].split(";") if x and r["code_lines"]]
-        summ[name] = {"tasks": len(rs), "circuit": len(ok),
-                      "errors": dict(Counter(r["error"] for r in rs if r.get("error"))),
-                      "no_circuit_reasons": dict(Counter(r["reason"] for r in rs if r["reason"])),
-                      "by_difficulty": {d: {"tasks": sum(r["difficulty"] == d for r in rs),
-                                            "circuit": sum(r["difficulty"] == d for r in ok)}
-                                        for d in sorted({r["difficulty"] for r in rs})},
-                      "median_ms": round(1000 * st.median(r["t_srcml"] + r["t_interp"] + r["t_slice"] + r["t_srcslice"] + r["t_profile"] for r in ok), 1) if ok else None,
-                      "median_ops": st.median(r["ops"] for r in ok) if ok else None,
-                      "may_files": sum(r["may_ops"] > 0 for r in ok),
-                      "median_slice_share": round(st.median(share), 4) if share else None,
-                      "note_kinds": dict(Counter(n for r in rs for n in r["notes"].split("|") if n).most_common(15))}
+    summ = summarize(rows)
     (OUT / "summary.json").write_text(json.dumps(summ, indent=1) + "\n")
     print(json.dumps(summ, indent=1))
 

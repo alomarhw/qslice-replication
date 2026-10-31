@@ -114,3 +114,22 @@ logged here with its cause, script, commit, and the old and new value of every n
   tool-v7's) differs from tool-v7 only on `Cirq/4/buggy.py`, which now reports the missing body instead of crashing.
   LintQ's corpus had no crash on tool-v7 (S1: timeouts and files without a circuit only), so no result there can
   change. No number of the paper changes.
+
+## 2026-11-01 tool-v9: srcML reads programs as UTF-8, rerun of the programs it reads differently
+- **Cause.** The quantum-markup check found that srcML's markup of 951 programs did not give back their text: srcML
+  read Python files in its default encoding, so non-ASCII characters were mis-decoded (`'θ'` became `'Î¸'`, a name
+  such as `Υ_hat_all` stopped being a name). Python source is UTF-8, so tool-v9 passes `--src-encoding=UTF-8` to srcML
+  (`tool/srcml.py`, `tool/srcslice.py`; tag `tool-v9`).
+- **Which programs.** `experiments/icpc/encoding_check.py` reads every corpus program with a non-ASCII byte (971) both
+  ways: 70 differ in their trace (31), the interpreter's notes (49) or srcSlice's profiles (50); 62 are in LintQ's
+  corpus and 8 in Qiskit HumanEval; none in Bugs4Q, the textbook or our programs (`results/icpc/encoding/`).
+- **Script.** `experiments/icpc/rerun_encoding_files.py` recomputes those programs' rows with each run's own function
+  and copies every other row, into `results/icpc/<run>__rerun-20261101/` (S1 and the no-circuit reasons, Qiskit
+  HumanEval, the unmodelled calls, the LintQ comparison, the profile sample, the held-out srcSlice comparison) and
+  `tool_coverage/lintq_v9.csv`. The S1 base is the original with the rows of the 2026-10-28 and 2026-10-29 reruns, so
+  it holds every change since. The numbers and figures read these results.
+- **Numbers that changed.** LqSarifTraced 3,496 -> 3,502 and LqSarifFires 3,359 -> 3,365 (Table VII);
+  UnmodMethodProgs 183 -> 184; ScaleSOneNinetyNine 101 -> 90 s (the 99th percentile of S1 time: the rerun files were
+  timed again); ToolLintqCircuit 4,114 -> 4,117 and ToolLintqTimeouts 78 -> 75 and QheMedianMs 115 -> 114 (not in the
+  paper). S1's 4,182 of 7,568, its median 131 ms and the median slice share 24% are unchanged, and so is every subject
+  statistic.

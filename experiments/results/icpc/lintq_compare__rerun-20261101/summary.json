@@ -1,0 +1,59 @@
+{
+ "tp": 216,
+ "files": 165,
+ "per_rule": {
+  "ql-conditional-without-measurement": {
+   "tp": 28,
+   "traced": 28,
+   "exposed": 28
+  },
+  "ql-constant-classic-bit": {
+   "tp": 29,
+   "traced": 28,
+   "exposed": null
+  },
+  "ql-deprecated-identity": {
+   "tp": 14,
+   "traced": 14,
+   "exposed": null
+  },
+  "ql-double-measurement": {
+   "tp": 18,
+   "traced": 18,
+   "exposed": 18
+  },
+  "ql-ghost-composition": {
+   "tp": 8,
+   "traced": 5,
+   "exposed": null
+  },
+  "ql-measure-all-abuse": {
+   "tp": 16,
+   "traced": 16,
+   "exposed": null
+  },
+  "ql-op-after-optimization": {
+   "tp": 7,
+   "traced": 0,
+   "exposed": null
+  },
+  "ql-operation-after-measurement": {
+   "tp": 44,
+   "traced": 41,
+   "exposed": 41
+  },
+  "ql-oversized-circuit": {
+   "tp": 29,
+   "traced": 29,
+   "exposed": 29
+  },
+  "ql-unmeasurable-qubits": {
+   "tp": 23,
+   "traced": 23,
+   "exposed": 23
+  }
+ },
+ "errors": {
+  "no circuit": 10
+ }
+}

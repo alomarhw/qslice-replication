@@ -76,10 +76,10 @@ def main():
         out["bugs4q"] = programs(b4, dr, lambda r: int(r["ops"]) > 0)
         tb = [r for r in rows(RES / "tool_coverage" / "textbook_v7.csv") if r["uses_qiskit"] == "1"]
         out["textbook"] = programs(tb, dr, lambda r: int(r["ops"]) > 0)
-        lq = rows(RES / "scale" / "s1_lintq.csv")
+        lq = rows(RES / "scale__rerun-20261101" / "s1_lintq.csv")
         lqdir = root / "lintq" / "exp_v08" / "files_selected"
         out["lintq"] = programs(lq, lambda r: lqdir / r["file"], lambda r: not r["error"])
-        qh = [r for r in rows(RES / "qhe" / "tasks.csv") if r["set"] == "hard"]  # the hard set holds the programs without docstrings
+        qh = [r for r in rows(RES / "qhe__rerun-20261101" / "tasks.csv") if r["set"] == "hard"]  # the hard set holds the programs without docstrings
         out["qhe"] = programs(qh, lambda r: RES / "qhe" / "programs" / r["file"], lambda r: not r.get("error"))
         s3 = [r for r in rows(RES / "scale" / "s3_parametric.csv") if r["tool"] == TOOL_NAME and not r["error"]]
         out["parametric"] = summary(len({r["program"] for r in s3}), [int(r["qubits"]) for r in s3], [int(r["ops"]) for r in s3],

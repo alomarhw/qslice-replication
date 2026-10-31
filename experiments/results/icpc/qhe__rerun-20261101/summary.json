@@ -1,0 +1,94 @@
+{
+ "standard": {
+  "tasks": 151,
+  "circuit": 78,
+  "errors": {
+   "no circuit": 73
+  },
+  "no_circuit_reasons": {
+   "other": 4,
+   "no-construction": 69
+  },
+  "by_difficulty": {
+   "basic": {
+    "tasks": 79,
+    "circuit": 39
+   },
+   "difficult": {
+    "tasks": 5,
+    "circuit": 2
+   },
+   "intermediate": {
+    "tasks": 67,
+    "circuit": 37
+   }
+  },
+  "median_ms": 113.8,
+  "median_ops": 3.0,
+  "may_files": 18,
+  "median_slice_share": 0.375,
+  "note_kinds": {
+   "function analysed as an entry point with unknown arguments": 151,
+   "unknown condition: every branch interpreted, as may-operations": 41,
+   "for with an unknown iteration count: body repeated to cover every dependence chain, as may-operations": 23,
+   "QuantumCircuit of unknown size": 12,
+   "return, break or continue under an unknown condition: the rest of the function is interpreted as may-operations": 7,
+   "QuantumCircuit.prepare_state is not modelled": 3,
+   "circuit_to_dag: the circuit is converted to a DAG; operations rewritten there are not traced": 2,
+   "QuantumRegister of unknown size": 2,
+   "try: only the try block is interpreted": 2,
+   "QuantumCircuit.assign_parameters: result treated as unknown": 1,
+   "compose: qubits not resolved; may-operation on all qubits": 1,
+   "QuantumCircuit.tensor is not modelled": 1,
+   "statement <delete> not interpreted": 1,
+   "ClassicalRegister of unknown size": 1,
+   "call depth limit reached": 1
+  }
+ },
+ "hard": {
+  "tasks": 151,
+  "circuit": 78,
+  "errors": {
+   "no circuit": 73
+  },
+  "no_circuit_reasons": {
+   "other": 4,
+   "no-construction": 69
+  },
+  "by_difficulty": {
+   "basic": {
+    "tasks": 79,
+    "circuit": 39
+   },
+   "difficult": {
+    "tasks": 5,
+    "circuit": 2
+   },
+   "intermediate": {
+    "tasks": 67,
+    "circuit": 37
+   }
+  },
+  "median_ms": 113.8,
+  "median_ops": 3.0,
+  "may_files": 18,
+  "median_slice_share": 0.4444,
+  "note_kinds": {
+   "function analysed as an entry point with unknown arguments": 151,
+   "unknown condition: every branch interpreted, as may-operations": 41,
+   "for with an unknown iteration count: body repeated to cover every dependence chain, as may-operations": 23,
+   "QuantumCircuit of unknown size": 12,
+   "return, break or continue under an unknown condition: the rest of the function is interpreted as may-operations": 7,
+   "QuantumCircuit.prepare_state is not modelled": 3,
+   "circuit_to_dag: the circuit is converted to a DAG; operations rewritten there are not traced": 2,
+   "QuantumRegister of unknown size": 2,
+   "try: only the try block is interpreted": 2,
+   "QuantumCircuit.assign_parameters: result treated as unknown": 1,
+   "compose: qubits not resolved; may-operation on all qubits": 1,
+   "QuantumCircuit.tensor is not modelled": 1,
+   "statement <delete> not interpreted": 1,
+   "ClassicalRegister of unknown size": 1,
+   "call depth limit reached": 1
+  }
+ }
+}

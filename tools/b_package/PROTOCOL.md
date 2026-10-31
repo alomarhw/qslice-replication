@@ -171,3 +171,6 @@ dependence graph (`b_reference.QPDG`). Earlier working names of the tool (QSlice
 - **tool-v8 (tag `tool-v8`, 2026-11-01).** A function that srcML marks up without a body is reported instead of
   crashing the interpreter (found by the quantum-markup check on a Cirq file of Bugs4Q). Every earlier check gives the
   tool-v7 results; only that file's coverage row changes (`RERUNS.md`).
+- **tool-v9 (tag `tool-v9`, 2026-11-01).** srcML reads programs as UTF-8, the encoding of Python source; before, it
+  mis-decoded non-ASCII characters. The 70 programs this changes are rerun in every result that reads them, every other
+  row copied (`RERUNS.md`).

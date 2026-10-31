@@ -50,6 +50,24 @@ def timed_out(path, corpus, rel):
     return {"corpus": corpus, "file": rel, "circuit": 0, "error": "timeout", **{k: "" for k in PATTERNS}}
 
 
+def summarize(rows):
+    """The summary of the programs' rows, as run results or as read back from programs.csv."""
+    rows = [{**r, "circuit": int(r["circuit"]) if str(r["circuit"]).isdigit() else int(r["circuit"] in (True, "True"))}
+            for r in rows]
+    summ = {}
+    for corpus in ("lintq", "textbook", "bugs4q", "qhe"):
+        rs = [r for r in rows if r["corpus"] == corpus]
+        summ[corpus] = {"programs": len(rs), "with_circuit": sum(r["circuit"] for r in rs),
+                        "errors": dict(Counter(r["error"] for r in rs if r["error"]))}
+        for kind in PATTERNS:
+            if kind == "circuit_to_unseen_code":
+                summ[corpus][kind] = sum(bool(r[kind]) for r in rs)
+            else:
+                c = Counter(m for r in rs for m in r[kind].split(";") if m)
+                summ[corpus][kind] = {"programs": sum(bool(r[kind]) for r in rs), "top": c.most_common(12)}
+    return summ
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data-root", required=True)
@@ -71,17 +89,7 @@ def main():
         w = csv.DictWriter(fh, fieldnames=keys)
         w.writeheader()
         w.writerows(sorted(rows, key=lambda r: (r["corpus"], r["file"])))
-    summ = {}
-    for corpus in ("lintq", "textbook", "bugs4q", "qhe"):
-        rs = [r for r in rows if r["corpus"] == corpus]
-        summ[corpus] = {"programs": len(rs), "with_circuit": sum(r["circuit"] for r in rs),
-                        "errors": dict(Counter(r["error"] for r in rs if r["error"]))}
-        for kind in PATTERNS:
-            if kind == "circuit_to_unseen_code":
-                summ[corpus][kind] = sum(bool(r[kind]) for r in rs)
-            else:
-                c = Counter(m for r in rs for m in r[kind].split(";") if m)
-                summ[corpus][kind] = {"programs": sum(bool(r[kind]) for r in rs), "top": c.most_common(12)}
+    summ = summarize(rows)
     (OUT / "summary.json").write_text(json.dumps(summ, indent=1) + "\n")
     print(json.dumps(summ, indent=1))
 
