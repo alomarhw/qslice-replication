@@ -1,0 +1,10 @@
+{
+ "platform": "macOS-15.8.2-x86_64-i386-64bit",
+ "machine": "x86_64",
+ "cpu": "Intel Xeon W-2140B 3.2 GHz",
+ "cpu_count": 16,
+ "memory_gib": 32,
+ "python": "3.12.2",
+ "limit_s": 600,
+ "s1_limit_s": 120
+}

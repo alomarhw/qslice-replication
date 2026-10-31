@@ -77,7 +77,8 @@ For RQ2, \tool{} traces every program, and the programs that yield no circuit ar
 text. For RQ3, \tool{} slices every qubit, up to 64, of each program of LintQ's corpus that builds a circuit, with a limit
 of 120~s per program. On the QASMBench circuits it slices every qubit in one pass, against three tools that slice one
 qubit of the built circuit, the ancestors in Qiskit's DAG, Qiskit's \texttt{LightCone} pass and a reimplementation of the
-QPDG~\cite{yu2025qpdg}, with a limit of 600~s per circuit. On the parametric programs, a QFT, a GHZ preparation, a QAOA
+QPDG~\cite{yu2025qpdg}, with a limit of 600~s per circuit for the baselines and 3{,}600~s for \tool{}, whose
+srcML markup of the largest circuits takes minutes. On the parametric programs, a QFT, a GHZ preparation, a QAOA
 ring and a repetition code, a size constant grows the trace while the source stays the same. All times are wall-clock on
 one machine, an Intel Xeon W-2140B at 3.2~GHz with 32~GB of memory, with Python~3.12 and Qiskit~2.3. For RQ4, we measure
 the share of a program's code lines that a qubit's slice holds, and compare \tool{} with LintQ on LintQ's public data,

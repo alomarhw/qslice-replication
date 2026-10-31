@@ -159,7 +159,7 @@ def scale():
     sc = RES / "icpc" / "scale"
     f = lambda r, ks: sum(float(r[k]) for k in ks if r.get(k))  # noqa: E731
     s1 = [r for r in rows(sc / "s1_lintq.csv") if not r["error"] and r.get("ops")]
-    s2 = rows(sc / "s2_qasmbench.csv")
+    s2 = rows(RES / "icpc" / "scale__rerun-20261031" / "s2_qasmbench.csv")   # through srcML (RERUNS.md, 2026-10-31)
     ops = {r["path"]: int(r["ops"]) for r in s2 if r["tool"] == TOOL_NAME and not r["error"]}
     s3 = rows(sc / "s3_parametric.csv")
     series = [
@@ -179,7 +179,7 @@ def scale():
         body.append(rf"\addplot[only marks, {col}, mark={mk}, mark size={size}] coordinates {{" +
                     " ".join(f"({x},{max(y, 1e-3):.5f})" for x, y in pts if x > 0) + "};")
     body.append(r"\addplot[black!45, dashed, domain=1:2e7] {600};")
-    body.append(r"\legend{" + ",".join("{" + l + "}" for l, _, _, _ in series) + r",{600 s limit}}")
+    body.append(r"\legend{" + ",".join("{" + l + "}" for l, _, _, _ in series) + r",{600 s limit of the baselines}}")
     body.append(r"\end{axis}\end{tikzpicture}")
     return HEAD + "\n".join(body) + "\n\\end{document}\n"
 

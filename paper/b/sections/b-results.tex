@@ -99,23 +99,28 @@ with a cause, most often a method it does not yet model.
   \centering
   \includegraphics[width=\columnwidth]{figures/fig_scale_anon.pdf}% camera-ready: fig_scale.pdf, which names the tool
   \caption{Time of \tool{} against the operations of a trace. Grey points are the programs of LintQ's corpus, with every
-  stage. The QASMBench points slice every qubit in one pass, reading included, and the baselines slice one qubit of the
-  same circuits, loading included. Runs beyond the 600~s limit are left out.}
+  stage. The QASMBench points slice every qubit in one pass, producing and reading the srcML included, and the
+  baselines slice one qubit of the same circuits, loading included. Baseline runs beyond their 600~s limit are left
+  out.}
   \label{fig:b-scale}
 \end{figure}
 
-\tool{} slices the programs developers write in milliseconds and circuits of millions of operations in seconds, as
-Fig.~\ref{fig:b-scale} shows. On LintQ's corpus it slices the \numScaleSOneSliced{} programs that build a circuit, every
+\tool{} slices the programs developers write in milliseconds and circuits of millions of operations in seconds once
+they are marked up, as Fig.~\ref{fig:b-scale} shows. On LintQ's corpus it slices the \numScaleSOneSliced{} programs that build a circuit, every
 qubit up to 64 of them, in \numScaleSOneMedianMs{}~ms per program in the median and within \numScaleSOneNinetyNine{}~s
 for 99\% of them, and \numScaleSOneTimeouts{} programs reach the limit of 120~s. A Bugs4Q program takes
 \numToolBugsMedianMs{}~ms in the median. srcML and srcSlice take most of the
 median, \numScaleSOneSrcmlMs{} and \numScaleSOneSrcsliceMs{}~ms, and the slices themselves \numScaleSOneSliceMs{}~ms. On
 the \numScaleQbRead{} QASMBench circuits in valid OpenQASM~2, of up to \numScaleQbMaxOps{} operations and
 \numScaleQbMaxQubits{} qubits, slicing every qubit in one pass takes at most \numScaleQbAllS{}~s, on the largest circuit,
-after \numScaleQbReadS{}~s of reading. Qiskit's DAG slices one of its \numScaleQbMaxOpsQubits{} qubits in
-\numScaleQbDagOneS{}~s after \numScaleQbDagLoadS{}~s of loading, about \numScaleQbDagAllMin{} minutes for all of them.
-Qubit for qubit the two are close, one \tool{} slice taking \numScaleOneRatio{} times Qiskit's in the median, so
-\tool{}'s advantage on large circuits is the single pass over every qubit. The QPDG reimplementation builds its graph
+after \numScaleQbReadMin{} minutes of reading, \numScaleQbMarkupS{}~s to produce its srcML and \numScaleQbLayerS{}~s for the
+layer to read it. Markup runs at about \numScaleQbOpsPerS{} operations per second on the large circuits, a cost paid
+once per file, as parsing with srcML is. The other \numScaleQbRejected{} circuits are not valid OpenQASM~2, and Qiskit
+rejects them too. Qiskit's DAG slices one of its \numScaleQbMaxOpsQubits{} qubits in \numScaleQbDagOneS{}~s after
+\numScaleQbDagLoadS{}~s of loading, about \numScaleQbDagAllMin{} minutes for all of them. Qubit for qubit the two are
+close, one \tool{} slice taking \numScaleOneRatio{} times Qiskit's in the median, so \tool{}'s advantage on large
+circuits is the single pass over every qubit, which gives every slice sooner than Qiskit gives them one by one even
+with the markup counted. The QPDG reimplementation builds its graph
 within the limit for circuits of up to \numScaleQpdgMaxOps{} operations, in \numScaleQpdgMaxS{}~s, where \tool{} reads and
 slices the circuit in \numScaleQpdgSqS{}~s. Qiskit's \texttt{LightCone} pass slices one qubit of the circuit of
 \numScaleLcMaxOps{} operations in \numScaleLcMaxS{}~s, where \tool{} slices all \numScaleLcQubits{} of its qubits in
@@ -125,7 +130,8 @@ the program with Qiskit and slicing one qubit takes \numScaleQftRunS{}~s, the sp
 never executes the program.
 
 \emph{Answer to RQ3.} The approach takes a fraction of a second per real program and scales to circuits of millions of
-operations, where its one pass over every qubit outpaces tools that slice one qubit of the built circuit.
+operations, where producing their srcML takes minutes and its one pass over every qubit outpaces tools that slice one
+qubit of the built circuit.
 
 \subsection{RQ4: What a slice shows}
 

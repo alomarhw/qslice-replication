@@ -682,9 +682,12 @@ def main() -> int:
         share = [int(x) / int(r["code_lines"]) for r in ok1 if int(r["code_lines"]) for x in r["slice_lines"].split(";") if x]
         put("ScaleReadMedianPct", st.median(share), pct(st.median(share), 0), src)
         put("ScaleReadQubits", len(share), cnt(len(share)), src)
-        src = "results/icpc/scale/s2_qasmbench.csv"
-        s2 = rows(sc / "s2_qasmbench.csv")
+        # S2 through srcML (rerun 2026-10-31, RERUNS.md): our rows timed again, the baselines' rows copied unchanged
+        src = "results/icpc/scale__rerun-20261031/s2_qasmbench.csv"
+        s2 = rows(ICPC / "scale__rerun-20261031" / "s2_qasmbench.csv")
         sq = {r["path"]: r for r in s2 if r["tool"] == TOOL_NAME and not r["error"]}
+        sbad = [r for r in s2 if r["tool"] == TOOL_NAME and r["error"] == "QasmSemanticError"]
+        put("ScaleQbRejected", len(sbad), cnt(len(sbad)), src)
         put("ScaleQbFiles", len({r["path"] for r in s2}), cnt(len({r["path"] for r in s2})), src)
         put("ScaleQbRead", len(sq), cnt(len(sq)), src)
         put("ScaleQbMillion", sum(int(r["ops"]) >= 1_000_000 for r in sq.values()), cnt(sum(int(r["ops"]) >= 1_000_000 for r in sq.values())), src)
@@ -694,6 +697,12 @@ def main() -> int:
         put("ScaleQbMaxOps", int(b["ops"]), f"{int(b['ops']) / 1e6:.1f}~million", src)
         put("ScaleQbMaxOpsQubits", int(b["qubits"]), cnt(int(b["qubits"])), src)
         put("ScaleQbReadS", float(b["t_read"]), f"{float(b['t_read']):.0f}", src)
+        put("ScaleQbMarkupS", float(b["t_markup"]), f"{float(b['t_markup']):.0f}", src)
+        put("ScaleQbLayerS", float(b["t_layer"]), f"{float(b['t_layer']):.0f}", src)
+        put("ScaleQbReadMin", float(b["t_read"]) / 60, f"{float(b['t_read']) / 60:.0f}", src)
+        big = [r for r in sq.values() if int(r["ops"]) >= 100_000]
+        rate = sum(int(r["ops"]) for r in big) / sum(float(r["t_read"]) for r in big)
+        put("ScaleQbOpsPerS", rate, cnt(int(round(rate, -2))), src)
         put("ScaleQbAllS", tf(b, ["t_terminal", "t_all"]), f"{tf(b, ['t_terminal', 't_all']):.0f}", src)
         put("ScaleQbOneS", tf(b, ["t_terminal", "t_one"]), f"{tf(b, ['t_terminal', 't_one']):.0f}", src)
         dag = {r["path"]: r for r in s2 if r["tool"] == "qiskit-dag" and not r["error"]}
@@ -742,8 +751,8 @@ def main() -> int:
         cr = json.load(open(ICPC / "scale" / "coverage_reasons.json"))
         for k, nm in (("no_circuit_files", "NoCircuit"), ("no-construction", "NoConstruction"), ("from-file-or-lib", "FromFile"), ("other", "Other")):
             put(f"Cov{nm}", cr[k], cnt(cr[k]), src)
-        src = "results/icpc/scale/s2_qasmbench.csv"
-        s2r = rows(ICPC / "scale" / "s2_qasmbench.csv")
+        src = "results/icpc/scale__rerun-20261031/s2_qasmbench.csv"
+        s2r = rows(ICPC / "scale__rerun-20261031" / "s2_qasmbench.csv")
         sqr = {r["path"]: r for r in s2r if r["tool"] == TOOL_NAME and not r["error"]}
         dgr = {r["path"]: r for r in s2r if r["tool"] == "qiskit-dag" and not r["error"]}
         one = lambda r, ks: sum(float(r[k]) for k in ks)  # noqa: E731
