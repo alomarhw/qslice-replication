@@ -194,11 +194,14 @@ missed a module variable read inside a function. The patch applies to the public
 tests.
 
 \subsection{E5, qubit profiles}
-srcSlice does not store a slice as a list of lines. It summarizes every variable in a \emph{slice profile}, a small
-record of what a developer asks first about the variable, and reads slices off these records. A profile holds the lines
-that define and use the variable, the \emph{dependent variables} its value flows into, its \emph{aliases}, the other
-names for the same data, and the \emph{calls} it is passed to, with the argument position. E5 gives each qubit the same
-kind of record.
+srcSlice does not store a slice as a list of lines. It summarizes every variable in a \emph{slice profile} and reads
+slices off these profiles~\cite{alomari2014srcslice}. For each variable, srcSlice reports the lines that define it,
+\texttt{def}, and use it, \texttt{use}; the variables whose values are computed from it, \texttt{dvars}; its aliases,
+\texttt{pointers}; and the functions it is passed to, \texttt{cfuncs}, each with the position of the argument, so that
+\texttt{cx\{2\}} records that the variable is the second argument of a call to \texttt{cx}. The original paper names the
+same fields \texttt{slines}, \texttt{dvariables}, \texttt{pointers} and \texttt{cfunctions}. The slice of a variable is
+the closure of its lines over these fields, through its dependent variables, its aliases and the parameters of the
+functions it is passed to. E5 gives each qubit a profile of the same kind.
 
 \begin{definition}[Qubit profile]\label{def:b-profile}
 The profile of a qubit $q$ records its \emph{uses}, the lines of the operations on $q$; its \emph{names}, the source
@@ -215,14 +218,14 @@ first operation.
   \label{tab:b-profile}
   \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.45cm} >{\raggedright\arraybackslash}p{2.75cm} >{\raggedright\arraybackslash}p{3.95cm}@{}}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.55cm} >{\raggedright\arraybackslash}p{2.75cm} >{\raggedright\arraybackslash}p{3.85cm}@{}}
     \toprule
-    \textbf{Entry} & \textbf{srcSlice, variable \texttt{q}} & \textbf{\tool{}, qubit \texttt{q[4]}} \\
+    \textbf{Entry, srcSlice field} & \textbf{srcSlice, variable \texttt{q}} & \textbf{\tool{}, qubit \texttt{q[4]}} \\
     \midrule
-    Lines & defined on 4, used on 7, 8, 12--17, 19, 21, 23 & 13--16, 19, 21, each operation reading and writing \texttt{q[4]} \\ \sep
-    Flows into & the variable \texttt{qc} & the qubits \texttt{q[2]}, \texttt{q[3]}, \texttt{q[5]}--\texttt{q[8]}, which its first operation can affect \\ \sep
-    Other names & none & \texttt{q[b]} in iteration 1, \texttt{q[src]} in iteration 2 \\ \sep
-    Passed to & \texttt{QuantumCircuit}, \texttt{u}, \texttt{h}, \texttt{cx}, \texttt{measure}, \texttt{x}, \texttt{z} & no function of the program \\ \sep
+    Lines\newline\texttt{def}, \texttt{use} & defined on 4, used on 7, 8, 12--17, 19, 21, 23 & 13--16, 19, 21, each operation reading and writing \texttt{q[4]} \\ \sep
+    Flows into\newline\texttt{dvars} & the variable \texttt{qc} & the qubits \texttt{q[2]}, \texttt{q[3]}, \texttt{q[5]}--\texttt{q[8]}, which its first operation can affect \\ \sep
+    Other names\newline\texttt{pointers} & none & \texttt{q[b]} in iteration 1, \texttt{q[src]} in iteration 2 \\ \sep
+    Passed to\newline\texttt{cfuncs} & \texttt{Quantum}\allowbreak\texttt{Circuit\{1\}}, \texttt{u\{4\}}, \texttt{h\{1\}}, \texttt{cx\{1\}}, \texttt{cx\{2\}}, \texttt{measure\{1\}}, \texttt{x\{1\}}, \texttt{z\{1\}} & no function of the program \\ \sep
     Bits & -- & \texttt{c[4]}, which conditions line 21 \\ \sep
     Slice & every line that uses \texttt{q} or \texttt{qc} & backward 8, 12--17, 19, 21 and forward 13--17, 19, 21, 23, each with its iterations \\
     \bottomrule
@@ -230,7 +233,7 @@ first operation.
 \end{table}
 
 Table~\ref{tab:b-profile} sets the two side by side on the program of Fig.~\ref{fig:b-example}. To srcSlice the register
-\texttt{q} is one variable, used on every gate line and passed to every gate, so its profile cannot tell one qubit from
+\texttt{q} is one variable, used on every gate line and passed to every gate, as its \texttt{cfuncs} show, so its profile cannot tell one qubit from
 another. The profile of \texttt{q[4]} keeps only the six lines whose operations act on it. Its two names show at once
 that \texttt{q[4]} is first the target of a hop, as \texttt{q[b]}, and then the carrier, as \texttt{q[src]}. Its bit
 \texttt{c[4]} points to the conditioned gate on line 21, which a variable profile has no entry for. E5 computes the
