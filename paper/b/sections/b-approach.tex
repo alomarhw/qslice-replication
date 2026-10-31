@@ -4,17 +4,17 @@ The approach adds a quantum layer to srcML and srcSlice. srcML parses the progra
 give its markup a quantum meaning: they read what each call does to which qubits (E1), reconstruct the circuit the
 program builds (E2), slice every qubit of that circuit (E3), add the classical statements that compute each slice (E4),
 and summarize each qubit in a profile (E5). The result is shown on the program's lines. We implement the approach in a
-tool, \tool{}, for Qiskit programs~\cite{javadi2024qiskit} and OpenQASM~2 circuits. Fig.~\ref{fig:b-architecture} shows
+tool, \tool{}, for Qiskit programs~\cite{javadi2024qiskit} and OpenQASM~2 and~3 programs. Fig.~\ref{fig:b-architecture} shows
 its parts and where each comes from, and Fig.~\ref{fig:b-tool} follows the program of Fig.~\ref{fig:b-example} through
 them.
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=0.86\textwidth]{figures/fig_b_architecture.pdf}
-  \caption{The parts of the approach. A Qiskit program is marked up by srcML, and an OpenQASM~2 or~3 program by front
-  ends that produce Behler et al.'s markup. The extensions E1 to E5 read both, and srcSlice, patched, gives the classical
-  lines of a Qiskit program. What the developer is shown is
-  on the right.}
+  \includegraphics[width=\textwidth]{figures/fig_b_architecture.pdf}
+  \caption{The parts of the approach, each with what it produces for \texttt{q[4]} of the program of
+  Fig.~\ref{fig:b-example}. srcML marks up a Qiskit program, and our front ends mark up an OpenQASM~2 or~3 program in
+  Behler et al.'s markup. E1 to E3 turn the markup into the circuit and slice it, E4 adds the classical lines from srcSlice's
+  profiles, and E5 summarizes each qubit. The quantum markup writes the roles E1 reads back into srcML for other tools.}
   \label{fig:b-architecture}
 \end{figure*}
 
