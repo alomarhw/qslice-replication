@@ -96,3 +96,9 @@ logged here with its cause, script, commit, and the old and new value of every n
 - **New macros.** SubjOqtwo* (1,212 files, 1,127 traced, 1-489 qubits, median 247 / largest 333,654 operations),
   SubjOqthreeEx* (21, 20, 1-44, 18 / 300,000: `t1.qasm` unrolls its loops to 300,000 operations on a hardware qubit),
   SubjOqthreeVq* (94, 20, 1-13, 2 / 64), SubjOqthreeRt* (1,141, 1,141, 1-489, 230 / 31,095). No existing number changes.
+
+## 2026-11-01 medians of the LintQ comparison computed as true medians (no rerun)
+- **Cause.** `make_numbers.py` took the upper middle of an even number of values as the median for the code lines of
+  the files LintQ warns in. It now uses `statistics.median` (the mean of the middle two), as for the other medians;
+  the srcSlice time median is switched the same way and is unchanged (401 values).
+- **Numbers that changed.** LqCodeMedian 62 -> 60.5 (88 warnings). LqReadMedian stays 8.

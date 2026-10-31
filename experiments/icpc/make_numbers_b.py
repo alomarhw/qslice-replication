@@ -126,7 +126,7 @@ def main() -> int:
     put("SsRecall", rec, f"{rec:.2f}", src)
     put("SsPrecision", prec, f"{prec:.2f}", src)
     ft = sorted({(x["corpus"], x["file"]): float(x["srcslice_s"]) for x in ss}.values())
-    put("SsMedianMs", ft[len(ft) // 2], f"{1000 * ft[len(ft) // 2]:.0f}", src)
+    put("SsMedianMs", st.median(ft), f"{1000 * st.median(ft):.0f}", src)
     # the run before the two srcSlice fixes of Deviation I-21
     src = "results/icpc/srcslice_i20/qubits.csv"
     s0 = [x for x in rows(ICPC / "srcslice_i20" / "qubits.csv") if not x["error"]]
@@ -205,8 +205,8 @@ def main() -> int:
     put("LqQubitExposed", sum(x["exposed"] == "1" for x in qr), cnt(sum(x["exposed"] == "1" for x in qr)), src)
     rd = sorted(int(x["slice_lines"]) for x in qr if x["slice_lines"])
     cd = sorted(int(x["code_lines"]) for x in qr if x["slice_lines"])
-    put("LqReadMedian", rd[len(rd) // 2], cnt(rd[len(rd) // 2]), src)
-    put("LqCodeMedian", cd[len(cd) // 2], cnt(cd[len(cd) // 2]), src)
+    put("LqReadMedian", st.median(rd), f"{st.median(rd):g}", src)  # a true median: the mean of the middle two when even
+    put("LqCodeMedian", st.median(cd), f"{st.median(cd):g}", src)
     put("LqReadN", len(rd), cnt(len(rd)), src)
     for nm, f in (("Fp", "c1_fp.csv"), ("Sarif", "c1_sarif.csv")):
         x = rows(ICPC / "lintq_compare" / f)

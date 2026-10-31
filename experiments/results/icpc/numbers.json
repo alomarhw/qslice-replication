@@ -2239,13 +2239,13 @@
   "source": "results/icpc/lintq_compare/c1.csv"
  },
  "LqReadMedian": {
-  "value": 8,
+  "value": 8.0,
   "tex": "8",
   "source": "results/icpc/lintq_compare/c1.csv"
  },
  "LqCodeMedian": {
-  "value": 62,
-  "tex": "62",
+  "value": 60.5,
+  "tex": "60.5",
   "source": "results/icpc/lintq_compare/c1.csv"
  },
  "LqReadN": {

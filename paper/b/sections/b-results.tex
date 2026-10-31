@@ -162,7 +162,7 @@ qubit of the built circuit.
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
   \begin{tabular}{@{}l r r r@{}}
     \toprule
-    \textbf{Warnings} & \textbf{Count} & \textbf{Traced} & \textbf{Predicate holds} \\
+    \rowcolor{black!8}\textbf{Warnings} & \textbf{Count} & \textbf{Traced} & \textbf{Predicate holds} \\
     \midrule
     True positives, by LintQ's labels & \numLqQubitTp{} & \numLqQubitTraced{} & \numLqQubitExposed{} \\ \sep
     False positives, by LintQ's labels & \numLqFpWarnings{} & \numLqFpTraced{} & \numLqFpFires{} \\ \sep
@@ -171,7 +171,8 @@ qubit of the built circuit.
   \end{tabular}\\[3pt]
   \begin{minipage}{\columnwidth}\footnotesize
   The analyses are operation after measurement, double measurement, oversized circuit, conditional without measurement
-  and unmeasurable qubits.
+  and unmeasurable qubits. Traced counts the warnings in programs \tool{} traces, and Predicate holds those of them at
+  whose line the predicate of the analysis holds on the qubit profiles.
   \end{minipage}
 \end{table}
 
