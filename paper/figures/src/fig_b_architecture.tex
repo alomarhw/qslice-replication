@@ -27,7 +27,7 @@
 \begin{tikzpicture}
 \node[io, text width=2.05cm] (qasm) at (1.15,0.0) {\bx{OpenQASM 2, 3}{\texttt{.qasm} file}{\texttt{cx q[0],q[1];}}};
 \node[io, text width=2.05cm] (py) at (1.15,-2.55) {\bx{Qiskit}{\texttt{.py} program}{\texttt{qc.cx(q[src], q[a])}}};
-\node[new, text width=2.7cm] (fe) at (4.05,0.0) {\bxn{Front ends}{OpenQASM to srcML, Behler et al.'s markup}{\texttt{\textless{}argument\_list type=\textquotedbl{}quantum\textquotedbl{}\textgreater{}}}};
+\node[new, text width=2.7cm] (fe) at (4.05,0.0) {\bxn{Front ends}{OpenQASM~2 and~3 to srcML, with positions}{\texttt{\textless{}argument\_list type=\textquotedbl{}quantum\textquotedbl{}\textgreater{}}}};
 \node[reused, text width=2.7cm] (srcml) at (4.05,-2.55) {\bx{srcML}{Python markup with positions}{\texttt{\textless{}call pos:start=\textquotedbl{}14:5\textquotedbl{}\textgreater{}}}};
 \node[ext, text width=2.7cm] (ss) at (4.05,-5.1) {\bx{srcSlice, patched}{def, use, dvars, cfuncs of each variable}{\texttt{src}: def 9, 22}};
 \node[new, text width=2.8cm] (e1) at (7.2,-2.55) {\bxn{E1 Roles}{what each call does to which qubits}{\texttt{cx(control, target)}}};
@@ -55,7 +55,7 @@
 \draw[arr] (fe.east) -| node[lab, pos=0.25, above] {markup} ([xshift=-0.55cm]e1.north);
 \draw[arr] (e1) -- (e2);
 \draw[arr] (e2) -- (e3);
-\draw[arr] ([xshift=0.55cm]e1.north) -- ([xshift=0.55cm]e1.north |- qm.south) -- ([xshift=-0.25cm]qm.south);
+\draw[arr] ([xshift=0.55cm]e1.north) |- (qm.west);
 \draw[arr] ([xshift=0.25cm]e2.north) -- ([xshift=0.25cm]qm.south);
 \draw[arr] (e3) -- (e5);
 \draw[arr] (e3) -- node[lab, right] {quantum lines} (e4);

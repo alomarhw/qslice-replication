@@ -119,7 +119,7 @@ def body(F):
     node("io", "qasm", "in", "top", W["in"], r"\bx{OpenQASM 2, 3}{\texttt{.qasm} file}{" + tt("cx q[0],q[1];") + "}")
     node("io", "py", "in", "mid", W["in"], r"\bx{Qiskit}{\texttt{.py} program}{" + tt(F["code"]) + "}")
     # markup
-    node("new", "fe", "mk", "top", W["mk"], r"\bxn{Front ends}{OpenQASM to srcML, Behler et al.'s markup}{"
+    node("new", "fe", "mk", "top", W["mk"], r"\bxn{Front ends}{OpenQASM~2 and~3 to srcML, with positions}{"
          + tt('<argument_list type="quantum">') + "}")
     node("reused", "srcml", "mk", "mid", W["mk"], r"\bx{srcML}{Python markup with positions}{"
          + tt(f'<call pos:start="{F["pos"]}">') + "}")
@@ -163,7 +163,7 @@ def body(F):
     a(r"\draw[arr] (fe.east) -| node[lab, pos=0.25, above] {markup} ([xshift=-0.55cm]e1.north);")
     a(r"\draw[arr] (e1) -- (e2);")
     a(r"\draw[arr] (e2) -- (e3);")
-    a(r"\draw[arr] ([xshift=0.55cm]e1.north) -- ([xshift=0.55cm]e1.north |- qm.south) -- ([xshift=-0.25cm]qm.south);")
+    a(r"\draw[arr] ([xshift=0.55cm]e1.north) |- (qm.west);")
     a(r"\draw[arr] ([xshift=0.25cm]e2.north) -- ([xshift=0.25cm]qm.south);")
     a(r"\draw[arr] (e3) -- (e5);")
     a(r"\draw[arr] (e3) -- node[lab, right] {quantum lines} (e4);")
