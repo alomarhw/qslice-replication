@@ -130,5 +130,37 @@
   "median_lines": 12.0,
   "max_lines": 17,
   "total_lines": 118
+ },
+ "oq2": {
+  "count": 1212,
+  "traced": 1127,
+  "min_qubits": 1,
+  "max_qubits": 489,
+  "median_ops": 247,
+  "max_ops": 333654
+ },
+ "oq3_examples": {
+  "count": 21,
+  "traced": 20,
+  "min_qubits": 1,
+  "max_qubits": 44,
+  "median_ops": 18.0,
+  "max_ops": 300000
+ },
+ "oq3_veriq": {
+  "count": 94,
+  "traced": 20,
+  "min_qubits": 1,
+  "max_qubits": 13,
+  "median_ops": 2.0,
+  "max_ops": 64
+ },
+ "oq3_export": {
+  "count": 1141,
+  "traced": 1141,
+  "min_qubits": 1,
+  "max_qubits": 489,
+  "median_ops": 230,
+  "max_ops": 31095
  }
 }

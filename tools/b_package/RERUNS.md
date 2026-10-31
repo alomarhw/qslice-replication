@@ -81,3 +81,12 @@ with its cause, its script, and the old and new value of every number that chang
 - **Numbers that changed.** SubjQbTraced 164 -> 161; SubjQbMaxQubits 10,000 -> 433; SubjQbMedianOps 550 -> 525. New:
   SubjDevCount 16, SubjDevTraced 16, SubjDevMinQubits 3, SubjDevMaxQubits 18, SubjDevMedianOps 40, SubjDevMaxOps
   1,842, SubjDevMedianLines 24.
+
+## 2026-11-01 OpenQASM data added to Table V (new statistics, no changed number)
+- **What.** `corpus_sizes.py` also summarizes the OpenQASM data of RQ1, by distinct contents as the RQ1 numbers are:
+  the OpenQASM 2 files of the corpora (trace equal to Qiskit's circuit; qubits from their `qreg` declarations,
+  operations from `qasm_srcml/equiv.csv`), the official OpenQASM 3 examples and VeriQBench's OpenQASM 3 files (traced by
+  the layer), and the OpenQASM 3 that Qiskit exports (qubits from their declarations, operations from their answers).
+- **New macros.** SubjOqtwo* (1,212 files, 1,127 traced, 1-489 qubits, median 247 / largest 333,654 operations),
+  SubjOqthreeEx* (21, 20, 1-44, 18 / 300,000: `t1.qasm` unrolls its loops to 300,000 operations on a hardware qubit),
+  SubjOqthreeVq* (94, 20, 1-13, 2 / 64), SubjOqthreeRt* (1,141, 1,141, 1-489, 230 / 31,095). No existing number changes.

@@ -29,7 +29,7 @@ front end is timed on the medium and large circuits of QASMBench~\cite{li2023qas
   \centering
   \caption{Programs and circuits of the evaluation. Shaded rows are programs we wrote.}
   \label{tab:b-subjects}
-  \footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
+  \footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.05}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
   \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X r r r r r >{\raggedright\arraybackslash}p{2.6cm}@{}}
     \toprule
@@ -51,13 +51,23 @@ front end is timed on the medium and large circuits of QASMBench~\cite{li2023qas
       \numSubjParamMedianLines{} & RQ3 \\ \sep
     \rowcolor{blue!7}Programs with device loops & \numSubjCfCount{} & \numSubjCfTraced{} & \numSubjCfMinQubits{}--\numSubjCfMaxQubits{} &
       \numSubjCfMedianOps{} / \numSubjCfMaxOps{} & \numSubjCfMedianLines{} & RQ1 \\ \sep
+    OpenQASM~2 files of MQT Bench, QASMBench and VeriQBench & \numSubjOqtwoCount{} & \numSubjOqtwoTraced{} & \numSubjOqtwoMinQubits{}--\numSubjOqtwoMaxQubits{} &
+      \numSubjOqtwoMedianOps{} / \numSubjOqtwoMaxOps{} & -- & RQ1 \\ \sep
+    OpenQASM~3 examples of the language & \numSubjOqthreeExCount{} & \numSubjOqthreeExTraced{} & \numSubjOqthreeExMinQubits{}--\numSubjOqthreeExMaxQubits{} &
+      \numSubjOqthreeExMedianOps{} / \numSubjOqthreeExMaxOps{} & -- & RQ1 \\ \sep
+    OpenQASM~3 files of VeriQBench & \numSubjOqthreeVqCount{} & \numSubjOqthreeVqTraced{} & \numSubjOqthreeVqMinQubits{}--\numSubjOqthreeVqMaxQubits{} &
+      \numSubjOqthreeVqMedianOps{} / \numSubjOqthreeVqMaxOps{} & -- & RQ1 \\ \sep
+    OpenQASM~3 exported by Qiskit & \numSubjOqthreeRtCount{} & \numSubjOqthreeRtTraced{} & \numSubjOqthreeRtMinQubits{}--\numSubjOqthreeRtMaxQubits{} &
+      \numSubjOqthreeRtMedianOps{} / \numSubjOqthreeRtMaxOps{} & -- & RQ1 \\ \sep
     QASMBench medium and large, OpenQASM~2 & \numSubjQbCount{} & \numSubjQbTraced{} & \numSubjQbMinQubits{}--\numSubjQbMaxQubits{} &
       \numSubjQbMedianOps{} / \numSubjQbMaxOps{} & -- & RQ3 \\
     \bottomrule
   \end{tabularx}\\[3pt]
   \begin{minipage}{\textwidth}\footnotesize
   Traced counts the programs from which \tool{} reconstructs a circuit, the sizes of the parametric programs, and for
-  QASMBench the circuits in valid OpenQASM~2. Qubits and operations describe the traced circuits, as smallest to largest
+  QASMBench the circuits in valid OpenQASM~2. For the other OpenQASM data it counts distinct files, and Traced the
+  files whose trace RQ1 checks; the rest are rejected or reported, as Table~\ref{tab:b-rq1} lists. Qiskit exports
+  OpenQASM~3 from our programs and from the corpus files. Qubits and operations describe the traced circuits, as smallest to largest
   and as median / largest, and \numToolMaxOps{} operations is the trace limit. Code lines exclude blank and comment
   lines and are medians. Programs by others are read and never run.
   \end{minipage}
