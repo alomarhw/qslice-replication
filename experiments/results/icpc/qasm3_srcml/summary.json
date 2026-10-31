@@ -1,0 +1,55 @@
+{
+ "lossless": {
+  "examples": {
+   "files": 21,
+   "lossless": 21,
+   "rejected": 0
+  },
+  "ours": {
+   "files": 24,
+   "lossless": 24,
+   "rejected": 0
+  },
+  "corpus": {
+   "files": 1245,
+   "lossless": 1245,
+   "rejected": 0
+  },
+  "veriqbench": {
+   "files": 94,
+   "lossless": 20,
+   "rejected": 74
+  }
+ },
+ "grammar": {
+  "reference_match": 35,
+  "reference_cases": 35,
+  "invalid_rejected": 126,
+  "invalid_unsupported": 3,
+  "invalid_accepted": 0
+ },
+ "roundtrip_ours": {
+  "files": 24,
+  "equal": 24
+ },
+ "roundtrip_corpus": {
+  "files": 1245,
+  "equal": 1245
+ },
+ "examples": {
+  "files": 21,
+  "trace": 21,
+  "trace_with_outside_constructs": 13,
+  "rejected": 0,
+  "reported": 0,
+  "crash": 0
+ },
+ "veriqbench": {
+  "files": 94,
+  "trace": 20,
+  "trace_with_outside_constructs": 12,
+  "rejected": 74,
+  "reported": 0,
+  "crash": 0
+ }
+}

@@ -1,0 +1,116 @@
+file,outcome,ops,outside_subset,message
+openqasm3_examples/adder.qasm,trace,32,,
+openqasm3_examples/alignment.qasm,trace,4,delay,
+openqasm3_examples/arrays.qasm,trace,0,def copy_3_bytes;def multi_dimensional_input,
+openqasm3_examples/cphase.qasm,trace,1,qubit operand 'q' is not a declared register (a construct outside the subset may have named it),
+openqasm3_examples/dd.qasm,trace,0,box,
+openqasm3_examples/defcal.qasm,trace,0,defcal;defcalgrammar,
+openqasm3_examples/gateteleport.qasm,trace,10,def logical_meas;extern,
+openqasm3_examples/inverseqft1.qasm,trace,28,,
+openqasm3_examples/inverseqft2.qasm,trace,23,,
+openqasm3_examples/ipe.qasm,trace,63,,
+openqasm3_examples/msd.qasm,trace,50,def Ty;def distill;def distill_and_buffer;def rus_level_0;def ymeasure,
+openqasm3_examples/qec.qasm,trace,14,def syndrome,
+openqasm3_examples/qft.qasm,trace,21,,
+openqasm3_examples/qpt.qasm,trace,7,,
+openqasm3_examples/rb.qasm,trace,15,,
+openqasm3_examples/rus.qasm,trace,70,def segment,
+openqasm3_examples/scqec.qasm,trace,29000,def cycle;def hadamard_layer;extern,
+openqasm3_examples/t1.qasm,trace,300000,defcal;defcalgrammar;delay;extern,
+openqasm3_examples/teleport.qasm,trace,15,,
+openqasm3_examples/varteleport.qasm,trace,73,def bellprep;def xprepare;let;qubit operand 'bp' is not a declared register (a construct outside the subset may have named it);qubit operand 'io' is not a declared register (a construct outside the subset may have named it),
+openqasm3_examples/vqe.qasm,trace,1,def counts_for_term;def estimate_energy;def pauli_measurement;def trial_circuit;def xmeasure;def ymeasure;extern,
+veriqbench/sequential/qctrl-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 40, column 9: expected ';', found ','"
+veriqbench/sequential/qctrl-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 40, column 9: expected ';', found ','"
+veriqbench/sequential/qctrl-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 40, column 9: expected ';', found ','"
+veriqbench/sequential/qctrl-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 40, column 9: expected ';', found ','"
+veriqbench/sequential/qft-large-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-3.a.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-3.b.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-small-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 41, column 9: expected ';', found ','"
+veriqbench/sequential/qft-small-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 41, column 9: expected ';', found ','"
+veriqbench/sequential/qft-small-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 41, column 9: expected ';', found ','"
+veriqbench/sequential/qft-small-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 41, column 9: expected ';', found ','"
+veriqbench/sequential/qhalf-adder.a.qasm,trace,1,def sqcircuit,
+veriqbench/sequential/qhalf-adder.b.qasm,trace,1,def sqcircuit,
+veriqbench/sequential/qrus-1.a.qasm,trace,1,def sqcircuit,
+veriqbench/sequential/qrus-1.b.qasm,trace,2,def sqcircuit,
+veriqbench/sequential/qrus-2.a.qasm,trace,2,def sqcircuit,
+veriqbench/sequential/qrus-2.b.qasm,trace,2,def sqcircuit,
+veriqbench/sequential/qwalk-diff.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-diff.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-irr.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-irr.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 52, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 52, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 54, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 54, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-3.a.qasm,rejected: not valid OpenQASM 3,,,"line 56, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-3.b.qasm,rejected: not valid OpenQASM 3,,,"line 56, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-small-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 9: expected ';', found ','"
+veriqbench/sequential/qwalk-small-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 43, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-small-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-small-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-3.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-3.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/variational/EfficientSU2/eff_10.qasm,trace,49,,
+veriqbench/variational/EfficientSU2/eff_11.qasm,trace,54,,
+veriqbench/variational/EfficientSU2/eff_12.qasm,trace,59,,
+veriqbench/variational/EfficientSU2/eff_13.qasm,trace,64,,
+veriqbench/variational/examples/HEA_5.qasm,rejected: not valid OpenQASM 3,,,"line 4, column 9: expected ';', found '['"
+veriqbench/variational/examples/SPA_5.qasm,rejected: not valid OpenQASM 3,,,"line 4, column 9: expected ';', found '['"
+veriqbench/variational/examples/UCC_5.qasm,rejected: not valid OpenQASM 3,,,"line 6, column 9: expected ';', found '['"
+veriqbench/sequential/qctrl-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 40, column 9: expected ';', found ','"
+veriqbench/sequential/qctrl-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 40, column 9: expected ';', found ','"
+veriqbench/sequential/qctrl-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 40, column 9: expected ';', found ','"
+veriqbench/sequential/qctrl-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 40, column 9: expected ';', found ','"
+veriqbench/sequential/qft-large-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-3.a.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-large-3.b.qasm,rejected: not valid OpenQASM 3,,,"line 10, column 15: expected ';', found 'p2'"
+veriqbench/sequential/qft-small-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 41, column 9: expected ';', found ','"
+veriqbench/sequential/qft-small-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 41, column 9: expected ';', found ','"
+veriqbench/sequential/qft-small-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 41, column 9: expected ';', found ','"
+veriqbench/sequential/qft-small-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 41, column 9: expected ';', found ','"
+veriqbench/sequential/qhalf-adder.a.qasm,trace,1,def sqcircuit,
+veriqbench/sequential/qhalf-adder.b.qasm,trace,1,def sqcircuit,
+veriqbench/sequential/qrus-1.a.qasm,trace,1,def sqcircuit,
+veriqbench/sequential/qrus-1.b.qasm,trace,2,def sqcircuit,
+veriqbench/sequential/qrus-2.a.qasm,trace,2,def sqcircuit,
+veriqbench/sequential/qrus-2.b.qasm,trace,2,def sqcircuit,
+veriqbench/sequential/qwalk-diff.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-diff.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-irr.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-irr.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 52, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 52, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 54, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 54, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-3.a.qasm,rejected: not valid OpenQASM 3,,,"line 56, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-large-3.b.qasm,rejected: not valid OpenQASM 3,,,"line 56, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-small-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 9: expected ';', found ','"
+veriqbench/sequential/qwalk-small-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 43, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-small-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-small-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-1.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-1.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-2.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-2.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-3.a.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/sequential/qwalk-sym-3.b.qasm,rejected: not valid OpenQASM 3,,,"line 44, column 8: expected ';', found ','"
+veriqbench/variational/EfficientSU2/eff_10.qasm,trace,49,,
+veriqbench/variational/EfficientSU2/eff_11.qasm,trace,54,,
+veriqbench/variational/EfficientSU2/eff_12.qasm,trace,59,,
+veriqbench/variational/EfficientSU2/eff_13.qasm,trace,64,,
+veriqbench/variational/examples/HEA_5.qasm,rejected: not valid OpenQASM 3,,,"line 4, column 9: expected ';', found '['"
+veriqbench/variational/examples/SPA_5.qasm,rejected: not valid OpenQASM 3,,,"line 4, column 9: expected ';', found '['"
+veriqbench/variational/examples/UCC_5.qasm,rejected: not valid OpenQASM 3,,,"line 6, column 9: expected ';', found '['"

@@ -23,10 +23,34 @@ sys.path.insert(0, str(ROOT))
 from qiskit import qasm2, qasm3  # noqa: E402
 
 from tool.interp import trace_file  # noqa: E402
-from tool.tests.check_trace import built, flat  # noqa: E402
+from tool.tests.check_trace import flat  # noqa: E402
 
 OUT = ROOT / "data" / "openqasm3_roundtrip"
 MAX_BYTES = 1_000_000
+
+
+def size(qc) -> int:
+    """Operations of a circuit, those inside control-flow blocks included."""
+    return sum(1 + sum(size(b) for b in getattr(i.operation, "blocks", ())) for i in qc.data)
+
+
+def program_circuit(path):
+    """The circuit the program builds: of the circuits it creates, the largest counting its blocks. A control-flow
+    block is a circuit too, and can hold more instructions than the circuit it belongs to (check_trace.built picks by
+    instructions alone)."""
+    from qiskit import QuantumCircuit
+    made, orig = [], QuantumCircuit.__init__
+
+    def init(self, *a, **k):
+        orig(self, *a, **k)
+        made.append(self)
+    QuantumCircuit.__init__ = init
+    try:
+        import runpy
+        runpy.run_path(path, run_name="__main__")
+    finally:
+        QuantumCircuit.__init__ = orig
+    return max(made, key=size)
 
 
 def op_row(op):
@@ -42,7 +66,7 @@ def main():
         for p in sorted((ROOT / "tool" / "tests" / d).glob("*.py")):
             out = OUT / "ours" / f"{d}__{p.stem}.qasm"
             try:
-                qc = built(str(p))
+                qc = program_circuit(str(p))
                 out.write_text(qasm3.dumps(qc))
                 ans = {"source": str(p.relative_to(ROOT)), "kind": "qiskit-front-end trace",
                        "ops": [op_row(o) for o in trace_file(p).main_circuit().ops],

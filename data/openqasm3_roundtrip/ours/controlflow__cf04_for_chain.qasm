@@ -1,10 +1,11 @@
 OPENQASM 3.0;
 include "stdgates.inc";
-qubit _qubit0;
-qubit _qubit1;
-qubit _qubit2;
-qubit _qubit3;
-cx _qubit0, _qubit1;
-cx _qubit1, _qubit2;
-cx _qubit2, _qubit3;
-swap _qubit0, _qubit1;
+qubit[4] q;
+ry(1.1) q[0];
+for _ in [0:2] {
+  cx q[0], q[1];
+  cx q[1], q[2];
+  cx q[2], q[3];
+  swap q[0], q[1];
+}
+h q[3];
