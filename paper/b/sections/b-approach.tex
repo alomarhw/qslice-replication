@@ -63,20 +63,20 @@ Fig.~\ref{fig:b-example} uses it. The subsections that follow describe each exte
   \centering
   \caption{What the quantum layer does with each srcML element of a Qiskit or OpenQASM program, against srcSlice}
   \label{tab:b-layer}
-  \footnotesize\setlength{\tabcolsep}{3.4pt}\renewcommand{\arraystretch}{1.14}
+  \footnotesize\setlength{\tabcolsep}{3.4pt}\renewcommand{\arraystretch}{1.05}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
   \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.1cm} >{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}X c >{\raggedright\arraybackslash}p{1.35cm}@{}}
     \toprule
-    \textbf{srcML element} & \textbf{srcSlice} & \textbf{The quantum layer} & \textbf{Ext.} & \textbf{Fig.~\ref{fig:b-example}} \\
+    \textbf{srcML element} & \textbf{srcSlice} & \textbf{The quantum layer} & \textbf{Ext.} & \textbf{Lines of Fig.~\ref{fig:b-example}} \\
     \midrule
     \texttt{<expr\_stmt>}, an assignment & defines the target, uses the other names & evaluates the value, such as a register size, an index or a circuit, and records it & E2 & 3--7, 9, 11, 22 \\ \sep
-    \texttt{<expr\_stmt>}, a call on a circuit & uses the circuit and the argument names & looks the method up in the role table and appends one operation on the qubits its arguments denote; a measurement also writes its bit & E1, E2 & 8, 12--17, 19, 21 \\ \sep
+    \texttt{<expr\_stmt>}, a call on a circuit & uses the circuit and the argument names & looks the method up in the role table and appends one operation on the qubits its arguments denote; a measurement also writes its bit & E1, E2 & 8, 12--17, 19, 21, 23 \\ \sep
     \texttt{<for>} & reads the body once & unrolls the loop, up to 10{,}000 iterations, and tags each operation with its iteration; a loop of unknown length is repeated & E2 & 10 \\ \sep
-    \texttt{<while>} & reads the body once & runs while the condition is known, then repeats the body as a loop of unknown length & E2 & -- \\ \sep
+    \texttt{<while>} & reads the body once & runs while the condition is known, up to 10{,}000 iterations, and from the first unknown condition repeats the body as a loop of unknown length & E2 & -- \\ \sep
     \texttt{<if\_stmt>} & reads every branch & follows the branch the condition selects, or every branch when it is unknown & E2 & -- \\ \sep
     \texttt{<with>} around \texttt{if\_test}, \texttt{switch} or a device loop & reads the block as ordinary code & conditions every operation of the block on the bits it tests; device loops are repeated, Section~\ref{sec:b-loops} & E2, E3 & 18--21 \\ \sep
     \texttt{<function>}, \texttt{<return>} & links parameters to the arguments of each call & inlines the function at each call with its arguments and returns its value & E2 & -- \\ \sep
-    \texttt{<class>}, \texttt{<import>}, \texttt{<try>} & reads them as declarations & registers methods, resolves import aliases, reads the \texttt{try} block & E2 & -- \\ \sep
+    \texttt{<class>}, \texttt{<import>}, \texttt{<try>} & profiles each method as a function, records no import, reads every block of a \texttt{try} & analyzes each method as an entry point, resolves import aliases, reads only the \texttt{try} block & E2 & -- \\ \sep
     \texttt{pos:start} of every element & line numbers of its profiles & the source line of every operation & E2 & all \\
     \midrule
     \multicolumn{5}{@{}l}{\textit{OpenQASM~2, in Behler et al.'s markup, produced by the front end of Section~\ref{sec:b-frontends}}} \\
@@ -87,12 +87,13 @@ Fig.~\ref{fig:b-example} uses it. The subsections that follow describe each exte
     \texttt{<if\_stmt>}, \texttt{if(c==n)} & -- & conditions the operation on every bit of the register & E2, E3 & -- \\
     \midrule
     \multicolumn{5}{@{}l}{\textit{OpenQASM~3, the same elements and these}} \\
-    \texttt{<for>}, \texttt{<while>}, \texttt{<if\_stmt>}, \texttt{<switch>} & -- & over known values, unrolled or decided; over measured bits, conditioned on them, and a \texttt{while} repeated & E2, E3 & -- \\ \sep
+    \texttt{<for>}, \texttt{<while>}, \texttt{<if\_stmt>}, \texttt{<switch>}, \texttt{<box>} & -- & over known values, unrolled or decided; over measured bits, conditioned on them, and a \texttt{while} repeated; a \texttt{box} read in place & E2, E3 & -- \\ \sep
     \texttt{<specifier>} of a \texttt{<call>} & -- & \texttt{ctrl} and \texttt{negctrl} add control qubits to the operation & E1 & -- \\ \sep
     \texttt{<unsupported>} & -- & \texttt{def}, \texttt{let}, \texttt{delay}, calibration, reported; a subroutine call is one operation on its qubits & E2 & -- \\
     \midrule
-    the operations appended, with their bits & -- & slices every qubit along the light cone and the measured bits & E3 & 8, 12--17, 19, 21 \\ \sep
-    the variables of the sliced lines & profiles, patched for Python & follows the profiles back to the statements that compute the slice & E4 & 3--7, 9--11, 18, 20, 22 \\ \sep
+    \multicolumn{5}{@{}l}{\textit{After the trace, for either language}} \\
+    the operations of the trace, with their bits & -- & slices every qubit along the light cone and the measured bits & E3 & \texttt{q[4]}: 8, 12--17, 19, 21 \\ \sep
+    the variables of the sliced lines & profiles, patched for Python & follows the profiles back to the statements that compute the slice; in OpenQASM, the declarations & E4 & \texttt{q[4]}: 3--7, 9--11, 18, 20, 22 \\ \sep
     the operations on each qubit & -- & gathers the qubit's uses, names, dependents, bits and slices & E5 & -- \\
     \bottomrule
   \end{tabularx}
