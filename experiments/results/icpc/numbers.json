@@ -4006,6 +4006,11 @@
   "tex": "151",
   "source": "results/icpc/corpus_sizes.json"
  },
+ "SizeProgFiles": {
+  "value": 7942,
+  "tex": "7{,}942",
+  "source": "results/icpc/corpus_sizes.json"
+ },
  "ToolMaxOps": {
   "value": 200000,
   "tex": "200{,}000",

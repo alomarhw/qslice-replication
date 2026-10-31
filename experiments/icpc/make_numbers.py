@@ -1074,6 +1074,8 @@ def main() -> int:
         put("SizeAMaxOps", cz["corpus_a"]["max_ops"], cnt(cz["corpus_a"]["max_ops"]), src)
         for k, nm in (("bugs4q", "Bugs"), ("textbook", "Text"), ("lintq", "Lintq"), ("qhe", "Qhe")):
             put(f"Size{nm}Files", cz[k]["count"], cnt(cz[k]["count"]), src)
+        n = sum(cz[k]["count"] for k in ("bugs4q", "textbook", "lintq", "qhe"))
+        put("SizeProgFiles", n, cnt(n), src)  # every program of the four program corpora
         if HAS_TOOL:
             from tool.interp import MAX_OPS  # noqa: PLC0415
             put("ToolMaxOps", MAX_OPS, cnt(MAX_OPS), "tool/interp.py (MAX_OPS)")

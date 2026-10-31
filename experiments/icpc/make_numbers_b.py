@@ -410,7 +410,7 @@ def main() -> int:
     if (ICPC / "corpus_sizes.json").exists():
         cz = json.load(open(ICPC / "corpus_sizes.json"))
         src = "results/icpc/corpus_sizes.json"
-        names = {"corpus_a": "A", "generated": "Gen", "sweeps": "Sweep", "corpus_l": "L", "qasmbench": "Qb", "bugs4q": "Bugs",
+        names = {"qasmbench": "Qb", "bugs4q": "Bugs",
                  "textbook": "Text", "lintq": "Lintq", "qhe": "Qhe", "parametric": "Param", "controlflow": "Cf"}
         for k, nm in names.items():
             s = cz[k]
@@ -421,20 +421,13 @@ def main() -> int:
                     tex = (f"{v / 1e6:.1f}~million" if v >= 1e6 else cnt(round(v)))
                     put(f"Subj{nm}{fn}", v, tex, src)
         # names used by the related-work table
-        put("SizeAMinQubits", cz["corpus_a"]["min_qubits"], cnt(cz["corpus_a"]["min_qubits"]), src)
-        put("SizeAMaxQubits", cz["corpus_a"]["max_qubits"], cnt(cz["corpus_a"]["max_qubits"]), src)
-        put("SizeAMaxOps", cz["corpus_a"]["max_ops"], cnt(cz["corpus_a"]["max_ops"]), src)
         for k, nm in (("bugs4q", "Bugs"), ("textbook", "Text"), ("lintq", "Lintq"), ("qhe", "Qhe")):
             put(f"Size{nm}Files", cz[k]["count"], cnt(cz[k]["count"]), src)
+        n = sum(cz[k]["count"] for k in ("bugs4q", "textbook", "lintq", "qhe"))
+        put("SizeProgFiles", n, cnt(n), src)  # every program of the four program corpora
         if HAS_TOOL:
             from tool.interp import MAX_OPS  # noqa: PLC0415
             put("ToolMaxOps", MAX_OPS, cnt(MAX_OPS), "tool/interp.py (MAX_OPS)")
-        # Paper A, Table I: every circuit with a ground truth (corpus A, generated, width sweeps, corpus L)
-        n = sum(cz[k]["count"] for k in ("corpus_a", "generated", "sweeps", "corpus_l"))
-        put("StudyCircuits", n, cnt(n), src)
-        if "RqThreeUnits" in NUMS and "LinesUnits" in NUMS:
-            n = NUMS["RqThreeUnits"]["value"] + NUMS["BugsFourQUnits"]["value"]
-            put("StudyFaultUnits", n, cnt(n), "results/icpc/rq3/records.csv + results/icpc/source_map/units.csv")
 
     # ---- Deviation I-27: the role table and the calls outside it, on LintQ's corpus (descriptive) -------------
     if (ICPC / "unmodelled" / "calls_per_kind.json").exists():
