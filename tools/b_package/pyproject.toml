@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "srcslice-q"
+version = "1.0.0"
+description = "Static slicing of Qiskit and OpenQASM programs on srcML and srcSlice: a quantum layer, OpenQASM front ends to srcML, and quantum markup"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["qiskit>=1.0", "numpy"]
+
+[project.optional-dependencies]
+experiments = ["qiskit==2.3.0", "numpy==1.26.4", "scipy==1.13.1", "networkx==3.4.2"]
+
+[project.scripts]
+srcslice-q = "srcslice_q.cli:main"
+qiskit2srcml = "srcslice_q.quantum_markup:main"
+qasm2srcml = "srcslice_q.quantum_markup:qasm_main"
+
+[tool.setuptools]
+packages = ["srcslice_q", "srcslice_q.corpus"]
+
+[tool.setuptools.package-data]
+srcslice_q = ["data/*.inc"]

@@ -1,5 +1,5 @@
 """Development checks of the tool, recorded as a result: for each program of our own (safe to run), whether the
-static trace equals the circuit Qiskit builds, and whether every qubit's slice equals S-lc on that circuit.
+static trace equals the circuit Qiskit builds, and whether every qubit's slice equals the light cone of that circuit (experiments/icpc/b_reference.py).
 Usage (workspace root): python -m tool.tests.dev_summary  -> experiments/results/icpc/tool_acceptance/dev_checks.json"""
 import json, sys
 from collections import Counter
@@ -10,12 +10,14 @@ from tool.slicer import wire_slice
 from tool.tests.check_trace import built, flat
 
 PROGS = sorted(Path("tool/tests/big").glob("*.py")) + sorted(Path("tool/tests/programs").glob("t0*.py")) + \
-        sorted(p for p in Path("paper/figures/src/programs").glob("*.py") if p.name != "bv.py")
-# bv.py is the textbook listing, whose i() gate the current Qiskit no longer has; make_fig_bv.py checks it instead
+        sorted(p for p in Path("paper/figures/src/programs").glob("*.py")
+               if p.name != "bv.py" and not p.name.startswith(("lintq_", "qchecker_")))
+# bv.py is the textbook listing, whose i() gate the current Qiskit no longer has; make_fig_bv.py checks it instead.
+# lintq_*.py and qchecker_*.py are the other tools' paper examples (RQ4), not development programs.
 
 
 def main():
-    from slicers.registry import Slicers
+    from icpc.b_reference import light_cone
     out = []
     for p in PROGS:
         c = trace_file(p).main_circuit()
@@ -26,12 +28,11 @@ def main():
         for inst in qc.data:
             if inst.operation.name != "barrier":
                 nb.append(inst)
-        s = Slicers(nb, str(p))
         diff_q = []
         for q in range(nb.num_qubits):
             a = Counter((c.ops[k].name, tuple(sorted(next(iter(x)) for x in c.ops[k].qubits))) for k in wire_slice(c, [q], keep_terminal=True).ops)
             b = Counter()
-            for k in s.lc(q):
+            for k in light_cone(nb, q):
                 sub = nb.copy_empty_like(); sub.append(nb.data[k])
                 for name, qs in flat(sub):
                     b[(name, tuple(sorted(qs)))] += 1

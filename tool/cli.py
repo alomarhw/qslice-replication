@@ -4,7 +4,7 @@
   python -m tool.cli PROGRAM.py --qubits q[1],anc[0]  criterion: register bits
   python -m tool.cli PROGRAM.py --qubits all --json   one slice per qubit, as JSON
   python -m tool.cli PROGRAM.py --trace               print the operation trace
-  python -m tool.cli CIRCUIT.qasm --qubits 0          an OpenQASM 2 file, through the front end of tool.qasm
+  python -m tool.cli CIRCUIT.qasm --qubits 0          an OpenQASM 2 or 3 file, through its front end (tool.qasm)
 Options: --circuit NAME (variable name of the circuit to slice; default: the circuit with most operations),
          --annotate (print the source with the slice marked: Q quantum line, C classical line),
          --classical srcslice|interp (where classical lines come from: srcSlice's profiles, the default since
@@ -70,7 +70,11 @@ def main(argv=None) -> int:
     if is_qasm:
         from tool import qasm  # noqa: PLC0415
         unit, t1 = None, time.perf_counter()
-        trace = qasm.read(a.program)
+        if qasm.openqasm_version(Path(a.program).read_text(errors="replace")) == 3:
+            from tool import qasm3_layer  # noqa: PLC0415
+            trace = qasm3_layer.read(a.program)
+        else:
+            trace = qasm.read(a.program)
         circ = trace.main_circuit()
         a.classical = "interp"  # an OpenQASM operation's classical lines are its register declarations
     else:

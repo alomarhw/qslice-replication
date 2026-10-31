@@ -248,20 +248,18 @@ def s2_baseline(path: str, which: str):
             last = [n for n in dag.nodes_on_wire(wire, only_ops=True)][-1]
             row["one_size"] = len(dag.ancestors(last)) + 1
         elif which == "qiskit-lightcone":
-            from common.corpus import prepare  # as RQ2: barriers and terminal measurements dropped, which the pass needs
-            from slicers.registry import Slicers
-            s = Slicers.__new__(Slicers)
+            from icpc.b_reference import lightcone_pass, prepare  # barriers and terminal measurements dropped, which the pass needs
             t = time.perf_counter()
-            s.qc = prepare(qc)
+            pq = prepare(qc)
             row["t_build"] = time.perf_counter() - t
             t = time.perf_counter()
-            row["one_size"] = len(s._lightcone(q, ("Z",)))
+            row["one_size"] = len(lightcone_pass(pq, q, ("Z",)))
         elif which == "qpdg":
-            from slicers.registry import Slicers
-            s = Slicers(nb, path)
+            from icpc.b_reference import QPDG
+            g = QPDG(nb)
             row["t_build"] = time.perf_counter() - t
             t = time.perf_counter()
-            row["one_size"] = len(s.yz(q))
+            row["one_size"] = len(g.slice(q))
         row |= {"t_one": time.perf_counter() - t, "error": ""}
         return row
     except Timeout:
@@ -402,7 +400,12 @@ def main():
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--tools", help="s2 only: comma-separated tools to (re)run; the other rows of the CSV are kept")
     ap.add_argument("--out", help="a rerun's directory under results/icpc/, beside the original results (RERUNS.md)")
+    ap.add_argument("--base", help="s2: the results directory under results/icpc/ whose other rows a rerun keeps "
+                                   "(default: the original results)")
     a = ap.parse_args()
+    if a.base:
+        global ORIG
+        ORIG = ROOT / "experiments" / "results" / "icpc" / a.base
     if a.out:
         global OUT
         OUT = ROOT / "experiments" / "results" / "icpc" / a.out

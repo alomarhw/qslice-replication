@@ -1,0 +1,10 @@
+Bugs4Q bugs ported as circuits, with each instruction mapped to the source line that creates it (data, read only).
+
+circuits/<bug>.buggy.qasm|qpy  the circuit the buggy program builds, ported by hand from the buggy programs of Bugs4Q
+                               (commit 7a71983), which are never executed; prepared for slicing when loaded
+                               (experiments/icpc/b_reference.py, prepare)
+instructions.csv               for each instruction of a circuit, its position and the line of the original buggy
+                               program that creates it (empty when no line does)
+bugs.csv                       the original file of each bug, its instruction count and how many are not mapped
+units.csv                      the criteria: a bug, a criterion qubit, and the positions of the faulty instructions
+                               (fault_site, ";"-separated); "primary" units are those whose fault is on the qubit

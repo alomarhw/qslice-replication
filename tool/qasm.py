@@ -167,6 +167,24 @@ class _Reader:
                 yield name, qb, -1, cond, ln, frozenset(dl)
 
 
+def openqasm_version(text: str) -> int:
+    """3 for an OpenQASM 3 program: its version line says 3, or it has none and includes stdgates.inc or is not
+    valid OpenQASM 2 (OpenQASM 3 reads every OpenQASM 2 program, so a file without a version line is read as
+    OpenQASM 2 when it can be). 2 otherwise."""
+    head = text[:2000]
+    if re.search(r"OPENQASM\s+3", head) or re.search(r'include\s+"stdgates\.inc"', head):
+        return 3
+    if re.search(r"OPENQASM\s+2", head):
+        return 2
+    from tool.qasm_srcml import QasmSyntaxError, unit_elements  # noqa: PLC0415
+    try:
+        for _ in unit_elements(text):
+            pass
+        return 2
+    except QasmSyntaxError:
+        return 3
+
+
 def read(path) -> Trace:
     """The trace, built by the quantum layer from the program's srcML (tool.qasm_srcml, tool.qasm_layer)."""
     from tool import qasm_layer  # noqa: PLC0415
