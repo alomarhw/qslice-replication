@@ -67,3 +67,12 @@ logged here with its cause, script, commit, and the old and new value of every n
   1.11 -> 8.19 s (srcSlice-Q on that larger circuit); ScaleQpdgOver 29 -> 22 (seven circuits that hit the limit now
   finish); ScaleLcMaxS 294 -> 304 s (timing noise); ScaleLcOver 3 -> 1 (three circuits that hit the limit now stop
   early with the pass's own rejection, recorded as not applicable, and one goes the other way).
+
+## 2026-11-01 recount of the role table's kinds (Table III)
+- **Cause.** The kinds of Table III summed to 67 methods, one fewer than the role table's 68: `noop`, a Qiskit method
+  that takes qubits and adds a directive, was left out of every kind. It is never sliced, like `barrier` and `delay`,
+  so it is now counted with them.
+- **Script.** `experiments/icpc/calls_per_kind.py --data-root <data-root>`, otherwise unchanged; output
+  `results/icpc/unmodelled/calls_per_kind.json` (overwritten, the change is one method in one kind).
+- **Numbers that changed.** KindSpecialN 6 -> 7. No program of LintQ's corpus calls `noop`, so every per-kind program
+  count, CallsSpecial included, is unchanged.
