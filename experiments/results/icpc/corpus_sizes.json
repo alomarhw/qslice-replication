@@ -47,10 +47,10 @@
  },
  "qasmbench": {
   "count": 169,
-  "traced": 164,
+  "traced": 161,
   "min_qubits": 11,
-  "max_qubits": 10000,
-  "median_ops": 550.5,
+  "max_qubits": 433,
+  "median_ops": 525,
   "max_ops": 5843491
  },
  "bugs4q": {
@@ -108,6 +108,17 @@
   "max_lines": 15,
   "total_lines": 46,
   "traces": 18
+ },
+ "dev": {
+  "count": 16,
+  "traced": 16,
+  "min_qubits": 3,
+  "max_qubits": 18,
+  "median_ops": 39.5,
+  "max_ops": 1842,
+  "median_lines": 23.5,
+  "max_lines": 38,
+  "total_lines": 373
  },
  "controlflow": {
   "count": 10,

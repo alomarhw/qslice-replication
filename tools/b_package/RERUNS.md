@@ -70,3 +70,14 @@ with its cause, its script, and the old and new value of every number that chang
   `results/icpc/unmodelled/calls_per_kind.json` (overwritten, the change is one method in one kind).
 - **Numbers that changed.** KindSpecialN 6 -> 7. No program of LintQ's corpus calls `noop`, so every per-kind program
   count, CallsSpecial included, is unchanged.
+
+## 2026-11-01 subject statistics (Table V) from the srcML rerun, and our runnable programs added
+- **Cause.** `corpus_sizes.py` read QASMBench from the original S2 run, which used the line reader, so Table V kept the
+  three circuits that are not valid OpenQASM 2 (RERUNS, 2026-10-31) while RQ3 reports the srcML rerun. It now reads
+  srcSlice-Q's rows of `scale__rerun-20261031b`. Our 16 runnable programs, which RQ1 uses, get a row of their own, from
+  `results/icpc/tool_acceptance/dev_checks.json`.
+- **Script.** `experiments/icpc/corpus_sizes.py --data-root <data-root>`; every other entry of `corpus_sizes.json` is
+  unchanged.
+- **Numbers that changed.** SubjQbTraced 164 -> 161; SubjQbMaxQubits 10,000 -> 433; SubjQbMedianOps 550 -> 525. New:
+  SubjDevCount 16, SubjDevTraced 16, SubjDevMinQubits 3, SubjDevMaxQubits 18, SubjDevMedianOps 40, SubjDevMaxOps
+  1,842, SubjDevMedianLines 24.

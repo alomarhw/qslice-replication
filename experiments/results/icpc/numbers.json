@@ -3737,8 +3737,8 @@
   "source": "results/icpc/corpus_sizes.json"
  },
  "SubjQbTraced": {
-  "value": 164,
-  "tex": "164",
+  "value": 161,
+  "tex": "161",
   "source": "results/icpc/corpus_sizes.json"
  },
  "SubjQbMinQubits": {
@@ -3747,13 +3747,13 @@
   "source": "results/icpc/corpus_sizes.json"
  },
  "SubjQbMaxQubits": {
-  "value": 10000,
-  "tex": "10{,}000",
+  "value": 433,
+  "tex": "433",
   "source": "results/icpc/corpus_sizes.json"
  },
  "SubjQbMedianOps": {
-  "value": 550.5,
-  "tex": "550",
+  "value": 525,
+  "tex": "525",
   "source": "results/icpc/corpus_sizes.json"
  },
  "SubjQbMaxOps": {
@@ -3969,6 +3969,41 @@
  "SubjCfMedianLines": {
   "value": 12.0,
   "tex": "12",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjDevCount": {
+  "value": 16,
+  "tex": "16",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjDevTraced": {
+  "value": 16,
+  "tex": "16",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjDevMinQubits": {
+  "value": 3,
+  "tex": "3",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjDevMaxQubits": {
+  "value": 18,
+  "tex": "18",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjDevMedianOps": {
+  "value": 39.5,
+  "tex": "40",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjDevMaxOps": {
+  "value": 1842,
+  "tex": "1{,}842",
+  "source": "results/icpc/corpus_sizes.json"
+ },
+ "SubjDevMedianLines": {
+  "value": 23.5,
+  "tex": "24",
   "source": "results/icpc/corpus_sizes.json"
  },
  "SizeAMinQubits": {

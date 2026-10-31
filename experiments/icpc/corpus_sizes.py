@@ -61,7 +61,8 @@ def main():
         out["corpus_l"] = summary(len(cl), [int(r["n_qubits"]) for r in cl], [int(r["n_ops"]) for r in cl])
         out["corpus_l"]["by_corpus"] = {c: sum(r["corpus"] == c for r in cl) for c in ("MQT Bench", "QASMBench", "VeriQBench")}
     if HAS_TOOL:  # QASMBench as read by the slicer, and the programs
-        s2 = [r for r in rows(RES / "scale" / "s2_qasmbench.csv") if r["tool"] == TOOL_NAME]
+        # read through srcML, as RQ3 reports (scale__rerun-20261031b; the original run used the line reader)
+        s2 = [r for r in rows(RES / "scale__rerun-20261031b" / "s2_qasmbench.csv") if r["tool"] == TOOL_NAME]
         ok = [r for r in s2 if not r["error"]]
         out["qasmbench"] = summary(len(s2), [int(r["qubits"]) for r in ok], [int(r["ops"]) for r in ok])
 
@@ -86,6 +87,9 @@ def main():
         out["parametric"]["traces"] = len(s3)
         from tool import srcml as X  # noqa: PLC0415
         from tool.interp import Interpreter  # noqa: PLC0415
+        dev = json.load(open(RES / "tool_acceptance" / "dev_checks.json"))  # our runnable programs (RQ1)
+        out["dev"] = summary(len(dev), [r["qubits"] for r in dev], [r["ops"] for r in dev],
+                             [code_lines(ROOT / r["program"]) for r in dev])
         cf = sorted((ROOT / "tool" / "tests" / "controlflow").glob("cf*.py"))
         tr = [Interpreter(str(p), 60).run(X.parse_file(p)).main_circuit() for p in cf]
         out["controlflow"] = summary(len(cf), [c.n("q") for c in tr], [len(c.ops) for c in tr], [code_lines(p) for p in cf])

@@ -411,7 +411,7 @@ def main() -> int:
         cz = json.load(open(ICPC / "corpus_sizes.json"))
         src = "results/icpc/corpus_sizes.json"
         names = {"qasmbench": "Qb", "bugs4q": "Bugs",
-                 "textbook": "Text", "lintq": "Lintq", "qhe": "Qhe", "parametric": "Param", "controlflow": "Cf"}
+                 "textbook": "Text", "lintq": "Lintq", "qhe": "Qhe", "parametric": "Param", "controlflow": "Cf", "dev": "Dev"}
         for k, nm in names.items():
             s = cz[k]
             for f, fn in (("count", "Count"), ("traced", "Traced"), ("min_qubits", "MinQubits"), ("max_qubits", "MaxQubits"),

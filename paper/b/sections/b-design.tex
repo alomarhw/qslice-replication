@@ -33,17 +33,19 @@ front end is timed on the medium and large circuits of QASMBench~\cite{li2023qas
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
   \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X r r r r r >{\raggedright\arraybackslash}p{2.6cm}@{}}
     \toprule
-    \textbf{Subject} & \textbf{Count} & \textbf{Traced} & \textbf{Qubits} & \textbf{Operations} & \textbf{Code lines} &
+    \rowcolor{black!8}\textbf{Subject} & \textbf{Count} & \textbf{Traced} & \textbf{Qubits} & \textbf{Operations} & \textbf{Code lines} &
       \textbf{Used for} \\
     \midrule
     LintQ's corpus, GitHub programs & \numSubjLintqCount{} & \numSubjLintqTraced{} & \numSubjLintqMinQubits{}--\numSubjLintqMaxQubits{} &
       \numSubjLintqMedianOps{} / \numSubjLintqMaxOps{} & \numSubjLintqMedianLines{} & RQ1 to RQ4 \\ \sep
     Bugs4Q programs & \numSubjBugsCount{} & \numSubjBugsTraced{} & \numSubjBugsMinQubits{}--\numSubjBugsMaxQubits{} &
-      \numSubjBugsMedianOps{} / \numSubjBugsMaxOps{} & \numSubjBugsMedianLines{} & RQ1, RQ2 \\ \sep
+      \numSubjBugsMedianOps{} / \numSubjBugsMaxOps{} & \numSubjBugsMedianLines{} & RQ1 to RQ4 \\ \sep
     Qiskit textbook & \numSubjTextCount{} & \numSubjTextTraced{} & \numSubjTextMinQubits{}--\numSubjTextMaxQubits{} &
-      \numSubjTextMedianOps{} / \numSubjTextMaxOps{} & \numSubjTextMedianLines{} & RQ2 \\ \sep
+      \numSubjTextMedianOps{} / \numSubjTextMaxOps{} & \numSubjTextMedianLines{} & RQ1, RQ2, RQ4 \\ \sep
     Qiskit HumanEval & \numSubjQheCount{} & \numSubjQheTraced{} & \numSubjQheMinQubits{}--\numSubjQheMaxQubits{} &
       \numSubjQheMedianOps{} / \numSubjQheMaxOps{} & \numSubjQheMedianLines{} & RQ2 \\ \sep
+    Runnable programs, ours & \numSubjDevCount{} & \numSubjDevTraced{} & \numSubjDevMinQubits{}--\numSubjDevMaxQubits{} &
+      \numSubjDevMedianOps{} / \numSubjDevMaxOps{} & \numSubjDevMedianLines{} & RQ1 \\ \sep
     Parametric programs, 5 sizes each, ours & \numSubjParamCount{} & \numSubjParamTraced{} of 20 &
       \numSubjParamMinQubits{}--\numSubjParamMaxQubits{} & \numSubjParamMedianOps{} / \numSubjParamMaxOps{} &
       \numSubjParamMedianLines{} & RQ3 \\ \sep
