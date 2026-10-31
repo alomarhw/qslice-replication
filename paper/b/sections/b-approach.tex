@@ -67,7 +67,7 @@ Fig.~\ref{fig:b-example} uses it. The subsections that follow describe each exte
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
   \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.1cm} >{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}X c >{\raggedright\arraybackslash}p{1.35cm}@{}}
     \toprule
-    \textbf{srcML element} & \textbf{srcSlice} & \textbf{The quantum layer} & \textbf{Ext.} & \textbf{Lines of Fig.~\ref{fig:b-example}} \\
+    \rowcolor{black!8}\textbf{srcML element} & \textbf{srcSlice} & \textbf{The quantum layer} & \textbf{Ext.} & \textbf{Lines of Fig.~\ref{fig:b-example}} \\
     \midrule
     \texttt{<expr\_stmt>}, an assignment & defines the target, uses the other names & evaluates the value, such as a register size, an index or a circuit, and records it & E2 & 3--7, 9, 11, 22 \\ \sep
     \texttt{<expr\_stmt>}, a call on a circuit & uses the circuit and the argument names & looks the method up in the role table and appends one operation on the qubits its arguments denote; a measurement also writes its bit & E1, E2 & 8, 12--17, 19, 21, 23 \\ \sep
@@ -79,19 +79,19 @@ Fig.~\ref{fig:b-example} uses it. The subsections that follow describe each exte
     \texttt{<class>}, \texttt{<import>}, \texttt{<try>} & profiles each method as a function, records no import, reads every block of a \texttt{try} & analyzes each method as an entry point, resolves import aliases, reads only the \texttt{try} block & E2 & -- \\ \sep
     \texttt{pos:start} of every element & line numbers of its profiles & the source line of every operation & E2 & all \\
     \midrule
-    \multicolumn{5}{@{}l}{\textit{OpenQASM~2, in Behler et al.'s markup, produced by the front end of Section~\ref{sec:b-frontends}}} \\
+    \rowcolor{black!8}\multicolumn{5}{@{}l}{\textit{OpenQASM~2, marked up by the front end of Section~\ref{sec:b-frontends}}} \\
     \texttt{<decl\_stmt>}, \texttt{qreg} or \texttt{creg} & -- & allocates the qubits or bits; the declaration is a classical line of every operation on them & E2, E4 & -- \\ \sep
     \texttt{<include>}, \texttt{<gate>}, \texttt{<gate\_decl>} & -- & role-table entries, read from the markup of \texttt{qelib1.inc} or from the definition & E1, E4 & -- \\ \sep
     \texttt{<call>} with a quantum \texttt{<argument\_list>} & -- & one operation per qubit tuple, expanded over the registers it names & E1, E2 & -- \\ \sep
     \texttt{<measure>}, \texttt{<reset>}, \texttt{<barrier>} & -- & writes the bits, resets the qubits; a barrier is never sliced & E2 & -- \\ \sep
     \texttt{<if\_stmt>}, \texttt{if(c==n)} & -- & conditions the operation on every bit of the register & E2, E3 & -- \\
     \midrule
-    \multicolumn{5}{@{}l}{\textit{OpenQASM~3, the same elements and these}} \\
+    \rowcolor{black!8}\multicolumn{5}{@{}l}{\textit{OpenQASM~3, the same elements and these}} \\
     \texttt{<for>}, \texttt{<while>}, \texttt{<if\_stmt>}, \texttt{<switch>}, \texttt{<box>} & -- & over known values, unrolled or decided; over measured bits, conditioned on them, and a \texttt{while} repeated; a \texttt{box} read in place & E2, E3 & -- \\ \sep
     \texttt{<specifier>} of a \texttt{<call>} & -- & \texttt{ctrl} and \texttt{negctrl} add control qubits to the operation & E1 & -- \\ \sep
     \texttt{<unsupported>} & -- & \texttt{def}, \texttt{let}, \texttt{delay}, calibration, reported; a subroutine call is one operation on its qubits & E2 & -- \\
     \midrule
-    \multicolumn{5}{@{}l}{\textit{After the trace, for either language}} \\
+    \rowcolor{black!8}\multicolumn{5}{@{}l}{\textit{After the trace, for either language}} \\
     the operations of the trace, with their bits & -- & slices every qubit along the light cone and the measured bits & E3 & \texttt{q[4]}: 8, 12--17, 19, 21 \\ \sep
     the variables of the sliced lines & profiles, patched for Python & follows the profiles back to the statements that compute the slice; in OpenQASM, the declarations & E4 & \texttt{q[4]}: 3--7, 9--11, 18, 20, 22 \\ \sep
     the operations on each qubit & -- & gathers the qubit's uses, names, dependents, bits and slices & E5 & -- \\
