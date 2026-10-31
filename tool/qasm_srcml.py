@@ -440,7 +440,8 @@ def _gap(text: str, a: int, b: int, pos: _Pos, comments: List[Tok], out: List[st
     for c in comments:
         if a <= c.start < b:
             out.append(_esc(text[a:c.start]))
-            out.append(f'<comment type="line" pos:start="{pos.lc(c.start)}" pos:end="{pos.lc(c.end - 1)}">'
+            kind = "block" if c.text.startswith("/*") else "line"
+            out.append(f'<comment type="{kind}" pos:start="{pos.lc(c.start)}" pos:end="{pos.lc(c.end - 1)}">'
                        f"{_esc(c.text)}</comment>")
             a = c.end
     out.append(_esc(text[a:b]))
@@ -493,7 +494,8 @@ def _build(text: str, node: Node, pos: _Pos, comments: List[Tok]):
         for c in comments:
             if a <= c.start < b:
                 _put(e, last, text[a:c.start])
-                ce = _E.SubElement(e, _T + "comment", {"type": "line", _PS: pos.lc(c.start), _PE: pos.lc(c.end - 1)})
+                ce = _E.SubElement(e, _T + "comment", {"type": "block" if c.text.startswith("/*") else "line",
+                                                         _PS: pos.lc(c.start), _PE: pos.lc(c.end - 1)})
                 ce.text = c.text
                 last = ce
                 a = c.end
