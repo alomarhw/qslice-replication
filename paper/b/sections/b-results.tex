@@ -13,7 +13,7 @@
     \textbf{Check} & \textbf{Subjects} & \textbf{Agree} \\
     \midrule
     trace equals the circuit Qiskit builds & our runnable programs, up to \numToolDevMaxOps{} operations & \numToolDevPrograms{} of \numToolDevPrograms{} \\ \sep
-    OpenQASM reader's trace equals the circuit Qiskit loads & benchmark circuits & \numQasmCircuitsChecked{} of \numQasmCircuitsChecked{} \\ \sep
+    OpenQASM front end's trace equals the circuit Qiskit loads & benchmark circuits & \numQasmCircuitsChecked{} of \numQasmCircuitsChecked{} \\ \sep
     trace, read without running, equals the prepared circuit & Bugs4Q bugs & \numToolTOneExact{} of \numToolTOneBugs{} \\ \sep
     slices equal the light cone of the built circuit & our runnable programs & \numToolDevSliceEqual{} of \numToolDevPrograms{} \\ \sep
     line slices equal those recorded while running & Bugs4Q units & \numToolTTwoEqual{} of \numToolTTwoUnits{} \\ \sep
@@ -28,7 +28,7 @@
 Table~\ref{tab:b-rq1} summarizes the checks, and the paragraphs below explain the two that do not agree in full.
 The static trace matches what Qiskit builds. On all \numToolDevPrograms{} of our runnable programs, of up to
 \numToolDevMaxOps{} operations, the trace equals the circuit the program builds when it runs, and on all
-\numQasmCircuitsChecked{} benchmark circuits the OpenQASM reader's trace equals the circuit Qiskit loads. Read without
+\numQasmCircuitsChecked{} benchmark circuits the OpenQASM front end's trace equals the circuit Qiskit loads. Read without
 being run, the Bugs4Q programs yield the circuit their ported bug prepares for \numToolTOneExact{} of \numToolTOneBugs{}
 bugs, and the remaining one rewrites its circuit as a DAG, which \tool{} reports. The slices match the light cone of the
 built circuit on \numToolDevSliceEqual{} of our programs. The remaining one nests one condition inside another, which

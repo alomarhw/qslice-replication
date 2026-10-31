@@ -62,7 +62,7 @@ VeriQBench~\cite{chen2022veriqbench}, and timed on the medium and large circuits
 For RQ1, our runnable programs are also run with Qiskit, and the trace must equal the circuit Qiskit builds, operation
 by operation. The slices must equal the backward light-cone slices of that built circuit, which the study computes with
 code separate from the tool, and on the Bugs4Q bugs that port to circuits, the line slices must equal those obtained by
-recording which line appends each operation while the port runs. The OpenQASM reader's trace must equal the circuit
+recording which line appends each operation while the port runs. The OpenQASM front end's trace must equal the circuit
 Qiskit loads from the same file. For the programs with device loops, an exact density-matrix simulation that branches
 over measurement outcomes deletes every operation outside a qubit's slice from the source and checks that the qubit's
 state is unchanged at \numCfInputs{} inputs, and a negative control reads each device loop's body once. The classical

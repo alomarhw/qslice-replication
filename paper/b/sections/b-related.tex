@@ -19,7 +19,7 @@ single variable that every gate call uses, so the slice of any qubit is every li
 Behler et al.\ specified a srcML markup for OpenQASM~3~\cite{behler2024supporting} and built QStatic\footnote{\url{https://github.com/srcML/QStatic}} on it, which
 derives the order in which a program applies operations to each qubit, unrolling loops and expanding gate definitions,
 and uses that order to find iteration patterns and suggest refactorings~\cite{behler2025static}. They demonstrate the
-markup on the 16 example files of OpenQASM~3, leave \texttt{while} loops for later, and name a slicer that finds the
+markup on the 16 example files of OpenQASM~3, which they mark up by hand since the markup has no released parser, leave \texttt{while} loops for later, and name a slicer that finds the
 lines affecting a qubit as future work. Kaul et al.\ translate Qiskit and OpenQASM programs into a code property graph,
 the QCPG, and query it for bugs and code smells~\cite{kaul2023uniform}. LintQ\footnote{\url{https://github.com/sola-st/LintQ}} runs CodeQL queries over Qiskit programs,
 unrolling loops for up to ten iterations to relate their operations, and was applied to 7,568 programs from

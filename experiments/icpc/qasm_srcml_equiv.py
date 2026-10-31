@@ -29,6 +29,8 @@ with open(out, "w", newline="") as fh:
     for f in files:
         t = open(f, errors="replace").read()
         m = re.search(r"OPENQASM\s+([\d.]+)", t)
+        if not m and re.search(r'include\s+"stdgates\.inc"|^\s*qubit\b', t, re.M):
+            m = re.match(r"(3)", "3")                # no version line, but OpenQASM 3 by its include or declarations
         if m and m.group(1).startswith("3"):
             continue
         if len(t) > MAX_BYTES:

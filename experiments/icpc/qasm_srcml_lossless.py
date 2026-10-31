@@ -15,6 +15,8 @@ with open(out, "w", newline="") as fh:
     for f in files:
         t = open(f, errors="replace", newline="").read()
         m = re.search(r"OPENQASM\s+([\d.]+)", t)
+        if not m and re.search(r'include\s+"stdgates\.inc"|^\s*qubit\b', t, re.M):
+            m = re.match(r"(3)", "3")                # no version line, but OpenQASM 3 by its include or declarations
         ver = m.group(1) if m else "none"
         if ver.startswith("3"):
             w.writerow([f, len(t), ver, "", "", "OpenQASM 3, out of scope"]); continue

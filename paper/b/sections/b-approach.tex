@@ -11,8 +11,9 @@ them.
 \begin{figure*}[t]
   \centering
   \includegraphics[width=0.86\textwidth]{figures/fig_b_architecture.pdf}
-  \caption{The parts of the approach. A Qiskit program passes through srcML and the extensions E1 to E5, and an
-  OpenQASM~2 circuit enters at the trace. srcSlice, patched, gives the classical lines. What the developer is shown is
+  \caption{The parts of the approach. A Qiskit program is marked up by srcML, and an OpenQASM~2 circuit by a front end
+  that produces Behler et al.'s markup. The extensions E1 to E5 read both, and srcSlice, patched, gives the classical
+  lines of a Qiskit program. What the developer is shown is
   on the right.}
   \label{fig:b-architecture}
 \end{figure*}
@@ -59,7 +60,7 @@ Fig.~\ref{fig:b-example} uses it. The subsections that follow describe each exte
 
 \begin{table*}[t]
   \centering
-  \caption{What the quantum layer does with each srcML element of a Qiskit program, against srcSlice}
+  \caption{What the quantum layer does with each srcML element of a Qiskit or OpenQASM~2 program, against srcSlice}
   \label{tab:b-layer}
   \footnotesize\setlength{\tabcolsep}{3.4pt}\renewcommand{\arraystretch}{1.14}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
@@ -76,6 +77,13 @@ Fig.~\ref{fig:b-example} uses it. The subsections that follow describe each exte
     \texttt{<function>}, \texttt{<return>} & links parameters to the arguments of each call & inlines the function at each call with its arguments and returns its value & E2 & -- \\ \sep
     \texttt{<class>}, \texttt{<import>}, \texttt{<try>} & reads them as declarations & registers methods, resolves import aliases, reads the \texttt{try} block & E2 & -- \\ \sep
     \texttt{pos:start} of every element & line numbers of its profiles & the source line of every operation & E2 & all \\
+    \midrule
+    \multicolumn{5}{@{}l}{\textit{OpenQASM~2, in Behler et al.'s markup, produced by the front end of Section~\ref{sec:b-frontends}}} \\
+    \texttt{<decl\_stmt>}, \texttt{qreg} or \texttt{creg} & -- & allocates the qubits or bits; the declaration is a classical line of every operation on them & E2, E4 & -- \\ \sep
+    \texttt{<include>}, \texttt{<gate>}, \texttt{<gate\_decl>} & -- & role-table entries, read from the markup of \texttt{qelib1.inc} or from the definition & E1, E4 & -- \\ \sep
+    \texttt{<call>} with a quantum \texttt{<argument\_list>} & -- & one operation per qubit tuple, expanded over the registers it names & E1, E2 & -- \\ \sep
+    \texttt{<measure>}, \texttt{<reset>}, \texttt{<barrier>} & -- & writes the bits, resets the qubits; a barrier is never sliced & E2 & -- \\ \sep
+    \texttt{<if\_stmt>}, \texttt{if(c==n)} & -- & conditions the operation on every bit of the register & E2, E3 & -- \\
     \midrule
     the operations appended, with their bits & -- & slices every qubit along the light cone and the measured bits & E3 & 8, 12--17, 19, 21 \\ \sep
     the variables of the sliced lines & profiles, patched for Python & follows the profiles back to the statements that compute the slice & E4 & 3--7, 9--11, 18, 20, 22 \\ \sep
@@ -239,16 +247,22 @@ that \texttt{q[4]} is first the target of a hop, as \texttt{q[b]}, and then the 
 \texttt{c[4]} points to the conditioned gate on line 21, which a variable profile has no entry for. E5 computes the
 profile from one backward and one forward pass over the trace and from the srcML of the gate calls on the qubit.
 
-\subsection{Two front ends}
-The approach reads Qiskit programs, the language of Bugs4Q and of LintQ's corpus~\cite{zhao2023bugs4q,
-paltenghi2024lintq}, and OpenQASM~2 circuits, the format that Qiskit exports and benchmark suites ship in. The two need
-different amounts of work. In Qiskit the qubits of a gate are computed in Python, so all of E1 and E2 are needed. In
-OpenQASM~2 the qubit arguments are explicit and the statements run in order, so E1 is given by the syntax and E2
-reduces to reading the statements. srcML~1.1 has no OpenQASM language, and the OpenQASM markup has no released parser
-yet, which is why QStatic runs on hand-marked-up files~\cite{behler2025static}. \tool{} therefore reads OpenQASM~2 with a
-reader that maps every operation to its line and produces the same trace, and E3 to E5 apply unchanged. Once srcML
-parses OpenQASM, the reader becomes a srcML front end, and OpenQASM~3, with its loops and subroutines, gets E2 as Qiskit
-does.
+\subsection{Two front ends}\label{sec:b-frontends}
+Qiskit programs, the language of Bugs4Q and of LintQ's corpus~\cite{zhao2023bugs4q, paltenghi2024lintq}, are parsed by
+srcML as Python. srcML~1.1 has no OpenQASM language. Behler et al.\ specified a markup for it but released no parser, so
+their analyses run on files marked up by hand~\cite{behler2024supporting, behler2025static}. \tool{} produces that markup
+automatically for OpenQASM~2, the format that Qiskit exports and benchmark suites ship in. Its front end parses the
+whole grammar of the language~\cite{cross2017openqasm} and writes srcML in srcML's own format, every character kept and
+every element positioned, with Behler et al.'s elements, \texttt{<decl\_stmt>} for registers, \texttt{<gate>} for
+definitions, \texttt{<call>} with a quantum argument list for gate applications, and \texttt{<measure>},
+\texttt{<reset>}, \texttt{<barrier>} and \texttt{<if\_stmt>}. The quantum layer reads this markup as it reads the markup
+of a Qiskit program, as the lower part of Table~\ref{tab:b-layer} lists. E1 takes the roles of the standard gates from
+the markup of \texttt{qelib1.inc} itself and those of other gates from their definitions, and E2 expands each
+application over the registers it names, as the specification defines. E3 and E5 apply unchanged. E4 gives the
+declarations, gate definitions and conditions that a slice needs, since srcSlice has no OpenQASM support and
+OpenQASM~2 has no other classical statements. The front end also checks the rules the specification states beyond its
+grammar, such as declared names, register bounds, gate arity and the sizes in a broadcast, and reports a program that
+breaks one instead of slicing it. OpenQASM~3, with its loops and subroutines, would get E2 as Qiskit does.
 
 \subsection{What the layer does not read}\label{sec:b-limits}
 The approach slices what it can reconstruct. A program that loads its circuit from a file or builds it in code the
