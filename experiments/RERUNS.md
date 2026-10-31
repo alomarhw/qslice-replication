@@ -102,3 +102,15 @@ logged here with its cause, script, commit, and the old and new value of every n
   the files LintQ warns in. It now uses `statistics.median` (the mean of the middle two), as for the other medians;
   the srcSlice time median is switched the same way and is unchanged (401 values).
 - **Numbers that changed.** LqCodeMedian 62 -> 60.5 (88 warnings). LqReadMedian stays 8.
+
+## 2026-11-01 tool-v8: a function without a body no longer crashes the interpreter (no reported number changes)
+- **Cause.** The quantum-markup check found that one Bugs4Q file, `Cirq/4/buggy.py` (a Cirq program, not Qiskit),
+  crashed the interpreter: srcML gives one of its function definitions no `<block>`, and analysing that function as an
+  entry point read the missing body. tool-v7's Bugs4Q coverage recorded the crash.
+- **Change (tag `tool-v8`).** An absent block is read as empty, and an entry point without a body is reported
+  ("function without a body in the markup: not traced"), never skipped silently.
+- **Checks rerun on tool-v8.** The dev checks, the nested-condition check and Bugs4Q T1, T2 and fault lines give
+  byte-identical result files. Bugs4Q coverage (`results/icpc/tool_acceptance/tool-v8/t3_bugs4q.csv`, beside
+  tool-v7's) differs from tool-v7 only on `Cirq/4/buggy.py`, which now reports the missing body instead of crashing.
+  LintQ's corpus had no crash on tool-v7 (S1: timeouts and files without a circuit only), so no result there can
+  change. No number of the paper changes.

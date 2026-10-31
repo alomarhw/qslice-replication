@@ -313,7 +313,10 @@ class Interpreter:
         self.calls.append(ln)
         self.frames.append({"tail": 0, "rets": []})
         try:
-            self.block(X.child(f.node, "block"), fe)
+            body = X.child(f.node, "block")
+            if body is None:  # srcML gave the definition no body (seen on a Cirq program of Bugs4Q): reported
+                self.note(ln, "function without a body in the markup: not traced")
+            self.block(body, fe)
         except (_Return, _Break, _Continue):
             pass
         except _Budget:
@@ -323,6 +326,8 @@ class Interpreter:
             self.may -= self.frames.pop()["tail"]
 
     def block(self, blk, env):
+        if blk is None:
+            return
         for st in X.statements(blk):
             self.stmt(st, env)
 

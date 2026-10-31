@@ -107,7 +107,7 @@ def annotate_python(unit: ET.Element, trace, circ) -> Dict[str, int]:
         direct[o.line].append(o)
         for l in o.calls:
             via[l].append(o)
-    reached, unmarked = set(), defaultdict(list)
+    reached, unmarked, composing = set(), defaultdict(list), []
     for call in unit.iter(X.S + "call"):
         ln, m = X.line(call), _method(call)
         role = CONSTRUCTORS.get(m)
@@ -118,7 +118,11 @@ def annotate_python(unit: ET.Element, trace, circ) -> Dict[str, int]:
             # append(gate, qubits) adds an operation named by its gate, at this line; compose maps a circuit's
             # operations here, which keep the lines that made them and record this call site
             role = "compose" if m in ("append", "compose") else "measure"
-            ops = [o for o in direct[ln] if o.name == "measure" or m == "append"] + via[ln]
+            if role == "compose":
+                composing.append((call, ln))  # counted after the gate calls of its line have claimed their operations
+                ops = None
+            else:
+                ops = [o for o in direct[ln] if o.name == "measure"] + via[ln]
         elif role is None and (ln, m) in named:
             role = KINDS.get(m, "gate")
             ops = [o for o in direct[ln] if o.name == m]
@@ -135,6 +139,13 @@ def annotate_python(unit: ET.Element, trace, circ) -> Dict[str, int]:
         if ops is not None:
             _set_counts(call, ops)
             reached.update(map(id, ops))
+    # append and compose: the operations they map here from a circuit the trace followed (which record this call
+    # site), and those added at this line that no gate call claimed, such as one opaque operation for a circuit the
+    # trace cannot see into
+    for call, ln in composing:
+        ops = [o for o in direct[ln] if id(o) not in reached] + [o for o in via[ln] if id(o) not in reached]
+        _set_counts(call, ops)
+        reached.update(map(id, ops))
     # a gate whose method the source names only at run time, as in getattr(qc, gate)(theta, q): the operations of
     # its line no marked call accounts for go to the line's outermost unmarked call
     for ln, calls in unmarked.items():
@@ -144,7 +155,8 @@ def annotate_python(unit: ET.Element, trace, circ) -> Dict[str, int]:
             calls[0].set(A + "gate", " ".join(sorted({o.name for o in left})))
             _set_counts(calls[0], left)
             reached.update(map(id, left))
-    return {"operations": len(circ.ops) if circ else 0, "reached": sum(id(o) in reached for o in circ.ops) if circ else 0}
+    return {"operations": len(circ.ops) if circ else 0, "reached": sum(id(o) in reached for o in circ.ops) if circ else 0,
+            "missed": [(o.line, o.name, o.calls) for o in (circ.ops if circ else []) if id(o) not in reached]}
 
 
 def annotate_qasm(unit: ET.Element, trace) -> Dict[str, int]:
@@ -190,7 +202,9 @@ def _register():
 
 def to_xml(unit: ET.Element) -> str:
     _register()
-    return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' + ET.tostring(unit, encoding="unicode") + "\n"
+    # a carriage return is written as &#13;, as srcML writes it, or an XML reader would fold \r\n into \n
+    return ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'
+            + ET.tostring(unit, encoding="unicode").replace("\r", "&#13;") + "\n")
 
 
 def markup(path) -> Tuple[ET.Element, Dict[str, int]]:
