@@ -60,31 +60,32 @@ read Qiskit source look for patterns, and none has been evaluated as a slicer on
   \label{tab:b-related}
   \footnotesize\setlength{\tabcolsep}{3.4pt}\renewcommand{\arraystretch}{1.18}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
-  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.0cm} *{6}{>{\centering\arraybackslash}p{1.2cm}} >{\raggedright\arraybackslash}X@{}}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.0cm} *{4}{>{\centering\arraybackslash}p{1.3cm}} >{\centering\arraybackslash}p{1.45cm} >{\centering\arraybackslash}p{1.15cm} >{\raggedright\arraybackslash}X@{}}
     \toprule
-    \textbf{Approach} & \textbf{Reads Qiskit} & \textbf{Without running} & \textbf{Slice per qubit} & \textbf{Measured bits} &
-    \textbf{Loops} & \textbf{Source lines} & \textbf{Evaluated on} \\
+    \textbf{Approach} & \textbf{Qiskit source} & \textbf{Static} & \textbf{Qubit-level slice} & \textbf{Feed-forward} &
+    \textbf{Unbounded loops} & \textbf{Source lines} & \textbf{Evaluated on} \\
     \midrule
     srcSlice~\cite{alomari2014srcslice}                                  & \none & \full & \none & \na   & \full & \full & Linux kernel \\ \sep
-    Behler et al., QStatic~\cite{behler2024supporting, behler2025static} & \none & \full & \none & \half & \half & \full & 16 OpenQASM~3 example files \\ \sep
-    QPDG, Yu and Zhao~\cite{yu2025qpdg}                                  & \full & \full & \full & \full & ?     & \full & 5 listings, not implemented \\ \sep
-    QCPG, Kaul et al.~\cite{kaul2023uniform}                             & \full & \full & \none & \full & \full & \full & 3 listings, 1 Qiskit/OpenQASM circuit \\ \sep
+    QStatic~\cite{behler2024supporting, behler2025static} & \none & \full & \none & \half & \half & \full & 16 OpenQASM~3 example files \\ \sep
+    QPDG~\cite{yu2025qpdg}                                  & \full & \full & \full & \full & ?     & \full & 5 listings, not implemented \\ \sep
+    QCPG~\cite{kaul2023uniform}                             & \full & \full & \none & \full & \full & \full & 3 listings, 1 Qiskit/OpenQASM circuit \\ \sep
     LintQ~\cite{paltenghi2024lintq}                                      & \full & \full & \none & \full & \half & \full & 7,568 GitHub programs, 216 problems found by inspection \\ \sep
     QChecker~\cite{zhao2023qchecker}                                     & \full & \full & \none & \na   & \na   & \full & 42 Bugs4Q bugs \\ \sep
-    Qiskit DAG, \texttt{LightCone}~\cite{qiskit2025}                     & \none & \half & \full & \none & \none & \none & \na \\ \sep
+    Qiskit DAG and \texttt{LightCone}~\cite{qiskit2025}                     & \none & \half & \full & \none & \none & \none & \na \\ \sep
     Qiskit circuit slicing~\cite{qiskitaddonutils}                       & \none & \half & \none & \na   & \na   & \none & \na \\ \sep
-    Cirquo, Metwalli and Van Meter~\cite{metwalli2022debugging, metwalli2024testing} & \full & \none & \none & \na & \na & \half & 1 Grover case study, 1 user survey \\
+    Cirquo~\cite{metwalli2022debugging, metwalli2024testing} & \full & \none & \none & \na & \na & \half & 1 Grover case study, 1 user survey \\
     \midrule
     \rowcolor{blue!7}\textbf{\tool{}} & \full & \full & \full & \full & \full & \full & \numSizeLintqFiles{} GitHub, \numSizeBugsFiles{} Bugs4Q, \numSizeTextFiles{} textbook and \numSizeQheFiles{} Qiskit HumanEval programs; \numScaleQbFiles{} QASMBench circuits \\
     \bottomrule
   \end{tabularx}\\[3pt]
   \begin{minipage}{\textwidth}\footnotesize
   \full{} has the property, \half{} has it in part, \none{} lacks it, ? means the authors do not specify it, and \na{}
-  means it does not apply. \emph{Reads Qiskit}, the approach takes Qiskit programs as input. \emph{Without running}, it
+  means it does not apply. \emph{Qiskit source}, the approach takes Qiskit programs as input. \emph{Static}, it
   analyzes the program without executing it; circuit tools need the program run to obtain the circuit, unless the
-  circuit is given in OpenQASM. \emph{Slice per qubit}, it returns the operations or lines that can affect a chosen
-  qubit. \emph{Measured bits}, it follows a measured bit to the operations the bit conditions. \emph{Loops}, it follows
-  loops of any length. \emph{Source lines}, it reports results on the program's lines. \emph{Evaluated on}, the data of
-  the original evaluation.
+  circuit is given in OpenQASM. \emph{Qubit-level slice}, it returns the operations or lines that can affect a chosen
+  qubit. \emph{Feed-forward}, it follows a measurement result to the operations that the result conditions, as in a
+  mid-circuit measurement followed by a conditioned gate. \emph{Unbounded loops}, it follows a loop whatever its number
+  of iterations, including loops whose bound is unknown before the program runs. \emph{Source lines}, it reports
+  results on the program's lines. \emph{Evaluated on}, the data of the original evaluation.
   \end{minipage}
 \end{table*}

@@ -15,10 +15,11 @@
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
 \usepackage{tikz}
-% Harvey balls for the comparison table: has, has in part, lacks.
-\DeclareRobustCommand{\hb}[1]{\tikz[baseline=-0.55ex]{\draw[line width=0.4pt] (0,0) circle (0.75ex);
-  \ifcase#1\or\fill (0,0.75ex) arc (90:270:0.75ex) -- cycle;\or\fill (0,0) circle (0.75ex);\fi}}
-\DeclareRobustCommand{\full}{\hb{2}}\DeclareRobustCommand{\half}{\hb{1}}\DeclareRobustCommand{\none}{\hb{0}}\newcommand{\na}{--}
+% Marks for the comparison table: has, has in part, lacks.
+\usepackage{pifont}
+\DeclareRobustCommand{\full}{\textcolor{green!45!black}{\ding{51}}}
+\DeclareRobustCommand{\half}{\textcolor{orange!85!black}{(\ding{51})}}
+\DeclareRobustCommand{\none}{\textcolor{red!65!black}{\ding{55}}}\newcommand{\na}{--}
 \input{../numbers}
 
 \begin{document}
