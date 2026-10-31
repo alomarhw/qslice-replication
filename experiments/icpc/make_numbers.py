@@ -607,6 +607,34 @@ def main() -> int:
         assert qc["qasmbench_onepass_equal"] == qc["qasmbench_checked"]
         put("QasmCircuitsChecked", qc["corpus_a_circuits"], cnt(qc["corpus_a_circuits"]), src)
         put("QasmOnepassChecked", qc["qasmbench_checked"], cnt(qc["qasmbench_checked"]), src)
+
+        # ---- OpenQASM 2 through srcML: Behler et al.'s markup and the quantum layer over it ----
+        sd = ICPC / "qasm_srcml"
+        oq3 = lambda f: "/openqasm3_" in f  # OpenQASM 3 data (official examples, grammar tests, round-trip corpus)
+        eq = [r for r in rows(sd / "equiv.csv") if not oq3(r["file"])]
+        src = "results/icpc/qasm_srcml/equiv.csv"
+        checked = [r for r in eq if r["layer_vs_qiskit"] in ("True", "False")]
+        same = [r for r in checked if r["layer_vs_qiskit"] == "True"]
+        rej = [r for r in rows(sd / "rejected.csv") if not oq3(r["file"])]
+        assert len(rej) == len(checked) - len(same), "every file not equal to Qiskit's circuit is rejected"
+        assert all(r["qiskit"].startswith("rejects") for r in rej), "Qiskit rejects every file the front end rejects"
+        assert all(r["layer_vs_reader"] == "True" for r in same)
+        import hashlib  # the corpora hold some files twice (qasmbench/ and QASMBench-master/): count distinct contents
+        uniq = lambda rs: len({hashlib.sha256(open(r["file"], "rb").read()).hexdigest() for r in rs})
+        put("SmlChecked", uniq(checked), cnt(uniq(checked)), src)
+        put("SmlSame", uniq(same), cnt(uniq(same)), src)
+        put("SmlRejected", uniq(rej), cnt(uniq(rej)), "results/icpc/qasm_srcml/rejected.csv")
+        lg = [r for r in eq if r["note"].startswith("large")]
+        put("SmlLarge", uniq(lg), cnt(uniq(lg)), src)
+        ll = [r for r in rows(sd / "lossless.csv") if not oq3(r["file"]) and r["version"] != "" and not r["version"].startswith("3")]
+        src = "results/icpc/qasm_srcml/lossless.csv"
+        marked = [r for r in ll if not r["error"].startswith("larger than")]
+        assert all(r["ok"] == "True" for r in marked), "every OpenQASM 2 file up to 20 MB is marked up losslessly"
+        put("SmlLossless", uniq(marked), cnt(uniq(marked)), src)
+        from tool.tests import test_qasm_srcml as T  # the grammar, invalid-program and specification test cases
+        put("SmlGrammarCases", len(T.VALID), cnt(len(T.VALID)), "tool/tests/test_qasm_srcml.py")
+        put("SmlInvalidCases", len(T.INVALID), cnt(len(T.INVALID)), "tool/tests/test_qasm_srcml.py")
+        put("SmlSpecPrograms", len(T.SPEC), cnt(len(T.SPEC)), "tool/tests/qasm2/spec_*.qasm")
         src = "results/icpc/lintq_compare/c1.csv"
         c1 = rows(ICPC / "lintq_compare" / "c1.csv")
         qrules = {"ql-operation-after-measurement", "ql-double-measurement", "ql-oversized-circuit",

@@ -5,6 +5,7 @@ import csv, glob, os, re, sys, time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
+MAX_BYTES = 20_000_000   # larger files are marked up, and timed, in the scale run (scale_run.py s2)
 sys.path.insert(0, str(ROOT))
 from tool.qasm_srcml import unit_parts, QasmSyntaxError  # noqa: E402
 
@@ -25,12 +26,14 @@ with open(out, "a" if done else "w", newline="") as fh:
         ver = m.group(1) if m else "none"
         if ver.startswith("3"):
             w.writerow([f, len(t), ver, "", "", "OpenQASM 3, out of scope"]); continue
+        if len(t) > MAX_BYTES:
+            w.writerow([f, len(t), ver, "", "", "larger than 20 MB, marked up in the scale run"]); continue
         t0 = time.time()
         try:
             parts = unit_parts(t, f)
             head = next(parts)
             got = []
-            if len(t) < 20_000_000:
+            if len(t) < 2_000_000:          # larger files: statement by statement, to bound memory
                 x = head + "".join(parts)
                 got = "".join(ET.fromstring(x.encode()).itertext())
                 ok = got == t

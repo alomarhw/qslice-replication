@@ -2113,6 +2113,46 @@
   "tex": "118",
   "source": "results/icpc/qasm_frontend/check.json"
  },
+ "SmlChecked": {
+  "value": 1212,
+  "tex": "1{,}212",
+  "source": "results/icpc/qasm_srcml/equiv.csv"
+ },
+ "SmlSame": {
+  "value": 1127,
+  "tex": "1{,}127",
+  "source": "results/icpc/qasm_srcml/equiv.csv"
+ },
+ "SmlRejected": {
+  "value": 85,
+  "tex": "85",
+  "source": "results/icpc/qasm_srcml/rejected.csv"
+ },
+ "SmlLarge": {
+  "value": 21,
+  "tex": "21",
+  "source": "results/icpc/qasm_srcml/equiv.csv"
+ },
+ "SmlLossless": {
+  "value": 1228,
+  "tex": "1{,}228",
+  "source": "results/icpc/qasm_srcml/lossless.csv"
+ },
+ "SmlGrammarCases": {
+  "value": 36,
+  "tex": "36",
+  "source": "tool/tests/test_qasm_srcml.py"
+ },
+ "SmlInvalidCases": {
+  "value": 21,
+  "tex": "21",
+  "source": "tool/tests/test_qasm_srcml.py"
+ },
+ "SmlSpecPrograms": {
+  "value": 8,
+  "tex": "8",
+  "source": "tool/tests/qasm2/spec_*.qasm"
+ },
  "LqTp": {
   "value": 216,
   "tex": "216",
