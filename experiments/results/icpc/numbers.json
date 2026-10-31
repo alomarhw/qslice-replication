@@ -2153,6 +2153,11 @@
   "tex": "126",
   "source": "results/icpc/qasm3_srcml/summary.json"
  },
+ "QthreeInvalidTotal": {
+  "value": 129,
+  "tex": "129",
+  "source": "results/icpc/qasm3_srcml/summary.json"
+ },
  "QthreeOurs": {
   "value": 24,
   "tex": "24",
@@ -2207,6 +2212,11 @@
   "value": 8,
   "tex": "8",
   "source": "tool/tests/qasm2/spec_*.qasm"
+ },
+ "SmlTestPrograms": {
+  "value": 65,
+  "tex": "65",
+  "source": "tool/tests/test_qasm_srcml.py, tool/tests/qasm2/spec_*.qasm"
  },
  "LqTp": {
   "value": 216,

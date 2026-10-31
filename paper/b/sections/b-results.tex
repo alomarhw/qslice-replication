@@ -4,33 +4,41 @@
 
 \begin{table}[t]
   \centering
-  \caption{The faithfulness checks of RQ1, each against a reference computed without \tool{}}
+  \caption{The faithfulness checks of RQ1. Each compares \tool{}'s result with the reference the check names.}
   \label{tab:b-rq1}
-  \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
+  \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.08}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \newcommand{\grp}[1]{\rowcolor{black!8}\multicolumn{3}{@{}l}{\textit{#1}}\\}
   \begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.3cm} >{\raggedright\arraybackslash}p{2.95cm} r@{}}
     \toprule
-    \textbf{Check} & \textbf{Subjects} & \textbf{Agree} \\
+    \rowcolor{black!8}\textbf{Check} & \textbf{Subjects} & \textbf{Agree} \\
     \midrule
-    trace equals the circuit Qiskit builds & our runnable programs, up to \numToolDevMaxOps{} operations & \numToolDevPrograms{} of \numToolDevPrograms{} \\ \sep
-    OpenQASM~2 front end's trace equals the circuit Qiskit loads & OpenQASM~2 files of the corpora that Qiskit accepts & \numSmlSame{} of \numSmlSame{} \\ \sep
-    the front end rejects a file only when Qiskit does & OpenQASM~2 files of the corpora that break a rule & \numSmlRejected{} of \numSmlRejected{} \\ \sep
-    the srcML markup gives back the file byte for byte & OpenQASM~2 files up to 20~MB & \numSmlLossless{} of \numSmlLossless{} \\ \sep
-    OpenQASM~3 export of a program gives the trace of its Python source & our programs & \numQthreeOurs{} of \numQthreeOurs{} \\ \sep
-    OpenQASM~3 export of a file gives the circuit Qiskit loaded & corpus files & \numQthreeCorpus{} of \numQthreeCorpus{} \\ \sep
-    OpenQASM~3 parse matches the official reference & grammar tests & \numQthreeRefMatch{} of \numQthreeRefCases{} \\ \sep
-    trace, read without running, equals the prepared circuit & Bugs4Q bugs & \numToolTOneExact{} of \numToolTOneBugs{} \\ \sep
-    slices equal the light cone of the built circuit & our runnable programs & \numToolDevSliceEqual{} of \numToolDevPrograms{} \\ \sep
+    \grp{The trace of a Qiskit program}
+    equals the circuit Qiskit builds & our runnable programs, up to \numToolDevMaxOps{} operations & \numToolDevPrograms{} of \numToolDevPrograms{} \\ \sep
+    equals the ported circuit, read without running & Bugs4Q bugs & \numToolTOneExact{} of \numToolTOneBugs{} \\
+    \grp{The slices}
+    equal the light cone of the built circuit & our runnable programs & \numToolDevSliceEqual{} of \numToolDevPrograms{} \\ \sep
     line slices equal those recorded while running & Bugs4Q units & \numToolTTwoEqual{} of \numToolTTwoUnits{} \\ \sep
-    deleting what the slice leaves out keeps each qubit's state & device-loop programs, \numCfQubits{} qubits, \numCfInputs{} inputs & \numCfPrograms{} of \numCfPrograms{} \\ \sep
-    srcSlice's classical lines contain the reference's & \numSsQubits{} qubits in \numSsFiles{} files & \numSsContainPct{} \\
+    deleting what a slice leaves out keeps each qubit's state, under exact simulation & device-loop programs, \numCfQubits{} qubits, \numCfInputs{} inputs & \numCfPrograms{} of \numCfPrograms{} \\
+    \grp{The OpenQASM front ends}
+    OpenQASM~2 trace equals the circuit Qiskit loads & files of the corpora that Qiskit accepts & \numSmlSame{} of \numSmlSame{} \\ \sep
+    a file is rejected only when Qiskit rejects it & files of the corpora that break a rule & \numSmlRejected{} of \numSmlRejected{} \\ \sep
+    read as Qiskit reads them & grammar, invalid and specification test programs & \numSmlTestPrograms{} of \numSmlTestPrograms{} \\ \sep
+    the markup gives back the file byte for byte & OpenQASM~2 files up to 20~MB & \numSmlLossless{} of \numSmlLossless{} \\ \sep
+    OpenQASM~3 parse matches the official parse tree & reference programs of the grammar tests & \numQthreeRefMatch{} of \numQthreeRefCases{} \\ \sep
+    an invalid statement is rejected or reported, never accepted & invalid statements of the grammar tests & \numQthreeInvalidTotal{} of \numQthreeInvalidTotal{} \\ \sep
+    OpenQASM~3 export gives the trace of the Python source & our programs & \numQthreeOurs{} of \numQthreeOurs{} \\ \sep
+    OpenQASM~3 export gives the circuit Qiskit loaded & corpus files & \numQthreeCorpus{} of \numQthreeCorpus{} \\ \sep
+    traced or reported, never a crash & example programs of the language & \numQthreeExamples{} of \numQthreeExamples{} \\
+    \grp{The classical lines}
+    srcSlice's lines contain those of \tool{}'s interpreter & \numSsQubits{} qubits in \numSsFiles{} files & \numSsContainPct{} \\
     & our programs and Bugs4Q & \numSsDevBugsContainPct{} \\
     & held-out, \numSsHeldQubits{} qubits & \numSsHeldContainPct{} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-Table~\ref{tab:b-rq1} summarizes the checks, and the paragraphs below explain the two that do not agree in full.
+Table~\ref{tab:b-rq1} summarizes the checks, and the paragraphs below explain the three that do not agree in full.
 The static trace matches what Qiskit builds. On all \numToolDevPrograms{} of our runnable programs, of up to
 \numToolDevMaxOps{} operations, the trace equals the circuit the program builds when it runs. The OpenQASM~2 front end's trace equals the circuit
 Qiskit loads on all \numSmlSame{} files of the corpora that Qiskit accepts, operation for operation with its bits and

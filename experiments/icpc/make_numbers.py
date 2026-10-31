@@ -640,6 +640,8 @@ def main() -> int:
         put("QthreeRefCases", q3["grammar"]["reference_cases"], cnt(q3["grammar"]["reference_cases"]), src)
         put("QthreeRefMatch", q3["grammar"]["reference_match"], cnt(q3["grammar"]["reference_match"]), src)
         put("QthreeInvalidRejected", q3["grammar"]["invalid_rejected"], cnt(q3["grammar"]["invalid_rejected"]), src)
+        ni = q3["grammar"]["invalid_rejected"] + q3["grammar"]["invalid_unsupported"]
+        put("QthreeInvalidTotal", ni, cnt(ni), src)  # rejected, or kept whole and reported; none accepted
         put("QthreeOurs", q3["roundtrip_ours"]["files"], cnt(q3["roundtrip_ours"]["files"]), src)
         rtc = [r for r in rows(ICPC / "qasm3_srcml" / "roundtrip_corpus.csv") if r["equal"] == "True"]
         import hashlib as _h
@@ -657,6 +659,8 @@ def main() -> int:
         put("SmlGrammarCases", len(T.VALID), cnt(len(T.VALID)), "tool/tests/test_qasm_srcml.py")
         put("SmlInvalidCases", len(T.INVALID), cnt(len(T.INVALID)), "tool/tests/test_qasm_srcml.py")
         put("SmlSpecPrograms", len(T.SPEC), cnt(len(T.SPEC)), "tool/tests/qasm2/spec_*.qasm")
+        nt = NUMS["SmlGrammarCases"]["value"] + NUMS["SmlInvalidCases"]["value"] + NUMS["SmlSpecPrograms"]["value"]
+        put("SmlTestPrograms", nt, cnt(nt), "tool/tests/test_qasm_srcml.py, tool/tests/qasm2/spec_*.qasm")
         src = "results/icpc/lintq_compare/c1.csv"
         c1 = rows(ICPC / "lintq_compare" / "c1.csv")
         qrules = {"ql-operation-after-measurement", "ql-double-measurement", "ql-oversized-circuit",
