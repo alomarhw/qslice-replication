@@ -28,8 +28,8 @@
 \node[ext, below=0.35cm of e1, text width=1.85cm] (ss) {srcSlice\\profiles,\\patched};
 \node[new, below=0.35cm of e3, text width=1.95cm] (e4) {E4 classical\\lines};
 \coordinate (qrow) at (0, -3.35);
-\node[new, text width=1.85cm] (reader) at (srcml |- qrow) {markup front end,\\Behler et al.};
-\node[io, left=0.38cm of reader, text width=1.75cm] (qasm) {OpenQASM~2\\\texttt{.qasm}};
+\node[new, text width=1.85cm] (reader) at (srcml |- qrow) {markup front ends,\\Behler et al.};
+\node[io, left=0.38cm of reader, text width=1.75cm] (qasm) {OpenQASM\\2 and 3\\\texttt{.qasm}};
 \node[io, right=0.38cm of e5, text width=2.05cm, minimum height=2.45cm, yshift=-0.72cm] (out) {\textbf{Shown}\\source lines,\\loop iterations,\\classical lines,\\qubit profiles};
 \draw[arr] (py) -- (srcml);
 \draw[arr] (qasm) -- (reader);

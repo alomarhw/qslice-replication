@@ -16,6 +16,9 @@
     OpenQASM~2 front end's trace equals the circuit Qiskit loads & OpenQASM~2 files of the corpora that Qiskit accepts & \numSmlSame{} of \numSmlSame{} \\ \sep
     the front end rejects a file only when Qiskit does & OpenQASM~2 files of the corpora that break a rule & \numSmlRejected{} of \numSmlRejected{} \\ \sep
     the srcML markup gives back the file byte for byte & OpenQASM~2 files up to 20~MB & \numSmlLossless{} of \numSmlLossless{} \\ \sep
+    OpenQASM~3 export of a program gives the trace of its Python source & our programs & \numQthreeOurs{} of \numQthreeOurs{} \\ \sep
+    OpenQASM~3 export of a file gives the circuit Qiskit loaded & corpus files & \numQthreeCorpus{} of \numQthreeCorpus{} \\ \sep
+    OpenQASM~3 parse matches the official reference & grammar tests & \numQthreeRefMatch{} of \numQthreeRefCases{} \\ \sep
     trace, read without running, equals the prepared circuit & Bugs4Q bugs & \numToolTOneExact{} of \numToolTOneBugs{} \\ \sep
     slices equal the light cone of the built circuit & our runnable programs & \numToolDevSliceEqual{} of \numToolDevPrograms{} \\ \sep
     line slices equal those recorded while running & Bugs4Q units & \numToolTTwoEqual{} of \numToolTTwoUnits{} \\ \sep
@@ -34,7 +37,15 @@ Qiskit loads on all \numSmlSame{} files of the corpora that Qiskit accepts, oper
 conditions, and the front end rejects the other \numSmlRejected{}, which Qiskit rejects too. Its markup gives back every
 file it marks up byte for byte. It also reads the \numSmlGrammarCases{} programs that exercise the rules of the grammar
 and the \numSmlSpecPrograms{} example programs of the specification as Qiskit does, and rejects
-\numSmlInvalidCases{} invalid programs. Read without
+\numSmlInvalidCases{} invalid programs. The OpenQASM~3 front end parses all \numQthreeRefCases{} reference programs
+of the language's official grammar tests into the statements of their reference parse trees and rejects
+\numQthreeInvalidRejected{} invalid statements of those tests, accepting none. Exported by Qiskit to OpenQASM~3, all
+\numQthreeOurs{} of our programs give the trace of their Python source, device loops, branches and switches included,
+and all \numQthreeCorpus{} corpus files give the circuit Qiskit loaded. Of the \numQthreeExamples{} example programs of
+the language, \numQthreeExamplesTraced{} yield a trace, \numQthreeExamplesOutside{} of them with statements outside the
+subset reported, and \numQthreeExamplesReported{} calls a gate it never defines, which \tool{} reports. \numQthreeVeriqRejected{} of
+VeriQBench's \numQthreeVeriqFiles{} OpenQASM~3 files are written in an earlier draft of the language, with several
+qubits in one declaration and operands without commas, and are rejected. Read without
 being run, the Bugs4Q programs yield the circuit their ported bug prepares for \numToolTOneExact{} of \numToolTOneBugs{}
 bugs, and the remaining one rewrites its circuit as a DAG, which \tool{} reports. The slices match the light cone of the
 built circuit on \numToolDevSliceEqual{} of our programs. The remaining one nests one condition inside another, which
@@ -197,7 +208,7 @@ state, out of \numLqCodeMedian{} code lines in the file. LintQ's bound of ten lo
     & \textbf{srcSlice}~\cite{alomari2014srcslice} & \textbf{QStatic}~\cite{behler2025static} & \textbf{LintQ}~\cite{paltenghi2024lintq} &
     \textbf{QChecker}~\cite{zhao2023qchecker} & \textbf{\tool{}} \\
     \midrule
-    Input & C, C++, C\#, Java & OpenQASM~3, hand-marked-up srcML & Qiskit & Qiskit & Qiskit, OpenQASM~2 \\ \sep
+    Input & C, C++, C\#, Java & OpenQASM~3, hand-marked-up srcML & Qiskit & Qiskit & Qiskit, OpenQASM~2, OpenQASM~3 \\ \sep
     Representation & srcML & srcML & CodeQL database & Python AST & srcML, srcSlice, operation trace \\ \sep
     Qubits & none & per-qubit order of operations & register and index & none & global index per operation,
     over-approximated when unknown \\ \sep

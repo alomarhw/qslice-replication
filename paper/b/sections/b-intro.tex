@@ -22,13 +22,13 @@ This paper presents an approach to static slicing of quantum programs. It extend
 layer that reads the quantum role of each call, reconstructs the circuit a program builds, over-approximating what
 cannot be known without running it, slices every qubit of that circuit along the gates and measured bits that can
 affect it, and shows each slice as source lines, the loop iterations that put them there and the classical statements
-that compute them. We implement the approach in a tool, \tool{}, for Qiskit programs and OpenQASM~2 circuits. For
-OpenQASM~2, the tool produces the srcML markup that Behler et al.\ specified~\cite{behler2024supporting} and that had so
+that compute them. We implement the approach in a tool, \tool{}, for Qiskit programs and for OpenQASM~2 and~3. For
+OpenQASM, the tool produces the srcML markup that Behler et al.\ specified~\cite{behler2024supporting} and that had so
 far been written by hand, and builds on it the slicer they proposed~\cite{behler2025static}.
 
 The paper makes four contributions.
 The first is the approach, a semantic layer over srcML and srcSlice with five extensions, whose over-approximations can
-only enlarge a slice, applied to Qiskit and, through an automatic front end for Behler et al.'s markup, to OpenQASM~2. The second is a way to slice loops that run on the device, with an argument that it is sound. The
+only enlarge a slice, applied to Qiskit and, through automatic front ends for Behler et al.'s markup, to OpenQASM~2 and~3. The second is a way to slice loops that run on the device, with an argument that it is sound. The
 third is a qubit profile, the quantum counterpart of srcSlice's slice profile. The fourth is an evaluation on
 \numScaleSOneFiles{} GitHub programs, Bugs4Q~\cite{zhao2023bugs4q}, the Qiskit textbook~\cite{qiskittextbook}, Qiskit
 HumanEval~\cite{vishwakarma2024qhe} and QASMBench~\cite{li2023qasmbench}. Without running a

@@ -20,7 +20,10 @@ textbook~\cite{qiskittextbook} programs teach the standard algorithms. We wrote 
 \numToolDevPrograms{} runnable programs used to check the trace, programs in which a size constant grows the circuit
 while the source stays fixed, and programs with loops that run on the device. The OpenQASM~2 front end is checked on
 the \numSmlChecked{} OpenQASM~2 files up to 5~MB of MQT Bench~\cite{quetschlich2023mqt}, QASMBench and
-VeriQBench~\cite{chen2022veriqbench}, and on test programs for the grammar and the specification's examples, and timed on the medium and large circuits of QASMBench~\cite{li2023qasmbench}.
+VeriQBench~\cite{chen2022veriqbench}, and on test programs for the grammar and the specification's examples. The OpenQASM~3 front end is checked on the
+official grammar tests, on the \numQthreeExamples{} example programs of the language, on the OpenQASM~3 files of
+VeriQBench, and on programs that Qiskit's exporter writes from our programs and from the corpus files. The OpenQASM~2
+front end is timed on the medium and large circuits of QASMBench~\cite{li2023qasmbench}.
 
 \begin{table*}[t]
   \centering
@@ -64,7 +67,9 @@ by operation. The slices must equal the backward light-cone slices of that built
 code separate from the tool, and on the Bugs4Q bugs that port to circuits, the line slices must equal those obtained by
 recording which line appends each operation while the port runs. The OpenQASM~2 front end's trace must equal the circuit
 Qiskit loads from the same file, on every OpenQASM~2 file of the corpora, it must reject exactly the files Qiskit
-rejects, and its srcML must give back the file byte for byte. For the programs with device loops, an exact density-matrix simulation that branches
+rejects, and its srcML must give back the file byte for byte. Exported to OpenQASM~3, each of our programs must give
+the trace of its Python source, with the same conditions and may-operations, and each corpus file the circuit Qiskit
+loaded before exporting it. For the programs with device loops, an exact density-matrix simulation that branches
 over measurement outcomes deletes every operation outside a qubit's slice from the source and checks that the qubit's
 state is unchanged at \numCfInputs{} inputs, and a negative control reads each device loop's body once. The classical
 statements of E4 are compared with the values E2 tracks along the one path it follows, which give a second,

@@ -11,8 +11,8 @@ them.
 \begin{figure*}[t]
   \centering
   \includegraphics[width=0.86\textwidth]{figures/fig_b_architecture.pdf}
-  \caption{The parts of the approach. A Qiskit program is marked up by srcML, and an OpenQASM~2 circuit by a front end
-  that produces Behler et al.'s markup. The extensions E1 to E5 read both, and srcSlice, patched, gives the classical
+  \caption{The parts of the approach. A Qiskit program is marked up by srcML, and an OpenQASM~2 or~3 program by front
+  ends that produce Behler et al.'s markup. The extensions E1 to E5 read both, and srcSlice, patched, gives the classical
   lines of a Qiskit program. What the developer is shown is
   on the right.}
   \label{fig:b-architecture}
@@ -60,7 +60,7 @@ Fig.~\ref{fig:b-example} uses it. The subsections that follow describe each exte
 
 \begin{table*}[t]
   \centering
-  \caption{What the quantum layer does with each srcML element of a Qiskit or OpenQASM~2 program, against srcSlice}
+  \caption{What the quantum layer does with each srcML element of a Qiskit or OpenQASM program, against srcSlice}
   \label{tab:b-layer}
   \footnotesize\setlength{\tabcolsep}{3.4pt}\renewcommand{\arraystretch}{1.14}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
@@ -84,6 +84,11 @@ Fig.~\ref{fig:b-example} uses it. The subsections that follow describe each exte
     \texttt{<call>} with a quantum \texttt{<argument\_list>} & -- & one operation per qubit tuple, expanded over the registers it names & E1, E2 & -- \\ \sep
     \texttt{<measure>}, \texttt{<reset>}, \texttt{<barrier>} & -- & writes the bits, resets the qubits; a barrier is never sliced & E2 & -- \\ \sep
     \texttt{<if\_stmt>}, \texttt{if(c==n)} & -- & conditions the operation on every bit of the register & E2, E3 & -- \\
+    \midrule
+    \multicolumn{5}{@{}l}{\textit{OpenQASM~3, the same elements and these}} \\
+    \texttt{<for>}, \texttt{<while>}, \texttt{<if\_stmt>}, \texttt{<switch>} & -- & over known values, unrolled or decided; over measured bits, conditioned on them, and a \texttt{while} repeated & E2, E3 & -- \\ \sep
+    \texttt{<specifier>} of a \texttt{<call>} & -- & \texttt{ctrl} and \texttt{negctrl} add control qubits to the operation & E1 & -- \\ \sep
+    \texttt{<unsupported>} & -- & \texttt{def}, \texttt{let}, \texttt{delay}, calibration, reported; a subroutine call is one operation on its qubits & E2 & -- \\
     \midrule
     the operations appended, with their bits & -- & slices every qubit along the light cone and the measured bits & E3 & 8, 12--17, 19, 21 \\ \sep
     the variables of the sliced lines & profiles, patched for Python & follows the profiles back to the statements that compute the slice & E4 & 3--7, 9--11, 18, 20, 22 \\ \sep
@@ -247,7 +252,7 @@ that \texttt{q[4]} is first the target of a hop, as \texttt{q[b]}, and then the 
 \texttt{c[4]} points to the conditioned gate on line 21, which a variable profile has no entry for. E5 computes the
 profile from one backward and one forward pass over the trace and from the srcML of the gate calls on the qubit.
 
-\subsection{Two front ends}\label{sec:b-frontends}
+\subsection{Front ends for Qiskit and OpenQASM}\label{sec:b-frontends}
 Qiskit programs, the language of Bugs4Q and of LintQ's corpus~\cite{zhao2023bugs4q, paltenghi2024lintq}, are parsed by
 srcML as Python. srcML~1.1 has no OpenQASM language. Behler et al.\ specified a markup for it but released no parser, so
 their analyses run on files marked up by hand~\cite{behler2024supporting, behler2025static}. \tool{} produces that markup
@@ -262,12 +267,26 @@ application over the registers it names, as the specification defines. E3 and E5
 declarations, gate definitions and conditions that a slice needs, since srcSlice has no OpenQASM support and
 OpenQASM~2 has no other classical statements. The front end also checks the rules the specification states beyond its
 grammar, such as declared names, register bounds, gate arity and the sizes in a broadcast, and reports a program that
-breaks one instead of slicing it. OpenQASM~3, with its loops and subroutines, would get E2 as Qiskit does.
+breaks one instead of slicing it.
+
+OpenQASM~3 adds what Qiskit computes in Python and on the device, classical variables, loops, branches, switches,
+subroutines and gate modifiers~\cite{cross2022openqasm3}. \tool{} reads the part of the language that decides which
+operations act on which qubits under which conditions, declarations, assignments, gate definitions, gate calls with the
+\texttt{ctrl}, \texttt{negctrl}, \texttt{inv} and \texttt{pow} modifiers, both forms of measurement, \texttt{reset},
+\texttt{barrier}, \texttt{box}, \texttt{if}, \texttt{for}, \texttt{while} and \texttt{switch}. A second front end
+parses these by the official grammar and marks them up with Behler et al.'s elements, \texttt{<for>},
+\texttt{<while>} and \texttt{<if\_stmt>} among them, and the layer applies E2 as it does to a Qiskit program. A loop or
+branch over values it knows is unrolled or decided, while one whose condition reads measured bits runs on the device,
+so its operations are conditioned on those bits and a \texttt{while} is repeated as Section~\ref{sec:b-loops}
+describes. The remaining statements, \texttt{def}, \texttt{let}, \texttt{delay} and calibration, are kept in the markup
+and reported. A call to a subroutine is read as one operation on its qubit arguments, the only qubits a subroutine can
+reach, and an operand named through an alias acts on every qubit it may denote.
 
 \subsection{What the layer does not read}\label{sec:b-limits}
 The approach slices what it can reconstruct. A program that loads its circuit from a file or builds it in code the
 interpretation does not follow yields no slice, and a method outside the role table stops the trace of its circuit,
 both reported with their cause. Over-approximation keeps slices sound but can make them larger than needed, for
 instance when an index depends on input the program reads at run time. The classical statements are the least exact
-part, since srcSlice does not link a value returned from a function to its call, which RQ1 measures. OpenQASM~3 files
-are not read yet, since srcML has no released parser for them.
+part, since srcSlice does not link a value returned from a function to its call, which RQ1 measures. In OpenQASM~3,
+the bodies of subroutines and the targets of aliases are not read but over-approximated, and calibration code is left
+out.
