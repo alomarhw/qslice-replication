@@ -235,7 +235,7 @@ first operation.
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
   \begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.55cm} >{\raggedright\arraybackslash}p{2.75cm} >{\raggedright\arraybackslash}p{3.85cm}@{}}
     \toprule
-    \textbf{Entry, srcSlice field} & \textbf{srcSlice, variable \texttt{q}} & \textbf{\tool{}, qubit \texttt{q[4]}} \\
+    \rowcolor{black!8}\textbf{Entry, srcSlice field} & \textbf{srcSlice, variable \texttt{q}} & \textbf{\tool{}, qubit \texttt{q[4]}} \\
     \midrule
     Lines\newline\texttt{def}, \texttt{use} & defined on 4, used on 7, 8, 12--17, 19, 21, 23 & 13--16, 19, 21, each operation reading and writing \texttt{q[4]} \\ \sep
     Flows into\newline\texttt{dvars} & the variable \texttt{qc} & the qubits \texttt{q[2]}, \texttt{q[3]}, \texttt{q[5]}--\texttt{q[8]}, which its first operation can affect \\ \sep
