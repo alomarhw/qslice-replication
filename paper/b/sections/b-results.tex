@@ -1,6 +1,31 @@
 \section{Results}\label{sec:b-results}
 
 \subsection{RQ1: Faithfulness}
+
+\begin{table}[t]
+  \centering
+  \caption{The faithfulness checks of RQ1, each against a reference computed without \tool{}}
+  \label{tab:b-rq1}
+  \footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
+  \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.3cm} >{\raggedright\arraybackslash}p{2.95cm} r@{}}
+    \toprule
+    \textbf{Check} & \textbf{Subjects} & \textbf{Agree} \\
+    \midrule
+    trace equals the circuit Qiskit builds & our runnable programs, up to \numToolDevMaxOps{} operations & \numToolDevPrograms{} of \numToolDevPrograms{} \\ \sep
+    OpenQASM reader's trace equals the circuit Qiskit loads & benchmark circuits & \numQasmCircuitsChecked{} of \numQasmCircuitsChecked{} \\ \sep
+    trace, read without running, equals the prepared circuit & Bugs4Q bugs & \numToolTOneExact{} of \numToolTOneBugs{} \\ \sep
+    slices equal the light cone of the built circuit & our runnable programs & \numToolDevSliceEqual{} of \numToolDevPrograms{} \\ \sep
+    line slices equal those recorded while running & Bugs4Q units & \numToolTTwoEqual{} of \numToolTTwoUnits{} \\ \sep
+    deleting what the slice leaves out keeps each qubit's state & device-loop programs, \numCfQubits{} qubits, \numCfInputs{} inputs & \numCfPrograms{} of \numCfPrograms{} \\ \sep
+    srcSlice's classical lines contain the reference's & \numSsQubits{} qubits in \numSsFiles{} files & \numSsContainPct{} \\
+    & our programs and Bugs4Q & \numSsDevBugsContainPct{} \\
+    & held-out, \numSsHeldQubits{} qubits & \numSsHeldContainPct{} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Table~\ref{tab:b-rq1} summarizes the checks, and the paragraphs below explain the two that do not agree in full.
 The static trace matches what Qiskit builds. On all \numToolDevPrograms{} of our runnable programs, of up to
 \numToolDevMaxOps{} operations, the trace equals the circuit the program builds when it runs, and on all
 \numQasmCircuitsChecked{} benchmark circuits the OpenQASM reader's trace equals the circuit Qiskit loads. Read without
@@ -34,16 +59,27 @@ cone of the built circuit does, device loops included. Its classical statements 
 values returned from functions in held-out code.
 
 \subsection{RQ2: Coverage}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.78\columnwidth]{figures/fig_b_coverage.pdf}
+  \caption{Coverage on LintQ's corpus. (a) Why programs yield no circuit. (b) The methods that most often stop a trace,
+  because the role table does not model them, or blur it, because the layer cannot know their result.}
+  \label{fig:b-coverage}
+\end{figure}
+
 Of the \numScaleSOneFiles{} programs of LintQ's corpus, \tool{} traces a circuit in \numScaleSOneSliced{}. Of the
 \numCovNoCircuit{} that yield none, \numCovNoConstruction{} never construct a circuit, such as helpers and scripts that
 read results, \numCovFromFile{} load their circuits from a file or a library, and \numCovOther{} build them in code the
-interpretation does not follow. It traces \numSubjBugsTraced{} of the \numSubjBugsCount{} Bugs4Q programs and
+interpretation does not follow, as Fig.~\ref{fig:b-coverage}a shows. It traces \numSubjBugsTraced{} of the \numSubjBugsCount{} Bugs4Q programs and
 \numSubjTextTraced{} of the \numSubjTextCount{} textbook programs, \numToolBugsResolved{} of the Bugs4Q
 ones without any over-approximation. On current Qiskit, it traces \numQheTracedOfBuildsPct{}
 of the \numQheBuilds{} Qiskit HumanEval programs that construct a circuit. Where tracing stops, the cause is mostly a
-method outside the role table. \numUnmodMethodProgs{} programs of LintQ's corpus call one, most often a method that runs
-or simulates the circuit, such as \texttt{run}, or builds it from text, and otherwise operations such as
-\texttt{reverse\_bits}, or \texttt{prepare\_state} in \numUnmodQhePrepare{} Qiskit HumanEval programs. Adding such methods
+method outside the role table, as Fig.~\ref{fig:b-coverage}b shows. \numUnmodMethodProgs{} programs of LintQ's corpus
+call one, most often \texttt{reverse\_bits}, a simulator instruction such as \texttt{save\_unitary}, a circuit built
+from text with \texttt{from\_qasm\_str}, or \texttt{run}, and \texttt{prepare\_state} stops \numUnmodQhePrepare{} Qiskit
+HumanEval programs. Another \numUnmodUnknownProgs{} programs apply a method whose result the layer cannot know, most often
+\texttt{inverse} or \texttt{bind\_parameters}, so the trace continues with that operation over-approximated. Adding such methods
 is the main way to widen coverage.
 
 No program of Bugs4Q or LintQ's corpus crashes \tool{}.
@@ -108,8 +144,17 @@ operations, where its one pass over every qubit outpaces tools that slice one qu
   \end{minipage}
 \end{table}
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig_b_share.pdf}
+  \caption{The share of a program's code lines that a qubit's slice holds, over the \numScaleReadQubits{} sliced qubits
+  of LintQ's corpus.}
+  \label{fig:b-share}
+\end{figure}
+
 A slice narrows what a developer reads. A qubit's slice holds \numScaleReadMedianPct{} of a program's code lines in the
-median over LintQ's corpus, together with the loop iterations that put each line there.
+median over the \numScaleReadQubits{} sliced qubits of LintQ's corpus, together with the loop iterations that put each
+line there, and Fig.~\ref{fig:b-share} shows that most slices hold less than half of the program.
 The profile shows two directions, and they differ. Over the \numProfBugsQubits{} qubits of Bugs4Q, the
 \numProfTextQubits{} of the textbook and the \numProfLintqQubits{} of \numProfLintqSample{} sampled files of LintQ's corpus,
 a qubit's slice and the forward slice of its first operation differ in length for \numProfBugsFwdNeBwd{},
