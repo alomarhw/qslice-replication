@@ -27,7 +27,7 @@ front end is timed on the medium and large circuits of QASMBench~\cite{li2023qas
 
 \begin{table*}[t]
   \centering
-  \caption{Programs and circuits of the evaluation}
+  \caption{Programs and circuits of the evaluation. Shaded rows are programs we wrote.}
   \label{tab:b-subjects}
   \footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}
   \newcommand{\sep}{\arrayrulecolor{black!25}\hline\arrayrulecolor{black}}
@@ -44,12 +44,12 @@ front end is timed on the medium and large circuits of QASMBench~\cite{li2023qas
       \numSubjTextMedianOps{} / \numSubjTextMaxOps{} & \numSubjTextMedianLines{} & RQ1, RQ2, RQ4 \\ \sep
     Qiskit HumanEval & \numSubjQheCount{} & \numSubjQheTraced{} & \numSubjQheMinQubits{}--\numSubjQheMaxQubits{} &
       \numSubjQheMedianOps{} / \numSubjQheMaxOps{} & \numSubjQheMedianLines{} & RQ2 \\ \sep
-    Runnable programs, ours & \numSubjDevCount{} & \numSubjDevTraced{} & \numSubjDevMinQubits{}--\numSubjDevMaxQubits{} &
+    \rowcolor{blue!7}Runnable programs & \numSubjDevCount{} & \numSubjDevTraced{} & \numSubjDevMinQubits{}--\numSubjDevMaxQubits{} &
       \numSubjDevMedianOps{} / \numSubjDevMaxOps{} & \numSubjDevMedianLines{} & RQ1 \\ \sep
-    Parametric programs, 5 sizes each, ours & \numSubjParamCount{} & \numSubjParamTraced{} of 20 &
+    \rowcolor{blue!7}Parametric programs, 5 sizes each & \numSubjParamCount{} & \numSubjParamTraced{} of 20 &
       \numSubjParamMinQubits{}--\numSubjParamMaxQubits{} & \numSubjParamMedianOps{} / \numSubjParamMaxOps{} &
       \numSubjParamMedianLines{} & RQ3 \\ \sep
-    Programs with device loops, ours & \numSubjCfCount{} & \numSubjCfTraced{} & \numSubjCfMinQubits{}--\numSubjCfMaxQubits{} &
+    \rowcolor{blue!7}Programs with device loops & \numSubjCfCount{} & \numSubjCfTraced{} & \numSubjCfMinQubits{}--\numSubjCfMaxQubits{} &
       \numSubjCfMedianOps{} / \numSubjCfMaxOps{} & \numSubjCfMedianLines{} & RQ1 \\ \sep
     QASMBench medium and large, OpenQASM~2 & \numSubjQbCount{} & \numSubjQbTraced{} & \numSubjQbMinQubits{}--\numSubjQbMaxQubits{} &
       \numSubjQbMedianOps{} / \numSubjQbMaxOps{} & -- & RQ3 \\
