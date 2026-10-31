@@ -26,6 +26,7 @@ sys.path.insert(0, str(SRC))
 import srcml_marks as T  # noqa: E402  (shared parsing of srcML into marked rows)
 from tool.interp import trace_file  # noqa: E402
 from tool.slicer import wire_slice  # noqa: E402
+from tool import srcml as X  # noqa: E402
 
 PROG = ROOT / "tool" / "tests" / "big" / "teleport_chain.py"
 T.GATES = ("h", "cx", "measure", "x", "z")
@@ -157,7 +158,7 @@ def main():
     # As in Behler et al.'s figures, srcML tags are dark red and the source text they keep is bold. The key to the
     # role colours sits in the space under the Python.
     o.append(rf"\node[stnum] at (0.2,0.5) {{1}};")
-    o.append(r"\node[stage] at (0.45,0.5) {Python source and its srcML};")
+    o.append(r"\node[stage] at (0.45,0.5) {Python source and its srcML, read by E1 and E2};")
     o.append(r"\coordinate (hr) at (0,0.28);")
     PP, XP, NUMX = 0.40, 0.62, 0.12          # Python pitch, code x, line-number x
     XC = 6.45                                 # right edge of the Python card
@@ -213,12 +214,36 @@ def main():
              rf"{{Read by the extensions}};")
     o.append(rf"\node[anchor=north west, font=\fontsize{{8.5}}{{10}}\selectfont, text=ink, inner sep=0pt] (key) at (0.05,{ky - 0.42:.3f}) "
              rf"{{\setlength{{\tabcolsep}}{{4pt}}\renewcommand{{\arraystretch}}{{1.15}}\begin{{tabular}}{{@{{}}l l@{{}}}}{rows}\end{{tabular}}}};")
-    y = min(blocks[-1][1], ky - 2.55)
+    # the quantum markup of line 14, as qiskit2srcml writes it after E1 and E2 (tool/quantum_markup.py): srcML's own
+    # elements, with the layer's roles and operations as qu: attributes; inner elements of the arguments elided
+    from tool.quantum_markup import markup  # noqa: PLC0415
+    qm, _ = markup(PROG)
+    QA = "{http://www.srcML.org/srcML/quantum}"
+    call = next(c for c in qm.iter(X.S + "call") if X.line(c) == 14)
+    args = [a for a in call.iter(X.S + "argument") if a.get(QA + "arg")]
+    lt, gt = r"\textless{}", r"\textgreater{}"
+    tag = lambda t: rf"\textcolor{{tagC}}{{{lt}{t}}}"  # noqa: E731
+    att = lambda k, v, c: rf"\textcolor{{tagC}}{{\ qu:{k}=}}\role{{{c}}}{{{c[:-1]}L}}{{\textquotedbl{{}}{v}\textquotedbl{{}}}}"  # noqa: E731
+    row1 = (tag("call") + att("role", call.get(QA + "role"), "gateC") + att("gate", call.get(QA + "gate"), "gateC")
+            + att("ops", call.get(QA + "ops"), "posC") + att("qubits", call.get(QA + "qubits"), "posC") + rf"\textcolor{{tagC}}{{{gt}}}")
+    txt = lambda a: "".join(a.itertext()).strip().replace("_", r"\_")  # noqa: E731
+    arow = lambda a_: (tag("argument") + att("arg", a_.get(QA + "arg"), "qubC") + rf"\textcolor{{tagC}}{{{gt}}}\textbf{{{txt(a_)}}}"  # noqa: E731
+                       + rf"\textcolor{{tagC}}{{{lt}/argument{gt}}}")
+    rowsq = [row1] + [arow(a_) + ("," if k == 0 else r"\,\textcolor{tagC}{\dots\ {}\textless{}/call\textgreater{}}") for k, a_ in enumerate(args)]
+    qtop = blocks[-1][1] - 0.62
+    o.append(rf"\node[lab, anchor=south west] at ({XS + 0.05},{qtop + 0.05:.3f}) "
+             rf"{{Quantum markup of line 14, written back by \texttt{{qiskit2srcml}}}};")
+    for k, r_ in enumerate(rowsq):
+        lead = "" if k == 0 else r"\textcolor{tagC!55}{\rmfamily$\hookrightarrow$}\,"
+        o.append(rf"\node[xml] at ({XS + 0.14 + (CH8 * 4 if k else 0):.3f},{qtop - 0.27 - k * SP:.3f}) {{{lead}{r_}}};")
+    qbot = qtop - 0.27 - (len(rowsq) - 1) * SP - 0.2
+    o.append(rf"\begin{{scope}}[on background layer]\filldraw[card] ({XS},{qtop:.3f}) rectangle ([xshift=4pt]sml.east |- 0,{qbot:.3f});\end{{scope}}")
+    y = min(qbot, ky - 2.55)
     o.append(rf"\begin{{scope}}[yshift={y - 1.15:.3f}cm]")
 
     # ---- 2 the trace of line 8 and the first iteration, drawn as a circuit: one column per operation, headed by the
     # source line that appends it, a dot on the control of a CNOT, and the bit a measurement writes or a gate tests.
-    header(XT, 2, r"Trace of line 8 and iteration $h = 0$, as a circuit", WT)
+    header(XT, 2, r"E2: trace of line 8 and iteration $h = 0$, as a circuit", WT)
     first = [op for _, op in ops if (dict(op.iters).get(LOOP) == 0 if op.iters else op.line == 8)]
     qs = sorted({next(iter(qq)) for op in first for qq in op.qubits})
     QX0, DX, WY0, DY = XT + 0.85, 1.0, -0.95, 0.78
@@ -252,7 +277,7 @@ def main():
              rf"\textcolor{{qubC}}{{$q_0$}} as well as its target.}};")
 
     # ---- 3 slice of q[4] by line and iteration
-    header(XR, 3, r"Slice of \texttt{q[4]} by line and iteration", WR)
+    header(XR, 3, r"E3: slice of \texttt{q[4]} by line and iteration", WR)
     lines = [12, 13, 14, 15, 16, 17, 19, 21]
     cell, x0, y0 = 0.62, XR + 1.5, -0.95
     o.append(rf"\node[font=\fontsize{{8.5}}{{10}}\selectfont, text=mute, anchor=south east] at ({x0 - 0.08},{y0 + 0.05}) {{line}};")
@@ -268,7 +293,6 @@ def main():
     n_in = len(keep)
     o.append(rf"\node[font=\fontsize{{9}}{{11}}\selectfont, text=ink, anchor=north west, align=left] at ({XR + 0.05},{y0 - 4 * cell - 0.15}) "
              rf"{{line 8 in the slice, line 23 not\enspace\textcolor{{wire}}{{\bfseries {n_in}}} of {len(ops)} operations}};")
-    o.append(rf"\draw[flowarrow] ({XT + WT - 0.3},0.5) -- ({XR - 0.04},0.5);")
     o.append(r"\end{scope}")
     o.append(r"\end{tikzpicture}")
     o.append(r"\end{document}")

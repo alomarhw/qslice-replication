@@ -29,7 +29,7 @@
 \begin{tikzpicture}
 
 \node[stnum] at (0.2,0.5) {1};
-\node[stage] at (0.45,0.5) {Python source and its srcML};
+\node[stage] at (0.45,0.5) {Python source and its srcML, read by E1 and E2};
 \coordinate (hr) at (0,0.28);
 \begin{scope}[on background layer]\filldraw[card] (0,-0.420) rectangle (6.45,-5.350);\end{scope}
 \node[lab, font=\ttfamily\fontsize{8}{10}\selectfont] at (0.12,-0.750) {10};
@@ -90,9 +90,14 @@
 \node[lab, anchor=south west] at (7.6,-0.370) {srcML of lines 14 and 18--19, with positions};
 \node[lab, anchor=north west, font=\fontsize{8.5}{10}\selectfont\bfseries, text=ink] at (0.05,-5.650) {Read by the extensions};
 \node[anchor=north west, font=\fontsize{8.5}{10}\selectfont, text=ink, inner sep=0pt] (key) at (0.05,-6.070) {\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.15}\begin{tabular}{@{}l l@{}}{\ttfamily \role{gateC}{gateL}{cx}}&gate, from the role table\\[1pt]{\ttfamily \role{qubC}{qubL}{q[src]}}&qubit argument, evaluated in each iteration\\[1pt]{\ttfamily \role{bitC}{bitL}{c[2*h+1]}}&classical bit, measured and then tested\\[1pt]{\ttfamily \role{condC}{condL}{if\_test}}&condition of the block it opens\\[1pt]{\ttfamily \role{posC}{posL}{14}}&source line, from \texttt{pos:start}\\[1pt]\end{tabular}};
-\begin{scope}[yshift=-9.350cm]
+\node[lab, anchor=south west] at (7.6,-8.010) {Quantum markup of line 14, written back by \texttt{qiskit2srcml}};
+\node[xml] at (7.690,-8.330) {\textcolor{tagC}{\textless{}call}\textcolor{tagC}{\ qu:role=}\role{gateC}{gateL}{\textquotedbl{}gate\textquotedbl{}}\textcolor{tagC}{\ qu:gate=}\role{gateC}{gateL}{\textquotedbl{}cx\textquotedbl{}}\textcolor{tagC}{\ qu:ops=}\role{posC}{posL}{\textquotedbl{}4\textquotedbl{}}\textcolor{tagC}{\ qu:qubits=}\role{posC}{posL}{\textquotedbl{}0-7\textquotedbl{}}\textcolor{tagC}{\textgreater{}}};
+\node[xml] at (8.227,-8.660) {\textcolor{tagC!55}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{\textless{}argument}\textcolor{tagC}{\ qu:arg=}\role{qubC}{qubL}{\textquotedbl{}control\textquotedbl{}}\textcolor{tagC}{\textgreater{}}\textbf{q[src]}\textcolor{tagC}{\textless{}/argument\textgreater{}},};
+\node[xml] at (8.227,-8.990) {\textcolor{tagC!55}{\rmfamily$\hookrightarrow$}\,\textcolor{tagC}{\textless{}argument}\textcolor{tagC}{\ qu:arg=}\role{qubC}{qubL}{\textquotedbl{}target\textquotedbl{}}\textcolor{tagC}{\textgreater{}}\textbf{q[a]}\textcolor{tagC}{\textless{}/argument\textgreater{}}\,\textcolor{tagC}{\dots\ {}\textless{}/call\textgreater{}}};
+\begin{scope}[on background layer]\filldraw[card] (7.55,-8.060) rectangle ([xshift=4pt]sml.east |- 0,-9.190);\end{scope}
+\begin{scope}[yshift=-10.340cm]
 \node[stnum] at (0.2,0.5) {2};
-\node[stage] at (0.45,0.5) {Trace of line 8 and iteration $h = 0$, as a circuit};
+\node[stage] at (0.45,0.5) {E2: trace of line 8 and iteration $h = 0$, as a circuit};
 \draw[rule, line width=0.6pt] (0.0,0.28) -- (9.9,0.28);
 \node[lab, anchor=east] at (0.6,-0.400) {line};
 \node[anchor=east, inner sep=0pt, font=\fontsize{9}{11}\selectfont] at (0.6,-0.950) {\textcolor{qubC}{$q_{0}$}};
@@ -129,7 +134,7 @@
 \node[anchor=south, inner sep=0pt, font=\fontsize{8}{9}\selectfont] at (9.200,-2.250) {\textcolor{condC}{if} \textcolor{bitC}{$c_{0}$}};
 \node[lab, anchor=north west, align=left, text width=9.700000000000001cm] at (0.05,-3.060) {Iterations 1 to 3 repeat it on the next qubits. A CNOT, line 14, can change its control \textcolor{qubC}{$q_0$} as well as its target.};
 \node[stnum] at (10.6,0.5) {3};
-\node[stage] at (10.85,0.5) {Slice of \texttt{q[4]} by line and iteration};
+\node[stage] at (10.85,0.5) {E3: slice of \texttt{q[4]} by line and iteration};
 \draw[rule, line width=0.6pt] (10.4,0.28) -- (18.0,0.28);
 \node[font=\fontsize{8.5}{10}\selectfont, text=mute, anchor=south east] at (11.82,-0.8999999999999999) {line};
 \node[font=\fontsize{9}{11}\selectfont, text=ink, anchor=south] at (12.190000000000001,-0.8999999999999999) {12};
@@ -177,7 +182,6 @@
 \draw[draw=wire!60, line width=0.4pt, fill=white] (15.620000000000001,-2.8099999999999996) rectangle ++(0.57,-0.57);
 \draw[draw=wire!60, line width=0.4pt, fill=white] (16.240000000000002,-2.8099999999999996) rectangle ++(0.57,-0.57);
 \node[font=\fontsize{9}{11}\selectfont, text=ink, anchor=north west, align=left] at (10.450000000000001,-3.5799999999999996) {line 8 in the slice, line 23 not\enspace\textcolor{wire}{\bfseries 22} of 34 operations};
-\draw[flowarrow] (9.6,0.5) -- (10.360000000000001,0.5);
 \end{scope}
 \end{tikzpicture}
 \end{document}
