@@ -110,81 +110,52 @@ def body(F):
     iters = f"$h={it[0]}$" + (f"--{it[-1]}" if len(it) > 1 else "")
     rows = []
     a = rows.append
-    # columns: centre and width; rows: y
-    C = {"in": (0.9, 1.75), "mk": (3.3, 2.55), "l": (6.625, 3.0), "tr": (9.475, 1.8), "an": (12.05, 2.45),
-         "out": (15.275, 2.9)}
-    Y = {"band": 3.2, "top": 0.0, "mid": -2.3, "low": -4.6}
-    B = (1.9, 4.85, 13.55)         # lane boundaries between the columns
-    LT, LB = 1.55, -5.55           # lanes' top and bottom
-    R = 16.8                       # right edge
+    C = {"in": (0.95, 1.9), "mk": (3.55, 2.6), "l": (6.75, 2.8), "an": (10.55, 2.9), "out": (14.05, 3.0)}
+    Y = {"top": 0.0, "mid": -2.2, "low": -4.4}
+    B = (2.15, 5.1, 8.4, 12.25)    # lane boundaries
+    LT, LB, R = 1.45, -5.3, 15.7
 
     def node(style, name, col, yy, text, h=None):
         cx, w = C[col]
         hh = f", minimum height={h}cm" if h else ""
         a(rf"\node[{style}, text width={w}cm{hh}] ({name}) at ({cx},{yy}) {{{text}}};")
-    # lanes
     a(r"\begin{scope}[on background layer]")
     for x1, x2, t in ((-0.1, B[0] - 0.06, "Input"), (B[0] + 0.06, B[1] - 0.06, "Markup"),
-                      (B[1] + 0.06, B[2] - 0.06, "Quantum layer, E1 to E5"), (B[2] + 0.06, R, "Output")):
+                      (B[1] + 0.06, B[3] - 0.06, "Quantum layer"), (B[3] + 0.06, R, "Output")):
         a(rf"\fill[lane, rounded corners=3pt] ({x1},{LT}) rectangle ({x2},{LB});")
         a(rf"\node[lanet] at ({(x1 + x2) / 2:.3f},{LT - 0.06}) {{{t}}};")
-    a(rf"\fill[lane, rounded corners=3pt] (-0.1,{Y['band'] + 0.98}) rectangle ({R},{Y['band'] - 0.98});")
-    a(rf"\node[lanet, anchor=north west] at (0.0,{Y['band'] + 0.92}) {{Quantum markup, a separate command}};")
     a(r"\end{scope}")
     # input
-    node("io", "qasm", "in", Y["top"], r"\textbf{OpenQASM}\\2 or 3, \texttt{.qasm}\exw{" + tt("cx q[0],q[1];") + "}")
-    node("io", "py", "in", Y["mid"], r"\textbf{Qiskit}\\Python, \texttt{.py}\exw{" + tt("qc.cx(q[src],") + r"\\" + tt("q[a])") + "}")
+    node("io", "qasm", "in", Y["top"], r"\textbf{OpenQASM 2, 3}\\\texttt{.qasm} file\exw{" + tt("cx q[0],q[1];") + "}")
+    node("io", "py", "in", Y["mid"], r"\textbf{Qiskit}\\\texttt{.py} program\exw{" + tt("qc.cx(q[src],") + r"\\" + tt("q[a])") + "}")
     # markup
-    node("new", "fe", "mk", Y["top"], r"\textbf{Our front ends}\\OpenQASM 2 and 3 to srcML, with positions\exn{"
-         + tt('<argument_list') + r"\\" + tt('type="quantum">') + "}")
-    node("reused", "srcml", "mk", Y["mid"], r"\textbf{srcML}\\the program as XML, with positions\exw{"
-         + tt(f'<call pos:start="{F["pos"]}">') + "}")
-    node("ext", "ss", "mk", Y["low"], r"\textbf{srcSlice, patched}\\where each variable is set and used\exw{"
+    node("new", "fe", "mk", Y["top"], r"\textbf{Our front ends}\\OpenQASM to srcML\exn{" + tt('<argument_list') + r"\\"
+         + tt('type="quantum">') + "}")
+    node("reused", "srcml", "mk", Y["mid"], r"\textbf{srcML}\\Python to srcML\exw{" + tt(f'<call pos:start="{F["pos"]}">') + "}")
+    node("ext", "ss", "mk", Y["low"], r"\textbf{srcSlice, patched}\\where variables are set and used\exw{"
          + tt("src") + f": def {F['ss_defs']}" + "}")
     # quantum layer
-    node("new", "lq", "l", Y["top"], r"\textbf{E1 + E2 for OpenQASM}\\roles from the gate definitions; statements read in order, loops unrolled\exn{"
-         + tt("cx q[0], q[1]") + "}")
-    node("new", "lp", "l", Y["mid"], r"\textbf{E1 + E2 for Qiskit}\\E1 roles from Qiskit's method signatures; E2 interprets the program, unrolling loops\exn{"
-         + tt(f"cx({', '.join(F['roles'])})") + "}")
-    node("new", "tr", "tr", (Y["top"] + Y["mid"]) / 2, r"\textbf{Trace}\\[2pt]operations with qubits, bits, line and iteration\exn{line "
-         + str(F["line"]) + r",\\$h=" + str(F["iter"]) + r"$: " + tt(f"cx q{q0},q{q1}") + "}", h=3.95)
-    node("new", "e5", "an", Y["top"], r"\textbf{E5 Profile}\\uses, names and dependents of a qubit\exn{"
-         + ", ".join(tt(n) for n in F["names"]) + "}")
-    node("new", "e3", "an", Y["mid"], r"\textbf{E3 Slice}\\light cone through measured bits and device loops\exn{"
+    node("new", "tr", "l", (Y["top"] + Y["mid"]) / 2, r"\textbf{E1 Roles, E2 Trace}\\for each language\\[3pt]which call is a gate on which qubits; the circuit, built without running the program\exn{line "
+         + str(F["line"]) + r", $h=" + str(F["iter"]) + r"$:\\" + tt(f"cx q{q0}, q{q1}") + "}", h=3.9)
+    node("new", "e5", "an", Y["top"], r"\textbf{E5 Profile}\\uses, names, dependents\exn{" + ", ".join(tt(n) for n in F["names"]) + "}")
+    node("new", "e3", "an", Y["mid"], r"\textbf{E3 Slice}\\light cone through measured bits and loops\exn{"
          + tt("q[4]") + f": {F['s_ops']} of {F['n_ops']} ops" + "}")
-    node("new", "e4", "an", Y["low"], r"\textbf{E4 Classical lines}\\statements that compute the slice's qubits and angles\exn{"
+    node("new", "e4", "an", Y["low"], r"\textbf{E4 Classical lines}\\from srcSlice (Qiskit) or the declarations (OpenQASM)\exn{"
          + tt("src = b") + ", line 22}")
     # output
-    node("io", "o1", "out", Y["top"], r"\textbf{Qubit profile}\\" + tt("q[4]") + f" depends on {F['deps']} qubits"
-         + r"\exw{with \texttt{-{}-profile}}")
-    node("io", "o2", "out", (Y["mid"] + Y["low"]) / 2, r"\textbf{Slice}\\[2pt]quantum lines, classical lines, loop iterations and notes on approximations"
-         + r"\exw{Q lines " + F["qlines"] + "; " + iters + r"\\C lines " + F["clines"] + "}", h=3.95)
-    # quantum markup
-    a(rf"\node[new, text width=3.0cm, minimum height=1.3cm] (qm) at ({C['l'][0]},{Y['band'] - 0.12}) "
-      r"{\textbf{Quantum markup writer}\\adds E1's roles and E2's operations to the markup};")
-    a(rf"\node[io, text width=3.2cm, minimum height=1.3cm] (qf) at ({C['an'][0] + 1.6},{Y['band'] - 0.12}) "
-      r"{\textbf{srcML with \texttt{qu:} attributes}\exw{" + tt(F["qu"].split(" qu:ops")[0]) + "}};")
+    node("io", "o1", "out", Y["top"], r"\textbf{Qubit profile}\\" + tt("q[4]") + f" depends on {F['deps']} qubits")
+    node("io", "o2", "out", (Y["mid"] + Y["low"]) / 2, r"\textbf{Slice}\\source lines and loop iterations, classical lines, notes"
+         + r"\exw{" + F["qlines"] + "; " + iters + r"\\classical " + F["clines"] + "}", h=3.9)
     # arrows
-    a(r"\draw[arr] (qasm) -- (fe);")
-    a(r"\draw[arr] (py) -- (srcml);")
-    a(r"\draw[arr] (fe) -- (lq);")
-    a(r"\draw[arr] (srcml) -- (lp);")
-    a(r"\draw[arr] (srcml) -- (ss);")
-    a(r"\draw[arr] (lq) -- (tr.west |- lq);")
-    a(r"\draw[arr] (lp) -- (tr.west |- lp);")
+    for s_, t_ in (("qasm", "fe"), ("py", "srcml"), ("srcml", "ss"), ("e5", "o1"), ("e3", "e4")):
+        a(rf"\draw[arr] ({s_}) -- ({t_});")
+    a(r"\draw[arr] (fe) -- (fe -| tr.west);")
+    a(r"\draw[arr] (srcml) -- (srcml -| tr.west);")
     a(r"\draw[arr] (tr.east |- e5) -- (e5);")
     a(r"\draw[arr] (tr.east |- e3) -- (e3);")
-    a(r"\draw[arr] (e3) -- node[lab, right] {quantum lines} (e4);")
-    a(r"\draw[arr] (ss) -- node[lab, above] {variable profiles, Qiskit} (e4);")
-    a(r"\draw[darr] (tr.south) |- ([yshift=0.42cm]e4.west);")
-    a(rf"\node[lab, anchor=east] at ({C['tr'][0] - 0.08},{Y['low'] + 0.62}) {{OpenQASM: declaration lines}};")
-    a(r"\draw[arr] (e5) -- (o1);")
+    a(r"\draw[arr] (ss) -- node[lab, above] {variable profiles} (e4);")
     a(r"\draw[arr] (e3.east) -- (e3.east -| o2.west);")
     a(r"\draw[arr] (e4.east) -- (e4.east -| o2.west);")
-    a(rf"\draw[arr] ({C['mk'][0]},{LT}) |- node[lab, pos=0.35, left] {{the markup, either language}} (qm.west);")
-    a(r"\draw[arr] (tr.north) |- node[lab, pos=0.3, right] {trace} (qm.east);")
-    a(r"\draw[arr] (qm.north) -- ++(0,0.2) -| (qf.north);")
-    # key
     ky = LB - 0.42
     a(rf"\node[reused, minimum height=0.28cm, minimum width=0.5cm, inner sep=0pt] (k1) at (0.15,{ky}) {{}};")
     a(r"\node[key, right=0.08cm of k1] (t1) {taken unchanged};")
@@ -194,7 +165,6 @@ def body(F):
     a(r"\node[key, right=0.08cm of k3] (t3) {new};")
     a(r"\node[io, minimum height=0.28cm, minimum width=0.5cm, inner sep=0pt, right=0.3cm of t3] (k4) {};")
     a(r"\node[key, right=0.08cm of k4] (t4) {input or output};")
-    a(r"\draw[darr] ([xshift=0.3cm]t4.east) -- +(0.6,0) node[key, anchor=west] {OpenQASM only};")
     return "\n".join(rows)
 
 

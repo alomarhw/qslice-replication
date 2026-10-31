@@ -12,10 +12,9 @@ them.
   \centering
   \includegraphics[width=\textwidth]{figures/fig_b_architecture.pdf}
   \caption{The parts of the approach. srcML marks up a Qiskit program, and our front ends mark up an OpenQASM~2 or~3
-  program in Behler et al.'s markup. E1 and E2 read the markup of each language into one trace, which E3 slices and
-  E5 summarizes. E4 adds the classical lines from srcSlice's profiles for Qiskit, and the declaration lines for
-  OpenQASM (dashed). A separate command writes E1's roles and E2's operations back into the markup. The strips show
-  each part's result for \texttt{q[4]} of the program of Fig.~\ref{fig:b-example}.}
+  program in Behler et al.'s markup. E1 and E2 read the markup of either language into a trace of the circuit, E3
+  slices it, E4 adds the classical lines, and E5 summarizes each qubit. The strips show each part's result for
+  \texttt{q[4]} of the program of Fig.~\ref{fig:b-example}.}
   \label{fig:b-architecture}
 \end{figure*}
 
@@ -288,8 +287,7 @@ call, so the roles E1 assigns appear nowhere in it. \tool{} adds them as attribu
 role of each call (a gate, a measurement, a composition, control flow, a circuit or a register), the role of each
 argument (a control, a target, a qubit, a bit or an angle), and the operations E2 traced from the call with their
 qubits and bits, and it leaves the text of the markup unchanged. It adds the same attributes to the markup of an
-OpenQASM program. Another srcML tool can then read the quantum roles of a program without reimplementing the layer,
-as the quantum markup of Fig.~\ref{fig:b-architecture} shows.
+OpenQASM program. Another srcML tool can then read the quantum roles of a program without reimplementing the layer.
 
 \subsection{What the layer does not read}\label{sec:b-limits}
 The approach slices what it can reconstruct. A program that loads its circuit from a file or builds it in code the
